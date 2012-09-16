@@ -1,0 +1,24 @@
+= distribution
+* leading blog posts
+  * a new kind of programming book
+	* minimize text, maximize examples
+	* focus on working programs
+	* syntax highlighting
+  * select, actors, threads, and event loops
+  * small go programming examples
+* newsletter
+* twitter
+* stack overflow answers
+
+= pricing
+* high
+* updates
+* no drm
+* offers of free books in comments
+
+= source
+* popular github libraries
+* mailing list questions
+* stack overflow questions
+* handbook format
+* rosetta stone
