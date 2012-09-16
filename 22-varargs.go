@@ -12,4 +12,6 @@ func add(nums ...int) int {
 
 func main() {
 	fmt.Println(add(1, 2, 3, 4))
+	nums := []int{1, 2, 3, 4, 5}
+	fmt.Println(add(nums...))
 }
