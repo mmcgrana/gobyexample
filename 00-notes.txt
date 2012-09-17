@@ -1,9 +1,10 @@
 = distribution
 * leading blog posts
   * a new kind of programming book
-	* minimize text, maximize examples
-	* focus on working programs
-	* syntax highlighting
+	* programmers learn by examples - minimize text, maximize code
+	* programmers want to ship software - focus on working programs, toolchain
+	* design matters - syntax highlighting, typography
+	* marketing matters - twitter, 
   * select, actors, threads, and event loops
   * small go programming examples
 * newsletter
@@ -32,3 +33,41 @@
   * compilation
 * ruby and nodejs stdlib
 * ruby and nodejs killer apps
+
+* gzip
+* random numbers
+* sending email
+* subprocesses
+* listing files
+* regular expressions
+* json parsing/unparsing
+* tls server
+* tls client
+* https server
+* https client
+* buffered io
+* atomic ints
+* wait group
+* tcp proxy
+* http streaming server
+* http streaming client
+* http proxy
+* postgres, redis
+* templating
+* web app
+* hipache port
+* templating
+* scatter-gather
+* ssh
+* environment variables
+* dns
+* timers
+* url
+* tty
+* iota
+* apps with multiple named binaries
+
+http://code.google.com/p/go-wiki/wiki/GithubCodeLayout
+http://code.google.com/p/go-wiki/wiki/PackagePublishing
+http://blog.golang.org/2012/08/organizing-go-code.html
+http://golang.org/doc/code.html
