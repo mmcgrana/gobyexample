@@ -30,3 +30,5 @@
   * sort-by
   * errors
   * compilation
+* ruby and nodejs stdlib
+* ruby and nodejs killer apps
