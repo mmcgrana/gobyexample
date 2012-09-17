@@ -1,49 +1,24 @@
 package main
 
-package main
-
-import (
-    "encoding/gob"
-    "fmt"
-    "net"
-)
-
-func server() {
-    // listen on a port
-    ln, err := net.Listen("tcp", ":9999")
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-    for {
-        // accept a connection
-        c, err := ln.Accept()
-        if err != nil {
-            fmt.Println(err)
-            continue
-        }
-        // handle the connection
-        go handleServerConnection(c)
-    }
-}
-
-func handleServerConnection(c net.Conn) {
-    // receive the message
-    var msg string
-    err := gob.NewDecoder(c).Decode(&msg)
-    if err != nil {
-        fmt.Println(err)
-    } else {
-        fmt.Println("Received", msg)
-    }
-    
-    c.Close()
-}
+import ("net")
 
 func main() {
-    go server()
-    go client()
-    
-    var input string
-    fmt.Scanln(&input)
+	listener, _ := net.Listen("tcp", "0.0.0.0:5000")
+	for {
+		conn, _ := listener.Accept()
+		go Serve(conn)
+	}
+}
+
+func Serve(conn net.Conn) {
+	buf := make([]byte, 1024)
+	for {
+		_, err := conn.Read(buf)
+		if err != nil {
+			conn.Close()
+			return
+		} else {
+			conn.Write(buf)
+		}
+	}
 }
