@@ -22,3 +22,10 @@
 * stack overflow questions
 * handbook format
 * rosetta stone
+* building an actual fucking app
+  * versioned transitive libraries and pegging
+  * creating and distributing packages, putting on github
+  * distributing go binary programs
+  * deploying to heroku
+  * sort-by
+  * errors
