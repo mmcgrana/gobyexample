@@ -79,9 +79,7 @@ gobyexample.com signups
 * errors
 * compilation
 * time
-* string conversions
 * oauth for google domains
 * connection pool
 * ruby enumerable
 * ruby string
-* quoting
