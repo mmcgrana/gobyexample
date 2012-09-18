@@ -1,4 +1,5 @@
 = next
+get better at go
 write blog post on Go on Heroku
 market blog post on Go on Heroku
 proof ebook toolchain
@@ -59,7 +60,7 @@ gobyexample.com signups
 * http streaming server
 * http streaming client
 * http proxy
-* postgres, redis
+* postgres
 * templating
 * web app
 * hipache port
@@ -82,3 +83,4 @@ gobyexample.com signups
 * time
 * string to/from numbers
 * oauth for google domains
+* connection pool
