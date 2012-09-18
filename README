@@ -1,8 +1,17 @@
+= next
+write blog post on Go on Heroku
+market blog post on Go on Heroku
+proof ebook toolchain
+
+= vision
+must-have book for hackers interested in Go
+sold at a significant price and producing real revenue
+notable example of ebook product and marketing
+
 = values
 design
-curation
-excellence
-excitement
+empathy
+creativity
 
 = validation
 private emails
@@ -55,7 +64,6 @@ gobyexample.com signups
 * web app
 * hipache port
 * templating
-* scatter-gather
 * ssh
 * environment variables
 * dns
@@ -71,3 +79,5 @@ gobyexample.com signups
 * sort-by
 * errors
 * compilation
+* time
+* time duration
