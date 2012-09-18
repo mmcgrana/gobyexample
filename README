@@ -1,3 +1,9 @@
+= values
+design
+curation
+excellence
+excitement
+
 = validation
 private emails
 @gobyexample twitter followers, retweets
@@ -5,23 +11,17 @@ blog posts: views, comments, hn score, hn comments
 gobyexample.com signups
 
 = distribution
-* leading blog posts
-  * a new kind of programming book
-	* programmers learn by examples - minimize text, maximize code
-	* programmers want to ship software - focus on working programs, toolchain
-	* design matters - syntax highlighting, typography
-	* marketing matters - twitter, 
-  * select, actors, threads, and event loops
-  * small go programming examples
+* blog
 * newsletter
 * twitter
 * stack overflow answers
+* web site
+* free books for contributors and reviewers
 
 = pricing
-* high
-* updates
+* $39
+* updates forever
 * no drm
-* offers of free books in comments
 
 = source
 * popular github libraries
@@ -30,16 +30,10 @@ gobyexample.com signups
 * handbook format
 * rosetta stone
 * building an actual fucking app
-  * versioned transitive libraries and pegging
-  * creating and distributing packages, putting on github
-  * distributing go binary programs
-  * deploying to heroku
-  * sort-by
-  * errors
-  * compilation
 * ruby and nodejs stdlib
 * ruby and nodejs killer apps
 
+= topics
 * gzip
 * sending email
 * listing files
@@ -70,8 +64,10 @@ gobyexample.com signups
 * tty
 * iota
 * apps with multiple named binaries
-
-http://code.google.com/p/go-wiki/wiki/GithubCodeLayout
-http://code.google.com/p/go-wiki/wiki/PackagePublishing
-http://blog.golang.org/2012/08/organizing-go-code.html
-http://golang.org/doc/code.html
+* versioned transitive libraries and pegging
+* creating and distributing packages, putting on github
+* distributing go binary programs
+* deploying to heroku
+* sort-by
+* errors
+* compilation
