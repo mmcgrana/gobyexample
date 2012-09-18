@@ -79,7 +79,8 @@ gobyexample.com signups
 * errors
 * compilation
 * time
-* string to/from numbers
-* http basic auth client
+* string conversions
 * oauth for google domains
 * connection pool
+* ruby enumerable
+* ruby string
