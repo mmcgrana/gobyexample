@@ -1,3 +1,9 @@
+= validation
+private emails
+@gobyexample twitter followers, retweets
+blog posts: views, comments, hn score, hn comments
+gobyexample.com signups
+
 = distribution
 * leading blog posts
   * a new kind of programming book
@@ -35,9 +41,7 @@
 * ruby and nodejs killer apps
 
 * gzip
-* random numbers
 * sending email
-* subprocesses
 * listing files
 * regular expressions
 * json parsing/unparsing
