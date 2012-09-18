@@ -13,7 +13,7 @@ func main() {
 	defer db.Close()
 	fmt.Println(db)
 
-	createRep, createErr := db.Exec("CREATE TABLE items (a int8, b float8, c boolean, d text, e timestamp with time zone)")
+	createRep, createErr := db.Exec("CREATE TABLE items (a int, b float, c boolean, d text, e timestamp with time zone)")
 	if createErr != nil { panic(createErr) }
 	fmt.Println(createRep)
 
@@ -27,8 +27,24 @@ func main() {
 									  3, 7.0, true,  "more", t1,
 									  5, 1.0, false, "less", t2)
 	if minsertErr != nil { panic(minsertErr) }
-	fmt.Println(minsertRep)
+	num, _ := minsertRep.RowsAffected()
+	fmt.Println(num)
 
+	rows, selectErr := db.Query("SELECT * FROM items")
+	if selectErr != nil { panic(selectErr) }
+	defer rows.Close()
+	for rows.Next() {
+	  var r1 int
+	  var r2 float64
+	  var r3 bool
+	  var r4 string
+	  var r5 time.Time
+	  rows.Scan(&r1, &r2, &r3, &r4, &r5)
+	  fmt.Println(r1, r2, r3, r4, r5)
+    }
+	rowsErr := rows.Err()
+	if rowsErr != nil { panic(rowsErr) }
+	
 	dropRep, dropErr := db.Exec("DROP TABLE items")
 	if dropErr != nil { panic(dropErr) }
 	fmt.Println(dropRep)
