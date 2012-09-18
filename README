@@ -54,13 +54,11 @@ gobyexample.com signups
 * https server
 * https client
 * buffered io
-* atomic ints
 * wait group
 * tcp proxy
 * http streaming server
 * http streaming client
 * http proxy
-* postgres
 * templating
 * web app
 * hipache port
@@ -82,5 +80,6 @@ gobyexample.com signups
 * compilation
 * time
 * string to/from numbers
+* http basic auth client
 * oauth for google domains
 * connection pool
