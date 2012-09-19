@@ -44,9 +44,14 @@ gobyexample.com signups
 * ruby and nodejs killer apps
 
 = topics
-* gzip
-* listing files
 * regular expressions
+* time
+* connection pool
+* typed json parse/unparse
+* web app
+* gzip
+* base64 encoding
+* listing files
 * tls server
 * tls client
 * https server
@@ -57,28 +62,19 @@ gobyexample.com signups
 * http streaming client
 * http proxy
 * templating
-* web app
 * hipache port
-* templating
 * ssh
 * dns
 * timers
 * tty
 * iota
-* apps with multiple named binaries
-* versioned transitive libraries and pegging
-* creating and distributing packages, putting on github
-* distributing go binary programs
-* deploying to heroku
-* sort-by
-* errors
-* compilation
-* time
 * oauth for google domains
-* connection pool
-* typed json parse/unparse
+* testing
 
+* setting up go env, hello world
 * deploying to heroku
+* distributing go binary programs
+* apps with multiple named binaries
 * shipping a package (structure, github, docs)
 
 * blackfriday
