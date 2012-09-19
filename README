@@ -45,7 +45,6 @@ gobyexample.com signups
 
 = topics
 * gzip
-* sending email
 * listing files
 * regular expressions
 * json parsing/unparsing
@@ -54,7 +53,6 @@ gobyexample.com signups
 * https server
 * https client
 * buffered io
-* wait group
 * tcp proxy
 * http streaming server
 * http streaming client
