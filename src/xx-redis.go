@@ -63,7 +63,14 @@ func main() {
 	time.Sleep(time.Second)
 }
 
+// == running
 // $ redis-server
 // $ cd xx-redis
 // $ go get
 // $ ./xx-redis
+
+// == todo
+// connection pooling
+// concurrency
+// reconnection
+// errors

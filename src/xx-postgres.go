@@ -50,8 +50,16 @@ func main() {
 	fmt.Println(dropRep)
 }
 
+// == running
 // # start postgres
 // $ createdb gobyexample
 // $ cd xx-postgres
 // $ go get
 // $ ./xx-postgres
+
+// == todo
+// connection pooling
+// concurrency
+// re-connection
+// errors
+// explain

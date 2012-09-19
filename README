@@ -34,36 +34,31 @@ gobyexample.com signups
 * no drm
 
 = topics
-* time formatting
-* connection pool
-* typed json parse/unparse
+* worker pool
+* rate limiting
+
+* string formatting
 * web app
+* time formatting
+* typed json parse/unparse
 * gzip
 * base64 encoding
-* listing files
-* tls server
-* tls client
-* buffered io
-* tcp proxy
 * http streaming server
 * http streaming client
-* http proxy
 * templating
-* hipache port
 * ssh
 * dns
-* tty
 * iota
 * oauth for google domains
 * testing
+* markdown (blackfriday)
+* mongo
 
 * setting up go env, hello world
 * deploying to heroku
 * distributing go binary programs
 * apps with multiple named binaries
 * shipping a package (structure, github, docs)
-
-* blackfriday
 
 = program ideas
 self-signed cert generator

@@ -17,3 +17,7 @@ func main() {
 	_, e := myFun(42)
 	fmt.Println(e)
 }
+
+// == todo
+// custom errors
+// data conveying errors
