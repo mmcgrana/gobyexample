@@ -54,7 +54,6 @@ gobyexample.com signups
 * listing files
 * tls server
 * tls client
-* https client
 * buffered io
 * tcp proxy
 * http streaming server
