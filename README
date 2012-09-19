@@ -61,7 +61,6 @@ gobyexample.com signups
 * hipache port
 * templating
 * ssh
-* environment variables
 * dns
 * timers
 * tty
@@ -78,6 +77,10 @@ gobyexample.com signups
 * oauth for google domains
 * connection pool
 * typed json parse/unparse
+
+* deploying to heroku
+* shipping a package (structure, github, docs)
+
 * blackfriday
 
 = program ideas
