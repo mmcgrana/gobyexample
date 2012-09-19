@@ -33,18 +33,8 @@ gobyexample.com signups
 * updates forever
 * no drm
 
-= source
-* popular github libraries
-* mailing list questions
-* stack overflow questions
-* handbook format
-* rosetta stone
-* building an actual fucking app
-* ruby and nodejs stdlib
-* ruby and nodejs killer apps
-
 = topics
-* time
+* time formatting
 * connection pool
 * typed json parse/unparse
 * web app
@@ -62,7 +52,6 @@ gobyexample.com signups
 * hipache port
 * ssh
 * dns
-* timers
 * tty
 * iota
 * oauth for google domains
