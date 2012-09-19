@@ -64,7 +64,6 @@ gobyexample.com signups
 * environment variables
 * dns
 * timers
-* url
 * tty
 * iota
 * apps with multiple named binaries
@@ -79,6 +78,7 @@ gobyexample.com signups
 * oauth for google domains
 * connection pool
 * typed json parse/unparse
+* blackfriday
 
 = program ideas
 command line client for public json api
