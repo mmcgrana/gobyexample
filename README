@@ -47,7 +47,6 @@ gobyexample.com signups
 * gzip
 * listing files
 * regular expressions
-* json parsing/unparsing
 * tls server
 * tls client
 * https server
@@ -79,3 +78,10 @@ gobyexample.com signups
 * time
 * oauth for google domains
 * connection pool
+* typed json parse/unparse
+
+= program ideas
+command line client for public json api
+redis server
+github webook receiver
+campfire bot
