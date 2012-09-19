@@ -1,10 +1,10 @@
 package main
 
-import ("net/http"; "io")
+import "net/http"
 
 func hello(res http.ResponseWriter, req *http.Request) {
     res.Header().Set("Content-Type", "text/plain")
-    io.WriteString(res, "Hello From HTTP\n")
+	res.Write([]byte("Hello From HTTP\n"))
 }
 
 func main() {

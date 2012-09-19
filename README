@@ -54,7 +54,6 @@ gobyexample.com signups
 * listing files
 * tls server
 * tls client
-* https server
 * https client
 * buffered io
 * tcp proxy
@@ -80,6 +79,7 @@ gobyexample.com signups
 * blackfriday
 
 = program ideas
+self-signed cert generator
 command line client for public json api
 redis server
 github webook receiver
