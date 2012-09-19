@@ -11,8 +11,9 @@ func main() {
 
 	diff := now.Sub(then)
 	fmt.Println(diff)
-
-	// extract parts
-	// add duration
-	// check before / after
 }
+
+// == todo
+// extract parts
+// add duration
+// check before / after
