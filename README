@@ -41,7 +41,6 @@ gobyexample.com signups
 = topics
 * web app
   * serve static files
-* string formatting
 * mongo
 * worker pool
 * rate limiting
