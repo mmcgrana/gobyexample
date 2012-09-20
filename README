@@ -42,7 +42,6 @@ gobyexample.com signups
 * web app
   * serve static files
 * mongo
-* rate limiting
 * time formatting
 * typed json parse/unparse
 * gzip
