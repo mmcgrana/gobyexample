@@ -40,11 +40,7 @@ gobyexample.com signups
 
 = topics
 * web app
-  * return status code
   * serve static files
-  * force https
-  * not found page
-  * error page
 * string formatting
 * mongo
 * worker pool
