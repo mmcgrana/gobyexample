@@ -75,7 +75,6 @@ custom error pages
 * web app
   * accessing header values and query params
   * accessing post body
-  * serve static files http://code.google.com/p/go-wiki/wiki/HttpStaticFiles
 * simultaneous assignment
 * mongo
 * time formatting
@@ -84,6 +83,8 @@ custom error pages
 * set library
 * base64 encoding
 * http streaming server
+* inline panic
+
 * http streaming client
 * templating
 * ssh
