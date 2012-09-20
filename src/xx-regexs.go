@@ -13,4 +13,6 @@ func main() {
 	fmt.Println(r1.MatchString("peach"))
 }
 
-// todo more
+// == todo
+// more
+// gsub with regexp

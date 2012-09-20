@@ -61,7 +61,6 @@ gobyexample.com signups
 * using gofmt
 * scrolls style logging
 * range and close http://tour.golang.org/#66
-* string replacement - sub & gsub
 * benchmarking
 * profiling
 
