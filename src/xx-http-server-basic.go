@@ -9,7 +9,7 @@ import (
 
 type Authenticator func(string, string) bool
 
-func CheckAuth(r *http.Request, auth Authenticator) bool {
+func testAuth(r *http.Request, auth Authenticator) bool {
 	s := strings.SplitN(r.Header.Get("Authorization"), " ", 2)
 	if len(s) != 2 || s[0] != "Basic" {
 		return false
@@ -25,30 +25,31 @@ func CheckAuth(r *http.Request, auth Authenticator) bool {
 	return auth(pair[0], pair[1])
 }
 
-func RequireAuth(w http.ResponseWriter, r *http.Request) {
+func requireAuth(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("WWW-Authenticate", `Basic realm="private"`)
 	w.WriteHeader(401)
 	w.Write([]byte("401 Unauthorized\n"))
 }
 
-func WithAuth(h http.HandlerFunc, a Authenticator) http.HandlerFunc {
+func wrapAuth(h http.HandlerFunc, a Authenticator) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
-    	if CheckAuth(r, a) {
+    	if testAuth(r, a) {
 		  h(w, r)
 		} else {
-		  RequireAuth(w, r)
+		  requireAuth(w, r)
 		}
 	}
 }
 
-func handle(w http.ResponseWriter, r *http.Request) {
+func hello(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "Hello secret world!")
 }
 
 func main() {
-	authenticator := func(_, password string) bool {
+	checkPassword := func(_, password string) bool {
 		return password == "supersecret"
 	}
-    http.HandleFunc("/", WithAuth(handle, authenticator))
-    http.ListenAndServe(":5000", nil)
+	handler1 := http.HanderFunc(hello)
+	handler2 := wrapAuth(handler1, checkPassword)
+    http.ListenAndServe(":5000", handler2)
 }
