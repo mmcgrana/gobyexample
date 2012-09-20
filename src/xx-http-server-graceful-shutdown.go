@@ -76,6 +76,10 @@ func main() {
 	}
 }
 
+// == todo
+// clean up logging
+// consider refactoring
+
 // == running
 // $ cd src
 // $ go build xx-http-server-graceful-shutdown.go
@@ -84,3 +88,6 @@ func main() {
 // $ curl -i http://127.0.0.1:5000/
 //
 // ^C
+
+// == credits
+// http://blog.nella.org/?p=879
