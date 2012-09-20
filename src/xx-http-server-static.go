@@ -17,3 +17,6 @@ func main() {
 
 // == todo
 // serving only a subpath as statically
+// index pages
+// disable listing
+// custom 404 handling

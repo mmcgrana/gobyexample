@@ -1,10 +1,11 @@
 = next
 get web presence in good enough shape to point to from blog post
   gbe-web
-    basic design / brand
-    favicon
     google analytics
+    basic design / brand
+    basic copy
     sign up form
+    favicon
 
 blog post on Go on Heroku
   write
@@ -14,7 +15,11 @@ blog post on Postgres
   write
   review with Keith
   ship & market
-proof book design in web
+
+validate book style in editor
+
+validate book style in web mockup
+
 
 = vision
 must-have book for hackers interested in Go
