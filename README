@@ -1,7 +1,6 @@
 = next
 get web presence in good enough shape to point to from blog post
   gbe-web
-    graceful shutdown
     staging site, behind basic auth
     basic design / brand
     favicon
