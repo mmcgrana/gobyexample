@@ -15,3 +15,7 @@ func main() {
 	os.Setenv("FOO", "bar")
 	fmt.Println(os.Getenv("FOO"))
 }
+
+// == todo
+// ensure pattern
+// link to 12 factor

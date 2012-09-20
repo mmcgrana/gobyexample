@@ -1,8 +1,10 @@
 = next
 get web presence in good enough shape to point to from blog post
   gbe-web
-    force https, canonical host, request logging
+    graceful shutdown
+    staging site, behind basic auth
     basic design / brand
+    favicon
     google analytics
     sign up form
     log archival
@@ -62,11 +64,17 @@ devcenter
 * http://code.google.com/p/go-wiki/wiki/BoundingResourceUse
 
 = topics
+* websockets
+* html web scraping hn
+* protocol buffers
+* gomax procs
 * noblocking send and non-blocking receive
 * dropping sends if buffer full
 * web app
+  * accessing header values and query params
+  * accessing post body
   * serve static files http://code.google.com/p/go-wiki/wiki/HttpStaticFiles
-* simultaneios assignement
+* simultaneous assignment
 * mongo
 * time formatting
 * typed json parse/unparse
