@@ -97,6 +97,10 @@ devcenter
 * benchmarking
 * profiling
 * command line program
+* using go with textmate
+* using go with sublime
+* using go with vi
+* using go with emacs
 
 * setting up go env, hello world
 * deploying to heroku

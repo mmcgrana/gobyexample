@@ -8,7 +8,7 @@ func runLogging(logs chan string) {
 	}
 }
 
-func wrapLogging(f http.HandlerFunc, logs chan string) http.HandlerFunc {
+func wrapLogging(f http.HandlerFunc) http.HandlerFunc {
 	logs := make(chan string, 10000)
 	go runLogging(logs)
 	return func(res http.ResponseWriter, req *http.Request) {

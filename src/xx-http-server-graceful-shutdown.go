@@ -46,7 +46,7 @@ func main() {
 	fmt.Println("listen at=finish")
 
 	go func() {
-		<-stop
+		<- stop
 		fmt.Println("close at=start")
 		closeErr := wListener.Close()
 		if closeErr != nil { panic(closeErr) }
@@ -78,7 +78,7 @@ func main() {
 
 // == todo
 // clean up logging
-// consider refactoring
+// factor out to cut-and-pastable against normal app
 
 // == running
 // $ cd src
