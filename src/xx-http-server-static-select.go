@@ -8,8 +8,7 @@ func hello(res http.ResponseWriter, req *http.Request) {
 }
 
 func static(res http.ResponseWriter, req *http.Request) {
-	res.Header().Set("Content-Type", "text/plain")
-	fmt.Fprintln(res, "Static")
+	http.ServeFile(res, req, "./01-hello.go")
 }
 
 func notFound(res http.ResponseWriter, req *http.Request) {
@@ -21,7 +20,7 @@ func notFound(res http.ResponseWriter, req *http.Request) {
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", hello)
-	r.HandleFunc("/favicon.ico", static)
+	r.HandleFunc("/01-hello.go", static)
 	r.HandleFunc("/{path:.*}", notFound)
 	http.ListenAndServe(":5000", r)
 }
