@@ -40,9 +40,10 @@ gobyexample.com signups
 
 = topics
 * web app
-  * serve static files
+  * middleware in general
+  * return status code
   * log requests
-  * basic auth
+  * serve static files
   * force https
   * force canonical host
   * not found page
