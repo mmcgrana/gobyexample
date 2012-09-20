@@ -5,7 +5,6 @@ get web presence in good enough shape to point to from blog post
     favicon
     google analytics
     sign up form
-    log archival
     pingdom
 blog post on Go on Heroku
   write
