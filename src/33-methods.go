@@ -33,3 +33,6 @@ func main() {
 	rectangle := Rectangle {x1: 3, x2: 10, y1: 5, y2: 7}
 	fmt.Println(rectangle.area())
 }
+
+// == todo
+// pointer vs value receivers

@@ -43,7 +43,6 @@ gobyexample.com signups
   * return status code
   * serve static files
   * force https
-  * force canonical host
   * not found page
   * error page
 * string formatting
@@ -66,6 +65,10 @@ gobyexample.com signups
 * init functions
 * using gofmt
 * scrolls style logging
+* range and close http://tour.golang.org/#66
+* string replacement - sub & gsub
+* benchmarking
+* profiling
 
 * setting up go env, hello world
 * deploying to heroku
