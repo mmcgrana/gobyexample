@@ -1,7 +1,6 @@
 = next
 get web presence in good enough shape to point to from blog post
   gbe-web
-    google analytics
     basic design / brand
     basic copy
     sign up form
@@ -52,6 +51,8 @@ custom error pages
 * stack overflow answers
 * web site
 * free books for contributors and reviewers
+* stack overflow ads
+* adwords ads
 
 = pricing
 * $39

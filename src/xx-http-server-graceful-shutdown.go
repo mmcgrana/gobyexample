@@ -78,6 +78,8 @@ func main() {
 
 // == todo
 // clean up logging
+// limit shutdown time
+// wait -> drain
 // factor out to cut-and-pastable against normal app
 
 // == running

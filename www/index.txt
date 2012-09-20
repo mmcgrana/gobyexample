@@ -1,6 +1,6 @@
 ## Go by Example
 
-**
+
 
 _Go by Example_ is a practical guide to the Go programming language.
 consisting of more than a hundred complete Go programs. The book

@@ -1,0 +1,13 @@
+                        <Go by Example>
+
+	                        
+	     +--------------+
+	 	 |   			|   
+		 |   			|     Your practical guide to Go.
+	     |      Go      |
+	     |      by      |     Sign up to hear when it's ready:
+	     |    Example   |     [   (Your Email)   ]  {Go}
+         |              |
+         |              |
+         |              |
+         +--------------+
