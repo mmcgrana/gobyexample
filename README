@@ -1,8 +1,22 @@
 = next
-get better at go
-write blog post on Go on Heroku
-market blog post on Go on Heroku
-proof ebook toolchain
+get web presence in good enough shape to point to from blog post
+  web site
+    force https, canonical host, request logging
+    basic design / brand
+    google analytics
+    sign up form
+    log archival
+  twitter
+    ensure emails on mentions
+blog post on Go on Heroku
+  write
+  review with Keith
+  ship & market
+blog post on Postgres
+  write
+  review with Keith
+  ship & market
+proof book design in web
 
 = vision
 must-have book for hackers interested in Go
@@ -19,6 +33,11 @@ private emails
 @gobyexample twitter followers, retweets
 blog posts: views, comments, hn score, hn comments
 gobyexample.com signups
+
+= design
+typography
+literate programming style
+devcenter
 
 = distribution
 * blog
@@ -37,6 +56,10 @@ gobyexample.com signups
 * effective go
 * chinese web apps book
 * http://news.ycombinator.com/item?id=4543818
+* http://nosqlhandbook.com/
+* http://www.paperplanes.de/2012/1/12/my-publishing-tool-chain.html
+* http://devblog.avdi.org/2012/01/12/my-authoring-tools/
+* 99 designes
 
 = topics
 * web app
@@ -61,6 +84,7 @@ gobyexample.com signups
 * range and close http://tour.golang.org/#66
 * benchmarking
 * profiling
+* command line program
 
 * setting up go env, hello world
 * deploying to heroku
