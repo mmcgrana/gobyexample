@@ -33,12 +33,25 @@ gobyexample.com signups
 * updates forever
 * no drm
 
+= sources
+* effective go
+* chinese web apps book
+* http://news.ycombinator.com/item?id=4543818
+
 = topics
+* web app
+  * serve static files
+  * log requests
+  * basic auth
+  * force https
+  * force canonical host
+  * not found page
+  * error page
+  * graceful shutdown
+* string formatting
+* mongo
 * worker pool
 * rate limiting
-
-* string formatting
-* web app
 * time formatting
 * typed json parse/unparse
 * gzip
@@ -52,7 +65,9 @@ gobyexample.com signups
 * oauth for google domains
 * testing
 * markdown (blackfriday)
-* mongo
+* init functions
+* using gofmt
+* scrolls style logging
 
 * setting up go env, hello world
 * deploying to heroku
@@ -66,3 +81,4 @@ command line client for public json api
 redis server
 github webook receiver
 campfire bot
+http://www.youtube.com/watch?v=-i0hat7pdpk

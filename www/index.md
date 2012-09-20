@@ -7,7 +7,9 @@ consisting of more than a hundred complete Go programs. The book
 covers everything from getting started to writing sophisticated
 concurrent programs.
 
+Sign up to hear when an early release is ready:
 
+[ you@domain.com]
 
 You'll learn the basic of Go and how to build real-world programs
 like database-backed web sites.

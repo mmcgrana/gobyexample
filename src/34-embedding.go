@@ -49,3 +49,7 @@ func main() {
 	}
 	fmt.Println(area)
 }
+
+// == todo
+// is this named wrong?
+// note about embedding access
