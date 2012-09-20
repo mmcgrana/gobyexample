@@ -16,7 +16,6 @@ func main() {
 // $ curl http://127.0.0.1:5000/missing
 
 // == todo
-// serving only a subpath as statically
 // index pages
 // disable listing
 // custom 404 handling

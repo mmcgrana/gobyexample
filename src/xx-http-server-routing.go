@@ -12,6 +12,12 @@ func main() {
 	http.ListenAndServe(":5000", p)
 }
 
+// == todo
+// consider gorilla-web
+// defaults
+// fallthroughs
+// not found
+
 // == running
 // $ go get github.com/bmizerany/pat
 // $ go run xx-http-server-routing.go
