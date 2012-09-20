@@ -47,7 +47,6 @@ gobyexample.com signups
   * force canonical host
   * not found page
   * error page
-  * graceful shutdown
 * string formatting
 * mongo
 * worker pool
