@@ -18,7 +18,7 @@ ok-guards
 nesting
 functions
 returns
-varargs
+varadic
 closures
 recursion
 defer
