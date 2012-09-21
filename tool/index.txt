@@ -41,7 +41,7 @@ select
 timeout
 string-fns
 bytes
-args
+command-line-args
 burstable-rate-limiting
 dns
 elapsed
