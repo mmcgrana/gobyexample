@@ -4,7 +4,7 @@ package main
 
 import (
     "fmt"
-    "strconv"                                  // Package `strconv` provides number parsing.
+    "strconv"                                  // Package `strconv` provides the parsing.
 )
 
 func main() {
