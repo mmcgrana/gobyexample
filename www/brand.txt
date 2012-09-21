@@ -1,4 +1,0 @@
-= color
-black: 212121
-white: ffffff
-blue:  1f58ad 
