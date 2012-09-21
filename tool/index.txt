@@ -24,7 +24,6 @@ recursion
 defer
 panic
 recover
-values
 pointers
 new
 structs
@@ -52,7 +51,7 @@ env
 epoch
 errors
 exec
-exits
+exit
 file-open
 file-read
 file-write

@@ -9,7 +9,15 @@ import (
     "strings"
     "regexp"
     "os"
+    "sort"
 )
+
+func minInt(a, b int) int {
+    if (a < b) {
+        return a
+    }
+    return b
+}
 
 func main() {
     // read names of source files
@@ -33,7 +41,12 @@ func main() {
     
     // sanity check two lists
     if len(sourceNames) != len(indexNames) {
-        panic("mismatched names")
+        sort.Strings(sourceNames)
+        sort.Strings(indexNames)
+        for i := 0; i < minInt(len(sourceNames), len(indexNames)); i++ {
+            fmt.Printf("%s %s\n", sourceNames[i], indexNames[i])
+        }
+        os.Exit(1)
     }
     
     // rename some stuff
