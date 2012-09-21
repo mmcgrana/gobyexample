@@ -14,14 +14,12 @@ get web presence in good enough shape to point to from blog post
     basic copy - landing, post-subscribe, post-confirm
     subscription management
 
-validate book style in editor
-  01-hello
-  22-varags
-  xx-rand
-  xx-sha1
+validate content by filling out some examples
 
 validate book style in web mockup
   http://jashkenas.github.com/docco/
+
+fork into gbe-book
 
 join Google+ and claim website
 
