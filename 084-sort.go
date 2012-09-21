@@ -17,6 +17,7 @@ func main() {
 
     i := sort.SearchInts(ints, 4)    // Binary-search a sorted slice for a value.
     fmt.Println(i)                   // Returns the index if found, or `-1` if not.
+    fmt.Println(sort.SearchInts(ints, 5))
 }
 
 /*
