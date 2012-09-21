@@ -1,10 +1,4 @@
 = next
-get web presence in good enough shape to point to from blog post
-  gbe-web
-    basic design / brand
-    basic copy
-    sign up form
-
 blog post on Go on Heroku
   write
   review with Keith
@@ -14,10 +8,17 @@ blog post on Postgres
   review with Keith
   ship & market
 
+get web presence in good enough shape to point to from blog post
+  gbe-web
+    basic design / brand
+    basic copy - landing, post-subscribe, post-confirm
+    subscription management
+
 validate book style in editor
 
 validate book style in web mockup
 
+join Google+ and claim website
 
 = vision
 must-have book for hackers interested in Go
