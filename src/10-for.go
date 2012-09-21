@@ -13,7 +13,7 @@ func main() {
 		fmt.Println(j)          // line.
 	}
 
-    for {                       // `for` without a condition will loop until you 
-        return
+    for {                       // `for` without a condition will loop until you`
+        return                  // return`.
     }
 }                               // We'll see other `for` forms latter.
