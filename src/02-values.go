@@ -15,7 +15,7 @@ func main() {
 }
 
 /*
-$ go run 02-values.go
+$ go run values.go
 Hello world
 Hello other
 1+1 = 2

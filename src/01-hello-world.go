@@ -6,7 +6,7 @@ func main() {
     fmt.Println("Hello world")  // It prints `Hello world`.
 }
 
-/*
-$ go run 01-hello.go            // Use `go run` to run it.
+/*                              // Put this code in hello-world.go, then use
+$ go run hello-world.go         // `go run` to run it.
 Hello world
 */
