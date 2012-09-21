@@ -1,4 +1,4 @@
-                                  // # Variables
+                                  // Variables
 
 package main
 
