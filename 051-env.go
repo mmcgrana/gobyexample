@@ -8,8 +8,8 @@ import (
 
 func main() {
     for _, e := range os.Environ() {   // `Environ` returns a slice of strings in the form
-        pair := strings.Split(e, "=")  // `KEY=value`.
-        fmt.Println(pair[0])
+        pair := strings.Split(e, "=")  // `KEY=value`. You can `strings.Split` them to get
+        fmt.Println(pair[0])           // the key and value.
     }
     fmt.Println()
 
