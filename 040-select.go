@@ -8,11 +8,11 @@ func main() {
 	d  := make(chan bool, 1)
 
     go func() {
-        time.Sleep(time.Millisecond * 1500)
+        time.Sleep(time.Second * 1)
 		c1 <- "from 1"
     }()
     go func() {
-        time.Sleep(time.Millisecond * 2000)
+        time.Sleep(time.Second * 2)
 		c2 <- "from 2"
     }()
 
