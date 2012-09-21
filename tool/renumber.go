@@ -53,6 +53,8 @@ func main() {
     for index, indexName := range indexNames {
         oldName := sourceMap[indexName]
         newName := fmt.Sprintf("%03d-%s.go", index+1, indexName)
-        os.Rename(oldName, newName)
+        if oldName != newName {
+            os.Rename(oldName, newName)
+        }
     }
 }
