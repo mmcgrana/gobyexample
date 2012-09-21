@@ -6,13 +6,13 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Hello world")          // Strings - you already saw these.
+    fmt.Println("Hello world")          // Strings.
     fmt.Println("Hello " + "other")
 
     fmt.Println("1+1 =", 1+1)           // Integers and floats.
     fmt.Println("7.0/3.0 =", 7.0/3.0)
 
-    fmt.Println(true && false)          // Booleans as you'd expect.
+    fmt.Println(true && false)          // Booleans.
     fmt.Println(true || false)
     fmt.Println(!true)
 }
