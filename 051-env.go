@@ -1,21 +1,27 @@
-package main
-
-import ("os"; "fmt"; "strings")
+package main                             // Use the `os` package to list, set, and get
+                                         // environment variables.
+import (
+    "os"
+    "fmt"
+    "strings"
+)
 
 func main() {
-	for _, e := range os.Environ() {
-		pair := strings.Split(e, "=")
-		fmt.Println(pair[0], pair[1])
-	}
-	fmt.Println()
+    for _, e := range os.Environ() {   // `Environ` returns a slice of strings in the form
+        pair := strings.Split(e, "=")  // `KEY=value`.
+        fmt.Println(pair[0])
+    }
+    fmt.Println()
 
-	fmt.Println(os.Getenv("PWD"))
-	fmt.Println()
+    os.Setenv("FOO", "bar")            // `Setenv` sets a given key, value pair.
+    fmt.Println(os.Getenv("FOO"))      // `Getenv` returns the value at key, or an empty
+}                                      // string if the key isn't present.
 
-	os.Setenv("FOO", "bar")
-	fmt.Println(os.Getenv("FOO"))
-}
-
-// == todo
-// ensure pattern
-// link to 12 factor
+/*
+$ go run env.go
+HOME
+PATH
+PWD
+...
+bar
+*/
