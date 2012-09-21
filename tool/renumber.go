@@ -8,6 +8,7 @@ import (
     "io/ioutil"
     "strings"
     "regexp"
+    "os"
 )
 
 func main() {
@@ -38,7 +39,7 @@ func main() {
     // rename some stuff
     for index, indexName := range indexNames {
         oldName := sourceMap[indexName]
-        newName := fmt.Sprintf("%d-%s.go", index+1, indexName)
+        newName := fmt.Sprintf("%03d-%s.go", index+1, indexName)
         os.Rename(oldName, newName)
     }
 }
