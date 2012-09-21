@@ -9,6 +9,6 @@ func main() {
 }
 
 /*
-$ go run 01-hello.go            // Use `go run` to run the program.
+$ go run 01-hello.go            // Use `go run` to run it.
 Hello world
 */
