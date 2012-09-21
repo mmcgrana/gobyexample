@@ -11,7 +11,10 @@ func main() {
                                 
 	for j := 1; j <= 10; j++ {  // That type of loop is common. We can do it on one
 		fmt.Println(j)          // line.
-	}                           
+	}
+
+    for {                       // `for` without a condition will loop until you 
+        return
+    }
 }                               // There are other forms of `for`; we'll see them
                                 // later.
-
