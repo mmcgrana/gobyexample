@@ -1,4 +1,10 @@
 = next
+fork into gbe-book
+
+write tool for ordering
+
+split out todo from readme
+
 blog post on Go on Heroku
   write
   review with Keith
@@ -18,8 +24,6 @@ validate content by filling out some examples
 
 validate book style in web mockup
   http://jashkenas.github.com/docco/
-
-fork into gbe-book
 
 join Google+ and claim website
 
