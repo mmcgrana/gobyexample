@@ -7,8 +7,7 @@ import "fmt"
 
 func main() {
     fmt.Println("Hello world")          // Strings - you already saw these.
-    fmt.Println("Hello World"[1])
-    fmt.Println("Hello " + "World")
+    fmt.Println("Hello " + "other")
 
     fmt.Println("1+1 =", 1+1)           // Integers and floats.
     fmt.Println("7.0/3.0 =", 7.0/3.0)
@@ -18,5 +17,13 @@ func main() {
     fmt.Println(!true)
 }
 
-                                         // This is just a sampling of Go's value types. We'll
-                                         // learn more about them as we go.
+/*
+$ go run 02-values.go
+Hello world
+Hello other
+1+1 = 2
+7.0/3.0 = 2.3333333333333335
+false
+true
+false
+*/

@@ -7,6 +7,7 @@ func p(o interface{}) {
 }
 
 func main() {
+    p("hello"[0])
     p(strings.Contains("test", "es"))
     p(strings.Count("test", "t"))
     p(strings.HasPrefix("test", "te"))
