@@ -1,5 +1,5 @@
-package main                             // Use the `os` package to list, set, and get
-                                         // environment variables.
+package main                           // Use the `os` package to list, set, and get
+                                       // environment variables.
 import (
     "os"
     "fmt"
