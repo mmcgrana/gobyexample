@@ -1,8 +1,4 @@
-                                // Hello World
-
-                                // Here's an example Go program.
-
-package main
+package main                    // Here's an example Go program.
 
 import "fmt"
 

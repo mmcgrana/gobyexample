@@ -1,10 +1,5 @@
-                                       // Vaules
-
-                                       // Go has various value types, including strings,
+package main                           // Go has various value types, including strings,
                                        // different types of numbers, booleans, etc.
-
-package main
-
 import "fmt"
 
 func main() {

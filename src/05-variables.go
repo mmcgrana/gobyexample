@@ -1,5 +1,3 @@
-                                  // Variables
-
 package main
 
 import "fmt"
