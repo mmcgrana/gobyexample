@@ -16,5 +16,4 @@ func main() {
     for {                       // `for` without a condition will loop until you 
         return
     }
-}                               // There are other forms of `for`; we'll see them
-                                // later.
+}                               // We'll see other `for` forms latter.
