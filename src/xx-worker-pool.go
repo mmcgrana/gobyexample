@@ -1,6 +1,6 @@
 package main
 
-import ("fmt"; "time")
+import "time"
 
 func main() {
 	jobs := make(chan int, 100)
@@ -9,7 +9,7 @@ func main() {
 	for w := 0; w < 10; w++ {
 		go func() {
 			for j := range jobs {
-				fmt.Println("worker", w, "processing job", j)
+				println("worker", w, "processing job", j)
 				time.Sleep(time.Millisecond * 150)
 				acks <- true
 			}
@@ -23,5 +23,5 @@ func main() {
 	for a := 0; a < 100; a++ {
 		<- acks
 	}
-	fmt.Println("all done")
+	println("all done")
 }
