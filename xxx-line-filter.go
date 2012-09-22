@@ -16,7 +16,7 @@ func main() {
     out := os.Stdout
 
     for {                                   // If succesful, each `ReadLine` returns bytes and a
-        inBytes, pfx, err := in.ReadLine()  // boolean indicating if don't have the whole line.
+        inBytes, pfx, err := in.ReadLine()  // boolean indicating if don't have the whole line yet.
         
         if err == io.EOF {                  // The `EOF` error is expected when we reach the end
             return                          // of the input, so exit gracefully in that case.

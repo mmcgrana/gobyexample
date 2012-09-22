@@ -1,23 +1,23 @@
-package main                    // `for` is Go's only looping construct. Below are
-                                // two common forms.
+package main                   // `for` is Go's only looping construct. Below are
+                               // two common forms.
 import "fmt"                    
                                 
 func main() {                   
-	i := 1                      // We initialize `i` with `1` and loop until it's 10.
-	for i <= 3 {               
-		fmt.Print(i)          
-		i = i + 1               
-	}                           
+    i := 1                     // Initialize `i` with `1` and loop until it's 10.
+    for i <= 3 {               
+        fmt.Print(i)          
+        i = i + 1               
+    }                           
                                 
-	for j := 1; j <= 3; j++ {  // That type of loop is common. We can do it on one
-		fmt.Print(j)          // line.
-	}
-
-    for {                       // `for` without a condition will loop until you
-        fmt.Println()           // `return`.
-        return
+    for j := 1; j <= 3; j++ {  // That type of loop is common. We can do it on one
+        fmt.Print(j)           // line.
     }
-}                               // We'll see other `for` forms latter.
+
+    for {                      // `for` without a condition will loop until you
+        fmt.Println()          // `return`.
+        return                 
+    }                          
+}                              // We'll see other `for` forms latter.
 
 /*
 $ go run for.go
