@@ -1,10 +1,10 @@
+// ## Concurrent Goroutines
+
 package main
 
-import (
-	"fmt"
-	"time"
-	"math/rand"
-)
+import "time"
+import "math/rand"
+import "fmt"
 
 func f(n int) {
     for i := 0; i < 10; i++ {

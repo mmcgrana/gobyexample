@@ -1,7 +1,9 @@
+// ## Embedding
+
 package main
 
-import "fmt"
 import "math"
+import "fmt"
 
 type Shape interface {
     area() float64
