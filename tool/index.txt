@@ -16,7 +16,7 @@ range
 slices
 maps
 functions
-returns
+multiple-return-values
 varadic-functions
 closures
 recursion
