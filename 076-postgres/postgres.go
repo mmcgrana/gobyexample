@@ -1,11 +1,11 @@
+// ## Postgres
+
 package main
 
-import (
-	_ "github.com/bmizerany/pq"
-	"database/sql"
-	"fmt"
-	"time"
-)
+import _ "github.com/bmizerany/pq"
+import "database/sql"
+import "time"
+import "fmt"
 
 func main() {
 	db, openErr := sql.Open("postgres", "dbname=gobyexample sslmode=disable")
@@ -50,16 +50,7 @@ func main() {
 	fmt.Println(dropRep)
 }
 
-// == running
-// # start postgres
-// $ createdb gobyexample
-// $ cd xx-postgres
-// $ go get
-// $ ./xx-postgres
-
-// == todo
-// connection pooling
-// concurrency
-// re-connection
-// errors
-// explain
+// todo: connection pooling & concurrency
+// todo: re-connection
+// todo: errors
+// todo: database_url

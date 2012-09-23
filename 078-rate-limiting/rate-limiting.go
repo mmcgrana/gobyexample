@@ -1,6 +1,8 @@
+// ## Rate Limiting
 package main
 
-import ("time"; "fmt")
+import "time"
+import "fmt"
 
 func main() {
 	throttle := time.Tick(time.Millisecond * 200)
@@ -10,6 +12,4 @@ func main() {
     }
 }
 
-
-// == todo
-// credit http://code.google.com/p/go-wiki/wiki/RateLimiting
+// todo: credit http://code.google.com/p/go-wiki/wiki/RateLimiting
