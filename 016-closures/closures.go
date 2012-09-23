@@ -18,3 +18,5 @@ func main() {
     fmt.Println(nextEven())
     fmt.Println(nextEven())
 }
+
+// todo: note example of first-class functions.

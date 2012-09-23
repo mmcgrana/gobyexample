@@ -46,10 +46,13 @@ rate-limiting
 worker-pools
 ~ nonblocking-sends-and-receives
 ~ closing-channels
+timers
+tickers
 
 # core libraries
 sorting
 sorting-by-functions
+collection-functions
 string-functions
 string-formatting
 regexs
@@ -60,16 +63,13 @@ time
 ~ time-formatting
 epochs
 elapsed-time
-timers
-tickers
 random-numbers
 number-parsing
-collection-functions
 urls
 sha1-hashes
 ~ base64-encoding
 
-# systems
+# systems programming
 file-open
 file-read
 file-write
@@ -85,7 +85,7 @@ users
 line-filter
 tcp server
 
-# network clients
+# client libraries
 tcp-client
 http-client
 http-client-basic
