@@ -6,11 +6,11 @@
 hello-world
 values
 variables
-literals
+inline-assignment
 constants
 for
 if-else
-case
+switch
 arrays
 range
 slices
