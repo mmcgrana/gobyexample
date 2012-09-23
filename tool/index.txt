@@ -2,8 +2,8 @@ hello-world
 values
 variables
 mutation
-literal
-constant
+literals
+constants
 reading-input
 for
 if-else

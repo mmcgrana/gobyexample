@@ -1,0 +1,1 @@
+go run variables.go
