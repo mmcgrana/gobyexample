@@ -7,50 +7,50 @@
 package main
 
 // Package `bufio` will help us read line-by-line.
-import "bufio"                              
+import "bufio"
 import "bytes"
 import "os"
 import "io"
 
 // We'll need to add our own newlines between
 // processed lines.
-func main() {                               
-    newline := []byte("\n")                
+func main() {
+    newline := []byte("\n")
 
     // The buffered reader gives us `ReadLine`.
-    in  := bufio.NewReader(os.Stdin)        
+    in  := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
     // If successful, each `ReadLine` returns bytes and a
     // boolean indicating if don't have the whole line yet.
-    for {                                   
-        inBytes, pfx, err := in.ReadLine()  
-        
+    for {
+        inBytes, pfx, err := in.ReadLine()
+
         // The `EOF` error is expected when we reach the end
         // of the input, so exit gracefully in that case.
         // Otherwise there is a problem.
-        if err == io.EOF {                  
-            return                          
-        }                                   
+        if err == io.EOF {
+            return
+        }
         if err != nil {
             panic (err)
-        }       
+        }
 
         // `bytes.ToUpper` works directly on bytes, so we don't
         // need to convert to a string for `strings.ToUpper`.
-        outBytes := bytes.ToUpper(inBytes)  
-                                            
+        outBytes := bytes.ToUpper(inBytes)
+
         // Write out the upercased bytes, checking for an error
         // here as well.
-        _, err = out.Write(outBytes)        
-        if err != nil {                    
+        _, err = out.Write(outBytes)
+        if err != nil {
             panic(err)
         }
 
         // Unless this read was for a prefix (not the full
         // line), we need to add our own newline.
-        if !pfx {                           
-            out.Write(newline)              
-        }        
+        if !pfx {
+            out.Write(newline)
+        }
     }
 }
