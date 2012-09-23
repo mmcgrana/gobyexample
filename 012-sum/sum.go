@@ -1,3 +1,5 @@
+// ## Sum
+
 package main
 
 import "fmt"
@@ -11,8 +13,8 @@ func main() {
     x[4] = 83
     
     var total float64 = 0
-    for _, value := range x {
-        total += value
+    for i := 0; i < 5; i++ {
+        total += x[i]
     }
     fmt.Println(total / float64(len(x)))
 }
