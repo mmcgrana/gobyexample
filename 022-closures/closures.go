@@ -1,3 +1,5 @@
+// ## Closures
+
 package main
 
 import "fmt"
