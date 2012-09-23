@@ -15,10 +15,9 @@ arrays
 range
 slices
 maps
-nesting
 functions
 returns
-varadic
+varadic-functions
 closures
 recursion
 defer
@@ -27,7 +26,7 @@ recover
 pointers
 new
 structs
-fields
+struct-fields
 methods
 embedding
 interfaces

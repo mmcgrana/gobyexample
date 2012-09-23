@@ -16,7 +16,8 @@ func vals() (int, int) {
 }
 
 func main() {
-    // Use the 2 different return values from the call.
+    // Use the 2 different return values from the call,
+    // i.e. multiple assignement.
     x, y := vals()        
     fmt.Println(x)
     fmt.Println(y)
