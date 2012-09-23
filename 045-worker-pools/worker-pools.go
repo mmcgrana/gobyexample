@@ -1,4 +1,4 @@
-// ## Worker Pool
+// ## Worker Pools
 
 package main
 

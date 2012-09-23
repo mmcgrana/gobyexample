@@ -1,4 +1,4 @@
-// Rand
+// Random Numbers
 
 package main                        
                  

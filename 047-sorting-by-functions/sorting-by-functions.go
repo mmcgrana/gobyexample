@@ -1,4 +1,4 @@
-// ## Sort by Function
+// ## Sorting by Functions
 
 package main
 

@@ -40,23 +40,22 @@ errors
 
 # concurrency
 goroutines
-concurrency
+concurrent-goroutines
 channels
-buffering
-directions
+channel-buffering
+channel-directions
 synchronization
 select
 timeouts
 scatter-gather
 rate-limiting
-burstable-rate-limiting
-worker-pool
+worker-pools
 ~ nonblocking-sends-and-receives
 ~ closing-channels
 
 # core libraries
-sort
-sort-by-function
+sorting
+sorting-by-functions
 string-functions
 string-formatting
 regexs
@@ -65,13 +64,13 @@ json
 ~ typed-json
 time
 ~ time-formatting
-epoch
-elapsed
+epochs
+measuring-elapsed-time
 timers
 tickers
-rand
+random-numbers
 number-parsing
-enumerable
+collection-functions
 urls
 sha1-hashes
 ~ base64-encoding

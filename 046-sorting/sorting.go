@@ -1,4 +1,4 @@
-// ## Sort
+// ## Sorting
 
 // The `sort` package implements sorting for builtins
 // and user-defined types. We'll look at some of the

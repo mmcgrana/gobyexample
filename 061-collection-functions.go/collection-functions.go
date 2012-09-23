@@ -1,4 +1,4 @@
-// ## Enumerable
+// ## Collection Functions
 
 package main            
 
@@ -91,3 +91,5 @@ func main() {
 	}))
 	fmt.Println()
 }
+
+// todo: generics

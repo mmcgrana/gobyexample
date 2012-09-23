@@ -1,4 +1,4 @@
-// ## Elapsed Time
+// ## Measuring Elapsed Time
 
 package main
 

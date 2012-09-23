@@ -1,4 +1,4 @@
-// ## Epoch
+// ## Epochs
 
 package main                    
                   
