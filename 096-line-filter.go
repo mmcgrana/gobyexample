@@ -18,7 +18,7 @@ func main() {
     newline := []byte("\n")
 
     // The buffered reader gives us `ReadLine`.
-    in  := bufio.NewReader(os.Stdin)
+    in := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
     // If successful, each `ReadLine` returns bytes and a
@@ -33,7 +33,7 @@ func main() {
             return
         }
         if err != nil {
-            panic (err)
+            panic(err)
         }
 
         // `bytes.ToUpper` works directly on bytes, so we don't
