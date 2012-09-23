@@ -6,16 +6,13 @@
 hello-world
 values
 variables
-mutation
 literals
 constants
 for
 if-else
 case
 arrays
-sum
 range
-floats
 slices
 maps
 nesting
@@ -100,7 +97,7 @@ https-client
 redis
 postgres
 ~ mongodb
-email
+sending-email
 
 # web apps
 http-server-basic

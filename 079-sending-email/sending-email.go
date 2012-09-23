@@ -1,4 +1,4 @@
-// ## Email
+// ## Sending Email
 
 package main
 
