@@ -38,12 +38,11 @@ buffering
 directions
 synchronization
 select
-timeout
-string-fns
+timeouts
+string-functions
 bytes
-command-line-args
+command-line-arguments
 burstable-rate-limiting
-dns
 elapsed
 email
 enumerable

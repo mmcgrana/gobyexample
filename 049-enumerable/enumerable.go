@@ -1,6 +1,9 @@
+// ## Enumerable
+
 package main            
 
-import ("fmt"; "strings")
+import "strings"
+import "fmt"
 
 func Index(elems []string, val string) int {
 	for i, v := range elems {

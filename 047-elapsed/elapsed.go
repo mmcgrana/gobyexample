@@ -1,6 +1,9 @@
+// ## Elapsed Time
+
 package main
 
-import ("time"; "fmt")
+import "time"
+import "fmt"
 
 func main() {
 	start := time.Now()

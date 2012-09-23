@@ -1,6 +1,9 @@
+// ## Timeouts
+
 package main
 
-import ("fmt"; "time")
+import "time"
+import "fmt"
 
 func main() {
     c := make(chan string)

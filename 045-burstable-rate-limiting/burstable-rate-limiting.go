@@ -1,3 +1,5 @@
+// ## Burstable Rate Limiting
+
 package main
 
 import "time"

@@ -1,8 +1,8 @@
+// ## Email
+
 package main
 
-import (
-	"net/smtp"
-)
+import "net/smtp"
 
 func main() {
 	auth := smtp.PlainAuth(
@@ -17,10 +17,12 @@ func main() {
 		auth,
 		"mark+sent@heroku.com",
 		[]string{"mark@heroku.com"},
-		[]byte("The Subject\r\n\r\nThe Body"),
+		[]byte("nThe body."),
 	)
 	if err != nil { panic(err) }
 }
 
-// missing subject, cc, bcc, attachements, plain/multi-type emails
-// https://github.com/mtoader/google-go-lang-idea-plugin/issues/112
+// todo: missing subject, cc, bcc
+// todo: attachements
+// todo: plain/multi-type emails
+// todo: https://github.com/mtoader/google-go-lang-idea-plugin/issues/112

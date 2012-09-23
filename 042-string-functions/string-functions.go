@@ -1,6 +1,9 @@
+// ## String Functions
+
 package main
 
-import ("fmt"; "strings")
+import "strings"
+import "fm"
 
 func p(o interface{}) {
 	fmt.Println(o)

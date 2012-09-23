@@ -1,6 +1,9 @@
+// ## Select
+
 package main
 
-import ("fmt"; "time")
+import "time"
+import "fmt"
 
 func main() {
     c1 := make(chan string)
