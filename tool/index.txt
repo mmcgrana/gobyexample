@@ -1,3 +1,7 @@
+# introduction
+~ introduction
+~ getting-started
+
 # basics
 hello-world
 values
@@ -32,6 +36,7 @@ embedding
 interfaces
 ok-guards
 errors
+~ comments
 
 # concurrency
 goroutines
@@ -46,6 +51,8 @@ scatter-gather
 rate-limiting
 burstable-rate-limiting
 worker-pool
+~ nonblocking-sends-and-receives
+~ closing-channels
 
 # core libraries
 sort
@@ -55,8 +62,9 @@ string-formatting
 regexs
 bytes
 json
-sha1-hashes
+~ typed-json
 time
+~ time-formatting
 epoch
 elapsed
 timers
@@ -65,6 +73,8 @@ rand
 number-parsing
 enumerable
 urls
+sha1-hashes
+~ base64-encoding
 
 # systems
 file-open
@@ -80,18 +90,18 @@ exec
 reading-input
 users
 line-filter
+tcp server
 
 # network clients
 tcp-client
 http-client
 http-client-basic
 https-client
+~ streaming-in-http-responses
 redis
 postgres
+~ mongodb
 email
-
-# network servers
-tcp-server
 
 # web apps
 http-server-basic
@@ -106,3 +116,13 @@ http-server-static
 http-server-status-code
 http-server
 https-server
+~ reading-headers-and-query-params
+~ reading-post-bodies
+~ streaming-out-responses
+
+# shipping go
+~ using-gofmt
+~ using-godoc
+~ publishing-packages
+~ deploying-to-heroku
+~ deploying-to-appengine
