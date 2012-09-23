@@ -1,3 +1,5 @@
+// ## HTTP Server Static Dynamic
+
 package main
 
 import "net/http"
@@ -15,15 +17,6 @@ func main() {
 	http.ListenAndServe(":5000", nil)
 }
 
-// == running
-// $ cd src
-// $ go run xx-http-server-static-dynamic.go
-// 
-// $ curl http://127.0.0.1:5000/hello
-// $ curl http://127.0.0.1:5000/static
-// $ curl http://127.0.0.1:5000/static/01-hello.go
-
-// == todo
-// try to get dynamic at root
-// try to get static at root
-// favicon
+// todo: try to get dynamic at root
+// todo: try to get static at root
+// todo: favicon
