@@ -1,3 +1,5 @@
+// ## Sort by Function
+
 package main
 
 import ("fmt" ; "sort")
@@ -36,13 +38,10 @@ func main() {
         {"Bob",  12},
     }
     fmt.Println("Original:", kids)
-	fmt.Println()
 	
 	sort.Sort(ByName(kids))
 	fmt.Println("ByName:  ", kids)
-	fmt.Println()
 
 	sort.Sort(ByAge(kids))
 	fmt.Println("ByAge:   ", kids)
-	fmt.Println()
 }

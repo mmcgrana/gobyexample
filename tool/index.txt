@@ -79,7 +79,7 @@ rate-limiting
 redis
 regexs
 scatter-gather
-sha1
+sha1-hashes
 signals
 sort
 sort-by-function
