@@ -1,6 +1,9 @@
+// JSON
+
 package main
 
-import ("encoding/json"; "fmt")
+import "encoding/json"
+import "fmt"
 
 func main() {
 	// data to bytes/string

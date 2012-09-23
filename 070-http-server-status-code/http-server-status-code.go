@@ -1,6 +1,9 @@
+// ## HTTP Server Status Code
+
 package main
 
-import ("net/http"; "fmt")
+import "net/http"
+import "fmt"
 
 func hello(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "text/plain")
@@ -16,9 +19,3 @@ func main() {
     http.HandleFunc("/", hello)
     http.ListenAndServe(":5000", nil)
 }
-
-// running
-// $ go run xx-http-server-status-code.go
-//
-// $ curl -i http://127.0.0.1:5000/
-// $ curl -i http://127.0.0.1:5000/protected

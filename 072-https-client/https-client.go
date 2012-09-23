@@ -1,6 +1,11 @@
+// ## HTTPS Client
+
 package main
 
-import ("net/http"; "crypto/tls"; "io/ioutil"; "fmt")
+import "net/http"
+import "crypto/tls"
+import "io/ioutil"
+import "fmt"
 
 func main() {
 	tr := &http.Transport{
