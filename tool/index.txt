@@ -111,9 +111,9 @@ http-server-static
 http-server-status-code
 http-server
 https-server
-~ reading-headers-and-query-params
-~ reading-post-bodies
-~ streaming-out-responses
+~ headers-and-query-params
+~ post-bodies
+~ streaming-responses
 
 # shipping go
 ~ using-gofmt
