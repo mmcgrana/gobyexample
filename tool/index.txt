@@ -90,7 +90,7 @@ tcp-server
 tickers
 time
 timers
-url
+urls
 users
 worker-pool
 line-filter
