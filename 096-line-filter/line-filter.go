@@ -36,12 +36,9 @@ func main() {
             panic(err)
         }
 
-        // `bytes.ToUpper` works directly on bytes, so we don't
-        // need to convert to a string for `strings.ToUpper`.
-        outBytes := bytes.ToUpper(inBytes)
-
         // Write out the upercased bytes, checking for an error
         // here as well.
+        outBytes := bytes.ToUpper(inBytes)
         _, err = out.Write(outBytes)
         if err != nil {
             panic(err)
