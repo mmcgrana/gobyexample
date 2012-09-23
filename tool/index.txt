@@ -82,7 +82,7 @@ scatter-gather
 sha1
 signals
 sort
-sortby
+sort-by-function
 spawn
 string-formatting
 tcp-client

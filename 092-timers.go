@@ -1,20 +1,20 @@
 package main
 
-import ("time"; "fmt")
+import "time"
+import "fmt"
 
 func main() {
-	timer1 := time.NewTimer(time.Millisecond * 500)
+	timer1 := time.NewTimer(time.Second)
 	<- timer1.C
 	fmt.Println("Timer 1 expired")
-	stopped1 := timer1.Stop()
-	fmt.Println("Timer 2 stopped:", stopped1)
+	stop1 := timer1.Stop()
+	fmt.Println("Timer 2 stopped:", stop1)
 
 	timer2 := time.NewTimer(time.Second)
 	go func() {
 		<- timer2.C
 		fmt.Println("Timer 2 expired")
 	}()
-	time.Sleep(time.Millisecond * 500)
-	stopped2 := timer2.Stop()
-	fmt.Println("Timer 2 stopped:", stopped2)
+	stop2 := timer2.Stop()
+	fmt.Println("Timer 2 stopped:", stop2)
 }

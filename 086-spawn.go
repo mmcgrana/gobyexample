@@ -11,3 +11,6 @@ func main() {
 	fmt.Println("====== Output")
 	fmt.Print(string(out))
 }
+
+// == todo
+// full command lines with bash?
