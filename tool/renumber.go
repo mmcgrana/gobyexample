@@ -40,7 +40,7 @@ func main() {
     indexNamesAll := strings.Split(string(indexBytes), "\n")
     indexNames := make([]string, 0)
     for _, indexName := range indexNamesAll {
-        if indexName != "" && !strings.Contains(indexName, "#") && !strings.Contains("~")  {
+        if indexName != "" && !strings.Contains(indexName, "#") && !strings.Contains(indexName, "~")  {
             indexNames = append(indexNames, indexName)
         }
     }
