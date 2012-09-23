@@ -25,7 +25,7 @@ func main() {
     sourceMap := make(map[string]string)
     fileInfos, dirErr := ioutil.ReadDir("./")
     if dirErr != nil { panic(dirErr) }
-    baseTrimmer, _ := regexp.Compile("([0-9x]+-)|(.go)")
+    baseTrimmer, _ := regexp.Compile("[0-9x]+-")
     for _, fi := range fileInfos {
         baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
         if baseName != ".git" && baseName != "tool" && baseName != "README.md" {
@@ -52,7 +52,7 @@ func main() {
     // rename some stuff
     for index, indexName := range indexNames {
         oldName := sourceMap[indexName]
-        newName := fmt.Sprintf("%03d-%s.go", index+1, indexName)
+        newName := fmt.Sprintf("%03d-%s", index+1, indexName)
         if oldName != newName {
             os.Rename(oldName, newName)
         }
