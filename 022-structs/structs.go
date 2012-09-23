@@ -20,3 +20,5 @@ func main() {
 	cOrdered := Circle{1, 2, 5}
 	fmt.Println(cOrdered)
 }
+
+// todo: add field access

@@ -22,16 +22,14 @@ closures
 recursion
 defer
 panic
-recover
 pointers
 new
 structs
-struct-fields
 methods
 embedding
 interfaces
-ok-guards
 errors
+ok-guards
 ~ comments
 
 # concurrency

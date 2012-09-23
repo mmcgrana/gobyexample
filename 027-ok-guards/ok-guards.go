@@ -18,3 +18,5 @@ func main() {
 	    fmt.Println(name)
 	}
 }
+
+// todo: note about use with errors
