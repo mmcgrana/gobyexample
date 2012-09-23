@@ -1,6 +1,17 @@
+// ## HTTP Serve Graceful Shutdown
+
 package main
 
-import ("net"; "net/http"; "time"; "os"; "os/signal"; "syscall"; "fmt"; "sync/atomic")
+import (
+    "net"
+    "net/http"
+    "time"
+    "os"
+    "os/signal"
+    "syscall"
+    "fmt"
+    "sync/atomic"
+)
 
 func slow(res http.ResponseWriter, req *http.Request) {
 	fmt.Println("respond at=start")
@@ -76,20 +87,8 @@ func main() {
 	}
 }
 
-// == todo
-// clean up logging
-// limit shutdown time
-// wait -> drain
-// factor out to cut-and-pastable against normal app
-
-// == running
-// $ cd src
-// $ go build xx-http-server-graceful-shutdown.go
-// $ ./xx-http-server-graceful-shutdown
-//
-// $ curl -i http://127.0.0.1:5000/
-//
-// ^C
-
-// == credits
-// http://blog.nella.org/?p=879
+// todo: clean up logging
+// todo: limit shutdown time
+// todo: factor out to cut-and-pastable against normal app
+// todo: credit http://blog.nella.org/?p=879
+// todo: comment about tcp servers

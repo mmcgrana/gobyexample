@@ -1,6 +1,9 @@
+// ## HTTP Server Middleware
+
 package main
 
-import ("net/http"; "fmt")
+import "net/http"
+import "fmt"
 
 func hello(res http.ResponseWriter, req *http.Request) {
     res.Header().Set("Content-Type", "text/plain")

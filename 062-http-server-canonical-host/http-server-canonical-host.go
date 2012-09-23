@@ -1,6 +1,10 @@
+// ## HTTP Server Canonical Host
+
 package main
 
-import ("net/http"; "fmt"; "strings")
+import "net/http"
+import "strings"
+import "fmt"
 
 func hello(res http.ResponseWriter, req *http.Request) {
     res.Header().Set("Content-Type", "text/plain")
@@ -28,8 +32,4 @@ func main() {
     http.ListenAndServe(":5000", nil)
 }
 
-// == running
-// $ go run xx-http-server-canonical-host.go
-//
-// $ curl -i -L http://127.0.0.1:5000/go
-// $ curl -i -L http://127.0.0.1:5000/go
+// todo: comment about https canonicalization

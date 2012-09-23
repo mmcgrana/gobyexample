@@ -1,6 +1,10 @@
+// ## HTTP Server Logging
+
 package main
 
-import ("net/http"; "fmt"; "time")
+import "net/http"
+import "time"
+import "fmt"
 
 func runLogging(logs chan string) {
 	for log := range logs {
@@ -32,3 +36,5 @@ func main() {
     http.HandleFunc("/", handler)
     http.ListenAndServe(":5000", nil)
 }
+
+// todo: status code?
