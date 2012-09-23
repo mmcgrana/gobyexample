@@ -1,10 +1,10 @@
+// ## Redis
+
 package main
 
-import (
-	"fmt"
-	"github.com/fzzbt/radix/redis"
-	"time"
-)
+import "github.com/fzzbt/radix/redis"
+import "time"
+import "fmt"
 
 func main() {
 	// initialize
@@ -63,15 +63,7 @@ func main() {
 	time.Sleep(time.Second)
 }
 
-// == running
-// $ redis-server
-// $ cd xx-redis
-// $ go get
-// $ ./xx-redis
-
-// == todo
-// connection pooling
-// concurrency
-// reconnection
-// errors
-// redis url
+// todo: connection pooling & concurrency?
+// todo: reconnection?
+// todo: errors?
+// todo: redis_url

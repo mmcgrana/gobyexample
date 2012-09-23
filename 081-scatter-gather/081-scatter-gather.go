@@ -1,6 +1,11 @@
+// ## Scatter-Gather
+
 package main
 
-import ("sync"; "time"; "math/rand"; "fmt")
+import "sync"
+import "time"
+import "math/rand"
+import "fmt"
 
 func main() {
 	times := new([20]int)

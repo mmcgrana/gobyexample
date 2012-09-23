@@ -1,6 +1,9 @@
+// Regexs
+
 package main
 
-import ("fmt"; "regexp")
+import "regexp"
+import "fmt"
 
 func main() {
 	m1, _ := regexp.MatchString("p[a-z]+ch", "apple")
@@ -13,6 +16,5 @@ func main() {
 	fmt.Println(r1.MatchString("peach"))
 }
 
-// == todo
-// more
-// gsub with regexp
+// todo: more
+// todo: gsub with regexp
