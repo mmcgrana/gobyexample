@@ -37,7 +37,13 @@ func main() {
     // read names from index
     indexBytes, idxErr := ioutil.ReadFile("tool/index.txt")
     if idxErr != nil { panic (idxErr) }
-    indexNames := strings.Split(string(indexBytes), "\n")
+    indexNamesAll := strings.Split(string(indexBytes), "\n")
+    indexNames := make([]string, 0)
+    for _, indexName := range indexNamesAll {
+        if (indexName !=) "" && !(indexName.Contains("#")) {
+            indexNames := append(indexNames, indexName)
+        }
+    }
     
     // sanity check two lists
     if len(sourceNames) != len(indexNames) {
