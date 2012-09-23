@@ -1,6 +1,10 @@
+// ## Exec
+
 package main
 
-import ("syscall"; "os"; "os/exec")
+import "syscall"
+import "os"
+import "os/exec"
 
 func main() {
 	binary, lookErr := exec.LookPath("ls")

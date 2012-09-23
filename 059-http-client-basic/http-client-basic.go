@@ -1,6 +1,10 @@
+// ## HTTP Client Basic Auth
+
 package main
 
-import ("net/http"; "io/ioutil"; "fmt")
+import "net/http"
+import "io/ioutil"
+import "fmt"
 
 func main() {
 	req, _ := http.NewRequest("GET", "http://127.0.0.1:5000/", nil)

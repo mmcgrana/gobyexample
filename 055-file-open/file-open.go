@@ -1,6 +1,9 @@
+// ## File Open
+
 package main
 
-import ("fmt"; "os")
+import "os"
+import "fmt"
 
 func main() {
     file, err := os.Open("xx-file-open.go")

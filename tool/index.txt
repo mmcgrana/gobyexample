@@ -55,7 +55,7 @@ exit
 file-open
 file-read
 file-write
-flags
+command-line-flags
 http-client-basic
 http-client
 http-server-basic

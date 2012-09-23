@@ -1,3 +1,5 @@
+// ## Errors
+
 package main
 
 import ("fmt"; "errors")
@@ -18,6 +20,5 @@ func main() {
 	fmt.Println(e)
 }
 
-// == todo
-// custom errors
-// data conveying errors
+// todo: custom errors
+// todo: data conveying errors

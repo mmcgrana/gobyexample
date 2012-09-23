@@ -1,6 +1,9 @@
+// ## File Read
+
 package main
 
-import ("fmt"; "io/ioutil")
+import "io/ioutil"
+import "fmt"
 
 func main() {
     contents, err := ioutil.ReadFile("xx-file-read.go")

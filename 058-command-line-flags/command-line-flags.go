@@ -1,6 +1,9 @@
+// ## Command Line Flags
+
 package main
 
-import ("fmt"; "flag")
+import "flag"
+import "fmt"
 
 func main() {
     maxp := flag.Int("repeat", 3, "time to repeat args")
@@ -12,8 +15,7 @@ func main() {
 	}
 }
 
-// todoo
-// multiple flags
-// trailing args
-// arg escaping
-// help text and usage errors
+// todo: multiple flags
+// todo: trailing args
+// todo: arg escaping
+// todo: help text and usage errors

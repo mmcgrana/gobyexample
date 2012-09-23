@@ -1,6 +1,10 @@
+// ## HTTP Client
+
 package main
 
-import ("net/http"; "io/ioutil"; "fmt")
+import "net/http"
+import "io/ioutil"
+import "fmt"
 
 func main() {
 	resp, err := http.Get("http://127.0.0.1:5000/")

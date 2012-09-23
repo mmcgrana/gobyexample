@@ -1,10 +1,12 @@
+// ## HTTP Server Basic
+
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"encoding/base64"
 	"strings"
+	"fmt"
 )
 
 type Authenticator func(string, string) bool
