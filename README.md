@@ -7,5 +7,5 @@ Go by Example book source.
 
 ```bash
 $ mate tool/index.txt
-$ go run tool/renumber.go
+$ tool/renumber
 ```
