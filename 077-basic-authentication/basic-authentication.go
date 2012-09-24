@@ -1,4 +1,4 @@
-// ## HTTP Server Basic
+// ## Basic Authentication
 
 package main
 

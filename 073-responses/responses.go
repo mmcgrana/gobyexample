@@ -1,4 +1,4 @@
-// ## HTTP Server Status Code
+// ## Responses
 
 package main
 

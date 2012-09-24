@@ -1,4 +1,4 @@
-// ## HTTP Server Canonical Host
+// ## Canonical Hosts
 
 package main
 

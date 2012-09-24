@@ -93,21 +93,19 @@ mongodb ~
 sending-email
 
 ## web apps
-http-server-basic
-http-server-canonical-host
-http-server-graceful-shutdown
-http-server-log
-http-server-middleware
-http-server-routing
-http-server-static-dynamic
-http-server-static-select
-http-server-static
-http-server-status-code
-http-server
-https-server
-headers-and-query-params ~
+hello-web
+requests ~
+responses
+request-routing
+request-logging
+static-content
+basic-authentication
+canonical-hosts
 post-bodies ~
+middleware
 streaming-out-http-responses ~
+graceful-shutdown
+https-servers
 
 ## shipping go
 using-gofmt ~

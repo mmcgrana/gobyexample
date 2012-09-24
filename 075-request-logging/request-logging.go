@@ -1,4 +1,4 @@
-// ## HTTP Server Logging
+// ## Request Logging
 
 package main
 
@@ -37,4 +37,4 @@ func main() {
     http.ListenAndServe(":5000", nil)
 }
 
-// todo: status code?
+// todo: logging status code?

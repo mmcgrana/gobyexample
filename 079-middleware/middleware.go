@@ -1,4 +1,4 @@
-// ## HTTP Server Middleware
+// ## Middleware
 
 package main
 

@@ -1,4 +1,4 @@
-// ## HTTP Serve Graceful Shutdown
+// ## Graceful Shutdown
 
 package main
 

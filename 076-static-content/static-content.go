@@ -1,4 +1,4 @@
-// ## HTTP Server Static
+// ## Static Content
 
 package main
 
