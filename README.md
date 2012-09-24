@@ -3,11 +3,11 @@
 Go by Example book source.
 
 
-### Reordering
+### Numbering
 
 ```console
 $ mate tool/index.txt
-$ tool/renumber
+$ tool/number
 ```
 
 
@@ -16,4 +16,3 @@ $ tool/renumber
 ```console
 $ tool/gofmt
 ```
-

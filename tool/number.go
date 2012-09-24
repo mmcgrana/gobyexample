@@ -1,4 +1,4 @@
-// Renumber the .go content files according to the
+// (Re-)number the .go content files according to the
 // order in index.txt.
 
 package main
