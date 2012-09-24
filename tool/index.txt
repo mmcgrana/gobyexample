@@ -1,6 +1,6 @@
 # introduction
-~ introduction
-~ getting-started
+introduction ~
+getting-started ~
 
 # basics
 hello-world
@@ -30,7 +30,7 @@ embedding
 interfaces
 errors
 ok-guards
-~ comments
+comments ~
 
 # concurrency
 goroutines
@@ -44,8 +44,8 @@ timeouts
 scatter-gather
 rate-limiting
 worker-pools
-~ nonblocking-sends-and-receives
-~ closing-channels
+nonblocking-sends-and-receives ~
+closing-channels ~
 timers
 tickers
 
@@ -58,21 +58,21 @@ string-formatting
 regexs
 bytes
 json
-~ typed-json
+typed-json ~
 time
-~ time-formatting
+time-formatting ~
 epochs
 elapsed-time
 random-numbers
 number-parsing
 urls
 sha1-hashes
-~ base64-encoding
+base64-encoding ~
 
-# systems libraries
+## systems libraries
 reading-files
 writing-files
-~ standard-streams
+standard-streams ~
 line-filter
 command-line-arguments
 command-line-flags
@@ -83,17 +83,16 @@ signals
 exit
 
 # client libraries
-tcp-client
 http-client
 http-client-basic
 https-client
-~ streaming-in-http-responses
+streaming-in-http-responses ~
 redis
 postgres
-~ mongodb
+mongodb ~
 sending-email
 
-# web apps
+## web apps
 http-server-basic
 http-server-canonical-host
 http-server-graceful-shutdown
@@ -106,13 +105,13 @@ http-server-static
 http-server-status-code
 http-server
 https-server
-~ headers-and-query-params
-~ post-bodies
-~ streaming-out-http-responses
+headers-and-query-params ~
+post-bodies ~
+streaming-out-http-responses ~
 
-# shipping go
-~ using-gofmt
-~ using-godoc
-~ publishing-packages
-~ deploying-to-heroku
-~ deploying-to-appengine
+## shipping go
+using-gofmt ~
+using-godoc ~
+publishing-packages ~
+deploying-to-heroku ~
+deploying-to-appengine ~
