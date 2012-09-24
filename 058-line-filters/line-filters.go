@@ -1,4 +1,4 @@
-// ## Line Filter
+// ## Line Filters
 
 // A line filter program reads input on stdin,
 // processes it, and prints results to stdout.

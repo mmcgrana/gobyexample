@@ -3,6 +3,6 @@ $ echo 'hello'   > lines
 $ echo 'filter' >> lines
 
 # Use the line filter to get uppercase lines.
-$ cat lines | go run line-filter.go
+$ cat lines | go run line-filters.go
 HELLO
 FILTER

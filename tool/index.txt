@@ -73,7 +73,7 @@ base64-encoding ~
 reading-files
 writing-files
 standard-streams ~
-line-filter
+line-filters
 command-line-arguments
 command-line-flags
 environment-variables
