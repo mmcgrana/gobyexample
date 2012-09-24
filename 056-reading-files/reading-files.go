@@ -1,4 +1,4 @@
-// ## File Read
+// ## Reading files
 
 package main
 
@@ -12,3 +12,6 @@ func main() {
     }
     fmt.Print(string(contents))
 }
+
+
+// todo: streaming reads

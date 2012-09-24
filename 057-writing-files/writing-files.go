@@ -1,4 +1,4 @@
-// ## File Write
+// ## Writing Files
 
 package main
 
@@ -12,3 +12,5 @@ func main() {
     defer file.Close()
     file.WriteString("contents\n")
 }
+
+// todo: streaming writes

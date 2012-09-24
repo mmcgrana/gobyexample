@@ -18,3 +18,5 @@ func main() {
 	fmt.Println("Awaiting signal")
 	<- d
 }
+
+// todo: sending signals?

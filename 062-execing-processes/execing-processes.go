@@ -1,4 +1,4 @@
-// ## Exec
+// ## Exec'ing Processes
 
 package main
 
@@ -16,3 +16,5 @@ func main() {
 		panic(execErr)
 	}
 }
+
+// todo: note lack of fork

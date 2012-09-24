@@ -70,18 +70,17 @@ sha1-hashes
 ~ base64-encoding
 
 # systems programming
-file-open
-file-read
-file-write
+reading-files
+writing-files
+~ standard-streams
 command-line-arguments
 command-line-flags
-env
+environment-variables
+spawning-processes
+execing-processes
 signals
 exit
-spawn
-exec
 reading-input
-users
 line-filter
 tcp server
 
