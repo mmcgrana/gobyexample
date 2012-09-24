@@ -44,12 +44,16 @@ func main() {
 
     // Ensure that we have `markdown` and `pygmentize`,
     // binaries, remember their paths.
-    markdownPath, err := exec.LookPath("markdown"); 
-    check(err)
-    pygmentizePath, err := exec.LookPath("pygmentize")
-    check(err)
+    // markdownPath, err := exec.LookPath("markdown"); 
+    // check(err)
+    // pygmentizePath, err := exec.LookPath("pygmentize")
+    // check(err)
 
-    fmt.Print(pipedCmd(markdownPath, []string{}, "## wat"))
+    // Read the source file in.
+    sourceBytes, err := ioutil.ReadFile(os.Args[1])
+    check(err)
+    source := string(sourceBytes)
+    fmt.Print(source)
 
-    fmt.Print(pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, "package main"))
+    // ...
 }
