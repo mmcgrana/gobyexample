@@ -84,7 +84,6 @@ exit
 
 ## client libraries
 http-client
-http-client-basic
 https-client
 streaming-in-http-responses ~
 redis
