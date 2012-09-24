@@ -46,8 +46,10 @@ func main() {
     // binaries, remember their paths.
     markdownPath, err := exec.LookPath("markdown"); 
     check(err)
-    // pygmentizePath, err := exec.LookPath("pygmentize")
-    // check(err)
+    pygmentizePath, err := exec.LookPath("pygmentize")
+    check(err)
 
     fmt.Print(pipedCmd(markdownPath, []string{}, "## wat"))
+
+    fmt.Print(pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, "package main"))
 }
