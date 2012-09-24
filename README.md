@@ -3,6 +3,12 @@
 Go by Example book source.
 
 
+### Building Tools
+
+```console
+$ tool/build
+```
+
 ### Numbering
 
 ```console
