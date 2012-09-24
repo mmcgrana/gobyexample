@@ -5,7 +5,15 @@ Go by Example book source.
 
 ### Reordering
 
-```bash
+```console
 $ mate tool/index.txt
 $ tool/renumber
 ```
+
+
+### Gofmt'ing
+
+```console
+$ tool/gofmt
+```
+

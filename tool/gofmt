@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls */*.go | xargs -n 1 gofmt -tabs=false -tabwidth=4 -w=true
