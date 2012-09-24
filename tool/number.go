@@ -30,7 +30,7 @@ func main() {
     baseTrimmer, _ := regexp.Compile("[0-9x]+-")
     for _, fi := range fileInfos {
         baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
-        if baseName != ".git" && baseName != "tool" && baseName != "README.md" {
+        if baseName != ".git" && baseName != ".gitignore" && baseName != "tool" && baseName != "build" && baseName != "style" && baseName != "README.md" {
             sourceNames = append(sourceNames, baseName)
             sourceMap[baseName] = fi.Name()
         }
