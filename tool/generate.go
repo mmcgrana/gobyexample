@@ -16,7 +16,7 @@ func check(err error) {
     }
 }
 
-func markdown(path, source string) string {
+func pipedCmd(path, source string) string {
     cmd := exec.Command(path)
     in, err := cmd.StdinPipe()
     check(err)
@@ -46,7 +46,7 @@ func main() {
     // binaries, remember their paths.
     markdownPath, err := exec.LookPath("markdown"); 
     check(err)
-    fmt.Print(markdown(markdownPath, "## wat"))
+    fmt.Print(pipedCmd(markdownPath, "## wat"))
     // pygmentizePath, err := exec.LookPath("pygmentize")
     // check(err)
 
