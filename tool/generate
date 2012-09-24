@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p build
+cp style/book.css build/book.css
