@@ -69,10 +69,11 @@ urls
 sha1-hashes
 ~ base64-encoding
 
-# systems programming
+# systems libraries
 reading-files
 writing-files
 ~ standard-streams
+line-filter
 command-line-arguments
 command-line-flags
 environment-variables
@@ -80,9 +81,6 @@ spawning-processes
 execing-processes
 signals
 exit
-reading-input
-line-filter
-tcp server
 
 # client libraries
 tcp-client
