@@ -16,3 +16,4 @@ func main() {
 }
 
 // todo: full command lines with bash
+// todo: piping in stdin
