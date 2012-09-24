@@ -12,14 +12,14 @@ func pinger(pings chan<- string) {
 
 func ponger(pings <-chan string, pongs chan<- string) {
     for {
-	  <- pings
-      pongs <- "pong"
+        <-pings
+        pongs <- "pong"
     }
 }
 
 func printer(pongs <-chan string) {
     for {
-        msg := <- pongs
+        msg := <-pongs
         fmt.Println(msg)
     }
 }
@@ -32,6 +32,6 @@ func main() {
     go ponger(pings, pongs)
     go printer(pongs)
 
-	var input string
+    var input string
     fmt.Scanln(&input)
 }

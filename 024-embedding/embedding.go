@@ -14,7 +14,7 @@ type Circle struct {
 }
 
 func (c *Circle) area() float64 {
-    return math.Pi * c.r*c.r
+    return math.Pi * c.r * c.r
 }
 
 type Rectangle struct {
@@ -42,14 +42,14 @@ func totalArea(shapes ...Shape) float64 {
 }
 
 func main() {
-	circle := Circle{x: 0, y: 3, r: 5}
-	rectangle := Rectangle {x1: 3, x2: 10, y1: 5, y2: 7}
+    circle := Circle{x: 0, y: 3, r: 5}
+    rectangle := Rectangle{x1: 3, x2: 10, y1: 5, y2: 7}
 
-	area := 0.0
-	for _, s := range []Shape{&circle, &rectangle} {
-		area += s.area()
-	}
-	fmt.Println(area)
+    area := 0.0
+    for _, s := range []Shape{&circle, &rectangle} {
+        area += s.area()
+    }
+    fmt.Println(area)
 }
 
 // todo: is this named wrong?

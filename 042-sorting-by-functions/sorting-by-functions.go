@@ -2,14 +2,18 @@
 
 package main
 
-import ("fmt" ; "sort")
+import (
+    "fmt"
+    "sort"
+)
 
-type Person struct { 
+type Person struct {
     Name string
-    Age int
+    Age  int
 }
 
 type ByName []Person
+
 func (this ByName) Len() int {
     return len(this)
 }
@@ -21,8 +25,9 @@ func (this ByName) Swap(i, j int) {
 }
 
 type ByAge []Person
+
 func (this ByAge) Len() int {
-	return len(this)
+    return len(this)
 }
 func (this ByAge) Less(i, j int) bool {
     return this[i].Age < this[j].Age
@@ -33,15 +38,15 @@ func (this ByAge) Swap(i, j int) {
 
 func main() {
     kids := []Person{
-		{"Jack", 10},
+        {"Jack", 10},
         {"Jill", 9},
-        {"Bob",  12},
+        {"Bob", 12},
     }
     fmt.Println("Original:", kids)
-	
-	sort.Sort(ByName(kids))
-	fmt.Println("ByName:  ", kids)
 
-	sort.Sort(ByAge(kids))
-	fmt.Println("ByAge:   ", kids)
+    sort.Sort(ByName(kids))
+    fmt.Println("ByName:  ", kids)
+
+    sort.Sort(ByAge(kids))
+    fmt.Println("ByAge:   ", kids)
 }

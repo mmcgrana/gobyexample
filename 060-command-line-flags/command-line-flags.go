@@ -8,11 +8,11 @@ import "fmt"
 func main() {
     maxp := flag.Int("repeat", 3, "time to repeat args")
     flag.Parse()
-	for i := 0; i < *maxp; i++ {
-		for _, arg := range flag.Args() {
-			fmt.Println(arg)
-		}
-	}
+    for i := 0; i < *maxp; i++ {
+        for _, arg := range flag.Args() {
+            fmt.Println(arg)
+        }
+    }
 }
 
 // todo: multiple flags

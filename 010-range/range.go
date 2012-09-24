@@ -11,7 +11,7 @@ func main() {
     x[2] = 77
     x[3] = 82
     x[4] = 83
-    
+
     var total float64 = 0
     for _, value := range x {
         total += value

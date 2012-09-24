@@ -10,7 +10,7 @@ type Circle struct {
 }
 
 func (c *Circle) area() float64 {
-    return math.Pi * c.r*c.r
+    return math.Pi * c.r * c.r
 }
 
 type Rectangle struct {
@@ -30,10 +30,10 @@ func (r *Rectangle) area() float64 {
 }
 
 func main() {
-	circle := Circle{x: 0, y: 3, r: 5}
-	fmt.Println(circle.area())
-	rectangle := Rectangle {x1: 3, x2: 10, y1: 5, y2: 7}
-	fmt.Println(rectangle.area())
+    circle := Circle{x: 0, y: 3, r: 5}
+    fmt.Println(circle.area())
+    rectangle := Rectangle{x1: 3, x2: 10, y1: 5, y2: 7}
+    fmt.Println(rectangle.area())
 }
 
 // todo: pointer vs value receivers

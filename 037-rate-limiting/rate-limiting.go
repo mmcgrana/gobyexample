@@ -5,10 +5,10 @@ import "time"
 import "fmt"
 
 func main() {
-	throttle := time.Tick(time.Millisecond * 200)
-	for {
-  		<- throttle
-  		go fmt.Println("rate-limited action")
+    throttle := time.Tick(time.Millisecond * 200)
+    for {
+        <-throttle
+        go fmt.Println("rate-limited action")
     }
 }
 

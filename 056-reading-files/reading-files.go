@@ -13,5 +13,4 @@ func main() {
     fmt.Print(string(contents))
 }
 
-
 // todo: streaming reads

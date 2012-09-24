@@ -9,5 +9,5 @@ func main() {
     // We'll use panic throught this book to check for
     // unexpected errors. This is the only program in the
     // book designed to panic.
-	panic("O noes")  
-}	                 
+    panic("O noes")
+}

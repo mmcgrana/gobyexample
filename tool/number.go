@@ -6,14 +6,14 @@ package main
 import (
     "fmt"
     "io/ioutil"
-    "strings"
-    "regexp"
     "os"
+    "regexp"
     "sort"
+    "strings"
 )
 
 func minInt(a, b int) int {
-    if (a < b) {
+    if a < b {
         return a
     }
     return b
@@ -24,7 +24,9 @@ func main() {
     sourceNames := make([]string, 0)
     sourceMap := make(map[string]string)
     fileInfos, dirErr := ioutil.ReadDir("./")
-    if dirErr != nil { panic(dirErr) }
+    if dirErr != nil {
+        panic(dirErr)
+    }
     baseTrimmer, _ := regexp.Compile("[0-9x]+-")
     for _, fi := range fileInfos {
         baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
@@ -36,15 +38,17 @@ func main() {
 
     // read names from index
     indexBytes, idxErr := ioutil.ReadFile("tool/index.txt")
-    if idxErr != nil { panic (idxErr) }
+    if idxErr != nil {
+        panic(idxErr)
+    }
     indexNamesAll := strings.Split(string(indexBytes), "\n")
     indexNames := make([]string, 0)
     for _, indexName := range indexNamesAll {
-        if indexName != "" && !strings.Contains(indexName, "#") && !strings.Contains(indexName, "~")  {
+        if indexName != "" && !strings.Contains(indexName, "#") && !strings.Contains(indexName, "~") {
             indexNames = append(indexNames, indexName)
         }
     }
-    
+
     // sanity check two lists
     if len(sourceNames) != len(indexNames) {
         sort.Strings(sourceNames)
@@ -54,7 +58,7 @@ func main() {
         }
         os.Exit(1)
     }
-    
+
     // rename some stuff
     for index, indexName := range indexNames {
         oldName := sourceMap[indexName]

@@ -9,8 +9,8 @@ func one(xPtr *int) {
 }
 func main() {
     xPtr := new(int)
-	fmt.Println(xPtr)
-	fmt.Println(*xPtr)
+    fmt.Println(xPtr)
+    fmt.Println(*xPtr)
     one(xPtr)
     fmt.Println(xPtr)
     fmt.Println(*xPtr)

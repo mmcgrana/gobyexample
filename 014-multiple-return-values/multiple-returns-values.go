@@ -10,15 +10,15 @@ import "fmt"
 
 // The `(int, int)` in this signature shows that the
 // function returns 2 ints.
-func vals() (int, int) {  
-    return 3, 7           
-    
+func vals() (int, int) {
+    return 3, 7
+
 }
 
 func main() {
     // Use the 2 different return values from the call,
     // i.e. multiple assignement.
-    x, y := vals()        
+    x, y := vals()
     fmt.Println(x)
     fmt.Println(y)
 }

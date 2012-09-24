@@ -6,7 +6,7 @@ import "strings"
 import "fm"
 
 func p(o interface{}) {
-	fmt.Println(o)
+    fmt.Println(o)
 }
 
 func main() {
@@ -15,8 +15,8 @@ func main() {
     p(strings.Count("test", "t"))
     p(strings.HasPrefix("test", "te"))
     p(strings.HasSuffix("test", "st"))
-	p(strings.Index("test", "e"))
-    p(strings.Join([]string{"a","b"}, "-"))
+    p(strings.Index("test", "e"))
+    p(strings.Join([]string{"a", "b"}, "-"))
     p(strings.Repeat("a", 5))
     p(strings.Replace("foo", "o", "0", -1))
     p(strings.Replace("foo", "o", "0", 1))
