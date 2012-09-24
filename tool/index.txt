@@ -1,8 +1,8 @@
-# introduction
+## introduction
 introduction ~
 getting-started ~
 
-# basics
+## basics
 hello-world
 values
 variables
@@ -32,7 +32,7 @@ errors
 ok-guards
 comments ~
 
-# concurrency
+## concurrency
 goroutines
 concurrent-goroutines
 channels
@@ -49,7 +49,7 @@ closing-channels ~
 timers
 tickers
 
-# core libraries
+## core libraries
 sorting
 sorting-by-functions
 collection-functions
@@ -82,7 +82,7 @@ execing-processes
 signals
 exit
 
-# client libraries
+## client libraries
 http-client
 http-client-basic
 https-client
