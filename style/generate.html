@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-    <title>Page Title</title>
+    <title>golit</title>
     <link rel=stylesheet href="book.css">
   </head>
   <body>
@@ -34,6 +34,11 @@ documentation form Go source files.</p>
 </td></tr>
 <tr><td class=docs><p>Recognize doc lines, extract their comment prefixes.</p>
 </td><td class=code><div class="highlight"><pre><span class="k">var</span> <span class="n">docsPat</span> <span class="p">=</span> <span class="n">regexp</span><span class="p">.</span><span class="n">MustCompile</span><span class="p">(</span><span class="s">&quot;^\\s*\\/\\/\\s&quot;</span><span class="p">)</span>
+  
+</pre></div>
+</td></tr>
+<tr><td class=docs><p>Recognize title prefixes, for titling web page.</p>
+</td><td class=code><div class="highlight"><pre><span class="k">var</span> <span class="n">titlePat</span> <span class="p">=</span> <span class="n">regexp</span><span class="p">.</span><span class="n">MustCompile</span><span class="p">(</span><span class="s">&quot;^\\/\\/\\s##\\s&quot;</span><span class="p">)</span>
   
 </pre></div>
 </td></tr>
@@ -148,12 +153,12 @@ Special case the header to go in its own segment.</p>
 </pre></div>
 </td></tr>
 <tr><td class=docs><p>Print HTML header.</p>
-</td><td class=code><div class="highlight"><pre>    <span class="n">fmt</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">`</span>
+</td><td class=code><div class="highlight"><pre>    <span class="n">fmt</span><span class="p">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">`</span>
 <span class="s">&lt;!DOCTYPE html&gt;</span>
 <span class="s">&lt;html&gt;</span>
 <span class="s">  &lt;head&gt;</span>
 <span class="s">    &lt;meta http-eqiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;</span>
-<span class="s">    &lt;title&gt;Page Title&lt;/title&gt;</span>
+<span class="s">    &lt;title&gt;%s&lt;/title&gt;</span>
 <span class="s">    &lt;link rel=stylesheet href=&quot;book.css&quot;&gt;</span>
 <span class="s">  &lt;/head&gt;</span>
 <span class="s">  &lt;body&gt;</span>
@@ -163,7 +168,7 @@ Special case the header to go in its own segment.</p>
 <span class="s">        &lt;thead&gt;</span>
 <span class="s">          &lt;tr&gt;&lt;td class=docs&gt;&lt;/td&gt;&lt;td class=code&gt;&lt;/td&gt;&lt;/tr&gt;</span>
 <span class="s">        &lt;/thead&gt;</span>
-<span class="s">        &lt;tbody&gt;`</span><span class="p">)</span>
+<span class="s">        &lt;tbody&gt;`</span><span class="p">,</span> <span class="n">titlePat</span><span class="p">.</span><span class="n">ReplaceAllString</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
   
 </pre></div>
 </td></tr>

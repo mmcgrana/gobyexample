@@ -17,6 +17,9 @@ import (
 // Recognize doc lines, extract their comment prefixes.
 var docsPat = regexp.MustCompile("^\\s*\\/\\/\\s")
 
+// Recognize title prefixes, for titling web page.
+var titlePat = regexp.MustCompile("^\\/\\/\\s##\\s")
+
 // Abort on non-nil errors.
 func check(err error) {
     if err != nil {
@@ -108,12 +111,12 @@ func main() {
     }
 
     // Print HTML header.
-    fmt.Print(`
+    fmt.Printf(`
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-    <title>Page Title</title>
+    <title>%s</title>
     <link rel=stylesheet href="book.css">
   </head>
   <body>
@@ -123,7 +126,7 @@ func main() {
         <thead>
           <tr><td class=docs></td><td class=code></td></tr>
         </thead>
-        <tbody>`)
+        <tbody>`, titlePat.ReplaceAllString(lines[0], ""))
 
     // Print HTML docs/code segments.
     for _, seg := range segments {
