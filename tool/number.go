@@ -23,17 +23,15 @@ func main() {
     // read names of source files
     sourceNames := make([]string, 0)
     sourceMap := make(map[string]string)
-    fileInfos, dirErr := ioutil.ReadDir("./")
+    fileInfos, dirErr := ioutil.ReadDir("./src")
     if dirErr != nil {
         panic(dirErr)
     }
     baseTrimmer, _ := regexp.Compile("[0-9x]+-")
     for _, fi := range fileInfos {
         baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
-        if baseName != ".git" && baseName != ".gitignore" && baseName != "tool" && baseName != "build" && baseName != "style" && baseName != "README.md" {
-            sourceNames = append(sourceNames, baseName)
-            sourceMap[baseName] = fi.Name()
-        }
+        sourceNames = append(sourceNames, baseName)
+        sourceMap[baseName] = fi.Name()
     }
 
     // read names from index
