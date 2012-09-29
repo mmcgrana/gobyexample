@@ -87,25 +87,28 @@ func main() {
     last := ""
     for _, line := range lines[2:] {
         head := segs[len(segs)-1]
-        docMatch := docsPat.MatchString(line)
-        docLast := last == "docs"
-        codeLast := last == "code"
-        if docMatch || (line == "" && docLast) {
+        docsMatch := docsPat.MatchString(line)
+        emptyMatch := line == ""
+        lastDocs := last == "docs"
+        newDocs := (last == "code") && head.docs != ""
+        newCode := (last == "docs") && head.code != ""
+        // Docs line - strip out comment indicator.
+        if docsMatch || (emptyMatch && lastDocs) {
             trimed := docsPat.ReplaceAllString(line, "")
-            if !(last == "code" && head.docs != "") {
-                head.docs = head.docs + "\n" + trimed
-            } else {
+            if newDocs {
                 newSeg := seg{docs: trimed, code: ""}
                 segs = append(segs, &newSeg)
+            } else {
+                head.docs = head.docs + "\n" + trimed
             }
             last = "docs"
-            // Code line - preserve all whitespace.
+        // Code line - preserve all whitespace.
         } else {
-            if !(codeLast && head.code != "") {
-                head.code = head.code + "\n" + line
-            } else {
+            if newCode {
                 newSeg := seg{docs: "", code: line}
                 segs = append(segs, &newSeg)
+            } else {
+                head.code = head.code + "\n" + line
             }
             last = "code"
         }
