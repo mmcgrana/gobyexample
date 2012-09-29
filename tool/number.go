@@ -27,7 +27,7 @@ func main() {
     if dirErr != nil {
         panic(dirErr)
     }
-    baseTrimmer, _ := regexp.Compile("[0-9x]+-")
+    baseTrimmer, _ := regexp.Compile("^[0-9x]+-")
     for _, fi := range fileInfos {
         baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
         sourceNames = append(sourceNames, baseName)
@@ -55,6 +55,13 @@ func main() {
             fmt.Printf("%s %s\n", sourceNames[i], indexNames[i])
         }
         os.Exit(1)
+    }
+    for _, indexName := range indexNames {
+        _, ok := sourceMap[indexName]
+        if !ok {
+            fmt.Printf("%s\n", indexName)
+            os.Exit(1)
+        }
     }
 
     // rename some stuff
