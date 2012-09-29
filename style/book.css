@@ -44,9 +44,9 @@ table {
 
 /* Typography and Layout */
 body {
-  font-family: 'Book Antiqua';
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 22px;
   color: #252519;
   margin: 0;
   padding: 0;
@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #background {
   position: fixed;
-  top: 0; left: 455px; right: 0; bottom: 0;
+  top: 0; left: 505px; right: 0; bottom: 0;
   background: #f5f5ff;
   border-left: 1px solid #e5e5ee;
   z-index: -1;
@@ -83,8 +83,8 @@ table td {
   outline: 0;
 }
   td.docs {
-    max-width: 350px;
-    min-width: 350px;
+    max-width: 400px;
+    min-width: 400px;
     min-height: 5px;    /* ? */
     padding: 0px 30px 0px 60px;
     overflow-x: hidden; /* ? */
@@ -106,7 +106,7 @@ table td {
     pre, tt, code {
       font-size: 14px;
       line-height: 18px;
-      font-family: Menlo;
+      font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
       margin: 0; padding: 0;
     }
 
