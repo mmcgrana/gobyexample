@@ -1,6 +1,5 @@
 // ## Line Filters
-///
-
+ 
 // Generate literate-programming style HTML
 // documentation form Go source files.
 
