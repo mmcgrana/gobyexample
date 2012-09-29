@@ -2,7 +2,6 @@
 
 // **golit** generates literate-programming style HTML
 // documentation from a Go source files.
-
 package main
 
 import (
@@ -27,18 +26,19 @@ func check(err error) {
     }
 }
 
-// We'll implement Markdown rendering and Pygments syntax
-// highlighting by piping data through external programs.
-// This is a general helper for handling both cases.
-func pipedCmd(binary string, argv []string, input string) string {
-    cmd := exec.Command(binary, argv...)
+// We'll implement Markdown rendering and Pygments
+// syntax highlighting by piping data through external
+// programs. This is a general helper for handling both
+// cases.
+func pipe(bin string, args []string, in string) string {
+    cmd := exec.Command(bin, args...)
     in, err := cmd.StdinPipe()
     check(err)
     out, err := cmd.StdoutPipe()
     check(err)
     err = cmd.Start()
     check(err)
-    in.Write([]byte(input))
+    in.Write([]byte(in))
     check(err)
     err = in.Close()
     check(err)
@@ -49,17 +49,18 @@ func pipedCmd(binary string, argv []string, input string) string {
     return string(bytes)
 }
 
-// We'll break the code into {docs, code} pairs,
-// and then render those text segments before
-// including them in the HTML doc.
+// We'll break the code into {docs, code} pairs, and
+// then render those text segments before including them
+// in the HTML doc.
 type segment struct {
     docs, code, docsRendered, codeRendered string
 }
 
 func main() {
-    // Accept exactly 1 argument - the input filename, less the .go extension.
+    // Accept exactly 1 argument - the input filename,
+    // less the .go extension.
     if len(os.Args) != 2 {
-        fmt.Fprintln(os.Stderr, "Usage: go run tool/generate.go input > output.html")
+        fmt.Fprintln(os.Stderr, "unexpected args")
         os.Exit(1)
     }
 
@@ -71,9 +72,9 @@ func main() {
     check(err)
 
     // Read the source file in, split into lines.
-    sourceBytes, err := ioutil.ReadFile(os.Args[1]+".go")
+    srcBytes, err := ioutil.ReadFile(os.Args[1]+".go")
     check(err)
-    lines := strings.Split(string(sourceBytes), "\n")
+    lines := strings.Split(string(srcBytes), "\n")
 
     // Group lines into docs/code segments.
     // Special case the header to go in its own segment.
@@ -111,34 +112,41 @@ func main() {
     }
 
     // Print HTML header.
+    title := titlePat.ReplaceAllString(lines[0], "")
     fmt.Printf(`
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <meta http-eqiv="content-type"
+          content="text/html;charset=utf-8">
     <title>%s</title>
-    <link rel=stylesheet href="http://jashkenas.github.com/docco/resources/docco.css">
+    <link rel=stylesheet href="../style/lit.css">
   </head>
   <body>
     <div id="container">
       <div id="background"></div>
       <table cellspacing="0" cellpadding="0">
         <thead>
-          <tr><td class=docs></td><td class=code></td></tr>
+          <tr>
+            <td class=docs></td>
+            <td class=code></td>
+          </tr>
         </thead>
-        <tbody>`, titlePat.ReplaceAllString(lines[0], ""))
+        <tbody>`, title)
 
     // Print HTML docs/code segments.
     for _, seg := range segments {
-        fmt.Printf("<tr><td class=docs>%s</td><td class=code>%s</td></tr>\n", seg.docsRendered, seg.codeRendered)
+        fmt.Printf(
+          `<tr>
+             <td class=docs>%s</td>
+             <td class=code>%s</td>
+           </tr>`, seg.docsRendered, seg.codeRendered)
     }
 
     // Print HTML footer.
-    fmt.Print(`
-        </tbody>
-      </table>
-    </div>
-  </body>
-</html>
-`)
+    fmt.Print(`</tbody>
+           </table>
+         </div>
+       </body>
+     </html>`)
 }
