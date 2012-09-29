@@ -81,26 +81,26 @@ func main() {
     segments := []*segment{}
     segments = append(segments, &segment{code: "", docs: docsPat.ReplaceAllString(lines[0], "")})
     segments = append(segments, &segment{code: "", docs: ""})
-    lastLine := ""
+    last := ""
     for _, line := range lines[2:] {
         head := segments[len(segments)-1]
         // Doc line - trim off the comment markers.
-        if (line == "" && lastLine == "docs") || docsPat.MatchString(line) {
+        if (line == "" && last == "docs") || docsPat.MatchString(line) {
             trimLine := docsPat.ReplaceAllString(line, "")
-            if !(lastLine == "code" && head.docs != "") {
+            if !(last == "code" && head.docs != "") {
                 head.docs = head.docs + "\n" + trimLine
             } else {
                 segments = append(segments, &segment{docs: trimLine, code: ""})
             }
-            lastLine = "docs"
+            last = "docs"
             // Code line - preserve all whitespace.
         } else {
-            if !(lastLine == "docs" && head.code != "") {
+            if !(last == "docs" && head.code != "") {
                 head.code = head.code + "\n" + line
             } else {
                 segments = append(segments, &segment{docs: "", code: line})
             }
-            lastLine = "code"
+            last = "code"
         }
     }
 
