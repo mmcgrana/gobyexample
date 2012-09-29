@@ -1,6 +1,7 @@
-// ## golit
+// ## Line Filters
+///
 
-// Generate literate-programming style HTTML
+// Generate literate-programming style HTML
 // documentation form Go source files.
 
 package main
@@ -99,10 +100,10 @@ func main() {
     }
 
     // Render docs via `markdown` and code via
-    // `pygmentize`in each segment.
+    // `pygmentize` in each segment.
     for _, seg := range segments {
         seg.docsRendered = pipedCmd(markdownPath, []string{}, seg.docs)
-        seg.codeRendered = pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code)
+        seg.codeRendered = pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code + "  ")
     }
 
     // Print HTML header.
