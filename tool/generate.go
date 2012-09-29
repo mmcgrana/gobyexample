@@ -1,4 +1,4 @@
-// ## Line Filters
+// ## golit
 
 // Generate literate-programming style HTML
 // documentation form Go source files.
@@ -24,18 +24,18 @@ func check(err error) {
     }
 }
 
-// For docs and code rendering: pipe source data
-// through binary at path with given argv, return
-// the output.
-func pipedCmd(path string, argv []string, source string) string {
-    cmd := exec.Command(path, argv...)
+// We'll implement Markdown rendering and Pygments syntax
+// highlighting by piping data through external programs.
+// This is a general helper for handling both cases.
+func pipedCmd(binary string, argv []string, input string) string {
+    cmd := exec.Command(binary, argv...)
     in, err := cmd.StdinPipe()
     check(err)
     out, err := cmd.StdoutPipe()
     check(err)
     err = cmd.Start()
     check(err)
-    in.Write([]byte(source))
+    in.Write([]byte(input))
     check(err)
     err = in.Close()
     check(err)

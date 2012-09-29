@@ -13,7 +13,7 @@
         <thead>
           <tr><td class=docs></td><td class=code></td></tr>
         </thead>
-        <tbody><tr><td class=docs><h2>Line Filters</h2>
+        <tbody><tr><td class=docs><h2>golit</h2>
 </td><td class=code><div class="highlight"><pre>  
 </pre></div>
 </td></tr>
@@ -46,18 +46,18 @@ documentation form Go source files.</p>
   
 </pre></div>
 </td></tr>
-<tr><td class=docs><p>For docs and code rendering: pipe source data
-through binary at path with given argv, return
-the output.</p>
-</td><td class=code><div class="highlight"><pre><span class="k">func</span> <span class="n">pipedCmd</span><span class="p">(</span><span class="n">path</span> <span class="nb">string</span><span class="p">,</span> <span class="n">argv</span> <span class="p">[]</span><span class="nb">string</span><span class="p">,</span> <span class="n">source</span> <span class="nb">string</span><span class="p">)</span> <span class="nb">string</span> <span class="p">{</span>
-    <span class="n">cmd</span> <span class="p">:=</span> <span class="n">exec</span><span class="p">.</span><span class="n">Command</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">argv</span><span class="p">...)</span>
+<tr><td class=docs><p>We'll implement Markdown rendering and Pygments syntax
+highlighting by piping data through external programs.
+This is a general helper for handling both cases.</p>
+</td><td class=code><div class="highlight"><pre><span class="k">func</span> <span class="n">pipedCmd</span><span class="p">(</span><span class="n">binary</span> <span class="nb">string</span><span class="p">,</span> <span class="n">argv</span> <span class="p">[]</span><span class="nb">string</span><span class="p">,</span> <span class="n">input</span> <span class="nb">string</span><span class="p">)</span> <span class="nb">string</span> <span class="p">{</span>
+    <span class="n">cmd</span> <span class="p">:=</span> <span class="n">exec</span><span class="p">.</span><span class="n">Command</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">argv</span><span class="p">...)</span>
     <span class="n">in</span><span class="p">,</span> <span class="n">err</span> <span class="p">:=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">StdinPipe</span><span class="p">()</span>
     <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="n">out</span><span class="p">,</span> <span class="n">err</span> <span class="p">:=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">StdoutPipe</span><span class="p">()</span>
     <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="n">err</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">Start</span><span class="p">()</span>
     <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-    <span class="n">in</span><span class="p">.</span><span class="n">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+    <span class="n">in</span><span class="p">.</span><span class="n">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="n">input</span><span class="p">))</span>
     <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="n">err</span> <span class="p">=</span> <span class="n">in</span><span class="p">.</span><span class="n">Close</span><span class="p">()</span>
     <span class="n">check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>

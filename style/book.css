@@ -114,10 +114,10 @@ table td {
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 body .hll { background-color: #ffffcc }
-body .c { color: #408080; font-style: italic }  /* Comment */
 body .err { border: 1px solid #FF0000 }         /* Error */
-body .k { color: #954121 }                      /* Keyword */
-body .o { color: #666666 }                      /* Operator */
+body .c  { color: #408080; font-style: italic } /* Comment */
+body .k  { color: #954121 }                     /* Keyword */
+body .o  { color: #666666 }                     /* Operator */
 body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 body .cp { color: #BC7A00 }                     /* Comment.Preproc */
 body .c1 { color: #408080; font-style: italic } /* Comment.Single */
@@ -138,8 +138,8 @@ body .kn { color: #954121; font-weight: bold }  /* Keyword.Namespace */
 body .kp { color: #954121 }                     /* Keyword.Pseudo */
 body .kr { color: #954121; font-weight: bold }  /* Keyword.Reserved */
 body .kt { color: #B00040 }                     /* Keyword.Type */
-body .m { color: #666666 }                      /* Literal.Number */
-body .s { color: #219161 }                      /* Literal.String */
+body .m  { color: #666666 }                     /* Literal.Number */
+body .s  { color: #219161 }                     /* Literal.String */
 body .na { color: #7D9029 }                     /* Name.Attribute */
 body .nb { color: #954121 }                     /* Name.Builtin */
 body .nc { color: #0000FF; font-weight: bold }  /* Name.Class */
@@ -153,7 +153,7 @@ body .nn { color: #0000FF; font-weight: bold }  /* Name.Namespace */
 body .nt { color: #954121; font-weight: bold }  /* Name.Tag */
 body .nv { color: #19469D }                     /* Name.Variable */
 body .ow { color: #AA22FF; font-weight: bold }  /* Operator.Word */
-body .w { color: #bbbbbb }                      /* Text.Whitespace */
+body .w  { color: #bbbbbb }                     /* Text.Whitespace */
 body .mf { color: #666666 }                     /* Literal.Number.Float */
 body .mh { color: #666666 }                     /* Literal.Number.Hex */
 body .mi { color: #666666 }                     /* Literal.Number.Integer */
