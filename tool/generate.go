@@ -52,7 +52,7 @@ func pipe(bin string, args []string, in string) string {
 // We'll break the code into {docs, code} pairs, and
 // then render those text segments before including them
 // in the HTML doc.
-type segment struct {
+type seg struct {
     docs, code, docsRendered, codeRendered string
 }
 
@@ -78,19 +78,20 @@ func main() {
 
     // Group lines into docs/code segments.
     // Special case the header to go in its own segment.
-    segments := []*segment{}
-    segments = append(segments, &segment{code: "", docs: docsPat.ReplaceAllString(lines[0], "")})
-    segments = append(segments, &segment{code: "", docs: ""})
+    headerDoc := docsPat.ReplaceAllString(lines[0], "")
+    segs := []*seg{}
+    segs = append(segs, &seg{code: "", docs: headerDoc})
+    segs = append(segs, &seg{code: "", docs: ""})
     last := ""
     for _, line := range lines[2:] {
-        head := segments[len(segments)-1]
+        head := segs[len(segs)-1]
         // Doc line - trim off the comment markers.
         if (line == "" && last == "docs") || docsPat.MatchString(line) {
             trimLine := docsPat.ReplaceAllString(line, "")
             if !(last == "code" && head.docs != "") {
                 head.docs = head.docs + "\n" + trimLine
             } else {
-                segments = append(segments, &segment{docs: trimLine, code: ""})
+                segs = append(segs, &seg{docs: trimLine, code: ""})
             }
             last = "docs"
             // Code line - preserve all whitespace.
@@ -98,7 +99,7 @@ func main() {
             if !(last == "docs" && head.code != "") {
                 head.code = head.code + "\n" + line
             } else {
-                segments = append(segments, &segment{docs: "", code: line})
+                segs = append(segs, &seg{docs: "", code: line})
             }
             last = "code"
         }
