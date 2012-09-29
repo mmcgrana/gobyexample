@@ -107,8 +107,14 @@ func main() {
     // Render docs via `markdown` and code via
     // `pygmentize` in each segment.
     for _, seg := range segments {
-        seg.docsRendered = pipedCmd(markdownPath, []string{}, seg.docs)
-        seg.codeRendered = pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
+        seg.docsRendered = pipedCmd(
+            markdownPath,
+            []string{},
+            seg.docs)
+        seg.codeRendered = pipedCmd(
+            pygmentizePath,
+            []string{"-l", "go", "-f", "html"},
+            seg.code+"  ")
     }
 
     // Print HTML header.
