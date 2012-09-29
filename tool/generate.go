@@ -1,5 +1,5 @@
 // ## Line Filters
- 
+
 // Generate literate-programming style HTML
 // documentation form Go source files.
 
@@ -73,10 +73,12 @@ func main() {
     lines := strings.Split(string(sourceBytes), "\n")
 
     // Group lines into docs/code segments.
+    // Special case the header to go in its own segment.
     segments := []*segment{}
+    segments = append(segments, &segment{code: "", docs: docsPat.ReplaceAllString(lines[0], "")})
     segments = append(segments, &segment{code: "", docs: ""})
     lastLine := ""
-    for _, line := range lines {
+    for _, line := range lines[2:] {
         head := segments[len(segments)-1]
         // Doc line - trim off the comment markers.
         if (line == "" && lastLine == "docs") || docsPat.MatchString(line) {
@@ -102,7 +104,7 @@ func main() {
     // `pygmentize` in each segment.
     for _, seg := range segments {
         seg.docsRendered = pipedCmd(markdownPath, []string{}, seg.docs)
-        seg.codeRendered = pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code + "  ")
+        seg.codeRendered = pipedCmd(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
     }
 
     // Print HTML header.
