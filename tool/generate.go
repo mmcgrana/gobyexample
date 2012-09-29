@@ -27,18 +27,18 @@ func check(err error) {
 }
 
 // We'll implement Markdown rendering and Pygments
-// syntax highlighting by piping data through external
-// programs. This is a general helper for handling both
-// cases.
-func pipe(bin string, args []string, in string) string {
-    cmd := exec.Command(bin, args...)
+// syntax highlighting by piping the source data through
+// external programs. This is a general helper for
+// handling both cases.
+func pipe(bin string, arg []string, src string) string {
+    cmd := exec.Command(bin, arg...)
     in, err := cmd.StdinPipe()
     check(err)
     out, err := cmd.StdoutPipe()
     check(err)
     err = cmd.Start()
     check(err)
-    in.Write([]byte(in))
+    in.Write([]byte(src))
     check(err)
     err = in.Close()
     check(err)
@@ -76,30 +76,36 @@ func main() {
     check(err)
     lines := strings.Split(string(srcBytes), "\n")
 
-    // Group lines into docs/code segments.
-    // Special case the header to go in its own segment.
+    // Group lines into docs/code segments. First,
+    // special case the header to go in its own segment.
     headerDoc := docsPat.ReplaceAllString(lines[0], "")
     segs := []*seg{}
     segs = append(segs, &seg{code: "", docs: headerDoc})
+
+    // Then handle the remaining as code/doc pairs.
     segs = append(segs, &seg{code: "", docs: ""})
     last := ""
     for _, line := range lines[2:] {
         head := segs[len(segs)-1]
-        // Doc line - trim off the comment markers.
-        if (line == "" && last == "docs") || docsPat.MatchString(line) {
-            trimLine := docsPat.ReplaceAllString(line, "")
+        docMatch := docsPat.MatchString(line)
+        docLast := last == "docs"
+        codeLast := last == "code"
+        if docMatch || (line == "" && docLast) {
+            trimed := docsPat.ReplaceAllString(line, "")
             if !(last == "code" && head.docs != "") {
-                head.docs = head.docs + "\n" + trimLine
+                head.docs = head.docs + "\n" + trimed
             } else {
-                segs = append(segs, &seg{docs: trimLine, code: ""})
+                newSeg := seg{docs: trimed, code: ""}
+                segs = append(segs, &newSeg)
             }
             last = "docs"
             // Code line - preserve all whitespace.
         } else {
-            if !(last == "docs" && head.code != "") {
+            if !(codeLast && head.code != "") {
                 head.code = head.code + "\n" + line
             } else {
-                segs = append(segs, &seg{docs: "", code: line})
+                newSeg := seg{docs: "", code: line}
+                segs = append(segs, &newSeg)
             }
             last = "code"
         }
@@ -107,12 +113,12 @@ func main() {
 
     // Render docs via `markdown` and code via
     // `pygmentize` in each segment.
-    for _, seg := range segments {
-        seg.docsRendered = pipedCmd(
+    for _, seg := range segs {
+        seg.docsRendered = pipe(
             markdownPath,
             []string{},
             seg.docs)
-        seg.codeRendered = pipedCmd(
+        seg.codeRendered = pipe(
             pygmentizePath,
             []string{"-l", "go", "-f", "html"},
             seg.code+"  ")
@@ -142,7 +148,7 @@ func main() {
         <tbody>`, title)
 
     // Print HTML docs/code segments.
-    for _, seg := range segments {
+    for _, seg := range segs {
         fmt.Printf(
           `<tr>
              <td class=docs>%s</td>
