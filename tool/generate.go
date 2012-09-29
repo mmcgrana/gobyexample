@@ -1,7 +1,7 @@
 // ## golit
 
-// Generate literate-programming style HTML
-// documentation form Go source files.
+// **golit** generates literate-programming style HTML
+// documentation from a Go source files.
 
 package main
 
@@ -57,9 +57,9 @@ type segment struct {
 }
 
 func main() {
-    // Accept exactly 1 argument - the input filename.
+    // Accept exactly 1 argument - the input filename, less the .go extension.
     if len(os.Args) != 2 {
-        fmt.Fprintln(os.Stderr, "Usage: tool/generate input.go > output.html")
+        fmt.Fprintln(os.Stderr, "Usage: go run tool/generate.go input > output.html")
         os.Exit(1)
     }
 
@@ -71,7 +71,7 @@ func main() {
     check(err)
 
     // Read the source file in, split into lines.
-    sourceBytes, err := ioutil.ReadFile(os.Args[1])
+    sourceBytes, err := ioutil.ReadFile(os.Args[1]+".go")
     check(err)
     lines := strings.Split(string(sourceBytes), "\n")
 
@@ -117,7 +117,7 @@ func main() {
   <head>
     <meta http-eqiv="content-type" content="text/html;charset=utf-8">
     <title>%s</title>
-    <link rel=stylesheet href="book.css">
+    <link rel=stylesheet href="http://jashkenas.github.com/docco/resources/docco.css">
   </head>
   <body>
     <div id="container">
