@@ -16,10 +16,10 @@ a:visited {
   color: #261a3b;
 }
 p {
-  margin: 0 0 15px 0;
+  margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-  margin: 0px 0 15px 0;
+  margin: 30px 0 15px 0;
 }
 hr {
     border: 0 none;
@@ -45,9 +45,7 @@ td.docs {
 }
 td.code {
   padding: 14px 30px 16px 15px;
-  width: 100%;
   vertical-align: top;
-  border-left: 1px solid #e5e5ee;
   background: #f0f0f0;
 }
 td.code.empty {
