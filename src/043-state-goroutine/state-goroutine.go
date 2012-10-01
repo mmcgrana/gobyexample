@@ -13,18 +13,18 @@ import "sync/atomic"
 // e.g. routing table
 
 type readOp struct {
-	key string
+	key int
 	resp chan int
 }
 
 type writeOp struct {
-	key string
+	key int
 	val int
 	resp chan bool
 }
 
-func randKey() string {
-	return []string{"a", "b", "c"}[rand.Intn(3)]
+func randKey() int {
+	return rand.Intn(10)
 }
 
 func randVal() int {
@@ -32,7 +32,7 @@ func randVal() int {
 }
 
 func manageState(reads chan *readOp, writes chan *writeOp) {
-	data := make(map[string]int)
+	data := make(map[int]int)
 	for {
 		select {
 		case read := <- reads:
@@ -75,10 +75,11 @@ func main() {
 	writes := make(chan *writeOp)
 
 	go manageState(reads, writes)
+
 	for r := 0; r < 100; r++ {
 		go generateReads(reads)
 	}
-	for w := 0; w < 5; w++ {
+	for w := 0; w < 10; w++ {
 		go generateWrites(writes)
 	}
 
