@@ -44,6 +44,8 @@ td.docs {
   text-align: left;
 }
 td.code {
+  max-width: 450px;
+  min-width: 450px;
   padding: 10px 10px 10px 10px;
   vertical-align: top;
   background: #f0f0f0;
