@@ -1,4 +1,4 @@
-// Random Numbers
+// ## Random Numbers
 
 package main
 
