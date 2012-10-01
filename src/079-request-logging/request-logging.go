@@ -22,7 +22,7 @@ func wrapLogging(f http.HandlerFunc) http.HandlerFunc {
         path := req.URL.Path
         elapsed := float64(time.Since(start)) / 1000000.0
         logs <- fmt.Sprintf("method=%s path=%s elapsed=%f",
-                            method, path, elapsed)
+            method, path, elapsed)
     }
 }
 

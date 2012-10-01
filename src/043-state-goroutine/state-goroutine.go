@@ -63,9 +63,10 @@ func generateWrites(writes chan *writeOp) {
     for {
         key := randKey()
         val := randVal()
-        write := &writeOp{key: key,
-                          val: val,
-                          resp: make(chan bool)}
+        write := &writeOp{
+            key: key,
+            val:  val,
+            resp: make(chan bool)}
         writes <- write
         <-write.resp
         atomic.AddInt64(&opCount, 1)

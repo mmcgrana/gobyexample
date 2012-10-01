@@ -9,9 +9,8 @@ import "fmt"
 func f(n int) {
     for i := 0; i < 10; i++ {
         fmt.Println(n, ":", i)
-        breakTime := time.Duration(rand.Intn(150)))
+        breakTime := time.Duration(rand.Intn(150))
         time.Sleep(time.Millisecond * breakTime)
-            
     }
 }
 

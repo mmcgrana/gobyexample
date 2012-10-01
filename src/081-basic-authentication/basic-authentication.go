@@ -30,7 +30,7 @@ func testAuth(r *http.Request, auth Auth) bool {
 
 func requireAuth(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("WWW-Authenticate",
-                   "Basic realm=\"private\"")
+        "Basic realm=\"private\"")
     w.WriteHeader(401)
     w.Write([]byte("401 Unauthorized\n"))
 }
