@@ -30,6 +30,12 @@ func pipe(bin string, arg []string, src string) string {
     return string(bytes)
 }
 
+func readLines(path string) []string {
+	srcBytes, err := ioutil.ReadFile(path)
+    check(err)
+	return strings.Split(string(srcBytes), "\n")
+}
+
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 
 var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
@@ -50,9 +56,7 @@ func main() {
     pygmentizePath, err := exec.LookPath("pygmentize")
     check(err)
 
-    srcBytes, err := ioutil.ReadFile(sourcePath)
-    check(err)
-    lines := strings.Split(string(srcBytes), "\n")
+    lines := readLines(sourcePath)
 
     segs := []*seg{}
     segs = append(segs, &seg{code: "", docs: ""})
