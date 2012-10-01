@@ -1,6 +1,6 @@
 // ## Line Filters
 
-// A line filter program reads input on stdin,
+// A _line filter_ program reads input on stdin,
 // processes it, and prints results to stdout.
 // Here's an example line filter that writes
 // a capitalized version of all text it reads.
@@ -38,7 +38,7 @@ func main() {
 
         // Write out the upercased bytes, checking for an error
         // here as well.
-        outBytes := bytes.ToUpper(inBytes)
+        outBytes := bytes.ToUpper(inBytes)xxxxxxxxxxxxxxxxxxxxx
         _, err = out.Write(outBytes)
         if err != nil {
             panic(err)
