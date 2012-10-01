@@ -154,4 +154,5 @@ func main() {
     }
 
     fmt.Print(`</tbody></table></div></body></html>`)
+    fmt.Fprint(os.Stderr, "\n")
 }
