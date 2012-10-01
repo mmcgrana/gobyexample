@@ -83,6 +83,8 @@ func main() {
                         <tbody>`)
 
     for _, sourcePath := range os.Args[1:] {
+	    fmt.Fprint(os.Stderr, ".")
+
         lexer := whichLexer(sourcePath)
         lines := readLines(sourcePath)
 
