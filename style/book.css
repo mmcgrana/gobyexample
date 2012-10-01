@@ -35,8 +35,8 @@ table td {
   outline: 0;
 }
 td.docs {
-  max-width: 400px;
-  min-width: 400px;
+  max-width: 375px;
+  min-width: 375px;
   min-height: 5px;
   padding: 10px 15px 1px 30px;
   overflow-x: hidden;
@@ -44,6 +44,8 @@ td.docs {
   text-align: left;
 }
 td.code {
+  max-width: 375px;
+  min-width: 375px;
   padding: 14px 30px 16px 15px;
   vertical-align: top;
   background: #f0f0f0;

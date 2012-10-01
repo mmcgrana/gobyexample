@@ -35,7 +35,7 @@ var docsPat = regexp.MustCompile("^\\s*\\/\\/\\s")
 var headerPat = regexp.MustCompile("^\\s*\\/\\/\\s#+\\s")
 
 type seg struct {
-    docs, code, docsRendered, codeRendered string
+    docs, code, docsRendered, codeRendered, codeClasses string
 }
 
 func main() {
@@ -98,8 +98,14 @@ func main() {
     }
 
     for _, seg := range segs {
-        seg.docsRendered = pipe(markdownPath, []string{}, seg.docs)
-        seg.codeRendered = pipe(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
+	    seg.docsRendered = pipe(markdownPath, []string{}, seg.docs)
+		if seg.code == "" {
+			seg.codeRendered = ""
+			seg.codeClasses = "code empty"
+		} else {
+			seg.codeRendered = pipe(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
+			seg.codeClasses = "code"
+		}
     }
 
     fmt.Printf(`<!DOCTYPE html>
@@ -119,8 +125,8 @@ func main() {
         fmt.Printf(
             `<tr>
              <td class=docs>%s</td>
-             <td class=code>%s</td>
-             </tr>`, seg.docsRendered, seg.codeRendered)
+             <td class="%s">%s</td>
+             </tr>`, seg.docsRendered, seg.codeClasses, seg.codeRendered)
     }
 
     fmt.Print(`</tbody></table></div></body></html>`)
