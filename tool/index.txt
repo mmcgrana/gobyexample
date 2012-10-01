@@ -67,7 +67,7 @@ random-numbers
 number-parsing
 urls
 sha1-hashes
-base64-encoding ~
+base64-encoding
 
 ## systems libraries
 reading-files
