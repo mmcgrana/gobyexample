@@ -38,7 +38,7 @@ func main() {
 
         // Write out the upercased bytes, checking for an error
         // here as well.
-        outBytes := bytes.ToUpper(inBytes)xxxxxxxxxxxxxxxxxxxxx
+        outBytes := bytes.ToUpper(inBytes)
         _, err = out.Write(outBytes)
         if err != nil {
             panic(err)
