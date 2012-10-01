@@ -134,7 +134,7 @@ func main() {
                 seg.docsRendered = render(markdownPath, []string{}, seg.docs)
             }
             if seg.code != "" {
-                seg.codeRendered = render(pygmentizePath, []string{"-l", lexer, "-f", "html"}, seg.code+"  ")
+                seg.codeRendered = render(pygmentizePath, []string{"-l", lexer, "-f", "html"}, seg.code)
             }
         }
 
