@@ -48,6 +48,11 @@ td.code {
   width: 100%;
   vertical-align: top;
   border-left: 1px solid #e5e5ee;
+  background: #f0f0f0;
+}
+td.code.empty {
+  border-left: none;
+  background: #ffffff;
 }
 pre, code {
   font-size: 11px; line-height: 16px;

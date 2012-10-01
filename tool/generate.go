@@ -113,12 +113,6 @@ func main() {
     <div id="container">
       <div id="background"></div>
       <table cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <td class=docs></td>
-            <td class=code></td>
-          </tr>
-        </thead>
         <tbody>`, title)
 
     for _, seg := range segs {
