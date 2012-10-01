@@ -30,7 +30,6 @@ embedding
 interfaces
 errors
 ok-guards
-comments ~
 
 ## concurrency
 goroutines
