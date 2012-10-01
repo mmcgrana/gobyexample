@@ -30,9 +30,9 @@ func pipe(bin string, arg []string, src string) string {
     return string(bytes)
 }
 
-var docsPat = regexp.MustCompile("^\\s*\\/\\/\\s")
+var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 
-var headerPat = regexp.MustCompile("^\\s*\\/\\/\\s#+\\s")
+var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
 
 type seg struct {
     docs, code, docsRendered, codeRendered, codeClasses string
