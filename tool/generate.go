@@ -37,11 +37,10 @@ func readLines(path string) []string {
 }
 
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
-
 var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
 
 type seg struct {
-    docs, code, docsRendered, codeRendered, codeClasses string
+    docs, code, docsRendered, codeRendered string
 }
 
 func main() {
@@ -101,13 +100,11 @@ func main() {
     }
 
     for _, seg := range segs {
-	    seg.docsRendered = pipe(markdownPath, []string{}, seg.docs)
-		if seg.code == "" {
-			seg.codeRendered = ""
-			seg.codeClasses = "code empty"
-		} else {
+	    if seg.docs != "" {
+			seg.docsRendered = pipe(markdownPath, []string{}, seg.docs)
+	    }
+		if seg.code != "" {
 			seg.codeRendered = pipe(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
-			seg.codeClasses = "code"
 		}
     }
 
@@ -125,11 +122,15 @@ func main() {
                         <tbody>`)
 
     for _, seg := range segs {
+	    codeClasses := "code"
+	    if seg.code == "" {
+		   codeClasses = codeClasses + " empty"
+		}
         fmt.Printf(
             `<tr>
              <td class=docs>%s</td>
              <td class="%s">%s</td>
-             </tr>`, seg.docsRendered, seg.codeClasses, seg.codeRendered)
+             </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
     }
 
     fmt.Print(`</tbody></table></div></body></html>`)
