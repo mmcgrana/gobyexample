@@ -1,5 +1,4 @@
-// (Re-)number the .go content files according to the
-// order in index.txt.
+// (Re-)number the book source directories according to the index.
 
 package main
 
