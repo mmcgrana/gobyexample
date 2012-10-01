@@ -102,31 +102,26 @@ func main() {
         seg.codeRendered = pipe(pygmentizePath, []string{"-l", "go", "-f", "html"}, seg.code+"  ")
     }
 
-    fmt.Printf(`
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-    <title>%s</title>
-    <link rel=stylesheet href="../style/book.css">
-  </head>
-  <body>
-    <div id="container">
-      <div id="background"></div>
-      <table cellspacing="0" cellpadding="0">
-        <tbody>`, title)
+    fmt.Printf(`<!DOCTYPE html>
+                <html>
+                  <head>
+                    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+                    <title>%s</title>
+                    <link rel=stylesheet href="../style/book.css">
+                  </head>
+                  <body>
+                    <div id="container">
+                      <div id="background"></div>
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>`, title)
 
     for _, seg := range segs {
         fmt.Printf(
             `<tr>
              <td class=docs>%s</td>
              <td class=code>%s</td>
-           </tr>`, seg.docsRendered, seg.codeRendered)
+             </tr>`, seg.docsRendered, seg.codeRendered)
     }
 
-    fmt.Print(`</tbody>
-           </table>
-         </div>
-       </body>
-     </html>`)
+    fmt.Print(`</tbody></table></div></body></html>`)
 }
