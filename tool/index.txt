@@ -48,6 +48,7 @@ nonblocking-channel-operations ~
 closing-channels ~
 timers
 tickers
+state-goroutine
 
 ## core libraries
 sorting
