@@ -69,7 +69,7 @@ func main() {
         oldName := sourceMap[indexName]
         newName := fmt.Sprintf("%03d-%s", index+1, indexName)
         if oldName != newName {
-            os.Rename(oldName, newName)
+            os.Rename("src/"+oldName, "src/"+newName)
         }
     }
 }
