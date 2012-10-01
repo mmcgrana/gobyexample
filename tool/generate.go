@@ -65,7 +65,7 @@ func main() {
         lastSeg := segs[len(segs)-1]
         lastHeader := lastSeen == "header"
         lastDocs := lastSeen == "docs"
-        newHeader := (lastSeen != "header")
+        newHeader := (lastSeen != "header") && lastSeg.docs != ""
         newDocs := (lastSeen != "docs") && lastSeg.docs != ""
         newCode := (lastSeen != "code") && lastSeg.code != ""
         if headerMatch || (emptyMatch && lastHeader) {
@@ -76,6 +76,7 @@ func main() {
             } else {
                 lastSeg.docs = lastSeg.docs + "\n" + trimmed
             }
+			lastSeen = "header"
         } else if docsMatch || (emptyMatch && lastDocs) {
             trimmed := docsPat.ReplaceAllString(line, "")
             if newDocs {
