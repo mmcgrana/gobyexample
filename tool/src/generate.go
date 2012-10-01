@@ -68,6 +68,7 @@ func debug(msg string) {
 
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
+var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 
 type seg struct {
     docs, code, docsRendered, codeRendered string
@@ -104,6 +105,9 @@ func main() {
         segs = append(segs, &seg{code: "", docs: ""})
         lastSeen := ""
         for _, line := range lines {
+            if todoPat.MatchString(line) {
+                continue
+            }
             headerMatch := headerPat.MatchString(line)
             docsMatch := docsPat.MatchString(line)
             emptyMatch := line == ""
