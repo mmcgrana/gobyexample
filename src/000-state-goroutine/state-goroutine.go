@@ -1,0 +1,89 @@
+// ## State Goroutine
+
+package main
+
+import "fmt"
+import "time"
+import "math/rand"
+import "sync/atomic"
+
+// 1 statefull go routine
+// writers issue writes
+// readers issue reads
+// e.g. routing table
+
+type readOp struct {
+	key string
+	resp chan int
+}
+
+type writeOp struct {
+	key string
+	val int
+	resp chan bool
+}
+
+func randKey() string {
+	return []string{"a", "b", "c"}[rand.Intn(3)]
+}
+
+func randVal() int {
+	return rand.Intn(100)
+}
+
+func manageState(reads chan *readOp, writes chan *writeOp) {
+	data := make(map[string]int)
+	for {
+		select {
+		case read := <- reads:
+			read.resp <- data[read.key]
+		case write := <- writes:
+			data[write.key] = write.val
+			write.resp <- true
+		}
+	}
+}
+
+// Keep track of how many ops we do.
+var opCount int64 = 0
+
+// Generate random reads.
+func generateReads(reads chan *readOp) {
+	for {
+		key := randKey()
+		read := &readOp{key: key, resp: make(chan int)}
+		reads <- read
+		<- read.resp
+		atomic.AddInt64(&opCount, 1)
+	}
+}
+
+// Generate random writes.
+func generateWrites(writes chan *writeOp) {
+	for {
+		key := randKey()
+		val := randVal()
+		write := &writeOp{key: key, val: val, resp: make(chan bool)}
+		writes <- write
+		<- write.resp
+		atomic.AddInt64(&opCount, 1)
+	}
+}
+
+func main() {
+	reads := make(chan *readOp)
+	writes := make(chan *writeOp)
+
+	go manageState(reads, writes)
+	for r := 0; r < 100; r++ {
+		go generateReads(reads)
+	}
+	for w := 0; w < 5; w++ {
+		go generateWrites(writes)
+	}
+
+	time.Sleep(10 * time.Second)
+
+	finalOpCount := atomic.LoadInt64(&opCount)
+	fmt.Println(finalOpCount)
+}
