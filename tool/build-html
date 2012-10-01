@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls src/0*/*.{go,sh} | xargs tool/generate > build/go-by-example.html

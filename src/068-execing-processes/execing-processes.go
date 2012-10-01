@@ -11,7 +11,9 @@ func main() {
     if lookErr != nil {
         panic(lookErr)
     }
-    execErr := syscall.Exec(binary, []string{"-a", "-l", "-h"}, os.Environ())
+    args := []string{"-a", "-l", "-h"}
+    env := os.Environ()
+    execErr := syscall.Exec(binary, args, env)
     if execErr != nil {
         panic(execErr)
     }

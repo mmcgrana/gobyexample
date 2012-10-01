@@ -35,26 +35,26 @@ func main() {
     fmt.Println(mgetRep)
 
     // multi calls
-    mcallRep := client.MultiCall(func(mc *redis.MultiCall) {
+    mcRep := client.MultiCall(func(mc *redis.MultiCall) {
         mc.Set("k1", "v1")
         mc.Get("k1")
     })
-    if mcallRep.Err != nil {
-        panic(mcallRep.Err)
+    if mcrep.Err != nil {
+        panic(mcRep.Err)
     }
-    mcallVal, _ := mcallRep.Elems[1].Str()
-    fmt.Println(mcallVal)
+    mcVal, _ := mcRep.Elems[1].Str()
+    fmt.Println(mcVal)
 
     // transactional calls
-    tranRep := client.Transaction(func(mc *redis.MultiCall) {
+    tRep := client.Transaction(func(mc *redis.MultiCall) {
         mc.Set("k2", "v2")
         mc.Get("k2")
     })
-    if tranRep.Err != nil {
-        panic(tranRep.Err)
+    if tRep.Err != nil {
+        panic(tRep.Err)
     }
-    tranStr, _ := tranRep.Elems[1].Str()
-    fmt.Println(tranStr)
+    tStr, _ := tRep.Elems[1].Str()
+    fmt.Println(tStr)
 
     // pubsub
     msgHdlr := func(msg *redis.Message) {

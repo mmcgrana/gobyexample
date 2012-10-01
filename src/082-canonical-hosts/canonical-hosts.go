@@ -11,7 +11,7 @@ func hello(res http.ResponseWriter, req *http.Request) {
     fmt.Fprintln(res, "Hello canonical world")
 }
 
-func wrapCanonicalHost(f http.HandlerFunc, canonicalHost string) http.HandlerFunc {
+func wrapCanonicalHost(f http.HandlerFunc, host string) http.HandlerFunc {
     return func(res http.ResponseWriter, req *http.Request) {
         hostPort := strings.Split(req.Host, ":")
         host := hostPort[0]

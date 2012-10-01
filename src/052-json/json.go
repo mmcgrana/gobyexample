@@ -1,4 +1,4 @@
-// JSON
+// ## JSON
 
 package main
 
@@ -7,23 +7,25 @@ import "fmt"
 
 func main() {
     // data to bytes/string
-    bol, _ := json.Marshal(true)
-    fmt.Println(string(bol))
+    bolB, _ := json.Marshal(true)
+    fmt.Println(string(bolB))
 
-    num, _ := json.Marshal(1)
-    fmt.Println(string(num))
+    numB, _ := json.Marshal(1)
+    fmt.Println(string(numB))
 
-    str, _ := json.Marshal("gopher")
-    fmt.Println(string(str))
+    strB, _ := json.Marshal("gopher")
+    fmt.Println(string(strB))
 
-    arr, _ := json.Marshal([]string{"apple", "peach", "pear"})
-    fmt.Println(string(arr))
+    arrD := []string{"apple", "peach", "pear"}
+    arrB, _ := json.Marshal(arrD)
+    fmt.Println(string(arrB))
 
-    hsh, _ := json.Marshal(map[string]int{"apple": 5, "lettuce": 7})
-    fmt.Println(string(hsh))
+    hshD := map[string]int{"apple": 5, "lettuce": 7}
+    hshB, _ := json.Marshal(hshD)
+    fmt.Println(string(hshB))
 
     // string to data
-    byt := []byte(`{"Name":"Wednesday","Age":6,"Parents":["Gomez","Morticia"]}`)
+    byt := []byte(`{"num":6.0,"strs":["a","b"]}`)
     var dat map[string]interface{}
     err := json.Unmarshal(byt, &dat)
     if err != nil {
@@ -31,9 +33,9 @@ func main() {
     }
     fmt.Println(dat)
 
-    name := dat["Name"].(string)
-    fmt.Println(name)
+    num := dat["num"].(float64)
+    fmt.Println(num)
 
-    parents := dat["Parents"].([]interface{})
-    fmt.Println(parents)
+    strs := dat["strs"].([]interface{})
+    fmt.Println(strs)
 }

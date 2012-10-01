@@ -14,8 +14,8 @@ func main() {
         n := i
         wait.Add(1)
         go func() {
-            opTime := rand.Intn(2000)
-            time.Sleep(time.Duration(opTime) * time.Millisecond)
+            opTime := time.Duration(rand.Intn(2000))
+            time.Sleep(opTime * time.Millisecond)
             fmt.Println(n)
             times[n] = opTime
             wait.Done()

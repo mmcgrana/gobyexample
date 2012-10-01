@@ -9,10 +9,11 @@ import (
     "strings"
 )
 
-type Authenticator func(string, string) bool
+type Auth func(string, string) bool
 
-func testAuth(r *http.Request, auth Authenticator) bool {
-    s := strings.SplitN(r.Header.Get("Authorization"), " ", 2)
+func testAuth(r *http.Request, auth Auth) bool {
+    header := r.Header.Get("Authorization")
+    s := strings.SplitN(header, " ", 2)
     if len(s) != 2 || s[0] != "Basic" {
         return false
     }
@@ -28,12 +29,13 @@ func testAuth(r *http.Request, auth Authenticator) bool {
 }
 
 func requireAuth(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set("WWW-Authenticate", `Basic realm="private"`)
+    w.Header().Set("WWW-Authenticate",
+                   "Basic realm=\"private\"")
     w.WriteHeader(401)
     w.Write([]byte("401 Unauthorized\n"))
 }
 
-func wrapAuth(h http.HandlerFunc, a Authenticator) http.HandlerFunc {
+func wrapAuth(h http.HandlerFunc, a Auth) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         if testAuth(r, a) {
             h(w, r)

@@ -31,13 +31,13 @@ func randVal() int {
     return rand.Intn(100)
 }
 
-func manageState(reads chan *readOp, writes chan *writeOp) {
+func manageState(rs chan *readOp, ws chan *writeOp) {
     data := make(map[int]int)
     for {
         select {
-        case read := <-reads:
+        case read := <-rs:
             read.resp <- data[read.key]
-        case write := <-writes:
+        case write := <-ws:
             data[write.key] = write.val
             write.resp <- true
         }
@@ -63,7 +63,9 @@ func generateWrites(writes chan *writeOp) {
     for {
         key := randKey()
         val := randVal()
-        write := &writeOp{key: key, val: val, resp: make(chan bool)}
+        write := &writeOp{key: key,
+                          val: val,
+                          resp: make(chan bool)}
         writes <- write
         <-write.resp
         atomic.AddInt64(&opCount, 1)
