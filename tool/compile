@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+go build -o tool/generate tool/src/generate.go 
+go build -o tool/number tool/src/number.go

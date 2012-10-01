@@ -54,6 +54,18 @@ func whichLexer(path string) string {
     return ""
 }
 
+func progress(msg string) {
+    if os.Getenv("DEBUG") != "1" {
+        fmt.Fprint(os.Stderr, msg)
+    }
+}
+
+func debug(msg string) {
+    if os.Getenv("DEBUG") == "1" {
+        fmt.Fprintln(os.Stderr, msg)
+    }
+}
+
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
 
@@ -83,7 +95,7 @@ func main() {
                         <tbody>`)
 
     for _, sourcePath := range os.Args[1:] {
-	    fmt.Fprint(os.Stderr, ".")
+        progress(".")
 
         lexer := whichLexer(sourcePath)
         lines := readLines(sourcePath)
@@ -98,9 +110,12 @@ func main() {
             lastSeg := segs[len(segs)-1]
             lastHeader := lastSeen == "header"
             lastDocs := lastSeen == "docs"
-            newHeader := (lastSeen != "header") && lastSeg.docs != ""
-            newDocs := (lastSeen != "docs") && lastSeg.docs != ""
-            newCode := (lastSeen != "code") && lastSeg.code != ""
+            newHeader := lastSeen != "header" && lastSeg.docs != ""
+            newDocs := lastSeen == "code" || lastSeen == "header"
+            newCode := (lastSeen != "code" && lastSeg.code != "") || lastSeen == "header"
+            if newHeader || newDocs || newCode {
+                debug("NEWSEG")
+            }
             if headerMatch || (emptyMatch && lastHeader) {
                 trimmed := docsPat.ReplaceAllString(line, "")
                 if newHeader {
@@ -109,15 +124,18 @@ func main() {
                 } else {
                     lastSeg.docs = lastSeg.docs + "\n" + trimmed
                 }
+                debug("HEAD")
                 lastSeen = "header"
             } else if docsMatch || (emptyMatch && lastDocs) {
                 trimmed := docsPat.ReplaceAllString(line, "")
                 if newDocs {
+                    debug("NEWSEG")
                     newSeg := seg{docs: trimmed, code: ""}
                     segs = append(segs, &newSeg)
                 } else {
                     lastSeg.docs = lastSeg.docs + "\n" + trimmed
                 }
+                debug("DOCS")
                 lastSeen = "docs"
             } else {
                 if newCode {
@@ -126,6 +144,7 @@ func main() {
                 } else {
                     lastSeg.code = lastSeg.code + "\n" + line
                 }
+                debug("CODE")
                 lastSeen = "code"
             }
         }
@@ -146,7 +165,7 @@ func main() {
                 codeClasses = codeClasses + " empty"
             }
             fmt.Printf(
-				`<tr>
+                `<tr>
 				 <td class=docs>%s</td>
 				 <td class="%s">%s</td>
 				 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
@@ -154,5 +173,4 @@ func main() {
     }
 
     fmt.Print(`</tbody></table></div></body></html>`)
-    fmt.Fprint(os.Stderr, "\n")
 }

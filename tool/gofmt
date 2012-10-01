@@ -3,4 +3,4 @@
 set -e
 set -o pipefail
 
-ls tool/*.go src/*/*.go | xargs -n 1 gofmt -tabs=false -tabwidth=4 -w=true
+ls tool/src/*.go src/*/*.go | xargs -n 1 gofmt -tabs=false -tabwidth=4 -w=true
