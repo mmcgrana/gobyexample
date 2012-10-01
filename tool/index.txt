@@ -44,7 +44,7 @@ scatter-gather
 rate-limiting
 worker-pools
 nonblocking-channel-operations ~
-closing-channels ~
+closing-channels
 timers
 tickers
 state-goroutine
