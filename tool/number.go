@@ -28,10 +28,10 @@ func main() {
     }
     baseTrimmer, _ := regexp.Compile("^[0-9x]+-")
     for _, fi := range fileInfos {
-		if fi.Name() != "index.txt" {
-        	baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
-        	sourceNames = append(sourceNames, baseName)
-        	sourceMap[baseName] = fi.Name()
+        if fi.Name() != "index.txt" {
+            baseName := baseTrimmer.ReplaceAllString(fi.Name(), "")
+            sourceNames = append(sourceNames, baseName)
+            sourceMap[baseName] = fi.Name()
         }
     }
 
