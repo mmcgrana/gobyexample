@@ -1,4 +1,4 @@
-// ## State Goroutine (Comparison)
+// ## State Mutex
 
 package main
 
@@ -59,8 +59,8 @@ func main() {
 		go generateWrites()
 	}
 
-	time.Sleep(10 * time.Second)
-
+	atomic.StoreInt64(&opCount, 0)
+	time.Sleep(time.Second)
 	finalOpCount := atomic.LoadInt64(&opCount)
 	fmt.Println(finalOpCount)
 }

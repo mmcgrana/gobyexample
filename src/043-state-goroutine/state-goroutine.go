@@ -83,10 +83,8 @@ func main() {
 		go generateWrites(writes)
 	}
 
-	time.Sleep(10 * time.Second)
-
+	atomic.StoreInt64(&opCount, 0)
+	time.Sleep(time.Second)
 	finalOpCount := atomic.LoadInt64(&opCount)
 	fmt.Println(finalOpCount)
 }
-
-// todo: complement chapter with mutex

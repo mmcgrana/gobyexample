@@ -48,6 +48,7 @@ closing-channels
 timers
 tickers
 state-goroutine
+state-mutex
 
 ## core libraries
 sorting
