@@ -39,12 +39,11 @@ type seg struct {
 }
 
 func main() {
-    if len(os.Args) != 3 {
-        fmt.Fprintln(os.Stderr, "usage: tool/generate input.go title > output.html")
+    if len(os.Args) != 2 {
+        fmt.Fprintln(os.Stderr, "usage: tool/generate input.go > output.html")
         os.Exit(1)
     }
     sourcePath := os.Args[1]
-    title := os.Args[2]
 
     markdownPath, err := exec.LookPath("markdown")
     check(err)
@@ -108,18 +107,18 @@ func main() {
 		}
     }
 
-    fmt.Printf(`<!DOCTYPE html>
+    fmt.Print(`<!DOCTYPE html>
                 <html>
                   <head>
                     <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-                    <title>%s</title>
+                    <title>Go by Example</title>
                     <link rel=stylesheet href="../style/book.css">
                   </head>
                   <body>
                     <div id="container">
                       <div id="background"></div>
                       <table cellspacing="0" cellpadding="0">
-                        <tbody>`, title)
+                        <tbody>`)
 
     for _, seg := range segs {
         fmt.Printf(
