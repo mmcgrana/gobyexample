@@ -26,9 +26,9 @@ func main() {
     for {
         inBytes, pfx, err := in.ReadLine()
 
-        // The `EOF` error is expected when we reach the end
-        // of the input, so exit gracefully in that case.
-        // Otherwise there is a problem.
+        // The `EOF` error is expected when we reach the
+        // end of the input, so exit gracefully in that
+        // case. Otherwise there is a problem.
         if err == io.EOF {
             return
         }
@@ -36,8 +36,8 @@ func main() {
             panic(err)
         }
 
-        // Write out the upercased bytes, checking for an error
-        // here as well.
+        // Write out the uppercased bytes, checking for an
+        // error here as well.
         outBytes := bytes.ToUpper(inBytes)
         _, err = out.Write(outBytes)
         if err != nil {
