@@ -88,3 +88,5 @@ func main() {
 	finalOpCount := atomic.LoadInt64(&opCount)
 	fmt.Println(finalOpCount)
 }
+
+// todo: complement chapter with mutex
