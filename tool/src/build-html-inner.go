@@ -7,20 +7,13 @@ import (
     "os/exec"
     "regexp"
     "strings"
+    "github.com/russross/blackfriday"
 )
 
 func check(err error) {
     if err != nil {
         panic(err)
     }
-}
-
-func whichRenderers() (string, string) {
-    markdownPath, err := exec.LookPath("markdown")
-    check(err)
-    pygmentizePath, err := exec.LookPath("pygmentize")
-    check(err)
-    return markdownPath, pygmentizePath
 }
 
 func render(bin string, arg []string, src string) string {
@@ -77,8 +70,6 @@ func main() {
         fmt.Fprintln(os.Stderr, "usage: tool/build-html-inner *.{go,sh} > output.html")
         os.Exit(1)
     }
-
-    markdownPath, pygmentizePath := whichRenderers()
 
     fmt.Print(`<!DOCTYPE html>
                 <html>
@@ -154,10 +145,10 @@ func main() {
 
         for _, seg := range segs {
             if seg.docs != "" {
-                seg.docsRendered = render(markdownPath, []string{}, seg.docs)
+                seg.docsRendered = string(blackfriday.MarkdownCommon([]byte(seg.docs)))
             }
             if seg.code != "" {
-                seg.codeRendered = render(pygmentizePath, []string{"-l", lexer, "-f", "html"}, seg.code)
+                seg.codeRendered = render("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
             }
         }
 
