@@ -74,7 +74,7 @@ type seg struct {
 
 func main() {
     if len(os.Args) <= 1 {
-        fmt.Fprintln(os.Stderr, "usage: tool/generate *.{go,sh} > output.html")
+        fmt.Fprintln(os.Stderr, "usage: tool/build-html-inner *.{go,sh} > output.html")
         os.Exit(1)
     }
 
