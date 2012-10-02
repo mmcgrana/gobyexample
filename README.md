@@ -1,25 +1,8 @@
 ## gbe-book
 
-Go by Example book source.
-
-
-### Number'ing
-
-```console
-$ mate tool/index.txt
-$ go run tool/number.go
-```
-
-
-### Gofmt'ing
-
-```console
-$ tool/gofmt
-```
-
-
-### Building
+Go by Example book source and build toolchain.
 
 ```console
 $ tool/build
+$ open build/go-by-example.pdf
 ```
