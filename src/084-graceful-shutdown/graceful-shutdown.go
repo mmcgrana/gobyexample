@@ -49,7 +49,8 @@ func main() {
     stop := make(chan bool, 1)
     sig := make(chan os.Signal, 1)
 
-    server := &http.Server{Handler: http.HandlerFunc(slow)}
+    handler := http.HandlerFunc(slow)
+    server := &http.Server{Handler: handler}
     fmt.Println("listen at=start")
     listener, listenErr := net.Listen("tcp", ":5000")
     if listenErr != nil {
@@ -69,7 +70,9 @@ func main() {
     }()
 
     go func() {
-        signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
+        signal.Notify(
+            sig, syscall.SIGINT,
+            syscall.SIGTERM)
         fmt.Println("trap at=start")
         <-sig
         stop <- true

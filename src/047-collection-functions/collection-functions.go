@@ -5,9 +5,9 @@ package main
 import "strings"
 import "fmt"
 
-func Index(elems []string, val string) int {
-    for i, v := range elems {
-        if v == val {
+func Index(strs []string, s string) int {
+    for i, str := range strs {
+        if s == str {
             return i
         }
     }
@@ -36,7 +36,7 @@ func All(elems []string, f func(string) bool) bool {
     return true
 }
 
-func Filter(elems []string, f func(string) bool) []string {
+func Filter(vs []string, f func(string) bool) []string {
     filtered := []string{}
     for _, v := range elems {
         if f(v) {
@@ -46,47 +46,47 @@ func Filter(elems []string, f func(string) bool) []string {
     return filtered
 }
 
-func Map(elems []string, f func(string) string) []string {
-    mapped := make([]string, len(elems))
-    for i, v := range elems {
+func Map(strs []string, f func(string) string) []string {
+    mapped := make([]string, len(strs))
+    for i, v := range strs {
         mapped[i] = f(v)
     }
     return mapped
 }
 
 func main() {
-    var elems = []string{"peach", "apple", "pear", "banana"}
+    var strs = []string{"peach", "apple", "pear", "plum"}
 
-    fmt.Println(Index(elems, "pear"))
-    fmt.Println(Index(elems, "grape"))
+    fmt.Println(Index(strs, "pear"))
+    fmt.Println(Index(strs, "grape"))
     fmt.Println()
 
-    fmt.Println(Include(elems, "pear"))
-    fmt.Println(Include(elems, "grape"))
+    fmt.Println(Include(strs, "pear"))
+    fmt.Println(Include(strs, "grape"))
     fmt.Println()
 
-    fmt.Println(Any(elems, func(v string) bool {
+    fmt.Println(Any(strs, func(v string) bool {
         return strings.HasPrefix(v, "p")
     }))
-    fmt.Println(Any(elems, func(v string) bool {
+    fmt.Println(Any(strs, func(v string) bool {
         return strings.HasPrefix(v, "g")
     }))
     fmt.Println()
 
-    fmt.Println(All(elems, func(v string) bool {
+    fmt.Println(All(strs, func(v string) bool {
         return strings.Contains(v, "a")
     }))
-    fmt.Println(All(elems, func(v string) bool {
+    fmt.Println(All(strs, func(v string) bool {
         return strings.Contains(v, "p")
     }))
     fmt.Println()
 
-    fmt.Println(Filter(elems, func(v string) bool {
+    fmt.Println(Filter(strs, func(v string) bool {
         return strings.Contains(v, "p")
     }))
     fmt.Println()
 
-    fmt.Println(Map(elems, func(s string) string {
+    fmt.Println(Map(strs, func(s string) string {
         return strings.ToUpper(s)
     }))
     fmt.Println()

@@ -10,6 +10,7 @@ import (
 )
 
 type Auth func(string, string) bool
+type handler http.HandlerFunc
 
 func testAuth(r *http.Request, auth Auth) bool {
     header := r.Header.Get("Authorization")
@@ -35,7 +36,7 @@ func requireAuth(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("401 Unauthorized\n"))
 }
 
-func wrapAuth(h http.HandlerFunc, a Auth) http.HandlerFunc {
+func wrapAuth(h handler, a Auth) handler {
     return func(w http.ResponseWriter, r *http.Request) {
         if testAuth(r, a) {
             h(w, r)

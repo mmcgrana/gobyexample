@@ -1,5 +1,5 @@
 /* PDF Formatting */
-@page { margin: 10pt 0pt 10pt 0pt }
+@page { margin: 10px 10px 10px 10px }
 
 /*--------------------- Layout and Typography ----------------------------*/
 body {
@@ -30,8 +30,9 @@ hr {
 #container {
   position: relative;
 }
-div.chapter {
+table {
     page-break-inside: avoid;
+    width: 775px;
 }
 table td {
   border: 0;
@@ -47,8 +48,8 @@ td.docs {
   text-align: left;
 }
 td.code {
-  max-width: 450px;
-  min-width: 450px;
+  max-width: 400px;
+  min-width: 400px;
   padding: 10px 10px 10px 10px;
   vertical-align: top;
   background: #f0f0f0;

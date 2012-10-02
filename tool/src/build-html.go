@@ -64,6 +64,12 @@ func readLines(path string) []string {
     return strings.Split(string(srcBytes), "\n")
 }
 
+func mustGlob(glob string) []string {
+    paths, err := filepath.Glob(glob)
+    check(err)
+    return paths
+}
+
 func whichLexer(path string) string {
     if strings.HasSuffix(path, ".go") {
         return "go"
@@ -88,102 +94,106 @@ type seg struct {
     docs, code, docsRendered, codeRendered string
 }
 
-func main() {
-    ensureCache()
-
-    sourcePaths, err := filepath.Glob("./src/0*/*")
-    check(err)
-
-    fmt.Print(`<!DOCTYPE html>
-                <html>
-                  <head>
-                    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-                    <title>Go by Example</title>
-                    <link rel=stylesheet href="../style/book.css">
-                  </head>
-                  <body>
-                    <div id="container">
-                      <table cellspacing="0" cellpadding="0">
-                        <tbody>`)
-
-    for _, sourcePath := range sourcePaths {
-        lexer := whichLexer(sourcePath)
-        lines := readLines(sourcePath)
-
-        segs := []*seg{}
-        segs = append(segs, &seg{code: "", docs: ""})
-        lastSeen := ""
-        for _, line := range lines {
-            if todoPat.MatchString(line) {
-                continue
-            }
-            headerMatch := headerPat.MatchString(line)
-            docsMatch := docsPat.MatchString(line)
-            emptyMatch := line == ""
-            lastSeg := segs[len(segs)-1]
-            lastHeader := lastSeen == "header"
-            lastDocs := lastSeen == "docs"
-            newHeader := lastSeen != "header" && lastSeg.docs != ""
-            newDocs := lastSeen == "code" || lastSeen == "header"
-            newCode := (lastSeen != "code" && lastSeg.code != "") || lastSeen == "header"
-            if newHeader || newDocs || newCode {
-                debug("NEWSEG")
-            }
-            if headerMatch || (emptyMatch && lastHeader) {
-                trimmed := docsPat.ReplaceAllString(line, "")
-                if newHeader {
-                    newSeg := seg{docs: trimmed, code: ""}
-                    segs = append(segs, &newSeg)
-                } else {
-                    lastSeg.docs = lastSeg.docs + "\n" + trimmed
-                }
-                debug("HEAD")
-                lastSeen = "header"
-            } else if docsMatch || (emptyMatch && lastDocs) {
-                trimmed := docsPat.ReplaceAllString(line, "")
-                if newDocs {
-                    debug("NEWSEG")
-                    newSeg := seg{docs: trimmed, code: ""}
-                    segs = append(segs, &newSeg)
-                } else {
-                    lastSeg.docs = lastSeg.docs + "\n" + trimmed
-                }
-                debug("DOCS")
-                lastSeen = "docs"
+func parseSegs(sourcePath string) []*seg {
+    lines := readLines(sourcePath)
+    segs := []*seg{}
+    segs = append(segs, &seg{code: "", docs: ""})
+    lastSeen := ""
+    for _, line := range lines {
+        if todoPat.MatchString(line) {
+            continue
+        }
+        headerMatch := headerPat.MatchString(line)
+        docsMatch := docsPat.MatchString(line)
+        emptyMatch := line == ""
+        lastSeg := segs[len(segs)-1]
+        lastHeader := lastSeen == "header"
+        lastDocs := lastSeen == "docs"
+        newHeader := lastSeen != "header" && lastSeg.docs != ""
+        newDocs := lastSeen == "code" || lastSeen == "header"
+        newCode := (lastSeen != "code" && lastSeg.code != "") || lastSeen == "header"
+        if newHeader || newDocs || newCode {
+            debug("NEWSEG")
+        }
+        if headerMatch || (emptyMatch && lastHeader) {
+            trimmed := docsPat.ReplaceAllString(line, "")
+            if newHeader {
+                newSeg := seg{docs: trimmed, code: ""}
+                segs = append(segs, &newSeg)
             } else {
-                if newCode {
-                    newSeg := seg{docs: "", code: line}
-                    segs = append(segs, &newSeg)
-                } else {
-                    lastSeg.code = lastSeg.code + "\n" + line
-                }
-                debug("CODE")
-                lastSeen = "code"
+                lastSeg.docs = lastSeg.docs + "\n" + trimmed
             }
-        }
-        segs = append(segs, &seg{code: "", docs: ""})
-
-        for _, seg := range segs {
-            if seg.docs != "" {
-                seg.docsRendered = string(blackfriday.MarkdownCommon([]byte(seg.docs)))
+            debug("HEAD")
+            lastSeen = "header"
+        } else if docsMatch || (emptyMatch && lastDocs) {
+            trimmed := docsPat.ReplaceAllString(line, "")
+            if newDocs {
+                debug("NEWSEG")
+                newSeg := seg{docs: trimmed, code: ""}
+                segs = append(segs, &newSeg)
+            } else {
+                lastSeg.docs = lastSeg.docs + "\n" + trimmed
             }
-            if seg.code != "" {
-                seg.codeRendered = cachedRender("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
+            debug("DOCS")
+            lastSeen = "docs"
+        } else {
+            if newCode {
+                newSeg := seg{docs: "", code: line}
+                segs = append(segs, &newSeg)
+            } else {
+                lastSeg.code = lastSeg.code + "\n" + line
             }
-        }
-
-        for _, seg := range segs {
-            codeClasses := "code"
-            if seg.code == "" {
-                codeClasses = codeClasses + " empty"
-            }
-            fmt.Printf(
-                `<tr>
-				 <td class=docs>%s</td>
-				 <td class="%s">%s</td>
-				 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
+            debug("CODE")
+            lastSeen = "code"
         }
     }
+    return append(segs, &seg{code: "", docs: ""})
+}
 
-    fmt.Print(`</tbody></table></div></body></html>`)
+func parseAndRenderSegs(sourcePath string) []*seg {
+    segs := parseSegs(sourcePath)
+    lexer := whichLexer(sourcePath)
+    for _, seg := range segs {
+        if seg.docs != "" {
+            seg.docsRendered = string(blackfriday.MarkdownCommon([]byte(seg.docs)))
+        }
+        if seg.code != "" {
+            seg.codeRendered = cachedRender("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
+        }
+    }
+    return segs
+}
+
+func main() {
+    ensureCache()
+    fmt.Print(`<!DOCTYPE html>
+               <html>
+                 <head>
+                   <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+                   <title>Go by Example</title>
+                   <link rel=stylesheet href="../style/book.css">
+                 </head>
+                 <body>
+                   <div id="container">`)
+    chapterPaths := mustGlob("./src/0*")
+    for _, chapterPath := range chapterPaths {
+        fmt.Print(`<table cellspacing="0" cellpadding="0"><tbody>`)
+        sourcePaths := mustGlob(chapterPath + "/*")
+        for _, sourcePath := range sourcePaths {
+            segs := parseAndRenderSegs(sourcePath)
+            for _, seg := range segs {
+                codeClasses := "code"
+                if seg.code == "" {
+                    codeClasses = codeClasses + " empty"
+                }
+                fmt.Printf(
+                    `<tr>
+		    		 <td class=docs>%s</td>
+		    		 <td class="%s">%s</td>
+		    		 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
+            }
+        }
+        fmt.Print(`</tbody></table>`)
+    }
+    fmt.Print(`</div></body></html>`)
 }

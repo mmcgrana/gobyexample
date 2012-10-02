@@ -15,21 +15,22 @@ func runLogging(logs chan string) {
 func wrapLogging(f http.HandlerFunc) http.HandlerFunc {
     logs := make(chan string, 10000)
     go runLogging(logs)
-    return func(rs http.ResponseWriter, rq *http.Request) {
+    return func(w http.ResponseWriter, r *http.Request) {
         start := time.Now()
-        f(rs, rq)
-        method := req.Method
-        path := req.URL.Path
+        f(w, r)
+        method := r.Method
+        path := r.URL.Path
         elapsed := float64(time.Since(start)) / 1000000.0
-        logs <- fmt.Sprintf("method=%s path=%s elapsed=%f",
+        logs <- fmt.Sprintf(
+            "method=%s path=%s elapsed=%f",
             method, path, elapsed)
     }
 }
 
-func hello(rs http.ResponseWriter, rq *http.Request) {
-    rs.Header().Set("Content-Type", "text/plain")
+func hello(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "text/plain")
     time.Sleep(time.Millisecond * 50)
-    fmt.Fprintln(rs, "Hello logged world")
+    fmt.Fprintln(w, "Hello logged world")
 }
 
 func main() {

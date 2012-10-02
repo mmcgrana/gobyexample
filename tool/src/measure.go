@@ -5,6 +5,7 @@ import (
     "io/ioutil"
     "os"
     "path/filepath"
+    "regexp"
     "strings"
 )
 
@@ -20,6 +21,8 @@ func readLines(path string) []string {
     return strings.Split(string(srcBytes), "\n")
 }
 
+var todoPat = regexp.MustCompile("\\/\\/ todo: ")
+
 func main() {
     sourcePaths, err := filepath.Glob("./src/0*/*")
     check(err)
@@ -28,7 +31,7 @@ func main() {
         foundLongLine := false
         lines := readLines(sourcePath)
         for _, line := range lines {
-            if len(line) > 60 && !foundLongLine {
+            if !foundLongLine && !todoPat.MatchString(line) && (len(line) > 58) {
                 fmt.Println(sourcePath)
                 foundLongLine = true
                 foundLongFile = true

@@ -20,7 +20,8 @@ func main() {
     d, _ := strconv.ParseInt("0x1b3e", 0, 64)
     println(d)
 
-    // `Atoi` is a convenienice function for `int` parsing.
+    // `Atoi` is a convenienice function for `int`
+    // parsing.
     k, _ := strconv.Atoi("456")
     println(k)
 

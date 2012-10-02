@@ -22,7 +22,8 @@ func main() {
     out := os.Stdout
 
     // If successful, each `ReadLine` returns bytes and a
-    // boolean indicating if don't have the whole line yet.
+    // boolean indicating if don't have the whole line
+    // yet.
     for {
         inBytes, pfx, err := in.ReadLine()
 

@@ -9,7 +9,7 @@ import "fmt"
 
 func main() {
     // `os.Args` includes the program name as the first
-    // value.                                              
+    // value.
     argsWithProg := os.Args
     argsWithoutProg := os.Args[1:]
 
