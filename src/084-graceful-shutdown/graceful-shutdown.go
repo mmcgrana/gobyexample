@@ -82,10 +82,12 @@ func main() {
     for {
         connCountCurrent := atomic.LoadInt64(&connCount)
         if connCountCurrent > 0 {
-            fmt.Println("wait at=pending remaining=", connCountCurrent)
+            fmt.Println("wait at=pending remaining=",
+                connCountCurrent)
             time.Sleep(time.Second)
         } else {
-            fmt.Println("wait at=finish remaining=", connCountCurrent)
+            fmt.Println("wait at=finish remaining=",
+                connCountCurrent)
             return
         }
     }

@@ -19,7 +19,7 @@ func main() {
     fmt.Println(rand.Float64())
 
     // To make the psuedo-random generator deterministic,
-    // give it a well-known seed.                                               
+    // give it a well-known seed.
     s1 := rand.NewSource(42)
     r1 := rand.New(s1)
 

@@ -27,4 +27,4 @@ func main() {
 // todo: missing subject, cc, bcc
 // todo: attachements
 // todo: plain/multi-type emails
-// todo: https://github.com/mtoader/google-go-lang-idea-plugin/issues/112
+// todo: mtoader/google-go-lang-idea-plugin/issues/112

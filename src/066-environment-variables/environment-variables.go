@@ -2,8 +2,8 @@
 
 package main
 
-// Use the `os` package to list, set, and get
-// environment variables.                                                           
+// Use the `os` package to list, set, and get environment
+// variables.
 import "os"
 import "strings"
 import "fmt"

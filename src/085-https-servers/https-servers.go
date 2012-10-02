@@ -11,7 +11,8 @@ func handler(res http.ResponseWriter, req *http.Request) {
 
 func main() {
     http.HandleFunc("/", handler)
-    err := http.ListenAndServeTLS(":5000", "/tmp/server.crt", "/tmp/server.key", nil)
+    err := http.ListenAndServeTLS(":5000",
+        "/tmp/server.crt", "/tmp/server.key", nil)
     if err != nil {
         panic(err)
     }

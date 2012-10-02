@@ -12,4 +12,4 @@ func main() {
     }
 }
 
-// todo: credit http://code.google.com/p/go-wiki/wiki/RateLimiting
+// todo: credit code.google.com/p/go-wiki/wiki/RateLimiting
