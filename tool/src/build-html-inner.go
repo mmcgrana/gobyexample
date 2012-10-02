@@ -1,6 +1,8 @@
 package main
 
 import (
+    "crypto/sha1"
+    "encoding/hex"
     "fmt"
     "github.com/russross/blackfriday"
     "io/ioutil"
@@ -16,7 +18,7 @@ func check(err error) {
     }
 }
 
-func render(bin string, arg []string, src string) string {
+func render(bin string, arg []string, src string) []byte {
     cmd := exec.Command(bin, arg...)
     in, _ := cmd.StdinPipe()
     out, _ := cmd.StdoutPipe()
@@ -26,7 +28,25 @@ func render(bin string, arg []string, src string) string {
     bytes, _ := ioutil.ReadAll(out)
     err := cmd.Wait()
     check(err)
-    return string(bytes)
+    return bytes
+}
+
+func sha1Sum(s string) string {
+    h := sha1.New()
+    h.Write([]byte(s))
+    b := h.Sum(nil)
+    return hex.EncodeToString(b)
+}
+func cachedRender(bin string, arg []string, src string) string {
+    cachePath := "/tmp/gbe-book-cache/pygmentize" + "-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
+    cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
+    if cacheErr == nil {
+        return string(cacheBytes)
+    }
+    renderBytes := render(bin, arg, src)
+    writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
+    check(writeErr)
+    return string(renderBytes)
 }
 
 func readLines(path string) []string {
@@ -148,7 +168,7 @@ func main() {
                 seg.docsRendered = string(blackfriday.MarkdownCommon([]byte(seg.docs)))
             }
             if seg.code != "" {
-                seg.codeRendered = render("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
+                seg.codeRendered = cachedRender("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
             }
         }
 

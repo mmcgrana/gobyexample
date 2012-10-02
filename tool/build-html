@@ -1,3 +1,4 @@
 #!/bin/bash
 
+mkdir -p /tmp/gbe-book-cache
 ls src/0*/*.{go,sh} | xargs tool/build-html-inner > build/go-by-example.html
