@@ -1,4 +1,5 @@
 build
-tool/generate
+tool/build-html-inner
 tool/number
+tool/measure-inner
 

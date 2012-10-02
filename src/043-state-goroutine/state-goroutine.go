@@ -64,7 +64,7 @@ func generateWrites(writes chan *writeOp) {
         key := randKey()
         val := randVal()
         write := &writeOp{
-            key: key,
+            key:  key,
             val:  val,
             resp: make(chan bool)}
         writes <- write

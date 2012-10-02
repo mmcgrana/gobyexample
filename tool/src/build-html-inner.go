@@ -1,5 +1,3 @@
-// Generate an HTML file from the book source. Derived from golit.
-
 package main
 
 import (
