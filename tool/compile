@@ -4,4 +4,4 @@ set -e
 
 go build -o tool/build-html-inner tool/src/build-html-inner.go 
 go build -o tool/number tool/src/number.go
-go build -o tool/measure-inner tool/src/measure-inner.go
+go build -o tool/measure tool/src/measure.go

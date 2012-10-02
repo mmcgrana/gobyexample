@@ -4,6 +4,7 @@ import (
     "fmt"
     "io/ioutil"
     "os"
+    "path/filepath"
     "strings"
 )
 
@@ -20,12 +21,10 @@ func readLines(path string) []string {
 }
 
 func main() {
-    if len(os.Args) <= 1 {
-        fmt.Fprintln(os.Stderr, "usage: tool/measure *.{go,sh}")
-        os.Exit(1)
-    }
+    sourcePaths, err := filepath.Glob("./src/0*/*")
+    check(err)
     foundLongFile := false
-    for _, sourcePath := range os.Args[1:] {
+    for _, sourcePath := range sourcePaths {
         foundLongLine := false
         lines := readLines(sourcePath)
         for _, line := range lines {
