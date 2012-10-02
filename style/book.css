@@ -21,9 +21,6 @@ p {
 h1, h2, h3, h4, h5, h6 {
   margin: 30px 0 15px 0;
 }
-h2 {
-  page-break-before: always;
-}
 hr {
     border: 0 none;
     border-top: 1px solid #e5e5ee;
@@ -32,6 +29,9 @@ hr {
 }
 #container {
   position: relative;
+}
+div.chapter {
+    page-break-inside: avoid;
 }
 table td {
   border: 0;

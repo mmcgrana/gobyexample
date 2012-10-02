@@ -94,7 +94,6 @@ func main() {
                   </head>
                   <body>
                     <div id="container">
-                      <div id="background"></div>
                       <table cellspacing="0" cellpadding="0">
                         <tbody>`)
 
