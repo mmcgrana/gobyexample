@@ -65,12 +65,6 @@ func whichLexer(path string) string {
     return ""
 }
 
-func progress(msg string) {
-    if os.Getenv("DEBUG") != "1" {
-        fmt.Fprint(os.Stderr, msg)
-    }
-}
-
 func debug(msg string) {
     if os.Getenv("DEBUG") == "1" {
         fmt.Fprintln(os.Stderr, msg)
@@ -105,8 +99,6 @@ func main() {
                         <tbody>`)
 
     for _, sourcePath := range os.Args[1:] {
-        progress(".")
-
         lexer := whichLexer(sourcePath)
         lines := readLines(sourcePath)
 
