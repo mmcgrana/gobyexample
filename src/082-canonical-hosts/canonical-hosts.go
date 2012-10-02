@@ -20,7 +20,7 @@ func wrapCanonicalHost(f handler, chost string) handler {
         if host != chost {
             fmt.Println("redirect to", chost)
             hostPort[0] = chost
-            url := "http://" + 
+            url := "http://" +
                 strings.Join(hostPort, ":") +
                 r.URL.String()
             http.Redirect(w, r, url, 301)
