@@ -2,12 +2,12 @@ package main
 
 import (
     "fmt"
+    "github.com/russross/blackfriday"
     "io/ioutil"
     "os"
     "os/exec"
     "regexp"
     "strings"
-    "github.com/russross/blackfriday"
 )
 
 func check(err error) {
