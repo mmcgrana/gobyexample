@@ -1,4 +1,3 @@
 #!/bin/bash
 
 prince build/go-by-example.html -o build/go-by-example.pdf
-
