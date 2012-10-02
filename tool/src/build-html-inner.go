@@ -37,8 +37,11 @@ func sha1Sum(s string) string {
     b := h.Sum(nil)
     return hex.EncodeToString(b)
 }
+
+var cacheDir = "/tmp/gbe-book-cache"
+
 func cachedRender(bin string, arg []string, src string) string {
-    cachePath := "/tmp/gbe-book-cache/pygmentize" + "-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
+    cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
     cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
     if cacheErr == nil {
         return string(cacheBytes)
@@ -47,6 +50,11 @@ func cachedRender(bin string, arg []string, src string) string {
     writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
     check(writeErr)
     return string(renderBytes)
+}
+
+func ensureCache() {
+    mkdirErr := os.MkdirAll(cacheDir, 0700)
+    check(mkdirErr)
 }
 
 func readLines(path string) []string {
@@ -84,6 +92,8 @@ func main() {
         fmt.Fprintln(os.Stderr, "usage: tool/build-html-inner *.{go,sh} > output.html")
         os.Exit(1)
     }
+
+    ensureCache()
 
     fmt.Print(`<!DOCTYPE html>
                 <html>
