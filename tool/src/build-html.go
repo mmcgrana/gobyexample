@@ -8,6 +8,7 @@ import (
     "io/ioutil"
     "os"
     "os/exec"
+    "path/filepath"
     "regexp"
     "strings"
 )
@@ -88,12 +89,10 @@ type seg struct {
 }
 
 func main() {
-    if len(os.Args) <= 1 {
-        fmt.Fprintln(os.Stderr, "usage: tool/build-html-inner *.{go,sh} > output.html")
-        os.Exit(1)
-    }
-
     ensureCache()
+
+    sourcePaths, err := filepath.Glob("./src/0*/*")
+    check(err)
 
     fmt.Print(`<!DOCTYPE html>
                 <html>
@@ -107,7 +106,7 @@ func main() {
                       <table cellspacing="0" cellpadding="0">
                         <tbody>`)
 
-    for _, sourcePath := range os.Args[1:] {
+    for _, sourcePath := range sourcePaths {
         lexer := whichLexer(sourcePath)
         lines := readLines(sourcePath)
 

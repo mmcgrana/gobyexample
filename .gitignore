@@ -1,5 +1,4 @@
 build
-tool/build-html-inner
+tool/build-html
 tool/number
 tool/measure
-

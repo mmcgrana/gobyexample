@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -e
-set -o pipefail
-
-ls src/0*/*.{go,sh} | xargs tool/build-html-inner > build/go-by-example.html
