@@ -173,8 +173,7 @@ func main() {
                    <title>Go by Example</title>
                    <link rel=stylesheet href="../style/book.css">
                  </head>
-                 <body>
-                   <div id="container">`)
+                 <body>`)
     chapterPaths := mustGlob("./src/0*")
     for _, chapterPath := range chapterPaths {
         fmt.Print(`<table cellspacing="0" cellpadding="0"><tbody>`)
@@ -195,5 +194,5 @@ func main() {
         }
         fmt.Print(`</tbody></table>`)
     }
-    fmt.Print(`</div></body></html>`)
+    fmt.Print(`</body></html>`)
 }

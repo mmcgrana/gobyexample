@@ -1,11 +1,11 @@
 /* PDF Formatting */
-@page { margin: 10px 10px 10px 10px }
+@page { margin: 48px 0px 48px 0px }
 
-/*--------------------- Layout and Typography ----------------------------*/
+/* Layout and Typography */
 body {
   font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 16px;
   color: #252519;
   margin: 0; padding: 0;
 }
@@ -19,38 +19,46 @@ p {
   margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-  margin: 30px 0 15px 0;
+  margin: 24px 0 12px 0;
+  font-weight: normal;
+}
+h2 {
+    font-size: 24px;
 }
 hr {
     border: 0 none;
     border-top: 1px solid #e5e5ee;
     height: 1px;
-    margin: 20px 0;
-}
-#container {
-  position: relative;
+    margin: 16px 0;
 }
 table {
     page-break-inside: avoid;
-    width: 775px;
+    width: 690px;
+    min-width: 690px;
+    max-width: 690px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
 }
 table td {
   border: 0;
   outline: 0;
 }
 td.docs {
-  max-width: 350px;
-  min-width: 350px;
+  width: 330px;
+  max-width: 330px;
+  min-width: 330px;
   min-height: 5px;
-  padding: 10px 15px 1px 30px;
+  padding: 5px 5px 5px 5px;
   overflow-x: hidden;
   vertical-align: top;
   text-align: left;
 }
 td.code {
-  max-width: 400px;
-  min-width: 400px;
-  padding: 10px 10px 10px 10px;
+  width: 360px;
+  max-width: 360px;
+  min-width: 360px;
+  padding: 5px 5px 5px 5px;
   vertical-align: top;
   background: #f0f0f0;
 }
@@ -59,13 +67,13 @@ td.code.empty {
   background: #ffffff;
 }
 pre, code {
-  font-size: 11px; line-height: 16px;
+  font-size: 10px; line-height: 14px;
   font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
   margin: 0; padding: 0;
 }
 
 
-/*---------------------- Syntax Highlighting -----------------------------*/
+/* Syntax Highlighting */
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 body .hll { background-color: #ffffcc }
