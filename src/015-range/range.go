@@ -18,3 +18,6 @@ func main() {
     }
     fmt.Println(total / float64(len(x)))
 }
+
+// todo: comment on maps
+// todo: comment on channels

@@ -13,9 +13,9 @@ for
 if-else
 switch
 arrays
-range
 slices
 maps
+range
 functions
 multiple-return-values
 varadic-functions

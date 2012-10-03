@@ -41,7 +41,7 @@ func sha1Sum(s string) string {
 
 var cacheDir = "/tmp/gbe-book-cache"
 
-func mustReadFile(path string) {
+func mustReadFile(path string) string {
     bytes, err := ioutil.ReadFile(path)
     check(err)
     return string(bytes)
