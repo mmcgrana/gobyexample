@@ -41,6 +41,12 @@ func sha1Sum(s string) string {
 
 var cacheDir = "/tmp/gbe-book-cache"
 
+func mustReadFile(path string) {
+    bytes, err := ioutil.ReadFile(path)
+    check(err)
+    return string(bytes)
+}
+
 func cachedRender(bin string, arg []string, src string) string {
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
     cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
@@ -176,23 +182,27 @@ func main() {
                  <body>`)
     chapterPaths := mustGlob("./src/0*")
     for _, chapterPath := range chapterPaths {
-        fmt.Print(`<table cellspacing="0" cellpadding="0"><tbody>`)
-        sourcePaths := mustGlob(chapterPath + "/*")
-        for _, sourcePath := range sourcePaths {
-            segs := parseAndRenderSegs(sourcePath)
-            for _, seg := range segs {
-                codeClasses := "code"
-                if seg.code == "" {
-                    codeClasses = codeClasses + " empty"
+        if strings.HasSuffix(chapterPath, ".html") {
+            
+        } else {
+            fmt.Printf(`<table cellspacing="0" cellpadding="0" id="%s"><tbody>`, chapterPath)
+            sourcePaths := mustGlob(chapterPath + "/*")
+            for _, sourcePath := range sourcePaths {
+                segs := parseAndRenderSegs(sourcePath)
+                for _, seg := range segs {
+                    codeClasses := "code"
+                    if seg.code == "" {
+                        codeClasses = codeClasses + " empty"
+                    }
+                    fmt.Printf(
+                        `<tr>
+    		    		 <td class=docs>%s</td>
+    		    		 <td class="%s">%s</td>
+    		    		 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
                 }
-                fmt.Printf(
-                    `<tr>
-		    		 <td class=docs>%s</td>
-		    		 <td class="%s">%s</td>
-		    		 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
             }
+            fmt.Print(`</tbody></table>`)
         }
-        fmt.Print(`</tbody></table>`)
     }
     fmt.Print(`</body></html>`)
 }

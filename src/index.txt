@@ -1,6 +1,7 @@
-## introduction
-introduction ~
-getting-started ~
+## header
+title
+contents
+introduction
 
 ## basics
 hello-world
