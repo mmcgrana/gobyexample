@@ -20,3 +20,5 @@ func main() {
     stop2 := timer2.Stop()
     fmt.Println("Timer 2 stopped:", stop2)
 }
+
+// todo: pull from blog post

@@ -16,3 +16,5 @@ func main() {
     ticker.Stop()
     fmt.Println("Ticker stopped")
 }
+
+// todo: pull from blog post

@@ -50,3 +50,5 @@ func main() {
     sort.Sort(ByAge(kids))
     fmt.Println("ByAge:   ", kids)
 }
+
+// todo: pull from blog post
