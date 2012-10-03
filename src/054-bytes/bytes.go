@@ -10,3 +10,5 @@ func main() {
     fmt.Println(arr)
     fmt.Println(str)
 }
+
+// todo: bytes package?

@@ -1,35 +1,41 @@
 // ## Line Filters
 
-// A _line filter_ program reads input on stdin,
-// processes it, and prints results to stdout.
-// Here's an example line filter that writes
-// a capitalized version of all text it reads.
+// A _line filter_ is a very common type of program that
+// reads input on stdin, processes it, and then prints
+// some derived results to stdout. `grep` and `sed` for
+// example are common line filters.
+
+// Here's an example line filter in Go that writes a
+// capitalized version of all text it reads. You can use
+// this pattern to write your own Go line filters.
+
 package main
 
-// Package `bufio` will help us read line-by-line.
+// Package `bufio` will help us read line-by-line, and
+// `bytes` provides the byte-level capitaliazation
+// function.
 import "bufio"
 import "bytes"
 import "os"
 import "io"
 
-// We'll need to add our own newlines between
-// processed lines.
-func main() {
-    newline := []byte("\n")
+var newline = []byte("\n")
 
-    // The buffered reader gives us `ReadLine`.
+func main() {
+    // Wrapping the unbuffered `os.Stdin` with a buffered
+    //reader gives us the convenient `ReadLine` method.
     in := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
-    // If successful, each `ReadLine` returns bytes and a
-    // boolean indicating if don't have the whole line
-    // yet.
+    // Each `ReadLine` call returns bytes of read data and
+    // a boolean indicating if we don't have the whole
+    // line yet, or an error.
     for {
         inBytes, pfx, err := in.ReadLine()
 
         // The `EOF` error is expected when we reach the
-        // end of the input, so exit gracefully in that
-        // case. Otherwise there is a problem.
+        // end of input, so exit gracefully in that case.
+        // Otherwise there is a problem.
         if err == io.EOF {
             return
         }
