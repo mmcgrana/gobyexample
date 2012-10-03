@@ -9,3 +9,5 @@ $ go build exit.go
 $ ./exit
 $ echo $?
 3
+
+# Note that the `!` from our program never got printed.
