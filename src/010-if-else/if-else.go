@@ -1,5 +1,6 @@
 // ## If/Else
 
+// If/else in go is straight-forward
 package main
 
 import "fmt"
@@ -11,7 +12,12 @@ func main() {
     fmt.Print("7 is ")
     if 7%2 == 0 {
         fmt.Println("even")
-    } else {
+    } else if 7%2 == 1 {
         fmt.Println("odd")
+    } else {
+        fmt.Println("???")
     }
 }
+
+// There is no ternary operator (i.e. `?`) in Go, so you'll
+// need to use a full if/else even for very basic conditions.
