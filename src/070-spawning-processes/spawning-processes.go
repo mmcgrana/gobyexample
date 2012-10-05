@@ -12,7 +12,7 @@ import "os/exec"
 import "fmt"
 
 func main() {
-    // Explain
+    // todo: explain
     dateCmd := exec.Command("date")
     dateOut, dateErr := dateCmd.Output()
     if dateErr != nil {
