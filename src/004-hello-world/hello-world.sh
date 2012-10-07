@@ -3,7 +3,7 @@
 $ go run hello-world.go
 Hello world
 
-# The `go run example.go` approach is a great way to 
+# The `go run example.go` approach is a great way to
 # experiment with Go examples, and we'll use it heavily
 # throughout this book.
 
