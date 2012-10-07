@@ -192,7 +192,7 @@ func main() {
     indexLines := strings.Split(string(indexBytes), "\n")
     indexNames := make([]string, 0)
     for _, indexLine := range indexLines {
-        if indexLine != "" && !strings.Contains(indexLine, "#") && !strings.Contains(indexLine, "~") {
+        if indexLine != "" && !strings.Contains(indexLine, "#") {
             indexNames = append(indexNames, indexLine)
         }
     }

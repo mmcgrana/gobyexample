@@ -60,9 +60,7 @@ string-formatting
 regexs
 bytes
 json
-typed-json ~
 time
-time-formatting ~
 epochs
 elapsed-time
 random-numbers
@@ -74,7 +72,6 @@ base64-encoding
 ## systems libraries
 reading-files
 writing-files
-standard-streams ~
 line-filters
 command-line-arguments
 command-line-flags
@@ -87,30 +84,18 @@ exit
 ## client libraries
 http-client
 https-client
-streaming-in-http-responses ~
 redis
 postgres
-mongodb ~
 sending-email
 
 ## web apps
 hello-web
-requests ~
 responses
 request-routing
 request-logging
 static-content
 basic-authentication
 canonical-hosts
-post-bodies ~
 middleware
-streaming-out-http-responses ~
 graceful-shutdown
 https-servers
-
-## shipping go
-using-gofmt ~
-using-godoc ~
-publishing-packages ~
-deploying-to-heroku ~
-deploying-to-appengine ~
