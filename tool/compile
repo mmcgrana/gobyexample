@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -e
-
-go build -o tool/build-html tool/src/build-html.go 
-go build -o tool/number tool/src/number.go
-go build -o tool/measure tool/src/measure.go
