@@ -22,6 +22,17 @@ h1, h2, h3, h4, h5, h6 {
   margin: 24px 0 12px 0;
   font-weight: normal;
 }
+div#title {
+    text-align: center;
+}
+div#title h1 {
+    font-size: 72px;
+    margin-top: 4em;
+}
+div#title h4 {
+    font-size: 24px;
+    margin-top: 4em;
+}
 h2 {
     font-size: 24px;
 }
@@ -33,6 +44,12 @@ hr {
 }
 div.chapter {
     page-break-inside: avoid;
+    width: 690px;
+    min-width: 690px;
+    max-width: 690px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
 }
 div#title {
     page-break-after: always;
@@ -42,14 +59,6 @@ div#contents {
 }
 div#introduction {
     page-break-after: always;
-}
-table {
-    width: 690px;
-    min-width: 690px;
-    max-width: 690px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 32px;
 }
 table td {
   border: 0;
