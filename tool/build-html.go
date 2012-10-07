@@ -13,6 +13,8 @@ import (
     "strings"
 )
 
+var cacheDir = "/tmp/gbe-book-cache"
+
 func check(err error) {
     if err != nil {
         panic(err)
@@ -48,8 +50,6 @@ func sha1Sum(s string) string {
     b := h.Sum(nil)
     return hex.EncodeToString(b)
 }
-
-var cacheDir = "/tmp/gbe-book-cache"
 
 func mustReadFile(path string) string {
     bytes, err := ioutil.ReadFile(path)
