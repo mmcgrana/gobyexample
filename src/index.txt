@@ -1,9 +1,7 @@
-## header
 title
 contents
 introduction
 
-## basics
 hello-world
 values
 variables
@@ -32,7 +30,6 @@ interfaces
 errors
 ok-guards
 
-## concurrency
 goroutines
 concurrent-goroutines
 channels
@@ -51,7 +48,6 @@ tickers
 state-goroutine
 state-mutex
 
-## core libraries
 sorting
 sorting-by-functions
 collection-functions
@@ -69,7 +65,6 @@ urls
 sha1-hashes
 base64-encoding
 
-## systems libraries
 reading-files
 writing-files
 line-filters
@@ -81,14 +76,11 @@ execing-processes
 signals
 exit
 
-## client libraries
 http-client
 https-client
 redis
 postgres
-sending-email
 
-## web apps
 hello-web
 responses
 request-routing
