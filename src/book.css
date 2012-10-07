@@ -48,6 +48,11 @@ div.chapter {
     margin-right: auto;
     margin-bottom: 32px;
 }
+div#introduction, div#contents {
+    width: 330px;
+    min-width: 330px;
+    max-width: 330px;
+}
 div#title {
     page-break-after: always;
 }
@@ -57,8 +62,27 @@ div#contents {
 div#introduction {
     page-break-after: always;
 }
-div#introduction p, h2, h3 {
+div#introduction p {
     padding: 5px 5px 5px 5px;
+}
+div#introduction h2, h3 {
+    padding: 10px 5px 10px 5px;
+}
+div#contents h2 {
+    padding: 10px 5px 10px 5px;
+}
+div#contents ul {
+    list-style: none;
+    padding: 0 0 0 5px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 24px;
+}
+div#contents a:after {
+ content: leader(".") target-counter(attr(href, url), page);
+}
+div#contents a {
+    text-decoration: none;
 }
 table td {
   border: 0;

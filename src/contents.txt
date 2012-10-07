@@ -37,7 +37,7 @@ timeouts
 scatter-gather
 rate-limiting
 worker-pools
-nonblocking-channel-operations
+non-blocking-channel-operations
 closing-channels
 timers
 tickers
