@@ -1,4 +1,4 @@
-/* Layout and Typography */
+/* Layout and typography */
 @page { margin: 48px 0px 48px 0px }
 
 body {
@@ -86,7 +86,7 @@ pre, code {
 }
 
 
-/* Syntax Highlighting */
+/* Syntax highlighting */
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 body .hll { background-color: #ffffcc }
