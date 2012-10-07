@@ -36,12 +36,6 @@ div#title h4 {
 h2 {
     font-size: 24px;
 }
-hr {
-    border: 0 none;
-    border-top: 1px solid #e5e5ee;
-    height: 1px;
-    margin: 16px 0;
-}
 div.chapter {
     page-break-inside: avoid;
     width: 690px;
