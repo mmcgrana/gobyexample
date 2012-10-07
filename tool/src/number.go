@@ -66,9 +66,9 @@ func main() {
     }
 
     // rename some stuff
-    for index, indexName := range indexNames {
+    for _, indexName := range indexNames {
         oldName := sourceMap[indexName]
-        newName := fmt.Sprintf("%03d-%s", index+1, indexName)
+        newName := indexName
         if oldName != newName {
             fmt.Println(oldName, "->", newName)
             os.Rename("src/"+oldName, "src/"+newName)
