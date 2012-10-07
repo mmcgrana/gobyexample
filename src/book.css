@@ -1,7 +1,6 @@
-/* PDF Formatting */
+/* Layout and Typography */
 @page { margin: 48px 0px 48px 0px }
 
-/* Layout and Typography */
 body {
   font-family: 'Palatino Linotype';
   font-size: 12px;
