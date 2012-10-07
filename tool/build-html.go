@@ -186,6 +186,8 @@ func main() {
     outF, err := os.Create(os.Args[1])
     check(err)
     ensureCache()
+
+    // Header
     fmt.Fprint(outF,
         `<!DOCTYPE html>
         <html>
@@ -196,20 +198,31 @@ func main() {
           </head>
           <body>`)
 
-    indexLines := readLines("src/index.txt")
-    indexNames := filterStrings(indexLines, func(s string) bool {
-        return s != ""
-    })
+    // Title page
+    fmt.Fprint(outF, mustReadFile("src/title.html"))
 
-    for _, indexName := range indexNames {
-        fmt.Fprintf(outF, `<div id="%s">`, indexName)
-        if (indexName == "title") || (indexName == "contents") || (indexName == "introduction") {
-            sourcePath := "src/" + indexName + "/" + indexName + ".html"
-            source := mustReadFile(sourcePath)
-            _, err = outF.WriteString(source)
-            check(err)
+    // Contents page
+    chapterIds := readLines("src/contents.txt")
+    fmt.Fprint(outF, `<div class="chapter" id="contents"><h2>Contents</h2><ul>`)
+    for _, chapterId := range chapterIds {
+        var chapterName string
+        if chapterId == "introduction" {
+            chapterName = "Introduction"
         } else {
-            chapterPath := "src/" + indexName
+            chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
+            chapterName = chapterLines[0][6:]
+        }
+        fmt.Fprintf(outF, `<li><a href="#%s">%s</a></li>`, chapterId, chapterName)
+    }
+    fmt.Fprint(outF, `</ul></div>`)
+
+    // Content chapters
+    for _, chapterId := range chapterIds {
+        fmt.Fprintf(outF, `<div class="chapter" id="%s">`, chapterId)
+        if chapterId == "introduction" {
+            fmt.Fprint(outF, mustReadFile("src/introduction.html"))
+        } else {
+            chapterPath := "src/" + chapterId
             fmt.Fprintf(outF,
                 `<table cellspacing="0" cellpadding="0" id="%s"><tbody>`,
                 chapterPath)
@@ -235,5 +248,7 @@ func main() {
         }
         fmt.Fprintf(outF, `</div>`)
     }
+
+    // Footer
     fmt.Fprint(outF, `</body></html>`)
 }

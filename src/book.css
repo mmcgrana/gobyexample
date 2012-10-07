@@ -31,8 +31,19 @@ hr {
     height: 1px;
     margin: 16px 0;
 }
-table {
+div.chapter {
     page-break-inside: avoid;
+}
+div#title {
+    page-break-after: always;
+}
+div#contents {
+    page-break-after: always;
+}
+div#introduction {
+    page-break-after: always;
+}
+table {
     width: 690px;
     min-width: 690px;
     max-width: 690px;
