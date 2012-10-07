@@ -37,13 +37,13 @@ func All(elems []string, f func(string) bool) bool {
 }
 
 func Filter(vs []string, f func(string) bool) []string {
-    filtered := []string{}
+    vsf := make([]string, 0)
     for _, v := range elems {
         if f(v) {
-            filtered = append(filtered, v)
+            vsf = append(vsf, v)
         }
     }
-    return filtered
+    return vsf
 }
 
 func Map(strs []string, f func(string) string) []string {

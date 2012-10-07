@@ -19,6 +19,16 @@ func check(err error) {
     }
 }
 
+func filterStrings(vs []string, f func(string) bool) []string {
+    vsf := make([]string, 0)
+    for _, v := range vs {
+        if f(v) {
+            vsf = append(vsf, v)
+        }
+    }
+    return vsf
+}
+
 func render(bin string, arg []string, src string) []byte {
     cmd := exec.Command(bin, arg...)
     in, _ := cmd.StdinPipe()
@@ -65,9 +75,8 @@ func ensureCache() {
 }
 
 func readLines(path string) []string {
-    srcBytes, err := ioutil.ReadFile(path)
-    check(err)
-    return strings.Split(string(srcBytes), "\n")
+    src := mustReadFile(path)
+    return strings.Split(src, "\n")
 }
 
 func mustGlob(glob string) []string {
@@ -187,23 +196,17 @@ func main() {
           </head>
           <body>`)
 
-    indexBytes, err := ioutil.ReadFile("src/index.txt")
-    check(err)
-    indexLines := strings.Split(string(indexBytes), "\n")
-    indexNames := make([]string, 0)
-    for _, indexLine := range indexLines {
-        if indexLine != "" {
-            indexNames = append(indexNames, indexLine)
-        }
-    }
+    indexLines := readLines("src/index.txt")
+    indexNames := filterStrings(indexLines, func(s string) bool {
+        return s != ""
+    })
 
     for _, indexName := range indexNames {
         fmt.Fprintf(outF, `<div id="%s">`, indexName)
         if (indexName == "title") || (indexName == "contents") || (indexName == "introduction") {
             sourcePath := "src/" + indexName + "/" + indexName + ".html"
-            sourceBytes, err := ioutil.ReadFile(sourcePath)
-            check(err)
-            _, err = outF.Write(sourceBytes)
+            source := mustReadFile(sourcePath)
+            _, err = outF.WriteString(source)
             check(err)
         } else {
             chapterPath := "src/" + indexName
