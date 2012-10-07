@@ -171,38 +171,74 @@ func parseAndRenderSegs(sourcePath string) []*seg {
 }
 
 func main() {
+    if len(os.Args) != 2 {
+        panic("Wrong number of args")
+    }
+    outF, err := os.Create(os.Args[1])
+    if err != nil {
+        panic(err)
+    }
     ensureCache()
-    fmt.Print(`<!DOCTYPE html>
-               <html>
-                 <head>
-                   <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-                   <title>Go by Example</title>
-                   <link rel=stylesheet href="../style/book.css">
-                 </head>
-                 <body>`)
-    chapterPaths := mustGlob("./src/0*")
-    for _, chapterPath := range chapterPaths {
-        if strings.HasSuffix(chapterPath, ".html") {
-            
-        } else {
-            fmt.Printf(`<table cellspacing="0" cellpadding="0" id="%s"><tbody>`, chapterPath)
-            sourcePaths := mustGlob(chapterPath + "/*")
-            for _, sourcePath := range sourcePaths {
-                segs := parseAndRenderSegs(sourcePath)
-                for _, seg := range segs {
-                    codeClasses := "code"
-                    if seg.code == "" {
-                        codeClasses = codeClasses + " empty"
-                    }
-                    fmt.Printf(
-                        `<tr>
-    		    		 <td class=docs>%s</td>
-    		    		 <td class="%s">%s</td>
-    		    		 </tr>`, seg.docsRendered, codeClasses, seg.codeRendered)
-                }
-            }
-            fmt.Print(`</tbody></table>`)
+    fmt.Fprint(outF,
+        `<!DOCTYPE html>
+        <html>
+          <head>
+            <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+            <title>Go by Example</title>
+            <link rel=stylesheet href="../src/book.css">
+          </head>
+          <body>`)
+
+    indexBytes, err := ioutil.ReadFile("src/index.txt")
+    if err != nil {
+        panic(err)
+    }
+    indexLines := strings.Split(string(indexBytes), "\n")
+    indexNames := make([]string, 0)
+    for _, indexLine := range indexLines {
+        if indexLine != "" && !strings.Contains(indexLine, "#") && !strings.Contains(indexLine, "~") {
+            indexNames = append(indexNames, indexLine)
         }
     }
-    fmt.Print(`</body></html>`)
+
+    for _, indexName := range indexNames {
+        fmt.Fprintf(outF, `<div id="%s">`, indexName)
+        if (indexName == "title") || (indexName == "contents") || (indexName == "introduction") {
+            sourcePath := "src/" + indexName + "/" + indexName + ".html"
+            sourceBytes, err := ioutil.ReadFile(sourcePath)
+            if err != nil {
+                panic(err)
+            }
+            _, err = outF.Write(sourceBytes)
+            if err != nil {
+                panic(err)
+            }
+        } else {
+            chapterPath := "src/" + indexName
+            fmt.Fprintf(outF,
+                `<table cellspacing="0" cellpadding="0" id="%s"><tbody>`,
+                chapterPath)
+            sourcePaths := mustGlob(chapterPath + "/*")
+            for _, sourcePath := range sourcePaths {
+                if strings.HasSuffix(sourcePath, ".go") || strings.HasSuffix(sourcePath, ".sh") {
+                    segs := parseAndRenderSegs(sourcePath)
+                    for _, seg := range segs {
+                        codeClasses := "code"
+                        if seg.code == "" {
+                            codeClasses = codeClasses + " empty"
+                        }
+                        fmt.Fprintf(outF,
+                            `<tr>
+    		        		 <td class=docs>%s</td>
+    		        		 <td class="%s">%s</td>
+    		        		 </tr>`,
+                            seg.docsRendered, codeClasses, seg.codeRendered)
+                    }
+                }
+            }
+            fmt.Fprint(outF, `</tbody></table>`)
+        }
+        fmt.Fprintf(outF, `</div>`)
+    }
+    fmt.Fprint(outF, `</body></html>`)
 }

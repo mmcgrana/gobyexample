@@ -37,6 +37,6 @@ func main() {
     // The program will wait here until it gets the
     // expected signal, and then exit.
     fmt.Println("awaiting signal")
-    <- done
+    <-done
     fmt.Println("exiting")
 }
