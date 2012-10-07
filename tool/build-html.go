@@ -175,9 +175,7 @@ func main() {
         panic("Wrong number of args")
     }
     outF, err := os.Create(os.Args[1])
-    if err != nil {
-        panic(err)
-    }
+    check(err)
     ensureCache()
     fmt.Fprint(outF,
         `<!DOCTYPE html>
@@ -190,9 +188,7 @@ func main() {
           <body>`)
 
     indexBytes, err := ioutil.ReadFile("src/index.txt")
-    if err != nil {
-        panic(err)
-    }
+    check(err)
     indexLines := strings.Split(string(indexBytes), "\n")
     indexNames := make([]string, 0)
     for _, indexLine := range indexLines {
@@ -206,13 +202,9 @@ func main() {
         if (indexName == "title") || (indexName == "contents") || (indexName == "introduction") {
             sourcePath := "src/" + indexName + "/" + indexName + ".html"
             sourceBytes, err := ioutil.ReadFile(sourcePath)
-            if err != nil {
-                panic(err)
-            }
+            check(err)
             _, err = outF.Write(sourceBytes)
-            if err != nil {
-                panic(err)
-            }
+            check(err)
         } else {
             chapterPath := "src/" + indexName
             fmt.Fprintf(outF,
