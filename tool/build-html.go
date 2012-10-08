@@ -69,9 +69,20 @@ func cachedRender(bin string, arg []string, src string) string {
     return string(renderBytes)
 }
 
+func cachedPygmentize(lex string, src string) string {
+    return cachedRender(
+        "/usr/local/bin/pygmentize",
+        []string{"-l", lex, "-f", "html"},
+        src)
+}
+
 func ensureCache() {
     mkdirErr := os.MkdirAll(cacheDir, 0700)
     check(mkdirErr)
+}
+
+func markdown(src string) string {
+    return string(blackfriday.MarkdownCommon([]byte(src)))
 }
 
 func readLines(path string) []string {
@@ -170,10 +181,10 @@ func parseAndRenderSegs(sourcePath string) []*seg {
     lexer := whichLexer(sourcePath)
     for _, seg := range segs {
         if seg.docs != "" {
-            seg.docsRendered = string(blackfriday.MarkdownCommon([]byte(seg.docs)))
+            seg.docsRendered = markdown(seg.docs)
         }
         if seg.code != "" {
-            seg.codeRendered = cachedRender("/usr/local/bin/pygmentize", []string{"-l", lexer, "-f", "html"}, seg.code)
+            seg.codeRendered = cachedPygmentize(lexer, seg.code)
         }
     }
     return segs
@@ -199,7 +210,9 @@ func main() {
           <body>`)
 
     // Title page
-    fmt.Fprint(outF, mustReadFile("src/title.html"))
+    fmt.Fprintf(outF,
+        `<div class="chapter" id="title">%s</div>`,
+        markdown(mustReadFile("src/title.md")))
 
     // Contents page
     chapterIds := readLines("src/contents.txt")
@@ -220,7 +233,7 @@ func main() {
     for _, chapterId := range chapterIds {
         fmt.Fprintf(outF, `<div class="chapter" id="%s">`, chapterId)
         if chapterId == "introduction" {
-            fmt.Fprint(outF, mustReadFile("src/introduction.html"))
+            fmt.Fprint(outF, markdown(mustReadFile("src/introduction.md")))
         } else {
             chapterPath := "src/" + chapterId
             fmt.Fprintf(outF,
