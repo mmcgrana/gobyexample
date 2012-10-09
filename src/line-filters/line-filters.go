@@ -1,14 +1,13 @@
 // ## Line Filters
 
-// A _line filter_ is a very common type of program that
-// reads input on stdin, processes it, and then prints
-// some derived results to stdout. `grep` and `sed` for
-// example are common line filters.
+// A _line filter_ is a common type of program that reads
+// input on stdin, processes it, and then prints some
+// derived result to stdout. `grep` and `sed` are common
+// line filters.
 
 // Here's an example line filter in Go that writes a
-// capitalized version of all text it reads. You can use
-// this pattern to write your own Go line filters.
-
+// capitalized version of all input text. You can use this
+// pattern to write your own Go line filters.
 package main
 
 // Package `bufio` will help us read line-by-line, and
@@ -22,6 +21,7 @@ import "io"
 var newline = []byte("\n")
 
 func main() {
+
     // Wrapping the unbuffered `os.Stdin` with a buffered
     // reader gives us the convenient `ReadLine` method.
     in := bufio.NewReader(os.Stdin)

@@ -100,7 +100,6 @@ func debug(msg string) {
 }
 
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
-var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
 var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 
 type Seg struct {
@@ -118,50 +117,39 @@ func parseSegs(sourcePath string) []*Seg {
     segs = append(segs, &Seg{code: "", docs: ""})
     lastSeen := ""
     for _, line := range lines {
+        if line == "" {
+            lastSeen = ""
+            continue
+        }
         if todoPat.MatchString(line) {
             continue
         }
-        headerMatch := headerPat.MatchString(line)
-        docsMatch := docsPat.MatchString(line)
-        emptyMatch := line == ""
+        matchDocs := docsPat.MatchString(line)
+        matchCode := !matchDocs
         lastSeg := segs[len(segs)-1]
-        lastHeader := lastSeen == "header"
-        lastDocs := lastSeen == "docs"
-        newHeader := lastSeen != "header" && lastSeg.docs != ""
-        newDocs := lastSeen == "code" || lastSeen == "header"
-        newCode := (lastSeen != "code" && lastSeg.code != "") || lastSeen == "header"
-        if newHeader || newDocs || newCode {
+        newDocs := (lastSeen == "") || ((lastSeen != "docs") && (lastSeg.docs != ""))
+        newCode := (lastSeen == "") || ((lastSeen != "code") && (lastSeg.code != ""))
+        if newDocs || newCode {
             debug("NEWSEG")
         }
-        if headerMatch || (emptyMatch && lastHeader) {
-            trimmed := docsPat.ReplaceAllString(line, "")
-            if newHeader {
-                newSeg := Seg{docs: trimmed, code: ""}
-                segs = append(segs, &newSeg)
-            } else {
-                lastSeg.docs = lastSeg.docs + "\n" + trimmed
-            }
-            debug("HEAD")
-            lastSeen = "header"
-        } else if docsMatch || (emptyMatch && lastDocs) {
+        if matchDocs {
             trimmed := docsPat.ReplaceAllString(line, "")
             if newDocs {
-                debug("NEWSEG")
                 newSeg := Seg{docs: trimmed, code: ""}
                 segs = append(segs, &newSeg)
             } else {
                 lastSeg.docs = lastSeg.docs + "\n" + trimmed
             }
-            debug("DOCS")
+            debug("DOCS: " + line)
             lastSeen = "docs"
-        } else {
+        } else if matchCode {
             if newCode {
                 newSeg := Seg{docs: "", code: line}
                 segs = append(segs, &newSeg)
             } else {
                 lastSeg.code = lastSeg.code + "\n" + line
             }
-            debug("CODE")
+            debug("CODE: " + line)
             lastSeen = "code"
         }
     }
