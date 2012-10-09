@@ -69,9 +69,9 @@ div.chapter {
     margin-bottom: 120px;
 }
 div#intro {
-    width: 400px;
-    min-width: 400px;
-    max-width: 400px;
+    width: 380px;
+    min-width: 380px;
+    max-width: 380px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -83,9 +83,9 @@ table td {
     outline: 0;
 }
 td.docs {
-    width: 400px;
-    max-width: 400px;
-    min-width: 400px;
+    width: 380px;
+    max-width: 380px;
+    min-width: 380px;
     min-height: 5px;
     vertical-align: top;
     text-align: left;
@@ -96,9 +96,9 @@ td.docs p {
     padding-bottom: 15px;
 }
 td.code {
-    width: 400px;
-    max-width: 400px;
-    min-width: 400px;
+    width: 410px;
+    max-width: 410px;
+    min-width: 410px;
     padding-top: 5px;
     padding-right: 5px;
     padding-left: 5px;

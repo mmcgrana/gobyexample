@@ -1,11 +1,11 @@
 // ## Hello World
 
-// Here's an example Go program.
+// Our first program prints the classic  "Hello world"`
+// message.
 package main
 
 import "fmt"
 
-// It prints `Hello world`.
 func main() {
     fmt.Println("Hello world")
 }
