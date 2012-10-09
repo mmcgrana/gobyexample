@@ -35,7 +35,7 @@ func main() {
 
         // The `EOF` error is expected when we reach the
         // end of input, so exit gracefully in that case.
-        // Otherwise there is a problem.
+        // Otherwise there's a problem.
         if err == io.EOF {
             return
         }
