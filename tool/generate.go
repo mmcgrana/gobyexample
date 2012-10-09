@@ -29,10 +29,10 @@ func ensureDir(dir string) {
 }
 
 func copyFile(src, dst string) {
-    txt := mustReadFile(src)
-    dstF, err := os.Create(dst)
+    dat, err := ioutil.ReadFile(src)
     check(err)
-    fmt.Fprint(dstF, txt)
+    err = ioutil.WriteFile(dst, dat, 0644)
+    check(err)
 }
 
 func pipe(bin string, arg []string, src string) []byte {
@@ -238,6 +238,7 @@ func main() {
     whichSiteDir()
     ensureDir(siteDir)
     copyFile("template/site.css", siteDir+"/site.css")
+    copyFile("template/favicon.ico", siteDir+"/favicon.ico")
     chapters := parseChapters()
     renderIndex(chapters)
     renderChapters(chapters)
