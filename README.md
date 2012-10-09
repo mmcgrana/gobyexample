@@ -10,8 +10,8 @@ This repo contains:
 
 * `src`: Go and Bash source code for the site
 * `meta`: metadata used to generate the site
-* `templates`: HTML templates and CSS for the site
 * `tool`: toolchain used to generate the site
+* `style`: CSS for the site
 
 The site is built by extracting the code & comments from
 the `.go` and `.sh` source files in `src` and rendering
