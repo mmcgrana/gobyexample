@@ -66,6 +66,7 @@ div.chapter {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 120px;
 }
 div#intro {
     width: 400px;
