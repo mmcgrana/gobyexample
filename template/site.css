@@ -61,17 +61,17 @@ h2 {
     margin-top: 40px;
 }
 div.chapter {
-    width: 800px;
-    min-width: 800px;
-    max-width: 800px;
+    width: 900px;
+    min-width: 900px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 120px;
 }
 div#intro {
-    width: 380px;
-    min-width: 380px;
-    max-width: 380px;
+    width: 420px;
+    min-width: 420px;
+    max-width: 420px;
     margin-left: auto;
     margin-right: auto;
 }
