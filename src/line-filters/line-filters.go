@@ -18,8 +18,6 @@ import "bytes"
 import "os"
 import "io"
 
-var newline = []byte("\n")
-
 func main() {
 
     // Wrapping the unbuffered `os.Stdin` with a buffered
@@ -54,7 +52,7 @@ func main() {
         // Unless this read was for a prefix (not the full
         // line), we need to add our own newline.
         if !pfx {
-            out.Write(newline)
+            out.WriteString("\n")
         }
     }
 }
