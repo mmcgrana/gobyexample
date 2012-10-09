@@ -28,6 +28,15 @@ func ensureDir(dir string) {
     check(err)
 }
 
+func copyFile(src, dst string) {
+    srcF, err := os.Open(src, os.O_RDONLY, 0)
+    check(err)
+    dstF, err := os.Create(dst)
+    check(err)
+    err = io.Copy(srcF, dstF)
+    check(err)
+}
+
 func pipe(bin string, arg []string, src string) []byte {
     cmd := exec.Command(bin, arg...)
     in, _ := cmd.StdinPipe()
@@ -222,6 +231,7 @@ func renderChapters(chapters []*Chapter) {
 
 func main() {
     ensureDir(siteDir)
+    copyFile("template/site.css", siteDir+"/site.css")
     chapters := parseChapters()
     renderIndex(chapters)
     renderChapters(chapters)
