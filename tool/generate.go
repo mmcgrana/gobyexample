@@ -239,6 +239,7 @@ func main() {
     ensureDir(siteDir)
     copyFile("template/site.css", siteDir+"/site.css")
     copyFile("template/favicon.ico", siteDir+"/favicon.ico")
+    copyFile("template/404.html", siteDir+"/404.html")
     chapters := parseChapters()
     renderIndex(chapters)
     renderChapters(chapters)
