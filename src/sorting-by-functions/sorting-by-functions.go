@@ -1,11 +1,13 @@
 // ## Sorting by Functions
 
+// Sorting a slice by a function is a bit tricker in Go
+// than you may be used to in other languages. Let's look
+// at some examples to see how it works.
+
 package main
 
-import (
-    "fmt"
-    "sort"
-)
+import "fmt"
+import "sort"
 
 type Person struct {
     Name string
@@ -50,5 +52,3 @@ func main() {
     sort.Sort(ByAge(kids))
     fmt.Println("ByAge:   ", kids)
 }
-
-// todo: pull from blog post

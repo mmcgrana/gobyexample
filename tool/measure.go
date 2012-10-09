@@ -32,7 +32,7 @@ func main() {
         lines := readLines(sourcePath)
         for _, line := range lines {
             if !foundLongLine && !todoPat.MatchString(line) && (len(line) > 58) {
-                fmt.Println(sourcePath)
+                fmt.Println("measure:", sourcePath)
                 foundLongLine = true
                 foundLongFile = true
             }
