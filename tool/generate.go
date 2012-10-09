@@ -22,16 +22,6 @@ func check(err error) {
     }
 }
 
-func filterStrings(vs []string, f func(string) bool) []string {
-    vsf := make([]string, 0)
-    for _, v := range vs {
-        if f(v) {
-            vsf = append(vsf, v)
-        }
-    }
-    return vsf
-}
-
 func ensureDir(dir string) {
     err := os.MkdirAll(dir, 0700)
     check(err)
@@ -113,14 +103,19 @@ var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var headerPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s#+\\s")
 var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 
-type seg struct {
+type Seg struct {
     docs, code, docsRendered, codeRendered string
 }
 
-func parseSegs(sourcePath string) []*seg {
+type Chapter struct {
+    id, name string
+    segs     []*Seg
+}
+
+func parseSegs(sourcePath string) []*Seg {
     lines := readLines(sourcePath)
-    segs := []*seg{}
-    segs = append(segs, &seg{code: "", docs: ""})
+    segs := []*Seg{}
+    segs = append(segs, &Seg{code: "", docs: ""})
     lastSeen := ""
     for _, line := range lines {
         if todoPat.MatchString(line) {
@@ -141,7 +136,7 @@ func parseSegs(sourcePath string) []*seg {
         if headerMatch || (emptyMatch && lastHeader) {
             trimmed := docsPat.ReplaceAllString(line, "")
             if newHeader {
-                newSeg := seg{docs: trimmed, code: ""}
+                newSeg := Seg{docs: trimmed, code: ""}
                 segs = append(segs, &newSeg)
             } else {
                 lastSeg.docs = lastSeg.docs + "\n" + trimmed
@@ -152,7 +147,7 @@ func parseSegs(sourcePath string) []*seg {
             trimmed := docsPat.ReplaceAllString(line, "")
             if newDocs {
                 debug("NEWSEG")
-                newSeg := seg{docs: trimmed, code: ""}
+                newSeg := Seg{docs: trimmed, code: ""}
                 segs = append(segs, &newSeg)
             } else {
                 lastSeg.docs = lastSeg.docs + "\n" + trimmed
@@ -161,7 +156,7 @@ func parseSegs(sourcePath string) []*seg {
             lastSeen = "docs"
         } else {
             if newCode {
-                newSeg := seg{docs: "", code: line}
+                newSeg := Seg{docs: "", code: line}
                 segs = append(segs, &newSeg)
             } else {
                 lastSeg.code = lastSeg.code + "\n" + line
@@ -170,10 +165,10 @@ func parseSegs(sourcePath string) []*seg {
             lastSeen = "code"
         }
     }
-    return append(segs, &seg{code: "", docs: ""})
+    return append(segs, &Seg{code: "", docs: ""})
 }
 
-func parseAndRenderSegs(sourcePath string) []*seg {
+func parseAndRenderSegs(sourcePath string) []*Seg {
     segs := parseSegs(sourcePath)
     lexer := whichLexer(sourcePath)
     for _, seg := range segs {
@@ -187,14 +182,29 @@ func parseAndRenderSegs(sourcePath string) []*seg {
     return segs
 }
 
-func buildChapters() []string {
+func parseChapters() []*Chapter {
     chapterLines := readLines("meta/chapters.txt")
-    return filterStrings(chapterLines, func(ch string) bool {
-        return (ch != "") && !strings.HasPrefix(ch, "#")
-    })
+    chapters := make([]*Chapter, 0)
+    for _, chapterId := range chapterLines {
+        if (chapterId != "") && !strings.HasPrefix(chapterId, "#") {
+            chapter := Chapter{id: chapterId}
+            chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
+            chapter.name = chapterLines[0][6:]
+            chapterPath := "src/" + chapterId
+            sourcePaths := mustGlob(chapterPath + "/*")
+            segs := []*Seg{}
+            for _, sourcePath := range sourcePaths {
+                sourceSegs := parseAndRenderSegs(sourcePath)
+                segs = append(segs, sourceSegs...)
+            }
+            chapter.segs = segs
+            chapters = append(chapters, &chapter)
+        }
+    }
+    return chapters
 }
 
-func renderIndex(chapterIds []string) {
+func renderIndex(chapters []*Chapter) {
     indexF, err := os.Create(siteDir + "/index.html")
     check(err)
     fmt.Fprint(indexF,
@@ -210,21 +220,15 @@ func renderIndex(chapterIds []string) {
              <h2>Go by Example</h2>
              <ul>`)
 
-    for _, chapterId := range chapterIds {
-        chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
-        chapterName := chapterLines[0][6:]
-        fmt.Fprintf(indexF, `<li><a href="%s.html">%s</a></li>`, chapterId, chapterName)
+    for _, chapter := range chapters {
+        fmt.Fprintf(indexF, `<li><a href="%s.html">%s</a></li>`, chapter.id, chapter.name)
     }
     fmt.Fprint(indexF, `</ul></div></body></html>`)
 }
 
-func renderChapters(chapterIds []string) {
-    for _, chapterId := range chapterIds {
-        chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
-        chapterName := chapterLines[0][6:]
-        chapterPath := "src/" + chapterId
-        sourcePaths := mustGlob(chapterPath + "/*")
-        chapterF, err := os.Create(siteDir + "/" + chapterId + ".html")
+func renderChapters(chapters []*Chapter) {
+    for _, chapter := range chapters {
+        chapterF, err := os.Create(siteDir + "/" + chapter.id + ".html")
         check(err)
         fmt.Fprintf(chapterF,
             `<!DOCTYPE html>
@@ -237,21 +241,18 @@ func renderChapters(chapterIds []string) {
                <body>
                  <div class="chapter" id="%s">
                    <table cellspacing="0" cellpadding="0"><tbody>`,
-            chapterName, chapterId)
-        for _, sourcePath := range sourcePaths {
-            segs := parseAndRenderSegs(sourcePath)
-            for _, seg := range segs {
-                codeClasses := "code"
-                if seg.code == "" {
-                    codeClasses = codeClasses + " empty"
-                }
-                fmt.Fprintf(chapterF,
-                    `<tr>
-                     <td class=docs>%s</td>
-                     <td class="%s">%s</td>
-                     </tr>`,
-                    seg.docsRendered, codeClasses, seg.codeRendered)
+            chapter.name, chapter.id)
+        for _, seg := range chapter.segs {
+            codeClasses := "code"
+            if seg.code == "" {
+                codeClasses = codeClasses + " empty"
             }
+            fmt.Fprintf(chapterF,
+                `<tr>
+                 <td class=docs>%s</td>
+                 <td class="%s">%s</td>
+                 </tr>`,
+                seg.docsRendered, codeClasses, seg.codeRendered)
         }
         fmt.Fprint(chapterF, `</tbody></table></div></body></html>`)
     }
@@ -259,7 +260,7 @@ func renderChapters(chapterIds []string) {
 
 func main() {
     ensureDir(siteDir)
-    chapters := buildChapters()
+    chapters := parseChapters()
     renderIndex(chapters)
     renderChapters(chapters)
 }
