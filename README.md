@@ -13,16 +13,13 @@ This repo contains:
 * `templates`: HTML templates and CSS for the site
 * `tool`: toolchain used to generate the site
 
-The site is built by by extracting the code & comments
-from the .go and .sh source files in `src`, and rendering
-that data according to `meta` and `templates` via the
-programs in `tool`.
+The site is built by extracting the code & comments from
+the `.go` and `.sh` source files in `src` and rendering
+that data according to `meta` and `templates` via programs
+in `tool`.
 
 
 ### Usage
-
-Generation requires the [`pygmentize`](http://pygments.org/)
-binary for syntax highlighting.
 
 To validate the source, generate the site, and open the
 home page in your browser:
@@ -31,6 +28,9 @@ home page in your browser:
 $ tool/build
 $ open site/index.html
 ```
+
+Generation requires the [`pygmentize`](http://pygments.org/)
+binary for syntax highlighting.
 
 
 ### License
