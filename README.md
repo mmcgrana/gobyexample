@@ -29,6 +29,12 @@ $ tool/build
 $ open site/index.html
 ```
 
+To build continuously in a loop:
+
+```console
+$ tool/build-loop
+```
+
 Generation requires the [`pygmentize`](http://pygments.org/)
 binary for syntax highlighting.
 

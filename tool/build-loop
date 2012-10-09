@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while :
+do
+  tool/build
+  if [ "$?" == "0" ]; then
+    echo "success"
+  else
+    echo "error"
+  fi
+  sleep 1
+done
