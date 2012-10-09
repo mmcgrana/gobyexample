@@ -1,7 +1,7 @@
 ## Go by Example
 
 Source for the [Go by Example](https://gobyexample.com)
-site, a hands-on guide to Go.
+site.
 
 
 ### Overview
