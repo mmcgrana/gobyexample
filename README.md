@@ -1,12 +1,25 @@
 ## Go by Example
 
-Source for [Go by Example](https://gobyexample.com), a hands-on guide to Go.
+Source for [Go by Example](https://gobyexample.com), a
+hands-on guide to Go.
 
 
-### Generation
+### Overview
 
-The web site is generated from `.go` and `.md` source
-files using a custom site generator.
+This repo contains:
+
+* `src`: Go and Bash source code for the site
+* `meta`: metadata used to generate the site
+* `templates`: HTML templates and CSS for the site
+* `tool`: toolchain used to generate the site
+
+The site is built by by extracting the code & comments
+from the .go and .sh source files in `src`, and rendering
+that data according to `meta` and `templates` via the
+programs in `tool`.
+
+
+### Usage
 
 Generation requires the [`pygmentize`](http://pygments.org/)
 binary for syntax highlighting.
