@@ -56,60 +56,42 @@ a, a:visited {
   color: #261a3b;
 }
 h2 {
-  margin: 24px 0 12px 0;
-  font-weight: normal;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 18px;
+    font-size: 32px;
+    line-height: 40px;
+    margin-top: 40px;
 }
 div.chapter {
-    page-break-inside: avoid;
-    width: 690px;
-    min-width: 690px;
-    max-width: 690px;
+    width: 800px;
+    min-width: 800px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 32px;
-}
-div#contents {
-    width: 330px;
-    min-width: 330px;
-    max-width: 330px;
-}
-div#contents h2 {
-    padding: 10px 5px 10px 5px;
-}
-div#contents ul {
-    list-style: none;
-    padding: 0 0 0 5px;
-    font-size: 18px;
-    line-height: 24px;
-}
-div#contents a {
-    text-decoration: none;
 }
 table td {
   border: 0;
   outline: 0;
 }
 td.docs {
-  width: 330px;
-  max-width: 330px;
-  min-width: 330px;
+  width: 400px;
+  max-width: 400px;
+  min-width: 400px;
   min-height: 5px;
-  padding: 5px 5px 5px 5px;
-  overflow-x: hidden;
   vertical-align: top;
   text-align: left;
 }
+td.docs p {
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
 td.code {
-  width: 360px;
-  max-width: 360px;
-  min-width: 360px;
-  padding: 5px 5px 5px 5px;
+  width: 400px;
+  max-width: 400px;
+  min-width: 400px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 11px;
   vertical-align: top;
   background: #f0f0f0;
 }
@@ -118,14 +100,11 @@ td.code.empty {
   background: #ffffff;
 }
 pre, code {
-  font-size: 10px; line-height: 14px;
+  font-size: 12px; line-height: 16px;
   font-family: 'Monaco';
 }
 
-
 /* Syntax highlighting */
-td.linenos { background-color: #f0f0f0; padding-right: 10px; }
-span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 body .hll { background-color: #ffffcc }
 body .err { border: 1px solid #FF0000 }         /* Error */
 body .c  { color: #408080; font-style: italic } /* Comment */
