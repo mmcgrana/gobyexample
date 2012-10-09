@@ -13,7 +13,7 @@ import (
     "strings"
 )
 
-var cacheDir = "/tmp/gbe-book-cache"
+var cacheDir = "/tmp/gobyexample-cache"
 
 func check(err error) {
     if err != nil {
