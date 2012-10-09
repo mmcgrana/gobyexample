@@ -187,7 +187,14 @@ func parseAndRenderSegs(sourcePath string) []*seg {
     return segs
 }
 
-func generateIndex() {
+func buildChapters() []string {
+    chapterLines := readLines("meta/chapters.txt")
+    return filterStrings(chapterLines, func(ch string) bool {
+        return (ch != "") && !strings.HasPrefix(ch, "#")
+    })
+}
+
+func renderIndex(chapterIds []string) {
     indexF, err := os.Create(siteDir + "/index.html")
     check(err)
     fmt.Fprint(indexF,
@@ -200,7 +207,7 @@ func generateIndex() {
            </head>
            <body>
            <div class="chapter" id="contents"><h2>Contents</h2><ul>`)
-    chapterIds := readLines("meta/contents.txt")
+    
     for _, chapterId := range chapterIds {
         chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
         chapterName := chapterLines[0][6:]
@@ -209,8 +216,7 @@ func generateIndex() {
     fmt.Fprint(indexF, `</ul></div></body></html>`)
 }
 
-func generateChapters() {
-    chapterIds := readLines("meta/contents.txt")
+func renderChapters(chapterIds []string) {
     for _, chapterId := range chapterIds {
         chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
         chapterName := chapterLines[0][6:]
@@ -251,6 +257,7 @@ func generateChapters() {
 
 func main() {
     ensureDir(siteDir)
-    generateIndex()
-    generateChapters()
+    chapters := buildChapters()
+    renderIndex(chapters)
+    renderChapters(chapters)
 }
