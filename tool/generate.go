@@ -31,7 +31,7 @@ func filterStrings(vs []string, f func(string) bool) []string {
     return vsf
 }
 
-func render(bin string, arg []string, src string) []byte {
+func pipe(bin string, arg []string, src string) []byte {
     cmd := exec.Command(bin, arg...)
     in, _ := cmd.StdinPipe()
     out, _ := cmd.StdoutPipe()
@@ -57,23 +57,18 @@ func mustReadFile(path string) string {
     return string(bytes)
 }
 
-func cachedRender(bin string, arg []string, src string) string {
+func cachedPygmentize(lex string, src string) string {
+    arg := []string{"-l", lex, "-f", "html"}
+    bin := "/usr/local/bin/pygmentize"
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
     cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
     if cacheErr == nil {
         return string(cacheBytes)
     }
-    renderBytes := render(bin, arg, src)
+    renderBytes := pipe(bin, arg, src)
     writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
     check(writeErr)
     return string(renderBytes)
-}
-
-func cachedPygmentize(lex string, src string) string {
-    return cachedRender(
-        "/usr/local/bin/pygmentize",
-        []string{"-l", lex, "-f", "html"},
-        src)
 }
 
 func ensureCache() {
