@@ -1,4 +1,10 @@
-$ go run sorting-by-function.go 
-Original: [{Jack 10} {Jill 9} {Bob 12}]
-ByName:   [{Bob 12} {Jack 10} {Jill 9}]
-ByAge:    [{Jill 9} {Jack 10} {Bob 12}]
+# Running our program shows a list sorted by string
+# length, as desired.
+$ go run sorting-by-functions.go 
+[kiwi peach banana]
+
+# By following this same pattern of creating a custom
+# type, implementing the three `Interface` methods on that
+# type, and then calling sort.Sort on a collection of that
+# custom type, we can sort Go slices by arbitrary
+# functions.
