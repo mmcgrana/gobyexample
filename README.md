@@ -1,7 +1,6 @@
-## gobyexample
+## Go by Example
 
-Source for the [Go by Example](https://gobyexample.com)
-documentation project.
+Source for [Go by Example](https://gobyexample.com), your hands-on guide to Go.
 
 
 ### Generation
@@ -19,6 +18,7 @@ home page in your browser:
 $ tool/build
 $ open site/index.html
 ```
+
 
 ### License
 
