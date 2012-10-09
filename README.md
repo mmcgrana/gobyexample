@@ -1,6 +1,6 @@
 ## Go by Example
 
-Source for [Go by Example](https://gobyexample.com), your hands-on guide to Go.
+Source for [Go by Example](https://gobyexample.com), a hands-on guide to Go.
 
 
 ### Generation
