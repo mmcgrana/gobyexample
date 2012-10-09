@@ -1,37 +1,20 @@
 /* Layout and typography */
-@page { margin: 48px 0px 48px 0px }
-
 body {
   font-family: 'Palatino Linotype';
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  line-height: 20px;
   color: #252519;
   margin: 0; padding: 0;
 }
-a {
-  color: #261a3b;
-}
-a:visited {
+a, a:visited {
   color: #261a3b;
 }
 p {
   margin: 0;
 }
-h1, h2, h3, h4, h5, h6 {
+h2 {
   margin: 24px 0 12px 0;
   font-weight: normal;
-}
-div#title {
-    text-align: center;
-}
-div#title h1 {
-    font-size: 72px;
-    margin-top: 4em;
-}
-div#title h3 {
-    font-size: 24px;
-    margin-top: 4em;
-    margin-bottom: 18em;
 }
 h2 {
     font-size: 24px;
@@ -48,25 +31,10 @@ div.chapter {
     margin-right: auto;
     margin-bottom: 32px;
 }
-div#introduction, div#contents {
+div#contents {
     width: 330px;
     min-width: 330px;
     max-width: 330px;
-}
-div#title {
-    page-break-after: always;
-}
-div#contents {
-    page-break-after: always;
-}
-div#introduction {
-    page-break-after: always;
-}
-div#introduction p {
-    padding: 5px 5px 5px 5px;
-}
-div#introduction h2, h3 {
-    padding: 10px 5px 10px 5px;
 }
 div#contents h2 {
     padding: 10px 5px 10px 5px;
@@ -77,9 +45,6 @@ div#contents ul {
     margin: 0;
     font-size: 18px;
     line-height: 24px;
-}
-div#contents a:after {
- content: leader(".") target-counter(attr(href, url), page);
 }
 div#contents a {
     text-decoration: none;
