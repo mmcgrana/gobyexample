@@ -101,6 +101,13 @@ func whichLexer(path string) string {
     return ""
 }
 
+func whichSiteDir() {
+    dir := os.Getenv("SITEDIR")
+    if dir != "" {
+        siteDir = dir
+    }
+}
+
 func debug(msg string) {
     if os.Getenv("DEBUG") == "1" {
         fmt.Fprintln(os.Stderr, msg)
@@ -228,6 +235,7 @@ func renderChapters(chapters []*Chapter) {
 }
 
 func main() {
+    whichSiteDir()
     ensureDir(siteDir)
     copyFile("template/site.css", siteDir+"/site.css")
     chapters := parseChapters()

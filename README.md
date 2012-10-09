@@ -1,7 +1,7 @@
 ## Go by Example
 
-Source for the [Go by Example](https://gobyexample.com)
-site.
+Content and toolchain source for the
+[Go by Example](https://gobyexample.com) site.
 
 
 ### Overview
@@ -37,6 +37,16 @@ $ tool/build-loop
 
 Generation requires the [`pygmentize`](http://pygments.org/)
 binary for syntax highlighting.
+
+
+### Serving
+
+The site is served by the [gobyexample-server](https://github.com/mmcgrana/gobyexample-server)
+tool. To export to this tool:
+
+```console
+$ SITEDIR = ../gobyexample-server/public tool/build
+```
 
 
 ### License
