@@ -1,8 +1,18 @@
-## gbe-book
+## gobyexample
 
-Go by Example book source and build toolchain.
+Source for the [Go by Example](https://mmcgrana.github.com/gobyexample/)
+documentation project.
 
-### Usage
+
+### Generation
+
+The web site is generated from `.go` and `.md` source
+files using a custom site generator.
+
+Generation requires the [`pygmentize`](http://pygments.org/)
+binary for syntax highlighting.
+
+To generate and view the site:
 
 ```console
 $ tool/build
