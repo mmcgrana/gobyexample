@@ -23,7 +23,7 @@ var newline = []byte("\n")
 
 func main() {
     // Wrapping the unbuffered `os.Stdin` with a buffered
-    //reader gives us the convenient `ReadLine` method.
+    // reader gives us the convenient `ReadLine` method.
     in := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
