@@ -206,7 +206,9 @@ func renderIndex(chapterIds []string) {
              <link rel=stylesheet href="../style/site.css">
            </head>
            <body>
-           <div class="chapter" id="contents"><h2>Go by Example</h2><ul>`)
+           <div id="intro">
+             <h2>Go by Example</h2>
+             <ul>`)
 
     for _, chapterId := range chapterIds {
         chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")

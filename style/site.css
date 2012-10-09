@@ -44,16 +44,16 @@ table {
 
 /* Layout and typography */
 body {
-  font-family: 'Palatino Linotype';
-  font-size: 16px;
-  line-height: 20px;
-  color: #252519;
+    font-family: 'Palatino Linotype';
+    font-size: 16px;
+    line-height: 20px;
+    color: #252519;
 }
 em {
     font-style: italic;
 }
 a, a:visited {
-  color: #261a3b;
+    color: #261a3b;
 }
 h2 {
     font-size: 32px;
@@ -67,17 +67,27 @@ div.chapter {
     margin-left: auto;
     margin-right: auto;
 }
+div#intro {
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div#intro ul {
+    padding-top: 5px;
+}
 table td {
-  border: 0;
-  outline: 0;
+    border: 0;
+    outline: 0;
 }
 td.docs {
-  width: 400px;
-  max-width: 400px;
-  min-width: 400px;
-  min-height: 5px;
-  vertical-align: top;
-  text-align: left;
+    width: 400px;
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 5px;
+    vertical-align: top;
+    text-align: left;
 }
 td.docs p {
     padding-right: 5px;
@@ -85,23 +95,23 @@ td.docs p {
     padding-bottom: 15px;
 }
 td.code {
-  width: 400px;
-  max-width: 400px;
-  min-width: 400px;
-  padding-top: 5px;
-  padding-right: 5px;
-  padding-left: 5px;
-  padding-bottom: 11px;
-  vertical-align: top;
-  background: #f0f0f0;
+    width: 400px;
+    max-width: 400px;
+    min-width: 400px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 11px;
+    vertical-align: top;
+    background: #f0f0f0;
 }
 td.code.empty {
-  border-left: none;
-  background: #ffffff;
+    border-left: none;
+    background: #ffffff;
 }
 pre, code {
-  font-size: 12px; line-height: 16px;
-  font-family: 'Monaco';
+    font-size: 12px; line-height: 16px;
+    font-family: 'Monaco';
 }
 
 /* Syntax highlighting */
