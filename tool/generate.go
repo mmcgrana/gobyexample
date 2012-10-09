@@ -205,7 +205,7 @@ func main() {
           <head>
             <meta http-eqiv="content-type" content="text/html;charset=utf-8">
             <title>Go by Example</title>
-            <link rel=stylesheet href="../src/book.css">
+            <link rel=stylesheet href="../src/style.css">
           </head>
           <body>`)
 

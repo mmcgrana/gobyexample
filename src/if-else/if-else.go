@@ -19,5 +19,6 @@ func main() {
     }
 }
 
-// There is no ternary operator (i.e. `?`) in Go, so you'll
-// need to use a full if/else even for very basic conditions.
+// There is no ternary operator (i.e. `?`) in Go, so
+// you'll need to use a full if/else even for very basic
+// conditions.

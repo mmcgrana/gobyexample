@@ -9,15 +9,16 @@ import "fmt"
 
 // The syntax is `func name(args) returns { body }`. Note
 // the the types of arguments come after their name.
-// In this case we're taking a slice of floats and returning
-// a single float value.
+// In this case we're taking a slice of floats and
+// returning a single float value.
 func avg(vals []float64) float64 {
     total := 0.0
     for _, val := range vals {
         total += val
     }
     // Go requires an expliciti return, i.e. it won't
-    // automatically return the value of the last expression.
+    // automatically return the value of the last
+    // expression.
     return total / float64(len(vals))
 }
 
@@ -30,6 +31,6 @@ func main() {
     fmt.Println(output)
 }
 
-// There are several other features to Go functions, including
-// multiple return values and varargs, which we'll look at
-// next.
+// There are several other features to Go functions,
+// including multiple return values and varargs, which
+// we'll look at next.
