@@ -14,6 +14,7 @@ import (
 )
 
 var cacheDir = "/tmp/gobyexample-cache"
+var siteDir = "site"
 
 func check(err error) {
     if err != nil {
@@ -29,6 +30,11 @@ func filterStrings(vs []string, f func(string) bool) []string {
         }
     }
     return vsf
+}
+
+func ensureDir(dir string) {
+    err := os.MkdirAll(dir, 0700)
+    check(err)
 }
 
 func pipe(bin string, arg []string, src string) []byte {
@@ -58,6 +64,7 @@ func mustReadFile(path string) string {
 }
 
 func cachedPygmentize(lex string, src string) string {
+    ensureDir(cacheDir)
     arg := []string{"-l", lex, "-f", "html"}
     bin := "/usr/local/bin/pygmentize"
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
@@ -69,11 +76,6 @@ func cachedPygmentize(lex string, src string) string {
     writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
     check(writeErr)
     return string(renderBytes)
-}
-
-func ensureCache() {
-    mkdirErr := os.MkdirAll(cacheDir, 0700)
-    check(mkdirErr)
 }
 
 func markdown(src string) string {
@@ -185,78 +187,66 @@ func parseAndRenderSegs(sourcePath string) []*seg {
     return segs
 }
 
-func main() {
-    if len(os.Args) != 2 {
-        panic("Wrong number of args")
-    }
-    outF, err := os.Create(os.Args[1])
+func generateIndex() {
+    indexF, err := os.Create(siteDir + "/index.html")
     check(err)
-    ensureCache()
-
-    // Header
-    fmt.Fprint(outF,
+    fmt.Fprint(indexF,
         `<!DOCTYPE html>
-        <html>
-          <head>
-            <meta http-eqiv="content-type" content="text/html;charset=utf-8">
-            <title>Go by Example</title>
-            <link rel=stylesheet href="../src/style.css">
-          </head>
-          <body>`)
-
-    // Title page
-    fmt.Fprintf(outF,
-        `<div class="chapter" id="title">%s</div>`,
-        markdown(mustReadFile("src/title.md")))
-
-    // Contents page
-    chapterIds := readLines("src/contents.txt")
-    fmt.Fprint(outF, `<div class="chapter" id="contents"><h2>Contents</h2><ul>`)
+         <html>
+           <head>
+             <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+             <title>Go by Example</title>
+             <link rel=stylesheet href="../style/site.css">
+           </head>
+           <body>
+           <div class="chapter" id="contents"><h2>Contents</h2><ul>`)
+    chapterIds := readLines("meta/contents.txt")
     for _, chapterId := range chapterIds {
-        var chapterName string
-        if chapterId == "introduction" {
-            chapterName = "Introduction"
-        } else {
-            chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
-            chapterName = chapterLines[0][6:]
-        }
-        fmt.Fprintf(outF, `<li><a href="#%s">%s</a></li>`, chapterId, chapterName)
+        chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
+        chapterName := chapterLines[0][6:]
+        fmt.Fprintf(indexF, `<li><a href="%s.html">%s</a></li>`, chapterId, chapterName)
     }
-    fmt.Fprint(outF, `</ul></div>`)
-
-    // Content chapters
-    for _, chapterId := range chapterIds {
-        fmt.Fprintf(outF, `<div class="chapter" id="%s">`, chapterId)
-        if chapterId == "introduction" {
-            fmt.Fprint(outF, markdown(mustReadFile("src/introduction.md")))
-        } else {
-            chapterPath := "src/" + chapterId
-            fmt.Fprintf(outF,
-                `<table cellspacing="0" cellpadding="0" id="%s"><tbody>`,
-                chapterPath)
-            sourcePaths := mustGlob(chapterPath + "/*")
-            for _, sourcePath := range sourcePaths {
-                if strings.HasSuffix(sourcePath, ".go") || strings.HasSuffix(sourcePath, ".sh") {
-                    segs := parseAndRenderSegs(sourcePath)
-                    for _, seg := range segs {
-                        codeClasses := "code"
-                        if seg.code == "" {
-                            codeClasses = codeClasses + " empty"
-                        }
-                        fmt.Fprintf(outF,
-                            `<tr>
-    		        		 <td class=docs>%s</td>
-    		        		 <td class="%s">%s</td>
-    		        		 </tr>`,
-                            seg.docsRendered, codeClasses, seg.codeRendered)
-                    }
-                }
-            }
-            fmt.Fprint(outF, `</tbody></table>`)
-        }
-        fmt.Fprintf(outF, `</div>`)
-    }
-
-    // Footer
-    fmt.Fprint(outF, `</body></html>`)
+    fmt.Fprint(indexF, `</ul></div></body></html>`)
 }
+
+func main() {
+    ensureDir(siteDir)
+    generateIndex()
+}
+
+// 
+// // Content chapters
+// for _, chapterId := range chapterIds {
+//     fmt.Fprintf(outF, `<div class="chapter" id="%s">`, chapterId)
+//     if chapterId == "introduction" {
+//         fmt.Fprint(outF, markdown(mustReadFile("src/introduction.md")))
+//     } else {
+//         chapterPath := "src/" + chapterId
+//         fmt.Fprintf(outF,
+//             `<table cellspacing="0" cellpadding="0" id="%s"><tbody>`,
+//             chapterPath)
+//         sourcePaths := mustGlob(chapterPath + "/*")
+//         for _, sourcePath := range sourcePaths {
+//             if strings.HasSuffix(sourcePath, ".go") || strings.HasSuffix(sourcePath, ".sh") {
+//                 segs := parseAndRenderSegs(sourcePath)
+//                 for _, seg := range segs {
+//                     codeClasses := "code"
+//                     if seg.code == "" {
+//                         codeClasses = codeClasses + " empty"
+//                     }
+//                     fmt.Fprintf(outF,
+//                         `<tr>
+// 		        		 <td class=docs>%s</td>
+// 		        		 <td class="%s">%s</td>
+// 		        		 </tr>`,
+//                         seg.docsRendered, codeClasses, seg.codeRendered)
+//                 }
+//             }
+//         }
+//         fmt.Fprint(outF, `</tbody></table>`)
+//     }
+//     fmt.Fprintf(outF, `</div>`)
+// }
+// 
+// // Footer
+// fmt.Fprint(outF, `</body></html>`)
