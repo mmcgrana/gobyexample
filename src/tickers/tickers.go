@@ -1,6 +1,6 @@
 // ## Tickers
 
-// [Timers](timers.html) are for when you want to do
+// [Timers](timers) are for when you want to do
 // something once in the future - tickers are for when you
 // want to do something repeatedly at regular intervals.
 // Here's an example of a ticker that ticks periodically

@@ -4,7 +4,7 @@
 // future, or repeatedly at some interval. Go's built-in
 // timer and ticker features make both of these tasks
 // easy. We'll look first at timers and then
-// at [tickers](tickers.html).
+// at [tickers](tickers).
 
 package main
 
