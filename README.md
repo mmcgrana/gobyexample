@@ -1,6 +1,6 @@
 ## gobyexample
 
-Source for the [Go by Example](https://mmcgrana.github.com/gobyexample/)
+Source for the [Go by Example](https://gobyexample.com)
 documentation project.
 
 
@@ -12,7 +12,8 @@ files using a custom site generator.
 Generation requires the [`pygmentize`](http://pygments.org/)
 binary for syntax highlighting.
 
-To generate and view the site:
+To validate the source, generate the site, and open the
+home page in your browser:
 
 ```console
 $ tool/build
