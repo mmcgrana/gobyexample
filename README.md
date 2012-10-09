@@ -18,6 +18,9 @@ the `.go` and `.sh` source files in `src` and rendering
 that data according to `meta` and `templates` via programs
 in `tool`.
 
+The generated contented is served by the a
+[lightweight server](https://github.com/mmcgrana/gobyexample-server).
+
 
 ### Usage
 
