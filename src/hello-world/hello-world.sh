@@ -9,7 +9,7 @@ $ go build hello-world.go
 $ ls
 hello-world	hello-world.go
 
-# We can then execute this binary directly.
+# We can then execute the built binaries directly.
 $ ./hello-world
 Hello world
 
