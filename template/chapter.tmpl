@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: {{.Name}}</title>
+    <link rel=stylesheet href="../template/site.css">
+  </head>
+  <body>
+    <div class="chapter" id="{{.Id}}">
+      <table cellspacing="0" cellpadding="0">
+        <tbody>
+        {{range .Segs}}
+          <tr>
+            <td class=docs>{{.DocsRendered}}</td>
+            <td class="{{.CodeClasses}}">{{.CodeRendered}}</td>
+          </tr>
+        {{end}}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
