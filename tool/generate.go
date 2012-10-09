@@ -29,12 +29,10 @@ func ensureDir(dir string) {
 }
 
 func copyFile(src, dst string) {
-    srcF, err := os.Open(src, os.O_RDONLY, 0)
-    check(err)
+    txt := mustReadFile(src)
     dstF, err := os.Create(dst)
     check(err)
-    err = io.Copy(srcF, dstF)
-    check(err)
+    fmt.Fprint(dstF, txt)
 }
 
 func pipe(bin string, arg []string, src string) []byte {
