@@ -209,44 +209,48 @@ func generateIndex() {
     fmt.Fprint(indexF, `</ul></div></body></html>`)
 }
 
+func generateChapters() {
+    chapterIds := readLines("meta/contents.txt")
+    for _, chapterId := range chapterIds {
+        chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
+        chapterName := chapterLines[0][6:]
+        chapterPath := "src/" + chapterId
+        sourcePaths := mustGlob(chapterPath + "/*")
+        chapterF, err := os.Create(siteDir + "/" + chapterId + ".html")
+        check(err)
+        fmt.Fprintf(chapterF,
+            `<!DOCTYPE html>
+             <html>
+               <head>
+                 <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+                 <title>Go by Example: %s</title>
+                 <link rel=stylesheet href="../style/site.css">
+               </head>
+               <body>
+                 <div class="chapter" id="%s">
+                   <table cellspacing="0" cellpadding="0"><tbody>`,
+            chapterName, chapterId)
+        for _, sourcePath := range sourcePaths {
+            segs := parseAndRenderSegs(sourcePath)
+            for _, seg := range segs {
+                codeClasses := "code"
+                if seg.code == "" {
+                    codeClasses = codeClasses + " empty"
+                }
+                fmt.Fprintf(chapterF,
+                    `<tr>
+                     <td class=docs>%s</td>
+                     <td class="%s">%s</td>
+                     </tr>`,
+                    seg.docsRendered, codeClasses, seg.codeRendered)
+            }
+        }
+        fmt.Fprint(chapterF, `</tbody></table></div></body></html>`)
+    }
+}
+
 func main() {
     ensureDir(siteDir)
     generateIndex()
+    generateChapters()
 }
-
-// 
-// // Content chapters
-// for _, chapterId := range chapterIds {
-//     fmt.Fprintf(outF, `<div class="chapter" id="%s">`, chapterId)
-//     if chapterId == "introduction" {
-//         fmt.Fprint(outF, markdown(mustReadFile("src/introduction.md")))
-//     } else {
-//         chapterPath := "src/" + chapterId
-//         fmt.Fprintf(outF,
-//             `<table cellspacing="0" cellpadding="0" id="%s"><tbody>`,
-//             chapterPath)
-//         sourcePaths := mustGlob(chapterPath + "/*")
-//         for _, sourcePath := range sourcePaths {
-//             if strings.HasSuffix(sourcePath, ".go") || strings.HasSuffix(sourcePath, ".sh") {
-//                 segs := parseAndRenderSegs(sourcePath)
-//                 for _, seg := range segs {
-//                     codeClasses := "code"
-//                     if seg.code == "" {
-//                         codeClasses = codeClasses + " empty"
-//                     }
-//                     fmt.Fprintf(outF,
-//                         `<tr>
-// 		        		 <td class=docs>%s</td>
-// 		        		 <td class="%s">%s</td>
-// 		        		 </tr>`,
-//                         seg.docsRendered, codeClasses, seg.codeRendered)
-//                 }
-//             }
-//         }
-//         fmt.Fprint(outF, `</tbody></table>`)
-//     }
-//     fmt.Fprintf(outF, `</div>`)
-// }
-// 
-// // Footer
-// fmt.Fprint(outF, `</body></html>`)
