@@ -8,7 +8,7 @@
 package main
 
 // Go implements several hash functions in various
-// `crtypo/*` packages.
+// `crypto/*` packages.
 import "crypto/sha1"
 import "encoding/hex"
 import "fmt"
