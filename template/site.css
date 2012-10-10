@@ -74,6 +74,9 @@ div.chapter {
 div.chapter table {
     margin-bottom: 20px;
 }
+p.next {
+    margin-bottom: 20px;
+}
 p.footer {
     color: grey;
 }
