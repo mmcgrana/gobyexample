@@ -40,7 +40,7 @@ func main() {
         }
 
         // Write out the uppercased bytes, checking for an
-        // error here as well.
+        // error on the write as we did on the read.
         outBytes := bytes.ToUpper(inBytes)
         _, err = out.Write(outBytes)
         if err != nil {
