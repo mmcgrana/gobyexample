@@ -55,3 +55,10 @@ $ SITEDIR = ../gobyexample-server/public tool/build
 ### License
 
 This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
+
+
+### Thanks
+
+Thanks to [Jeremy Ashkenas](https://github.com/jashkenas)
+for [Docco](http://jashkenas.github.com/docco/), which
+inspired this project.
