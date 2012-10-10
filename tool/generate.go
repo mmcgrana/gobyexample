@@ -124,8 +124,9 @@ type Seg struct {
 }
 
 type Chapter struct {
-    Id, Name string
-    Segs     [][]*Seg
+    Id, Name    string
+    Segs        [][]*Seg
+    NextChapter *Chapter
 }
 
 func parseSegs(sourcePath string) []*Seg {
@@ -206,6 +207,11 @@ func parseChapters() []*Chapter {
                 chapter.Segs = append(chapter.Segs, sourceSegs)
             }
             chapters = append(chapters, &chapter)
+        }
+    }
+    for i, chapter := range chapters {
+        if i < (len(chapters) - 1) {
+            chapter.NextChapter = chapters[i+1]
         }
     }
     return chapters

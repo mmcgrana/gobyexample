@@ -60,6 +60,9 @@ h2 {
     line-height: 40px;
     margin-top: 40px;
 }
+h2 a {
+    text-decoration: none;
+}
 div.chapter {
     width: 900px;
     min-width: 900px;
@@ -70,6 +73,13 @@ div.chapter {
 }
 div.chapter table {
     margin-bottom: 20px;
+}
+div.chapter p.footer {
+    margin-top: 20px;
+    color: grey;
+}
+div.chapter p.footer a, div.chapter p.footer a:visited {
+    color: grey;
 }
 div#intro {
     width: 420px;

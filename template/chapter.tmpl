@@ -17,7 +17,7 @@
   </script>
   <body>
     <div class="chapter" id="{{.Id}}">
-      <h2>{{.Name}}</h2>
+      <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
         <table cellspacing="0" cellpadding="0">
           <tbody>
@@ -34,6 +34,14 @@
         </tbody>
       </table>
       {{end}}
+      {{if .NextChapter}}
+      <p class="next">
+        Next example: <a href="{{.NextChapter.Id}}">{{.NextChapter.Name}}</a>
+      </p>
+      {{end}}
+      <p class="footer">
+        Follow <a href="https://twitter.com/gobyexample">@gobyexample</a> for updates. <a href="https://github.com/mmcgrana/gobyexample/blob/master/src/{{.Id}}/{{.Id}}.go">Source</a> &amp; <a href="https://github.com/mmcgrana/gobyexample#license">license</a>.
+      </p>
     </div>
   </body>
 </html>
