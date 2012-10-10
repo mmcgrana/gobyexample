@@ -228,7 +228,7 @@ func renderChapters(chapters []*Chapter) {
                 seg.CodeClasses = seg.CodeClasses + " empty"
             }
         }
-        chapterF, err := os.Create(siteDir + "/" + chapter.Id + ".html")
+        chapterF, err := os.Create(siteDir + "/" + chapter.Id)
         check(err)
         chapterTmpl.Execute(chapterF, chapter)
     }
