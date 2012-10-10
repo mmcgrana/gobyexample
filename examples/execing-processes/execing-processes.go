@@ -1,11 +1,13 @@
-// In the previous example we looked at spawning external
-// process. We do this when we need the functionality
-// of another process accessable to a running Go process.
-// In other cases we may just want to completely replace
-// the current Go process with another process. To do
-// this we'll use Go's implementation of the `exec`.
+// In the previous example we looked at
+// [spawning external processes](spawning-processes). We
+// do this when we need an external process accessible to
+// a running Go process. Sometimes we just want to
+// completely replace the current Go process with another
+// (perhaps non-Go) one. To do this we'll use Go's
+// implementation of the classic
+// <a href="http://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
+// function.
 
-// In this example we'll exec an `ls` command.
 package main
 
 import "syscall"
@@ -13,27 +15,31 @@ import "os"
 import "os/exec"
 
 func main() {
-    // We'll need an absolute path to the binary we'd
-    // like to execute. In this case we'll get the path
-    // for `ls`, probably `/bin/ls`.
+
+    // For our example we'll exec `ls`. Go requires an
+    // abolute path to the binary we want to execute, so
+    // we'll use `exec.LookPath` to find it (probably
+    // `/bin/ls`).
     binary, lookErr := exec.LookPath("ls")
     if lookErr != nil {
         panic(lookErr)
     }
 
-    // Exec requires arguments in slice form (as
-    // apposed to one big string). Here we'll give `ls`
-    // a few arguments
+    // `Exec` requires arguments in slice form (as
+    // apposed to one big string). We'll give `ls` a few
+    // common arguments.
     args := []string{"-a", "-l", "-h"}
 
-    // We'll give the command we execute our current
+    // `Exec` also needs a set of [environment variables](environment-variables)
+    // to use. Here we just provide our current
     // environment.
     env := os.Environ()
 
-    // The actual exec call. If this call is succesful,
-    // the execution of our process will end here and it
-    // will be replaced by the `/bin/ls -a -l -h` process.
-    // If there is an error we'll get a return value.
+    // Here's the actual `os.Exec` call. If this call is
+    // succesful, the execution of our process will end
+    // here and be replaced by the `/bin/ls -a -l -h`
+    // process. If there is an error we'll get a return
+    // value.
     execErr := syscall.Exec(binary, args, env)
     if execErr != nil {
         panic(execErr)

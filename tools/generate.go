@@ -199,6 +199,7 @@ func parseExamples() []*Example {
             exampleId := strings.ToLower(exampleName)
             exampleId = strings.Replace(exampleId, " ", "-", -1)
             exampleId = strings.Replace(exampleId, "/", "-", -1)
+            exampleId = strings.Replace(exampleId, "'", "", -1)
             example.Id = exampleId
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")

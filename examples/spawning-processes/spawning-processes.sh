@@ -1,6 +1,11 @@
+# The spawned programs return output that is the same
+# as if we had run them directly form the comand-line.
 $ go run spawning-processes.go 
 > date
-Wed Oct  3 16:40:57 EDT 2012
+Wed Oct 10 09:53:11 PDT 2012
+
+> grep hello
+hello grep
 
 > ls -a -l -h
 drwxr-xr-x  4 mark 136B Oct 3 16:29 .

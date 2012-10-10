@@ -1,35 +1,70 @@
 // Sometimes our Go programs need to spawn other, non-Go
-// processes. For example, the syntax highlighting in this
-// book is implementing by spawning a [`pygmentize`]()
-// process from a Go program. Let's look at a few
-// examples of spawning processes from Go.
+// processes. For example, the syntax highlighting on this
+// site is [implemented](https://github.com/mmcgrana/gobyexample/blob/master/tools/generate.go)
+// by spawning a [`pygmentize`](http://pygments.org/)
+// process from a Go program. Let's look at a few examples
+// of spawning processes from Go.
 
 package main
 
-import "os/exec"
 import "fmt"
+import "io/ioutil"
+import "os/exec"
 
 func main() {
-    // todo: explain
+
+    // We'll start with a simple command that takes no
+    // arguments or input and just prints something to
+    // stdout. The `exec.Command` helper creates an object
+    // to represent this external process.
     dateCmd := exec.Command("date")
-    dateOut, dateErr := dateCmd.Output()
-    if dateErr != nil {
-        panic(dateErr)
+
+    // `.Output` is another helper than handles the common
+    // case of running a comand, waiting for it to finish,
+    // and collecting its output. If there were no errors,
+    // `dateOut` will hold bytes with the date info.
+    dateOut, err := dateCmd.Output()
+    if err != nil {
+        panic(err)
     }
     fmt.Println("> date")
     fmt.Println(string(dateOut))
 
-    // todo: piping in stdin
+    // Next we'll look at a slightly more involved case
+    // where we pipe data to the exteranl process on its
+    // `stdin` and collect the results from `stdout`.
+    grepCmd := exec.Command("grep", "hello")
+
+    // Here we explicitly grab input/output pipes, start
+    // the process, write some input to it, read the
+    // resulting output, and finally wait for the process
+    // to exit.
+    grepIn, _ := grepCmd.StdinPipe()
+    grepOut, _ := grepCmd.StdoutPipe()
+    grepCmd.Start()
+    grepIn.Write([]byte("hello grep\ngoodbye grep"))
+    grepIn.Close()
+    grepBytes, _ := ioutil.ReadAll(grepOut)
+    grepCmd.Wait()
+
+    // We ommited error checks in the above example, but
+    // you could use the usual `if err != nil` pattern for
+    // all of them. We also only collect the `StdoutPipe`
+    // results, but you could collect the `StderrPipe` in
+    // exactly the same way.
+    fmt.Println("> grep hello")
+    fmt.Println(string(grepBytes))
 
     // Note that when spawning commands we need to
-    // provide an explicit command and argument array,
-    // vs. being able to just pass in one command line.
-    // If you want to be able to just spawn a full
-    // command, you can use `bash`'s `-c` option:
+    // provide an explicitly deliniated command and
+    // argument array, vs. being able to just pass in one
+    // command line string. If you want to spawn a full
+    // command with a string, you can use `bash`'s `-c`
+    // option:
     lsCmd := exec.Command("bash", "-c", "ls -a -l -h")
-    lsOut, lsErr := lsCmd.Output()
-    if lsErr != nil {
-        panic(lsErr)
+    lsOut, err := lsCmd.Output()
+    if err != nil {
+        panic(err)
     }
     fmt.Println("> ls -a -l -h")
     fmt.Println(string(lsOut))

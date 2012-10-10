@@ -64,8 +64,8 @@ Line Filters
 # Command-Line Arguments
 # Command-Line Flags
 Environment Variables
-# Spawning Processes
-# Execing Processes
+Spawning Processes
+Exec'ing Processes
 # Signals
 # Exit
 # HTTP Client

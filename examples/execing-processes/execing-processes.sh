@@ -1,6 +1,4 @@
-# Now if we run this we'll see our programm replaced
-# by `ls`.
-
+# When we run our program it is replaced by `ls`.
 $ go run execing-processes.go
 $ ls -a -l -h
 total 16
@@ -10,5 +8,5 @@ drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..
 
 # Note that Go does not offer a classic Unix `fork`
 # function. Usually this isn't an issue though, since
-# starting goroutines, spawning processes, and execing
+# starting goroutines, spawning processes, and exec'ing
 # processes covers most use cases for `fork`.
