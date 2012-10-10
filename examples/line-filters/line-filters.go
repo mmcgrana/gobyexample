@@ -9,7 +9,7 @@
 package main
 
 // Package `bufio` will help us read line-by-line, and
-// `bytes` provides the byte-level capitaliazation
+// `bytes` provides the byte-level capitalization
 // function.
 import "bufio"
 import "bytes"
