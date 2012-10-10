@@ -1,8 +1,9 @@
-// SHA1 hashes are frequently used to compute short
-// identities for binary or text blobs. For example, the
-// [git revision control system](http://git-scm.com/) uses
-// SHA1s extensively to identify versioned files and
-// directories. Here's how to compute SHA1 hashes in Go.
+// [SHA1 hashes](http://en.wikipedia.org/wiki/SHA-1) are
+// frequently used to compute short identities for binary
+// or text blobs. For example, the [git revision control
+// system](http://git-scm.com/) uses SHA1s extensively to
+// identify versioned files and directories. Here's how to
+// compute SHA1 hashes in Go.
 
 package main
 
