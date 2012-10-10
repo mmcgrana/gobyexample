@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+ls tools/*.go examples/*/*.go | xargs gofmt -tabs=false -tabwidth=4 -w=true

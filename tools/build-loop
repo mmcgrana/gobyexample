@@ -2,7 +2,7 @@
 
 while :
 do
-  tool/build
+  tools/build
   if [ "$?" == "0" ]; then
     echo "success"
   else

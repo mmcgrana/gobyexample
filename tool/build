@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -e
-
-tool/gofmt
-tool/measure
-tool/generate
