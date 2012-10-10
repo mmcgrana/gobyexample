@@ -1,5 +1,3 @@
-// ## Range
-
 package main
 
 import "fmt"

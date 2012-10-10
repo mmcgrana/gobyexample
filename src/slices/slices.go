@@ -1,5 +1,3 @@
-// ## Slices
-
 package main
 
 import "fmt"

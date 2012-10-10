@@ -1,5 +1,3 @@
-// ## Redis
-
 package main
 
 import "github.com/fzzbt/radix/redis"

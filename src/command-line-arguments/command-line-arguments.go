@@ -1,5 +1,3 @@
-// ## Command Line Arguments
-
 // Use `os.Args` to access command-line arguments and
 // the name of the program.
 package main

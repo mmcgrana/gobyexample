@@ -1,5 +1,3 @@
-// ## Switch
-
 // Switch statements allow...
 
 package main

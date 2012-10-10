@@ -1,5 +1,3 @@
-// ## Non-blocking Channel Operations
-
 package main
 
 import "fmt"

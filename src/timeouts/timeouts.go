@@ -1,5 +1,3 @@
-// ## Timeouts
-
 package main
 
 import "time"

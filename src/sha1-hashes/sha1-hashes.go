@@ -1,5 +1,3 @@
-// ## SHA1 Hashes
-
 package main
 
 // Package `crypto/sha1` computes SHA1 hashes.

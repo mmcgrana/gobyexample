@@ -1,5 +1,3 @@
-// ## Canonical Hosts
-
 package main
 
 import "net/http"

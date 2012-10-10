@@ -1,5 +1,3 @@
-// ## Functions
-
 // Funcations are critical in Go as in any other language.
 // We'll look at some basic examples first.
 

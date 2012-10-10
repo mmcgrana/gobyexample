@@ -1,5 +1,3 @@
-// ## JSON
-
 package main
 
 import "encoding/json"

@@ -1,5 +1,3 @@
-// ## Select
-
 package main
 
 import "time"

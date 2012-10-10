@@ -1,5 +1,3 @@
-// ## Number Parsing
-
 package main
 
 // Package `strconv` provides the number parsing.

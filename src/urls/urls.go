@@ -1,5 +1,3 @@
-// ## URLs
-
 package main
 
 import "fmt"

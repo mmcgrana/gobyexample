@@ -1,5 +1,3 @@
-// ## For
-
 // `for` is Go's only looping construct. Here are
 // two common forms.
 package main

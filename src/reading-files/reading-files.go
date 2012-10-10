@@ -1,5 +1,3 @@
-// ## Reading files
-
 package main
 
 import "io/ioutil"

@@ -1,5 +1,3 @@
-// ## Structs
-
 package main
 
 import "fmt"

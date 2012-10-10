@@ -1,5 +1,3 @@
-// ## Closing Channels
-
 package main
 
 import "fmt"

@@ -1,5 +1,3 @@
-// ## Responses
-
 package main
 
 import "net/http"

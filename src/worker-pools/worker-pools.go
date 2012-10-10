@@ -1,5 +1,3 @@
-// ## Worker Pools
-
 package main
 
 import "time"

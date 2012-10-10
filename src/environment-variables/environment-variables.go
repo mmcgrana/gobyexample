@@ -1,5 +1,3 @@
-// ## Environment Variables
-
 package main
 
 // Use the `os` package to list, set, and get environment

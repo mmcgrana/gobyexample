@@ -1,5 +1,3 @@
-// ## Bytes
-
 package main
 
 import "fmt"

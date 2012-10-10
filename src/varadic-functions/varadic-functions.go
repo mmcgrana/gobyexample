@@ -1,5 +1,3 @@
-// ## Varadic Functions
-
 // Varadic functions can be called with any number of
 // trailing arguments. This is useful if you don't know
 // number of arguments that will be needed for a function

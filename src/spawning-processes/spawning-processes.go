@@ -1,5 +1,3 @@
-// ## Spawning Processes
-
 // Sometimes our Go programs need to spawn other, non-Go
 // processes. For example, the syntax highlighting in this
 // book is implementing by spawning a [`pygmentize`]()

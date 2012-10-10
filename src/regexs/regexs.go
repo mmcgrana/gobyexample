@@ -1,5 +1,3 @@
-// ## Regexs
-
 package main
 
 import "regexp"

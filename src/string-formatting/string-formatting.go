@@ -1,5 +1,3 @@
-// ## String Formatting
-
 package main
 
 import "fmt"

@@ -1,5 +1,3 @@
-// ## Collection Functions
-
 package main
 
 import "strings"
@@ -92,4 +90,4 @@ func main() {
     fmt.Println()
 }
 
-// todo: generics
+// todo: note no generics

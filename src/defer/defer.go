@@ -1,5 +1,3 @@
-// ## Defer
-
 package main
 
 import "fmt"

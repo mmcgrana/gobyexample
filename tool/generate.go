@@ -130,7 +130,6 @@ type Chapter struct {
 func parseSegs(sourcePath string) []*Seg {
     lines := readLines(sourcePath)
     segs := []*Seg{}
-    segs = append(segs, &Seg{Code: "", Docs: ""})
     lastSeen := ""
     for _, line := range lines {
         if line == "" {
@@ -142,9 +141,8 @@ func parseSegs(sourcePath string) []*Seg {
         }
         matchDocs := docsPat.MatchString(line)
         matchCode := !matchDocs
-        lastSeg := segs[len(segs)-1]
-        newDocs := (lastSeen == "") || ((lastSeen != "docs") && (lastSeg.Docs != ""))
-        newCode := (lastSeen == "") || ((lastSeen != "code") && (lastSeg.Code != ""))
+        newDocs := (lastSeen == "") || ((lastSeen != "docs") && (segs[len(segs)-1].Docs != ""))
+        newCode := (lastSeen == "") || ((lastSeen != "code") && (segs[len(segs)-1].Code != ""))
         if newDocs || newCode {
             debug("NEWSEG")
         }
@@ -154,7 +152,7 @@ func parseSegs(sourcePath string) []*Seg {
                 newSeg := Seg{Docs: trimmed, Code: ""}
                 segs = append(segs, &newSeg)
             } else {
-                lastSeg.Docs = lastSeg.Docs + "\n" + trimmed
+                segs[len(segs)-1].Docs = segs[len(segs)-1].Docs + "\n" + trimmed
             }
             debug("DOCS: " + line)
             lastSeen = "docs"
@@ -163,7 +161,7 @@ func parseSegs(sourcePath string) []*Seg {
                 newSeg := Seg{Docs: "", Code: line}
                 segs = append(segs, &newSeg)
             } else {
-                lastSeg.Code = lastSeg.Code + "\n" + line
+                segs[len(segs)-1].Code = segs[len(segs)-1].Code + "\n" + line
             }
             debug("CODE: " + line)
             lastSeen = "code"
@@ -187,15 +185,16 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
 }
 
 func parseChapters() []*Chapter {
-    chapterLines := readLines("meta/chapters.txt")
+    chapterNames := readLines("meta/chapters.txt")
     chapters := make([]*Chapter, 0)
-    for _, chapterId := range chapterLines {
-        if (chapterId != "") && !strings.HasPrefix(chapterId, "#") {
-            chapter := Chapter{Id: chapterId}
-            chapterLines := readLines("src/" + chapterId + "/" + chapterId + ".go")
-            chapter.Name = chapterLines[0][6:]
-            chapterPath := "src/" + chapterId
-            sourcePaths := mustGlob(chapterPath + "/*")
+    for _, chapterName := range chapterNames {
+        if (chapterName != "") && !strings.HasPrefix(chapterName, "#") {
+            chapter := Chapter{Name: chapterName}
+            chapterId := strings.ToLower(chapterName)
+            chapterId = strings.Replace(chapterId, " ", "-", -1)
+            chapterId = strings.Replace(chapterId, "/", "-", -1)
+            chapter.Id = chapterId
+            sourcePaths := mustGlob("src/" + chapterId + "/*")
             segs := []*Seg{}
             for _, sourcePath := range sourcePaths {
                 sourceSegs := parseAndRenderSegs(sourcePath)

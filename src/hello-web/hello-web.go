@@ -1,5 +1,3 @@
-// ## Hello Web
-
 package main
 
 import "net/http"

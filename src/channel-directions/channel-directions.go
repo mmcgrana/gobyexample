@@ -1,5 +1,3 @@
-// ## Channel Directions
-
 package main
 
 import "fmt"

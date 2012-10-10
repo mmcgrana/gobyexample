@@ -1,5 +1,3 @@
-// ## Interfaces
-
 package main
 
 import "fmt"

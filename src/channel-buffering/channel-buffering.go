@@ -1,5 +1,3 @@
-// ## Channel Buffering
-
 package main
 
 import "fmt"

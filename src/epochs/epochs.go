@@ -1,5 +1,3 @@
-// ## Epochs
-
 // A common requirement in programms is getting the number
 // of seconds, milliseconds, or nanoseconds since the Unix
 // epoch. Here's how to do it in Go.

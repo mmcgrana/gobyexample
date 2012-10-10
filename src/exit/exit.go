@@ -1,5 +1,3 @@
-// ## Exit
-
 // Use `os.Exit` to immediatly exit with a given
 // status.
 

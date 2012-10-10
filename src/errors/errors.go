@@ -1,5 +1,3 @@
-// ## Errors
-
 package main
 
 import (

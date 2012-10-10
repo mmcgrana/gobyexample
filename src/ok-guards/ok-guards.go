@@ -1,5 +1,3 @@
-// ## OK Guards
-
 package main
 
 import "fmt"

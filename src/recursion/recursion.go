@@ -1,5 +1,3 @@
-// ## Recursion
-
 package main
 
 import "fmt"

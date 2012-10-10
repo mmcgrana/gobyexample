@@ -1,5 +1,3 @@
-// ## Embedding
-
 package main
 
 import "math"

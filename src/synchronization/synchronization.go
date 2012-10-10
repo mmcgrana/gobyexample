@@ -1,5 +1,3 @@
-// ## Synchronization
-
 // We can use channels to synchronize execution
 // accross goroutines. Here's an example of waiting
 // for another goroutine to finish.

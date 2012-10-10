@@ -1,5 +1,3 @@
-// ## Command Line Flags
-
 package main
 
 import "flag"

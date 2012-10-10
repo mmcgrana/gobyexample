@@ -1,11 +1,9 @@
-// ## Writing Files
-
 package main
 
 import "os"
 
 func main() {
-    file, err := os.Create("xx-file-write.txt")
+    file, err := os.Create("writing-files.txt")
     if err != nil {
         panic(err)
     }

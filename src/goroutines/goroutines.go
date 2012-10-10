@@ -1,5 +1,3 @@
-// ## Goroutines
-
 package main
 
 import "fmt"

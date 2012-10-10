@@ -1,5 +1,3 @@
-// ## HTTP Client
-
 package main
 
 import "net/http"

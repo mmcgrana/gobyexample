@@ -1,6 +1,5 @@
-// ## If/Else
+// If/else in Go is straight-forward.
 
-// If/else in go is straight-forward
 package main
 
 import "fmt"

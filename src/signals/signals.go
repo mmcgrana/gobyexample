@@ -1,5 +1,3 @@
-// ## Signals
-
 // Sometines we'd like our Go programs to intelligently
 // handle Unix signals. For example, we might want a
 // server to gracefully shutdown when it receives a

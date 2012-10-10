@@ -1,5 +1,3 @@
-// ## Pointers
-
 package main
 
 import "fmt"

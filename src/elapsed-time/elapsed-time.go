@@ -1,5 +1,3 @@
-// ## Elapsed Time
-
 package main
 
 import "time"

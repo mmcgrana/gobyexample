@@ -1,5 +1,3 @@
-// ## Exec'ing Processes
-
 // In the previous chapter we looked at spawning external
 // process. We do this when we need the functionality
 // of another process accessable to a running Go process.

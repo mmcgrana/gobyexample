@@ -1,5 +1,3 @@
-// ## Request Logging
-
 package main
 
 import "net/http"

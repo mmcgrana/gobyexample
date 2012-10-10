@@ -1,5 +1,3 @@
-// ## Concurrent Goroutines
-
 package main
 
 import "time"

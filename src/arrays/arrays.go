@@ -1,5 +1,3 @@
-// ## Arrays
-
 package main
 
 import "fmt"

@@ -1,5 +1,3 @@
-// ## Static Content
-
 package main
 
 import "net/http"

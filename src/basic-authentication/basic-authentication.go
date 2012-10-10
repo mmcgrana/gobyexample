@@ -1,5 +1,3 @@
-// ## Basic Authentication
-
 package main
 
 import (

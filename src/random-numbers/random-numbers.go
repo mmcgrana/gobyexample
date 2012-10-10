@@ -1,5 +1,3 @@
-// ## Random Numbers
-
 package main
 
 // The `math/rand` package provides psuedo-random

@@ -1,5 +1,3 @@
-// ## HTTP Server Routing
-
 package main
 
 import "github.com/bmizerany/pat"

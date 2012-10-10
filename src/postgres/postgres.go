@@ -1,5 +1,3 @@
-// ## Postgres
-
 package main
 
 import _ "github.com/bmizerany/pq"

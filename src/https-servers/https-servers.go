@@ -1,5 +1,3 @@
-// ## HTTPS Servers
-
 package main
 
 import "net/http"

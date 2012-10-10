@@ -1,5 +1,3 @@
-// ## State Goroutine
-
 package main
 
 import "fmt"

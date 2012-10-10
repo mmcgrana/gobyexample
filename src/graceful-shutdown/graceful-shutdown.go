@@ -1,5 +1,3 @@
-// ## Graceful Shutdown
-
 package main
 
 import (
@@ -96,8 +94,5 @@ func main() {
     }
 }
 
-// todo: clean up logging
-// todo: limit shutdown time
+// todo: pull in work from gobyexample-server
 // todo: factor out to cut-and-pastable against normal app
-// todo: credit http://blog.nella.org/?p=879
-// todo: comment about tcp servers

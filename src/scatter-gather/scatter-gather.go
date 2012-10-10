@@ -1,5 +1,3 @@
-// ## Scatter-Gather
-
 package main
 
 import "sync"

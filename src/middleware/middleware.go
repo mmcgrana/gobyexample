@@ -1,5 +1,3 @@
-// ## Middleware
-
 package main
 
 import "net/http"

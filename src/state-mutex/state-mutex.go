@@ -1,5 +1,3 @@
-// ## State Mutex
-
 package main
 
 import "fmt"
@@ -64,3 +62,5 @@ func main() {
     finalOpCount := atomic.LoadInt64(&opCount)
     fmt.Println(finalOpCount)
 }
+
+// todo: "State with Mutexes?"

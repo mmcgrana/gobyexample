@@ -1,84 +1,84 @@
-hello-world
-# values
-# variables
-# inline-assignment
-# constants
-# for
-# if-else
-# switch
-# arrays
-# slices
-# maps
-# range
-# functions
-# multiple-return-values
-# varadic-functions
-# closures
-# recursion
-# defer
-# panic
-# pointers
-# new
-# structs
-# methods
-# embedding
-# interfaces
-# errors
-# ok-guards
-# goroutines
-# concurrent-goroutines
-# channels
-# channel-buffering
-# channel-directions
-# synchronization
-# select
-# timeouts
-# scatter-gather
-# rate-limiting
-# worker-pools
-# non-blocking-channel-operations
-# closing-channels
-timers
-tickers
-# state-goroutine
-# state-mutex
-sorting
-sorting-by-functions
-# collection-functions
-# string-functions
-# string-formatting
-# regexs
-# bytes
-# json
-# time
-# epochs
-# elapsed-time
-# random-numbers
-# number-parsing
-# urls
-# sha1-hashes
-# base64-encoding
-# reading-files
-# writing-files
-line-filters
-# command-line-arguments
-# command-line-flags
-# environment-variables
-# spawning-processes
-# execing-processes
-# signals
-# exit
-# http-client
-# https-client
-# redis
-# postgres
-# hello-web
-# responses
-# request-routing
-# request-logging
-# static-content
-# basic-authentication
-# canonical-hosts
-# middleware
-# graceful-shutdown
-# https-servers
+Hello World
+# Values
+# Variables
+# Short Declarations
+# Constants
+# For
+# If/Else
+# Switch
+# Arrays
+# Slices
+# Maps
+# Range
+# Functions
+# Multiple Return Values
+# Varadic Functions
+# Closures
+# Recursion
+# Defer
+# Panic
+# Pointers
+# New
+# Structs
+# Methods
+# Embedding
+# Interfaces
+# Errors
+# OK Guards
+# Goroutines
+# Concurrent Goroutines
+# Channels
+# Channel Buffering
+# Channel Directions
+# Synchronization
+# Select
+# Timeouts
+# Scatter Gather
+# Rate Limiting
+# Worker Pools
+# Non-Blocking Channel Operations
+# Closing Channels
+Timers
+Tickers
+# State Goroutine
+# State Mutex
+Sorting
+Sorting by Functions
+# Collection Functions
+# String Functions
+# String Formatting
+# Regexs
+# Bytes
+# JSON
+# Time
+# Epochs
+# Elapsed Time
+# Random Numbers
+# Number Parsing
+# URLs
+# SHA1 Hashes
+# Base64 Encoding
+# Reading Files
+# Writing Files
+Line Filters
+# Command-Line Arguments
+# Command-Line Flags
+# Environment Variables
+# Spawning Processes
+# Execing Processes
+# Signals
+# Exit
+# HTTP Client
+# HTTPS Client
+# Redis
+# Postgres
+# Hello Web
+# Responses
+# Request Routing
+# Request Logging
+# Static Content
+# Basic Authentication
+# Canonical Hosts
+# Middleware
+# Graceful Shutdown
+# HTTPS Servers
