@@ -18,16 +18,22 @@
   <body>
     <div class="chapter" id="{{.Id}}">
       <h2>{{.Name}}</h2>
-      <table cellspacing="0" cellpadding="0">
-        <tbody>
-        {{range .Segs}}
-          <tr>
-            <td class=docs>{{.DocsRendered}}</td>
-            <td class="{{.CodeClasses}}">{{.CodeRendered}}</td>
-          </tr>
-        {{end}}
+      {{range .Segs}}
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+          {{range .}}
+            <tr>
+              <td class="docs">
+                {{.DocsRendered}}
+              </td>
+              <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
+                {{.CodeRendered}}
+              </td>
+            </tr>
+          {{end}}
         </tbody>
       </table>
+      {{end}}
     </div>
   </body>
 </html>

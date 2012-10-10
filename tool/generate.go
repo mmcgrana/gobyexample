@@ -118,13 +118,14 @@ var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 
 type Seg struct {
-    Docs, DocsRendered              string
-    Code, CodeRendered, CodeClasses string
+    Docs, DocsRendered     string
+    Code, CodeRendered     string
+    CodeEmpty, CodeLeading bool
 }
 
 type Chapter struct {
     Id, Name string
-    Segs     []*Seg
+    Segs     [][]*Seg
 }
 
 func parseSegs(sourcePath string) []*Seg {
@@ -167,7 +168,11 @@ func parseSegs(sourcePath string) []*Seg {
             lastSeen = "code"
         }
     }
-    return append(segs, &Seg{Code: "", Docs: ""})
+    for i, seg := range segs {
+        seg.CodeEmpty = (seg.Code == "")
+        seg.CodeLeading = (i < (len(segs) - 1))
+    }
+    return segs
 }
 
 func parseAndRenderSegs(sourcePath string) []*Seg {
@@ -194,13 +199,12 @@ func parseChapters() []*Chapter {
             chapterId = strings.Replace(chapterId, " ", "-", -1)
             chapterId = strings.Replace(chapterId, "/", "-", -1)
             chapter.Id = chapterId
+            chapter.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("src/" + chapterId + "/*")
-            segs := []*Seg{}
             for _, sourcePath := range sourcePaths {
                 sourceSegs := parseAndRenderSegs(sourcePath)
-                segs = append(segs, sourceSegs...)
+                chapter.Segs = append(chapter.Segs, sourceSegs)
             }
-            chapter.Segs = segs
             chapters = append(chapters, &chapter)
         }
     }
@@ -221,12 +225,6 @@ func renderChapters(chapters []*Chapter) {
     _, err := chapterTmpl.Parse(mustReadFile("template/chapter.tmpl"))
     check(err)
     for _, chapter := range chapters {
-        for _, seg := range chapter.Segs {
-            seg.CodeClasses = "code"
-            if seg.Code == "" {
-                seg.CodeClasses = seg.CodeClasses + " empty"
-            }
-        }
         chapterF, err := os.Create(siteDir + "/" + chapter.Id)
         check(err)
         chapterTmpl.Execute(chapterF, chapter)
