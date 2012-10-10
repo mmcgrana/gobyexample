@@ -63,7 +63,7 @@ h2 {
 h2 a {
     text-decoration: none;
 }
-div.chapter {
+div.example {
     width: 900px;
     min-width: 900px;
     max-width: 900px;
@@ -71,7 +71,7 @@ div.chapter {
     margin-right: auto;
     margin-bottom: 120px;
 }
-div.chapter table {
+div.example table {
     margin-top: 15px;
     margin-bottom: 20px;
 }

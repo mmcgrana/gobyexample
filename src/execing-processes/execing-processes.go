@@ -1,4 +1,4 @@
-// In the previous chapter we looked at spawning external
+// In the previous example we looked at spawning external
 // process. We do this when we need the functionality
 // of another process accessable to a running Go process.
 // In other cases we may just want to completely replace

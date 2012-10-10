@@ -16,7 +16,7 @@
     })();
   </script>
   <body>
-    <div class="chapter" id="{{.Id}}">
+    <div class="example" id="{{.Id}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
         <table cellspacing="0" cellpadding="0">
@@ -34,9 +34,9 @@
         </tbody>
       </table>
       {{end}}
-      {{if .NextChapter}}
+      {{if .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextChapter.Id}}">{{.NextChapter.Name}}</a>.
+        Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">

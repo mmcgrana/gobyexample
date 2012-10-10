@@ -123,10 +123,10 @@ type Seg struct {
     CodeEmpty, CodeLeading bool
 }
 
-type Chapter struct {
+type Example struct {
     Id, Name    string
     Segs        [][]*Seg
-    NextChapter *Chapter
+    NextExample *Example
 }
 
 func parseSegs(sourcePath string) []*Seg {
@@ -190,50 +190,50 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
     return segs
 }
 
-func parseChapters() []*Chapter {
-    chapterNames := readLines("meta/chapters.txt")
-    chapters := make([]*Chapter, 0)
-    for _, chapterName := range chapterNames {
-        if (chapterName != "") && !strings.HasPrefix(chapterName, "#") {
-            chapter := Chapter{Name: chapterName}
-            chapterId := strings.ToLower(chapterName)
-            chapterId = strings.Replace(chapterId, " ", "-", -1)
-            chapterId = strings.Replace(chapterId, "/", "-", -1)
-            chapter.Id = chapterId
-            chapter.Segs = make([][]*Seg, 0)
-            sourcePaths := mustGlob("src/" + chapterId + "/*")
+func parseExamples() []*Example {
+    exampleNames := readLines("examples.txt")
+    examples := make([]*Example, 0)
+    for _, exampleName := range exampleNames {
+        if (exampleName != "") && !strings.HasPrefix(exampleName, "#") {
+            example := Example{Name: exampleName}
+            exampleId := strings.ToLower(exampleName)
+            exampleId = strings.Replace(exampleId, " ", "-", -1)
+            exampleId = strings.Replace(exampleId, "/", "-", -1)
+            example.Id = exampleId
+            example.Segs = make([][]*Seg, 0)
+            sourcePaths := mustGlob("src/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
                 sourceSegs := parseAndRenderSegs(sourcePath)
-                chapter.Segs = append(chapter.Segs, sourceSegs)
+                example.Segs = append(example.Segs, sourceSegs)
             }
-            chapters = append(chapters, &chapter)
+            examples = append(examples, &example)
         }
     }
-    for i, chapter := range chapters {
-        if i < (len(chapters) - 1) {
-            chapter.NextChapter = chapters[i+1]
+    for i, example := range examples {
+        if i < (len(examples) - 1) {
+            example.NextExample = examples[i+1]
         }
     }
-    return chapters
+    return examples
 }
 
-func renderIndex(chapters []*Chapter) {
+func renderIndex(examples []*Example) {
     indexTmpl := template.New("index")
     _, err := indexTmpl.Parse(mustReadFile("template/index.tmpl"))
     check(err)
     indexF, err := os.Create(siteDir + "/index.html")
     check(err)
-    indexTmpl.Execute(indexF, chapters)
+    indexTmpl.Execute(indexF, examples)
 }
 
-func renderChapters(chapters []*Chapter) {
-    chapterTmpl := template.New("chapter")
-    _, err := chapterTmpl.Parse(mustReadFile("template/chapter.tmpl"))
+func renderExamples(examples []*Example) {
+    exampleTmpl := template.New("example")
+    _, err := exampleTmpl.Parse(mustReadFile("template/example.tmpl"))
     check(err)
-    for _, chapter := range chapters {
-        chapterF, err := os.Create(siteDir + "/" + chapter.Id)
+    for _, example := range examples {
+        exampleF, err := os.Create(siteDir + "/" + example.Id)
         check(err)
-        chapterTmpl.Execute(chapterF, chapter)
+        exampleTmpl.Execute(exampleF, example)
     }
 }
 
@@ -243,7 +243,7 @@ func main() {
     copyFile("template/site.css", siteDir+"/site.css")
     copyFile("template/favicon.ico", siteDir+"/favicon.ico")
     copyFile("template/404.html", siteDir+"/404.html")
-    chapters := parseChapters()
-    renderIndex(chapters)
-    renderChapters(chapters)
+    examples := parseExamples()
+    renderIndex(examples)
+    renderExamples(examples)
 }
