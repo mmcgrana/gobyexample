@@ -74,11 +74,10 @@ div.chapter {
 div.chapter table {
     margin-bottom: 20px;
 }
-div.chapter p.footer {
-    margin-top: 20px;
+p.footer {
     color: grey;
 }
-div.chapter p.footer a, div.chapter p.footer a:visited {
+p.footer a, p.footer a:visited {
     color: grey;
 }
 div#intro {
@@ -88,8 +87,11 @@ div#intro {
     margin-left: auto;
     margin-right: auto;
 }
+div#intro p {
+    padding-top: 20px;
+}
 div#intro ul {
-    padding-top: 5px;
+    padding-top: 20px;
 }
 table td {
     border: 0;
