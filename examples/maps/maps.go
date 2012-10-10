@@ -1,11 +1,12 @@
-// Maps are Go's built-in associative data type (sometimes
-// called "hashes" or "dicts" in other languages).
+// Maps are Go's built-in [associative data type](http://en.wikipedia.org/wiki/Associative_array)
+// (sometimes called _hashes_ or _dicts_ in other languages).
 
 package main
 
 import "fmt"
 
 func main() {
+
     // To create an empty map, use the builtin `make`:
     // `make(map[key-type]val-type)`.
     m := make(map[string]int)
