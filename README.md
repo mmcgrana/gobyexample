@@ -18,10 +18,11 @@ Go by Example site is served by a
 
 ### Building
 
-To build the site to ./site:
+To build the site:
 
 ```console
 $ tool/build
+$ open site/index.html
 ```
 
 To build continuously in a loop:
