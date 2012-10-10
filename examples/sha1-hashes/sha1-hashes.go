@@ -10,7 +10,6 @@ package main
 // Go implements several hash functions in various
 // `crypto/*` packages.
 import "crypto/sha1"
-import "encoding/hex"
 import "fmt"
 
 func main() {
@@ -31,8 +30,8 @@ func main() {
     bs := h.Sum(nil)
 
     // SHA1 values are often printed in hex, for example
-    // in git commits. Use `hex.EncodeToString` to convert
+    // in git commits. Use the `%x` format verb to convert
     // a hash results to a hex string.
     fmt.Println(s)
-    fmt.Println(hex.EncodeToString(bs))
+    fmt.Printf("%x\n", bs)
 }
