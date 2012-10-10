@@ -201,7 +201,7 @@ func parseExamples() []*Example {
             exampleId = strings.Replace(exampleId, "/", "-", -1)
             example.Id = exampleId
             example.Segs = make([][]*Seg, 0)
-            sourcePaths := mustGlob("src/" + exampleId + "/*")
+            sourcePaths := mustGlob("examples/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
                 sourceSegs := parseAndRenderSegs(sourcePath)
                 example.Segs = append(example.Segs, sourceSegs)

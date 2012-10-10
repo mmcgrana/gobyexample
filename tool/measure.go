@@ -24,7 +24,7 @@ func readLines(path string) []string {
 var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 
 func main() {
-    sourcePaths, err := filepath.Glob("./src/*/*")
+    sourcePaths, err := filepath.Glob("./examples/*/*")
     check(err)
     foundLongFile := false
     for _, sourcePath := range sourcePaths {
