@@ -2,7 +2,6 @@ package main
 
 import (
     "crypto/sha1"
-    "encoding/hex"
     "fmt"
     "github.com/russross/blackfriday"
     "io/ioutil"
@@ -52,7 +51,7 @@ func sha1Sum(s string) string {
     h := sha1.New()
     h.Write([]byte(s))
     b := h.Sum(nil)
-    return hex.EncodeToString(b)
+    return fmt.Sprintf("%x", b)
 }
 
 func mustReadFile(path string) string {
