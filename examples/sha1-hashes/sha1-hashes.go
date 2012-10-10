@@ -1,28 +1,37 @@
+// SHA1 hashes are frequently used to compute short
+// identities for binary or text blobs. For example, the
+// [git revision control system](http://git-scm.com/) uses
+// SHA1s extensively to identify versioned files and
+// directories. Here's how to compute SHA1 hashes in Go.
+
 package main
 
-// Package `crypto/sha1` computes SHA1 hashes.
+// Go implements several hash functions in various
+// `crtypo/*` packages.
 import "crypto/sha1"
 import "encoding/hex"
 import "fmt"
 
 func main() {
-    // The pattern is `sha1.New()`, `sha1.Write(bytes)`,
-    // then `sha1.Sum([]byte{})
+    s := "sha1 this string"
+
+    // The pattern for generating a hash is `sha1.New()`,
+    // `sha1.Write(bytes)`, then `sha1.Sum([]byte{}).
+    // Here we start with a new hash.
     h := sha1.New()
 
-    // `Write` expects bytes. If you have a string `s`
-    // use `[]byte(s)` to coerce it.
-    h.Write([]byte("sha1 this string"))
+    // `Write` expects bytes. If you have a string `s`,
+    // use `[]byte(s)` to coerce it to bytes.
+    h.Write([]byte(s))
 
-    // Get the result. The argument to `Sum` can be used
-    // to append to an existing buffer: usually uneeded.
+    // This gets the finalized hash result as a byte
+    // slice. The argument to `Sum` can be used to append
+    // to an existing byte slice: it usually isn't needed.
     bs := h.Sum(nil)
 
     // SHA1 values are often printed in hex, for example
-    // with git.
+    // in git commits. Use `hex.EncodeToString` to convert
+    // a hash results to a hex string.
+    fmt.Println(s)
     fmt.Println(hex.EncodeToString(bs))
 }
-
-// You can compute other hashes using a similar
-// pattern. For exmpale, to compute MD5 hashes
-// import `crypto/md5` and use `md5.New()`.

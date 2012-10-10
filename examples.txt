@@ -56,7 +56,7 @@ Sorting by Functions
 # Random Numbers
 # Number Parsing
 # URLs
-# SHA1 Hashes
+SHA1 Hashes
 # Base64 Encoding
 # Reading Files
 # Writing Files
