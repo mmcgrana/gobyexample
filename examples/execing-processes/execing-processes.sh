@@ -1,6 +1,5 @@
 # When we run our program it is replaced by `ls`.
 $ go run execing-processes.go
-$ ls -a -l -h
 total 16
 drwxr-xr-x  4 mark 136B Oct 3 16:29 .
 drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..

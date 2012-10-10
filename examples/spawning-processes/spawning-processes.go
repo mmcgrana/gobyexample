@@ -31,8 +31,8 @@ func main() {
     fmt.Println(string(dateOut))
 
     // Next we'll look at a slightly more involved case
-    // where we pipe data to the exteranl process on its
-    // `stdin` and collect the results from `stdout`.
+    // where we pipe data to the external process on its
+    // `stdin` and collect the results from its `stdout`.
     grepCmd := exec.Command("grep", "hello")
 
     // Here we explicitly grab input/output pipes, start

@@ -1,5 +1,5 @@
 # The spawned programs return output that is the same
-# as if we had run them directly form the comand-line.
+# as if we had run them directly from the command-line.
 $ go run spawning-processes.go 
 > date
 Wed Oct 10 09:53:11 PDT 2012
