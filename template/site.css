@@ -72,6 +72,7 @@ div.chapter {
     margin-bottom: 120px;
 }
 div.chapter table {
+    margin-top: 15px;
     margin-bottom: 20px;
 }
 p.next {
