@@ -63,7 +63,7 @@ Sorting by Functions
 Line Filters
 # Command-Line Arguments
 # Command-Line Flags
-# Environment Variables
+Environment Variables
 # Spawning Processes
 # Execing Processes
 # Signals
