@@ -6,7 +6,7 @@ Hello World
 # For
 # If/Else
 # Switch
-# Arrays
+Arrays
 # Slices
 Maps
 # Range
