@@ -7,11 +7,11 @@ import "fmt"
 
 func main() {
 
-    // In contrast to arrays, slices are typed only
-    // by the elements it contains (not the number of
-    // elements). To create an empty slice with non-zero
-    // length, use the builtin `make`. Here we make a
-    // slice of `int`s of length 5.
+    // Unlike arrays, slices are typed only by the
+    // elements they contain (not the number of elements).
+    // To create an empty slice with non-zero length, use
+    // the builtin `make`. Here we make a slice of `int`s
+    // of length `5`.
     s := make([]int, 5)
 
     // New slices are initially empty-valued.
