@@ -41,16 +41,16 @@ func main() {
     fmt.Println("cpy:", c)
 
     // Slices support a "slice" operator, which is denoted
-    // with brackets containing a `:`. For example, this
-    // get a slice of the elements 4, 5, and 6.
+    // with brackets containing `:`. For example, this
+    // gets a slice of the elements 4, 5, and 6.
     l := s[4:7]
     fmt.Println("sl1:", l)
 
-    // To slice up the 7th index.
+    // This slices up to the 7th index.
     l = s[:7]
     fmt.Println("sl2:", l)
 
-    // Or from the 4th index upwards.
+    // And this slices from the 4th index upwards.
     l = s[4:]
     fmt.Println("sl3:", l)
 
@@ -61,8 +61,7 @@ func main() {
 
     // Slices can be composed into multi-dimensional data
     // structures. The length of the inner slices can
-    // vary, unlike in the case of multi-dimensional
-    // arrays.
+    // vary, unlike with multi-dimensional arrays.
     twoD := make([][]int, 3)
     for i := 0; i < 3; i++ {
         innerLen := i + 1
