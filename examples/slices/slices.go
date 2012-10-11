@@ -13,7 +13,7 @@ func main() {
     // the builtin `make`. Here we make a slice of `int`s
     // of length `5` (initially empty-valued).
     s := make([]int, 5)
-    mt.Println("emp:", s)
+    fmt.Println("emp:", s)
 
     // We can set and get just like with arrays.
     s[4] = 100
