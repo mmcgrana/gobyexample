@@ -17,8 +17,7 @@ func main() {
     m["k2"] = 13
 
     // Printing a map with e.g. `Println` will show all of
-    // its key/value pairs, which can be useful for
-    // debugging.
+    // its key/value pairs.
     fmt.Println("map:", m)
 
     // Get a value for a key with `name[key]`.
