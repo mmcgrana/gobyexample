@@ -6,7 +6,7 @@ cf23df2207d99a74fbe169e3eba035e633b65d94
 
 
 # You can compute other hashes using a similar pattern to
-# the one shown above. For exmpale, to compute MD5 hashes
+# the one shown above. For example, to compute MD5 hashes
 # import `crypto/md5` and use `md5.New()`.
 
 # Note that if you need cryptographically secure hashes,
