@@ -7,13 +7,11 @@ import "fmt"
 
 func main() {
 
-    // The type of elements and length are both part of
-    // the array's type. Here we create an array `x` that
-    // will hold exactly 5 ints.
+    // Here we create an array `x` that will hold exactly
+    // 5 `int`s. The type of elements and length are both
+    // part of the array's type. By default an array is
+    // zero-valued, which for `int`s means `0`s.
     var a [5]int
-
-    // By default an array is zero-valued, which for ints
-    // means an array of `0`s.
     fmt.Println("emp:", a)
 
     // We can set a value at a given index using the
