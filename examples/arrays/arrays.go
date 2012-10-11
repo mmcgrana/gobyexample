@@ -29,7 +29,7 @@ func main() {
     fmt.Println("dcl:", y)
 
     // The builtin `len` returns the length of an array.
-    fmt.Println("len:", len(x))
+    fmt.Println("len:", len(y))
 
     // Array types are one-dimensional, but you can
     // compose types to build multi-dimensional data
