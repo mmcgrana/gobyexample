@@ -24,7 +24,7 @@ func main() {
     // awaits a value to be sent after the timeout of
     // 1s. Since `select` proceeds with the first
     // receive that's ready, we'll take the timeout case
-    // if the operation takes more than the allowed 2s
+    // if the operation takes more than the allowed 1s.
     select {
     case res := <-c1:
         fmt.Println(res)
