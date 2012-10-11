@@ -21,14 +21,14 @@ Go by Example site is served by a
 To build the site:
 
 ```console
-$ tool/build
+$ tools/build
 $ open site/index.html
 ```
 
 To build continuously in a loop:
 
 ```console
-$ tool/build-loop
+$ tools/build-loop
 ```
 
 Builds require the [`pygmentize`](http://pygments.org/)
