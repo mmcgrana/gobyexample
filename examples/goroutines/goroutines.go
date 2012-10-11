@@ -27,10 +27,10 @@ func main() {
         fmt.Println("going")
     }()
 
-    // Since our two goroutines are running asynchrously
-    // in separate goroutines now, execution immediatly
-    // falls through to here. This `Scanln` code requires
-    // that we press a key before the program exits.
+    // Our two goroutines are running asynchrously in
+    // separate goroutines now, so execution falls through
+    // to here. This `Scanln` code requires we press a key
+    // before the program exits.
     var input string
     fmt.Scanln(&input)
     fmt.Println("done")
