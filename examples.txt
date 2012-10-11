@@ -32,7 +32,7 @@ Channels
 # Channel Directions
 # Synchronization
 Select
-# Timeouts
+Timeouts
 # Scatter Gather
 # Rate Limiting
 # Worker Pools
