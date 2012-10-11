@@ -1,8 +1,8 @@
 // [Timers](timers) are for when you want to do
-// something once in the future - tickers are for when you
-// want to do something repeatedly at regular intervals.
-// Here's an example of a ticker that ticks periodically
-// until we stop it.
+// something once in the future - _tickers_ are for when
+// you want to do something repeatedly at regular
+// intervals. Here's an example of a ticker that ticks
+// periodically until we stop it.
 
 package main
 

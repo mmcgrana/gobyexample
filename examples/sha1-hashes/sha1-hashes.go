@@ -1,4 +1,4 @@
-// [SHA1 hashes](http://en.wikipedia.org/wiki/SHA-1) are
+// [_SHA1 hashes_](http://en.wikipedia.org/wiki/SHA-1) are
 // frequently used to compute short identities for binary
 // or text blobs. For example, the [git revision control
 // system](http://git-scm.com/) uses SHA1s extensively to

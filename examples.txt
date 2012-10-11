@@ -7,7 +7,7 @@ Hello World
 # If/Else
 # Switch
 Arrays
-# Slices
+Slices
 Maps
 # Range
 # Functions
