@@ -12,3 +12,4 @@ func main() {
 }
 
 // todo: credit code.google.com/p/go-wiki/wiki/RateLimiting
+// review gentry's example: https://gist.github.com/3876453
