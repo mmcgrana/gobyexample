@@ -37,7 +37,7 @@ func main() {
         mc.Set("k1", "v1")
         mc.Get("k1")
     })
-    if mcrep.Err != nil {
+    if mcRep.Err != nil {
         panic(mcRep.Err)
     }
     mcVal, _ := mcRep.Elems[1].Str()
