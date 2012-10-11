@@ -7,7 +7,7 @@ Content and toolchain for [Go by Example](https://gobyexample.com).
 
 The Go by Example site is built by extracting code &
 comments from source files in `examples` and rendering
-that data via the site `templates`. The programs
+that data via the site `template`. The programs
 implementing this build process are in `tools`.
 
 The build process produces a directory of static files
