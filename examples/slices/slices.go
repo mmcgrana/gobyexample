@@ -27,7 +27,7 @@ func main() {
     // support several more that make them richer than
     // arrays. One is the builtin `append`, which 
     // returns a slice containing one or more new values.
-    // Note that we need to accapt a return value from
+    // Note that we need to accept a return value from
     // append as we may get a new slice reference.
     s = append(s, 6)
     s = append(s, 7, 8)
