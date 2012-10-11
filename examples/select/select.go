@@ -14,8 +14,8 @@ func main() {
     c2 := make(chan string)
 
     // Each channel will receive a value after some amount
-	// of time, to simulate e.g. blocking RPC operations
-	// executing in concurrent goroutines.
+    // of time, to simulate e.g. blocking RPC operations
+    // executing in concurrent goroutines.
     go func() {
         time.Sleep(time.Second * 1)
         c1 <- "one"
