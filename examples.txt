@@ -27,7 +27,7 @@ Maps
 # OK Guards
 Goroutines
 # Concurrent Goroutines
-# Channels
+Channels
 # Channel Buffering
 # Channel Directions
 # Synchronization
