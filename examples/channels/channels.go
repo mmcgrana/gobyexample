@@ -1,7 +1,8 @@
-// _Channels_ are the pipes that connect goroutines in a
-// concurrent Go program. You can send values into
-// channels from one goroutine and receive those values
-// into another goroutine.
+// _Channels_ are the pipes that connect concurrent
+// goroutines. You can send values into channels from one
+// goroutine and receive those values into another
+// goroutine. Channels are a powerful primitive that
+// underly much of Go's functionality.
 
 package main
 
