@@ -25,7 +25,7 @@ Maps
 # Interfaces
 # Errors
 # OK Guards
-# Goroutines
+Goroutines
 # Concurrent Goroutines
 # Channels
 # Channel Buffering
