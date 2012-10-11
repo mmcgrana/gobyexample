@@ -31,7 +31,7 @@ Channels
 # Channel Buffering
 # Channel Directions
 # Synchronization
-# Select
+Select
 # Timeouts
 # Scatter Gather
 # Rate Limiting

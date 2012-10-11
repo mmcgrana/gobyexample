@@ -13,12 +13,13 @@ func f(from string) {
 func main() {
 
     // Suppose we have a function call `f(s)`. Here's how
-    // we'd call that in the usual way, running it inline.
+    // we'd call that in the usual way, running it
+    // synchronously.
     f("direct")
 
     // To invoke this function in a goroutine, use
-    // `go f(s)`. This will start a new, concurrently
-    // executing goroutine.
+    // `go f(s)`. This new goroutine will execute
+    // concurrently with the current one.
     go f("goroutine")
 
     // You can also start a goroutine for an anonymous
@@ -27,7 +28,7 @@ func main() {
         fmt.Println("going")
     }()
 
-    // Our two goroutines are running asynchrously in
+    // Our two goroutines are running asynchronously in
     // separate goroutines now, so execution falls through
     // to here. This `Scanln` code requires we press a key
     // before the program exits.
