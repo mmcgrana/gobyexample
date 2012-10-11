@@ -11,11 +11,9 @@ func main() {
     // elements they contain (not the number of elements).
     // To create an empty slice with non-zero length, use
     // the builtin `make`. Here we make a slice of `int`s
-    // of length `5`.
+    // of length `5` (initially empty-valued).
     s := make([]int, 5)
-
-    // New slices are initially empty-valued.
-    fmt.Println("emp:", s)
+    mt.Println("emp:", s)
 
     // We can set and get just like with arrays.
     s[4] = 100
