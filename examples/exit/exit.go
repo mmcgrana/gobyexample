@@ -6,6 +6,7 @@ package main
 import "os"
 
 func main() {
+
     // `defer`s will _not_ be run when using `os.Exit`, so
     // this `println` will never be called.
     defer println("!")
@@ -18,5 +19,3 @@ func main() {
 // return value from `main` to indicate exit status. If
 // you'd like to exit with a non-zero status you should
 // use `os.Exit`.
-
-// todo: discuss building before getting here

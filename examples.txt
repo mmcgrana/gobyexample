@@ -67,7 +67,7 @@ Environment Variables
 Spawning Processes
 Exec'ing Processes
 Signals
-# Exit
+Exit
 # HTTP Client
 # HTTPS Client
 # Redis
