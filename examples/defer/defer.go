@@ -14,3 +14,5 @@ func main() {
     defer second()
     first()
 }
+
+// todo: review http://blog.golang.org/2010/08/defer-panic-and-recover.html
