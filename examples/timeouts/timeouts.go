@@ -10,7 +10,7 @@ import "fmt"
 
 func main() {
 
-    // For our example, suppose we're execting an external
+    // For our example, suppose we're executing an external
     // call that returns its result on a channel `c1`
     // after 2s.
     c1 := make(chan string)
