@@ -8,26 +8,26 @@
 // pattern to write your own Go line filters.
 package main
 
-// Package `bufio` will help us read line-by-line, and
-// `bytes` provides the byte-level capitalization
-// function.
+// Package `bufio` will help us read line-by-line.
 import "bufio"
-import "bytes"
+import "strings"
 import "os"
 import "io"
 
 func main() {
 
     // Wrapping the unbuffered `os.Stdin` with a buffered
-    // reader gives us the convenient `ReadLine` method.
+    // reader gives us a convenient `ReadString` method
+    // that we'll use to read input line-by-line.
     in := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
-    // Each `ReadLine` call returns bytes of read data and
-    // a boolean indicating if we don't have the whole
-    // line yet, or an error.
+    // `ReadString` returns the next string from the
+    // input up to the given separator byte. We give the
+    // newline byte `'\n'` as our separator so we'll get
+    // successive input lines.
     for {
-        inBytes, pfx, err := in.ReadLine()
+        inLine, err := in.ReadString('\n')
 
         // The `EOF` error is expected when we reach the
         // end of input, so exit gracefully in that case.
@@ -39,18 +39,12 @@ func main() {
             panic(err)
         }
 
-        // Write out the uppercased bytes, checking for an
+        // Write out the uppercased line, checking for an
         // error on the write as we did on the read.
-        outBytes := bytes.ToUpper(inBytes)
-        _, err = out.Write(outBytes)
+        outLine := strings.ToUpper(inLine)
+        _, err = out.WriteString(outLine)
         if err != nil {
             panic(err)
-        }
-
-        // Unless this read was for a prefix (not the full
-        // line), we need to add our own newline.
-        if !pfx {
-            out.WriteString("\n")
         }
     }
 }
