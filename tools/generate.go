@@ -70,13 +70,18 @@ func mustReadFile(path string) string {
 func cachedPygmentize(lex string, src string) string {
     ensureDir(cacheDir)
     arg := []string{"-l", lex, "-f", "html"}
-    bin := "/usr/local/bin/pygmentize"
+
+    bin, err := exec.Command("which", "pygmentize").Output()
+    if err != nil {
+      fmt.Println("Please install Pygments and ensure pygmentize is in your path first.")
+        os.Exit(1)
+    }
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
     cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
     if cacheErr == nil {
         return string(cacheBytes)
     }
-    renderBytes := pipe(bin, arg, src)
+    renderBytes := pipe(string(bin), arg, src)
     writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
     check(writeErr)
     return string(renderBytes)
