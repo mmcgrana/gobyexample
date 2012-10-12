@@ -14,7 +14,8 @@ import (
 )
 
 var cacheDir = "/tmp/gobyexample-cache"
-var siteDir = "site"
+var siteDir = ""
+var pygmentizeBin = ""
 
 func check(err error) {
     if err != nil {
@@ -110,7 +111,15 @@ func whichSiteDir() {
     dir := os.Getenv("SITEDIR")
     if dir != "" {
         siteDir = dir
+    } else {
+        siteDir = "site"
     }
+}
+
+func whichPygmentize() {
+    bin, err := exec.LookPath("pygmentize")
+    check(err)
+    pygmentizeBin = bin
 }
 
 func debug(msg string) {
@@ -245,6 +254,7 @@ func renderExamples(examples []*Example) {
 
 func main() {
     whichSiteDir()
+    whichPygmentize()
     ensureDir(siteDir)
     copyFile("templates/site.css", siteDir+"/site.css")
     copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
