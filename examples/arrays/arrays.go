@@ -39,4 +39,15 @@ func main() {
         }
     }
     fmt.Println("2d: ", twoD)
+
+    // Because it's such a common task, Go comes with a 
+    // useful idiom for looping over elements in an array.
+
+    // By declaring our for loop with a range clause, we get
+    // two variables which represent both the index and value
+    // of each element.
+    for index, value := range b {
+        fmt.Println("Element", index, "had value", value)
+    }
+
 }
