@@ -73,7 +73,7 @@ func cachedPygmentize(lex string, src string) string {
 
     bin, err := exec.Command("which", "pygmentize").Output()
     if err != nil {
-      fmt.Println("Please install Pygments and ensure pygmentize is in your path first.")
+        fmt.Println("Please install Pygments and ensure pygmentize is in your path first.")
         os.Exit(1)
     }
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
