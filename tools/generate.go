@@ -36,13 +36,19 @@ func copyFile(src, dst string) {
 
 func pipe(bin string, arg []string, src string) []byte {
     cmd := exec.Command(bin, arg...)
-    in, _ := cmd.StdinPipe()
-    out, _ := cmd.StdoutPipe()
-    cmd.Start()
-    in.Write([]byte(src))
-    in.Close()
-    bytes, _ := ioutil.ReadAll(out)
-    err := cmd.Wait()
+    in, err := cmd.StdinPipe()
+    check(err)
+    out, err := cmd.StdoutPipe()
+    check(err)
+    err = cmd.Start()
+    check(err)
+    _, err = in.Write([]byte(src))
+    check(err)
+    err = in.Close()
+    check(err)
+    bytes, err := ioutil.ReadAll(out)
+    check(err)
+    err = cmd.Wait()
     check(err)
     return bytes
 }
