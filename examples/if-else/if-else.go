@@ -31,5 +31,5 @@ func main() {
     }
 }
 
-// Note that you don't need parenthesis around conditions
+// Note that you don't need parentheses around conditions
 // in Go, but that the brackets are required.
