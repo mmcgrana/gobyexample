@@ -41,8 +41,8 @@ func main() {
     fmt.Println("cpy:", c)
 
     // Slices support a "slice" operator with the syntax
-	// `slice[low:high]`. For example, this gets a slice
-	// of the elements 4, 5, and 6.
+    // `slice[low:high]`. For example, this gets a slice
+    // of the elements 4, 5, and 6.
     l := s[4:7]
     fmt.Println("sl1:", l)
 
@@ -55,7 +55,7 @@ func main() {
     fmt.Println("sl3:", l)
 
     // We can declare and initialize a variable for slice
-	// in a single line as well.
+    // in a single line as well.
     t := []int{1, 2, 3, 4, 5}
     fmt.Println("dcl:", t)
 
