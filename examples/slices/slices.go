@@ -54,7 +54,7 @@ func main() {
     l = s[4:]
     fmt.Println("sl3:", l)
 
-    // We can declare and initalize a slice in a single
+    // We can declare and initialize a slice in a single
     // line as well.
     t := []int{1, 2, 3, 4, 5}
     fmt.Println("dcl:", t)
