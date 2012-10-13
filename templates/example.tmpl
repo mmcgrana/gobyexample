@@ -21,17 +21,17 @@
     <div class="example" id="{{.Id}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
-        <table cellspacing="0" cellpadding="0">
-          <tbody>
+      <table>
+        <tbody>
           {{range .}}
-            <tr>
-              <td class="docs">
-                {{.DocsRendered}}
-              </td>
-              <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-                {{.CodeRendered}}
-              </td>
-            </tr>
+          <tr>
+            <td class="docs">
+              {{.DocsRendered}}
+            </td>
+            <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
+              {{.CodeRendered}}
+            </td>
+          </tr>
           {{end}}
         </tbody>
       </table>
