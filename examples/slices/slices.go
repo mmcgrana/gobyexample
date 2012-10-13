@@ -11,7 +11,7 @@ func main() {
     // elements they contain (not the number of elements).
     // To create an empty slice with non-zero length, use
     // the builtin `make`. Here we make a slice of `int`s
-    // of length `5` (initially empty-valued).
+    // of length `5` (initially zero-valued).
     s := make([]int, 5)
     fmt.Println("emp:", s)
 
@@ -28,7 +28,7 @@ func main() {
     // arrays. One is the builtin `append`, which 
     // returns a slice containing one or more new values.
     // Note that we need to accept a return value from
-    // append as we may get a new slice reference.
+    // append as we may get a new slice value.
     s = append(s, 6)
     s = append(s, 7, 8)
     fmt.Println("apd:", s)
@@ -40,9 +40,9 @@ func main() {
     copy(c, s)
     fmt.Println("cpy:", c)
 
-    // Slices support a "slice" operator, which is denoted
-    // with brackets containing `:`. For example, this
-    // gets a slice of the elements 4, 5, and 6.
+    // Slices support a "slice" operator with the syntax
+	// `slice[low:high]`. For example, this gets a slice
+	// of the elements 4, 5, and 6.
     l := s[4:7]
     fmt.Println("sl1:", l)
 
@@ -54,8 +54,8 @@ func main() {
     l = s[4:]
     fmt.Println("sl3:", l)
 
-    // We can declare and initialize a slice in a single
-    // line as well.
+    // We can declare and initialize a variable for slice
+	// in a single line as well.
     t := []int{1, 2, 3, 4, 5}
     fmt.Println("dcl:", t)
 
