@@ -22,18 +22,16 @@
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
       <table>
-        <tbody>
-          {{range .}}
-          <tr>
-            <td class="docs">
-              {{.DocsRendered}}
-            </td>
-            <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-              {{.CodeRendered}}
-            </td>
-          </tr>
-          {{end}}
-        </tbody>
+        {{range .}}
+        <tr>
+          <td class="docs">
+            {{.DocsRendered}}
+          </td>
+          <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
+            {{.CodeRendered}}
+          </td>
+        </tr>
+        {{end}}
       </table>
       {{end}}
       {{if .NextExample}}
