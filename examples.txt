@@ -5,7 +5,7 @@ Hello World
 # Constants
 # For
 If/Else
-# Switch
+Switch
 Arrays
 Slices
 Maps
