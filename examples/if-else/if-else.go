@@ -1,23 +1,35 @@
-// If/else in Go is straight-forward.
+// Branching with `if` and `else` in Go is
+// straight-forward.
 
 package main
 
 import "fmt"
 
 func main() {
-    // If/else is straight-forward. Note that there are no
-    // enclosing parentheses around the condition.
-    // Also, there is no ternary operator (`?`) in Go.
-    fmt.Print("7 is ")
+
+    // Here's a basic example.
     if 7%2 == 0 {
-        fmt.Println("even")
-    } else if 7%2 == 1 {
-        fmt.Println("odd")
+        fmt.Println("7 is even")
     } else {
-        fmt.Println("???")
+        fmt.Println("7 is odd")
+    }
+
+    // You can have an `if` statement without an else.
+    if 8%4 == 0 {
+        fmt.Println("8 is divisible by 4")
+    }
+
+    // A statement can proceed conditionals; any variables
+    // declared in this statement are available in all
+    // branches.
+    if num := 9; num < 0 {
+        fmt.Println(num, "is negative")
+    } else if num < 10 {
+        fmt.Println(num, "has 1 digit")
+    } else {
+        fmt.Println(num, "has multiple digits")
     }
 }
 
-// There is no ternary operator (i.e. `?`) in Go, so
-// you'll need to use a full if/else even for very basic
-// conditions.
+// Note that you don't need parenthesis around conditions
+// in Go, but that the brackets are required.
