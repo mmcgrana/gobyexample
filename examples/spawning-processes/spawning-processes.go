@@ -20,7 +20,7 @@ func main() {
     dateCmd := exec.Command("date")
 
     // `.Output` is another helper than handles the common
-    // case of running a comand, waiting for it to finish,
+    // case of running a command, waiting for it to finish,
     // and collecting its output. If there were no errors,
     // `dateOut` will hold bytes with the date info.
     dateOut, err := dateCmd.Output()
