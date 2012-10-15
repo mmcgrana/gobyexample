@@ -23,8 +23,8 @@ func main() {
     // You can use commas to separate multiple expressions
     // in the same `case` statement. We use the optional
     // `default` case in this example as well.
-    switch time.Now().Weekday().String() {
-    case "Saturday", "Sunday":
+    switch time.Now().Weekday() {
+    case time.Saturday, time.Sunday:
         fmt.Println("It's the weekend")
     default:
         fmt.Println("It's a weekday")
