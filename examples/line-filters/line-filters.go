@@ -38,7 +38,7 @@ func main() {
             ucl := strings.ToUpper(line)
             if _, err = out.WriteString(ucl); err != nil {
                 log.Println(err)
-                os.Exit(-1)
+                os.Exit(1)
             }
 
         // The `EOF` error is expected when we reach the
@@ -50,7 +50,7 @@ func main() {
         // error and exit with non-zero status.
         default:
             log.Println(err)
-            os.Exit(-1)
+            os.Exit(1)
         }
     }
 }
