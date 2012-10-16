@@ -31,9 +31,9 @@ func main() {
     for {
         switch line, err := rdr.ReadString('\n'); err {
 
-        // If the read succeeded, write out out the
-        // uppercased line. Check for an error on the
-        // write as we do on the read.
+        // If the read succeeded (the read `err` is nil),
+        // write out out the uppercased line. Check for an
+        // error on this write as we do on the read.
         case nil:
             ucl := strings.ToUpper(line)
             if _, err = out.WriteString(ucl); err != nil {
