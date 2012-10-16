@@ -10,8 +10,8 @@ package main
 
 import (
     "bufio"
+    "fmt"
     "io"
-    "log"
     "os"
     "strings"
 )
@@ -37,7 +37,7 @@ func main() {
         case nil:
             ucl := strings.ToUpper(line)
             if _, err = out.WriteString(ucl); err != nil {
-                log.Println(err)
+                fmt.Fprintln(os.Stderr, "error:", err)
                 os.Exit(1)
             }
 
@@ -49,7 +49,7 @@ func main() {
         // Otherwise there's a problem; print the
         // error and exit with non-zero status.
         default:
-            log.Println(err)
+            fmt.Fprintln(os.Stderr, "error:", err)
             os.Exit(1)
         }
     }
