@@ -24,26 +24,31 @@ func main() {
     rdr := bufio.NewReader(os.Stdin)
     out := os.Stdout
 
+    // `ReadString` returns the next string from the
+    // input up to the given separator byte. We give the
+    // newline byte `'\n'` as our separator so we'll get
+    // successive input lines.
     for {
-        // `ReadString` returns the next string from the
-        // input up to the given separator byte. We give the
-        // newline byte `'\n'` as our separator so we'll get
-        // successive input lines.
         switch line, err := rdr.ReadString('\n'); err {
+
+        // If the read succeeded, write out out the
+        // uppercased line. Check for an error on the
+        // write as we do on the read.
         case nil:
-            // Write out the uppercased line, checking for an
-            // error on the write as we did on the read.
             ucl := strings.ToUpper(line)
             if _, err = out.WriteString(ucl); err != nil {
                 log.Println(err)
                 os.Exit(-1)
             }
+
+        // The `EOF` error is expected when we reach the
+        // end of input, so exit gracefully in that case.
         case io.EOF:
-            // The `EOF` error is expected when we reach the
-            // end of input, so exit gracefully in that case.
             os.Exit(0)
+
+        // Otherwise there's a problem; print the
+        // error and exit with non-zero status.
         default:
-            // Otherwise there's a problem
             log.Println(err)
             os.Exit(-1)
         }
