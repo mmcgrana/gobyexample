@@ -17,6 +17,7 @@ import (
 )
 
 func main() {
+
     // Wrapping the unbuffered `os.Stdin` with a buffered
     // reader gives us a convenient `ReadString` method
     // that we'll use to read input line-by-line.
