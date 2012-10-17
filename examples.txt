@@ -8,7 +8,7 @@ Switch
 Arrays
 Slices
 Maps
-# Range
+Range
 # Functions
 # Multiple Return Values
 # Varadic Functions

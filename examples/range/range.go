@@ -1,21 +1,43 @@
+// _range_ iterates over of elements in a variety of
+// data structures. Let's see how to use `range` with some
+// of the data structures we've already learned.
+
 package main
 
 import "fmt"
 
 func main() {
-    var x [5]float64
-    x[0] = 98
-    x[1] = 93
-    x[2] = 77
-    x[3] = 82
-    x[4] = 83
 
-    var total float64 = 0
-    for _, value := range x {
-        total += value
+    // Here we use `range` to sum the numbers in a slice.
+    // Arrays work like this too.
+    nums := []int{2, 3, 4}
+    sum := 0
+    for _, num := range nums {
+        sum += num
     }
-    fmt.Println(total / float64(len(x)))
-}
+    fmt.Println("sum:", sum)
 
-// todo: comment on maps
-// todo: comment on channels
+    // `range` on arrays and slices provides both the
+    // index and value for each entry. Above we didn't
+    // need the index, so we ignored it with the
+    // _blank identifier_ `_`. Sometimes we actually want
+    // the indexes though.
+    for i, num := range nums {
+        if num == 3 {
+            fmt.Println("index:", i)
+        }
+    }
+
+    // `range` on map iterates over key/value pairs.
+    kvs := map[string]string{"a": "apple", "b": "bannana"}
+    for k, v := range kvs {
+        fmt.Printf("%s -> %s\n", k, v)
+    }
+
+    // `range` on strings iterates over Unicode code
+    // points. The first value is the starting byte index
+    // of the `rune` and the second the `rune` itself.
+    for i, c := range "go" {
+        fmt.Println(i, c)
+    }
+}
