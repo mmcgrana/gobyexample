@@ -1,4 +1,4 @@
-// In Go, variables are explicitly declared and used by
+// In Go, _variables_ are explicitly declared and used by
 // the compiler to e.g. check type-correctness of function
 // calls.
 
@@ -8,8 +8,7 @@ import "fmt"
 
 func main() {
 
-    // `var` declares 1 or more variables. The type comes
-    // _after_ the name of the variable.
+    // `var` declares 1 or more variables.
     var a string = "Initial"
     fmt.Println(a)
 
@@ -22,7 +21,7 @@ func main() {
     fmt.Println(d)
 
     // Variables declared without a corresponding
-    // initialization are _zero-valued_. For example the
+    // initialization are _zero-valued_. For example, the
     // zero value for an `int` is `0`.
     var e int
     fmt.Println(e)

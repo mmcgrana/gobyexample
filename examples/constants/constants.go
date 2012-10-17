@@ -1,13 +1,13 @@
+// Go supports _constants_ of character, string, boolean,
+// and numeric values.
+
 package main
 
 import "fmt"
 
 // Use `const` to declare a constant value.
-// Constants can be ...
-const x string = "Hello World"
+const s string = "Constant"
 
 func main() {
-    fmt.Println(x)
+    fmt.Println(s)
 }
-
-// todo: research

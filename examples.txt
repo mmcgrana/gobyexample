@@ -1,8 +1,8 @@
 Hello World
 Values
 Variables
-# Constants
-# For
+Constants
+For
 If/Else
 Switch
 Arrays
