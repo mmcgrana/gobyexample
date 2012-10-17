@@ -1,5 +1,5 @@
 Hello World
-# Values
+Values
 # Variables
 # Short Declarations
 # Constants
