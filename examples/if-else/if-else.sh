@@ -4,5 +4,5 @@ $ go run if-else.go
 9 has 1 digit
 
 # There is no [ternary if](http://en.wikipedia.org/wiki/%3F:)
-# in Go, so you'll need to use a full if statement even
+# in Go, so you'll need to use a full `if` statement even
 # for basic conditions.
