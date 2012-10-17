@@ -1,3 +1,6 @@
 $ go run variables.go
-Hello world
+Initial
 1 2
+true
+0
+Short

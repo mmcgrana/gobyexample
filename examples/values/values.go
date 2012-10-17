@@ -9,7 +9,7 @@ import "fmt"
 func main() {
 
     // Strings, which can be added together with `+`.
-    fmt.Println("Hello " + "world")
+    fmt.Println("go" + "lang")
 
     // Integers and floats.
     fmt.Println("1+1 =", 1+1)

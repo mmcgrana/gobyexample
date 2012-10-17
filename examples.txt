@@ -1,7 +1,6 @@
 Hello World
 Values
-# Variables
-# Short Declarations
+Variables
 # Constants
 # For
 If/Else
