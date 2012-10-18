@@ -25,7 +25,6 @@ Recursion
 # Errors
 # OK Guards
 Goroutines
-# Concurrent Goroutines
 Channels
 # Channel Buffering
 # Channel Directions
