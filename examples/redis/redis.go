@@ -25,7 +25,7 @@ func main() {
     fmt.Println(getRep)
     fmt.Println(getStr)
 
-    // varadic calls
+    // variadic calls
     client.Set("foo1", "bar1")
     client.Set("foo2", "bar2")
     client.Set("foo3", "bar3")

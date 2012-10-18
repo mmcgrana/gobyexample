@@ -11,7 +11,7 @@ Maps
 Range
 Functions
 Multiple Return Values
-# Varadic Functions
+Variadic Functions
 Closures
 Recursion
 # Defer
