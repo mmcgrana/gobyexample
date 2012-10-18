@@ -27,15 +27,15 @@ Recursion
 Goroutines
 Channels
 Channel Buffering
-# Channel Directions
-# Synchronization
+Channel Synchronization
+Channel Directions
 Select
 Timeouts
+Non-Blocking Channel Operations
+# Closing Channels
 # Scatter Gather
 # Rate Limiting
 # Worker Pools
-# Non-Blocking Channel Operations
-# Closing Channels
 Timers
 Tickers
 # State Goroutine

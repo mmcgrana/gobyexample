@@ -1,35 +1,30 @@
+// When using channels as function parameters, you can
+// specify if a channel is meant to only send or receive
+// values. This specificity further increases the
+// type-safety of the program.
+
 package main
 
 import "fmt"
 
-func pinger(pings chan<- string) {
-    for i := 0; i <= 10; i++ {
-        pings <- "ping"
-    }
+// This `ping` function only accepts a channel for sending
+// values. It would be a compile-time error to try to
+// receive on this channel.
+func ping(pings chan<- string, msg string) {
+    pings <- msg
 }
 
-func ponger(pings <-chan string, pongs chan<- string) {
-    for {
-        <-pings
-        pongs <- "pong"
-    }
-}
-
-func printer(pongs <-chan string) {
-    for {
-        msg := <-pongs
-        fmt.Println(msg)
-    }
+// The `pong` function accepts one channel for receives
+// (`pings`) and a second for sends (`pongs`)
+func pong(pings <-chan string, pongs chan<- string) {
+    msg := <-pings
+    pongs <- msg
 }
 
 func main() {
-    var pings chan string = make(chan string)
-    var pongs chan string = make(chan string)
-
-    go pinger(pings)
-    go ponger(pings, pongs)
-    go printer(pongs)
-
-    var input string
-    fmt.Scanln(&input)
+    pings := make(chan string, 1)
+    pongs := make(chan string, 1)
+    ping(pings, "passed message")
+    pong(pings, pongs)
+    fmt.Println(<-pongs)
 }
