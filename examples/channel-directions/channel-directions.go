@@ -1,7 +1,7 @@
 // When using channels as function parameters, you can
 // specify if a channel is meant to only send or receive
-// values. This specificity further increases the
-// type-safety of the program.
+// values. This specificity increases the type-safety of
+// the program.
 
 package main
 
@@ -15,7 +15,7 @@ func ping(pings chan<- string, msg string) {
 }
 
 // The `pong` function accepts one channel for receives
-// (`pings`) and a second for sends (`pongs`)
+// (`pings`) and a second for sends (`pongs`).
 func pong(pings <-chan string, pongs chan<- string) {
     msg := <-pings
     pongs <- msg

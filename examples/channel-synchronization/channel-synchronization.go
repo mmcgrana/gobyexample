@@ -13,7 +13,7 @@ import "time"
 func worker(done chan bool) {
     fmt.Print("working...")
     time.Sleep(time.Second)
-    fmt.Println(" done")
+    fmt.Println("done")
 
     // Send a value to notify that we're done.
     done <- true
