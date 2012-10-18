@@ -26,7 +26,7 @@ Recursion
 # OK Guards
 Goroutines
 Channels
-# Channel Buffering
+Channel Buffering
 # Channel Directions
 # Synchronization
 Select
