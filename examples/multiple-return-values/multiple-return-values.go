@@ -20,8 +20,8 @@ func main() {
     fmt.Println(a)
     fmt.Println(b)
 
-    // In cases were you only want a subset of the
-    // returned values, use the blank identifier `_`.
+    // If you only want a subset of the returned values,
+    // use the blank identifier `_`.
     _, c := vals()
     fmt.Println(c)
 }
