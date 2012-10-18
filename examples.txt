@@ -32,7 +32,8 @@ Channel Directions
 Select
 Timeouts
 Non-Blocking Channel Operations
-# Closing Channels
+Closing Channels
+Range over Channels
 # Scatter Gather
 # Rate Limiting
 # Worker Pools
