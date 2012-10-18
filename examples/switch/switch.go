@@ -10,7 +10,7 @@ func main() {
 
     // Here's a basic `switch`.
     i := 2
-    fmt.Print("Write ", i, " as ")
+    fmt.Print("write ", i, " as ")
     switch i {
     case 1:
         fmt.Println("one")
@@ -25,9 +25,9 @@ func main() {
     // `default` case in this example as well.
     switch time.Now().Weekday() {
     case time.Saturday, time.Sunday:
-        fmt.Println("It's the weekend")
+        fmt.Println("it's the weekend")
     default:
-        fmt.Println("It's a weekday")
+        fmt.Println("it's a weekday")
     }
 
     // `switch` without an expression is an alternate way
@@ -36,9 +36,9 @@ func main() {
     t := time.Now()
     switch {
     case t.Hour() < 12:
-        fmt.Println("It's before noon")
+        fmt.Println("it's before noon")
     default:
-        fmt.Println("It's after noon")
+        fmt.Println("it's after noon")
     }
 }
 

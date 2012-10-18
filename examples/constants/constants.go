@@ -6,7 +6,7 @@ package main
 import "fmt"
 
 // Use `const` to declare a constant value.
-const s string = "Constant"
+const s string = "constant"
 
 func main() {
     fmt.Println(s)

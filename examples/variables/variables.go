@@ -9,7 +9,7 @@ import "fmt"
 func main() {
 
     // `var` declares 1 or more variables.
-    var a string = "Initial"
+    var a string = "initial"
     fmt.Println(a)
 
     // You can declare multiple variables at once.
@@ -29,6 +29,6 @@ func main() {
     // The `:=` syntax is shorthand for declaring and
     // initializing a variable, e.g. for
     // `var f string = "Short"` in this case.
-    f := "Short"
+    f := "short"
     fmt.Println(f)
 }
