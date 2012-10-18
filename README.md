@@ -41,7 +41,7 @@ The site is served by the [gobyexample-server](https://github.com/mmcgrana/gobye
 tool. To export to this tool:
 
 ```console
-$ SITEDIR = ../gobyexample-server/public tool/build
+$ SITEDIR=../gobyexample-server/public tool/build
 ```
 
 
