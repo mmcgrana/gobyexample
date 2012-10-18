@@ -9,11 +9,11 @@ Arrays
 Slices
 Maps
 Range
-# Functions
-# Multiple Return Values
+Functions
+Multiple Return Values
 # Varadic Functions
-# Closures
-# Recursion
+Closures
+Recursion
 # Defer
 # Panic
 # Pointers

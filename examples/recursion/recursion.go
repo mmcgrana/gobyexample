@@ -1,14 +1,20 @@
+// Go supports
+// <a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)"><em>recursive functions</em></a>.
+// Here's a classic factorial example.
+
 package main
 
 import "fmt"
 
-func factorial(x uint) uint {
-    if x == 0 {
+// This `fact` function calls itself until it reaches the
+// base case of `fact(0)`.
+func fact(n int) int {
+    if n == 0 {
         return 1
     }
-    return x * factorial(x-1)
+    return n * fact(n-1)
 }
 
 func main() {
-    fmt.Println(factorial(7))
+    fmt.Println(fact(7))
 }
