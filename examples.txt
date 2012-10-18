@@ -34,11 +34,10 @@ Timeouts
 Non-Blocking Channel Operations
 Closing Channels
 Range over Channels
-# Scatter Gather
 # Rate Limiting
-# Worker Pools
 Timers
 Tickers
+Worker Pools
 # State Goroutine
 # State Mutex
 Sorting
