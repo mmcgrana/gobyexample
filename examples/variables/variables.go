@@ -28,7 +28,7 @@ func main() {
 
     // The `:=` syntax is shorthand for declaring and
     // initializing a variable, e.g. for
-    // `var f string = "Short"` in this case.
+    // `var f string = "short"` in this case.
     f := "short"
     fmt.Println(f)
 }
