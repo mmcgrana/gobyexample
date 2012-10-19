@@ -1,3 +1,5 @@
+// State
+
 package main
 
 import "fmt"
@@ -6,14 +8,6 @@ import "math/rand"
 import "sync"
 import "sync/atomic"
 import "runtime"
-
-func randKey() int {
-    return rand.Intn(10)
-}
-
-func randVal() int {
-    return rand.Intn(100)
-}
 
 // Globally-accessible state.
 var data = make(map[int]int)
@@ -27,7 +21,7 @@ var opCount int64 = 0
 func generateReads() {
     total := 0
     for {
-        key := randKey()
+        key := rand.Intn(10)
         dataMutex.Lock()
         total += data[key]
         dataMutex.Unlock()
@@ -39,8 +33,8 @@ func generateReads() {
 // Generate random writes.
 func generateWrites() {
     for {
-        key := randKey()
-        val := randVal()
+        key := rand.Intn(10)
+        val := rand.Intn(100)
         dataMutex.Lock()
         data[key] = val
         dataMutex.Unlock()
@@ -62,5 +56,3 @@ func main() {
     finalOpCount := atomic.LoadInt64(&opCount)
     fmt.Println(finalOpCount)
 }
-
-// todo: "State with Mutexes?"

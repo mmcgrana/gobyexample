@@ -38,8 +38,9 @@ Timers
 Tickers
 Worker Pools
 Rate Limiting
-# State Goroutine
-# State Mutex
+Atomic Counters
+# Mutexs
+# Stateful Goroutines
 Sorting
 Sorting by Functions
 # Collection Functions
