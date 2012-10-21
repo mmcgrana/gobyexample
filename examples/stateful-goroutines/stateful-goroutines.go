@@ -22,8 +22,8 @@ import (
 // write that state, other goroutines will send messages
 // to the owning goroutine and receive corresponding
 // replies. These `readOp` and `writeOp` `struct`s
-// encapsulate those requests and provide a way for the
-// owning goroutine to respond.
+// encapsulate those requests and a way for the owning
+// goroutine to respond.
 type readOp struct {
     key  int
     resp chan int
