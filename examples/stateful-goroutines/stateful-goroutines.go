@@ -54,7 +54,7 @@ func main() {
     // goroutine repeatedly selects on the `reads` and
     // `writes` channels, responding to requests as they
     // arrive. A response is executed by first performing
-    // the requested operation, and then sending a value
+    // the requested operation and then sending a value
     // on the response channel `resp` to indicate success
     // (and the desired value in the case of `reads`).
     go func() {
