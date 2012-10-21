@@ -5,12 +5,14 @@
 
 package main
 
-import "fmt"
-import "time"
-import "math/rand"
-import "sync"
-import "sync/atomic"
-import "runtime"
+import (
+    "fmt"
+    "math/rand"
+    "runtime"
+    "sync"
+    "sync/atomic"
+    "time"
+)
 
 func main() {
 

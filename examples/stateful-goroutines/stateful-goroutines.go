@@ -9,10 +9,12 @@
 
 package main
 
-import "fmt"
-import "time"
-import "math/rand"
-import "sync/atomic"
+import (
+    "fmt"
+    "math/rand"
+    "sync/atomic"
+    "time"
+)
 
 // In this example our state will be owned by a single
 // goroutine. This will guarantee that the data is never
