@@ -8,8 +8,7 @@ ops: 807434
 # was a bit more involved than the mutex-based one. It
 # might be useful in certain cases though, for example
 # where you have other channels involved or when managing
-# multiple such mutexes would be error-prone. The right
-# approach for your program will depend on its particular
-# details. You should use whatever approach feels most
-# natural, especially with respect to understanding the
-# correctness of your program.
+# multiple such mutexes would be error-prone. You should
+# use whichever approach feels most natural, especially
+# with respect to understanding the correctness of your
+# program.
