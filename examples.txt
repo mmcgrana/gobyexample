@@ -39,8 +39,8 @@ Tickers
 Worker Pools
 Rate Limiting
 Atomic Counters
-# Mutexs
-# Stateful Goroutines
+Mutexes
+Stateful Goroutines
 Sorting
 Sorting by Functions
 # Collection Functions

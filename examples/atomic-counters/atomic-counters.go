@@ -2,8 +2,8 @@
 // communication over channels. We saw this for example
 // with [worker pools](worker-pool). There are a few other
 // options for managing state though. Here we'll
-// look at using the `sync/atomic` package for simple
-// counters accessed by multiple goroutines.
+// look at using the `sync/atomic` package for _atomic
+// counters_ accessed by multiple goroutines.
 
 package main
 
@@ -46,3 +46,6 @@ func main() {
     opsFinal := atomic.LoadUint64(&ops)
     fmt.Println("ops:", opsFinal)
 }
+
+// Next we'll look at another approach to managing state:
+// mutexes.
