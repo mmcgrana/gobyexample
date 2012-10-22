@@ -1,7 +1,16 @@
-$ go run 26-panic.go
-panic: O noes
+# Running the program will cause it to panic, print
+# an error message and goroutine traces, and exit with
+# a non-zero status.
+$ go run panic.go
+panic: a problem
 
 goroutine 1 [running]:
 main.main()
-	/.../src/26-panic.go:4 +0x47
+	/.../panic.go:12 +0x47
 ...
+exit status 2
+
+# Note that unlike some languages which use exceptions
+# for handling of many errors, in Go it is idiomatic
+# to use error-indicating return values wherever possible.
+# We'll learn more about this in later examples.

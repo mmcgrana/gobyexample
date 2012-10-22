@@ -14,8 +14,6 @@ Multiple Return Values
 Variadic Functions
 Closures
 Recursion
-# Defer
-# Panic
 # Pointers
 # New
 # Structs
@@ -43,6 +41,9 @@ Mutexes
 Stateful Goroutines
 Sorting
 Sorting by Functions
+Panic
+Defer
+# Recover
 # Collection Functions
 # String Functions
 # String Formatting
