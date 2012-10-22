@@ -60,8 +60,8 @@ SHA1 Hashes
 # Reading Files
 # Writing Files
 Line Filters
-# Command-Line Arguments
-# Command-Line Flags
+Command-Line Arguments
+Command-Line Flags
 Environment Variables
 Spawning Processes
 Exec'ing Processes

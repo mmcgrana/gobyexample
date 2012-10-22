@@ -142,7 +142,6 @@ body .hll { background-color: #ffffcc }
 body .err { border: 1px solid #FF0000 }         /* Error */
 body .c  { color: #408080; font-style: italic } /* Comment */
 body .k  { color: #954121 }                     /* Keyword */
-body .n  { color: #954121 }                     /* Keyword */
 body .o  { color: #666666 }                     /* Operator */
 body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 body .cp { color: #BC7A00 }                     /* Comment.Preproc */
