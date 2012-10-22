@@ -3,6 +3,7 @@
 
 package main
 
+import "fmt"
 import "time"
 
 // Here's the worker, of which we'll run several
@@ -12,7 +13,7 @@ import "time"
 // simulate an expensive task.
 func worker(id int, jobs <-chan int, results chan<- int) {
     for j := range jobs {
-        println("worker", id, "processing job", j)
+        fmt.Println("worker", id, "processing job", j)
         time.Sleep(time.Second)
         results <- j * 2
     }
