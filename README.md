@@ -32,7 +32,12 @@ $ tools/build-loop
 ```
 
 Builds require the [`pygmentize`](http://pygments.org/)
-binary for syntax highlighting.
+binary for syntax highlighting. We suggesting using the
+most recent version from Bitbucket with e.g.:
+
+```console
+$ export PATH="$HOME/repos/pygments:$PATH"
+```
 
 
 ### Serving
