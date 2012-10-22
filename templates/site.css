@@ -158,8 +158,8 @@ body .gs { font-weight: bold }                  /* Generic.Strong */
 body .gu { color: #800080; font-weight: bold }  /* Generic.Subheading */
 body .gt { color: #0040D0 }                     /* Generic.Traceback */
 body .kc { color: #954121 }                     /* Keyword.Constant */
-body .kd { color: #954121; font-weight: bold }  /* Keyword.Declaration */
-body .kn { color: #954121; font-weight: bold }  /* Keyword.Namespace */
+body .kd { color: #954121 }                     /* Keyword.Declaration */
+body .kn { color: #954121 }                     /* Keyword.Namespace */
 body .kp { color: #954121 }                     /* Keyword.Pseudo */
 body .kr { color: #954121; font-weight: bold }  /* Keyword.Reserved */
 body .kt { color: #B00040 }                     /* Keyword.Type */
