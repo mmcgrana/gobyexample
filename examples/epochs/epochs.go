@@ -1,9 +1,10 @@
-// A common requirement in programms is getting the number
+// A common requirement in programs is getting the number
 // of seconds, milliseconds, or nanoseconds since the Unix
 // epoch. Here's how to do it in Go.
 
 package main
 
+import "fmt"
 import "time"
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 
     // Note that there is no `UnixMillis`.
     millis := nanos / 1000000
-    println("Secs:  ", secs)
-    println("Millis:", millis)
-    println("Nanos: ", nanos)
+    fmt.Println("Secs:  ", secs)
+    fmt.Println("Millis:", millis)
+    fmt.Println("Nanos: ", nanos)
 }
