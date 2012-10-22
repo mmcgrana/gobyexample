@@ -58,7 +58,7 @@ func main() {
     // Note that when spawning commands we need to
     // provide an explicitly delineated command and
     // argument array, vs. being able to just pass in one
-    // command line string. If you want to spawn a full
+    // command-line string. If you want to spawn a full
     // command with a string, you can use `bash`'s `-c`
     // option:
     lsCmd := exec.Command("bash", "-c", "ls -a -l -h")
