@@ -18,7 +18,7 @@ func main() {
     // returns an error value that we don't know how to
     // (or want to) handle. Here's an example of
     // `panic`king if we get an unexpected error when creating a new file.
-    f, err := os.Create("/tmp/file")
+    _, err := os.Create("/tmp/file")
     if err != nil {
         panic(err)
     }
