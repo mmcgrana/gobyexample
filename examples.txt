@@ -15,7 +15,6 @@ Variadic Functions
 Closures
 Recursion
 Pointers
-# New
 # Structs
 # Methods
 # Embedding
