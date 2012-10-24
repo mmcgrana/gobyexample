@@ -14,7 +14,7 @@ Multiple Return Values
 Variadic Functions
 Closures
 Recursion
-# Pointers
+Pointers
 # New
 # Structs
 # Methods
