@@ -36,4 +36,7 @@ func main() {
     // i.e. a pointer to `i`.
     zeroptr(&i)
     fmt.Println("zeroptr:", i)
+
+	// Pointers can be printed too.
+	fmt.Println("pointer:", &i)
 }
