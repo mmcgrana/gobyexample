@@ -31,7 +31,7 @@ func main() {
     fmt.Println(s.name)
 
     // You can also use dots with struct pointers - the
-    // pointer will be automatically dereferenced.
+    // pointers are automatically dereferenced.
     sp := &s
     fmt.Println(sp.age)
 
