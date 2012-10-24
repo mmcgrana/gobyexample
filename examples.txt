@@ -56,7 +56,7 @@ Defer
 # Number Parsing
 # URLs
 SHA1 Hashes
-# Base64 Encoding
+Base64 Encoding
 # Reading Files
 # Writing Files
 Line Filters
