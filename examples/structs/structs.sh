@@ -5,3 +5,4 @@ $ go run structs.go
 &{Ann 40}
 Sean
 50
+51
