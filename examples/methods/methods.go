@@ -1,37 +1,37 @@
+// Go supports _methods_ defined on struct types.
+
 package main
 
 import "fmt"
-import "math"
 
-type Circle struct {
-    x, y, r float64
+type rect struct {
+    width, height int
 }
 
-func (c *Circle) area() float64 {
-    return math.Pi * c.r * c.r
+// This `area` method has a _receiver type_ of `*rect`.
+func (r *rect) area() int {
+    return r.width * r.height
 }
 
-type Rectangle struct {
-    x1, y1, x2, y2 float64
-}
-
-func distance(x1, y1, x2, y2 float64) float64 {
-    a := x2 - x1
-    b := y2 - y1
-    return math.Sqrt(a*a + b*b)
-}
-
-func (r *Rectangle) area() float64 {
-    l := distance(r.x1, r.y1, r.x1, r.y2)
-    w := distance(r.x1, r.y1, r.x2, r.y1)
-    return l * w
+// Methods can be defined for either pointer or value
+// receiver types. Here's an example of a value receiver.
+func (r rect) perim() int {
+    return 2*r.width + 2*r.height
 }
 
 func main() {
-    circle := Circle{x: 0, y: 3, r: 5}
-    fmt.Println(circle.area())
-    rectangle := Rectangle{x1: 3, x2: 10, y1: 5, y2: 7}
-    fmt.Println(rectangle.area())
-}
+    r := rect{width: 10, height: 5}
 
-// todo: pointer vs value receivers
+    // Here we call the 2 methods defined for our struct.
+    fmt.Println("area: ", r.area())
+    fmt.Println("perim:", r.perim())
+
+    // Go automatically handles conversion between values
+    // and pointers for method calls. You may want to use
+    // a pointer receiver type to avoid copying on method
+    // calls or to allow the method to mutate the
+    // receiving struct.
+    rp := &r
+    fmt.Println("area: ", rp.area())
+    fmt.Println("perim:", rp.perim())
+}

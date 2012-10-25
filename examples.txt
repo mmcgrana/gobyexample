@@ -16,9 +16,9 @@ Closures
 Recursion
 Pointers
 Structs
-# Methods
-# Embedding
+Methods
 # Interfaces
+# Embedding
 # Errors
 # OK Guards
 Goroutines
