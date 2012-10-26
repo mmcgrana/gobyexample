@@ -1,6 +1,6 @@
 # Running our URL parsing program shows all the different
 # pieces that we extracted.
-$ go run urls.go 
+$ go run url-parsing.go 
 postgres
 user:pass
 user

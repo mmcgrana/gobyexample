@@ -1,6 +1,7 @@
-$ go run xx-number-parsing.go
+$ go run number-parsing.go 
 1.234
 123
-6974
 456
+789
+135
 strconv.ParseInt: parsing "wat": invalid syntax

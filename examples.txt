@@ -52,8 +52,8 @@ Defer
 # Epochs
 # Elapsed Time
 # Random Numbers
-# Number Parsing
-URLs
+Number Parsing
+URL Parsing
 SHA1 Hashes
 Base64 Encoding
 # Reading Files
