@@ -47,7 +47,7 @@ func main() {
     }
 
     // Every 200 milliseconds we'll try to add a new
-    // value to `limiterBursty`, up to its limit of 3.
+    // value to `burstyLimiter`, up to its limit of 3.
     go func() {
         for t := range time.Tick(time.Millisecond * 200) {
             burstyLimiter <- t
