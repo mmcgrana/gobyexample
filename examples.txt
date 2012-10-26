@@ -20,7 +20,6 @@ Methods
 # Interfaces
 # Embedding
 # Errors
-# OK Guards
 Goroutines
 Channels
 Channel Buffering
