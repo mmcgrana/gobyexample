@@ -1,4 +1,5 @@
-// _Interfaces_ are named collections of methods.
+// _Interfaces_ are named collections of method
+// signatures.
 
 package main
 
