@@ -1,4 +1,4 @@
-// URLs provide a [uniform way to locating resources](http://adam.heroku.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/).
+// URLs provide a [uniform way to locate resources](http://adam.heroku.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/).
 // Here's how to parse URLs in Go.
 
 package main
@@ -20,7 +20,7 @@ func main() {
         panic(err)
     }
 
-    // Access to the scheme is straightforward.
+    // Accessing the scheme is straightforward.
     fmt.Println(u.Scheme)
 
     // `User` contains all authentication info; call
