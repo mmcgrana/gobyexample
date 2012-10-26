@@ -38,5 +38,3 @@ func main() {
     _, e := strconv.Atoi("wat")
     fmt.Println(e)
 }
-
-// Next we'll look at another common parsing task: URLs.
