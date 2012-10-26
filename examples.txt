@@ -17,7 +17,7 @@ Recursion
 Pointers
 Structs
 Methods
-# Interfaces
+Interfaces
 # Embedding
 # Errors
 Goroutines
