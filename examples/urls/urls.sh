@@ -1,4 +1,6 @@
-$ go run urls.go
+# Running our URL parsing program shows all the different
+# pieces that we extracted.
+$ go run urls.go 
 postgres
 user:pass
 user
@@ -7,7 +9,7 @@ host.com:5432
 host.com
 5432
 /path
-frag
+f
 k=v
 map[k:[v]]
 v
