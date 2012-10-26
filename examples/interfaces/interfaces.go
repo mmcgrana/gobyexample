@@ -53,8 +53,9 @@ func main() {
     s := square{width: 3, height: 4}
     c := circle{radius: 5}
 
-    // The `circle` and `square` struct types both satisfy
-    // the `geometry` interface so we can use instances of
+    // The `circle` and `square` struct types both
+    // implement the `geometry` interface so we can use
+    // instances of
     // these structs as arguments to `measure.
     measure(s)
     measure(c)
