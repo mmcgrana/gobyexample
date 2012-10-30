@@ -45,7 +45,7 @@ Defer
 Collection Functions
 String Functions
 # String Formatting
-# Regexs
+Regular Expressions
 # Bytes
 # JSON
 # Time
