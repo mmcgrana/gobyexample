@@ -42,7 +42,7 @@ Sorting by Functions
 Panic
 Defer
 # Recover
-# Collection Functions
+Collection Functions
 # String Functions
 # String Formatting
 # Regexs
