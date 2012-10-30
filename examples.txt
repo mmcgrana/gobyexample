@@ -43,7 +43,7 @@ Panic
 Defer
 # Recover
 Collection Functions
-# String Functions
+String Functions
 # String Formatting
 # Regexs
 # Bytes

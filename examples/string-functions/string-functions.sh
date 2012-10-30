@@ -1,3 +1,4 @@
+$ go run string-functions.go
 Contains:   true
 Count:      2
 HasPrefix:  true
@@ -11,5 +12,5 @@ Split:      [a b c d e]
 toLower:    test
 ToUpper:    TEST
 
-len:  5
-char: 101
+Len:  5
+Char: 101

@@ -1,22 +1,23 @@
 // The standard library's `strings` package provides many
-// useful string-related functions. 
+// useful string-related functions. Here are some examples
+// to give you a sense of the package.
 
 package main
 
 import s "strings"
 import "fmt"
 
-// Helper for all the printing we'll do in this example.
-func p(o ...interface{}) {
-    fmt.Println(o...)
-}
+// We alias `fmt.Println` to a shorter name as we'll use
+// it a lot below.
+var p = fmt.Println
 
 func main() {
-    // Here's a sampling of the functions available in
+
+    // Here's a sample of the functions available in
     // `strings`. Note that these are all functions from
     // package, not methods on the string object itself.
-    // This means that we nned pass the string in question
-    // as the first argument to the functions.
+    // This means that we need pass the string in question
+    // as the first argument to the function.
     p("Contains:  ", s.Contains("test", "es"))
     p("Count:     ", s.Count("test", "t"))
     p("HasPrefix: ", s.HasPrefix("test", "te"))
@@ -31,12 +32,12 @@ func main() {
     p("ToUpper:   ", s.ToUpper("test"))
     p()
 
-    // You can find more functions in the [`strings`]()
+    // You can find more functions in the [`strings`](http://golang.org/pkg/strings/)
     // package docs.
 
     // Not part of `strings` but worth mentioning here are
     // the mechanisms for getting the length of a string
     // and getting a character by index.
-    p("len: ", len("hello"))
-    p("char:", "hello"[1])
+    p("Len: ", len("hello"))
+    p("Char:", "hello"[1])
 }
