@@ -1,11 +1,14 @@
+// Go's `math/rand` package provides
+// [pseudorandom number](http://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+// generation.
+
 package main
 
-// The `math/rand` package provides psuedo-random
-// numbers.
-import "math/rand"
 import "fmt"
+import "math/rand"
 
 func main() {
+
     // For example, `rand.Intn` returns a random `int` n,
     // `0 <= n < 100`.
     fmt.Print(rand.Intn(100), ",")
@@ -16,7 +19,13 @@ func main() {
     // `0.0 <= f < 1.0`.
     fmt.Println(rand.Float64())
 
-    // To make the psuedo-random generator deterministic,
+    // This can be used to generate random floats in
+    // other ranges, for example `5.0 <= f' < 10.0`.
+    fmt.Print((rand.Float64()*5)+5, ",")
+    fmt.Print((rand.Float64() * 5) + 5)
+    fmt.Println()
+
+    // To make the pseudorandom generator deterministic,
     // give it a well-known seed.
     s1 := rand.NewSource(42)
     r1 := rand.New(s1)

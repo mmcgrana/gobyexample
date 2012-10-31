@@ -52,7 +52,7 @@ Regular Expressions
 Time
 Epoch
 # Time Parsing / Formatting
-# Random Numbers
+Random Numbers
 Number Parsing
 URL Parsing
 SHA1 Hashes
