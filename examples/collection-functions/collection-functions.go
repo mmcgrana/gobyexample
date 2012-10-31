@@ -38,7 +38,7 @@ func Include(vs []string, t string) bool {
     return Index(vs, t) >= 0
 }
 
-// Returns `true` if the one of the strings in the slice
+// Returns `true` if one of the strings in the slice
 // satisfies the predicate `f`.
 func Any(vs []string, f func(string) bool) bool {
     for _, v := range vs {
@@ -49,7 +49,7 @@ func Any(vs []string, f func(string) bool) bool {
     return false
 }
 
-// Returns `true` if the all of the strings in the slice
+// Returns `true` if all of the strings in the slice
 // satisfy the predicate `f`.
 func All(vs []string, f func(string) bool) bool {
     for _, v := range vs {
