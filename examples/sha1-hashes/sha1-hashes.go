@@ -16,7 +16,7 @@ func main() {
     s := "sha1 this string"
 
     // The pattern for generating a hash is `sha1.New()`,
-    // `sha1.Write(bytes)`, then `sha1.Sum([]byte{}).
+    // `sha1.Write(bytes)`, then `sha1.Sum([]byte{})`.
     // Here we start with a new hash.
     h := sha1.New()
 
