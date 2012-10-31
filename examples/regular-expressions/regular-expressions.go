@@ -46,6 +46,11 @@ func main() {
     // example to find all matches for a regexp.
     fmt.Println(r.FindAllString("peach punch pinch", -1))
 
+    // These `All` variants are available for the other
+    // functions we saw above as well.
+    fmt.Println(r.FindAllStringSubmatchIndex(
+        "peach punch pinch", -1))
+
     // Providing a non-negative integer as the second
     // argument to these functions will limit the number
     // of matches.
