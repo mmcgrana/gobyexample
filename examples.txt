@@ -52,7 +52,6 @@ Regular Expressions
 Time
 Epoch
 # Time Parsing / Formatting
-# Elapsed Time
 # Random Numbers
 Number Parsing
 URL Parsing
