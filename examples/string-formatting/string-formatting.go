@@ -106,5 +106,3 @@ func main() {
     // `os.Stdout` using `Fprintf`.
     fmt.Fprintf(os.Stderr, "an %s \n", "error")
 }
-
-// todo: #golang has excellent support for string formatting in the classic printf tradition: https://gobyexample.com/string-formatting.
