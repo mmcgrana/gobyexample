@@ -21,5 +21,5 @@ false
 2012-10-31 15:50:13.793654 +0000 UTC
 2006-12-05 01:19:43.509120474 +0000 UTC
 
-# Learn more about Go's time support in the
-# [`time`](http://golang.org/pkg/time/) package docs.
+# Next we'll look at the related idea of time relative to
+# the Unix epoch.

@@ -50,8 +50,8 @@ Regular Expressions
 # JSON
 # Protocol Buffers
 Time
+Epoch
 # Time Parsing / Formatting
-# Epochs
 # Elapsed Time
 # Random Numbers
 Number Parsing
