@@ -8,3 +8,5 @@ func main() {
     time.Sleep(3 * time.Second)
     fmt.Println(time.Since(start))
 }
+
+// todo: check out that blog post

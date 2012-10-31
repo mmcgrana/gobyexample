@@ -48,7 +48,9 @@ String Functions
 Regular Expressions
 # Bytes
 # JSON
-# Time
+# Protocol Buffers
+Time
+# Time Parsing / Formatting
 # Epochs
 # Elapsed Time
 # Random Numbers
