@@ -74,6 +74,3 @@ func main() {
     out := r.ReplaceAllFunc(in, bytes.ToUpper)
     fmt.Println(string(out))
 }
-
-// todo: Find(All)?(String)?(Submatch)?(Index)?
-// todo: Examples of regular expressions in #golang: https://gobyexample.com/regular-expressions One of the best areas for a "by example" approach IMO.
