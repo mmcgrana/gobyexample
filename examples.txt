@@ -44,7 +44,7 @@ Defer
 # Recover
 Collection Functions
 String Functions
-# String Formatting
+String Formatting
 Regular Expressions
 # Bytes
 # JSON

@@ -1,6 +1,23 @@
 $ go run string-formatting.go 
-default: {1 2}
-default w/ vals: {x:1 y:2}
-go: main.Point{x:1, y:2}
-go type: main.Point
-boolean: true
+{1 2} 
+{x:1 y:2} 
+main.point{x:1, y:2} 
+main.point 
+true 
+123 
+1110 
+! 
+1c8 
+78.9000001.234000e+08 
+1.234000E+08 
+"string" 
+"\"string\"" 
+6865782074686973 
+0x42134100 
+|    12|   345| 
+|  1.20|  3.45| 
+|1.20  |3.45  | 
+|   foo|     b|
+|foo   |b     |
+a string 
+an error 
