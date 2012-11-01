@@ -19,7 +19,7 @@ Structs
 Methods
 Interfaces
 # Embedding
-# Errors
+Errors
 Goroutines
 Channels
 Channel Buffering
