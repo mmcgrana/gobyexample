@@ -129,6 +129,7 @@ func debug(msg string) {
 
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var todoPat = regexp.MustCompile("\\/\\/ todo: ")
+var dashPat = regexp.MustCompile("\\-+")
 
 type Seg struct {
     Docs, DocsRendered     string
@@ -213,6 +214,7 @@ func parseExamples() []*Example {
             exampleId = strings.Replace(exampleId, " ", "-", -1)
             exampleId = strings.Replace(exampleId, "/", "-", -1)
             exampleId = strings.Replace(exampleId, "'", "", -1)
+            exampleId = dashPat.ReplaceAllString(exampleId, "-")
             example.Id = exampleId
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")

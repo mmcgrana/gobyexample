@@ -47,7 +47,7 @@ Regular Expressions
 JSON
 Time
 Epoch
-# Time Parsing / Formatting
+Time Formatting / Parsing
 Random Numbers
 Number Parsing
 URL Parsing
