@@ -44,8 +44,7 @@ Collection Functions
 String Functions
 String Formatting
 Regular Expressions
-Bytes
-# JSON
+JSON
 Time
 Epoch
 # Time Parsing / Formatting
