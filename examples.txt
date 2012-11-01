@@ -41,14 +41,12 @@ Sorting
 Sorting by Functions
 Panic
 Defer
-# Recover
 Collection Functions
 String Functions
 String Formatting
 Regular Expressions
-# Bytes
+Bytes
 # JSON
-# Protocol Buffers
 Time
 Epoch
 # Time Parsing / Formatting
