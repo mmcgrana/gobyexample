@@ -20,7 +20,7 @@ func main() {
     // general pattern with which to format the given
     // time. Here are a few more examples of time
     // formatting.
-    p(t.Format("4:05PM"))
+    p(t.Format("3:04PM"))
     p(t.Format("Mon Jan _2 15:04:05 2006"))
     p(t.Format("2006-01-02T15:04:05.999999-07:00"))
 
@@ -39,7 +39,7 @@ func main() {
         withNanos,
         "2012-11-01T22:08:41.117442+00:00")
     p(t1)
-    kitchen := "4:05PM"
+    kitchen := "3:04PM"
     t2, e := time.Parse(kitchen, "8:41PM")
     p(t2)
 
@@ -48,4 +48,8 @@ func main() {
     ansic := "Mon Jan _2 15:04:05 2006"
     _, e = time.Parse(ansic, "8:41PM")
     p(e)
+
+    // There are several predefined formats that you can
+    // use for both formatting and parsing.
+    p(t.Format(time.Kitchen))
 }
