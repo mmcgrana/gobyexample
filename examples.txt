@@ -55,7 +55,6 @@ SHA1 Hashes
 Base64 Encoding
 Reading Files
 Writing Files
-# File Operations
 Line Filters
 Command-Line Arguments
 Command-Line Flags
