@@ -34,19 +34,18 @@ func main() {
     // Time parsing uses the same example-based approach
     // as `Format`ing. These examples parse times rendered
     // with some of the layouts used above.
+	withNanos := "2006-01-02T15:04:05.999999999-07:00"
     t1, e := time.Parse(
-        "2006-01-02T15:04:05.999999999-07:00",
-        "2012-11-01T22:08:41.117442+00:00")
+		withNanos,
+		"2012-11-01T22:08:41.117442+00:00")
     p(t1)
-    t2, e := time.Parse(
-        "4:05PM",
-        "8:41PM")
+	hoursMinutes := "4:05PM"
+    t2, e := time.Parse(hoursMinutes, "8:41PM")
     p(t2)
 
     // `Parse` will return an error on malformed input
     // explaining the parsing problem.
-    _, e = time.Parse(
-        "Mon Jan _2 15:04:05 2006",
-        "8:41PM")
+	ansic := "Mon Jan _2 15:04:05 2006"
+    _, e = time.Parse(ansic, "8:41PM")
     p(e)
 }
