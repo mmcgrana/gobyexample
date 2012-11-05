@@ -5,7 +5,7 @@ package main
 
 import "fmt"
 
-// Use `const` to declare a constant value.
+// `const` declares a constant value.
 const s string = "constant"
 
 func main() {
