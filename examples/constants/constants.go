@@ -22,7 +22,7 @@ func main() {
     fmt.Println(int64(d))
 
     // A number can also be given a type by using it in a context that
-    // requires one, such as a variable assignment or funcion call.
+    // requires one, such as a variable assignment or function call.
     // The type it gets depends on its value.
     fmt.Println(n) // int
     fmt.Println(d) // float64
