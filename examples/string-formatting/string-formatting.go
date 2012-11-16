@@ -50,7 +50,7 @@ func main() {
 
     // There are also several formatting options for
     // floats. For basic decimal formatting use `%f`.
-    fmt.Printf("%f", 78.9)
+    fmt.Printf("%f\n", 78.9)
 
     // `%e` and `%E` format the float in (slightly
     // different versions of) scientific notation.
@@ -99,7 +99,7 @@ func main() {
     // So far we've seen `Printf`, which prints the
     // formatted string to `os.Stdout`. `Sprintf` formats
     // and returns a string without printing it anywhere.
-    s := fmt.Sprintf("a %s ", "string")
+    s := fmt.Sprintf("a %s", "string")
     fmt.Println(s)
 
     // You can format+print to `io.Writers` other than
