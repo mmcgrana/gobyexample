@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Mutexes</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34996217-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+  <body>
+    <div class="example" id="mutexes">
+      <h2><a href="./">Go by Example</a>: Mutexes</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>In the previous example we saw how to manage simple
+counter state using atomic operations. For more complex
+state we can use a <em><a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a></em>
+to safely access data across multiple goroutines.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;math/rand&quot;</span>
+    <span class="s">&quot;runtime&quot;</span>
+    <span class="s">&quot;sync&quot;</span>
+    <span class="s">&quot;sync/atomic&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>For our example the <code>state</code> will be a map.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>This <code>mutex</code> will synchronize access to <code>state</code>.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">mutex</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">{}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To compare the mutex-based approach with another
+we&rsquo;ll see later, <code>ops</code> will count how many
+operations we perform against the state.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here we start 100 goroutines to execute repeated
+reads against the state.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>For each read we pick a key to access,
+<code>Lock()</code> the <code>mutex</code> to ensure
+exclusive access to the <code>state</code>, read
+the value at the chosen key,
+<code>Unlock()</code> the mutex, and increment
+the <code>ops</code> count.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+                <span class="nx">total</span> <span class="o">+=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>In order to ensure that this goroutine
+doesn&rsquo;t starve the scheduler, we explicitly
+yield after each operation with
+<code>runtime.Gosched()</code>. This yielding is
+handled automatically with e.g. every
+channel operation and for blocking
+calls like <code>time.Sleep</code>, but in this
+case we need to do it manually.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We&rsquo;ll also start 10 goroutines to simulate writes,
+using the same pattern we did for reads.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">{</span>
+                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="nx">val</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+                <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">val</span>
+                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Let the 110 goroutines work on the <code>state</code> and
+<code>mutex</code> for a second.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Take and report a final operations count.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>With a final lock of <code>state</code>, show how it ended up.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre>    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state:&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
+    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Running the program shows that we executed about
+3,500,000 operations against our <code>mutex</code>-synchronized
+<code>state</code>.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="gp">$</span> go run mutexes.go
+<span class="go">ops: 3598302</span>
+<span class="go">state: map[1:38 4:98 2:23 3:85 0:44]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Next we&rsquo;ll look at implementing this same state
+management task using only goroutines and channels.</p>
+
+          </td>
+          <td class="code empty">
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="stateful-goroutines">Stateful Goroutines</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="https://twitter.com/gobyexample">@gobyexample</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/mutexes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

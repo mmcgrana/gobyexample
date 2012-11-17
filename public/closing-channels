@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Closing Channels</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34996217-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+  <body>
+    <div class="example" id="closing-channels">
+      <h2><a href="./">Go by Example</a>: Closing Channels</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><em>Closing</em> a channel indicates that no more values
+will be sent on it. This can be useful to communicate
+completion to the channel&rsquo;s receivers.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>In this example we&rsquo;ll use a <code>jobs</code> channel to
+communicate work to be done from the <code>main()</code> goroutine
+to a worker goroutine. When we have no more jobs for
+the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here&rsquo;s the worker goroutine. It repeatedly receives
+from <code>jobs</code> with <code>j, more := &lt;-jobs</code>. In this
+special 2-value form of receive, the <code>more</code> value
+will be <code>false</code> if <code>jobs</code> has been <code>close</code>d and all
+values in the channel have already been received.
+We use this to notify on <code>done</code> when we&rsquo;ve worked
+all our jobs.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">{</span>
+            <span class="nx">j</span><span class="p">,</span> <span class="nx">more</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
+            <span class="k">if</span> <span class="nx">more</span> <span class="p">{</span>
+                <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received job&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received all jobs&quot;</span><span class="p">)</span>
+                <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+                <span class="k">return</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>This sends 3 jobs to the worker over the <code>jobs</code>
+channel, then closes it.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent job&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nb">close</span><span class="p">(</span><span class="nx">jobs</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent all jobs&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We await the worker using the
+<a href="channel-synchronization">synchronization</a> approach
+we saw earlier.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre>    <span class="o">&lt;-</span><span class="nx">done</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="gp">$</span> go run closing-channels.go 
+<span class="go">sent job 1</span>
+<span class="go">received job 1</span>
+<span class="go">sent job 2</span>
+<span class="go">received job 2</span>
+<span class="go">sent job 3</span>
+<span class="go">received job 3</span>
+<span class="go">sent all jobs</span>
+<span class="go">received all jobs</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The idea of closed channels leads naturally to our next
+example: <code>range</code> over channels.</p>
+
+          </td>
+          <td class="code empty">
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="range-over-channels">Range over Channels</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="https://twitter.com/gobyexample">@gobyexample</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/closing-channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

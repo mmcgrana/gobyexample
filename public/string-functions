@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: String Functions</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34996217-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+  <body>
+    <div class="example" id="string-functions">
+      <h2><a href="./">Go by Example</a>: String Functions</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>The standard library&rsquo;s <code>strings</code> package provides many
+useful string-related functions. Here are some examples
+to give you a sense of the package.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">import</span> <span class="nx">s</span> <span class="s">&quot;strings&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We alias <code>fmt.Println</code> to a shorter name as we&rsquo;ll use
+it a lot below.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here&rsquo;s a sample of the functions available in
+<code>strings</code>. Note that these are all functions from
+package, not methods on the string object itself.
+This means that we need pass the string in question
+as the first argument to the function.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Contains:  &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;es&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Count:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Count</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasPrefix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;te&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasSuffix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;st&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Index:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Index</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Join:      &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">},</span> <span class="s">&quot;-&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Repeat:    &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Repeat</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Replace:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Replace:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Split:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="s">&quot;a-b-c-d-e&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;toLower:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="s">&quot;TEST&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;ToUpper:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can find more functions in the <a href="http://golang.org/pkg/strings/"><code>strings</code></a>
+package docs.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Not part of <code>strings</code> but worth mentioning here are
+the mechanisms for getting the length of a string
+and getting a character by index.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Len: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Char:&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="gp">$</span> go run string-functions.go
+<span class="go">Contains:   true</span>
+<span class="go">Count:      2</span>
+<span class="go">HasPrefix:  true</span>
+<span class="go">HasSuffix:  true</span>
+<span class="go">Index:      1</span>
+<span class="go">Join:       a-b</span>
+<span class="go">Repeat:     aaaaa</span>
+<span class="go">Replace:    f00</span>
+<span class="go">Replace:    f0o</span>
+<span class="go">Split:      [a b c d e]</span>
+<span class="go">toLower:    test</span>
+<span class="go">ToUpper:    TEST</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            <div class="highlight"><pre><span class="go">Len:  5</span>
+<span class="go">Char: 101</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="string-formatting">String Formatting</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="https://twitter.com/gobyexample">@gobyexample</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/string-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

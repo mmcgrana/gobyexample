@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Line Filters</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34996217-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+  <body>
+    <div class="example" id="line-filters">
+      <h2><a href="./">Go by Example</a>: Line Filters</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>A <em>line filter</em> is a common type of program that reads
+input on stdin, processes it, and then prints some
+derived result to stdout. <code>grep</code> and <code>sed</code> are common
+line filters.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here&rsquo;s an example line filter in Go that writes a
+capitalized version of all input text. You can use this
+pattern to write your own Go line filters.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;bufio&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;io&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Wrapping the unbuffered <code>os.Stdin</code> with a buffered
+reader gives us a convenient <code>ReadString</code> method
+that we&rsquo;ll use to read input line-by-line.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">rdr</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>ReadString</code> returns the next string from the
+input up to the given separator byte. We give the
+newline byte <code>'\n'</code> as our separator so we&rsquo;ll get
+successive input lines.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">rdr</span><span class="p">.</span><span class="nx">ReadString</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span> <span class="nx">err</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If the read succeeded (the read <code>err</code> is nil),
+write out out the uppercased line. Check for an
+error on this write as we do on the read.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>        <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
+            <span class="nx">ucl</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">ucl</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;error:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The <code>EOF</code> error is expected when we reach the
+end of input, so exit gracefully in that case.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>        <span class="k">case</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span><span class="p">:</span>
+            <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Otherwise there&rsquo;s a problem; print the
+error and exit with non-zero status.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre>        <span class="k">default</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;error:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+            <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>To try out our line filter, first make a file with a few
+lowercase lines.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;hello&#39;</span>   &gt; /tmp/lines
+<span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;filter&#39;</span> &gt;&gt; /tmp/lines
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Then use the line filter to get uppercase lines.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre><span class="gp">$</span> cat /tmp/lines | go run line-filters.go
+<span class="go">HELLO</span>
+<span class="go">FILTER</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="https://twitter.com/gobyexample">@gobyexample</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/line-filters">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>
