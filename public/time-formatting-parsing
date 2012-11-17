@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Time Formatting / Parsing</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34996217-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+  <body>
+    <div class="example" id="time-formatting-parsing">
+      <h2><a href="./">Go by Example</a>: Time Formatting / Parsing</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go supports time formatting and parsing via
+pattern-based layouts.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here&rsquo;s a basic example of formatting a time
+according to RFC3339.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05Z07:00&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Format</code> uses an example-based layout approach; it
+takes a formatted version of the reference time
+<code>Mon Jan 2 15:04:05 MST 2006</code> to determine the
+general pattern with which to format the given
+time. Here are a few more examples of time
+formatting.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>For purely numeric representations you can also
+use standard string formatting with the extracted
+components of the time value.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Time parsing uses the same example-based approach
+as <code>Format</code>ing. These examples parse times rendered
+with some of the layouts used above.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">withNanos</span> <span class="o">:=</span> <span class="s">&quot;2006-01-02T15:04:05.999999999-07:00&quot;</span>
+    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
+        <span class="nx">withNanos</span><span class="p">,</span>
+        <span class="s">&quot;2012-11-01T22:08:41.117442+00:00&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+    <span class="nx">kitchen</span> <span class="o">:=</span> <span class="s">&quot;3:04PM&quot;</span>
+    <span class="nx">t2</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">kitchen</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Parse</code> will return an error on malformed input
+explaining the parsing problem.</p>
+
+          </td>
+          <td class="code leading">
+            <div class="highlight"><pre>    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>There are several predefined formats that you can
+use for both formatting and parsing.</p>
+
+          </td>
+          <td class="code">
+            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Kitchen</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            <div class="highlight"><pre><span class="gp">$</span> go run <span class="nb">time</span>-formatting-parsing.go 
+<span class="go">2012-11-02T09:35:03-07:00</span>
+<span class="go">9:35AM</span>
+<span class="go">Fri Nov  2 09:35:03 2012</span>
+<span class="go">2012-11-02T09:35:03.982519-07:00</span>
+<span class="go">2012-11-02T09:35:03-00:00</span>
+<span class="go">0001-01-01 00:00:00 +0000 UTC</span>
+<span class="go">0000-01-01 20:41:00 +0000 UTC</span>
+<span class="go">parsing time &quot;8:41PM&quot; as &quot;Mon Jan _2 15:04:05 2006&quot;: ...</span>
+<span class="go">9:35AM</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="random-numbers">Random Numbers</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="https://twitter.com/gobyexample">@gobyexample</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

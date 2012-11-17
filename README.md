@@ -22,7 +22,7 @@ To build the site:
 
 ```console
 $ tools/build
-$ open site/index.html
+$ open public/index.html
 ```
 
 To build continuously in a loop:
@@ -40,14 +40,51 @@ $ export PATH="$HOME/repos/pygments:$PATH"
 ```
 
 
-### Serving
+### Local Deploy
 
-The site is served by the [gobyexample-server](https://github.com/mmcgrana/gobyexample-server)
-tool. To export to this tool:
-
-```console
-$ SITEDIR=../gobyexample-server/public tool/build
+```bash
+$ mkdir -p $GOPATH/src/github.com/mmcgrana
+$ cd $GOPATH/src/github.com/mmcgrana
+$ git clone git@github.com:mmcgrana/gobyexaple.git
+$ cd gobyexample
+$ go get
+$ foreman start
+$ foreman open
 ```
+
+
+### Platform Deploy
+
+Basic setup:
+
+```bash
+$ export DEPLOY=$USER
+$ heroku create gobyexample-$DEPLOY -r $DEPLOY
+$ heroku config:add -r $DEPLOY \
+    BUILDPACK_URL=https://github.com/kr/heroku-buildpack-go.git -r $DEPLOY \
+    CANONICAL_HOST=gobyexample-$DEPLOY.herokuapp.com -r $DEPLOY \
+    FORCE_HTTPS=1 \
+    AUTH=go:byexample
+$ git push $DEPLOY master
+$ heroku open -r $DEPLOY
+```
+
+Add a domain + SSL:
+
+```bash
+$ heroku domains:add $DOMAIN
+$ heroku addons:add ssl -r $DEPLOY
+# order ssl cert for domain
+$ cat > /tmp/server.key
+$ cat > /tmp/server.crt.orig
+$ cat /tmp/server.crt.orig /tmp/rapidssl_bundle.pem > /tmp/server.crt
+$ heroku certs:add /tmp/server.crt /tmp/server.key -r $DEPLOY
+# add ALIAS record from domain to ssl endpoint dns
+$ heroku config:add CANONICAL_HOST=$DOMAIN -r $DEPLOY
+$ heroku open -r $DEPLOY
+```
+
+
 
 
 ### License

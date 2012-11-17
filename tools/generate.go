@@ -14,7 +14,7 @@ import (
 )
 
 var cacheDir = "/tmp/gobyexample-cache"
-var siteDir = ""
+var siteDir = "./public"
 var pygmentizeBin = ""
 
 func check(err error) {
@@ -104,15 +104,6 @@ func whichLexer(path string) string {
     }
     panic("No lexer for " + path)
     return ""
-}
-
-func whichSiteDir() {
-    dir := os.Getenv("SITEDIR")
-    if dir != "" {
-        siteDir = dir
-    } else {
-        siteDir = "site"
-    }
 }
 
 func whichPygmentize() {
@@ -254,9 +245,7 @@ func renderExamples(examples []*Example) {
 }
 
 func main() {
-    whichSiteDir()
     whichPygmentize()
-    ensureDir(siteDir)
     copyFile("templates/site.css", siteDir+"/site.css")
     copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
     copyFile("templates/404.html", siteDir+"/404.html")
