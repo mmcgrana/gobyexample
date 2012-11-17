@@ -1,0 +1,548 @@
+ // This is a one line comment. 
+  /* an inner comment */ 
+ 
+ /* nested /* comments */ */ 
+ 
+  /* 
+    /* 
+       Multi-line. 
+    */ 
+  */ 
+
+// Binary blob escape. 
+//"some text \B(3)("\") ouhyeah" == "\"\\\"";
+"some text \B(3)("\") ouhyeah" == "\"\\\"";
+'some text \B(3)('\') ouhyeah' == '\'\\\'';
+
+//"\B(4)()"'()";
+"\B(4)()"'()";
+'\B(4)()'"()';
+
+//blob size limits
+"hey ! \B(0)() oh !"
+
+//blob format is wrong
+"hey ! \B(2)(aaa) oh !"
+"hey ! \B(100)(aaa) oh !"
+
+//multiple blob in a string
+"hey ! \B(3)(aaa) hey ! \B(3)(aaa) oh !"
+
+// multiple digits blob size 
+"hey ! \B(10)(aaaaaaaaaa)  !"
+"hey ! \B(10)(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)  !"
+"hey ! \B(100)(a)  !"
+
+// multiple digits blob size 
+"hey ! \B(007)(aaaaaaa)  !"
+"hey ! \B(007)(aa)  !"
+"hey ! \B(007)(aaaaaaaaaaaaaaaaaa)  !"
+
+// deprecated and restricted keyworks 
+emit Event.new;
+static int main();
+
+loopn (2) {echo("a");};
+
+foreach (var i : [1,2,3,4]) {
+	echo(i);
+};
+
+function() {};
+ 
+var 'if'; 
+var this.'else'; 
+ 
+var '%x'; 
+var '1 2 3'; 
+var this.'[]';
+       
+// angles 
+pi == 180deg; 
+pi == 200grad;
+       
+// Dictionary
+[ => ]; // The empty dictionary 
+
+// duration 
+1d   == 24h; 
+0.5d == 12h; 
+1h   == 60min; 
+1min == 60s; 
+1s   == 1000ms; 
+ 
+1s == 1; 
+1s 2s 3s == 6; 
+1s 1ms == 1.001; 
+1ms 1s == 1.001;
+       
+ 
+            1 == 1; 
+            1 == 1.0; 
+          1.2 == 1.2000; 
+      1.234e6 == 1234000; 
+        1e+11 == 1E+11; 
+         1e10 == 10000000000; 
+         1e30 == 1e10 * 1e10 * 1e10;
+       
+ 
+0.000001; 
+ 
+0.0000001; 
+ 
+0.00000000001; 
+ 
+1e+3; 
+ 
+1E-5; 
+       
+
+1.; 
+// [00004701:error] !!! syntax error: unexpected ;
+       
+      0x2a == 42; 
+      0x2A == 42; 
+  0xabcdef == 11259375; 
+  0xABCDEF == 11259375; 
+0xFFFFFFFF == 4294967295;
+       
+ 
+//123foo; 
+//[00005658:error] !!! syntax error: invalid token: '123foo' 
+//12.3foo; 
+//[00018827:error] !!! syntax error: invalid token: '12.3foo' 
+0xabcdef; 
+//[00060432] 11259375 
+//0xabcdefg; 
+//[00061848:error] !!! syntax error: invalid token: '0xabcdefg'
+       
+ 
+[]; // The empty list 
+[1, 2, 3]; 
+ 
+// Special characters. 
+"\"" == "\""; 
+"\\" == "\\"; 
+ 
+// ASCII characters. 
+"\a" == "\007"; "\a" == "\x07"; 
+"\b" == "\010"; "\b" == "\x08"; 
+"\f" == "\014"; "\f" == "\x0c"; 
+"\n" == "\012"; "\n" == "\x0a"; 
+"\r" == "\015"; "\r" == "\x0d"; 
+"\t" == "\011"; "\t" == "\x09"; 
+"\v" == "\013"; "\v" == "\x0b"; 
+ 
+// Octal escapes. 
+"\0" == "\00"; "\0" == "\000"; 
+"\0000" == "\0""0"; 
+"\062\063" == "23"; 
+ 
+// Hexadecimal escapes. 
+"\x00" == "\0"; 
+"\x32\x33" == "23"; 
+ 
+       
+ 
+"foo" "bar" "baz" == "foobarbaz";
+       
+// Tuples 
+(); 
+[00000000] () 
+(1,); 
+[00000000] (1,) 
+(1, 2); 
+[00000000] (1, 2) 
+(1, 2, 3, 4,); 
+[00000000] (1, 2, 3, 4)
+       
+function Global.verboseId(var x) 
+{ 
+  echo(x) | x 
+}|; 
+class verboseId(Global).math : verboseId(Math) 
+{ 
+}; 
+       
+{ 
+  for (3) 
+  { 
+    sleep(1s); 
+    echo("ping"); 
+  }, 
+  sleep(0.5s); 
+  for (3) 
+  { 
+    sleep(1s); 
+    echo("pong"); 
+  }, 
+}; 
+ 
+       1 + 1 ==    2; 
+       1 - 2 ==   -1; 
+       2 * 3 ==    6; 
+      10 / 2 ==    5; 
+     2 ** 10 == 1024; 
+    -(1 + 2) ==   -3; 
+   1 + 2 * 3 ==    7; 
+ (1 + 2) * 3 ==    9; 
+     -2 ** 2 ==   -4; 
+   - - - - 1 ==    1;
+
+a = b
+a += b
+a -= b
+a *= b
+a /= b
+a %= b
+a ^= b
+
+ 
+var value = 0|; 
+var valueAlias = value|; 
+value += 10; 
+valueAlias; 
+var myList = []|; 
+var myList.specialFeature = 42|; 
+myList += [1, 2, 3]; 
+myList.specialFeature; 
+var myOtherList = myList + [4, 5]; 
+myOtherList.specialFeature; 
+var something = []|; 
+var somethingElse = something|; 
+something += [1, 2]; 
+somethingElse += [3, 4]; 
+something; 
+       
+ 
+class Counter 
+{ 
+  var count = 0; 
+  function init (n)   { var this.count = n }; 
+  // Display the value, and the identity. 
+  function asString() { "%s @ %s" % [count, uid ] }; 
+  function '+'(var n) { new(count + n) }; 
+  function '-'(var n) { new(count - n) }; 
+}|;
+       
+ 
+class ImmutableCounter : Counter 
+{ 
+  function '+='(var n) { this + n }; 
+  function '-='(var n) { this - n }; 
+}|; 
+ 
+var ic1 = ImmutableCounter.new(0); 
+var ic2 = ic1; 
+ 
+ic1 += 1; 
+ic1; 
+ic2; 
+       
+
+a << b
+a >> b
+a ^ b
+ 
+4 << 2 == 16; 
+4 >> 2 ==  1;
+       
+!a
+a && b
+a || b
+ 
+true && true; 
+true || false; 
+!true == false; 
+true || (1 / 0); 
+(false && (1 / 0)) == false;
+       
+a == b
+a != b
+a === b
+a !== b
+a ~= b
+a =~= b
+a < b
+a <= b
+a > b
+a >= b
+ 
+assert{ 
+ ! (0 < 0); 
+    0 <= 0; 
+    0 == 0; 
+   0 !== 0; 
+}; 
+
+a in b
+a not in b
+a[args]
+a[args] = v
+ 
+1     in [0, 1, 2]; 
+3 not in [0, 1, 2]; 
+ 
+"one"   in     ["zero" => 0, "one" => 1, "two" => 2]; 
+"three" not in ["zero" => 0, "one" => 1, "two" => 2];
+       
+a.b
+a.b(args)
+a->b
+a->b = v
+a.&b
+ 
+var obj = Object.new|; 
+function obj.f() { 24 }|; 
+ 
+ 
+var f = function(a, b) { 
+  echo(b + a); 
+}| 
+f(1, 0); 
+       
+
+function g3() 
+{ 
+  return; // Stop execution at this point and return void 
+  echo(0); // This is not executed 
+}| 
+       
+Object.setProperty, to define/set a property.
+Object.getProperty, to get a property.
+Object.removeProperty, to delete a property.
+Object.hasProperty, to test for the existence of a property.
+Object.properties, to get all the properties of a slot.
+
+enum Suit 
+{ 
+  hearts, 
+  diamonds, 
+  clubs, 
+  spades, // Last comma is optional 
+}; 
+  
+for (var suit in Suit) 
+  echo("%s the ace of %s." % [find_ace(suit), suit]); 
+       
+switch ( ("foo", [1, 2]) ) 
+{ 
+  // The pattern does not match the values of the list. 
+  case ("foo", [2, 1]): 
+    echo("fail"); 
+ 
+  // The pattern does not match the tuple. 
+  case ["foo", [1, 2]]: 
+    echo("fail"); 
+ 
+  // The pattern matches and binds the variable "l" 
+  // but the condition is not verified. 
+  case ("foo", var l) if l.size == 0: 
+    echo("fail"); 
+ 
+  // The pattern matches. 
+  case ("foo", [var a, var b]): 
+    echo("foo(%s, %s)" % [a, b]); 
+}; 
+//[00000000] *** foo(1, 2)
+       
+{ 
+  ["b" => var b, "a" => var a] = ["a" => 1, "b" => 2, "c" => 3]; 
+  echo("a = %d, b = %d" % [a, b]); 
+}; 
+//[00000000] *** a = 1, b = 2
+       
+ 
+switch (["speed" => 2, "time" => 6s]) 
+{ 
+  case ["speed" => var s] if s > 3: 
+    echo("Too fast"); 
+  case ["speed" => var s, "time" => var t] if s * t > 10: 
+    echo("Too far"); 
+}; 
+//[00000000] *** Too far
+       
+ 
+try 
+{ 
+  throw ("message", 0) 
+} 
+catch (var e if e.isA(Exception)) 
+{ 
+  echo(e.message) 
+} 
+catch ((var msg, var value) if value.isA(Float)) 
+{ 
+  echo("%s: %d" % [msg, value]) 
+}; 
+//[00000000] *** message: 0
+       
+ 
+{ 
+  var e = Event.new; 
+  at (e?(var msg, var value) if value % 2 == 0) 
+    echo("%s: %d" % [msg, value]); 
+ 
+  // Does not trigger the "at" because the guard is not verified. 
+  e!("message", 1); 
+ 
+  // Trigger the "at". 
+  e!("message", 2); 
+}; 
+//[00000000] *** message: 2
+       
+for (var i = 0; i < 8; i++) 
+{ 
+  if (i % 2 != 0) 
+    continue; 
+  echo(i); 
+}; 
+
+do (1024) 
+{ 
+  assert(this == 1024); 
+  assert(sqrt == 32); 
+  setSlot("y", 23); 
+}.y; 
+ 
+{ 
+  var n = 10|; 
+  var res = []|; 
+  loop;{ 
+    n--; 
+    res << n; 
+    if (n == 0) 
+      break 
+  }; 
+  res 
+} 
+       
+ 
+{ 
+  var n = 10|; 
+  var res = []|; 
+  loop|{ 
+    n--; 
+    res << n; 
+    if (n == 0) 
+      break 
+  }; 
+  res 
+} 
+
+ 
+var j = 3| 
+while (0 < j) 
+{ 
+  echo(j); 
+  j--; 
+}; 
+
+ 
+{ 
+  var i = 4| 
+  while| (true) 
+  { 
+    i -= 1; 
+    echo ("in: " + i); 
+    if (i == 1) 
+      break 
+    else if (i == 2) 
+      continue; 
+    echo ("out: " + i); 
+  }; 
+}; 
+
+ 
+ 
+function test(e) 
+{ 
+  try 
+  { throw e;  } 
+  catch (0) 
+  { echo("zero") } 
+  catch ([var x, var y]) 
+  { echo(x + y) } 
+} | {}; 
+ 
+try   { echo("try") } 
+catch { echo("catch")} 
+else  { echo("else")}; 
+ 
+       
+try 
+{ 
+  echo("inside"); 
+} 
+finally 
+{ 
+  echo("finally"); 
+}; 
+//[00000001] *** inside 
+//[00000002] *** finally
+       
+at (e?(var start) ~ 1s) 
+  echo("in : %s" % (time - start).round) 
+onleave 
+  echo("out: %s" % (time - start).round); 
+ 
+// This emission is too short to trigger the at. 
+e!(time); 
+ 
+// This one is long enough. 
+// The body triggers 1s after the emission started. 
+e!(time) ~ 2s; 
+//[00001000] *** in : 1 
+//[00002000] *** out: 2
+       
+
+timeout (2.1s) 
+  every (1s) 
+    echo("Are you still there?"); 
+//[00000000] *** Are you still there? 
+//[00001000] *** Are you still there? 
+//[00002000] *** Are you still there?
+       
+  every| (1s) 
+  { 
+    echo("aba"); 
+  }; 
+
+for, (var i = 3; 0 < i; i -= 1) 
+{ 
+  echo (i); 
+}; 
+ 
+ 
+for& (var i: [0, 1, 2]) 
+{ 
+  echo (i * i); 
+}; 
+ 
+loop,{ 
+}; 
+
+
+waituntil (e?(1, var b)); 
+
+whenever (e?("arg", var arg) if arg % 2) 
+  echo("e (%s) on" % arg) 
+else 
+  echo("e off"); 
+
+
+  while, (i) 
+  { 
+    var j = i -= 1; 
+  }| 
+ 
+ 
+var y = 0; 
+{ 
+  sleep(0.5s); 
+  y = 100 smooth:3s, 
+},
+
+       
+ 
+

@@ -1,0 +1,43 @@
+msc {
+  hscale=5;
+
+  //test comment
+
+  a,b,c,d;
+
+/* another
+comment
+goes here */ /* too */ // now
+
+  ... [label="test1", id="1"];
+  --- [label="test2", id="2"];
+  ||| [label="test3", id="2"];
+  a ABOX b;
+  a--b [label="test4", id="2"];
+  a == b [label="test5", id="2"];
+  a .. b [label="test6", id="2"];
+  a::b [label="test7", id="2"];
+  a<<=>> b [label="test8", id="2"],
+  b <->c [label="test9", id="2"],
+  b RBOX c;
+  a BOX d;
+  a<=> b [label="test10", id="2"];
+  a <<>> b [label="test11", id="2"];
+  a<:>b [label="test12", id="2"];
+  a->b [label="test13", id="2"];
+  a =>> b [label="test14", id="2"],
+  b >> c [label="test15", id="2"],
+  a=>   b [label="test16", id="2"];
+  a :>b [label="test17", id="2"];
+  a-x b [label="test18", id="2"];
+  a -Xb [label="test19", id="2"];
+  a<- b [label="test20", id="2"];
+  a <<=b [label="test21", id="2"];
+  a<< b [label="test22", id="2"];
+  a <= b [label="test23", id="2"];
+  a<: b [label="test24", id="2"];
+  a -xb [label="test25", id="2"];
+  a-X b [ label="test26",id="2" ];
+  a->* [label="test27" , id="2"];
+  *<-b [label="test28",id="28"];
+}

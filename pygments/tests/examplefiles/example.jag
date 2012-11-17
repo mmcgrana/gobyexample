@@ -1,0 +1,48 @@
+# lsat.jags example from classic-bugs examples in JAGS
+# See http://sourceforge.net/projects/mcmc-jags/files/Examples/2.x/
+var
+   response[R,T], m[R], culm[R], alpha[T], a[T], theta[N], r[N,T],
+   p[N,T], beta, theta.new, p.theta[T], p.item[R,T], P.theta[R];
+data {
+   for (j in 1:culm[1]) {
+      r[j, ] <- response[1, ];
+   }
+   for (i in 2:R) {
+      for (j in (culm[i - 1] + 1):culm[i]) {
+         r[j, ] <- response[i, ];
+      }
+   }
+}
+model {
+  # 2-parameter Rasch model
+  for (j in 1:N) {
+     for (k in 1:T) {
+        probit(p[j,k]) <- delta[k]*theta[j] - eta[k];
+        r[j,k] ~ dbern(p[j,k]);
+     }
+     theta[j] ~ dnorm(0,1);
+  }
+
+  # Priors
+  for (k in 1:T) {
+     eta[k] ~ dnorm(0,0.0001);       
+     e[k] <- eta[k] - mean(eta[]);  # sum-to-zero constraint
+
+     delta[k] ~ dnorm(0,1) T(0,);   # constrain variance to 1, slope +ve
+     d[k] <- delta[k]/pow(prod(delta), 1/T); # PRODUCT_k (d_k) = 1
+ 
+     g[k] <- e[k]/d[k];   # equivalent to B&A's threshold parameters
+  }
+
+  # Compute probability of response pattern i, for later use in computing G^2
+  theta.new ~ dnorm(0,1);          # ability parameter for random student 
+  for(k in 1:T) {
+       probit(p.theta[k]) <- delta[k]*theta.new - eta[k];
+       for(i in 1:R) {
+          p.item[i,k] <- p.theta[k]^response[i,k] * (1-p.theta[k])^(1-response[i,k]);
+       }
+  } 
+  for(i in 1:R) {    
+     P.theta[i] <- prod(p.item[i,])
+  }
+}

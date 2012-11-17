@@ -1,0 +1,15 @@
+  File "/usr/lib/python2.3/site-packages/trac/web/main.py", line 314, in dispatch_request
+    dispatcher.dispatch(req)
+  File "/usr/lib/python2.3/site-packages/trac/web/main.py", line 186, in dispatch
+    req.session = Session(self.env, req)
+  File "/usr/lib/python2.3/site-packages/trac/web/session.py", line 52, in __init__
+    self.promote_session(sid)
+  File "/usr/lib/python2.3/site-packages/trac/web/session.py", line 125, in promote_session
+    "AND authenticated=0", (sid,))
+  File "/usr/lib/python2.3/site-packages/trac/db/util.py", line 47, in execute
+    return self.cursor.execute(sql_escape_percent(sql), args)
+  File "/usr/lib/python2.3/site-packages/trac/db/sqlite_backend.py", line 44, in execute
+    args or [])
+  File "/usr/lib/python2.3/site-packages/trac/db/sqlite_backend.py", line 36, in _rollback_on_error
+    return function(self, *args, **kwargs)
+OperationalError: database is locked

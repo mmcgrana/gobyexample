@@ -1,0 +1,27 @@
+SQLite version 3.4.2
+Enter ".help" for instructions
+sqlite> .schema
+CREATE TABLE paste (paste_id integer, code text, parsed_code text, pub_date
+varchar(24), language varchar(64), parent_id integer, url varchar(128));
+CREATE TABLE vars (key varchar(24), value varchar(128));
+sqlite> a '
+   ...> '
+   ...> ;
+SQL error: near "a": syntax error
+sqlite> %;
+SQL error: near "%": syntax error
+sqlite> select count(language), language from paste group by language order
+   ...> by count(language) desc;
+144|python
+76|text
+22|pycon
+9|ruby
+7|c
+7|js
+6|html+django
+4|html
+4|tex
+2|html+php
+1|cpp
+1|scheme
+sqlite> 

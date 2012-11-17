@@ -1,0 +1,45 @@
+# MAQL script
+CREATE DATASET {dataset.quotes} VISUAL(TITLE "St\\tock Qu\totes Data");
+
+# A comment
+CREATE DATASET {dataset.quotes} VISUAL(TITLE "Stock Qu\"otes Data");
+
+CREATE DATASET {dataset.quotes} VISUAL(TITLE "Stock Quotes Data");
+
+ALTER DATASET {dataset.quotes} ADD {attribute.sector};
+
+ALTER DATASET {dataset.quotes} DROP {attribute.symbol};
+
+ALTER DATASET {dataset.quotes} VISUAL(TITLE "Internal Quotes Data");
+
+CREATE ATTRIBUTE {attr.quotes.symbol}
+    VISUAL(TITLE "Symbol", FOLDER {folder.quotes.attr})
+    AS {d_quotes_symbol.nm_symbol};
+
+ALTER ATTRIBUTE {attr.quotes.symbol}
+    ADD LABELS {attr.quotes.company} VISUAL(TITLE "Company")
+    AS {d_quotes_symbol.nm_company};
+
+CREATE FACT {fact.quotes.open_price}
+    VISUAL( TITLE "Open Price", FOLDER {folder.quotes.fact}) AS {f_quotes.f_open_price};
+
+ALTER FACT {fact.quotes.open_price} ADD {f_quotes2.f_open_price};
+
+CREATE FOLDER {folder.quotes.attr}
+    VISUAL ( TITLE "Stock Quotes Data",
+             DESCRIPTION "Stock quotes data obtained from John Doe etc." )
+    TYPE ATTRIBUTE;
+
+ALTER DATATYPE {d_quotes_symbol.nm_symbol} VARCHAR(4),
+    {d_quotes_symbol.nm_symbol} VARCHAR(80),
+    {f_quotes.f_open_price} DECIMAL(10,2);
+
+INCLUDE TEMPLATE "URN:GOODDATA:DATE" MODIFY (IDENTIFIER "my-date", TITLE "quote")
+
+ALTER ATTRIBUTE {attr.quotes.symbol} ADD KEYS {d_quotes_symbol.nm_symbol} PRIMARY;
+
+ALTER ATTRIBUTE {attr.quotes.symbol} DROP KEYS {d_quotes_symbol.nm_symbol};
+
+ALTER FACT {fact.quotes.open_price} ADD {f_quotes2.f_open_price};
+
+# Another comment

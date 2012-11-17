@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" [
+  <!-- an internal subset can be embedded here -->
+]>
+
+<!DOCTYPE greeting SYSTEM "hello.dtd">
+
+<!DOCTYPE greeting [
+  <!ELEMENT greeting (#PCDATA)>
+
+<!-- examples from XML spec -->
+
+<!ELEMENT br EMPTY>
+<!ELEMENT p (#PCDATA|emph)* >
+<!ELEMENT %name.para; %content.para; >
+<!ELEMENT container ANY>
+
+<!ELEMENT spec (front, body, back?)>
+<!ELEMENT div1 (head, (p | list | note)*, div2*)>
+<!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+
+<!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+<!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+<!ELEMENT b (#PCDATA)>
+
+<!ATTLIST termdef
+          id      ID      #REQUIRED
+          name    CDATA   #IMPLIED>
+<!ATTLIST list
+          type    (bullets|ordered|glossary)  "ordered">
+<!ATTLIST form
+          method  CDATA   #FIXED "POST">
+
+<!ENTITY d "&#xD;">
+<!ENTITY a "&#xA;">
+<!ENTITY da "&#xD;&#xA;">
+
+<!ENTITY % ISOLat2
+         SYSTEM "http://www.xml.com/iso/isolat2-xml.entities" >
+
+<!ENTITY Pub-Status "This is a pre-release of the
+ specification.">
+ 
+ <!ENTITY open-hatch
+         SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+<!ENTITY open-hatch
+         PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN"
+         "http://www.textuality.com/boilerplate/OpenHatch.xml">
+<!ENTITY hatch-pic
+         SYSTEM "../grafix/OpenHatch.gif"
+         NDATA gif >
+         
+<!NOTATION gif PUBLIC "gif viewer">
+
+<!ENTITY % YN '"Yes"' >
+<!ENTITY WhatHeSaid "He said %YN;" >
+
+<!ENTITY EndAttr "27'" >
+
+<!ENTITY % pub    "&#xc9;ditions Gallimard" >
+<!ENTITY   rights "All rights reserved" >
+<!ENTITY   book   "La Peste: Albert Camus,
+&#xA9; 1947 %pub;. &rights;" >
+
+<!ENTITY lt     "&#38;#60;">
+<!ENTITY gt     "&#62;">
+<!ENTITY amp    "&#38;#38;">
+<!ENTITY apos   "&#39;">
+<!ENTITY quot   "&#34;">
+
+<!ENTITY % draft 'INCLUDE' >
+<!ENTITY % final 'IGNORE' >
+
+<![%draft;[
+<!ELEMENT book (comments*, title, body, supplements?)>
+]]>
+<![%final;[
+<!ELEMENT book (title, body, supplements?)>
+]]>
+
+]>
+
+

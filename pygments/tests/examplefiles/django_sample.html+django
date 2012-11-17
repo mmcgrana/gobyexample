@@ -1,0 +1,68 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="../../../jsi18n/"></script>
+{% for js in javascript_imports %}{% include_admin_script js %}{% endfor %}
+{% endblock %}
+{% block stylesheet %}{% admin_media_prefix %}css/forms.css{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block userlinks %}<a href="../../../doc/">{% trans 'Documentation' %}</a> / <a href="../../../password_change/">{% trans 'Change password' %}</a> / <a href="../../../logout/">{% trans 'Log out' %}</a>{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+     <a href="../../../">{% trans "Home" %}</a> &rsaquo;
+     <a href="../">{{ opts.verbose_name_plural|capfirst|escape }}</a> &rsaquo;
+     {% if add %}{% trans "Add" %} {{ opts.verbose_name|escape }}{% else %}{{ original|truncatewords:"18"|escape }}{% endif %}
+</div>
+{% endif %}{% endblock %}
+{% block content %}<div id="content-main">
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools"><li><a href="history/" class="historylink">{% trans "History" %}</a></li>
+  {% if has_absolute_url %}<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
+  </ul>
+{% endif %}{% endif %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% block form_top %}{% endblock %}
+<div>
+{% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
+{% if opts.admin.save_on_top %}{% submit_row %}{% endif %}
+{% if form.error_dict %}
+    <p class="errornote">
+    {% blocktrans count form.error_dict.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </p>
+{% endif %}
+{% for bound_field_set in bound_field_sets %}
+   <fieldset class="module aligned {{ bound_field_set.classes }}">
+    {% if bound_field_set.name %}<h2>{{ bound_field_set.name }}</h2>{% endif %}
+    {% if bound_field_set.description %}<div class="description">{{ bound_field_set.description }}</div>{% endif %}
+    {% for bound_field_line in bound_field_set %}
+        {% admin_field_line bound_field_line %}
+        {% for bound_field in bound_field_line %}
+            {% filter_interface_script_maybe bound_field %}
+        {% endfor %}
+    {% endfor %}
+   </fieldset>
+{% endfor %}
+{% block after_field_sets %}{% endblock %}
+{% if change %}
+   {% if ordered_objects %}
+   <fieldset class="module"><h2>{% trans "Ordering" %}</h2>
+   <div class="form-row{% if form.order_.errors %} error{% endif %} ">
+   {% if form.order_.errors %}{{ form.order_.html_error_list }}{% endif %}
+   <p><label for="id_order_">{% trans "Order:" %}</label> {{ form.order_ }}</p>
+   </div></fieldset>
+   {% endif %}
+{% endif %}
+{% for related_object in inline_related_objects %}{% edit_inline related_object %}{% endfor %}
+{% block after_related_objects %}{% endblock %}
+{% submit_row %}
+{% if add %}
+   <script type="text/javascript">document.getElementById("{{ first_form_field_id }}").focus();</script>
+{% endif %}
+{% if auto_populated_fields %}
+   <script type="text/javascript">
+   {% auto_populated_field_script auto_populated_fields change %}
+   </script>
+{% endif %}
+</div>
+</form></div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<table>
+ <% rows.each do |row| %>
+  <tr class="<%= row.cls %>">
+   <td><a href="<%= item.href %>"><%= item.title %></a></td>
+   <td><%= item.description %></td>
+  </tr>
+ <% end %>
+</table>
+
+
+<h1>Pages</h1>
+
+<table id="site-map" class="index" cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th class="page">Page</th>
+      <th class="status">Status</th>
+      <th class="modify" colspan="2">Modify</th>
+    </tr>
+  </thead>
+  <tbody>
+<% if @homepage -%>
+<%= render_node @homepage -%>
+<% else -%>
+  <tr>
+    <td colspan="4" class="note">No Pages</td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<script type="text/javascript">
+// <![CDATA[
+  new SiteMap('site-map');
+// ]]>
+</script>
+<form action="<%= clear_cache_url %>" method="post">
+  <p>
+<% unless @homepage -%>
+    <%= link_to image_tag('new-homepage', :alt => 'New Homepage'), homepage_new_url %>
+<% end -%>
+    <%= image_submit_tag 'clear-page-cache' %>
+  </p>
+</form>

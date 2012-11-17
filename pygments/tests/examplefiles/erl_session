@@ -1,0 +1,10 @@
+1> io:format("Hello\n").
+Hello
+ok
+2> fun(X) -> X + 1 end.
+#Fun<erl_eval.6.13229925>
+3> 123 + 234.
+357
+4> X = Y.
+* 1: variable 'Y' is unbound
+5> 

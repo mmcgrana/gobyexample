@@ -1,0 +1,13 @@
+<html>
+  <head><title>$title</title></head>
+  <body>
+    <table>
+      #for $client in $clients
+      <tr>
+        <td>$client.surname, $client.firstname</td>
+        <td><a href="mailto:$client.email">$client.email</a></td>
+      </tr>
+      #end for
+    </table>
+  </body>
+</html>

@@ -1,0 +1,1897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Ada" version="1.04" kateversion="2.1" section="Sources" extensions="*.adb;*.ads;*.ada;*.a" mimetype="text/x-adasrc">
+        <highlighting>
+                <list name="keywords">
+                        <item> abort </item>
+                        <item> abs </item>
+                        <item> abstract </item>
+                        <item> accept </item>
+                        <item> access </item>
+                        <item> aliased </item>
+                        <item> all </item>
+                        <item> and </item>
+                        <item> array </item>
+                        <item> at </item>
+                        <item> begin </item>
+                        <item> body </item>
+                        <item> constant </item>
+                        <item> declare </item>
+                        <item> delay </item>
+                        <item> delta </item>
+                        <item> digits </item>
+                        <item> do </item>
+                        <item> else </item>
+                        <item> elsif </item>
+                        <item> end </item>
+                        <item> entry </item>
+                        <item> exception </item>
+                        <item> exit </item>
+                        <item> for </item>
+                        <item> function </item>
+                        <item> generic </item>
+                        <item> goto </item>
+                        <item> in </item>
+                        <item> is </item>
+                        <item> limited </item>
+                        <item> mod </item>
+                        <item> new </item>
+                        <item> not </item>
+                        <item> null </item>
+                        <item> of </item>
+                        <item> or </item>
+                        <item> others </item>
+                        <item> out </item>
+                        <item> package </item>
+                        <item> pragma </item>
+                        <item> private </item>
+                        <item> procedure </item>
+                        <item> protected </item>
+                        <item> raise </item>
+                        <item> range </item>
+                        <item> rem </item>
+                        <item> record </item>
+                        <item> renames </item>
+                        <item> requeue </item>
+                        <item> return </item>
+                        <item> reverse </item>
+                        <item> separate </item>
+                        <item> subtype </item>
+                        <item> tagged </item>
+                        <item> task </item>
+                        <item> terminate </item>
+                        <item> then </item>
+                        <item> type </item>
+                        <item> until </item>
+                        <item> use </item>
+                        <item> when </item>
+                        <item> while </item>
+                        <item> with </item>
+                        <item> xor </item>
+                </list>
+                <contexts>
+                        <context attribute="Normal Text" lineEndContext="#stay" name="Default">
+                                <RegExpr attribute="Keyword" context="#stay" String="^\s*if " insensitive="TRUE" beginRegion="Region1"/>
+                                <StringDetect attribute="Keyword" context="#stay" String="end if" insensitive="TRUE" endRegion="Region1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="^\s*case " insensitive="TRUE" beginRegion="Region2"/>
+                                <StringDetect attribute="Keyword" context="#stay" String="end case" insensitive="TRUE" endRegion="Region2"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\sloop\s+" insensitive="TRUE" beginRegion="Region3"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\sloop$" insensitive="TRUE" beginRegion="Region3"/>
+                                <StringDetect attribute="Keyword" context="#stay" String="end loop;" insensitive="TRUE" endRegion="Region3"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\sselect\s+" insensitive="TRUE" beginRegion="Region4"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\sselect$" insensitive="TRUE" beginRegion="Region4"/>
+                                <StringDetect attribute="Keyword" context="#stay" String="end select;" insensitive="TRUE" endRegion="Region4"/>
+                                <keyword attribute="Keyword" context="#stay" String="keywords"/>
+                                <Float attribute="Float" context="#stay"/>
+                                <Int attribute="Decimal" context="#stay"/>
+                                <RegExpr attribute="Char" context="#stay" String="'.'"/>
+                                <DetectChar attribute="String" context="String" char="&quot;"/>
+                                <Detect2Chars attribute="Comment" context="Comment" char="-" char1="-"/>
+                        </context>
+                        <context attribute="String" lineEndContext="#pop" name="String">
+                                <DetectChar attribute="String" context="#pop" char="&quot;"/>
+                        </context>
+                        <context attribute="Comment" lineEndContext="#pop" name="Comment"/>
+                </contexts>
+                <itemDatas>
+                        <itemData name="Normal Text" defStyleNum="dsNormal" />
+                        <itemData name="Keyword"     defStyleNum="dsKeyword" />
+                        <itemData name="Decimal"     defStyleNum="dsDecVal" />
+                        <itemData name="Base-N"      defStyleNum="dsBaseN" />
+                        <itemData name="Float"       defStyleNum="dsFloat" />
+                        <itemData name="Char"        defStyleNum="dsChar" />
+                        <itemData name="String"      defStyleNum="dsString" />
+                        <itemData name="Comment"     defStyleNum="dsComment" />
+                </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start="--" />
+    </comments>
+    <keywords casesensitive="0" />
+  </general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Asm6502" version="1.03" kateversion="2.1" section="Sources" extensions="*.asm" mimetype="text/x-asm6502">
+        <highlighting>
+                <list name = "opcodes6502">
+
+
+                </list>
+
+
+
+
+
+                <contexts>
+                        <context name = "Base" attribute = "Normal Text" lineEndContext = "#stay">
+
+
+				<RegExpr String= "#define.*$" attribute = "Preprocessor" context="#stay"/>
+				<RegExpr String= "#include .*$" attribute = "Preprocessor" context="#stay"/>
+				<RegExpr String= ";.*$" attribute = "Comment" context="#stay"/>
+				<RegExpr String= "\.byte" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.byt" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.word" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.asc" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.dsb" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.fopt" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.text" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.data" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.bss" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.zero" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\.align" attribute = "Data Type" context="#stay"/>
+				<RegExpr String= "\$[A-Za-z0-9]*" attribute = "Hex" context="#stay"/>
+				<RegExpr String= ",x$" attribute = "Keyword" context="#stay"  insensitive="TRUE"/>
+				<RegExpr String= ",y$" attribute = "Keyword" context="#stay"  insensitive="TRUE"/>
+				<RegExpr String= "#" attribute = "Keyword" context="#stay"  insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TAX" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="ADC" insensitive="TRUE"/>
+	 			<StringDetect attribute="Keyword" context="#stay" String="AND" insensitive="TRUE"/>
+ 				<StringDetect attribute="Keyword" context="#stay" String="ASL" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BCC" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BCS" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BEQ" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BIT" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BMI" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BNE" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BPL" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BRK" insensitive="TRUE"/>
+ 				<StringDetect attribute="Keyword" context="#stay" String="BVC" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="BVS" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CLC" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CLD" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CLI" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CLV" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CMP" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CPX" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="CPY" insensitive="TRUE"/>
+ 				<StringDetect attribute="Keyword" context="#stay" String="DEC" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="DEX" insensitive="TRUE"/>
+	  			<StringDetect attribute="Keyword" context="#stay" String="DEY" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="EOR" insensitive="TRUE"/>
+ 				<StringDetect attribute="Keyword" context="#stay" String="INC" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="INX" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="INY" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="JMP" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="JSR" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="LDA" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="LDX" insensitive="TRUE"/>
+ 				<StringDetect attribute="Keyword" context="#stay" String="LDY" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="LSR" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="NOP" insensitive="TRUE"/>
+     				<StringDetect attribute="Keyword" context="#stay" String="ORA" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="PHA" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="PHP" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="PLA" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="PLP" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="ROL" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="ROR" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="RTI" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="RTS" insensitive="TRUE"/>
+  				<StringDetect attribute="Keyword" context="#stay" String="SBC" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="SEC" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="SED" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="SEI" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="STA" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="STX" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="STY" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TAY" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TSX" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TXA" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TXS" insensitive="TRUE"/>
+				<StringDetect attribute="Keyword" context="#stay" String="TYA" insensitive="TRUE"/>
+
+				<keyword String = "opcodes6502" attribute = "Keyword" context = "#stay" />
+				<RegExpr String= "\*=" attribute = "Decimal" context="#stay"/>
+				<RangeDetect char = "&quot;" char1 = "&quot;" attribute = "String" context = "#stay"/>
+				<AnyChar String = "-+&lt;&gt;=;" attribute = "Operator" context = "#stay"/>
+				<Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment"/>
+
+
+			</context>
+			<context attribute="Comment" lineEndContext="#stay" name="Commentar 2">
+				<Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment"/>
+			</context>
+                </contexts>
+
+		<itemDatas>
+                        <itemData name = "Normal Text" defStyleNum = "dsNormal"/>
+                        <itemData name = "Keyword" defStyleNum = "dsKeyword"/>
+			<itemData name="Decimal" defStyleNum="dsDecVal"/>
+			<itemData name="Data Type"  defStyleNum="dsDataType"/>
+			<itemData name="Hex"  defStyleNum="dsBaseN"/>
+                        <itemData name = "String" defStyleNum = "dsString"/>
+                        <itemData name = "Comment" defStyleNum = "dsComment"/>
+                        <itemData name = "Substitution" defStyleNum = "dsOthers"/>
+ 			<itemData name="Preprocessor"  defStyleNum="dsOthers"/>
+			<itemData name = "Parameter" defStyleNum = "dsOthers"/>
+                        <itemData name = "Operator" defStyleNum = "dsOthers"/>
+                        <itemData name = "Command" defStyleNum = "dsNormal"/>
+                </itemDatas>
+        </highlighting>
+        <general>
+                <comments>
+                        <comment name="singleLine" start=";"/>
+			<comment name="multiLine" start="/*" end="*/"/>
+		</comments>
+                <keywords casesensitive="1"/>
+        </general>
+</language>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="AWK" version="0.1" kateversion="2.1" section="Scripts" extensions="*.awk" mimetype="text/x-awk">
+  <highlighting>
+    <list name="keywords">
+      <item>BEGIN</item>
+      <item>END</item>
+      <item>if</item>
+      <item>else</item>
+      <item>while</item>
+      <item>do</item>
+      <item>for</item>
+      <item>in</item>
+      <item>continue</item>
+      <item>break</item>
+      <item>print</item>
+      <item>printf</item>
+      <item>getline</item>
+      <item>function</item>
+      <item>return</item>
+      <item>next</item>
+      <item>exit</item>
+    </list>
+    <list name="builtins">
+      <item>ARGC</item>
+      <item>ARGV</item>
+      <item>CONVFMT</item>
+      <item>ENVIRON</item>
+      <item>FILENAME</item>
+      <item>FNR</item>
+      <item>FS</item>
+      <item>NF</item>
+      <item>NR</item>
+      <item>OFMT</item>
+      <item>OFS</item>
+      <item>ORS</item>
+      <item>RS</item>
+      <item>RSTART</item>
+      <item>RLENGTH</item>
+      <item>SUBSEP</item>
+    </list>
+    <list name="functions">
+      <item>gsub</item>
+      <item>index</item>
+      <item>length</item>
+      <item>match</item>
+      <item>split</item>
+      <item>sprintf</item>
+      <item>sub</item>
+      <item>substr</item>
+      <item>tolower</item>
+      <item>toupper</item>
+      <item>atan2</item>
+      <item>cos</item>
+      <item>exp</item>
+      <item>int</item>
+      <item>log</item>
+      <item>rand</item>
+      <item>sin</item>
+      <item>sqrt</item>
+      <item>srand</item>
+      <item>close</item>
+      <item>fflush</item>
+      <item>system</item>
+    </list>
+    <contexts>
+      <context name="Base" attribute="Normal" lineEndContext="#stay">
+        <keyword String="keywords" attribute="Keyword" context="#stay"/>
+        <keyword String="builtins" attribute="Builtin" context="#stay"/>
+        <keyword String="functions" attribute="Function" context="#stay"/>
+        <Int   attribute="Decimal" context="#stay"/>
+        <Float attribute="Float"   context="#stay"/>
+        <RegExpr String="\$[A-Za-z0-9_]+" attribute="Field" context="#stay"/>
+        <DetectChar char="&quot;" attribute="String"  context="String"/>
+        <DetectChar char="/"      attribute="Pattern" context="Pattern"/>
+        <RegExpr String="#.*$" attribute="Comment" context="#stay"/>
+      </context>
+      <context name="String" attribute="String" lineEndContext="#stay">
+        <DetectChar char="&quot;" attribute="String" context="#pop"/>
+        <HlCStringChar attribute="String" context="#stay"/>
+      </context>
+      <context name="Pattern" attribute="Pattern" lineEndContext="#stay">
+        <DetectChar char="/" attribute="Pattern" context="#pop"/>
+        <RegExpr String="\\." attribute="Pattern" context="#stay"/>
+      </context>
+      <context name="Field" attribute="Field" lineEndContext="#stay">
+        <RegExpr String="\$[A-Za-z0-9_]+" attribute="Field" context="#pop"/>
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal"   defStyleNum="dsNormal"/>
+      <itemData name="Keyword"  defStyleNum="dsKeyword"/>
+      <itemData name="Builtin"  defStyleNum="dsDataType"/>
+      <itemData name="Function" defStyleNum="dsKeyword"/>
+      <itemData name="Decimal"  defStyleNum="dsDecVal"/>
+      <itemData name="Float"    defStyleNum="dsFloat"/>
+      <itemData name="String"   defStyleNum="dsString"/>
+      <itemData name="Comment"  defStyleNum="dsComment"/>
+      <itemData name="Pattern"  defStyleNum="dsString"/>
+      <itemData name="Field"    defStyleNum="dsOthers"/>
+    </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start="#"/>
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Bash" version="1.08" kateversion="2.2" section="Scripts" extensions="*.sh" mimetype="application/x-shellscript">
+        <highlighting>
+                <list name = "keywords">
+                        <item> break </item>
+                        <item> case </item>
+                        <item> else </item>
+                        <item> esac </item>
+                        <item> exit </item>
+                        <item> export </item>
+                        <item> for </item>
+                        <item> function </item>
+                        <item> in </item>
+                        <item> return </item>
+                        <item> select </item>
+                        <item> then </item>
+                        <item> until </item>
+                        <item> while </item>
+                        <item> . </item>
+                        <item> done </item>
+                        <item> do </item>
+                        <item> elif </item>
+                        <item> fi </item>
+                        <item> if </item>
+
+                </list>
+                <list name = "commands">
+                        <item> cp </item>
+                        <item> date </item>
+                        <item> echo </item>
+                        <item> eval </item>
+			<item> dcop </item>
+			<item> dcopstart </item>
+			<item> dcopfind </item>
+                </list>
+                <contexts>
+                        <context name = "Base" attribute = "Normal Text" lineEndContext = "#stay">
+                                <RegExpr attribute="Keyword" context="#stay" String="\bdone\b" insensitive="TRUE" endRegion="dodone1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bdo\b" insensitive="TRUE" beginRegion="dodone1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\belif\b" insensitive="TRUE" beginRegion="iffi1" endRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bif\b" insensitive="TRUE" beginRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bfi\b" insensitive="TRUE" endRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bcase\b" insensitive="TRUE" beginRegion="case1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\besac\b" insensitive="TRUE" endRegion="case1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="^[^()]+\)" insensitive="TRUE" beginRegion="subcase1"/>
+                                <StringDetect attribute="Keyword" context="#stay" String=";;" insensitive="TRUE" endRegion="subcase1"/>
+                                <DetectChar attribute="Keyword" context="#stay" char="{" beginRegion="func1"/>
+                                <DetectChar attribute="Keyword" context="#stay" char="}" endRegion="func1"/>
+
+                                <keyword String = "keywords" attribute = "Keyword" context = "#stay"/>
+                                <keyword String = "commands" attribute = "Command" context = "#stay"/>
+                                <Int attribute = "Decimal" context = "#stay"/>
+                                <RegExpr String = "\$[A-Za-z0-9_?{}!]+" attribute = "Parameter" context = "#stay"/>
+                                <RangeDetect char = "&quot;" char1 = "&quot;" attribute = "String" context = "#stay"/>
+                                <AnyChar String = "|&lt;&gt;=;" attribute = "Operator" context = "#stay"/>
+                                <DetectChar char="'" attribute = "String" context = "Single Quote"/>
+                                <DetectChar char="`" attribute = "Substitution" context = "Substitution"/>
+                                <Detect2Chars attribute = "Normal Text" context = "#stay" char = "\" char1 = "#"/>
+                                <RegExpr String= "#.*$" attribute = "Comment" context="#stay"/>
+
+                        </context>
+                        <context name = "String" attribute = "String" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\&quot;" attribute = "String" context = "#stay"/>
+                                <DetectChar char = "&quot;" attribute = "String" context = "#pop"/>
+                        </context>
+			<context name = "Single Quote" attribute = "String" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\'" attribute = "String" context = "#stay"/>
+				<DetectChar char = "'" attribute = "String" context = "#pop"/>
+                        </context>
+                        <context name = "Substitution" attribute = "Substitution" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\`" attribute = "String" context = "#stay"/>
+                                <DetectChar char = "`" attribute = "Substitution" context = "#pop"/>
+                        </context>
+                        <context name = "Parameter" attribute = "Parameter" lineEndContext="#stay">
+                                <RegExpr String = "\$[A-Za-z0-9_?]+" attribute = "Parameter" context="#pop"/>
+                        </context>
+                </contexts>
+                <itemDatas>
+                        <itemData name = "Normal Text" defStyleNum = "dsNormal"/>
+                        <itemData name = "Keyword" defStyleNum = "dsKeyword"/>
+                        <itemData name = "Decimal" defStyleNum = "dsDecVal"/>
+                        <itemData name = "Float" defStyleNum = "dsFloat"/>
+                        <itemData name = "Char" defStyleNum = "dsChar"/>
+                        <itemData name = "String" defStyleNum = "dsString"/>
+                        <itemData name = "Comment" defStyleNum = "dsComment"/>
+                        <itemData name = "Substitution" defStyleNum = "dsOthers"/>
+                        <itemData name = "Parameter" defStyleNum = "dsOthers"/>
+                        <itemData name = "Operator" defStyleNum = "dsOthers"/>
+                        <itemData name = "Command" defStyleNum = "dsNormal"/>
+                </itemDatas>
+        </highlighting>
+        <general>
+                <comments>
+                        <comment name="singleLine" start="#"/>
+                </comments>
+                <keywords casesensitive="1"/>
+        </general>
+</language>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language>
+<language name="BibTeX" version="0.1" extensions="*.bib" section="Markup" mimetype="text/x-bib" casesensitive="1">
+	<highlighting>
+		<contexts>
+			<context name="Normal" attribute="Normal Text" lineEndContext="#stay">
+				<DetectChar char="@" attribute="Bib Item" context="Bib Item" />
+				<DetectChar char="%" attribute="Comment" context="Comment"/>
+			</context>
+
+			<context name="Bib Item" attribute="Bib Item" lineEndContext="#stay">
+				<DetectChar char="{" attribute="Normal Text" context="Ref Key" />
+				<DetectChar char="%" attribute="Comment" context="Comment"/>
+			</context>
+
+			<context name="Ref Key" attribute="Ref Key" lineEndContext="#stay">
+				<DetectChar char="," attribute="Normal Text" context="Keyword" />
+				<DetectChar char="%" attribute="Comment" context="Comment"/>
+			</context>
+
+			<context name="Keyword" attribute="Keyword" lineEndContext="#stay">
+				<RegExpr String="\\." attribute="Keyword" context="#stay"/>
+				<DetectChar char="@" attribute="Bib Item" context="Bib Item"/>
+				<DetectChar char="=" attribute="Normal Text" context="#stay"/>
+				<DetectChar char="," attribute="Normal Text" context="#stay"/>
+				<DetectChar char='"' attribute="Value" context="Value"/>
+				<DetectChar char="%" attribute="Comment" context="Comment"/>
+			</context>
+
+			<context name="Value" attribute="Value" lineEndContext="#stay">
+				<Detect2Chars char="\" char1='"' attribute="Value" context="#stay"/>
+				<DetectChar char='"' attribute="Value" context="Keyword"/>
+			</context>
+			
+			<context name="Comment" attribute="5" lineEndContext="#pop">
+			</context>
+		</contexts>
+		<itemDatas>
+			<itemData name="Normal Text" defStyleNum="dsNormal"/>
+			<itemData name="Bib Item" defStyleNum="dsNormal" color="#0000ff" selColor="#ffff00" bold="1" italic="0"/>
+			<itemData name="Keyword" defStyleNum="dsNormal" color="#000000" selColor="#dddddd" bold="0" italic="0"/>
+			<itemData name="Value" defStyleNum="dsNormal" color="#aa5500" selColor="#22aaff" bold="0" italic="0"/>
+			<itemData name="Ref Key" defStyleNum="dsNormal" color="#007700" selColor="#00aa00" bold="1" italic="0"/>
+			<itemData name="Comment" defStyleNum="dsNormal" color="#aaaaaa" selColor="#222222" bold="0" italic="0"/>
+		</itemDatas>
+	</highlighting><general>
+	<comments>
+		<comment name="singleLine" start="%" />
+		</comments>
+	</general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="C" version="1.09" kateversion="2.1" section="Sources" extensions="*.c;*.C;*.h" mimetype="text/x-csrc;text/x-c++src;text/x-chdr" priority="5">
+  <highlighting>
+    <list name="keywords">
+      <item> break </item>
+      <item> case </item>
+      <item> continue </item>
+      <item> default </item>
+      <item> do </item>
+      <item> else </item>
+      <item> enum </item>
+      <item> extern </item>
+      <item> for </item>
+      <item> goto </item>
+      <item> if </item>
+      <item> inline </item>
+      <item> return </item>
+      <item> sizeof </item>
+      <item> struct </item>
+      <item> switch </item>
+      <item> typedef </item>
+      <item> union </item>
+      <item> while </item>
+    </list>
+    <list name="types">
+      <item> auto </item>
+      <item> char </item>
+      <item> const </item>
+      <item> double </item>
+      <item> float </item>
+      <item> int </item>
+      <item> long </item>
+      <item> register </item>
+      <item> restrict </item>
+      <item> short </item>
+      <item> signed </item>
+      <item> static </item>
+      <item> unsigned </item>
+      <item> void </item>
+      <item> volatile </item>
+      <item> _Imaginary </item>
+      <item> _Complex </item>
+      <item> _Bool </item>
+    </list>
+    <list name="attention">
+      <item> FIXME </item>
+      <item> TODO </item>
+      <item> ### </item>
+    </list>
+    <contexts>
+      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+        <keyword attribute="Keyword" context="#stay" String="keywords"/>
+        <keyword attribute="Data Type" context="#stay" String="types"/>
+        <DetectChar attribute="Symbol" context="#stay" char="{" beginRegion="Brace1" />
+        <DetectChar attribute="Symbol" context="#stay" char="}" endRegion="Brace1" />
+        <Float attribute="Float" context="#stay">
+          <AnyChar String="fF" attribute="Float" context="#stay"/>
+        </Float>
+        <HlCOct attribute="Octal" context="#stay"/>
+        <HlCHex attribute="Hex" context="#stay"/>
+        <Int attribute="Decimal" context="#stay" >
+          <StringDetect attribute="Decimal" context="#stay" String="ULL" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="LUL" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="LLU" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="UL" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="LU" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="LL" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="U" insensitive="TRUE"/>
+          <StringDetect attribute="Decimal" context="#stay" String="L" insensitive="TRUE"/>
+        </Int>
+        <HlCChar attribute="Char" context="#stay"/>
+        <DetectChar attribute="String" context="String" char="&quot;"/>
+        <Detect2Chars attribute="Comment" context="Commentar 1" char="/" char1="/"/>
+        <Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment"/>
+        <StringDetect attribute="Preprocessor" context="Outscoped" String="#if 0" insensitive="FALSE"/>
+        <DetectChar attribute="Preprocessor" context="Preprocessor" char="#"/>
+        <RegExpr attribute="Function" context="#stay" String="\b[_\w][_\w\d]*(?=[\s]*[(])" />
+        <RegExpr attribute="Symbol" context="Member" String="[.]{1,1}" />
+        <AnyChar attribute="Symbol" context="#stay" String=":!%&amp;()+,-/.*&lt;=&gt;?[]|~^&#59;"/>
+      </context>
+      <context attribute="String" lineEndContext="#pop" name="String">
+        <LineContinue attribute="String" context="#stay"/>
+        <HlCStringChar attribute="String Char" context="#stay"/>
+        <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+      <context attribute="Normal Text" lineEndContext="#pop" name="Member">
+        <RegExpr attribute="Function" context="#pop" String="\b[_\w][_\w\d]*(?=[\s]*)" />
+      </context>
+      <context attribute="Comment" lineEndContext="#pop" name="Commentar 1">
+        <keyword attribute="Decimal" context="#stay" String="attention" />
+      </context>
+      <context attribute="Comment" lineEndContext="#stay" name="Commentar 2">
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment"/>
+        <keyword attribute="Decimal" context="#stay" String="attention" />
+      </context>
+      <context attribute="Preprocessor" lineEndContext="#pop" name="Preprocessor">
+        <LineContinue attribute="Preprocessor" context="#stay"/>
+        <RegExpr attribute="Preprocessor" context="Define" String="define.*((?=\\))"/>
+        <RegExpr attribute="Preprocessor" context="#stay" String="define.*"/>
+        <RangeDetect attribute="Prep. Lib" context="#stay" char="&quot;" char1="&quot;"/>
+        <RangeDetect attribute="Prep. Lib" context="#stay" char="&lt;" char1="&gt;"/>
+        <Detect2Chars attribute="Comment" context="Commentar/Preprocessor" char="/" char1="*" beginRegion="Comment2"/>
+      </context>
+      <context attribute="Preprocessor" lineEndContext="#pop" name="Define">
+        <LineContinue attribute="Preprocessor" context="#stay"/>
+      </context>
+      <context attribute="Comment" lineEndContext="#stay" name="Commentar/Preprocessor">
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment2" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#pop" name="Some Context"/>
+      <context attribute="Normal Text" lineEndContext="#pop" name="Some Context2"/>
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped" >
+        <keyword attribute="Decimal" context="#stay" String="attention" />
+        <RegExpr attribute="Comment" context="Outscoped intern" String="^#if" />
+        <RegExpr attribute="Preprocessor" context="#pop" String="#endif" />
+        <RegExpr attribute="Preprocessor" context="#pop" String="#else" />
+      </context>
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped intern">
+        <RegExpr attribute="Comment" context="Outscoped intern" String="#if" />
+        <RegExpr attribute="Comment" context="#pop" String="#endif" />
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal Text"  defStyleNum="dsNormal"/>
+      <itemData name="Keyword"      defStyleNum="dsKeyword"/>
+      <itemData name="Function"     defStyleNum="dsKeyword" color="#000080" selColor="#ffffff" bold="0" italic="0"/>
+      <itemData name="Data Type"    defStyleNum="dsDataType"/>
+      <itemData name="Decimal"      defStyleNum="dsDecVal"/>
+      <itemData name="Octal"        defStyleNum="dsBaseN"/>
+      <itemData name="Hex"          defStyleNum="dsBaseN"/>
+      <itemData name="Float"        defStyleNum="dsFloat"/>
+      <itemData name="Char"         defStyleNum="dsChar"/>
+      <itemData name="String"       defStyleNum="dsString"/>
+      <itemData name="String Char"  defStyleNum="dsChar"/>
+      <itemData name="Comment"      defStyleNum="dsComment"/>
+      <itemData name="Symbol"       defStyleNum="dsNormal"/>
+      <itemData name="Preprocessor" defStyleNum="dsOthers"/>
+      <itemData name="Prep. Lib"    defStyleNum="dsOthers"/> <!--,Qt::darkYellow,Qt::yellow,false,false)); -->
+    </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start="//" />
+      <comment name="multiLine" start="/*" end="*/" />
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="ChangeLog" version="1.01" kateversion="2.1" section="Other" extensions="ChangeLog" mimetype="">
+        <highlighting>
+          <contexts>
+                <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+                <RegExpr attribute="Keyword" context="#stay" String="^\d\d\d\d\s*-\s*\d\d\s*-\s*\d\d.*$"/>
+                </context>
+          </contexts>
+          <itemDatas>
+                <itemData name="Normal Text" defStyleNum="dsNormal"/>
+                <itemData name="Keyword" defStyleNum="dsKeyword"/>
+                <itemData name="Identifier" defStyleNum="dsOthers"/>
+                <itemData name="Types" defStyleNum="dsDataType"/>
+                <itemData name="String" defStyleNum="dsString"/>
+                <itemData name="Comment" defStyleNum="dsComment"/>
+          </itemDatas>
+        </highlighting>
+  <general>
+    <keywords casesensitive="1" />
+  </general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Cisco" version="1.09" kateversion="2.2" section="Scripts"
+          extensions="*.cis" mimetype="text/cisco"
+          author="Raphaël GRAPINET" license="LGPL">
+	<highlighting>
+		<list name = "commands">
+			<item> aaa </item>
+			<item> access-list </item>
+			<item> address </item>
+			<item> alias </item>
+			<item> arp </item>
+			<item> async-bootp </item>
+			<item> banner </item>
+			<item> boot </item>
+			<item> bridge </item>
+			<item> buffers </item>
+			<item> busy-message </item>
+			<item> call-history-mib </item>
+			<item> cdp </item>
+			<item> chat-script </item>
+			<item> class-map </item>
+			<item> clock </item>
+			<item> cns </item>
+			<item> config-register </item>
+			<item> controller </item>
+			<item> crypto </item>
+			<item> default </item>
+			<item> default-value </item>
+			<item> dialer </item>
+			<item> dialer-list </item>
+			<item> dnsix-dmdp </item>
+			<item> dnsix-nat </item>
+			<item> downward-compatible-config </item>
+			<item> enable </item>
+			<item> end </item>
+			<item> exception </item>
+			<item> exit </item>
+			<item> file </item>
+			<item> frame-relay </item>
+			<item> help </item>
+			<item> hostname </item>
+			<item> interface </item>
+			<item> ip </item>
+			<item> isdn </item>
+			<item> isdn-mib </item>
+			<item> kerberos </item>
+			<item> key </item>
+			<item> line </item>
+			<item> logging </item>
+			<item> login-string </item>
+			<item> map-class </item>
+			<item> map-list </item>
+			<item> memory-size </item>
+			<item> menu </item>
+			<item> modemcap </item>
+			<item> multilink </item>
+			<item> netbios </item>
+			<item> no </item>
+			<item> ntp </item>
+			<item> partition </item>
+			<item> policy-map </item>
+			<item> priority-list </item>
+			<item> privilege </item>
+			<item> process-max-time </item>
+			<item> prompt </item>
+			<item> queue-list </item>
+			<item> resume-string </item>
+			<item> rlogin </item>
+			<item> rmon </item>
+			<item> route-map </item>
+			<item> router </item>
+			<item> rtr </item>
+			<item> scheduler </item>
+			<item> service </item>
+			<item> snmp-server </item>
+			<item> sntp </item>
+			<item> stackmaker </item>
+			<item> state-machine </item>
+			<item> subscriber-policy </item>
+			<item> tacacs-server </item>
+			<item> template </item>
+			<item> terminal-queue </item>
+			<item> tftp-server </item>
+			<item> time-range </item>
+			<item> username </item>
+			<item> virtual-profile </item>
+			<item> virtual-template </item>
+			<item> vpdn </item>
+			<item> vpdn-group </item>
+			<item> x25 </item>
+			<item> x29 </item>
+		</list>
+		<list name = "parameters">
+			<item> accounting </item>
+			<item> accounting-list </item>
+			<item> accounting-threshold </item>
+			<item> accounting-transits </item>
+			<item> address-pool </item>
+			<item> as-path </item>
+			<item> audit </item>
+			<item> auth-proxy </item>
+			<item> authentication </item>
+			<item> authorization </item>
+			<item> bgp-community </item>
+			<item> bootp </item>
+			<item> cef </item>
+			<item> classless </item>
+			<item> community-list </item>
+			<item> default-gateway </item>
+			<item> default-network </item>
+			<item> dhcp </item>
+			<item> dhcp-server </item>
+			<item> domain-list </item>
+			<item> domain-lookup </item>
+			<item> domain-name </item>
+			<item> dvmrp </item>
+			<item> exec-callback </item>
+			<item> extcommunity-list </item>
+			<item> finger </item>
+			<item> flow-aggregation </item>
+			<item> flow-cache </item>
+			<item> flow-export </item>
+			<item> forward-protocol </item>
+			<item> ftp </item>
+			<item> gratuitous-arps </item>
+			<item> host </item>
+			<item> host-routing </item>
+			<item> hp-host </item>
+			<item> http </item>
+			<item> icmp </item>
+			<item> inspect </item>
+			<item> local </item>
+			<item> mrm </item>
+			<item> mroute </item>
+			<item> msdp </item>
+			<item> multicast </item>
+			<item> multicast-routing </item>
+			<item> name-server </item>
+			<item> nat </item>
+			<item> new-model </item>
+			<item> ospf </item>
+			<item> password </item>
+			<item> password-encryption </item>
+			<item> pgm </item>
+			<item> pim </item>
+			<item> port-map </item>
+			<item> prefix-list </item>
+			<item> radius </item>
+			<item> rcmd </item>
+			<item> reflexive-list </item>
+			<item> route </item>
+			<item> routing </item>
+			<item> rsvp </item>
+			<item> rtcp </item>
+			<item> sap </item>
+			<item> sdr </item>
+			<item> security </item>
+			<item> source-route </item>
+			<item> subnet-zero </item>
+			<item> tacacs </item>
+			<item> tcp </item>
+			<item> tcp-small-servers </item>
+			<item> telnet </item>
+			<item> tftp </item>
+			<item> timestamps </item>
+			<item> udp-small-servers </item>
+			<item> vrf </item>
+			<item> wccp </item>
+		</list>
+		<list name = "options">
+			<item> accounting </item>
+			<item> accounting-list </item>
+			<item> accounting-threshold </item>
+			<item> accounting-transits </item>
+			<item> address-pool </item>
+			<item> as-path </item>
+			<item> audit </item>
+			<item> auth-proxy </item>
+			<item> authentication </item>
+			<item> authorization </item>
+			<item> bgp-community </item>
+			<item> bootp </item>
+			<item> cef </item>
+			<item> classless </item>
+			<item> community-list </item>
+			<item> default-gateway </item>
+			<item> default-network </item>
+			<item> dhcp </item>
+			<item> dhcp-server </item>
+			<item> domain-list </item>
+			<item> domain-lookup </item>
+			<item> domain-name </item>
+			<item> dvmrp </item>
+			<item> exec-callback </item>
+			<item> extcommunity-list </item>
+			<item> finger </item>
+			<item> flow-aggregation </item>
+			<item> flow-cache </item>
+			<item> flow-export </item>
+			<item> forward-protocol </item>
+			<item> ftp </item>
+			<item> gratuitous-arps </item>
+			<item> host </item>
+			<item> host-routing </item>
+			<item> hp-host </item>
+			<item> http </item>
+			<item> icmp </item>
+			<item> inspect </item>
+			<item> local </item>
+			<item> mrm </item>
+			<item> mroute </item>
+			<item> msdp </item>
+			<item> multicast </item>
+			<item> multicast-routing </item>
+			<item> name-server </item>
+			<item> nat </item>
+			<item> new-model </item>
+			<item> ospf </item>
+			<item> password </item>
+			<item> password-encryption </item>
+			<item> pgm </item>
+			<item> pim </item>
+			<item> port-map </item>
+			<item> prefix-list </item>
+			<item> radius </item>
+			<item> rcmd </item>
+			<item> reflexive-list </item>
+			<item> route </item>
+			<item> routing </item>
+			<item> rsvp </item>
+			<item> rtcp </item>
+			<item> sap </item>
+			<item> sdr </item>
+			<item> security </item>
+			<item> source-route </item>
+			<item> subnet-zero </item>
+			<item> tacacs </item>
+			<item> tcp </item>
+			<item> tcp-small-servers </item>
+			<item> telnet </item>
+			<item> tftp </item>
+			<item> timestamps </item>
+			<item> udp-small-servers </item>
+			<item> vrf </item>
+			<item> wccp </item>
+		</list>
+		<contexts>
+                        <context name = "Base" attribute = "Normal Text" lineEndContext = "#stay">
+                                <RegExpr attribute="Keyword" context="#stay" String="\bdone\b" insensitive="TRUE" endRegion="dodone1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bdo\b" insensitive="TRUE" beginRegion="dodone1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\belif\b" insensitive="TRUE" beginRegion="iffi1" endRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bif\b" insensitive="TRUE" beginRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bfi\b" insensitive="TRUE" endRegion="iffi1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\bcase\b" insensitive="TRUE" beginRegion="case1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="\besac\b" insensitive="TRUE" endRegion="case1"/>
+                                <RegExpr attribute="Keyword" context="#stay" String="^[^()]+\)" insensitive="TRUE" beginRegion="subcase1"/>
+                                <StringDetect attribute="Keyword" context="#stay" String=";;" insensitive="TRUE" endRegion="subcase1"/>
+                                <DetectChar attribute="Keyword" context="#stay" char="{" beginRegion="func1"/>
+                                <DetectChar attribute="Keyword" context="#stay" char="}" endRegion="func1"/>
+
+                                <keyword String = "commands" attribute = "Command" context = "#stay"/>
+                                <keyword String = "parameters" attribute = "Parameter" context = "#stay"/>
+                                <keyword String = "options" attribute = "Keyword" context = "#stay"/>
+                                <Int attribute = "Decimal" context = "#stay"/>
+                                <RegExpr String = "\$[A-Za-z0-9_?{}!]+" attribute = "Parameter" context = "#stay"/>
+                                <RangeDetect char = "&quot;" char1 = "&quot;" attribute = "String" context = "#stay"/>
+                                <AnyChar String = "|&lt;&gt;=;" attribute = "Operator" context = "#stay"/>
+                                <DetectChar char="'" attribute = "String" context = "Single Quote"/>
+                                <DetectChar char="`" attribute = "Substitution" context = "Substitution"/>
+                                <Detect2Chars attribute = "Normal Text" context = "#stay" char = "\" char1 = "#"/>
+                                <RegExpr String= "#.*$" attribute = "Comment" context="#stay"/>
+
+                        </context>
+                        <context name = "String" attribute = "String" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\&quot;" attribute = "String" context = "#stay"/>
+                                <DetectChar char = "&quot;" attribute = "String" context = "#pop"/>
+                        </context>
+			<context name = "Single Quote" attribute = "String" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\'" attribute = "String" context = "#stay"/>
+				<DetectChar char = "'" attribute = "String" context = "#pop"/>
+                        </context>
+                        <context name = "Substitution" attribute = "Substitution" lineEndContext="#stay">
+				<StringDetect String = "\\" attribute = "String" context = "#stay"/>
+				<StringDetect String = "\`" attribute = "String" context = "#stay"/>
+                                <DetectChar char = "`" attribute = "Substitution" context = "#pop"/>
+                        </context>
+                        <context name = "Parameter" attribute = "Parameter" lineEndContext="#stay">
+                                <RegExpr String = "\$[A-Za-z0-9_?]+" attribute = "Parameter" context="#pop"/>
+                        </context>
+                </contexts>
+                <itemDatas>
+                        <itemData name = "Normal Text" defStyleNum = "dsNormal"/>
+                        <itemData name = "Keyword" defStyleNum = "dsKeyword"/>
+                        <itemData name = "Decimal" defStyleNum = "dsDecVal"/>
+                        <itemData name = "Float" defStyleNum = "dsFloat"/>
+                        <itemData name = "Char" defStyleNum = "dsChar"/>
+                        <itemData name = "String" defStyleNum = "dsString"/>
+                        <itemData name = "Comment" defStyleNum = "dsComment"/>
+                        <itemData name = "Substitution" defStyleNum = "dsOthers"/>
+                        <itemData name = "Parameter" defStyleNum = "dsOthers"/>
+                        <itemData name = "Operator" defStyleNum = "dsOthers"/>
+                        <itemData name = "Command" defStyleNum = "dsNormal"/>
+                </itemDatas>
+	</highlighting>
+	<general>
+		<comments>
+			<comment name="singleLine" start="!"/>
+		</comments>
+		<keywords casesensitive="0"/>
+		</general>
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="ColdFusion" version="1.03" kateversion="2.1" section="Markup" extensions="*.cfm;*.cfc;*.cfml;*.dbm" mimetype="text/x-coldfusion">
+
+	<highlighting>
+
+		<list name="Script Keywords">
+
+			<item> if </item>
+			<item> else </item>
+			<item> for </item>
+			<item> in </item>
+			<item> while </item>
+			<item> do </item>
+			<item> continue </item>
+			<item> break </item>
+			<item> with </item>
+			<item> try </item>
+			<item> catch </item>
+			<item> switch </item>
+			<item> case </item>
+			<item> new </item>
+			<item> var </item>
+			<item> function </item>
+			<item> return </item>
+			<item> this </item>
+			<item> delete </item>
+			<item> true </item>
+			<item> false </item>
+			<item> void </item>
+			<item> throw </item>
+			<item> typeof </item>
+			<item> const </item>
+			<item> default </item>
+
+		</list>
+
+		<list name="Script Objects">
+
+			<item> Anchor </item>
+			<item> Applet </item>
+			<item> Area </item>
+			<item> Array </item>
+			<item> Boolean </item>
+			<item> Button </item>
+			<item> Checkbox </item>
+			<item> Date </item>
+			<item> Document </item>
+			<item> Event </item>
+			<item> FileUpload </item>
+			<item> Form </item>
+			<item> Frame </item>
+			<item> Function </item>
+			<item> Hidden </item>
+			<item> History </item>
+			<item> Image </item>
+			<item> Layer </item>
+			<item> Linke </item>
+			<item> Location </item>
+			<item> Math </item>
+			<item> Navigator </item>
+			<item> Number </item>
+			<item> Object </item>
+			<item> Option </item>
+			<item> Password </item>
+			<item> Radio </item>
+			<item> RegExp </item>
+			<item> Reset </item>
+			<item> Screen </item>
+			<item> Select </item>
+			<item> String </item>
+			<item> Submit </item>
+			<item> Text </item>
+			<item> Textarea </item>
+			<item> Window </item>
+
+		</list>
+
+		<list name="Script Methods">
+
+			<item> abs </item>
+			<item> acos </item>
+			<item> alert </item>
+			<item> anchor </item>
+			<item> apply </item>
+			<item> asin </item>
+			<item> atan </item>
+			<item> atan2 </item>
+			<item> back </item>
+			<item> blur </item>
+			<item> call </item>
+			<item> captureEvents </item>
+			<item> ceil </item>
+			<item> charAt </item>
+			<item> charCodeAt </item>
+			<item> clearInterval </item>
+			<item> clearTimeout </item>
+			<item> click </item>
+			<item> close </item>
+			<item> compile </item>
+			<item> concat </item>
+			<item> confirm </item>
+			<item> cos </item>
+			<item> disableExternalCapture </item>
+			<item> enableExternalCapture </item>
+			<item> eval </item>
+			<item> exec </item>
+			<item> exp </item>
+			<item> find </item>
+			<item> floor </item>
+			<item> focus </item>
+			<item> forward </item>
+			<item> fromCharCode </item>
+			<item> getDate </item>
+			<item> getDay </item>
+			<item> getFullYear </item>
+			<item> getHours </item>
+			<item> getMilliseconds </item>
+			<item> getMinutes </item>
+			<item> getMonth </item>
+			<item> getSeconds </item>
+			<item> getSelection </item>
+			<item> getTime </item>
+			<item> getTimezoneOffset </item>
+			<item> getUTCDate </item>
+			<item> getUTCDay </item>
+			<item> getUTCFullYear </item>
+			<item> getUTCHours </item>
+			<item> getUTCMilliseconds </item>
+			<item> getUTCMinutes </item>
+			<item> getUTCMonth </item>
+			<item> getUTCSeconds </item>
+			<item> go </item>
+			<item> handleEvent </item>
+			<item> home </item>
+			<item> indexOf </item>
+			<item> javaEnabled </item>
+			<item> join </item>
+			<item> lastIndexOf </item>
+			<item> link </item>
+			<item> load </item>
+			<item> log </item>
+			<item> match </item>
+			<item> max </item>
+			<item> min </item>
+			<item> moveAbove </item>
+			<item> moveBelow </item>
+			<item> moveBy </item>
+			<item> moveTo </item>
+			<item> moveToAbsolute </item>
+			<item> open </item>
+			<item> parse </item>
+			<item> plugins.refresh </item>
+			<item> pop </item>
+			<item> pow </item>
+			<item> preference </item>
+			<item> print </item>
+			<item> prompt </item>
+			<item> push </item>
+			<item> random </item>
+			<item> releaseEvents </item>
+			<item> reload </item>
+			<item> replace </item>
+			<item> reset </item>
+			<item> resizeBy </item>
+			<item> resizeTo </item>
+			<item> reverse </item>
+			<item> round </item>
+			<item> routeEvent </item>
+			<item> scrollBy </item>
+			<item> scrollTo </item>
+			<item> search </item>
+			<item> select </item>
+			<item> setDate </item>
+			<item> setFullYear </item>
+			<item> setHours </item>
+			<item> setInterval </item>
+			<item> setMilliseconds </item>
+			<item> setMinutes </item>
+			<item> setMonth </item>
+			<item> setSeconds </item>
+			<item> setTime </item>
+			<item> setTimeout </item>
+			<item> setUTCDate </item>
+			<item> setUTCFullYear </item>
+			<item> setUTCHours </item>
+			<item> setUTCMilliseconds </item>
+			<item> setUTCMinutes </item>
+			<item> setUTCMonth </item>
+			<item> setUTCSeconds </item>
+			<item> shift </item>
+			<item> sin </item>
+			<item> slice </item>
+			<item> sort </item>
+			<item> splice </item>
+			<item> split </item>
+			<item> sqrt </item>
+			<item> stop </item>
+			<item> String formatting </item>
+			<item> submit </item>
+			<item> substr </item>
+			<item> substring </item>
+			<item> taintEnabled </item>
+			<item> tan </item>
+			<item> test </item>
+			<item> toLocaleString </item>
+			<item> toLowerCase </item>
+			<item> toSource </item>
+			<item> toString </item>
+			<item> toUpperCase </item>
+			<item> toUTCString </item>
+			<item> unshift </item>
+			<item> unwatch </item>
+			<item> UTC </item>
+			<item> valueOf </item>
+			<item> watch </item>
+			<item> write </item>
+			<item> writeln  </item>
+
+		</list>
+
+		<list name="CFSCRIPT Keywords">
+
+			<item> break </item>
+			<item> case </item>
+			<item> catch </item>
+			<item> continue </item>
+			<item> default </item>
+			<item> do </item>
+			<item> else </item>
+			<item> for </item>
+			<item> function </item>
+			<item> if </item>
+			<item> in </item>
+			<item> return </item>
+			<item> switch </item>
+			<item> try </item>
+			<item> var </item>
+			<item> while </item>
+
+		</list>
+
+		<list name="CFSCRIPT Functions">
+
+			<item> Abs </item>
+			<item> ACos </item>
+			<item> ArrayAppend </item>
+			<item> ArrayAvg </item>
+			<item> ArrayClear </item>
+			<item> ArrayDeleteAt </item>
+			<item> ArrayInsertAt </item>
+			<item> ArrayIsEmpty </item>
+			<item> ArrayLen </item>
+			<item> ArrayMax </item>
+			<item> ArrayMin </item>
+			<item> ArrayNew </item>
+			<item> ArrayPrepend </item>
+			<item> ArrayResize </item>
+			<item> ArraySet </item>
+			<item> ArraySort </item>
+			<item> ArraySum </item>
+			<item> ArraySwap </item>
+			<item> ArrayToList </item>
+			<item> Asc </item>
+			<item> ASin </item>
+			<item> Atn </item>
+			<item> BitAnd </item>
+			<item> BitMaskClear </item>
+			<item> BitMaskRead </item>
+			<item> BitMaskSet </item>
+			<item> BitNot </item>
+			<item> BitOr </item>
+			<item> BitSHLN </item>
+			<item> BitSHRN </item>
+			<item> BitXor </item>
+			<item> Ceiling </item>
+			<item> Chr </item>
+			<item> CJustify </item>
+			<item> Compare </item>
+			<item> CompareNoCase </item>
+			<item> Cos </item>
+			<item> CreateDate </item>
+			<item> CreateDateTime </item>
+			<item> CreateObject </item>
+			<item> CreateODBCDate </item>
+			<item> CreateODBCDateTime </item>
+			<item> CreateODBCTime </item>
+			<item> CreateTime </item>
+			<item> CreateTimeSpan </item>
+			<item> CreateUUID </item>
+			<item> DateAdd </item>
+			<item> DateCompare </item>
+			<item> DateConvert </item>
+			<item> DateDiff </item>
+			<item> DateFormat </item>
+			<item> DatePart </item>
+			<item> Day </item>
+			<item> DayOfWeek </item>
+			<item> DayOfWeekAsString </item>
+			<item> DayOfYear </item>
+			<item> DaysInMonth </item>
+			<item> DaysInYear </item>
+			<item> DE </item>
+			<item> DecimalFormat </item>
+			<item> DecrementValue </item>
+			<item> Decrypt </item>
+			<item> DeleteClientVariable </item>
+			<item> DirectoryExists </item>
+			<item> DollarFormat </item>
+			<item> Duplicate </item>
+			<item> Encrypt </item>
+			<item> Evaluate </item>
+			<item> Exp </item>
+			<item> ExpandPath </item>
+			<item> FileExists </item>
+			<item> Find </item>
+			<item> FindNoCase </item>
+			<item> FindOneOf </item>
+			<item> FirstDayOfMonth </item>
+			<item> Fix </item>
+			<item> FormatBaseN </item>
+			<item> GetAuthUser </item>
+			<item> GetBaseTagData </item>
+			<item> GetBaseTagList </item>
+			<item> GetBaseTemplatePath </item>
+			<item> GetClientVariablesList </item>
+			<item> GetCurrentTemplatePath </item>
+			<item> GetDirectoryFromPath </item>
+			<item> GetException </item>
+			<item> GetFileFromPath </item>
+			<item> GetFunctionList </item>
+			<item> GetHttpRequestData </item>
+			<item> GetHttpTimeString </item>
+			<item> GetK2ServerDocCount </item>
+			<item> GetK2ServerDocCountLimit </item>
+			<item> GetLocale </item>
+			<item> GetMetaData </item>
+			<item> GetMetricData </item>
+			<item> GetPageContext </item>
+			<item> GetProfileSections </item>
+			<item> GetProfileString </item>
+			<item> GetServiceSettings </item>
+			<item> GetTempDirectory </item>
+			<item> GetTempFile </item>
+			<item> GetTemplatePath </item>
+			<item> GetTickCount </item>
+			<item> GetTimeZoneInfo </item>
+			<item> GetToken </item>
+			<item> Hash </item>
+			<item> Hour </item>
+			<item> HTMLCodeFormat </item>
+			<item> HTMLEditFormat </item>
+			<item> IIf </item>
+			<item> IncrementValue </item>
+			<item> InputBaseN </item>
+			<item> Insert </item>
+			<item> Int </item>
+			<item> IsArray </item>
+			<item> IsBinary </item>
+			<item> IsBoolean </item>
+			<item> IsCustomFunction </item>
+			<item> IsDate </item>
+			<item> IsDebugMode </item>
+			<item> IsDefined </item>
+			<item> IsK2ServerABroker </item>
+			<item> IsK2ServerDocCountExceeded </item>
+			<item> IsK2ServerOnline </item>
+			<item> IsLeapYear </item>
+			<item> IsNumeric </item>
+			<item> IsNumericDate </item>
+			<item> IsObject </item>
+			<item> IsQuery </item>
+			<item> IsSimpleValue </item>
+			<item> IsStruct </item>
+			<item> IsUserInRole </item>
+			<item> IsWDDX </item>
+			<item> IsXmlDoc </item>
+			<item> IsXmlElement </item>
+			<item> IsXmlRoot </item>
+			<item> JavaCast </item>
+			<item> JSStringFormat </item>
+			<item> LCase </item>
+			<item> Left </item>
+			<item> Len </item>
+			<item> ListAppend </item>
+			<item> ListChangeDelims </item>
+			<item> ListContains </item>
+			<item> ListContainsNoCase </item>
+			<item> ListDeleteAt </item>
+			<item> ListFind </item>
+			<item> ListFindNoCase </item>
+			<item> ListFirst </item>
+			<item> ListGetAt </item>
+			<item> ListInsertAt </item>
+			<item> ListLast </item>
+			<item> ListLen </item>
+			<item> ListPrepend </item>
+			<item> ListQualify </item>
+			<item> ListRest </item>
+			<item> ListSetAt </item>
+			<item> ListSort </item>
+			<item> ListToArray </item>
+			<item> ListValueCount </item>
+			<item> ListValueCountNoCase </item>
+			<item> LJustify </item>
+			<item> Log </item>
+			<item> Log10 </item>
+			<item> LSCurrencyFormat </item>
+			<item> LSDateFormat </item>
+			<item> LSEuroCurrencyFormat </item>
+			<item> LSIsCurrency </item>
+			<item> LSIsDate </item>
+			<item> LSIsNumeric </item>
+			<item> LSNumberFormat </item>
+			<item> LSParseCurrency </item>
+			<item> LSParseDateTime </item>
+			<item> LSParseEuroCurrency </item>
+			<item> LSParseNumber </item>
+			<item> LSTimeFormat </item>
+			<item> LTrim </item>
+			<item> Max </item>
+			<item> Mid </item>
+			<item> Min </item>
+			<item> Minute </item>
+			<item> Month </item>
+			<item> MonthAsString </item>
+			<item> Now </item>
+			<item> NumberFormat </item>
+			<item> ParagraphFormat </item>
+			<item> ParameterExists </item>
+			<item> ParseDateTime </item>
+			<item> Pi </item>
+			<item> PreserveSingleQuotes </item>
+			<item> Quarter </item>
+			<item> QueryAddColumn </item>
+			<item> QueryAddRow </item>
+			<item> QueryNew </item>
+			<item> QuerySetCell </item>
+			<item> QuotedValueList </item>
+			<item> Rand </item>
+			<item> Randomize </item>
+			<item> RandRange </item>
+			<item> REFind </item>
+			<item> REFindNoCase </item>
+			<item> RemoveChars </item>
+			<item> RepeatString </item>
+			<item> Replace </item>
+			<item> ReplaceList </item>
+			<item> ReplaceNoCase </item>
+			<item> REReplace </item>
+			<item> REReplaceNoCase </item>
+			<item> Reverse </item>
+			<item> Right </item>
+			<item> RJustify </item>
+			<item> Round </item>
+			<item> RTrim </item>
+			<item> Second </item>
+			<item> SetEncoding </item>
+			<item> SetLocale </item>
+			<item> SetProfileString </item>
+			<item> SetVariable </item>
+			<item> Sgn </item>
+			<item> Sin </item>
+			<item> SpanExcluding </item>
+			<item> SpanIncluding </item>
+			<item> Sqr </item>
+			<item> StripCR </item>
+			<item> StructAppend </item>
+			<item> StructClear </item>
+			<item> StructCopy </item>
+			<item> StructCount </item>
+			<item> StructDelete </item>
+			<item> StructFind </item>
+			<item> StructFindKey </item>
+			<item> StructFindValue </item>
+			<item> StructGet </item>
+			<item> StructInsert </item>
+			<item> StructIsEmpty </item>
+			<item> StructKeyArray </item>
+			<item> StructKeyExists </item>
+			<item> StructKeyList </item>
+			<item> StructNew </item>
+			<item> StructSort </item>
+			<item> StructUpdate </item>
+			<item> Tan </item>
+			<item> TimeFormat </item>
+			<item> ToBase64 </item>
+			<item> ToBinary </item>
+			<item> ToString </item>
+			<item> Trim </item>
+			<item> UCase </item>
+			<item> URLDecode </item>
+			<item> URLEncodedFormat </item>
+			<item> URLSessionFormat </item>
+			<item> Val </item>
+			<item> ValueList </item>
+			<item> Week </item>
+			<item> WriteOutput </item>
+			<item> XmlChildPos </item>
+			<item> XmlElemNew </item>
+			<item> XmlFormat </item>
+			<item> XmlNew </item>
+			<item> XmlParse </item>
+			<item> XmlSearch </item>
+			<item> XmlTransform </item>
+			<item> Year </item>
+			<item> YesNoFormat </item>
+
+		</list>
+
+		<contexts>
+
+			<context attribute="Normal Text" lineEndContext="#stay" name="Normal Text">
+				<StringDetect attribute="CF Comment" context="ctxCF Comment" String="&lt;!---" />
+				<StringDetect attribute="HTML Comment" context="ctxHTML Comment" String="&lt;!--" />
+				<RegExpr attribute="Script Tags" context="ctxCFSCRIPT Tag" String="&lt;[cC][fF][sS][cC][rR][iI][pP][tT]" />
+				<RegExpr attribute="Script Tags" context="ctxSCRIPT Tag" String="&lt;[sS][cC][rR][iI][pP][tT]" />
+				<RegExpr attribute="Style Tags" context="ctxSTYLE Tag" String="&lt;[sS][tT][yY][lL][eE]" />
+				<DetectChar attribute="HTML Entities" context="ctxHTML Entities" char="&amp;" />
+				<RegExpr attribute="Custom Tags" context="ctxCustom Tag" String="&lt;\/?[cC][fF]_" />
+				<RegExpr attribute="CFX Tags" context="ctxCFX Tag" String="&lt;\/?[cC][fF][xX]_" />
+				<RegExpr attribute="CF Tags" context="ctxCF Tag" String="&lt;\/?[cC][fF]" />
+				<RegExpr attribute="Table Tags" context="ctxTable Tag" String="&lt;\/?([tT][aAhHbBfFrRdD])|([cC][aA][pP][tT])" />
+				<RegExpr attribute="Anchor Tags" context="ctxAnchor Tag" String="&lt;\/?[aA] " />
+				<RegExpr attribute="Image Tags" context="ctxImage Tag" String="&lt;\/?[iI][mM][gG] " />
+				<RegExpr attribute="Tags" context="ctxTag" String="&lt;!?\/?[a-zA-Z0-9_]+" />
+			</context>
+
+
+
+			<context name="ctxCFSCRIPT Tag" attribute="Script Tags" lineEndContext="#stay">
+				<DetectChar attribute="Script Tags" context="ctxCFSCRIPT Block" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxSCRIPT Tag" attribute="Script Tags" lineEndContext="#stay">
+				<DetectChar attribute="Script Tags" context="ctxSCRIPT Block" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxSTYLE Tag" attribute="Style Tags" lineEndContext="#stay">
+				<DetectChar attribute="Style Tags" context="ctxSTYLE Block" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+
+
+			<context name="ctxTag" attribute="Tags" lineEndContext="#stay">
+				<DetectChar attribute="Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxTable Tag" attribute="Table Tags" lineEndContext="#stay">
+				<DetectChar attribute="Table Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxAnchor Tag" attribute="Anchor Tags" lineEndContext="#stay">
+				<DetectChar attribute="Anchor Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxImage Tag" attribute="Image Tags" lineEndContext="#stay">
+				<DetectChar attribute="Image Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxCF Tag" attribute="CF Tags" lineEndContext="#stay">
+				<DetectChar attribute="CF Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxCustom Tag" attribute="Custom Tags" lineEndContext="#stay">
+				<DetectChar attribute="Custom Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+			<context name="ctxCFX Tag" attribute="CFX Tags" lineEndContext="#stay">
+				<DetectChar attribute="CFX Tags" context="#pop" char="&gt;" />
+				<DetectChar attribute="Normal Text" context="#stay" char="=" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+
+
+			<context name="ctxHTML Comment" attribute="HTML Comment" lineEndContext="#stay">
+				<StringDetect attribute="CF Comment" context="ctxCF Comment" String="&lt;!---" />
+				<StringDetect attribute="HTML Comment" context="#pop" String="--&gt;" />
+			</context>
+
+			<context name="ctxCF Comment" attribute="CF Comment" lineEndContext="#stay">
+				<StringDetect attribute="CF Comment" context="#pop" String="---&gt;" />
+			</context>
+
+			<context name="ctxC Style Comment" attribute="Script Comment" lineEndContext="#stay">
+        		<Detect2Chars attribute="Script Comment" context="#pop" char="*" char1="/" />
+			</context>
+
+			<context name="ctxOne Line Comment" attribute="Script Comment" lineEndContext="#pop" />
+
+			<context name="ctxHTML Entities" attribute="HTML Entities" lineEndContext="#pop">
+				<DetectChar attribute="HTML Entities" context="#pop" char=";" />
+			</context>
+
+
+
+			<context name="ctxCFSCRIPT Block" attribute="Normal Text" lineEndContext="#stay">
+				<Detect2Chars attribute="Script Comment" context="ctxC Style Comment" char="/" char1="*" />
+				<Detect2Chars attribute="Script Comment" context="ctxOne Line Comment" char="/" char1="/" />
+				<RegExpr attribute="Script Strings" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Script Strings" context="#stay" String="'[^']*'" />
+				<Int attribute="Script Numbers" context="#stay" />
+				<Float attribute="Script Numbers" context="#stay" />
+				<AnyChar attribute="Script Operators" context="#stay" String="[()[\]=+-*/]+" />
+				<AnyChar attribute="Brackets" context="#stay" String="{}" />
+
+				<keyword attribute="Script Keywords" context="#stay" String="CFSCRIPT Keywords" />
+				<keyword attribute="Script Functions" context="#stay" String="CFSCRIPT Functions" />
+				<RegExpr attribute="Script Tags" context="#pop#pop" String="&lt;/[cC][fF][sS][cC][rR][iI][pP][tT]&gt;" />
+			</context>
+
+
+
+			<context name="ctxSCRIPT Block" attribute="Normal Text" lineEndContext="#stay">
+				<Detect2Chars attribute="Script Comment" context="ctxC Style Comment" char="/" char1="*" />
+				<Detect2Chars attribute="Script Comment" context="ctxOne Line Comment" char="/" char1="/" />
+				<RegExpr attribute="Script Strings" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Script Strings" context="#stay" String="'[^']*'" />
+				<Int attribute="Script Numbers" context="#stay" />
+				<Float attribute="Script Numbers" context="#stay" />
+				<AnyChar attribute="Script Operators" context="#stay" String="[()[\]=+-*/]+" />
+				<AnyChar attribute="Brackets" context="#stay" String="{}" />
+
+				<keyword attribute="Script Keywords" context="#stay" String="Script Keywords" />
+				<keyword attribute="Script Objects" context="#stay" String="Script Objects" />
+				<keyword attribute="Script Functions" context="#stay" String="Script Methods" />
+				<RegExpr attribute="Script Tags" context="#pop#pop" String="&lt;/[sS][cC][rR][iI][pP][tT]&gt;" />
+			</context>
+
+
+
+			<context name="ctxSTYLE Block" attribute="Style Selectors" lineEndContext="#stay">
+				<Detect2Chars attribute="Script Comment" context="ctxC Style Comment" char="/" char1="*" />
+				<DetectChar attribute="Brackets" context="ctxStyle Properties" char="{" />
+				<RegExpr attribute="Style Tags" context="#pop#pop" String="&lt;/[sS][tT][yY][lL][eE]&gt;" />
+			</context>
+
+			<context name="ctxStyle Properties" attribute="Style Properties" lineEndContext="#stay">
+				<DetectChar attribute="Brackets" context="#pop" char="}" />
+				<Detect2Chars attribute="Script Comment" context="ctxC Style Comment" char="/" char1="*" />
+				<DetectChar attribute="Normal Text" context="ctxStyle Values" char=":" />
+			</context>
+
+			<context name="ctxStyle Values" attribute="Style Values" lineEndContext="#pop">
+				<DetectChar attribute="Normal Text" context="#pop" char=";" />
+				<DetectChar attribute="Normal Text" context="#stay" char="," />
+				<Int attribute="Numbers" context="#stay" />
+				<Float attribute="Numbers" context="#stay" />
+				<RegExpr attribute="Numbers" context="#stay" String="#([0-9a-fA-F]{3})|([0-9a-fA-F]{6})" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="&quot;[^&quot;]*&quot;" />
+				<RegExpr attribute="Attribute Values" context="#stay" String="'[^']*'" />
+			</context>
+
+		</contexts>
+
+		<itemDatas>
+
+			<itemData name="Normal Text" defStyleNum="dsNormal"			color="#000000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Tags" defStyleNum="dsNormal"				color="#000080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Table Tags" defStyleNum="dsNormal"			color="#008080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Script Tags" defStyleNum="dsNormal"			color="#800000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Image Tags" defStyleNum="dsNormal"			color="#800080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Style Tags" defStyleNum="dsNormal"			color="#800080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Anchor Tags" defStyleNum="dsNormal"			color="#008000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Attribute Values" defStyleNum="dsNormal"	color="#0000ff" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="HTML Comment" defStyleNum="dsComment"		color="#008000" selColor="#999999" bold="0" italic="0" />
+			<itemData name="CF Comment" defStyleNum="dsComment"			color="#ff9900" selColor="#999999" bold="0" italic="0" />
+			<itemData name="Script Comment" defStyleNum="dsComment"		color="#ff9900" selColor="#999999" bold="0" italic="0" />
+			<itemData name="CF Tags" defStyleNum="dsNormal"				color="#800000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Custom Tags" defStyleNum="dsNormal"			color="#cc6666" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="CFX Tags" defStyleNum="dsNormal"			color="#008000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Numbers" defStyleNum="dsNormal"				color="#0000ff" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="HTML Entities" defStyleNum="dsNormal"		color="#000000" selColor="#ffffff" bold="1" italic="0" />
+			<itemData name="Style Selectors" defStyleNum="dsNormal"		color="#ff00ff" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Style Properties" defStyleNum="dsNormal"	color="#000080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Style Values" defStyleNum="dsNormal"		color="#ff0000" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Brackets" defStyleNum="dsNormal"			color="#000080" selColor="#ffffff" bold="1" italic="0" />
+			<itemData name="Script Numbers" defStyleNum="dsNormal"		color="#ff00ff" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Script Strings" defStyleNum="dsNormal"		color="#008080" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Script Operators" defStyleNum="dsNormal"	color="#0000ff" selColor="#ffffff" bold="0" italic="0" />
+			<itemData name="Script Keywords" defStyleNum="dsNormal"		color="#0000cc" selColor="#ffffff" bold="1" italic="0" />
+			<itemData name="Script Functions" defStyleNum="dsNormal"	color="#000080" selColor="#ffffff" bold="1" italic="0" />
+			<itemData name="Script Objects" defStyleNum="dsNormal"		color="#0000cc" selColor="#ffffff" bold="1" italic="0" />
+
+		</itemDatas>
+
+	</highlighting>
+
+	<general>
+
+		<comments>
+
+			<comment name="multiLine" start="&lt;!--" end="--&gt;" />
+			<comment name="multiLine" start="/*" end="*/" />
+			<comment name="singleLine" start="//" />
+
+		</comments>
+
+		<keywords casesensitive="0" weakDeliminator="-" />
+
+	</general>
+
+</language>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!-- Author: Werner Braun <wb@o3-software.de> -->
+<!-- 29.05.2003 wb mailed to the kate-team (cullmann) -->
+<!-- 23.05.2003 wb added *.bro File-Type for GPCP Browser output-->
+<!-- 09.05.2003 wb nested comments allowed (maximum two level nesting) -->
+<!-- 07.04.2003 wb IN Problem solved -->
+<!-- 06.05.2003 wb NEW without ( -->
+<!-- 22.04.2003 wb Minor bugfixes -->
+<!-- 19.04.2003 wb Some more Enhancements -->
+<!-- 18.04.2003 wb Enhancenment for Maior / Minor Comments and Full / ReadOnly Exports, Folds for Procedures, Records, Comments -->
+<!-- 17.04.2003 wb Enhancements for Relation and Operators -->
+<language name="Component-Pascal" version="1.05" kateversion="2.1" section="Sources"
+          extensions="*.cp;*.bro" mimetype="text/x-component-pascal"
+          author="Werner Braun (wb@o3-software.de)" license="">
+	<highlighting>
+		<list name="keywords">
+			<item> BEGIN </item>
+			<item> BY </item>
+			<item> CASE </item>
+			<item> CLOSE </item>
+			<item> CONST </item>
+			<item> DO </item>
+			<item> ELSE </item>
+			<item> ELSIF </item>
+			<item> END </item>
+			<item> FOR </item>
+			<item> IF </item>
+			<item> IMPORT </item>
+			<item> LOOP </item>
+			<item> MODULE </item>
+			<item> NEW </item>
+			<item> OF </item>
+			<item> OUT </item>
+			<item> PROCEDURE </item>
+			<item> REPEAT </item>
+			<item> THEN </item>
+			<item> TO </item>
+			<item> TYPE </item>
+			<item> UNTIL </item>
+			<item> VAR </item>
+			<item> WHILE </item>
+			<item> WITH </item>
+		</list>
+		<list name="exits">
+			<item> ASSERT </item>
+			<item> EXIT </item>
+			<item> HALT </item>
+			<item> RETURN </item>
+		</list>
+		<list name="types">
+			<item> ANYPTR </item>
+			<item> ANYREC </item>
+			<item> ARRAY </item>
+			<item> BOOLEAN </item>
+			<item> SHORTCHAR </item>
+			<item> CHAR </item>
+			<item> BYTE </item>
+			<item> SHORTINT </item>
+			<item> INTEGER </item>
+			<item> LONGINT </item>
+			<item> POINTER </item>
+			<item> RECORD </item>
+			<item> SHORTREAL </item>
+			<item> REAL </item>
+			<item> SET </item>
+		</list>
+		<list name="attributes">
+			<item> ABSTRACT </item>
+			<item> EMPTY </item>
+			<item> EXTENSIBLE </item>
+			<item> LIMITED </item>
+		</list>
+		<list name="builtins">
+			<item> ABS </item>
+			<item> ASH </item>
+			<item> BITS </item>
+			<item> CAP </item>
+			<item> CHR </item>
+			<item> DEC </item>
+			<item> ENTIER </item>
+			<item> EXCL </item>
+			<item> INC </item>
+			<item> INCL </item>
+			<item> LEN </item>
+			<item> LONG </item>
+			<item> MAX </item>
+			<item> MIN </item>
+			<item> ODD </item>
+			<item> ORD </item>
+			<item> SHORT </item>
+			<item> SIZE </item>
+		</list>
+		<list name="specials">
+			<item> FALSE </item>
+			<item> INF </item>
+			<item> NIL </item>
+			<item> TRUE </item>
+		</list>
+		<contexts>
+			<context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+				<StringDetect attribute="CommentMaior" context="Comment1" String="(**" beginRegion="Comment"/>
+				<Detect2Chars attribute="CommentMinor" context="Comment2" char="(" char1="*" beginRegion="Comment"/>
+				<DetectChar attribute="String" context="String1" char="&quot;" />
+				<DetectChar attribute="String" context="String2" char="'" />
+				<RegExpr attribute="Keyword" context="#stay" String="PROCEDURE\s" beginRegion="Proc"/>
+				<RegExpr attribute="Normal Text" context="#stay" String="ABSTRACT;|EMPTY;|END\s*[A-Za-z][A-Za-z0-9_]*\;" endRegion="Proc"/>
+				<RegExpr attribute="Type" context="#stay" String="RECORD" beginRegion="Rec"/>
+				<RegExpr attribute="Keyword" context="#stay" String="END" endRegion="Rec"/>
+				<StringDetect attribute="MemAlloc" context="#stay" String="NEW"/>
+				<keyword attribute="Keyword" context="#stay" String="keywords"/>
+				<keyword attribute="Exit" context="#stay" String="exits"/>
+				<keyword attribute="Type" context="#stay" String="types"/>
+				<keyword attribute="Attribute" context="#stay" String="attributes"/>
+				<keyword attribute="Builtin" context="#stay" String="builtins"/>
+				<keyword attribute="SpecialValues" context="#stay" String="specials"/>
+				<RegExpr attribute="Integer" context="#stay" String="\s[\+|\-]{0,1}[0-9]([0-9]*|[0-9A-F]*(H|L))"/>
+				<Float attribute="Float" context="#stay"/>
+				<RegExpr attribute="Char" context="#stay" String="\s[0-9][0-9A-F]*X"/>
+				<RegExpr attribute="ExportFull" context="#stay" String="[A-Za-z][A-Za-z0-9_]*\*"/>
+				<RegExpr attribute="ExportReadOnly" context="#stay" String="[A-Za-z][A-Za-z0-9_]*\-"/>
+				<RegExpr attribute="Relation" context="#stay" String="\s(=|#|&lt;|&lt;=|&gt;|&gt;=|IN\s|IS)"/>
+				<RegExpr attribute="Operator" context="#stay" String="\s(\+|\-|OR|\*|/|DIV|MOD|\&amp;)"/>
+			</context>
+			<context attribute="CommentMaior" lineEndContext="#stay" name="Comment1">
+				<Detect2Chars attribute="CommentMaior" context="#pop" char="*" char1=")" endRegion="Comment"/>
+				<Detect2Chars attribute="CommentMinor" context="CommentN" char="(" char1="*"/>
+			</context>
+			<context attribute="CommentMinor" lineEndContext="#stay" name="Comment2">
+				<Detect2Chars attribute="CommentMinor" context="#pop" char="*" char1=")" endRegion="Comment"/>
+				<Detect2Chars attribute="CommentMinor" context="CommentN" char="(" char1="*"/>
+			</context>
+			<context attribute="CommentMinor" lineEndContext="#stay" name="CommentN">
+				<Detect2Chars attribute="CommentMinor" context="#pop" char="*" char1=")"/>
+				<Detect2Chars attribute="CommentMinor" context="CommentN2" char="(" char1="*"/>
+			</context>
+			<context attribute="CommentMinor" lineEndContext="#stay" name="CommentN2">
+				<Detect2Chars attribute="CommentMinor" context="#pop" char="*" char1=")"/>
+			</context>
+			<context attribute="String" lineEndContext="#stay" name="String1">
+				<DetectChar attribute="String" context="#pop" char="&quot;"/>
+			</context>
+			<context attribute="String" lineEndContext="#stay" name="String2">
+				<DetectChar attribute="String" context="#pop" char="'"/>
+			</context>
+		</contexts>
+		<itemDatas>
+			<itemData name="Normal Text" defStyleNum="dsNormal" />
+			<itemData name="CommentMaior" defStyleNum="dsComment" />
+			<itemData name="CommentMinor" defStyleNum="dsComment" />
+			<itemData name="String" defStyleNum="dsString" />
+			<itemData name="Keyword" defStyleNum="dsKeyword" />
+			<itemData name="MemAlloc" defStyleNum="dsKeyword" />
+			<itemData name="Exit" defStyleNum="dsKeyword"/>
+			<itemData name="Type" defStyleNum="dsDataType"/>
+			<itemData name="Attribute" defStyleNum="dsOthers"/>
+			<itemData name="Builtin" defStyleNum="dsNormal"/>
+			<itemData name="Integer" defStyleNum="dsBaseN"/>
+			<itemData name="Float" defStyleNum="dsFloat" />
+			<itemData name="Char" defStyleNum="dsChar" />
+			<itemData name="SpecialValues" defStyleNum="dsDecVal"/>
+			<itemData name="ExportFull" defStyleNum="dsOthers"/>
+			<itemData name="ExportReadOnly" defStyleNum="dsOthers"/>
+			<itemData name="Relation" defStyleNum="dsNormal"/>
+			<itemData name="Operator" defStyleNum="dsNormal"/>
+		</itemDatas>
+	</highlighting>
+	<general>
+		<keywords casesensitive="1" />
+		<comments>
+			<comment name="multiLine" start="(*" end="*)" />
+		</comments>
+	</general>
+</language>
+

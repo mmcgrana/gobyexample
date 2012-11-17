@@ -1,0 +1,69 @@
+Newsqueak2
+'Langexplr
+'
+
+class ShapesExperiment usingLib: platform = (
+"A small experiment for using Hopscotch shape classes ."
+|
+	CanvasDependent = platform CanvasDependent.
+	Presenter = platform HPresenter.
+	Subject = platform Subject.
+	EllipseShape = platform EllipseShape.
+	Color = platform Color.
+|
+)
+(
+
+class ShapesExperimentSubject = Subject(
+"Subject for shapes experiment"
+|
+
+|
+)
+('as yet unclassified'
+createPresenter = (
+	^ShapesExperimentPresenter new subject: self.
+)
+
+)
+
+class ShapesExperimentPresenter = Presenter (
+"A presenter for a small experiment of using shape classes"
+|
+|
+)
+('as yet unclassified'
+controlPoint = (
+	^ControlPoint new.
+)
+
+definition = (
+	^ column: {
+          canvas: {
+               at: 10 @ 10 display: controlPoint. 
+               at: 15 @ 10 display: controlPoint.
+          }
+      }
+)
+
+)
+
+class ControlPoint = CanvasDependent(
+"A class that represents a small point in the screen"
+|
+|
+)
+('as yet unclassified'
+addVisualsTo: container = (
+	container add: visual.
+      updateLayout.
+)
+
+createVisual = (
+     | s |
+     s:: EllipseShape new size: 5@5 .
+     s color: Color red.
+     ^ s
+)
+
+))

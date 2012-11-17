@@ -1,0 +1,79 @@
+#!/usr/bin/mscgen -Tpng
+#
+# testinput2.msc : Sample msc input file with URLs
+#
+# This file is PUBLIC DOMAIN and may be freely reproduced,  distributed,
+# transmitted, used, modified, built upon, or otherwise exploited by
+# anyone for any purpose, commercial or non-commercial, and in any way,
+# including by methods that have not yet been invented or conceived.
+#
+# This file is provided "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+# EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+#
+
+# Note: This is from mscgen-0.20
+
+msc {
+
+A,B;
+
+--- [label="Start", ID="1"];
+
+A->B [label="signal"];
+A<-B [label="signal"];
+
+
+A=>B [label="method"];
+A<=B [label="method"];
+
+A>>B [label="return"];
+A<<B [label="return"];
+
+A=>>B [label="call-back"];
+A<<=B [label="call-back", URL="www.google.com"];
+
+A x- B [label="loss"];
+A -x B [label="loss"];
+
+--- [label="Left arcs", ID="2", IDURL="www.google.co.uk"];
+
+A->A [label="signal"];
+A<-A [label="signal"];
+
+
+A=>A [label="method"];
+A<=A [label="method"];
+
+A>>A [label="return"];
+A<<A [label="return"];
+
+A=>>A [label="call-back"];
+A<<=A [label="call-back", URL="www.google.com", ID="3"];
+
+A x- A [label="loss"];
+A -x A [label="loss"];
+
+--- [label="Right arcs"];
+
+B->B [label="signal"];
+B<-B [label="signal"];
+
+
+B=>B [label="method"];
+B<=B [label="method"];
+
+B>>B [label="return"];
+B<<B [label="return"];
+
+B=>>B [label="call-back", ID="4"];
+B<<=B [label="call-back", URL="www.google.com"];
+
+B x- B [label="loss"];
+B -x B [label="loss"];
+
+--- [label="End of arcs", URL="www.google.com"];
+
+
+... [label="Some time passes", URL="www.google.com"];
+}

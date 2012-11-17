@@ -1,0 +1,13 @@
+# Execute the date dimension MAQL script
+ExecuteMaql(maqlFile="examples/quotes/quote_date.maql");
+
+# load the stock quotes data file
+# the data file config has been generated
+LoadCsv(csvDataFile="examples/quotes/quotes.csv",
+	header="true",
+	configFile="examples/quotes/quotes.config.xml");
+
+# transfer the stock quotes data
+TransferLastSnapshot();
+
+LoadGoogleAnalytics(configFile="examples/ga/ga.config.xml",username="example@gmail.com",password="******",profileId="ga:7468896",dimensions="ga:date|ga:browser|ga:browserVersion|ga:country|ga:isMobile",metrics="ga:bounces|ga:newVisits|ga:pageViews|ga:visits",startDate="2008-01-01",endDate="2010-06-15");

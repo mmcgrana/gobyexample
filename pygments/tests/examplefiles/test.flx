@@ -1,0 +1,57 @@
+type tiny = "%i8";
+type int = "%i32";
+typedef bool = 2;
+fun add : int*int -> int = "%add";
+fun sub : int*int -> int = "%sub";
+fun eq : int*int -> bool = "%eq";
+fun lnot : bool -> bool = "%lnot";
+proc exit : int = "exit";
+
+// comment 1
+/*
+  /*
+  foo bar
+  */
+asdas
+*/
+
+noinline fun foo (x:int) = {
+  val y = 6;
+  return x + y;
+}
+
+noinline proc fake_exit (x:int) {
+  exit x;
+  return;
+}
+
+noinline fun bar (x:int) = {
+  var y = 10;
+  noinline proc baz () {
+    y = 20;
+    return;
+  }
+  baz ();
+  return x + y;
+}
+
+noinline fun x (a:int, b:int, c:tiny) = {
+  val x1 = a;
+  val x2 = b;
+  val x3 = c;
+  noinline fun y (d:int, e:int, f:tiny) = {
+    val y1 = x1;
+    val y2 = x2;
+    val y3 = f;
+    noinline fun z (g:int, h:int, i:tiny) = {
+      val z1 = x1;
+      val z2 = x2;
+      val z3 = i;
+      return z1;
+    }
+    return z (y1,y2,y3);
+  }
+  return y (x1,x2,x3);
+}
+
+fake_exit $ (foo 2) + (bar 3) + (x (1,2,3t));
