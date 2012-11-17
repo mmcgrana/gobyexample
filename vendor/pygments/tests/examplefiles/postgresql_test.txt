@@ -1,0 +1,47 @@
+CREATE OR REPLACE FUNCTION something() RETURNS int4 AS
+$x$
+BEGIN
+    RETURN 42;
+END
+$x$
+LANGUAGE 'plpgsql';
+
+CREATE FUNCTION pymax (a integer, b integer)
+  RETURNS integer
+AS $$
+  if a > b:
+    return a
+  return b
+$$ language plpythonu;
+
+CREATE FUNCTION nested_lexers (a integer, b integer)
+$function$
+BEGIN
+    SELECT ($1 ~ $q$[\t\r\n\v\\]$q$);
+END;
+$function$
+LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION measurement_insert_trigger()
+RETURNS TRIGGER AS $$
+BEGIN
+    <<test>>
+    INSERT INTO measurement_y2008m01 VALUES (NEW.*);
+    RETURN NULL;
+END;
+$$
+LANGUAGE plpgsql;
+
+-- As returned by pg_dump
+CREATE FUNCTION test_function() RETURNS integer
+    LANGUAGE plpgsql STABLE STRICT
+    AS $$
+begin
+    return 42;
+end
+$$;
+
+-- Unicode names and strings
+SELECT U&'\0441\043B\043E\043D'
+FROM U&"\0441\043B\043E\043D";
+

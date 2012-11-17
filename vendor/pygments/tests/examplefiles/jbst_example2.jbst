@@ -1,0 +1,45 @@
+<%@ Control Name="Foo.MyZebraList" Language="JavaScript" %>
+
+<script type="text/javascript">
+
+	/* private members ------------------------------------------ */
+
+	/*int*/ function digits(/*int*/ n) {
+		return (n < 10) ? '0' + n : n;
+	}
+
+	/* public members ------------------------------------------- */
+
+	// use the item index to alternate colors and highlight
+	/*string*/ this.zebraStripe = function(/*bool*/ selected, /*int*/ index, /*int*/ count) {
+		var css = [ "item" ];
+		if (index % 2 === 0) {
+			css.push("item-alt");
+		}
+		if (selected) {
+			css.push("item-selected");
+		}
+		return css.join(" ");
+	};
+
+	/*string*/ this.formatTime = function(/*Date*/ time) {
+		return time.getHours() + ':' + digits(time.getMinutes()) + ':' + digits(time.getSeconds());
+	};
+
+</script>
+
+<div class="example">
+	<h2><%= this.data.title %> as of <%= this.formatTime(this.data.timestamp) %>!</h2>
+	<p><%= this.data.description %></p>
+	<ul class="items" jbst:visible="<%= this.data.children.length > 0 %>">
+
+		<!-- anonymous inner template -->
+		<jbst:control data="<%= this.data.children %>">
+			<!-- populate list item for each item of the parent's children property -->
+			<li class="<%= Foo.MyZebraList.zebraStripe(this.data.selected, this.index, this.count) %>">
+				<%= this.data.label %> (<%= this.index+1 %> of <%= this.count %>)
+			</li>
+		</jbst:control>
+
+	</ul>
+</div>

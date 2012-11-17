@@ -1,0 +1,94 @@
+.TH PYGMENTIZE 1 "February 15, 2007"
+
+.SH NAME
+pygmentize \- highlights the input file
+
+.SH SYNOPSIS
+.B \fBpygmentize\fP
+.RI  [-l\ \fI<lexer>\fP]\ [-F\ \fI<filter>\fP[:\fI<options>\fP]]\ [-f\ \fI<formatter>\fP]
+.RI  [-O\ \fI<options>\fP]\ [-P\ \fI<option=value>\fP]\ [-o\ \fI<outfile>\fP]\ [\fI<infile>\fP]
+.br
+.B \fBpygmentize\fP
+.RI -S\ \fI<style>\fP\ -f\ \fI<formatter>\fP\ [-a\ \fI<arg>\fP]\ [-O\ \fI<options>\fP]\ [-P\ \fI<option=value>\fP]
+.br
+.B \fBpygmentize\fP
+.RI -L\ [\fI<which>\fP\ ...]
+.br
+.B \fBpygmentize\fP
+.RI -H\ \fI<type>\fP\ \fI<name>\fP
+.br
+.B \fBpygmentize\fP
+.RI -h\ |\ -V
+
+.SH DESCRIPTION
+Pygments is a generic syntax highlighter for general use in all kinds
+of software such as forum systems, wikis or other applications that need to
+prettify source code.
+.PP
+Its highlights are:
+  * a wide range of common languages and markup formats is supported
+  * special attention is paid to details, increasing quality by a fair amount
+  * support for new languages and formats are added easily
+  * a number of output formats, presently HTML, LaTeX and ANSI sequences
+  * it is usable as a command-line tool and as a library
+  * ... and it highlights even Brainfuck!
+.PP
+\fBpygmentize\fP is a command that uses Pygments to highlight the input file and
+write the result to \fI<outfile>\fP. If no \fI<infile>\fP is given, stdin is used.
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-l \fI<lexer>\fP
+Set the lexer name. If not given, the lexer is guessed from the extension of the
+input file name (this obviously doesn't work if the input is stdin).
+.TP
+.B \-F \fI<filter>\fP[:\fI<options>\fP]
+Add a filter to the token stream. You can give options in the same way as for
+-O after a colon (note: there must not be spaces around the colon).
+This option can be given multiple times.
+.TP
+.B \-f \fI<formatter>\fP
+Set the formatter name. If not given, it will be guessed from the extension of
+the output file name. If no output file is given, the terminal formatter will be
+used by default.
+.TP
+.B \-o \fI<outfile>\fP
+Set output file. If not given, stdout is used.
+.TP
+.B \-O \fI<options>\fP
+With this option, you can give the lexer and formatter a comma-separated list of
+options, e.g. "-O bg=light,python=cool". Which options are valid for which
+lexers and formatters can be found in the documentation.
+This option can be given multiple times.
+.TP
+.B \-P \fI<option=value>\fP
+This option adds lexer and formatter options like the -O option, but
+you can only give one option per -P. That way, the option value may contain
+commas and equals signs, which it can't with -O.
+.TP
+.B \-S \fI<style>\fP
+Print out style definitions for style \fI<style>\fP and for formatter \fI<formatter>\fP.
+The meaning of the argument given by
+.B \-a \fI<arg>\fP
+is formatter dependent and can be found in the documentation.
+.TP
+.B \-L [\fI<which>\fP ...]
+List lexers, formatters, styles or filters. Set \fI<which>\fP to the thing you want
+to list (e.g. "styles"), or omit it to list everything.
+.TP
+.B \-H \fI<type>\fP \fI<name>\fP
+Print detailed help for the object \fI<name>\fP of type \fI<type>\fP, where \fI<type>\fP is one
+of "lexer", "formatter" or "filter".
+.TP
+.B \-h
+Show help screen.
+.TP
+.B \-V
+Show version of the Pygments package.
+.SH SEE ALSO
+/usr/share/doc/python-pygments/index.html
+.SH AUTHOR
+pygmentize was written by Georg Brandl <g.brandl@gmx.net>.
+.PP
+This manual page was written by Piotr Ozarowski <ozarow@gmail.com>,
+for the Debian project (but may be used by others).

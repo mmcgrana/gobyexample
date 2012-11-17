@@ -1,0 +1,4 @@
+class A = ( | a = self m. | ) (
+    m = (^a isNil ifTrue: [0] ifFalse: [1])
+)
+class B = C ( | b0 = 0. b1 = b0 + 1. | ) ()

@@ -1,0 +1,376 @@
+<html>
+  <head>
+    <script lang="javascript" type="text/javascript">
+  // <!--
+    function toggleVisible(element) {
+      if (element.style.display == 'block') {
+        element.style.display = 'none';
+       } else {
+         element.style.display = 'block';
+       }
+       return false;      
+    }          
+    // -->
+    </script>
+    <title>Error</title>
+    <style>
+      .path { 
+        padding: 5px;
+        font-size: 140%;
+        background: #ddd;
+      }
+      .error { 
+        padding: 5px;
+        padding-top: 15px;
+        font-size: 140%;
+        color: #f00;
+      }
+      .load {
+        padding: 5px;
+        color: #555;
+      }
+      .source {
+        border: 1px solid #ccc; 
+        padding: 10px;
+        margin-top: 10px; margin-bottom: 10px;
+      }
+      h2 {
+        padding-left: 5px;
+        background: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Error</h1>
+
+<?r 
+    if Run.mode == :debug 
+    require 'cgi'
+?>
+    <?r  for error, path in @context.rendering_errors ?>
+      <div class="path"><strong>Path:</strong> #{path}</div>
+      <div class="error"><strong>#{CGI.escapeHTML(error.to_s)}</strong></div>
+      <div class="load">
+        <strong><a href="#{request.uri}">Reload</a></strong> this page. 
+        Go to the <strong><a href="#{request.referer}">referer</a></strong> or the <strong><a href="/">home page</a></strong>.
+      </div>
+      <div class="source">
+      <?r 
+        extract = error.source_extract.split("\n")
+      ?>
+      In file <b>'#{error.hot_file}'</b> #{error.hot_file =~ /\.xhtml$/ ? '(line numbering is aproximate due to template transformation)' : nil}:
+      <br /><br />
+      <?r
+        extract.each_with_index do |line, idx|
+          line = sanitize(line)
+          if 5 == idx
+      ?>
+          <div style="background: #eee">#{line}</div>
+      <?r  else ?>
+          <div>#{line}</div>
+      <?r  
+          end 
+        end
+      ?>
+      </div>
+      <h2><a href="#" onclick="return toggleVisible(document.getElementById('trace'));">Stack Trace</a></h2>
+      <div id="trace" style="display: none;">
+        <?r error.backtrace.zip(error.source_for_backtrace).each_with_index do |step,step_idx| ?>
+      <div><a href="#" onclick="return toggleVisible(document.getElementById('trace_#{step_idx}'));">#{sanitize(step.first)}</a></div>
+      <div class="source" id="trace_#{step_idx}" style="display: none;">
+      <?r 
+        extract = step.last.split("\n")      
+        extract.each_with_index do |line, idx|
+          line = sanitize(line)
+          if 5 == idx
+      ?>
+          <div style="background: #eee">#{line}</div>
+      <?r  else ?>
+          <div>#{line}</div>
+      <?r  
+          end 
+        end
+      ?>
+      </div>
+
+        
+        <?r end ?>
+      </div>
+    <?r end ?>
+
+    <h2><a href="#" onclick="document.getElementById('request').style.display = 'block'; return false">Request</a></h2>
+    <div id="request" style="display: none">
+      <p><strong>Parameters:</strong> #{request.params.reject{ |k,v| k == :__RELOADED__ }.inspect}</p>  
+      <p><strong>Cookies:</strong> #{request.cookies.inspect}</p>  
+      <p><strong>Headers:</strong><br />#{request.headers.collect { |k, v| "#{k} => #{v}" }.join('<br />')}</p>  
+    </div>
+
+    <h2><a href="#" onclick="document.getElementById('response').style.display = 'block'; return false">Response</a></h2>
+    <div id="response" style="display: none">
+      <p><strong>Headers:</strong> #{request.response_headers.inspect}</p>  
+      <p><strong>Cookies:</strong> #{request.response_cookies.inspect}</p>  
+    </div>
+
+    <h2><a href="#" onclick="document.getElementById('session').style.display = 'block'; return false">Session</a></h2>
+    <div id="session" style="display: none">
+      <p><strong>Values:</strong> #{session.inspect}</p>  
+    </div>
+
+    <br /><br />
+    Powered by <a href="http://www.nitrohq.com">Nitro</a> version #{Nitro::Version}
+<?r end ?>    
+  </body>
+</html>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1><a href="/"> Home</a> > <a href="#@base">System</a> > <a href="#{base}/list">#{"%plural%".humanize}</a> > Edit #{"%name%".humanize} </h1>
+  <?r if @all ?>
+    <a href="#{request.uri.gsub(/\/all$/, '')}">Show editable</a>
+    #{form_for @obj, :action => "#{base}/save", :cancel => "#{base}/list", :all => true}
+  <?r else ?>
+    <a href="#{request.uri}/all">Show all</a>
+    #{form_for @obj, :action => "#{base}/save", :cancel => "#{base}/list"}
+  <?r end ?>
+</SystemPage>
+#{form_for(@%name%)}
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1>#{"%plural%".humanize}</h1>
+  <h2><a href="#{base}/new">New #{"%name%".humanize}</a></h2>
+  <form action="search">
+    Search #{"%plural%".humanize}: <input type="text" name="q" />&nbsp;<input type="submit" value="Search" />
+  </form>
+  <table>
+  <?r for obj in @list ?>
+    <tr>
+      <td width="100%"><a href="#{base}/edit/#{obj.oid}">#{obj.to_s}</a></td>
+      <?r if obj.respond_to?(:update_time) ?>
+        <td nowrap="1">#{obj.update_time.stamp(:db)}</td>
+      <?r end ?>
+      <td><a href="#{base}/edit/#{obj.oid}">edit</a></td>
+      <td><a href="#{base}/delete/#{obj.oid}">del</a></td>
+    </tr>
+  <?r end ?>
+  </table>
+</SystemPage>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1><a href="/"> Home</a> > <a href="#@base">System</a> > #{"%plural%".humanize}</h1>
+  <a href="#{base}/new">New #{"%name%".humanize}</a>
+  <p>
+  <form action="#{base}/search">
+    Search #{"%plural%".humanize}: <input type="text" name="q" />&nbsp;<input type="submit" value="Search" />
+  </form>
+  </p>
+  <table>
+  <?r for obj in @list ?>
+    <tr>
+      <td width="100%"><a href="#{base}/edit/#{obj.oid}">#(obj.to_s)</a></td>
+      <?r if obj.respond_to?(:update_time) ?>
+        <td nowrap="1">#{obj.update_time.stamp(:db)}</td>
+      <?r end ?>
+      <td><a href="#{base}/edit/#{obj.oid}">edit</a></td>
+      <td><a href="#{base}/delete/#{obj.oid}" onclick="confirm('Are you sure?')">del</a></td>
+    </tr>
+  <?r end ?>
+  </table>
+  <div class="pager" if="@pager and @pager.navigation?">
+    #{@pager.navigation}
+  </div>  
+</SystemPage>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1><a href="/"> Home</a> > <a href="#@base">System</a> > <a href="#{base}/list">#{"%plural%".humanize}</a> > New #{"%name%".humanize}</h1>
+  <?r if @all ?>
+    <a href="#{request.uri.gsub(/\/all$/, '')}">Show editable</a>
+    #{form_for @obj, :action => "#{base}/save", :cancel => "#{base}/list", :all => true, :enctype => "multipart/form-data"}
+  <?r else ?>
+    <a href="#{request.uri}/all">Show all</a>
+    #{form_for @obj, :action => "#{base}/save", :cancel => "#{base}/list", :enctype => "multipart/form-data"}
+  <?r end ?>
+</SystemPage>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1><a href="/"> Home</a> > <a href="#@base">System</a> > <a href="#{base}/list">#{"%plural%".humanize}</a> > Search for '#@query'</h1>
+  <p>
+  <form action="#{base}/search">
+    Search #{"%plural%".humanize}: <input type="text" name="q" />&nbsp;<input type="submit" value="Search" />
+  </form>
+  </p>
+  <?r if @list.nil? ?>
+    <p>Search method is not implemented for this object</p>
+  <?r else ?>
+    <table>
+    <?r for obj in @list ?>
+      <tr>
+        <td width="100%"><a href="#{base}/edit/#{obj.oid}">#(obj.to_s)</a></td>
+        <?r if obj.respond_to?(:update_time) ?>
+          <td nowrap="1">#{obj.update_time.stamp(:db)}</td>
+        <?r end ?>
+        <td><a href="#{base}/edit/#{obj.oid}">edit</a></td>
+        <td><a href="#{base}/delete/#{obj.oid}">del</a></td>
+      </tr>
+    <?r end ?>
+    </table>
+    <div class="pager" if="@pager and @pager.navigation?">
+      #{@pager.navigation}
+    </div>  
+  <?r end ?>
+</SystemPage>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1>View %name%</h1>
+  <h2><a href="#{base}/list">List of %plural%</a></h2>
+  <code>
+    #{@obj.to_yaml} 
+  </code>
+</SystemPage>
+<strong>Access denied</strong>
+<SystemPage>
+  <?r base = "#{@base}/%base%" ?>
+  <h1><a href='/'>Home</a> > System</h1>
+  
+  <h2>Og managed classes</h2>
+  
+  <table>
+    <tr>
+      <th>Class</th>
+      <th>Count</th>
+      <th colspan="2">Cleanup</th>
+      <th>Properties</th>
+    </tr>
+  <?r for c in @classes ?>
+    <tr>
+      <td><a href="#@base/#{Scaffolding.class_to_path(c).plural}/list">#{c.name}</a></td>
+      <td>#{c.count}</td>
+      <td><a href="delete_all/#{c.name}" onclick="return confirm('Delete all instances?')">delete</a></td>
+      <td><a href="destroy/#{c.name}" onclick="return confirm('Drop the schema?')">destroy</a></td>
+      <td width="100%">#{c.properties.values.join(', ')}</td>
+    </tr>
+  <?r end ?>
+  </table>
+  
+  <h2>System configuration</h2>
+  
+  <table width="100%">
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  <?r for s in @settings ?>
+    <tr>
+      <td>#{s.owner}.<strong>#{s.name}</strong></td>
+      <td>#{s.value.inspect}</td>
+      <td>#{s.type}</td>
+      <td>#{s.options[:doc]}</td>
+    </tr>
+  <?r end ?>
+  </table>
+</SystemPage>  
+
+<b><?r $include1 = true ?></b>
+<b><?r $include2 = true ?></b>
+<html>
+  <b>Test</b>
+
+<?r @tflag = true ?>
+
+<render href="blog/inc1" />
+<render href='blog/inc2' />
+
+</html>
+<html>hello</html>
+Hello #{username}
+
+how do you feel?
+
+Here is your <b>Token</b>: #{token}
+<Page title="Questions and Tips by Tags">
+  <div id="left">
+    <?r if @tags ?>
+    <h1>Questions with Tags: #{@tags.join(" ")}</h1>
+
+    <?r if @questions && @questions.size > 0 ?>
+      <?r if @qtags ?>
+        Too many results for that Tag, please reduce the number by using one of the following Tags:
+        #{cloud_of(@qtags)}
+      <?r end ?>
+    <div class="results">
+      <?r @questions.each do |q| ?>
+        <h2><a href="/question/#{q.oid}">#{q.question}</a></h2>
+        <p>
+          <?r excerpt = excerpt_with_words(q.text, @tags) ?>
+          #{excerpt}
+        </p>
+        <p style="float:right;">#{q.answers.size.to_i} answers</p>
+      <?r end ?>
+    </div>
+    <div class="pager">
+      #{@qpager.navigation}
+    </div>
+    <?r else ?>
+    <div class="results_none">
+      <h2>no question with this/these tag(s) found</h2>
+      <p><a href="/ask">Ask a question here.</a></p>
+    </div>
+    <?r end ?>
+    
+    <?r if @tips && @tips.size > 0 ?>
+    <h1>Tips with Tags: #{@tags.join(" ")}</h1>
+    <?r if @ttags ?>
+      Too many results for that Tag, please reduce the number by using one of the following Tags:
+      #{cloud_of(@ttags)}
+    <?r end ?>
+    <div class="results">
+      <?r @tips.each do |t| ?>
+        <h2><a href="/tip/#{t.oid}">#{t.title}</a></h2>
+        <p>
+          <?r excerpt = excerpt_with_words(t.text, @tags) ?>
+          #{excerpt}
+        </p>
+      <?r end ?>
+    </div>
+    <div class="pager">
+      #{@tpager.navigation}
+    </div>
+    <?r end ?>
+    
+    <?r if @tutorials && @tutorials.size > 0 ?>
+    <h1>Tutorials with Tags: #{@tags.join(" ")}</h1>
+    <?r if @tuttags ?>
+      Too many results for that Tag, please reduce the number by using one of the following Tags:
+      #{cloud_of(@tuttags)}
+    <?r end ?>
+    <div class="results">
+      <?r @tutorials.each do |t| ?>
+        <h2><a href="/tutorial/#{t.oid}">#{t.title}</a></h2>
+        <p>
+          <?r excerpt = excerpt_with_words(t.text, @tags) ?>
+          #{excerpt}
+        </p>
+      <?r end ?>
+    </div>
+    <div class="pager">
+      #{@tpager.navigation}
+    </div>
+    <?r end ?>
+    
+    
+    <?r else ?>
+      <div class="cloud">
+        <?r
+          sum = all_tags.inject(0) { |sum, t| sum + t.popularity.to_i }
+        ?>
+        <?r all_tags.each do |t| ?>
+          <a href="/tags/#{t.name}" style="font-size:#{(1+((t.popularity.to_i/sum.to_f)*2)).to_s[0..3]}em;">#{t.name}</a>
+        <?r end ?>
+      </div> <!-- #cloud -->
+    <?r end ?>
+  </div> <!-- #left -->
+  
+  <render href="/right" />
+</Page>
+
+<!-- Copyright © 2006 Kashia Buch (kashia@vfemail.net), Fabian Buch (fabian@fabian-buch.de). All rights reserved. -->

@@ -1,0 +1,87 @@
+using System;
+
+namespace Demo.Ns
+{
+  /// sample class
+  public class ClassSample : Base
+  {
+    /* sample multiline comment */
+#region region sample
+    fieldSample : int;
+#endregion
+
+    public virtual someMethod(str : string) : list[double]
+    {
+      def x = "simple string";
+      def x = $"simple $splice string $(spliceMethod() + 1)";
+      def x = <#
+        recursive <# string #> sample
+      #>;
+      def x = $<#
+        recursive $splice <# string #> sample
+        ..$(lst; "; "; x => $"x * 2 = $(x * 2)") str
+      #>;
+      def x = @"somestring \";
+
+      def localFunc(arg)
+      {
+         arg + 1;
+      }
+
+      match (localFunc(2))
+      {
+        | 3 => "ok";
+        | _ => "fail";
+      }
+
+      using (x = SomeObject())
+      {
+        foreach (item in someCollection)
+        {
+          def i = try
+          {
+            int.Parse(item)
+          }
+          catch
+          {
+            | _ is FormatException => 0;
+          }
+          when (i > 0xff)
+            unless (i < 555L)
+              WriteLine(i);
+          
+        }
+      }
+      protected override overrideSample() : void
+      {}
+
+      private privateSample() : void
+      {}
+
+      public abstract abstractSample() : void
+      {}
+    }
+
+  }
+
+  module ModuleSample
+  {
+  }
+
+  variant RgbColor {
+   | Red
+   | Yellow
+   | Green
+   | Different {
+       red : float;
+       green : float;
+       blue : float;
+     }
+  }
+
+  macro sampleMacro(expr)
+  syntax ("write", expr)
+  {
+    <[ WriteLine($(expr : dyn)) ]>
+  }
+}

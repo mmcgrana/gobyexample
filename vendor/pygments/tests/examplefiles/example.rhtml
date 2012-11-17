@@ -1,0 +1,561 @@
+<% @title = 'Moderatoren-Interface' %>
+
+<dl>
+	<dt><%= link_to 'Proben', :controller => '/admin/proben' %></dt>
+	<dd>Die angesetzten Proben des Orchesters</dd>
+	<dt><%= link_to 'Auftritte', :controller => '/admin/proben' %></dt>
+	<dd>Die Auftritte des Orchesters</dd>
+	<%- if @valid_user and @valid_user.admin? -%>
+	<dt><%= link_to 'Benutzer', :controller => '/admin/user' %></dt>
+	<dd>Benutzer organisieren (nur für den Admin)</dd>
+	<%- end -%>
+</dl>
+<% @title = 'Anmeldung' %>
+
+<%= render :partial => 'user_form', :object => @user %>
+<% @title = 'Administrator erstellen' %>
+
+<%= render :partial => 'user_form', :object => @user %>
+<%= form_tag %>
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><%= text_field 'user', 'name' %></td>
+	</tr>
+	<tr>
+		<td>Passwort:</td>
+		<td><%= password_field 'user', 'password' %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= submit_tag 'Anmelden' %></td>
+</table>
+<%= end_form_tag %>
+<% @title = 'Neuer Benutzer' -%>
+<%= error_messages_for :user %>
+<%= render :partial => 'form', :object => @user %>
+<%= form_tag %>
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><%= text_field 'user', 'name' %></td>
+	</tr>
+	<tr>
+		<td>Passwort:</td>
+		<td><%= password_field 'user', 'password' %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= submit_tag 'Anlegen' %></td>
+</table>
+<%= end_form_tag %>
+<% @title = 'Auftritte' %>
+
+<table cellspacing="0" summary="Auftritte: Wann treten wir Wo auf?">
+	<%= render :partial => 'head' %>
+	<%= render :partial => 'day', :collection => @days %>
+</table>
+<% day, auftritte = *day -%>
+<%
+	for auftritt in auftritte 
+-%>
+
+<tr>
+	<td class="pplan_datum">
+		<%= colorize day.to_s(:dots) if day %>
+		<% if day and day.wday == 6 %><br /><em>Samstag</em><% end %>
+	</td>
+	<td class="pplan_zeit">
+		<%= colorize auftritt.time %>
+	</td>
+	<td class="pplan_stueck">
+		<%= colorize auftritt.program %>
+		<%= link_to 'E', :controller => 'admin/auftritte', :action => :edit, :id => auftritt %>
+	</td>
+	<td class="pplan_besetzung">
+		<%= colorize(auftritt.place, 'Ort: ') + '<br />' unless auftritt.place.blank? %>
+	</td>
+</tr>
+
+<%
+	day = nil
+	end 
+-%>
+<tr>
+	<th scope="col" class="pplan_datum">Datum</th>
+	<th scope="col" class="pplan_zeit">Zeit</th>
+	<th scope="col" class="pplan_stueck">Programm</th>
+	<th scope="col" class="pplan_besetzung">Ort</th>
+</tr>
+<% @title = "Besetzung - #{@instrument.name}" %>
+
+<p>
+<%= pluralize(@members.size, 'Schüler spielt', 'Schüler spielen') %> <%= h @instrument.name %>:
+</p>
+
+<table class="members">
+	<%= render :partial => 'member', :collection => @members %>
+</table>
+<% @title = 'Besetzung: %d Mitglieder' % Member.count -%>
+
+<div class="page-links">
+<% if params[:action] == 'all' -%>
+<%= link_to 'seitenweise', :action => :index %>
+<% else -%>
+<%= link_to_if @member_pages.current.previous, '<<', :page => @member_pages.current.previous %>
+| <%= link_to 'alle', :action => :all %> |
+<%= link_to_if @member_pages.current.next, '>>', :page => @member_pages.current.next %>
+<% end -%>
+| <%= link_to 'Nach Instrumenten', :action => :select_instrument %>
+</div>
+
+<table class="members">
+<%= render :partial => 'member', :collection => @members %>
+</table>
+<% @title = "Besetzung - Instrument wählen" %>
+
+<ul>
+<% for instr in @instruments -%>
+<li>
+	<%= link_to h(instr.name), :action => :instrument, :id => instr.name %>
+	<span class="counter">(<%= h instr.members.size %>)</span>
+</li>
+<% end -%>
+</ul>
+<% @title = "Besetzung: #{@member.name}" -%>
+
+<dl>
+
+<dt>Instrument / Aufgabe:</dt>
+<dd><%= link_to_instruments_of @member %></dd>
+
+<dt>Geburtstag:</dt>
+<dd><%= h @member.birthday.to_s(:dots) %></dd>
+
+<dt>Adresse:</dt>
+<dd><%= h @member.street %><br /><%= h @member.plz %></dd>
+
+<dt>Telefon:</dt>
+<dd><%= h @member.phone %></dd>
+
+<dt>Email:</dt>
+<dd><%= mail_to @member.email, @member.email, :encode => 'javascript' %></dd>
+
+</dl>
+<tr class="member">
+	<td><%= link_to member.name, :action => :show, :id => member %>:
+		<%= link_to_instruments_of member %>
+	</td>
+</tr>
+<% @title = 'Arbeitsgruppen' -%>
+<p>
+	Die Arbeitsgruppen sind verantwortlich für die Organisation und Durchführung verschiedenster Aufgaben:
+</p>
+
+<ul class="liste">
+
+	<li><b>Plakate und Konzertkarten</b>
+	<ul>
+		<li>Frau Schraps</li>
+		<li>Paul-Robert Achcenich</li>
+		<li>Josefine Dahms</li>
+	</ul>
+	</li>
+
+	<li><b>Noten</b><br />
+	<ul>
+		<li>Frau Puppe</li>
+		<li>Theresa Rebin</li>
+	</ul>
+	</li>
+	
+	<li><b>Programme</b><br />
+	<ul>
+		<li>?</li>
+	</ul>
+	</li>
+	
+	<li><b>Instrumentenstransporte</b><br />
+	<ul>
+		<li>Frau Feldmann</li>
+		<li>Knut Müller</li>
+		<li>Patrick Wolter</li>
+		<li>Alexaner Wolf</li>
+	</ul>
+	</li>
+	
+	<li><b>Internetseite</b><br />
+	<ul>
+		<li>Frau Sternbeck</li>
+		<li>Uwe Ritzschke</li>
+		<li>Paul-Robert Achcenich</li>
+		<li>Knut Müller</li>
+		<li>Alexander Wolf</li>
+	</ul>
+	</li>
+	
+</ul>
+<% @title = 'Chronik' -%>
+<p>
+	Das Jugendsinfonieorchester Marzahn-Hellersdorf wurde im Januar 2005 an der 
+	Musikschule Marzahn-Hellersdorf gegründet und gab im Mai 2005 sein erstes 
+	umjubeltes Konzert im FEZ Wuhlheide. Das Orchester umfasst zur Zeit ca. 65 
+	jugendliche Musiker und soll auf die Größe eines ausgewachsenen 
+	Sinfonieorchesters erweitert werden (80-100 Musiker).
+</p>
+	
+<p>
+	Als musikalischer Leiter konnte der Dirigent und Echo-Preisträger Jobst 
+	Liebrecht gewonnen werden, der die Musikschule schon aus einer früheren 
+	Zusammenarbeit anlässlich der Kinderoper 'Pollicino' von Hans Werner Henze 
+	kennt. Das Orchester probt wöchentlich. Neben den Tuttiproben finden außerdem 
+	ebenfalls wöchentlich Stimmsatzproben statt, die von Lehrkräften betreut werden. 
+	Das gemeinsame Ziel ist der Aufbau eines leistungsstarken, lebendigen 
+	Klangkörpers, der die Jugendlichen und die Zuhörer ganz neu und direkt für die 
+	Orchestermusik begeistert und diese Musik in den sozialen Brennpunkt Marzahn-
+	Hellersdorf trägt. 
+</p>
+	
+<p>
+	Im Jahr sind etwa 2-3 Konzertprogramme geplant, mit denen wir in Konzertsälen 
+	auftreten. Das erste Konzert des Jugendsinfonieorchesters Marzahn-Hellersdorf 
+	wurde von DeutschlandRadio Kultur aufgezeichnet und in einer Sendung mit dem 
+	Titel &bdquo;EINSTAND: Nicht nur auf der Strasse herumhängen&rdquo; porträtiert.
+	Wir wollen außerdem vor Ort in Marzahn und Hellersdorf in die Öffentlichkeit
+	gehen und spielen, um so für die Kultur zu werben und auch weitere Kinder und 
+	Jugendliche für die Musik und fürs Mitmachen zu gewinnen. Durch die Einrichtung
+	eines zusätzlichen Vororchesters wird längerfristig versucht, die Arbeit auf ein 
+	breites Fundament zu stellen, eine Werkstatt, ein musikalisches Bauhaus zu 
+	gründen. Wenn die Orchesterarbeit erfolgreich angelaufen ist, sollen auch 
+	übergreifende Projekte (Theater, Tanz, Chor) stattfinden. 
+</p>
+
+<p>
+	Das Orchester will Musik von heute spielen in jedem Sinn, ob es sich um Stücke 
+	aus der sinfonischen Tradition handelt oder um zeitgenössische Musik. Wir kennen 
+	keine Berührungsängste und sind neugierig auf Musik aller Art und möchten diese 
+	Neugierde mit unserem Publikum teilen. 
+</p>
+<% @title = 'Dirigent - Jobst Liebrecht' -%>
+<p>
+	<%= image_tag 'jobstliebrecht.jpg', :alt => 'Jobst Liebrecht', :title => 'Jobst Liebrecht', :class => 'pic_right' %>
+	Jobst Liebrecht studierte Dirigieren an der Musikhochschule in München und bei Peter Eötvös. Sein spezielles Interesse 
+	für neue Musik führte schnell zur Zusammenarbeit mit renommierten Ensembles auf dem Gebiet wie dem Ensemble Modern, 
+	Frankfurt, dem Klangforum-Ensemble, Wien, dem Ensemble Köln sowie dem Ensemble United Berlin. Aufnahmen entstanden beim 
+	WDR, beim DeutschlandRadio Berlin, beim BR und beim SFB. Er dirigierte u.a. das Rundfunk Sinfonieorchester Berlin, die 
+	Duisburger Philharmoniker und das Münchner Kammerorchester sowie in den Opernhäusern in Halle und Giessen. Tourneen im 
+	Ausland führten ihn nach Argentinien, Georgien, Südkorea und in die USA.
+</p>
+	
+<p>
+	Zu den Ur- und Erstaufführungen, die er betreut hat, gehören die Opern 'Lunu' von Moritz Eggert, 'Gloria von Jaxtberg' von 
+	HK Gruber sowie in Zusammenarbeit mit dem Regisseur Einar Schleef das Musiktheaterspiel 'Der Golem in Bayreuth' von Ulla 
+	Berkewicz/Lesch Schmidt am Wiener Burgtheater.
+</p>
+	
+<p>
+	Jobst Liebrecht war mehrere Jahre lang Assistent von Hans Werner Henze und auch immer wieder pädagogisch tätig. Seine 
+	Aufnahme von Henzes Märchenoper 'Pollicino', die als CD bei Wergo erschienen ist, wurde mit dem ECHO-Preis 2004 in der 
+	Sparte 'Klassik für Kinder' ausgezeichnet.
+</p>
+
+<p>
+	Als Komponist ist Jobst Liebrecht mit Liedern, Kammermusik sowie Bühnenmusiken an die Öffentlichkeit getreten.
+</p>	
+<% message, backtrace = session[:boom] -%>
+<% @title = 'Fehler in Zeile %d' % [backtrace[/line\s+#(\d+)/,1]] -%>
+<div class="flash">
+<div class="error"><%= h message %></div>
+</div>
+<%= debug backtrace %>
+<% cache :action_suffix => (action = params[:action]) do -%>
+<p>
+Der Inhalt für die Aktion <%= h action.inspect %> fehlt noch.
+</p>
+<% end -%>
+<% @title = 'Schulferien Berlin' -%>
+<p>
+	Unser Orchester besteht zu einem sehr großen Teil aus Schülern und auch die
+	Musikschule, der die meisten von uns entstammen, hat in den Schulferien
+	geschlossen.<br />
+	Deshalb finden innerhalb der <strong>Berliner Ferienzeiten keine Proben</strong> statt.
+</p>
+
+<table cellspacing="0" summary="Schulferien" class="ferien">
+	<tr>
+  	<th scope="col" class="ferien_zeitraum">Zeitraum</th>
+		<th scope="col" class="ferien_jahr">2006</th>
+	  <th scope="col" class="ferien_jahr">2007</th>
+	  <th scope="col" class="ferien_jahr">2008</th>
+	</tr>
+	
+	<tr>
+		<td class="ferien_zeitraum">
+			Winter</td>
+		<td class="ferien_jahr">
+			30.01. - 03.02.</td>
+		<td class="ferien_jahr">
+			05.02. - 10.02.</td>
+		<td class="ferien_jahr">
+			04.02. - 09.02.</td>
+	</tr>
+	
+	<tr>
+		<td class="ferien_zeitraum">
+			Ostern/Frühjahr</td>
+		<td class="ferien_jahr">
+			10.04. - 21.04.</td>
+		<td class="ferien_jahr">
+			02.04. - 13.04.</td>
+		<td class="ferien_jahr">
+			17.03. - 28.03.</td>
+	</tr>
+	
+	<tr>
+		<td class="ferien_zeitraum">
+			Himmelf./Pfingsten</td>
+		<td class="ferien_jahr">
+			30.04. / 18.05.</td>
+		<td class="ferien_jahr">
+			30.04. / 18.05.</td>
+		<td class="ferien_jahr">
+			02.05.</td>
+	</tr>
+
+	<tr>
+		<td class="ferien_zeitraum">
+			Sommer</td>
+		<td class="ferien_jahr">
+			06.07. - 19.08.</td>
+		<td class="ferien_jahr">
+			12.07. - 25.08.</td>
+		<td class="ferien_jahr">
+			17.07. - 30.08.</td>
+	</tr>
+	
+	<tr>
+		<td class="ferien_zeitraum">
+			Herbst</td>
+		<td class="ferien_jahr">
+			02.10. - 14.10.</td>
+		<td class="ferien_jahr">
+			15.10. - 27.10.</td>
+		<td class="ferien_jahr">
+			</td>
+	</tr>
+		
+	<tr>
+		<td class="ferien_zeitraum">
+			Weihnachten</td>
+		<td class="ferien_jahr">
+			27.12. - 05.01.07</td>
+		<td class="ferien_jahr">
+			24.12. - 04.01.08</td>
+		<td class="ferien_jahr">
+			</td>
+	</tr>
+		
+</table>
+<% @title = 'Termine' -%>
+
+<ul>
+	<li><%= link_to 'Auftritte', :controller => '/auftritte' %></li>
+	<li><%= link_to 'Schulferien', :controller => '/content', :action => :schulferien %></li>
+</ul>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+<head>
+	<%= tag 'meta', :'http-equiv' => 'content-language', :content => 'de' %>
+	<%= tag 'meta', :'http-equiv' => 'content-type', :content => 'text/html; charset=UTF-8' %>
+	<meta name="AUTHOR" content="Knut Müller, Alexander Wolf, Uwe Ritzschke, Paul-Robert Achcenich" />
+	<meta name="Publisher" content="Knut Müller, Alexander Wolf, Uwe Ritzschke, Paul-Robert Achcenich" />
+	<meta name="Copyright" content="Knut Müller, Alexander Wolf, Uwe Ritzschke, Paul-Robert Achcenich, 2006" />
+	<meta name="Keywords" content="Jugendsinfonieorchester,Marzahn,Hellersdorf,Marzahn-Hellersdorf,Berlin,Orchester,Jobst Liebrecht,FEZ,Pollicino,Moritz Eggert,Popel,Konzert" />
+	<meta name="Description" content="JSO - JugendSinfonieOrchester der Musikschule Marzahn-Hellerdorf in Berlin" />
+	<meta name="Page-topic" content="JSO Marzahn-Hellersdorf - " />
+
+	<meta name="Audience" content="Alle" />
+	<meta name="content-language" content="DE" />
+	<meta name="Page-Type" content="Homepage" />
+	<meta name="robots" content="all" />
+
+	<title>JSO<%-if @title-%> - <%= h @title %><%- end -%></title>
+	<%= stylesheet_link_tag '/rcss/main' %>
+	<%#= stylesheet_link_tag 'main' %>
+	<%= javascript_include_tag 'nospam' %>
+	<%#= javascript_include_tag :defaults %>
+</head>
+
+<body>
+
+<table style="width:100%; height:100%;" cellspacing="10">
+	<tr>
+		<td style="height:120px; width:15%;text-align:center;vertical-align:middle;">
+			<%= image_tag 'JSO-Logo.gif', :alt => 'JSO-Logo' %>
+		</td>
+		<td id="title">
+			<div id="musikschule"><a href="http://www.musikschule-marzahn-hellersdorf.de">Musikschule Marzahn Hellersdorf</a></div>
+			<div id="orchester"><strong>j</strong>ugend<strong>s</strong>infonie<strong>o</strong>rchester</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="width:15%;">
+<% if valid_user -%>
+<ul>
+	<li class="menu2"><%= link_to "Logout #{valid_user.name}", :controller => '/admin/admin', :action => :logout %></li>
+</ul>
+<% end -%>
+<% cache :controller => 'menu', :action => 'main_menu' do -%>
+	<%= render_component :controller => 'menu', :action => 'index' %>
+<% end -%>
+		</td>
+		<td id="main">
+<% unless @flash.keys.empty? -%>
+<div class="flash">
+	<%- for kind, msg in @flash -%>
+		<div class="<%= h kind %>"><%= h msg %></div>
+	<%- end -%>
+</div>
+<% end -%>
+<%= content_tag 'h3', h(@title) if @title %>
+<%= @content_for_layout %>
+		</td>
+	</tr>
+	<tr>
+		<td style="height:80px; width:15%;">
+		</td>
+		<td style="height:80px;">
+			<div style="position:relative; top:80px; right:0px; text-align:right; font-size: x-small; color: #003;">
+				powered by <a href="http://rubyonrails.org">Ruby on Rails</a> <%= Rails::Info.properties.value_for 'Rails version' %> [<%= h RAILS_ENV[/^./] %>]
+				<%= image_tag 'css.png', :alt => 'valid CSS', :title => 'valid Cascading Style Sheet', :style => 'display: inline; vertical-align: middle' %>
+				<%= image_tag 'xhtml11.png', :alt => 'valid XHTML 1.1', :title => 'valid eXtensible Hypertext Markup Language 1.1', :style => 'display: inline; vertical-align: middle' %>
+			</div>
+		</td>
+	</tr>
+</table>
+
+</body>
+
+</html>
+<% @title = 'Übersicht' -%>
+
+<h4>nächste Probe</h4>
+<table cellspacing="0" summary="Probenplan: Wann wird Was geprobt?" class="proben">
+	<%= render :partial => 'proben/head' %>
+	<%= render :partial => 'proben/day', :object => @next_probe %>
+</table>
+<h4><%= link_to 'weitere Proben...', :controller => 'proben' %></h4>
+
+<h4>nächster Auftritt</h4>
+<table cellspacing="0" summary="Auftritte: Wann treten wir Wo auf?" class="auftritte">
+	<%= render :partial => 'auftritte/head' %>
+	<%= render :partial => 'auftritte/day', :object => @next_auftritt %>
+</table>
+<h4><%= link_to 'mehr Auftritte...', :controller => 'auftritte' %></h4>
+<ul>
+	<%= category 'Übersicht', home_url %>
+	<%= subcat 'Wer sind wir?', :wer %>
+	<%= subcat 'Dirigent' %>
+	<%= subcat 'Besetzung', url_for(:controller => '/besetzung') %>
+	<%= subcat 'Repertoire' %>
+
+	<%= category 'Termine' %>
+	<%= subcat 'Auftritte', url_for(:controller => '/auftritte', :action => :plan) %>
+	<%= subcat 'Schulferien' %>
+
+	<%= category 'Probenplan', url_for(:controller => '/proben', :action => :plan) %>
+
+	<%= category 'Organisation' %>
+	<%= subcat 'Orchesterrat' %>
+	<%= subcat 'Arbeitsgruppen' %>
+
+	<%= category 'Chronik' %>
+	<%= subcat 'Konzerte' %>
+	<%= subcat 'Audio' %>
+	<%= subcat 'Presse' %>
+
+	<%= category 'Links', '#' %>
+	<%= subcat 'Bilderseite', 'http://musikschule.iden04.de' %>
+	<%= subcat 'Musikschule', 'http://www.musikschule-marzahn-hellersdorf.de' %>
+
+	<li><br /></li>
+
+	<%= category 'Kontakt' %>
+</ul>
+<% @title = 'Probenplan' %>
+
+<table cellspacing="0" summary="Probenplan: Wann wird Was geprobt?">
+	<%= render :partial => 'head' %>
+	<%= render :partial => 'day', :collection => @days %>
+</table>
+
+<p style="font-size:14px; margin-top:-10px; padding-top:0px; padding-left:40px;">
+Ort (wenn nicht anders angegeben): Schule am Pappelhof
+</p>	
+
+<%= render_partial 'raum' %>
+<% day, proben = *day -%>
+<%
+	for probe in proben 
+-%>
+
+<tr>
+	<td class="pplan_datum">
+		<%= colorize day.to_s(:dots) if day %>
+		<% if day and day.wday == 6 %><br /><em>Samstag</em><% end %>
+	</td>
+	<td class="pplan_zeit">
+		<%= colorize probe.time %>
+	</td>
+	<td class="pplan_stueck">
+		<%= colorize(probe.place, 'Ort: ') + '<br />' unless probe.place.blank? %>
+		<%= colorize probe.program %>
+		<%= link_to 'E', :controller => 'admin/proben', :action => :edit, :id => probe %>
+	</td>
+	<td class="pplan_besetzung">
+		<%= h probe.instrumentation %>
+	</td>
+</tr>
+
+<%
+	day = nil
+	end 
+-%>
+<tr>
+	<th scope="col" class="pplan_datum">Datum</th>
+	<th scope="col" class="pplan_zeit">Zeit</th>
+	<th scope="col" class="pplan_stueck">Stücke</th>
+	<th scope="col" class="pplan_besetzung">Besetzung</th>
+</tr>
+<h4>Probenräume</h4>
+<table cellspacing="0" summary="Probenräume: Wer probt Wo?">
+	<tr>
+		<th scope="col" class="praum_wer">Wer</th>
+		<th scope="col" class="praum_raum">Raum</th>
+		<th scope="col" class="praum_adresse">Adresse</th>
+
+	</tr>
+	<tr>
+		<td class="praum_wer">Streicher</td>
+		<td class="praum_raum">Schule am Pappelhof<br />(Raum Nr.)</td>
+		<td class="praum_adresse">(Anschrifft Pappelhofschule)</td>
+	</tr>
+	<tr>
+
+		<td class="praum_wer">Blechbläser</td>
+		<td class="praum_raum">Musikschule Marzahn<br />(Raum Nr.)</td>
+		<td class="praum_adresse">(Anschrifft Musikscule Marzahn)</td>
+	</tr>
+	<tr>
+		<td class="praum_wer">Holzbläser</td>
+
+		<td class="praum_raum">Schule am Pappelhof<br />(Raum Nr.)</td>
+		<td class="praum_adresse">(Anschrifft Pappelhofschule)</td>
+	</tr>
+	<tr>
+		<td class="praum_wer">...</td>
+		<td class="praum_raum">(Ort)<br />(Raum Nr.)</td>
+
+		<td class="praum_adresse">(Anschrifft)</td>
+	</tr>
+</table>

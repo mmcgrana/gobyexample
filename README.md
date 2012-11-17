@@ -30,14 +30,6 @@ To build continuously in a loop:
 $ tools/build-loop
 ```
 
-Builds require the [`pygmentize`](http://pygments.org/)
-binary for syntax highlighting. We suggesting using the
-most recent version from Bitbucket with e.g.:
-
-```console
-$ export PATH="$HOME/repos/pygments:$PATH"
-```
-
 
 ### Local Deploy
 
@@ -82,8 +74,6 @@ $ heroku certs:add /tmp/server.crt /tmp/server.key -r $DEPLOY
 $ heroku config:add CANONICAL_HOST=$DOMAIN -r $DEPLOY
 $ heroku open -r $DEPLOY
 ```
-
-
 
 
 ### License

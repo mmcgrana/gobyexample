@@ -1,0 +1,38 @@
+#!bash
+#
+# Bash completion support for Pygments (the 'pygmentize' command).
+#
+
+_pygmentize()
+{
+    local cur prev
+
+    COMPREPLY=()
+    cur=`_get_cword`
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    case "$prev" in
+        -f)
+            FORMATTERS=`pygmentize -L formatters | grep '* ' | cut -c3- | sed -e 's/,//g' -e 's/:$//'` 
+            COMPREPLY=( $( compgen -W '$FORMATTERS' -- "$cur" ) )
+            return 0
+            ;;
+        -l)
+            LEXERS=`pygmentize -L lexers | grep '* ' | cut -c3- | sed -e 's/,//g' -e 's/:$//'` 
+            COMPREPLY=( $( compgen -W '$LEXERS' -- "$cur" ) )
+            return 0
+            ;;
+        -S)
+            STYLES=`pygmentize -L styles | grep '* ' | cut -c3- | sed s/:$//`
+            COMPREPLY=( $( compgen -W '$STYLES' -- "$cur" ) )
+            return 0
+            ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '-f -l -S -L -g -O -P -F \
+                                   -N -H -h -V -o' -- "$cur" ) )
+        return 0
+    fi
+}
+complete -F _pygmentize -o default pygmentize

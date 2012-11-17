@@ -1,0 +1,2 @@
+  File "temp.py", line 1
+SyntaxError: Non-ASCII character '\xc3' in file temp.py on line 1, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details

@@ -1,0 +1,33 @@
+   ## a comment
+
+\## not a comment
+
+#if foo
+  ${bar}
+#endif
+
+The answer is:
+#choose
+  #when 0 == 1
+    0
+  #end
+  #when 1 == 1
+    1
+  #end
+  #otherwise
+    2
+  #end
+#end -- comment about choose
+
+#for item in items
+  * ${item}
+#end
+
+#def greeting(name)
+  Hello, ${name}!
+#end
+${greeting('world')}
+
+#with y=7; z=x+10
+  $x $y $z
+#end

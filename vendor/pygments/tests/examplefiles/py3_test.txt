@@ -1,0 +1,2 @@
+class Käse:
+    pass

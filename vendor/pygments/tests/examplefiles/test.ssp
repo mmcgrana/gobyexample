@@ -1,0 +1,12 @@
+<%@ val someName: String = "someDefaultValue" %>
+<% import com.acme.MySnippets._ %>
+<html>
+<body>
+<h1>Hello ${someName}%</h1>
+
+<ul>
+<%= for (person <- people) { %>
+  <li>${person.name}</li>
+<% } %>
+</ul>  
+
