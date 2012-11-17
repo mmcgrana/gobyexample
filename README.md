@@ -1,6 +1,6 @@
 ## Go by Example
 
-Content and toolchain for [Go by Example](https://gobyexample.com).
+Content, toolchain, and web server for [Go by Example](https://gobyexample.com).
 
 
 ### Overview
@@ -10,10 +10,9 @@ comments from source files in `examples` and rendering
 that data via the site `templates`. The programs
 implementing this build process are in `tools`.
 
-The build process produces a directory of static files
-suitable for serving by any modern HTTP server. The
-Go by Example site is served by a
-[lightweight Go server](https://github.com/mmcgrana/gobyexample-server).
+The build process produces a directory of static files -
+`public` - suitable for serving by any modern HTTP server.
+We include a lightweight Go server in `server.go`.
 
 
 ### Building
