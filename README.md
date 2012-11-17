@@ -60,7 +60,7 @@ Basic setup:
 $ export DEPLOY=$USER
 $ heroku create gobyexample-$DEPLOY -r $DEPLOY
 $ heroku config:add -r $DEPLOY \
-    BUILDPACK_URL=https://github.com/kr/heroku-buildpack-go.git -r $DEPLOY \
+    BUILDPACK_URL=https://github.com/mmcgrana/heroku-buildpack-go.git -r $DEPLOY \
     CANONICAL_HOST=gobyexample-$DEPLOY.herokuapp.com -r $DEPLOY \
     FORCE_HTTPS=1 \
     AUTH=go:byexample
