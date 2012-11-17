@@ -205,7 +205,7 @@ floats. For basic decimal formatting use <code>%f</code>.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span>
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%f\n&quot;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -353,7 +353,7 @@ and returns a string without printing it anywhere.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;a %s &quot;</span><span class="p">,</span> <span class="s">&quot;string&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;a %s&quot;</span><span class="p">,</span> <span class="s">&quot;string&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 </pre></div>
 
@@ -383,29 +383,30 @@ and returns a string without printing it anywhere.</p>
             
           </td>
           <td class="code">
-            <div class="highlight"><pre><span class="gp">$</span> go run string-formatting.go 
-<span class="go">{1 2} </span>
-<span class="go">{x:1 y:2} </span>
-<span class="go">main.point{x:1, y:2} </span>
-<span class="go">main.point </span>
-<span class="go">true </span>
-<span class="go">123 </span>
-<span class="go">1110 </span>
-<span class="go">! </span>
-<span class="go">1c8 </span>
-<span class="go">78.9000001.234000e+08 </span>
-<span class="go">1.234000E+08 </span>
-<span class="go">&quot;string&quot; </span>
-<span class="go">&quot;\&quot;string\&quot;&quot; </span>
-<span class="go">6865782074686973 </span>
-<span class="go">0x42134100 </span>
-<span class="go">|    12|   345| </span>
-<span class="go">|  1.20|  3.45| </span>
-<span class="go">|1.20  |3.45  | </span>
+            <div class="highlight"><pre><span class="gp">$</span> go run string-formatting.go
+<span class="go">{1 2}</span>
+<span class="go">{x:1 y:2}</span>
+<span class="go">main.point{x:1, y:2}</span>
+<span class="go">main.point</span>
+<span class="go">true</span>
+<span class="go">123</span>
+<span class="go">1110</span>
+<span class="go">!</span>
+<span class="go">1c8</span>
+<span class="go">78.900000</span>
+<span class="go">1.234000e+08</span>
+<span class="go">1.234000E+08</span>
+<span class="go">&quot;string&quot;</span>
+<span class="go">&quot;\&quot;string\&quot;&quot;</span>
+<span class="go">6865782074686973</span>
+<span class="go">0x42135100</span>
+<span class="go">|    12|   345|</span>
+<span class="go">|  1.20|  3.45|</span>
+<span class="go">|1.20  |3.45  |</span>
 <span class="go">|   foo|     b|</span>
 <span class="go">|foo   |b     |</span>
-<span class="go">a string </span>
-<span class="go">an error </span>
+<span class="go">a string</span>
+<span class="go">an error</span>
 </pre></div>
 
           </td>
