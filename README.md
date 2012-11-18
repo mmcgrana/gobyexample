@@ -49,15 +49,15 @@ $ foreman open
 Basic setup:
 
 ```bash
-$ export DEPLOY=$USER
-$ heroku create gobyexample-$DEPLOY -r $DEPLOY
-$ heroku config:add -r $DEPLOY \
-    CANONICAL_HOST=gobyexample-$DEPLOY.herokuapp.com -r $DEPLOY \
+$ export APP=gobyexample-$USER
+$ heroku create $APP
+$ heroku config:add -a $APP
+    CANONICAL_HOST=$APP.herokuapp.com \
     FORCE_HTTPS=1 \
     AUTH=go:byexample
-$ heroku labs:enable dot-profile-d -r $REMOTE
-$ heroku push -r gobyexample-$DEPLOY -b https://github.com/mmcgrana/buildpack-go.git
-$ heroku open -r $DEPLOY
+$ heroku labs:enable dot-profile-d -a $APP
+$ heroku push -r $APP -b https://github.com/mmcgrana/buildpack-go.git
+$ heroku open -a $APP
 ```
 
 Add a domain + SSL:
