@@ -56,7 +56,7 @@ $ heroku config:add -a $APP
     FORCE_HTTPS=1 \
     AUTH=go:byexample
 $ heroku labs:enable dot-profile-d -a $APP
-$ heroku push -r $APP -b https://github.com/mmcgrana/buildpack-go.git
+$ heroku build -r $APP -b https://github.com/mmcgrana/buildpack-go.git
 $ heroku open -a $APP
 ```
 
