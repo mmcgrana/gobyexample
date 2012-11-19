@@ -49,14 +49,16 @@ $ foreman open
 Basic setup:
 
 ```bash
+$ export DEPLOY=$USER
 $ export APP=gobyexample-$USER
-$ heroku create $APP
+$ heroku create $APP -r $DEPLOY
 $ heroku config:add -a $APP
+    BUILDPACK_URL=https://github.com/mmcgrana/buildpack-go.git
     CANONICAL_HOST=$APP.herokuapp.com \
     FORCE_HTTPS=1 \
     AUTH=go:byexample
 $ heroku labs:enable dot-profile-d -a $APP
-$ heroku build -r $APP -b https://github.com/mmcgrana/buildpack-go.git
+$ git push $DEPLOY master
 $ heroku open -a $APP
 ```
 
