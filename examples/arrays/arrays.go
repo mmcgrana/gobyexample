@@ -24,7 +24,7 @@ func main() {
     // The builtin `len` returns the length of an array.
     fmt.Println("len:", len(a))
 
-    // Use this syntax to declare and initalize an array
+    // Use this syntax to declare and initialize an array
     // in one line.
     b := [5]int{1, 2, 3, 4, 5}
     fmt.Println("dcl:", b)
