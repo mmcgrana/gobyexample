@@ -115,7 +115,7 @@ channel. We&rsquo;ll stop ours after 1500ms.</p>
         <tr>
           <td class="docs">
             <p>When we run this program the ticker should tick 3 times
-befor we stop it.</p>
+before we stop it.</p>
 
           </td>
           <td class="code">

@@ -113,7 +113,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Use this syntax to declare and initalize an array
+            <p>Use this syntax to declare and initialize an array
 in one line.</p>
 
           </td>
