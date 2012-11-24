@@ -29,7 +29,7 @@ func main() {
     }
 
     // `range` on map iterates over key/value pairs.
-    kvs := map[string]string{"a": "apple", "b": "bannana"}
+    kvs := map[string]string{"a": "apple", "b": "banana"}
     for k, v := range kvs {
         fmt.Printf("%s -> %s\n", k, v)
     }
