@@ -17,7 +17,7 @@ import "os/exec"
 func main() {
 
     // For our example we'll exec `ls`. Go requires an
-    // abolute path to the binary we want to execute, so
+    // absolute path to the binary we want to execute, so
     // we'll use `exec.LookPath` to find it (probably
     // `/bin/ls`).
     binary, lookErr := exec.LookPath("ls")
@@ -36,7 +36,7 @@ func main() {
     env := os.Environ()
 
     // Here's the actual `os.Exec` call. If this call is
-    // succesful, the execution of our process will end
+    // successful, the execution of our process will end
     // here and be replaced by the `/bin/ls -a -l -h`
     // process. If there is an error we'll get a return
     // value.
