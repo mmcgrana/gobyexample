@@ -192,7 +192,7 @@ accomplishes this.</p>
         <tr>
           <td class="docs">
             <p>The <code>bufio</code> package implements a buffered
-reader that may be useful both for it&rsquo;s efficiency
+reader that may be useful both for its efficiency
 with many small reads and because of the additional
 reading methods it provides.</p>
 

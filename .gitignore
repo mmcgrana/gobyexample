@@ -1,2 +1,2 @@
 .anvil
-**/**.pyc
+*.pyc

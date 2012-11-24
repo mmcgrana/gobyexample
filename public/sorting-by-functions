@@ -80,7 +80,7 @@ type.</p>
             <p>We implement <code>sort.Interface</code> - <code>Len</code>, <code>Less</code>, and
 <code>Swap</code> - on our type so we can use the <code>sort</code> package&rsquo;s
 generic <code>Sort</code> function. <code>Len</code> and <code>Swap</code>
-will usually be similar accross types and <code>Less</code> will
+will usually be similar across types and <code>Less</code> will
 hold the actual custom sorting logic. In our case we
 want to sort in order of increasing string length, so
 we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>

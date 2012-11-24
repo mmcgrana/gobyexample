@@ -112,7 +112,7 @@ the indexes though.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">kvs</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;bannana&quot;</span><span class="p">}</span>
+            <div class="highlight"><pre>    <span class="nx">kvs</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;banana&quot;</span><span class="p">}</span>
     <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">kvs</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s -&gt; %s\n&quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
     <span class="p">}</span>

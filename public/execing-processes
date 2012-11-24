@@ -79,7 +79,7 @@ function.</p>
         <tr>
           <td class="docs">
             <p>For our example we&rsquo;ll exec <code>ls</code>. Go requires an
-abolute path to the binary we want to execute, so
+absolute path to the binary we want to execute, so
 we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
 <code>/bin/ls</code>).</p>
 
@@ -125,7 +125,7 @@ environment.</p>
         <tr>
           <td class="docs">
             <p>Here&rsquo;s the actual <code>os.Exec</code> call. If this call is
-succesful, the execution of our process will end
+successful, the execution of our process will end
 here and be replaced by the <code>/bin/ls -a -l -h</code>
 process. If there is an error we&rsquo;ll get a return
 value.</p>
