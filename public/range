@@ -151,7 +151,7 @@ of the <code>rune</code> and the second the <code>rune</code> itself.</p>
 <span class="go">sum: 9</span>
 <span class="go">index: 1</span>
 <span class="go">a -&gt; apple</span>
-<span class="go">b -&gt; bannana</span>
+<span class="go">b -&gt; banana</span>
 <span class="go">0 103</span>
 <span class="go">1 111</span>
 </pre></div>
