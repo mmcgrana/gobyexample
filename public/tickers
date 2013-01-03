@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="tickers">
       <h2><a href="./">Go by Example</a>: Tickers</h2>
+      <a href="http://play.golang.org/p/U0PO7ZZU3l"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -33,7 +34,7 @@ periodically until we stop it.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -42,7 +43,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -53,7 +54,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;time&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -65,7 +66,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -80,7 +81,7 @@ the values as they arrive every 500ms.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">500</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">500</span><span class="p">)</span>
     <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ticker</span><span class="p">.</span><span class="nx">C</span> <span class="p">{</span>
             <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Tick at&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
@@ -99,7 +100,7 @@ channel. We&rsquo;ll stop ours after 1500ms.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">1500</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">1500</span><span class="p">)</span>
     <span class="nx">ticker</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Ticker stopped&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -119,7 +120,7 @@ before we stop it.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre><span class="gp">$</span> go run tickers.go
+              <div class="highlight"><pre><span class="gp">$</span> go run tickers.go
 <span class="go">Tick at 2012-09-23 11:29:56.487625 -0700 PDT</span>
 <span class="go">Tick at 2012-09-23 11:29:56.988063 -0700 PDT</span>
 <span class="go">Tick at 2012-09-23 11:29:57.488076 -0700 PDT</span>

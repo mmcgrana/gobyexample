@@ -142,6 +142,7 @@ func router() *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/", static).Methods("GET")
 	router.HandleFunc("/favicon.ico", static).Methods("GET")
+	router.HandleFunc("/play_icon.png", static).Methods("GET")
 	router.HandleFunc("/site.css", static).Methods("GET")
 	entries, err := ioutil.ReadDir("public")
 	check(err)

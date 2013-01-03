@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="exit">
       <h2><a href="./">Go by Example</a>: Exit</h2>
+      <a href="http://play.golang.org/p/CDiAh9SXRM"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -30,7 +31,7 @@ status.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -39,7 +40,7 @@ status.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -50,7 +51,7 @@ status.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;os&quot;</span>
 </pre></div>
 
@@ -62,7 +63,7 @@ status.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -75,7 +76,7 @@ this <code>fmt.Println</code> will never be called.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -87,7 +88,7 @@ this <code>fmt.Println</code> will never be called.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -103,7 +104,7 @@ use <code>os.Exit</code>.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         
@@ -118,7 +119,7 @@ will be picked up by <code>go</code> and printed.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run exit.go
+              <div class="highlight"><pre><span class="gp">$</span> go run exit.go
 <span class="go">exit status 3</span>
 </pre></div>
 
@@ -132,7 +133,7 @@ the status in the terminal.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go build exit.go
+              <div class="highlight"><pre><span class="gp">$</span> go build exit.go
 <span class="gp">$</span> ./exit
 <span class="gp">$</span> <span class="nb">echo</span> <span class="nv">$?</span>
 <span class="go">3</span>
@@ -147,7 +148,7 @@ the status in the terminal.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         

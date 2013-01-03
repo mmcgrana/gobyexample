@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="closing-channels">
       <h2><a href="./">Go by Example</a>: Closing Channels</h2>
+      <a href="http://play.golang.org/p/eFZ2SeKswH"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -31,7 +32,7 @@ completion to the channel&rsquo;s receivers.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -40,7 +41,7 @@ completion to the channel&rsquo;s receivers.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -51,7 +52,7 @@ completion to the channel&rsquo;s receivers.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
           </td>
@@ -66,7 +67,7 @@ the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
 </pre></div>
@@ -86,7 +87,7 @@ all our jobs.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">{</span>
             <span class="nx">j</span><span class="p">,</span> <span class="nx">more</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
             <span class="k">if</span> <span class="nx">more</span> <span class="p">{</span>
@@ -110,7 +111,7 @@ channel, then closes it.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
         <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent job&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
     <span class="p">}</span>
@@ -129,7 +130,7 @@ we saw earlier.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="o">&lt;-</span><span class="nx">done</span>
+              <div class="highlight"><pre>    <span class="o">&lt;-</span><span class="nx">done</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -145,7 +146,7 @@ we saw earlier.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run closing-channels.go 
+              <div class="highlight"><pre><span class="gp">$</span> go run closing-channels.go 
 <span class="go">sent job 1</span>
 <span class="go">received job 1</span>
 <span class="go">sent job 2</span>
@@ -166,7 +167,7 @@ example: <code>range</code> over channels.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         
