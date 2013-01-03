@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="mutexes">
       <h2><a href="./">Go by Example</a>: Mutexes</h2>
+      <a href="http://play.golang.org/p/XyCF9MhlzB"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -32,7 +33,7 @@ to safely access data across multiple goroutines.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -41,7 +42,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -52,7 +53,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;fmt&quot;</span>
     <span class="s">&quot;math/rand&quot;</span>
     <span class="s">&quot;runtime&quot;</span>
@@ -70,7 +71,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -82,7 +83,7 @@ to safely access data across multiple goroutines.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -94,7 +95,7 @@ to safely access data across multiple goroutines.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">mutex</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">{}</span>
+              <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">mutex</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">{}</span>
 </pre></div>
 
           </td>
@@ -108,7 +109,7 @@ operations we perform against the state.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
+              <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
 </pre></div>
 
           </td>
@@ -121,7 +122,7 @@ reads against the state.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
             <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
             <span class="k">for</span> <span class="p">{</span>
@@ -141,7 +142,7 @@ the <code>ops</code> count.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+              <div class="highlight"><pre>                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
                 <span class="nx">total</span> <span class="o">+=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
@@ -164,7 +165,7 @@ case we need to do it manually.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+              <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
             <span class="p">}</span>
         <span class="p">}()</span>
     <span class="p">}</span>
@@ -180,7 +181,7 @@ using the same pattern we did for reads.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">for</span> <span class="p">{</span>
                 <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -205,7 +206,7 @@ using the same pattern we did for reads.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -217,7 +218,7 @@ using the same pattern we did for reads.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
 </pre></div>
 
@@ -230,7 +231,7 @@ using the same pattern we did for reads.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+              <div class="highlight"><pre>    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state:&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
     <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
 <span class="p">}</span>
@@ -251,7 +252,7 @@ using the same pattern we did for reads.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run mutexes.go
+              <div class="highlight"><pre><span class="gp">$</span> go run mutexes.go
 <span class="go">ops: 3598302</span>
 <span class="go">state: map[1:38 4:98 2:23 3:85 0:44]</span>
 </pre></div>
@@ -266,7 +267,7 @@ management task using only goroutines and channels.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         

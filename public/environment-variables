@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="environment-variables">
       <h2><a href="./">Go by Example</a>: Environment Variables</h2>
+      <a href="http://play.golang.org/p/kfqLhpmEpw"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -32,7 +33,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -41,7 +42,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -52,7 +53,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;os&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;os&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;strings&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -65,7 +66,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -80,7 +81,7 @@ environment.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;FOO:&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;BAR:&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;BAR&quot;</span><span class="p">))</span>
 </pre></div>
@@ -97,7 +98,7 @@ get the key and value. Here we print all the keys.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+              <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Environ</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">pair</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">)</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -120,7 +121,7 @@ value for <code>FOO</code> that we set in the program, but that
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run environment-variables.go
+              <div class="highlight"><pre><span class="gp">$</span> go run environment-variables.go
 <span class="go">FOO: 1</span>
 <span class="go">BAR: </span>
 </pre></div>
@@ -135,7 +136,7 @@ particular machine.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="go">TERM_PROGRAM</span>
+              <div class="highlight"><pre><span class="go">TERM_PROGRAM</span>
 <span class="go">PATH</span>
 <span class="go">SHELL</span>
 <span class="go">...</span>
@@ -151,7 +152,7 @@ program picks that value up.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre><span class="gp">$</span> <span class="nv">BAR</span><span class="o">=</span>2 go run environment-variables.go
+              <div class="highlight"><pre><span class="gp">$</span> <span class="nv">BAR</span><span class="o">=</span>2 go run environment-variables.go
 <span class="go">FOO: 1</span>
 <span class="go">BAR: 2</span>
 <span class="go">...</span>

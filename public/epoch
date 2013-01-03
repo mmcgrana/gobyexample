@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="epoch">
       <h2><a href="./">Go by Example</a>: Epoch</h2>
+      <a href="http://play.golang.org/p/3jXHvYbLUz"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -32,7 +33,7 @@ Here&rsquo;s how to do it in Go.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -41,7 +42,7 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -52,7 +53,7 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;time&quot;</span>
 </pre></div>
 
@@ -64,7 +65,7 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -78,7 +79,7 @@ nanoseconds, respectively.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+              <div class="highlight"><pre>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
     <span class="nx">secs</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()</span>
     <span class="nx">nanos</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">UnixNano</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
@@ -95,7 +96,7 @@ dive from nanoseconds.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
+              <div class="highlight"><pre>    <span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">secs</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">millis</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">)</span>
@@ -111,7 +112,7 @@ since the epoch into the corresponding <code>time</code>.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+              <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">nanos</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
@@ -128,7 +129,7 @@ since the epoch into the corresponding <code>time</code>.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run epoch.go 
+              <div class="highlight"><pre><span class="gp">$</span> go run epoch.go 
 <span class="go">2012-10-31 16:13:58.292387 +0000 UTC</span>
 <span class="go">1351700038</span>
 <span class="go">1351700038292</span>
@@ -147,7 +148,7 @@ parsing and formatting.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         

@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="sha1-hashes">
       <h2><a href="./">Go by Example</a>: SHA1 Hashes</h2>
+      <a href="http://play.golang.org/p/YUaWWEeB4U"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -34,7 +35,7 @@ compute SHA1 hashes in Go.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -43,7 +44,7 @@ compute SHA1 hashes in Go.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -56,7 +57,7 @@ compute SHA1 hashes in Go.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;crypto/sha1&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;crypto/sha1&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -68,7 +69,7 @@ compute SHA1 hashes in Go.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;sha1 this string&quot;</span>
 </pre></div>
 
@@ -83,7 +84,7 @@ Here we start with a new hash.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha1</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+              <div class="highlight"><pre>    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha1</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 </pre></div>
 
           </td>
@@ -96,7 +97,7 @@ use <code>[]byte(s)</code> to coerce it to bytes.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">h</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+              <div class="highlight"><pre>    <span class="nx">h</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -110,7 +111,7 @@ to an existing byte slice: it usually isn&rsquo;t needed.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nx">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nx">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -124,7 +125,7 @@ a hash results to a hex string.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -143,7 +144,7 @@ a human-readable hex format.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run sha1-hashes.go
+              <div class="highlight"><pre><span class="gp">$</span> go run sha1-hashes.go
 <span class="go">sha1 this string</span>
 <span class="go">cf23df2207d99a74fbe169e3eba035e633b65d94</span>
 </pre></div>
@@ -159,7 +160,7 @@ import <code>crypto/md5</code> and use <code>md5.New()</code>.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -171,7 +172,7 @@ you should carefully research
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         

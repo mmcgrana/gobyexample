@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="string-functions">
       <h2><a href="./">Go by Example</a>: String Functions</h2>
+      <a href="http://play.golang.org/p/WbUO1Ohzi7"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -31,7 +32,7 @@ to give you a sense of the package.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -40,7 +41,7 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -51,7 +52,7 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="nx">s</span> <span class="s">&quot;strings&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="nx">s</span> <span class="s">&quot;strings&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -65,7 +66,7 @@ it a lot below.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+              <div class="highlight"><pre><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
           </td>
@@ -76,7 +77,7 @@ it a lot below.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -92,7 +93,7 @@ as the first argument to the function.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Contains:  &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;es&quot;</span><span class="p">))</span>
+              <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Contains:  &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;es&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Count:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Count</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasPrefix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;te&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasSuffix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;st&quot;</span><span class="p">))</span>
@@ -117,7 +118,7 @@ package docs.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -129,7 +130,7 @@ and getting a character by index.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Len: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span>
+              <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Len: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Char:&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
@@ -146,7 +147,7 @@ and getting a character by index.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run string-functions.go
+              <div class="highlight"><pre><span class="gp">$</span> go run string-functions.go
 <span class="go">Contains:   true</span>
 <span class="go">Count:      2</span>
 <span class="go">HasPrefix:  true</span>
@@ -169,7 +170,7 @@ and getting a character by index.</p>
             
           </td>
           <td class="code">
-            <div class="highlight"><pre><span class="go">Len:  5</span>
+              <div class="highlight"><pre><span class="go">Len:  5</span>
 <span class="go">Char: 101</span>
 </pre></div>
 

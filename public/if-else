@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="if-else">
       <h2><a href="./">Go by Example</a>: If/Else</h2>
+      <a href="http://play.golang.org/p/LPsnaTeAkK"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -30,7 +31,7 @@ straight-forward.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -39,7 +40,7 @@ straight-forward.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -50,7 +51,7 @@ straight-forward.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
           </td>
@@ -61,7 +62,7 @@ straight-forward.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -73,7 +74,7 @@ straight-forward.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 is even&quot;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 is odd&quot;</span><span class="p">)</span>
@@ -89,7 +90,7 @@ straight-forward.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;8 is divisible by 4&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre></div>
@@ -105,7 +106,7 @@ branches.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">num</span> <span class="o">:=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+              <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">num</span> <span class="o">:=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;is negative&quot;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;has 1 digit&quot;</span><span class="p">)</span>
@@ -125,7 +126,7 @@ in Go, but that the brackets are required.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         
@@ -138,7 +139,7 @@ in Go, but that the brackets are required.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run <span class="k">if</span>-else.go 
+              <div class="highlight"><pre><span class="gp">$</span> go run <span class="k">if</span>-else.go 
 <span class="go">7 is odd</span>
 <span class="go">8 is divisible by 4</span>
 <span class="go">9 has 1 digit</span>
@@ -155,7 +156,7 @@ for basic conditions.</p>
 
           </td>
           <td class="code empty">
-            
+              
           </td>
         </tr>
         

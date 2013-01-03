@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="sorting">
       <h2><a href="./">Go by Example</a>: Sorting</h2>
+      <a href="http://play.golang.org/p/roQOJXtqAb"><img height="16" width="16" title="Run code" src="play_icon.png" style="float:right" /></a>
       
       <table>
         
@@ -31,7 +32,7 @@ builtins first.</p>
 
           </td>
           <td class="code empty leading">
-            
+              
           </td>
         </tr>
         
@@ -40,7 +41,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+              <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -51,7 +52,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+              <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;sort&quot;</span>
 </pre></div>
 
@@ -63,7 +64,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+              <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -78,7 +79,7 @@ return a new one.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">}</span>
+              <div class="highlight"><pre>    <span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">}</span>
     <span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">strs</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Strings:&quot;</span><span class="p">,</span> <span class="nx">strs</span><span class="p">)</span>
 </pre></div>
@@ -92,7 +93,7 @@ return a new one.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+              <div class="highlight"><pre>    <span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
     <span class="nx">sort</span><span class="p">.</span><span class="nx">Ints</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Ints:   &quot;</span><span class="p">,</span> <span class="nx">ints</span><span class="p">)</span>
 </pre></div>
@@ -107,7 +108,7 @@ already in sorted order.</p>
 
           </td>
           <td class="code">
-            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
+              <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -126,7 +127,7 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
 
           </td>
           <td class="code">
-            <div class="highlight"><pre><span class="gp">$</span> go run sorting.go
+              <div class="highlight"><pre><span class="gp">$</span> go run sorting.go
 <span class="go">Strings: [a b c]</span>
 <span class="go">Ints:    [2 4 7]</span>
 <span class="go">Sorted:  true</span>
