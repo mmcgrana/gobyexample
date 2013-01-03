@@ -46,6 +46,3 @@ func main() {
     opsFinal := atomic.LoadUint64(&ops)
     fmt.Println("ops:", opsFinal)
 }
-
-// Next we'll look at another approach to managing state:
-// mutexes.
