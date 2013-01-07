@@ -143,23 +143,12 @@ function the memory address <code>&amp;ops</code> from which to
 fetch the value.</p>
 
           </td>
-          <td class="code leading">
+          <td class="code">
             <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at another approach to managing state:
-mutexes.</p>
-
-          </td>
-          <td class="code empty">
-            
           </td>
         </tr>
         
