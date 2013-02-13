@@ -70,6 +70,7 @@ $ heroku addons:add ssl -r $DEPLOY
 # order ssl cert for domain
 $ cat > /tmp/server.key
 $ cat > /tmp/server.crt.orig
+$ curl https://knowledge.rapidssl.com/library/VERISIGN/ALL_OTHER/RapidSSL%20Intermediate/RapidSSL_CA_bundle.pem > /tmp/rapidssl_bundle.pem
 $ cat /tmp/server.crt.orig /tmp/rapidssl_bundle.pem > /tmp/server.crt
 $ heroku certs:add /tmp/server.crt /tmp/server.key -r $DEPLOY
 # add ALIAS record from domain to ssl endpoint dns
