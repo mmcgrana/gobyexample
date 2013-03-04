@@ -36,7 +36,7 @@ $ tools/build-loop
 ```bash
 $ mkdir -p $GOPATH/src/github.com/mmcgrana
 $ cd $GOPATH/src/github.com/mmcgrana
-$ git clone git@github.com:mmcgrana/gobyexaple.git
+$ git clone git@github.com:mmcgrana/gobyexample.git
 $ cd gobyexample
 $ go get
 $ foreman start
