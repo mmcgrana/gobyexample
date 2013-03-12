@@ -139,7 +139,7 @@ the enclosing function.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll see some other <code>for</code> forms latter when we look at
+            <p>We&rsquo;ll see some other <code>for</code> forms later when we look at
 <code>range</code> statements, channels, and other data
 structures.</p>
 
