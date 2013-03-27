@@ -75,7 +75,7 @@ func main() {
         }()
     }
 
-    // Let the 110 goroutines work on the `state` and
+    // Let the 10 goroutines work on the `state` and
     // `mutex` for a second.
     time.Sleep(time.Second)
 
