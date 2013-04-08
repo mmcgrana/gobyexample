@@ -28,7 +28,7 @@ func main() {
     p("Replace:   ", s.Replace("foo", "o", "0", -1))
     p("Replace:   ", s.Replace("foo", "o", "0", 1))
     p("Split:     ", s.Split("a-b-c-d-e", "-"))
-    p("toLower:   ", s.ToLower("TEST"))
+    p("ToLower:   ", s.ToLower("TEST"))
     p("ToUpper:   ", s.ToUpper("test"))
     p()
 
