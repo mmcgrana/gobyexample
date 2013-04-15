@@ -200,7 +200,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Let the 110 goroutines work on the <code>state</code> and
+            <p>Let the 10 goroutines work on the <code>state</code> and
 <code>mutex</code> for a second.</p>
 
           </td>

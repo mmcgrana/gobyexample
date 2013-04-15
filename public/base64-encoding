@@ -144,7 +144,7 @@ but they both decode to the original string as desired.</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> go run base64-encoding.sh
+            <div class="highlight"><pre><span class="gp">$</span> go run base64-encoding.go
 <span class="go">YWJjMTIzIT8kKiYoKSctPUB+</span>
 <span class="go">abc123!?$*&amp;()&#39;-=@~</span>
 </pre></div>
