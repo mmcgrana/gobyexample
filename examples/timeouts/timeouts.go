@@ -13,7 +13,7 @@ func main() {
     // For our example, suppose we're executing an external
     // call that returns its result on a channel `c1`
     // after 2s.
-    c1 := make(chan string)
+    c1 := make(chan string, 1)
     go func() {
         time.Sleep(time.Second * 2)
         c1 <- "result 1"
@@ -34,7 +34,7 @@ func main() {
 
     // If we allow a longer timeout of 3s, then the receive
     // from `c2` will succeed and we'll print the result.
-    c2 := make(chan string)
+    c2 := make(chan string, 1)
     go func() {
         time.Sleep(time.Second * 2)
         c2 <- "result 2"
