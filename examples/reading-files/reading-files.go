@@ -34,7 +34,7 @@ func main() {
     f, err := os.Open("/tmp/dat")
 
     // Read some bytes from the beginning of the file.
-    // Allow up to 5 to be read but also not how many
+    // Allow up to 5 to be read but also note how many
     // actually were read.
     b1 := make([]byte, 5)
     n1, err := f.Read(b1)
