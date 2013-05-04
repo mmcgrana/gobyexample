@@ -123,7 +123,7 @@ by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
         <tr>
           <td class="docs">
             <p>Read some bytes from the beginning of the file.
-Allow up to 5 to be read but also not how many
+Allow up to 5 to be read but also note how many
 actually were read.</p>
 
           </td>
