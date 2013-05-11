@@ -99,7 +99,7 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>A statement can proceed conditionals; any variables
+            <p>A statement can precede conditionals; any variables
 declared in this statement are available in all
 branches.</p>
 
