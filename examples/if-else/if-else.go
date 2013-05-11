@@ -19,7 +19,7 @@ func main() {
         fmt.Println("8 is divisible by 4")
     }
 
-    // A statement can proceed conditionals; any variables
+    // A statement can precede conditionals; any variables
     // declared in this statement are available in all
     // branches.
     if num := 9; num < 0 {
