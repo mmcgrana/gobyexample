@@ -146,7 +146,7 @@ particular machine.</p>
         
         <tr>
           <td class="docs">
-            <p>If we set <code>BAR</code> in the environemnt first, the running
+            <p>If we set <code>BAR</code> in the environment first, the running
 program picks that value up.</p>
 
           </td>
