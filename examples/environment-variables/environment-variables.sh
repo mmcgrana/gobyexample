@@ -12,7 +12,7 @@ PATH
 SHELL
 ...
 
-# If we set `BAR` in the environemnt first, the running
+# If we set `BAR` in the environment first, the running
 # program picks that value up.
 $ BAR=2 go run environment-variables.go
 FOO: 1
