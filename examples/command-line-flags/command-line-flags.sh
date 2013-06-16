@@ -31,12 +31,12 @@ tail: [a1 a2 a3]
 # Note that the `flag` package requires all flags to
 # appear before positional arguments (otherwise the flags
 # will be interpreted as positional arguments).
-$ ./command-line-flags -word=opt a1 a2 a3 -num=7
+$ ./command-line-flags -word=opt a1 a2 a3 -numb=7
 word: opt
 numb: 42
 fork: false
 svar: bar
-trailing: [a1 a2 a3 -num=7]
+trailing: [a1 a2 a3 -numb=7]
 
 # Use `-h` or `--help` flags to get automatically
 # generated help text for the command-line program.

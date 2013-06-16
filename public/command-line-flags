@@ -231,12 +231,12 @@ will be interpreted as positional arguments).</p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3 -num<span class="o">=</span>7
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3 -numb<span class="o">=</span>7
 <span class="go">word: opt</span>
 <span class="go">numb: 42</span>
 <span class="go">fork: false</span>
 <span class="go">svar: bar</span>
-<span class="go">trailing: [a1 a2 a3 -num=7]</span>
+<span class="go">trailing: [a1 a2 a3 -numb=7]</span>
 </pre></div>
 
           </td>
