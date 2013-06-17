@@ -98,11 +98,13 @@ we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
           <td class="docs">
             <p><code>Exec</code> requires arguments in slice form (as
 apposed to one big string). We&rsquo;ll give <code>ls</code> a few
-common arguments.</p>
+common arguments. It has to include the program
+name as the first argument. Details see
+<code>man 2 execve</code></p>
 
           </td>
           <td class="code leading">
-            <div class="highlight"><pre>    <span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;-a&quot;</span><span class="p">,</span> <span class="s">&quot;-l&quot;</span><span class="p">,</span> <span class="s">&quot;-h&quot;</span><span class="p">}</span>
+            <div class="highlight"><pre>    <span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;ls&quot;</span><span class="p">,</span> <span class="s">&quot;-a&quot;</span><span class="p">,</span> <span class="s">&quot;-l&quot;</span><span class="p">,</span> <span class="s">&quot;-h&quot;</span><span class="p">}</span>
 </pre></div>
 
           </td>
