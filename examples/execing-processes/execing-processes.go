@@ -27,8 +27,10 @@ func main() {
 
     // `Exec` requires arguments in slice form (as
     // apposed to one big string). We'll give `ls` a few
-    // common arguments.
-    args := []string{"-a", "-l", "-h"}
+    // common arguments. It has to include the program
+    // name as the first argument. Details see
+    // `man 2 execve`
+    args := []string{"ls", "-a", "-l", "-h"}
 
     // `Exec` also needs a set of [environment variables](environment-variables)
     // to use. Here we just provide our current
