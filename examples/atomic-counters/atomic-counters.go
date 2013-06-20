@@ -23,14 +23,14 @@ func main() {
     // once a millisecond.
     for i := 0; i < 50; i++ {
         go func() {
-            for {            
+            for {
                 // To atomically increment the counter we
                 // use `AddUint64`, giving it the memory
                 // address of our `ops` counter with the
                 // `&` syntax.
                 atomic.AddUint64(&ops, 1)
 
-				// Allow other goroutines to proceed.
+                // Allow other goroutines to proceed.
                 runtime.Gosched()
             }
         }()
