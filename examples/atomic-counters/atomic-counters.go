@@ -29,7 +29,8 @@ func main() {
                 // address of our `ops` counter with the
                 // `&` syntax.
                 atomic.AddUint64(&ops, 1)
-                
+
+				// Allow other goroutines to proceed.
                 runtime.Gosched()
             }
         }()
