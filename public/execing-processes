@@ -98,9 +98,8 @@ we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
           <td class="docs">
             <p><code>Exec</code> requires arguments in slice form (as
 apposed to one big string). We&rsquo;ll give <code>ls</code> a few
-common arguments. It has to include the program
-name as the first argument. Details see
-<code>man 2 execve</code></p>
+common arguments. Note that the first argument should
+be the program name.</p>
 
           </td>
           <td class="code leading">
