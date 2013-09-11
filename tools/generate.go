@@ -124,24 +124,24 @@ type Seg struct {
 }
 
 type Example struct {
-    Id, Name                        string
-    GoCode, GoCodeHash, UrlHash     string
-    Segs                            [][]*Seg
-    NextExample                     *Example
+    Id, Name                    string
+    GoCode, GoCodeHash, UrlHash string
+    Segs                        [][]*Seg
+    NextExample                 *Example
 }
 
 func parseHashFile(sourcePath string) (string, string) {
-    var codehash,urlkey string
+    var codehash, urlkey string
     lines := readLines(sourcePath)
-    for idx,line := range lines {
-	switch idx {
-	    case 0:
-		codehash = line
-	    case 1:
-		urlkey = line
-	}
+    for idx, line := range lines {
+        switch idx {
+        case 0:
+            codehash = line
+        case 1:
+            urlkey = line
+        }
     }
-    return codehash,urlkey
+    return codehash, urlkey
 }
 
 func resetUrlHashFile(codehash, code, sourcePath string) string {
@@ -153,8 +153,8 @@ func resetUrlHashFile(codehash, code, sourcePath string) string {
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
     urlkey := string(body)
-    data := fmt.Sprintf("%s\n%s",codehash,urlkey)
-    ioutil.WriteFile(sourcePath,[]byte(data),0644)
+    data := fmt.Sprintf("%s\n%s", codehash, urlkey)
+    ioutil.WriteFile(sourcePath, []byte(data), 0644)
     return urlkey
 }
 
@@ -203,25 +203,25 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
         seg.CodeEmpty = (seg.Code == "")
         seg.CodeLeading = (i < (len(segs) - 1))
     }
-    return segs,filecontent
+    return segs, filecontent
 }
 
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
-    segs,filecontent := parseSegs(sourcePath)
+    segs, filecontent := parseSegs(sourcePath)
     lexer := whichLexer(sourcePath)
     for _, seg := range segs {
-	if seg.Docs != "" {
-	    seg.DocsRendered = markdown(seg.Docs)
-	}
-	if seg.Code != "" {
-	    seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
-	}
+        if seg.Docs != "" {
+            seg.DocsRendered = markdown(seg.Docs)
+        }
+        if seg.Code != "" {
+            seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
+        }
     }
     // we are only interested in the 'go' code to pass to play.golang.org
     if lexer != "go" {
-	filecontent = ""
-    } 
-    return segs,filecontent
+        filecontent = ""
+    }
+    return segs, filecontent
 }
 
 func parseExamples() []*Example {
@@ -239,21 +239,21 @@ func parseExamples() []*Example {
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
-		switch strings.HasSuffix(sourcePath,".hash") {
-		    case true:
-			example.GoCodeHash,example.UrlHash = parseHashFile(sourcePath)
-		    default:
-			sourceSegs,filecontents := parseAndRenderSegs(sourcePath)
-			if (filecontents != "") {
-			    example.GoCode = filecontents
-			}
-			example.Segs = append(example.Segs, sourceSegs)
-		}
+                switch strings.HasSuffix(sourcePath, ".hash") {
+                case true:
+                    example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+                default:
+                    sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+                    if filecontents != "" {
+                        example.GoCode = filecontents
+                    }
+                    example.Segs = append(example.Segs, sourceSegs)
+                }
             }
-	    newCodeHash := sha1Sum(example.GoCode)
-	    if (example.GoCodeHash !=  newCodeHash) {
-		example.UrlHash = resetUrlHashFile(newCodeHash,example.GoCode,"examples/"+example.Id+"/"+ example.Id + ".hash")
-	    }
+            newCodeHash := sha1Sum(example.GoCode)
+            if example.GoCodeHash != newCodeHash {
+                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
+            }
             examples = append(examples, &example)
         }
     }

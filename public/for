@@ -20,6 +20,7 @@
   <body>
     <div class="example" id="for">
       <h2><a href="./">Go by Example</a>: For</h2>
+      <a href="http://play.golang.org/p/mGqqcBZ0jv"><img height="16" width="16" title="Run code" src="play.png" style="float:right" /></a>
       
       <table>
         
