@@ -144,7 +144,7 @@ func resetUrlHashFile(codehash, code, sourcePath string) string {
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
     urlkey := string(body)
-    data := fmt.Sprintf("%s\n%s", codehash, urlkey)
+    data := fmt.Sprintf("%s\n%s\n", codehash, urlkey)
     ioutil.WriteFile(sourcePath, []byte(data), 0644)
     return urlkey
 }
