@@ -9,7 +9,7 @@ import "strings"
 
 func main() {
 
-    // We'll parse this example URL, which includes a 
+    // We'll parse this example URL, which includes a
     // scheme, authentication info, host, port, path,
     // query params, and query fragment.
     s := "postgres://user:pass@host.com:5432/path?k=v#f"

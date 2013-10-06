@@ -31,6 +31,7 @@ select is powerful feature of Go.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +41,7 @@ select is powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/NGSkDrli6L"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,6 +53,7 @@ select is powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;time&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -63,6 +66,7 @@ select is powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -75,6 +79,7 @@ select is powerful feature of Go.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
     <span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </pre></div>
@@ -90,6 +95,7 @@ executing in concurrent goroutines.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
         <span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
@@ -110,6 +116,7 @@ simultaneously, printing each one as it arrives.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">select</span> <span class="p">{</span>
         <span class="k">case</span> <span class="nx">msg1</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
@@ -135,6 +142,7 @@ expected.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> <span class="nb">time </span>go run <span class="k">select</span>.go 
 <span class="go">received one</span>
 <span class="go">received two</span>
@@ -151,6 +159,7 @@ concurrently.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="go">real	0m2.245s</span>
 </pre></div>
 

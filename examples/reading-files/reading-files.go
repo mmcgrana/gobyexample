@@ -69,7 +69,7 @@ func main() {
     // The `bufio` package implements a buffered
     // reader that may be useful both for its efficiency
     // with many small reads and because of the additional
-    // reading methods it provides. 
+    // reading methods it provides.
     r4 := bufio.NewReader(f)
     b4, err := r4.Peek(5)
     check(err)

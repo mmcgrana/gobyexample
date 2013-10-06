@@ -32,6 +32,7 @@ function.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -41,6 +42,7 @@ function.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/wRPLOM1VIH"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -52,6 +54,7 @@ function.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -65,6 +68,7 @@ of <code>ints</code> as arguments.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
     <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
@@ -83,6 +87,7 @@ of <code>ints</code> as arguments.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -96,6 +101,7 @@ with individual arguments.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -111,6 +117,7 @@ apply them to a variadic function using
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
     <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span><span class="o">...</span><span class="p">)</span>
 <span class="p">}</span>
@@ -128,6 +135,7 @@ apply them to a variadic function using
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run variadic-functions.go 
 <span class="go">[1 2] 3</span>
 <span class="go">[1 2 3] 6</span>
@@ -144,6 +152,7 @@ to form closures, which we&rsquo;ll look at next.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

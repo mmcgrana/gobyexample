@@ -33,6 +33,7 @@ underly much of Go&rsquo;s functionality.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -42,6 +43,7 @@ underly much of Go&rsquo;s functionality.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/aVTMoY5FNt"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -53,6 +55,7 @@ underly much of Go&rsquo;s functionality.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -64,6 +67,7 @@ underly much of Go&rsquo;s functionality.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -77,6 +81,7 @@ Channels are typed by the values they convey.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </pre></div>
 
@@ -91,6 +96,7 @@ channel we made above, from a new goroutine.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;ping&quot;</span> <span class="p">}()</span>
 </pre></div>
 
@@ -105,6 +111,7 @@ we sent above and print it out.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
 <span class="p">}</span>
@@ -125,6 +132,7 @@ channel.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run channels.go 
 <span class="go">ping</span>
 </pre></div>
@@ -141,6 +149,7 @@ message without having to use any other synchronization.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

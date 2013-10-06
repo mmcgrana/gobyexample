@@ -30,6 +30,7 @@ message. Here&rsquo;s the full source code.</p>
 
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/H8bxSpw9Jq"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -41,6 +42,7 @@ message. Here&rsquo;s the full source code.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -52,6 +54,7 @@ message. Here&rsquo;s the full source code.</p>
             
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -71,6 +74,7 @@ use <code>go run</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run hello-world.go
 <span class="go">hello world</span>
 </pre></div>
@@ -85,6 +89,7 @@ binaries. We can do this using <code>go build</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go build hello-world.go
 <span class="gp">$</span> ls
 <span class="go">hello-world	hello-world.go</span>
@@ -99,6 +104,7 @@ binaries. We can do this using <code>go build</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./hello-world
 <span class="go">hello world</span>
 </pre></div>
@@ -113,6 +119,7 @@ learn more about the language.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

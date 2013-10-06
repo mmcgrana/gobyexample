@@ -31,6 +31,7 @@ reading files.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +41,7 @@ reading files.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/VcLqpSwnkN"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,6 +53,7 @@ reading files.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;bufio&quot;</span>
     <span class="s">&quot;fmt&quot;</span>
@@ -70,6 +73,7 @@ This helper will streamline our error checks below.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
@@ -85,6 +89,7 @@ This helper will streamline our error checks below.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -98,6 +103,7 @@ slurping a file&rsquo;s entire contents into memory.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
@@ -114,6 +120,7 @@ by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -128,6 +135,7 @@ actually were read.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -144,6 +152,7 @@ and <code>Read</code> from there.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="nx">b2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -164,6 +173,7 @@ implemented with <code>ReadAtLeast</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="nx">b3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -182,6 +192,7 @@ accomplishes this.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </pre></div>
@@ -198,6 +209,7 @@ reading methods it provides.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
     <span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nx">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -215,6 +227,7 @@ be scheduled immediately after <code>Open</code>ing with
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 </pre></div>
 
@@ -226,6 +239,7 @@ be scheduled immediately after <code>Open</code>ing with
             
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="p">}</span>
 </pre></div>
 
@@ -241,6 +255,7 @@ be scheduled immediately after <code>Open</code>ing with
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; /tmp/dat
 <span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;go&quot;</span> &gt;&gt;   /tmp/dat
 <span class="gp">$</span> go run reading-files.go 
@@ -261,6 +276,7 @@ be scheduled immediately after <code>Open</code>ing with
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

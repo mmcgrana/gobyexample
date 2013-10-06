@@ -68,7 +68,7 @@ func main() {
 
     // Now let's look at decoding JSON data into Go
     // values. Here's an example for a generic data
-    // structure. 
+    // structure.
     byt := []byte(`{"num":6.0,"strs":["a","b"]}`)
 
     // We need to provide a variable where the JSON
