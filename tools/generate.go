@@ -131,17 +131,8 @@ type Example struct {
 }
 
 func parseHashFile(sourcePath string) (string, string) {
-    var codehash, urlkey string
     lines := readLines(sourcePath)
-    for idx, line := range lines {
-        switch idx {
-        case 0:
-            codehash = line
-        case 1:
-            urlkey = line
-        }
-    }
-    return codehash, urlkey
+    return lines[0], lines[1]
 }
 
 func resetUrlHashFile(codehash, code, sourcePath string) string {
