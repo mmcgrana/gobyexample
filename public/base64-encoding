@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="base64-encoding">
       <h2><a href="./">Go by Example</a>: Base64 Encoding</h2>
-      <a href="http://play.golang.org/p/t6rFm2x4Yr"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -31,6 +30,7 @@ encoding/decoding</a>.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +40,7 @@ encoding/decoding</a>.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/t6rFm2x4Yr"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -54,6 +55,7 @@ save us some space below.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="nx">b64</span> <span class="s">&quot;encoding/base64&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -66,6 +68,7 @@ save us some space below.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -78,6 +81,7 @@ save us some space below.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">data</span> <span class="o">:=</span> <span class="s">&quot;abc123!?$*&amp;()&#39;-=@~&quot;</span>
 </pre></div>
 
@@ -93,6 +97,7 @@ cast our <code>string</code> to that type.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">sEnc</span> <span class="o">:=</span> <span class="nx">b64</span><span class="p">.</span><span class="nx">StdEncoding</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sEnc</span><span class="p">)</span>
 </pre></div>
@@ -108,6 +113,7 @@ well-formed.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">sDec</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">b64</span><span class="p">.</span><span class="nx">StdEncoding</span><span class="p">.</span><span class="nx">DecodeString</span><span class="p">(</span><span class="nx">sEnc</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">sDec</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
@@ -123,6 +129,7 @@ format.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">uEnc</span> <span class="o">:=</span> <span class="nx">b64</span><span class="p">.</span><span class="nx">URLEncoding</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">uEnc</span><span class="p">)</span>
     <span class="nx">uDec</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">b64</span><span class="p">.</span><span class="nx">URLEncoding</span><span class="p">.</span><span class="nx">DecodeString</span><span class="p">(</span><span class="nx">uEnc</span><span class="p">)</span>
@@ -145,6 +152,7 @@ but they both decode to the original string as desired.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run base64-encoding.go
 <span class="go">YWJjMTIzIT8kKiYoKSctPUB+</span>
 <span class="go">abc123!?$*&amp;()&#39;-=@~</span>
@@ -158,6 +166,7 @@ but they both decode to the original string as desired.</p>
             
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="go">YWJjMTIzIT8kKiYoKSctPUB-</span>
 <span class="go">abc123!?$*&amp;()&#39;-=@~</span>
 </pre></div>

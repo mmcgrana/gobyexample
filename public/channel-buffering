@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="channel-buffering">
       <h2><a href="./">Go by Example</a>: Channel Buffering</h2>
-      <a href="http://play.golang.org/p/34PVHwO6Bn"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -35,6 +34,7 @@ those values.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -44,6 +44,7 @@ those values.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/34PVHwO6Bn"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -55,6 +56,7 @@ those values.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -66,6 +68,7 @@ those values.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -79,6 +82,7 @@ those values.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
@@ -93,6 +97,7 @@ concurrent receive.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;buffered&quot;</span>
     <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;channel&quot;</span>
 </pre></div>
@@ -106,6 +111,7 @@ concurrent receive.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
 <span class="p">}</span>
@@ -123,6 +129,7 @@ concurrent receive.</p>
             
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run channel-buffering.go 
 <span class="go">buffered</span>
 <span class="go">channel</span>

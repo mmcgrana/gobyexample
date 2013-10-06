@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="command-line-flags">
       <h2><a href="./">Go by Example</a>: Command-Line Flags</h2>
-      <a href="http://play.golang.org/p/9xlvGqQjhl"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -33,6 +32,7 @@ command-line flag.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -42,6 +42,7 @@ command-line flag.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/9xlvGqQjhl"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -56,6 +57,7 @@ implement our example command-line program.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;flag&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -68,6 +70,7 @@ implement our example command-line program.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -85,6 +88,7 @@ we&rsquo;ll see how to use this pointer below.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;a string&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -98,6 +102,7 @@ similar approach to the <code>word</code> flag.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;numb&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&quot;an int&quot;</span><span class="p">)</span>
     <span class="nx">boolPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;a bool&quot;</span><span class="p">)</span>
 </pre></div>
@@ -114,6 +119,7 @@ declaration function.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
     <span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&quot;svar&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;a string var&quot;</span><span class="p">)</span>
 </pre></div>
@@ -128,6 +134,7 @@ to execute the command-line parsing.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 </pre></div>
 
@@ -143,6 +150,7 @@ to get the actual option values.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;word:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;numb:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;fork:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">boolPtr</span><span class="p">)</span>
@@ -166,6 +174,7 @@ binary directly.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go build <span class="nb">command</span>-line-flags.go
 </pre></div>
 
@@ -179,6 +188,7 @@ all flags.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt -numb<span class="o">=</span>7 -fork -svar<span class="o">=</span>flag
 <span class="go">word: opt</span>
 <span class="go">numb: 7</span>
@@ -197,6 +207,7 @@ their default values.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt
 <span class="go">word: opt</span>
 <span class="go">numb: 42</span>
@@ -215,6 +226,7 @@ any flags.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3
 <span class="go">word: opt</span>
 <span class="go">...</span>
@@ -232,6 +244,7 @@ will be interpreted as positional arguments).</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3 -numb<span class="o">=</span>7
 <span class="go">word: opt</span>
 <span class="go">numb: 42</span>
@@ -250,6 +263,7 @@ generated help text for the command-line program.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -h
 <span class="go">Usage of ./command-line-flags:</span>
 <span class="go">  -fork=false: a bool</span>
@@ -269,6 +283,7 @@ an show the help text again.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -wat
 <span class="go">flag provided but not defined: -wat</span>
 <span class="go">Usage of ./command-line-flags:</span>
@@ -285,6 +300,7 @@ way to parameterize programs.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="functions">
       <h2><a href="./">Go by Example</a>: Functions</h2>
-      <a href="http://play.golang.org/p/2EXoOWfGf_"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -31,6 +30,7 @@ functions with a few different examples.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +40,7 @@ functions with a few different examples.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/2EXoOWfGf_"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,6 +52,7 @@ functions with a few different examples.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -64,6 +66,7 @@ their sum as an <code>int</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">plus</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
 </pre></div>
 
@@ -78,6 +81,7 @@ expression.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
 <span class="p">}</span>
 </pre></div>
@@ -90,6 +94,7 @@ expression.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -103,6 +108,7 @@ expression.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;1+2 =&quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
 <span class="p">}</span>
@@ -120,6 +126,7 @@ expression.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run functions.go 
 <span class="go">1+2 = 3</span>
 </pre></div>
@@ -134,6 +141,7 @@ multiple return values, which we&rsquo;ll look at next.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

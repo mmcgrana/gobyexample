@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="constants">
       <h2><a href="./">Go by Example</a>: Constants</h2>
-      <a href="http://play.golang.org/p/T5sj0eINnp"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -31,6 +30,7 @@ and numeric values.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +40,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/T5sj0eINnp"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,6 +52,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;math&quot;</span>
 </pre></div>
@@ -64,6 +66,7 @@ and numeric values.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">const</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;constant&quot;</span>
 </pre></div>
 
@@ -75,6 +78,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 </pre></div>
@@ -89,6 +93,7 @@ statement can.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">500000000</span>
 </pre></div>
 
@@ -102,6 +107,7 @@ arbitrary precision.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="kd">const</span> <span class="nx">d</span> <span class="p">=</span> <span class="mf">3e20</span> <span class="o">/</span> <span class="nx">n</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </pre></div>
@@ -116,6 +122,7 @@ one, such as by an explicit cast.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span>
 </pre></div>
 
@@ -131,6 +138,7 @@ assignment or function call. For example, here
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sin</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
@@ -147,6 +155,7 @@ assignment or function call. For example, here
             
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run constant.go 
 <span class="go">constant</span>
 <span class="go">6e+11</span>

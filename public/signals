@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="signals">
       <h2><a href="./">Go by Example</a>: Signals</h2>
-      <a href="http://play.golang.org/p/d42wO1q1oh"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -35,6 +34,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -44,6 +44,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/d42wO1q1oh"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -55,6 +56,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;os&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;os/signal&quot;</span>
@@ -69,6 +71,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -84,6 +87,7 @@ notify us when the program can exit.)</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">sigs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -98,6 +102,7 @@ receive notifications of the specified signals.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">signal</span><span class="p">.</span><span class="nx">Notify</span><span class="p">(</span><span class="nx">sigs</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span>
 </pre></div>
 
@@ -112,6 +117,7 @@ and then notify the program that it can finish.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">sigs</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
@@ -131,6 +137,7 @@ above sending a value on <code>done</code>) and then exit.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;awaiting signal&quot;</span><span class="p">)</span>
     <span class="o">&lt;-</span><span class="nx">done</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;exiting&quot;</span><span class="p">)</span>
@@ -153,6 +160,7 @@ causing the program to print <code>interrupt</code> and then exit.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run signals.go
 <span class="go">awaiting signal</span>
 <span class="go">^C</span>

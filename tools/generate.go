@@ -118,9 +118,9 @@ var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 var dashPat = regexp.MustCompile("\\-+")
 
 type Seg struct {
-    Docs, DocsRendered     string
-    Code, CodeRendered     string
-    CodeEmpty, CodeLeading bool
+    Docs, DocsRendered              string
+    Code, CodeRendered              string
+    CodeEmpty, CodeLeading, CodeRun bool
 }
 
 type Example struct {
@@ -193,6 +193,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
     for i, seg := range segs {
         seg.CodeEmpty = (seg.Code == "")
         seg.CodeLeading = (i < (len(segs) - 1))
+        seg.CodeRun = strings.Contains(seg.Code, "package main")
     }
     return segs, filecontent
 }

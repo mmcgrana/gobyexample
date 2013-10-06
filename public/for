@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="for">
       <h2><a href="./">Go by Example</a>: For</h2>
-      <a href="http://play.golang.org/p/mGqqcBZ0jv"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -31,6 +30,7 @@ three basic types of <code>for</code> loops.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -40,6 +40,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/mGqqcBZ0jv"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,6 +52,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -62,6 +64,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -74,6 +77,7 @@ three basic types of <code>for</code> loops.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
@@ -90,6 +94,7 @@ three basic types of <code>for</code> loops.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
     <span class="p">}</span>
@@ -106,6 +111,7 @@ the enclosing function.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="k">for</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;loop&quot;</span><span class="p">)</span>
         <span class="k">break</span>
@@ -125,6 +131,7 @@ the enclosing function.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run <span class="k">for</span>.go
 <span class="go">1</span>
 <span class="go">2</span>
@@ -146,6 +153,7 @@ structures.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

@@ -20,7 +20,6 @@
   <body>
     <div class="example" id="multiple-return-values">
       <h2><a href="./">Go by Example</a>: Multiple Return Values</h2>
-      <a href="http://play.golang.org/p/LrDt1Wah0M"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
@@ -32,6 +31,7 @@ to return both result and error values from a function.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -41,6 +41,7 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/LrDt1Wah0M"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -52,6 +53,7 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -65,6 +67,7 @@ the function returns 2 <code>int</code>s.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
 <span class="p">}</span>
@@ -78,6 +81,7 @@ the function returns 2 <code>int</code>s.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -91,6 +95,7 @@ call with <em>multiple assignment</em>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="nx">vals</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
@@ -106,6 +111,7 @@ use the blank identifier <code>_</code>.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nx">vals</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
 <span class="p">}</span>
@@ -123,6 +129,7 @@ use the blank identifier <code>_</code>.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run multiple-return-values.go
 <span class="go">3</span>
 <span class="go">7</span>
@@ -139,6 +146,7 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>
