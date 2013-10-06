@@ -148,7 +148,7 @@ func resetUrlHashFile(codehash, code, sourcePath string) string {
     payload := strings.NewReader(code)
     resp, err := http.Post("http://play.golang.org/share", "text/plain", payload)
     if err != nil {
-        // handle error
+        panic(err)
     }
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
