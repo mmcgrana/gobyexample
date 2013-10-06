@@ -32,6 +32,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -41,6 +42,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/c86oXzfQOt"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -52,6 +54,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;os&quot;</span>
 </pre></div>
 
@@ -63,6 +66,7 @@ aren&rsquo;t prepared to handle gracefully.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -77,6 +81,7 @@ site designed to panic.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nb">panic</span><span class="p">(</span><span class="s">&quot;a problem&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -92,6 +97,7 @@ returns an error value that we don&rsquo;t know how to
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;/tmp/file&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -114,6 +120,7 @@ a non-zero status.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run panic.go
 <span class="go">panic: a problem</span>
 </pre></div>
@@ -126,6 +133,7 @@ a non-zero status.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="go">goroutine 1 [running]:</span>
 <span class="go">main.main()</span>
 <span class="go">	/.../panic.go:12 +0x47</span>
@@ -144,6 +152,7 @@ to use error-indicating return values wherever possible.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

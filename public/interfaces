@@ -30,6 +30,7 @@ signatures.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -39,6 +40,7 @@ signatures.</p>
             
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/vx8bwC-Bmq"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -50,6 +52,7 @@ signatures.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;math&quot;</span>
 </pre></div>
@@ -63,6 +66,7 @@ signatures.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">geometry</span> <span class="kd">interface</span> <span class="p">{</span>
     <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span>
     <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span>
@@ -79,6 +83,7 @@ signatures.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">square</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
 <span class="p">}</span>
@@ -98,6 +103,7 @@ implement <code>geometry</code> on <code>square</code>s.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">square</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
@@ -115,6 +121,7 @@ implement <code>geometry</code> on <code>square</code>s.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
 <span class="p">}</span>
@@ -135,6 +142,7 @@ to work on any <code>geometry</code>.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">measure</span><span class="p">(</span><span class="nx">g</span> <span class="nx">geometry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
@@ -150,6 +158,7 @@ to work on any <code>geometry</code>.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">s</span> <span class="o">:=</span> <span class="nx">square</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
     <span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
@@ -167,6 +176,7 @@ these structs as arguments to measure.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>    <span class="nx">measure</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
     <span class="nx">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
 <span class="p">}</span>
@@ -184,6 +194,7 @@ these structs as arguments to measure.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> go run interfaces.go
 <span class="go">{3 4}</span>
 <span class="go">12</span>
@@ -203,6 +214,7 @@ these structs as arguments to measure.</p>
 
           </td>
           <td class="code empty">
+	        
             
           </td>
         </tr>

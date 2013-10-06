@@ -5,6 +5,7 @@ import (
     "fmt"
     "github.com/russross/blackfriday"
     "io/ioutil"
+    "net/http"
     "os"
     "os/exec"
     "path/filepath"
@@ -117,19 +118,40 @@ var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 var dashPat = regexp.MustCompile("\\-+")
 
 type Seg struct {
-    Docs, DocsRendered     string
-    Code, CodeRendered     string
-    CodeEmpty, CodeLeading bool
+    Docs, DocsRendered              string
+    Code, CodeRendered              string
+    CodeEmpty, CodeLeading, CodeRun bool
 }
 
 type Example struct {
-    Id, Name    string
-    Segs        [][]*Seg
-    NextExample *Example
+    Id, Name                    string
+    GoCode, GoCodeHash, UrlHash string
+    Segs                        [][]*Seg
+    NextExample                 *Example
 }
 
-func parseSegs(sourcePath string) []*Seg {
+func parseHashFile(sourcePath string) (string, string) {
     lines := readLines(sourcePath)
+    return lines[0], lines[1]
+}
+
+func resetUrlHashFile(codehash, code, sourcePath string) string {
+    payload := strings.NewReader(code)
+    resp, err := http.Post("http://play.golang.org/share", "text/plain", payload)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    urlkey := string(body)
+    data := fmt.Sprintf("%s\n%s\n", codehash, urlkey)
+    ioutil.WriteFile(sourcePath, []byte(data), 0644)
+    return urlkey
+}
+
+func parseSegs(sourcePath string) ([]*Seg, string) {
+    lines := readLines(sourcePath)
+    filecontent := strings.Join(lines, "\n")
     segs := []*Seg{}
     lastSeen := ""
     for _, line := range lines {
@@ -171,12 +193,13 @@ func parseSegs(sourcePath string) []*Seg {
     for i, seg := range segs {
         seg.CodeEmpty = (seg.Code == "")
         seg.CodeLeading = (i < (len(segs) - 1))
+        seg.CodeRun = strings.Contains(seg.Code, "package main")
     }
-    return segs
+    return segs, filecontent
 }
 
-func parseAndRenderSegs(sourcePath string) []*Seg {
-    segs := parseSegs(sourcePath)
+func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
+    segs, filecontent := parseSegs(sourcePath)
     lexer := whichLexer(sourcePath)
     for _, seg := range segs {
         if seg.Docs != "" {
@@ -186,7 +209,11 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
             seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
         }
     }
-    return segs
+    // we are only interested in the 'go' code to pass to play.golang.org
+    if lexer != "go" {
+        filecontent = ""
+    }
+    return segs, filecontent
 }
 
 func parseExamples() []*Example {
@@ -204,8 +231,19 @@ func parseExamples() []*Example {
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
-                sourceSegs := parseAndRenderSegs(sourcePath)
-                example.Segs = append(example.Segs, sourceSegs)
+                if strings.HasSuffix(sourcePath, ".hash") {
+                    example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+                } else {
+                    sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+                    if filecontents != "" {
+                        example.GoCode = filecontents
+                    }
+                    example.Segs = append(example.Segs, sourceSegs)
+                }
+            }
+            newCodeHash := sha1Sum(example.GoCode)
+            if example.GoCodeHash != newCodeHash {
+                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
             }
             examples = append(examples, &example)
         }
@@ -242,6 +280,7 @@ func main() {
     copyFile("templates/site.css", siteDir+"/site.css")
     copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
     copyFile("templates/404.html", siteDir+"/404.html")
+    copyFile("templates/play.png", siteDir+"/play.png")
     examples := parseExamples()
     renderIndex(examples)
     renderExamples(examples)

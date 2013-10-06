@@ -32,6 +32,7 @@ line filters.</p>
 
           </td>
           <td class="code empty leading">
+	        
             
           </td>
         </tr>
@@ -44,6 +45,7 @@ pattern to write your own Go line filters.</p>
 
           </td>
           <td class="code leading">
+	        <a href="http://play.golang.org/p/OSS71nSpkV"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -55,6 +57,7 @@ pattern to write your own Go line filters.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;bufio&quot;</span>
     <span class="s">&quot;fmt&quot;</span>
@@ -72,6 +75,7 @@ pattern to write your own Go line filters.</p>
             
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -86,6 +90,7 @@ that we&rsquo;ll use to read input line-by-line.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="nx">rdr</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
     <span class="nx">out</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span>
 </pre></div>
@@ -102,6 +107,7 @@ successive input lines.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>    <span class="k">for</span> <span class="p">{</span>
         <span class="k">switch</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">rdr</span><span class="p">.</span><span class="nx">ReadString</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span> <span class="nx">err</span> <span class="p">{</span>
 </pre></div>
@@ -117,6 +123,7 @@ error on this write as we do on the read.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>        <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
             <span class="nx">ucl</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
             <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">ucl</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -135,6 +142,7 @@ end of input, so exit gracefully in that case.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre>        <span class="k">case</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span><span class="p">:</span>
             <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -149,6 +157,7 @@ error and exit with non-zero status.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre>        <span class="k">default</span><span class="p">:</span>
             <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;error:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
             <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -171,6 +180,7 @@ lowercase lines.</p>
 
           </td>
           <td class="code leading">
+	        
             <div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;hello&#39;</span>   &gt; /tmp/lines
 <span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;filter&#39;</span> &gt;&gt; /tmp/lines
 </pre></div>
@@ -184,6 +194,7 @@ lowercase lines.</p>
 
           </td>
           <td class="code">
+	        
             <div class="highlight"><pre><span class="gp">$</span> cat /tmp/lines | go run line-filters.go
 <span class="go">HELLO</span>
 <span class="go">FILTER</span>

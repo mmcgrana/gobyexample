@@ -27,7 +27,7 @@ func main() {
 
     // In addition to these basic operations, slices
     // support several more that make them richer than
-    // arrays. One is the builtin `append`, which 
+    // arrays. One is the builtin `append`, which
     // returns a slice containing one or more new values.
     // Note that we need to accept a return value from
     // append as we may get a new slice value.
