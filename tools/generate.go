@@ -230,10 +230,9 @@ func parseExamples() []*Example {
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
-                switch strings.HasSuffix(sourcePath, ".hash") {
-                case true:
+                if strings.HasSuffix(sourcePath, ".hash") {
                     example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
-                default:
+                } else {
                     sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
                     if filecontents != "" {
                         example.GoCode = filecontents
