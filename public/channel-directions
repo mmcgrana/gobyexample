@@ -20,7 +20,7 @@
   <body>
     <div class="example" id="channel-directions">
       <h2><a href="./">Go by Example</a>: Channel Directions</h2>
-      <a href="http://play.golang.org/p/P9Fujfpa1f"><img height="16" width="16" title="Run code" src="play.png" style="float:right" /></a>
+      <a href="http://play.golang.org/p/P9Fujfpa1f"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         

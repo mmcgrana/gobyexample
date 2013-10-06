@@ -136,6 +136,11 @@ pre, code {
     font-size: 14px; line-height: 18px;
     font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
 }
+img.run {
+  height: 16px;
+  width: 16px;
+  float: right
+}
 
 /* Syntax highlighting */
 body .hll { background-color: #ffffcc }

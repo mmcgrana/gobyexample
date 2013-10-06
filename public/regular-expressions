@@ -20,7 +20,7 @@
   <body>
     <div class="example" id="regular-expressions">
       <h2><a href="./">Go by Example</a>: Regular Expressions</h2>
-      <a href="http://play.golang.org/p/7bnr2EXlxK"><img height="16" width="16" title="Run code" src="play.png" style="float:right" /></a>
+      <a href="http://play.golang.org/p/7bnr2EXlxK"><img title="Run code" src="play.png" class="run" /></a>
       
       <table>
         
