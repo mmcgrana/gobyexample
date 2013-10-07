@@ -27,7 +27,7 @@
           <td class="docs">
             <p>The primary mechanism for managing state in Go is
 communication over channels. We saw this for example
-with <a href="worker-pool">worker pools</a>. There are a few other
+with <a href="worker-pools">worker pools</a>. There are a few other
 options for managing state though. Here we&rsquo;ll
 look at using the <code>sync/atomic</code> package for <em>atomic
 counters</em> accessed by multiple goroutines.</p>
@@ -44,7 +44,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/sKIaNsJquU"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/2h8nvrnaHP"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
