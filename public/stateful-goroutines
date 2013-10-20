@@ -46,7 +46,7 @@ by exactly 1 goroutine.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2YrrJo4H6W"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/8Qxa8MHXAv"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -112,22 +112,7 @@ goroutine to respond.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>state</code> will be a map as in the previous
-example.</p>
-
-          </td>
-          <td class="code leading">
-	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Also as before we&rsquo;ll count how many operations we
-perform.</p>
+            <p>As before we&rsquo;ll count how many operations we perform.</p>
 
           </td>
           <td class="code leading">
@@ -156,19 +141,33 @@ respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>Here is the goroutine that owns the <code>state</code>. This
-goroutine repeatedly selects on the <code>reads</code> and
-<code>writes</code> channels, responding to requests as they
-arrive. A response is executed by first performing
-the requested operation and then sending a value
-on the response channel <code>resp</code> to indicate success
-(and the desired value in the case of <code>reads</code>).</p>
+            <p>Here is the goroutine that owns the <code>state</code>, which
+is a map as in the previous example but now private
+to the stateful goroutine. This goroutine repeatedly
+selects on the <code>reads</code> and <code>writes</code> channels,
+responding to requests as they arrive. A response
+is executed by first performing the requested
+operation and then sending a value on the response
+channel <code>resp</code> to indicate success (and the desired
+value in the case of <code>reads</code>).</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>        <span class="k">for</span> <span class="p">{</span>
             <span class="k">select</span> <span class="p">{</span>
             <span class="k">case</span> <span class="nx">read</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">reads</span><span class="p">:</span>
                 <span class="nx">read</span><span class="p">.</span><span class="nx">resp</span> <span class="o">&lt;-</span> <span class="nx">state</span><span class="p">[</span><span class="nx">read</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span>
