@@ -36,12 +36,7 @@ type writeOp struct {
 
 func main() {
 
-    // The `state` will be a map as in the previous
-    // example.
-    var state = make(map[int]int)
-
-    // Also as before we'll count how many operations we
-    // perform.
+    // As before we'll count how many operations we perform.
     var ops int64 = 0
 
     // The `reads` and `writes` channels will be used by
@@ -50,14 +45,18 @@ func main() {
     reads := make(chan *readOp)
     writes := make(chan *writeOp)
 
-    // Here is the goroutine that owns the `state`. This
-    // goroutine repeatedly selects on the `reads` and
+    // Here is the goroutine that owns the `state`, which 
+    // is a map as in the previous example, but is held 
+    // internally so all changes are handled by this function.
+    // This goroutine repeatedly selects on the `reads` and
     // `writes` channels, responding to requests as they
     // arrive. A response is executed by first performing
     // the requested operation and then sending a value
     // on the response channel `resp` to indicate success
     // (and the desired value in the case of `reads`).
     go func() {
+        var state = make(map[int]int)
+
         for {
             select {
             case read := <-reads:
