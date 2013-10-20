@@ -56,7 +56,6 @@ func main() {
     // value in the case of `reads`).
     go func() {
         var state = make(map[int]int)
-
         for {
             select {
             case read := <-reads:
