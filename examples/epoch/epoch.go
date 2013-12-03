@@ -20,7 +20,7 @@ func main() {
 
     // Note that there is no `UnixMillis`, so to get the
     // milliseconds since epoch you'll need to manually
-    // dive from nanoseconds.
+    // divide from nanoseconds.
     millis := nanos / 1000000
     fmt.Println(secs)
     fmt.Println(millis)
