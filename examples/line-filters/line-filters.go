@@ -11,7 +11,6 @@ package main
 import (
     "bufio"
     "fmt"
-    "io"
     "os"
     "strings"
 )
@@ -19,38 +18,24 @@ import (
 func main() {
 
     // Wrapping the unbuffered `os.Stdin` with a buffered
-    // reader gives us a convenient `ReadString` method
-    // that we'll use to read input line-by-line.
-    rdr := bufio.NewReader(os.Stdin)
-    out := os.Stdout
-
-    // `ReadString` returns the next string from the
-    // input up to the given separator byte. We give the
-    // newline byte `'\n'` as our separator so we'll get
-    // successive input lines.
-    for {
-        switch line, err := rdr.ReadString('\n'); err {
-
-        // If the read succeeded (the read `err` is nil),
-        // write out out the uppercased line. Check for an
-        // error on this write as we do on the read.
-        case nil:
-            ucl := strings.ToUpper(line)
-            if _, err = out.WriteString(ucl); err != nil {
-                fmt.Fprintln(os.Stderr, "error:", err)
-                os.Exit(1)
-            }
-
-        // The `EOF` error is expected when we reach the
-        // end of input, so exit gracefully in that case.
-        case io.EOF:
-            os.Exit(0)
-
-        // Otherwise there's a problem; print the
-        // error and exit with non-zero status.
-        default:
-            fmt.Fprintln(os.Stderr, "error:", err)
-            os.Exit(1)
-        }
+    // scanner gives us a convenient `Scan` method that
+    // advances the scanner to the next token; which is
+    // the next line in the default scanner.
+    scanner := bufio.NewScanner(os.Stdin)
+    
+    for scanner.Scan() {
+        // `Text` returns the current token, here the next line,
+        // from the input. 
+        ucl := strings.ToUpper(scanner.Text())
+        
+        // Write out the uppercased line.
+        fmt.Println(ucl)
+    }
+ 
+    // Check for errors during `Scan`. End of file is
+    // expected and not reported by `Scan` as an error.
+    if err := scanner.Err(); err != nil {
+        fmt.Fprintln(os.Stderr, "error:", err)
+        os.Exit(1)
     }
 }
