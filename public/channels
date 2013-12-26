@@ -127,7 +127,7 @@ we sent above and print it out.</p>
         <tr>
           <td class="docs">
             <p>When we run the program the <code>&quot;ping&quot;</code> message is
-succesfully passed from one goroutine to another via our
+successfully passed from one goroutine to another via our
 channel.</p>
 
           </td>
