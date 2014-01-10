@@ -28,8 +28,7 @@
             <p><em>Channels</em> are the pipes that connect concurrent
 goroutines. You can send values into channels from one
 goroutine and receive those values into another
-goroutine. Channels are a powerful primitive that
-underly much of Go&rsquo;s functionality.</p>
+goroutine.</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +42,7 @@ underly much of Go&rsquo;s functionality.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/aVTMoY5FNt"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Kd8B0T_JGK"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -127,8 +126,8 @@ we sent above and print it out.</p>
         <tr>
           <td class="docs">
             <p>When we run the program the <code>&quot;ping&quot;</code> message is
-successfully passed from one goroutine to another via our
-channel.</p>
+successfully passed from one goroutine to another via
+our channel.</p>
 
           </td>
           <td class="code leading">
