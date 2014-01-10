@@ -1,6 +1,6 @@
 # When we run the program the `"ping"` message is
-# successfully passed from one goroutine to another via our
-# channel.
+# successfully passed from one goroutine to another via
+# our channel.
 $ go run channels.go 
 ping
 
