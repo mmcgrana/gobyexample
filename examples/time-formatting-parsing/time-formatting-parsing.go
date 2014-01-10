@@ -18,8 +18,10 @@ func main() {
     // takes a formatted version of the reference time
     // `Mon Jan 2 15:04:05 MST 2006` to determine the
     // general pattern with which to format the given
-    // time. Here are a few more examples of time
-    // formatting.
+    // time. The examples must be exactly as shown: only 
+    // `2006` for the year, only `15` for the hour, only 
+    // `Mon` for the day of week, and so on. Here are a 
+    // few more examples of time formatting.
     p(t.Format("3:04PM"))
     p(t.Format("Mon Jan _2 15:04:05 2006"))
     p(t.Format("2006-01-02T15:04:05.999999-07:00"))
