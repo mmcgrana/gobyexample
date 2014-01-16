@@ -172,7 +172,7 @@ to work on any <code>geometry</code>.</p>
             <p>The <code>circle</code> and <code>square</code> struct types both
 implement the <code>geometry</code> interface so we can use
 instances of
-these structs as arguments to measure.</p>
+these structs as arguments to `measure.</p>
 
           </td>
           <td class="code">

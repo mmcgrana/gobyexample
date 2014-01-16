@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p>Our first program will print the classic &ldquo;hello world&rdquo;
+            <p>Our first program will print the classic &ldquo;hello world&rdquo;`
 message. Here&rsquo;s the full source code.</p>
 
           </td>
