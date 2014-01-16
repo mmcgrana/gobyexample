@@ -20,6 +20,7 @@ We include a lightweight Go server in `server.go`.
 To build the site:
 
 ```console
+$ go get github.com/russross/blackfriday
 $ tools/build
 $ open public/index.html
 ```
