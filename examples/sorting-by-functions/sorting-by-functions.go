@@ -1,7 +1,7 @@
 // Sometimes we'll want to sort a collection by something
 // other than its natural order. For example, suppose we
 // wanted to sort strings by their length instead of
-// alphabetically. Here's an example of custom sorts sorts
+// alphabetically. Here's an example of custom sorts
 // in Go.
 
 package main
