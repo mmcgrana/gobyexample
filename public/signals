@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p>Sometines we&rsquo;d like our Go programs to intelligently
+            <p>Sometimes we&rsquo;d like our Go programs to intelligently
 handle <a href="http://en.wikipedia.org/wiki/Unix_signal">Unix signals</a>.
 For example, we might want a server to gracefully
 shutdown when it receives a <code>SIGTERM</code>, or a command-line
@@ -44,7 +44,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/d42wO1q1oh"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/BlkqAtKsxo"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -83,7 +83,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
             <p>Go signal notification works by sending <code>os.Signal</code>
 values on a channel. We&rsquo;ll create a channel to
 receive these notifications (we&rsquo;ll also make one to
-notify us when the program can exit.)</p>
+notify us when the program can exit).</p>
 
           </td>
           <td class="code leading">
