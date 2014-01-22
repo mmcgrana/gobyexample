@@ -1,4 +1,4 @@
-// Sometines we'd like our Go programs to intelligently
+// Sometimes we'd like our Go programs to intelligently
 // handle [Unix signals](http://en.wikipedia.org/wiki/Unix_signal).
 // For example, we might want a server to gracefully
 // shutdown when it receives a `SIGTERM`, or a command-line
@@ -17,7 +17,7 @@ func main() {
     // Go signal notification works by sending `os.Signal`
     // values on a channel. We'll create a channel to
     // receive these notifications (we'll also make one to
-    // notify us when the program can exit.)
+    // notify us when the program can exit).
     sigs := make(chan os.Signal, 1)
     done := make(chan bool, 1)
 
