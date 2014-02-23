@@ -7,6 +7,7 @@ import (
     "path/filepath"
     "regexp"
     "strings"
+    "unicode/utf8"
 )
 
 func check(err error) {
@@ -31,7 +32,7 @@ func main() {
         foundLongLine := false
         lines := readLines(sourcePath)
         for i, line := range lines {
-            if !foundLongLine && !commentPat.MatchString(line) && (len(line) > 58) {
+            if !foundLongLine && !commentPat.MatchString(line) && (utf8.RuneCountInString(line) > 58) {
                 fmt.Printf("measure: %s:%d\n", sourcePath, i+1)
                 foundLongLine = true
                 foundLongFile = true
