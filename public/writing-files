@@ -279,6 +279,9 @@ we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.
         Next example: <a href="line-filters">Line Filters</a>.
       </p>
       
+      <p class="next">
+        Or go back to the <a href="/">Index</a>.
+      </p>
       <p class="footer">
         by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/writing-files">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
