@@ -85,7 +85,7 @@ $ heroku open -r $DEPLOY
 This work is copyright Mark McGranaghan and licensed under a
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
-The Go Gopher is copyright the Go Authors and licensed under a
+The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and licensed under a
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
 
