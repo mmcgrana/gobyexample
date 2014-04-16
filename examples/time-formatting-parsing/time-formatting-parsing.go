@@ -10,27 +10,24 @@ func main() {
     p := fmt.Println
 
     // Here's a basic example of formatting a time
-    // according to RFC3339, using the corresponding format
+    // according to RFC3339, using the corresponding layout
     // constant.
     t := time.Now()
     p(t.Format(time.RFC3339))
 
-    // Time parsing uses the same format values as `Format`
-    // does.
+    // Time parsing uses the same layout values as `Format`.
     t1, e := time.Parse(
         time.RFC3339,
         "2012-11-01T22:08:41+00:00")
     p(t1)
 
-    // `Format` and `Parse` uses example-based formats. They
-    // take a formatted version of the reference time
-    // `Mon Jan 2 15:04:05 MST 2006` to determine the
-    // general pattern with which to format/parse the given
-    // time/string. The example time must be exactly as shown:
-    // the year 2006, 15 for the hour, Monday for the day of
-    // the week, etc. Usually you'll use a constant from
-    // `time` for these formats, but you can also supply
-    // custom formats.
+    // `Format` and `Parse` uses example-based layouts. Usually
+    // you'll use a constant from `time` for these layouts, but
+    // you can also supply custom layouts. Layouts must use the
+    // reference time `Mon Jan 2 15:04:05 MST 2006` to show the
+    // pattern with which to format/parse a given time/string.
+    // The example time must be exactly as shown: the year 2006,
+    // 15 for the hour, Monday for the day of the week, etc.
     p(t.Format("3:04PM"))
     p(t.Format("Mon Jan _2 15:04:05 2006"))
     p(t.Format("2006-01-02T15:04:05.999999-07:00"))

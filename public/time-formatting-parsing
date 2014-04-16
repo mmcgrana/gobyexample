@@ -40,7 +40,7 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/siwR2J2ke0"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/SGS6wIVnDd"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -76,7 +76,7 @@ pattern-based layouts.</p>
         <tr>
           <td class="docs">
             <p>Here&rsquo;s a basic example of formatting a time
-according to RFC3339, using the corresponding format
+according to RFC3339, using the corresponding layout
 constant.</p>
 
           </td>
@@ -91,8 +91,7 @@ constant.</p>
         
         <tr>
           <td class="docs">
-            <p>Time parsing uses the same format values as <code>Format</code>
-does.</p>
+            <p>Time parsing uses the same layout values as <code>Format</code>.</p>
 
           </td>
           <td class="code leading">
@@ -108,15 +107,13 @@ does.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Format</code> and <code>Parse</code> uses example-based formats. They
-take a formatted version of the reference time
-<code>Mon Jan 2 15:04:05 MST 2006</code> to determine the
-general pattern with which to format/parse the given
-time/string. The example time must be exactly as shown:
-the year 2006, 15 for the hour, Monday for the day of
-the week, etc. Usually you&rsquo;ll use a constant from
-<code>time</code> for these formats, but you can also supply
-custom formats.</p>
+            <p><code>Format</code> and <code>Parse</code> uses example-based layouts. Usually
+you&rsquo;ll use a constant from <code>time</code> for these layouts, but
+you can also supply custom layouts. Layouts must use the
+reference time <code>Mon Jan 2 15:04:05 MST 2006</code> to show the
+pattern with which to format/parse a given time/string.
+The example time must be exactly as shown: the year 2006,
+15 for the hour, Monday for the day of the week, etc.</p>
 
           </td>
           <td class="code leading">
