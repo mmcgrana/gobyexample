@@ -181,8 +181,7 @@ explaining the parsing problem.</p>
 <span class="go">2014-04-15T18:00:15.161182-07:00</span>
 <span class="go">0000-01-01 20:41:00 +0000 UTC</span>
 <span class="go">2014-04-15T18:00:15-00:00</span>
-<span class="go">parsing time &quot;8:41PM&quot; as &quot;Mon Jan _2 15:04:05 2006&quot;: \</span>
-<span class="go">  cannot parse &quot;8:41PM&quot; as &quot;Mon&quot;</span>
+<span class="go">parsing time &quot;8:41PM&quot; as &quot;Mon Jan _2 15:04:05 2006&quot;: ...</span>
 </pre></div>
 
           </td>
