@@ -89,6 +89,13 @@ The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
 
+### Translations
+
+Contributor translations of the Go by Example site are available in:
+
+* [Chinese](http://everyx.github.io/gobyexample/)
+
+
 ### Thanks
 
 Thanks to [Jeremy Ashkenas](https://github.com/jashkenas)
