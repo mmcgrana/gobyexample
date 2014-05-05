@@ -172,7 +172,7 @@ to work on any <code>geometry</code>.</p>
             <p>The <code>circle</code> and <code>square</code> struct types both
 implement the <code>geometry</code> interface so we can use
 instances of
-these structs as arguments to measure.</p>
+these structs as arguments to `measure.</p>
 
           </td>
           <td class="code">
@@ -226,6 +226,9 @@ these structs as arguments to measure.</p>
         Next example: <a href="errors">Errors</a>.
       </p>
       
+      <p class="next">
+        Or go back to the <a href="/">Index</a>.
+      </p>
       <p class="footer">
         by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/interfaces">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>

@@ -165,6 +165,9 @@ on both <code>messages</code> and <code>signals</code>.</p>
         Next example: <a href="closing-channels">Closing Channels</a>.
       </p>
       
+      <p class="next">
+        Or go back to the <a href="/">Index</a>.
+      </p>
       <p class="footer">
         by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/non-blocking-channel-operations">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
