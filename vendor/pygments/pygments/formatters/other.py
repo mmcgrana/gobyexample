@@ -5,7 +5,7 @@
 
     Other formatters: NullFormatter, RawTokenFormatter.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -102,8 +102,6 @@ class RawTokenFormatter(Formatter):
                 outfile.write(text.encode())
             flush = outfile.flush
 
-        lasttype = None
-        lastval = u''
         if self.error_color:
             for ttype, value in tokensource:
                 line = "%s\t%r\n" % (ttype, value)

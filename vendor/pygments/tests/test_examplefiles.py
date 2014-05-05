@@ -3,7 +3,7 @@
     Pygments tests with example files
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -58,6 +58,8 @@ def check_lexer(lx, absfn, outfn):
     text = text.strip(b('\n')) + b('\n')
     try:
         text = text.decode('utf-8')
+        if text.startswith(u'\ufeff'):
+            text = text[len(u'\ufeff'):]
     except UnicodeError:
         text = text.decode('latin1')
     ntext = []

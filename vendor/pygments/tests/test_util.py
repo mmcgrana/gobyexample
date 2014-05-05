@@ -3,7 +3,7 @@
     Test suite for the util module
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -98,8 +98,10 @@ class UtilTest(unittest.TestCase):
         self.assertTrue(util.shebang_matches('#!C:\\Python2.4\\Python.exe',
                                              r'python(2\.\d)?'))
 
-        self.assertFalse(util.shebang_matches('#!/usr/bin/python-ruby', r'python(2\.\d)?'))
-        self.assertFalse(util.shebang_matches('#!/usr/bin/python/ruby', r'python(2\.\d)?'))
+        self.assertFalse(util.shebang_matches('#!/usr/bin/python-ruby',
+                                              r'python(2\.\d)?'))
+        self.assertFalse(util.shebang_matches('#!/usr/bin/python/ruby',
+                                              r'python(2\.\d)?'))
         self.assertFalse(util.shebang_matches('#!', r'python'))
 
     def test_doctype_matches(self):
@@ -131,4 +133,3 @@ class UtilTest(unittest.TestCase):
         m = r.match(first_non_bmp * 2)
         self.assertTrue(m)
         self.assertEquals(m.end(), len(first_non_bmp) * 2)
-    

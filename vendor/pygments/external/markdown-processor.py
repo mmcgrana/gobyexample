@@ -27,7 +27,7 @@
 
     .. _Markdown: http://www.freewisdom.org/projects/python-markdown/
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
     pygments.lexers._sourcemodbuiltins
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     This file contains the names of SourceMod functions.
     It is able to re-generate itself.
 
     Do not edit the FUNCTIONS list by hand.
 
-    :copyright: Copyright 2006-2011 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 

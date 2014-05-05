@@ -7,7 +7,7 @@
     Find code tags in specified files and/or directories
     and create a report in HTML format.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 

@@ -8,7 +8,7 @@
         python run.py [testfile ...]
 
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -25,7 +25,8 @@ if sys.version_info >= (3,):
     os.chdir(newroot)
 else:
     # only find tests in this directory
-    os.chdir(os.path.dirname(__file__))
+    if os.path.dirname(__file__):
+        os.chdir(os.path.dirname(__file__))
 
 
 try:

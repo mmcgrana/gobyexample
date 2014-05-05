@@ -1,0 +1,64 @@
+#!/bin/sh
+# Best effort auto-pygmentization with transparent decompression
+# (c) Reuben Thomas 2012-2013
+# This program is in the public domain.
+
+# Strategy: first see if pygmentize can find a lexer; if not, ask file; if that finds nothing, fail
+# Set the environment variable PYGMENTIZE_OPTS to configure pygments.
+
+# This program can be used as a .lessfilter for the less pager to auto-color less's output
+
+lexer=`pygmentize -N "$1"`
+if [ "$lexer" = "text" ]; then
+  file_common_opts="--brief --dereference --uncompress"
+
+  unset lexer
+  case `file --mime-type $file_common_opts "$1"` in
+      application/xml|image/svg+xml) lexer=xml;;
+      text/html) lexer=html;;
+      text/troff) lexer=nroff;;
+      text/x-asm) lexer=nasm;;
+      text/x-awk) lexer=awk;;
+      text/x-c) lexer=c;;
+      text/x-c++) lexer=cpp;;
+      text/x-diff) lexer=diff;;
+      text/x-fortran) lexer=fortran;;
+      text/x-gawk) lexer=gawk;;
+      text/x-java) lexer=java;;
+      text/x-lisp) lexer=common-lisp;;
+      text/x-lua) lexer=lua;;
+      text/x-makefile) lexer=make;;
+      text/x-msdos-batch) lexer=bat;;
+      text/x-nawk) lexer=nawk;;
+      text/x-pascal) lexer=pascal;;
+      text/x-perl) lexer=perl;;
+      text/x-php) lexer=php;;
+      text/x-po) lexer=po;;
+      text/x-python) lexer=python;;
+      text/x-ruby) lexer=ruby;;
+      text/x-shellscript) lexer=sh;;
+      text/x-tcl) lexer=tcl;;
+      text/x-tex|text/x-texinfo) lexer=latex;; # FIXME: texinfo really needs its own lexer
+      
+      # Types that file outputs which pygmentize didn't support as of file 5.11, pygments 1.6rc1
+      # text/calendar
+      # text/PGP
+      # text/rtf
+      # text/texmacs
+      # text/x-bcpl
+      # text/x-info
+      # text/x-m4
+      # text/x-vcard
+      # text/x-xmcd
+  esac
+fi
+
+encoding=`file --brief --mime-encoding $file_common_opts "$1"`
+
+if [ -n "$lexer" ]; then
+    # FIXME: Specify input encoding rather than output encoding https://bitbucket.org/birkenfeld/pygments-main/issue/800
+    zcat "$1" | pygmentize -O encoding=$encoding,outencoding=UTF-8 $PYGMENTIZE_OPTS -l $lexer
+    exit 0
+fi
+
+exit 1

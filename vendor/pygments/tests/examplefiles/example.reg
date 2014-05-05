@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+; comment
+
+[HKEY_CURRENT_USER\SOFTWARE\Pygments]
+@="Hello"
+"Key With Spaces"="Something"
+"Key With ="="With Quotes"
+"Key With = 2"=dword:123
+"Key" = "Value"
+"Hex"=hex(0):1,2,3,a,b,f
+"Hex 2"=hex(5):80,00,00,ff
+
+[-HKEY_CURRENT_USER\SOFTWARE\Pygments\Subkey]
+
+[HKEY_CURRENT_USER\SOFTWARE\Pygments\Subkey2]
+; comment
+@=-
+"Foo"=-
+"Foo"="Value"

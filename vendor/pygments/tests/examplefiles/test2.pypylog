@@ -1,0 +1,120 @@
+[2f1dd6c3b8b7] {jit-log-opt-loop
+# Loop 0 (<Function object at 0xb720e550> ds1dr4 dsdr3 ds1dr4) : loop with 115 ops
+[p0, p1]
++33: label(p0, p1, descr=TargetToken(-1223434224))
+debug_merge_point(0, 0, '<Function object at 0xb710b120> ds1dr4 dsdr3 ds1dr4')
++33: guard_nonnull_class(p1, 138371488, descr=<Guard2>) [p1, p0]
++54: p3 = getfield_gc_pure(p1, descr=<FieldP pyhaskell.interpreter.haskell.Substitution.inst_rhs 8>)
++57: guard_value(p3, ConstPtr(ptr4), descr=<Guard3>) [p1, p0, p3]
++69: p5 = getfield_gc_pure(p1, descr=<FieldP pyhaskell.interpreter.haskell.Substitution.inst_subst 12>)
++72: p7 = getarrayitem_gc(p5, 0, descr=<ArrayP 4>)
++75: guard_class(p7, 138371552, descr=<Guard4>) [p0, p5, p7]
++88: p9 = getfield_gc(p7, descr=<FieldP pyhaskell.interpreter.haskell.Thunk.inst_application 8>)
++91: guard_nonnull_class(p9, 138373024, descr=<Guard5>) [p0, p5, p7, p9]
++109: p12 = getarrayitem_gc(p5, 1, descr=<ArrayP 4>)
++112: guard_class(p12, 138371552, descr=<Guard6>) [p0, p5, p12, p7]
++125: p14 = getfield_gc(p12, descr=<FieldP pyhaskell.interpreter.haskell.Thunk.inst_application 8>)
++128: guard_nonnull_class(p14, 138373024, descr=<Guard7>) [p0, p5, p12, p14, p7]
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
++146: p16 = getfield_gc_pure(p9, descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
++149: guard_value(p16, ConstPtr(ptr17), descr=<Guard8>) [p16, p9, p0, p12, p7]
++161: p18 = getfield_gc_pure(p9, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg0 12>)
++164: guard_class(p18, 138371648, descr=<Guard9>) [p18, p9, p0, p12, p7]
++177: p20 = getfield_gc_pure(p9, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg1 16>)
++180: guard_class(p20, 138371648, descr=<Guard10>) [p20, p9, p18, p0, p12, p7]
++193: p22 = getfield_gc_pure(p9, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg2 20>)
++196: guard_class(p22, 138371936, descr=<Guard11>) [p22, p9, p20, p18, p0, p12, p7]
+debug_merge_point(0, 0, 'None')
++209: p24 = getfield_gc_pure(p22, descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
++215: guard_value(p24, ConstPtr(ptr25), descr=<Guard12>) [p24, p22, p9, None, None, p0, p12, p7]
++227: p27 = getfield_gc_pure(p22, descr=<FieldP pyhaskell.interpreter.haskell.Application1.inst_arg0 12>)
++230: guard_class(p27, 138371648, descr=<Guard13>) [p22, p27, p9, None, None, p0, p12, p7]
+debug_merge_point(0, 0, '_')
+debug_merge_point(0, 0, 'None')
++243: p30 = getfield_gc(ConstPtr(ptr29), descr=<FieldP pyhaskell.interpreter.module.CoreMod.inst_qvars 24>)
++249: i34 = call(ConstClass(ll_dict_lookup_trampoline__v64___simple_call__function_ll), p30, ConstPtr(ptr32), 360200661, descr=<Calli 4 rri EF=4>)
++281: guard_no_exception(, descr=<Guard14>) [p27, p20, p18, i34, p30, None, None, None, p0, p12, p7]
++294: i36 = int_and(i34, -2147483648)
++302: i37 = int_is_true(i36)
+guard_false(i37, descr=<Guard15>) [p27, p20, p18, i34, p30, None, None, None, p0, p12, p7]
++311: p38 = getfield_gc(p30, descr=<FieldP dicttable.entries 12>)
++314: p39 = getinteriorfield_gc(p38, i34, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
++318: i40 = instance_ptr_eq(p18, p39)
+guard_true(i40, descr=<Guard16>) [p27, p20, None, None, None, p0, p12, p7]
+debug_merge_point(0, 0, 'None')
++327: i41 = getfield_gc_pure(p20, descr=<FieldS pyhaskell.interpreter.primtype.Int.inst_value 8>)
++330: i42 = getfield_gc_pure(p27, descr=<FieldS pyhaskell.interpreter.primtype.Int.inst_value 8>)
++333: i43 = int_sub(i41, i42)
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
++335: i45 = int_eq(0, i43)
+guard_false(i45, descr=<Guard17>) [p0, i43, None, None, None, None, p12, p7]
+p47 = new_with_vtable(138371648)
++393: setfield_gc(p47, i43, descr=<FieldS pyhaskell.interpreter.primtype.Int.inst_value 8>)
+setfield_gc(p7, p47, descr=<FieldP pyhaskell.interpreter.haskell.Thunk.inst_application 8>)
++414: p48 = getfield_gc(p12, descr=<FieldP pyhaskell.interpreter.haskell.Thunk.inst_application 8>)
++420: guard_nonnull_class(p48, 138371648, descr=<Guard18>) [p0, p48, p12, p47, p7]
+debug_merge_point(0, 0, '<PrimFunction object at 0x83f3f6c> 1 <Function object at 0xb710b3b0> 1 <Function object at 0xb710b3c0> <PrimFunction object at 0x83f3f3c> 1 dsdr3 <Function object at 0xb710b210> 1')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, '_')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, '<Function object at 0xb710b3d0> dsdr3 dsdr3')
+debug_merge_point(0, 0, '<Function object at 0xb710b120> ds1dr4 dsdr3 ds1dr4')
++438: label(p0, p48, p30, p38, descr=TargetToken(-1223434176))
+debug_merge_point(0, 0, '<Function object at 0xb710b120> ds1dr4 dsdr3 ds1dr4')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, '_')
+debug_merge_point(0, 0, 'None')
++438: i50 = call(ConstClass(ll_dict_lookup_trampoline__v64___simple_call__function_ll), p30, ConstPtr(ptr32), 360200661, descr=<Calli 4 rri EF=4>)
++464: guard_no_exception(, descr=<Guard19>) [p48, i50, p30, p0]
++477: i51 = int_and(i50, -2147483648)
++485: i52 = int_is_true(i51)
+guard_false(i52, descr=<Guard20>) [p48, i50, p30, p0]
++494: p53 = getinteriorfield_gc(p38, i50, descr=<InteriorFieldDescr <FieldP dictentry.value 4>>)
++501: i55 = instance_ptr_eq(ConstPtr(ptr54), p53)
+guard_true(i55, descr=<Guard21>) [p48, p0]
+debug_merge_point(0, 0, 'None')
++513: i56 = getfield_gc_pure(p48, descr=<FieldS pyhaskell.interpreter.primtype.Int.inst_value 8>)
++516: i58 = int_sub(i56, 1)
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
++519: i59 = int_eq(0, i58)
+guard_false(i59, descr=<Guard22>) [i58, p48, p0]
+debug_merge_point(0, 0, '<PrimFunction object at 0x83f3f6c> 1 <Function object at 0xb710b3b0> 1 <Function object at 0xb710b3c0> <PrimFunction object at 0x83f3f3c> 1 dsdr3 <Function object at 0xb710b210> 1')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, '_')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, 'None')
+debug_merge_point(0, 0, '<Function object at 0xb710b3d0> dsdr3 dsdr3')
+debug_merge_point(0, 0, '<Function object at 0xb710b120> ds1dr4 dsdr3 ds1dr4')
+p61 = new_with_vtable(138371700)
+p63 = new_with_vtable(138373024)
+p65 = new_with_vtable(138371936)
++606: setfield_gc(p63, ConstPtr(ptr66), descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
+p68 = new_with_vtable(138373024)
++632: setfield_gc(p65, ConstPtr(ptr69), descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
+p71 = new_with_vtable(138371936)
++658: setfield_gc(p68, ConstPtr(ptr17), descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
++665: setfield_gc(p71, ConstPtr(ptr72), descr=<FieldP pyhaskell.interpreter.haskell.Application1.inst_arg0 12>)
++672: setfield_gc(p68, p71, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg2 20>)
++675: setfield_gc(p68, p48, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg1 16>)
++678: setfield_gc(p68, ConstPtr(ptr54), descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg0 12>)
+p73 = new_with_vtable(138371648)
++701: setfield_gc(p61, p0, descr=<FieldP pyhaskell.interpreter.haskell.StackElement.inst_next 8>)
++716: setfield_gc(p61, 2, descr=<FieldS pyhaskell.interpreter.haskell.CopyStackElement.inst_index 16>)
++723: setfield_gc(p71, ConstPtr(ptr25), descr=<FieldP pyhaskell.interpreter.haskell.Application.inst_function 8>)
++730: setfield_gc(p65, p68, descr=<FieldP pyhaskell.interpreter.haskell.Application1.inst_arg0 12>)
++733: setfield_gc(p63, p65, descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg2 20>)
++736: setfield_gc(p63, ConstPtr(ptr75), descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg1 16>)
++743: setfield_gc(p63, ConstPtr(ptr54), descr=<FieldP pyhaskell.interpreter.haskell.Application3.inst_arg0 12>)
++750: setfield_gc(p61, p63, descr=<FieldP pyhaskell.interpreter.haskell.CopyStackElement.inst_application 12>)
++753: setfield_gc(p73, i58, descr=<FieldS pyhaskell.interpreter.primtype.Int.inst_value 8>)
++762: jump(p61, p73, p30, p38, descr=TargetToken(-1223434176))
++775: --end of the loop--
+[2f1dd6da3b99] jit-log-opt-loop}

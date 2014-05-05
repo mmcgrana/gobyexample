@@ -41,3 +41,8 @@ Bash completion
 
 The source distribution contains a file ``external/pygments.bashcomp`` that
 sets up completion for the ``pygmentize`` command in bash.
+
+Java
+----
+
+See the `Java quickstart <java.txt>`_ document.

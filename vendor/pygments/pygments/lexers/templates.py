@@ -5,7 +5,7 @@
 
     Lexers for various template engines' markup.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -224,12 +224,14 @@ class VelocityLexer(RegexLexer):
         'variable': [
             (identifier, Name.Variable),
             (r'\(', Punctuation, 'funcparams'),
-            (r'(\.)(' + identifier + r')', bygroups(Punctuation, Name.Variable), '#push'),
+            (r'(\.)(' + identifier + r')',
+             bygroups(Punctuation, Name.Variable), '#push'),
             (r'\}', Punctuation, '#pop'),
             (r'', Other, '#pop')
         ],
         'directiveparams': [
-            (r'(&&|\|\||==?|!=?|[-<>+*%&\|\^/])|\b(eq|ne|gt|lt|ge|le|not|in)\b', Operator),
+            (r'(&&|\|\||==?|!=?|[-<>+*%&\|\^/])|\b(eq|ne|gt|lt|ge|le|not|in)\b',
+             Operator),
             (r'\[', Operator, 'rangeoperator'),
             (r'\b' + identifier + r'\b', Name.Function),
             include('funcparams')
@@ -261,7 +263,8 @@ class VelocityLexer(RegexLexer):
             rv += 0.15
         if re.search(r'#\{?foreach\}?\(.+?\).*?#\{?end\}?', text):
             rv += 0.15
-        if re.search(r'\$\{?[a-zA-Z_][a-zA-Z0-9_]*(\([^)]*\))?(\.[a-zA-Z0-9_]+(\([^)]*\))?)*\}?', text):
+        if re.search(r'\$\{?[a-zA-Z_][a-zA-Z0-9_]*(\([^)]*\))?'
+                     r'(\.[a-zA-Z0-9_]+(\([^)]*\))?)*\}?', text):
             rv += 0.01
         return rv
 
@@ -1638,6 +1641,8 @@ class LassoHtmlLexer(DelegatingLexer):
     `HtmlLexer`.
 
     Nested JavaScript and CSS is also highlighted.
+
+    *New in Pygments 1.6.*
     """
 
     name = 'HTML+Lasso'
@@ -1649,7 +1654,6 @@ class LassoHtmlLexer(DelegatingLexer):
                  'application/x-httpd-lasso[89]']
 
     def __init__(self, **options):
-        options['requiredelimiters'] = True
         super(LassoHtmlLexer, self).__init__(HtmlLexer, LassoLexer, **options)
 
     def analyse_text(text):
@@ -1665,6 +1669,8 @@ class LassoXmlLexer(DelegatingLexer):
     """
     Subclass of the `LassoLexer` which highlights unhandled data with the
     `XmlLexer`.
+
+    *New in Pygments 1.6.*
     """
 
     name = 'XML+Lasso'
@@ -1674,7 +1680,6 @@ class LassoXmlLexer(DelegatingLexer):
     mimetypes = ['application/xml+lasso']
 
     def __init__(self, **options):
-        options['requiredelimiters'] = True
         super(LassoXmlLexer, self).__init__(XmlLexer, LassoLexer, **options)
 
     def analyse_text(text):
@@ -1688,6 +1693,8 @@ class LassoCssLexer(DelegatingLexer):
     """
     Subclass of the `LassoLexer` which highlights unhandled data with the
     `CssLexer`.
+
+    *New in Pygments 1.6.*
     """
 
     name = 'CSS+Lasso'
@@ -1712,6 +1719,8 @@ class LassoJavascriptLexer(DelegatingLexer):
     """
     Subclass of the `LassoLexer` which highlights unhandled data with the
     `JavascriptLexer`.
+
+    *New in Pygments 1.6.*
     """
 
     name = 'JavaScript+Lasso'

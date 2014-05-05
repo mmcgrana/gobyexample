@@ -8,6 +8,8 @@ def main():
 
     for name, aliases, filenames, mimetypes in get_all_lexers():
         cls = find_lexer_class(name)
+        if not cls.aliases:
+            print cls, "has no aliases"
         for f in filenames:
             if f not in uses:
                 uses[f] = []

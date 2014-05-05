@@ -37,7 +37,7 @@ Welcome to the Pygments documentation.
   - `Write your own lexer <lexerdevelopment.txt>`_
 
   - `Write your own formatter <formatterdevelopment.txt>`_
-  
+
   - `Write your own filter <filterdevelopment.txt>`_
 
   - `Register plugins <plugins.txt>`_
