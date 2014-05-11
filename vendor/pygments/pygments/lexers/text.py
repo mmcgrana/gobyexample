@@ -5,7 +5,7 @@
 
     Lexers for non-source code file types.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -25,7 +25,7 @@ __all__ = ['IniLexer', 'PropertiesLexer', 'SourcesListLexer', 'BaseMakefileLexer
            'RstLexer', 'VimLexer', 'GettextLexer', 'SquidConfLexer',
            'DebianControlLexer', 'DarcsPatchLexer', 'YamlLexer',
            'LighttpdConfLexer', 'NginxConfLexer', 'CMakeLexer', 'HttpLexer',
-           'PyPyLogLexer']
+           'PyPyLogLexer', 'RegeditLexer', 'HxmlLexer']
 
 
 class IniLexer(RegexLexer):
@@ -41,7 +41,7 @@ class IniLexer(RegexLexer):
     tokens = {
         'root': [
             (r'\s+', Text),
-            (r'[;#].*?$', Comment),
+            (r'[;#].*', Comment.Single),
             (r'\[.*?\]$', Keyword),
             (r'(.*?)([ \t]*)(=)([ \t]*)(.*(?:\n[ \t].+)*)',
              bygroups(Name.Attribute, Text, Operator, Text, String))
@@ -53,6 +53,49 @@ class IniLexer(RegexLexer):
         if npos < 3:
             return False
         return text[0] == '[' and text[npos-1] == ']'
+
+
+class RegeditLexer(RegexLexer):
+    """
+    Lexer for `Windows Registry
+    <http://en.wikipedia.org/wiki/Windows_Registry#.REG_files>`_ files produced
+    by regedit.
+
+    *New in Pygments 1.6.*
+    """
+
+    name = 'reg'
+    aliases = ['registry']
+    filenames = ['*.reg']
+    mimetypes = ['text/x-windows-registry']
+
+    tokens = {
+        'root': [
+            (r'Windows Registry Editor.*', Text),
+            (r'\s+', Text),
+            (r'[;#].*', Comment.Single),
+            (r'(\[)(-?)(HKEY_[A-Z_]+)(.*?\])$',
+             bygroups(Keyword, Operator, Name.Builtin, Keyword)),
+            # String keys, which obey somewhat normal escaping
+            (r'("(?:\\"|\\\\|[^"])+")([ \t]*)(=)([ \t]*)',
+             bygroups(Name.Attribute, Text, Operator, Text),
+             'value'),
+            # Bare keys (includes @)
+            (r'(.*?)([ \t]*)(=)([ \t]*)',
+             bygroups(Name.Attribute, Text, Operator, Text),
+             'value'),
+        ],
+        'value': [
+            (r'-', Operator, '#pop'), # delete value
+            (r'(dword|hex(?:\([0-9a-fA-F]\))?)(:)([0-9a-fA-F,]+)',
+             bygroups(Name.Variable, Punctuation, Number), '#pop'),
+            # As far as I know, .reg files do not support line continuation.
+            (r'.*', String, '#pop'),
+        ]
+    }
+
+    def analyse_text(text):
+        return text.startswith('Windows Registry Editor')
 
 
 class PropertiesLexer(RegexLexer):
@@ -573,7 +616,7 @@ class MoinWikiLexer(RegexLexer):
             (r'(\'\'\'?|\|\||`|__|~~|\^|,,|::)', Comment), # Formatting
             # Lists
             (r'^( +)([.*-])( )', bygroups(Text, Name.Builtin, Text)),
-            (r'^( +)([a-zivx]{1,5}\.)( )', bygroups(Text, Name.Builtin, Text)),
+            (r'^( +)([a-z]{1,5}\.)( )', bygroups(Text, Name.Builtin, Text)),
             # Other Formatting
             (r'\[\[\w+.*?\]\]', Keyword), # Macro
             (r'(\[[^\s\]]+)(\s+[^\]]+?)?(\])',
@@ -1706,8 +1749,8 @@ class PyPyLogLexer(RegexLexer):
         ],
         "jit-log": [
             (r"\[\w+\] jit-log-.*?}$", Keyword, "#pop"),
-
             (r"^\+\d+: ", Comment),
+            (r"--end of the loop--", Comment),
             (r"[ifp]\d+", Name),
             (r"ptr\d+", Name),
             (r"(\()(\w+(?:\.\w+)?)(\))",
@@ -1717,7 +1760,7 @@ class PyPyLogLexer(RegexLexer):
             (r"-?\d+", Number.Integer),
             (r"'.*'", String),
             (r"(None|descr|ConstClass|ConstPtr|TargetToken)", Name),
-            (r"<.*?>", Name.Builtin),
+            (r"<.*?>+", Name.Builtin),
             (r"(label|debug_merge_point|jump|finish)", Name.Class),
             (r"(int_add_ovf|int_add|int_sub_ovf|int_sub|int_mul_ovf|int_mul|"
              r"int_floordiv|int_mod|int_lshift|int_rshift|int_and|int_or|"
@@ -1756,4 +1799,45 @@ class PyPyLogLexer(RegexLexer):
             (r"\s+", Text),
             (r"#.*?$", Comment),
         ],
+    }
+
+
+class HxmlLexer(RegexLexer):
+    """
+    Lexer for `haXe build <http://haxe.org/doc/compiler>`_ files.
+
+    *New in Pygments 1.6.*
+    """
+    name = 'Hxml'
+    aliases = ['haxeml', 'hxml']
+    filenames = ['*.hxml']
+
+    tokens = {
+        'root': [
+            # Seperator
+            (r'(--)(next)', bygroups(Punctuation, Generic.Heading)),
+            # Compiler switches with one dash
+            (r'(-)(prompt|debug|v)', bygroups(Punctuation, Keyword.Keyword)),
+            # Compilerswitches with two dashes
+            (r'(--)(neko-source|flash-strict|flash-use-stage|no-opt|no-traces|'
+             r'no-inline|times|no-output)', bygroups(Punctuation, Keyword)),
+            # Targets and other options that take an argument
+            (r'(-)(cpp|js|neko|x|as3|swf9?|swf-lib|php|xml|main|lib|D|resource|'
+             r'cp|cmd)( +)(.+)',
+             bygroups(Punctuation, Keyword, Whitespace, String)),
+            # Options that take only numerical arguments
+            (r'(-)(swf-version)( +)(\d+)',
+             bygroups(Punctuation, Keyword, Number.Integer)),
+            # An Option that defines the size, the fps and the background
+            # color of an flash movie
+            (r'(-)(swf-header)( +)(\d+)(:)(\d+)(:)(\d+)(:)([A-Fa-f0-9]{6})',
+             bygroups(Punctuation, Keyword, Whitespace, Number.Integer,
+                      Punctuation, Number.Integer, Punctuation, Number.Integer,
+                      Punctuation, Number.Hex)),
+            # options with two dashes that takes arguments
+            (r'(--)(js-namespace|php-front|php-lib|remap|gen-hx-classes)( +)'
+             r'(.+)', bygroups(Punctuation, Keyword, Whitespace, String)),
+            # Single line comment, multiline ones are not allowed.
+            (r'#.*', Comment.Single)
+        ]
     }

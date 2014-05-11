@@ -6,7 +6,7 @@
     Module containing filter lookup functions and default
     filters.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -331,7 +331,6 @@ class TokenMergeFilter(Filter):
         Filter.__init__(self, **options)
 
     def filter(self, lexer, stream):
-        output = []
         current_type = None
         current_value = None
         for ttype, value in stream:

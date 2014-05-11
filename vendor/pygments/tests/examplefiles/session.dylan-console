@@ -1,0 +1,9 @@
+? 7 * 52;
+=> 364
+? define variable *your-variable* = $foo;
+? begin
+   let yours = "apple";
+   let mine = yours;
+   mine == yours;
+ end;
+=> #t

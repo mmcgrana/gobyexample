@@ -5,7 +5,7 @@
 
     Pygments lexers.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -113,7 +113,7 @@ def get_lexer_for_filename(_fn, code=None, **options):
         # to find lexers which need it overridden.
         if code:
             return cls.analyse_text(code) + bonus
-        return bonus
+        return cls.priority + bonus
 
     if matches:
         matches.sort(key=get_rating)

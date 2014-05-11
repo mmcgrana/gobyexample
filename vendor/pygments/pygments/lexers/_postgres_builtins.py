@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 """
     pygments.lexers._postgres_builtins
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Self-updating data files for PostgreSQL lexer.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -41,7 +42,6 @@ def parse_keywords(f):
 
 def parse_datatypes(f):
     dt = set()
-    re_entry = re.compile('\s*<entry><type>([^<]+)</type></entry>')
     for line in f:
         if '<sect1' in line:
             break
@@ -57,7 +57,8 @@ def parse_datatypes(f):
         line = re.sub("<[^>]+>", "", line)
 
         # Drop the parts containing braces
-        for tmp in [ t for tmp in line.split('[') for t in tmp.split(']') if "(" not in t ]:
+        for tmp in [t for tmp in line.split('[')
+                    for t in tmp.split(']') if "(" not in t]:
             for t in tmp.split(','):
                 t = t.strip()
                 if not t: continue

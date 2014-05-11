@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+HtmlFormatter	test_html_formatter.py	19;"	i
+HtmlFormatterTest	test_html_formatter.py	34;"	c
+NullFormatter	test_html_formatter.py	19;"	i
+PythonLexer	test_html_formatter.py	18;"	i
+StringIO	test_html_formatter.py	13;"	i
+dirname	test_html_formatter.py	16;"	i
+escape_html	test_html_formatter.py	20;"	i
+fp	test_html_formatter.py	27;"	v
+inspect	test_html_formatter.py	15;"	i
+isfile	test_html_formatter.py	16;"	i
+join	test_html_formatter.py	16;"	i
+os	test_html_formatter.py	10;"	i
+re	test_html_formatter.py	11;"	i
+subprocess	test_html_formatter.py	125;"	i
+support	test_html_formatter.py	23;"	i
+tempfile	test_html_formatter.py	14;"	i
+test_all_options	test_html_formatter.py	72;"	m	class:HtmlFormatterTest
+test_correct_output	test_html_formatter.py	35;"	m	class:HtmlFormatterTest
+test_ctags	test_html_formatter.py	165;"	m	class:HtmlFormatterTest
+test_external_css	test_html_formatter.py	48;"	m	class:HtmlFormatterTest
+test_get_style_defs	test_html_formatter.py	141;"	m	class:HtmlFormatterTest
+test_lineanchors	test_html_formatter.py	98;"	m	class:HtmlFormatterTest
+test_lineanchors_with_startnum	test_html_formatter.py	106;"	m	class:HtmlFormatterTest
+test_linenos	test_html_formatter.py	82;"	m	class:HtmlFormatterTest
+test_linenos_with_startnum	test_html_formatter.py	90;"	m	class:HtmlFormatterTest
+test_unicode_options	test_html_formatter.py	155;"	m	class:HtmlFormatterTest
+test_valid_output	test_html_formatter.py	114;"	m	class:HtmlFormatterTest
+tokensource	test_html_formatter.py	29;"	v
+uni_open	test_html_formatter.py	21;"	i
+unittest	test_html_formatter.py	12;"	i

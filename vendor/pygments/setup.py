@@ -21,9 +21,9 @@
     The `Pygments tip`_ is installable with ``easy_install Pygments==dev``.
 
     .. _Pygments tip:
-       http://bitbucket.org/birkenfeld/pygments-main/get/tip.zip#egg=Pygments-dev
+       http://bitbucket.org/birkenfeld/pygments-main/get/default.zip#egg=Pygments-dev
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -60,7 +60,7 @@ else:
 
 setup(
     name = 'Pygments',
-    version = '1.5',
+    version = '1.6',
     url = 'http://pygments.org/',
     license = 'BSD License',
     author = 'Georg Brandl',
@@ -77,11 +77,13 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: System Administrators',
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 6 - Mature',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'Operating System :: OS Independent',
+        'Topic :: Text Processing :: Filters',
+        'Topic :: Utilities',
     ],
     cmdclass = {'build_py': build_py},
     **add_keywords

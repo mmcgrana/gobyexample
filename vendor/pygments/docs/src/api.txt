@@ -64,7 +64,7 @@ def `guess_lexer(text, **options):`
 def `guess_lexer_for_filename(filename, text, **options):`
     As `guess_lexer()`, but only lexers which have a pattern in `filenames`
     or `alias_filenames` that matches `filename` are taken into consideration.
-    
+
     `pygments.util.ClassNotFound` is raised if no lexer thinks it can handle the
     content.
 

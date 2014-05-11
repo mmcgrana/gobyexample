@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+    pygments.lexers._scilab_builtins
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Builtin list for the ScilabLexer.
+
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+
 # These lists are generated automatically.
 # Run the following in a Scilab script:
 #

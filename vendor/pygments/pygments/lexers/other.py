@@ -5,7 +5,7 @@
 
     Lexers for other languages.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -19,6 +19,7 @@ from pygments.util import get_bool_opt
 from pygments.lexers.web import HtmlLexer
 
 from pygments.lexers._openedgebuiltins import OPENEDGEKEYWORDS
+from pygments.lexers._robotframeworklexer import RobotFrameworkLexer
 
 # backwards compatibility
 from pygments.lexers.sql import SqlLexer, MySqlLexer, SqliteConsoleLexer
@@ -32,7 +33,9 @@ __all__ = ['BrainfuckLexer', 'BefungeLexer', 'RedcodeLexer', 'MOOCodeLexer',
            'AutohotkeyLexer', 'GoodDataCLLexer', 'MaqlLexer', 'ProtoBufLexer',
            'HybrisLexer', 'AwkLexer', 'Cfengine3Lexer', 'SnobolLexer',
            'ECLLexer', 'UrbiscriptLexer', 'OpenEdgeLexer', 'BroLexer',
-           'MscgenLexer', 'KconfigLexer', 'VGLLexer', 'SourcePawnLexer']
+           'MscgenLexer', 'KconfigLexer', 'VGLLexer', 'SourcePawnLexer',
+           'RobotFrameworkLexer', 'PuppetLexer', 'NSISLexer', 'RPMSpecLexer',
+           'CbmBasicV2Lexer', 'AutoItLexer']
 
 
 class ECLLexer(RegexLexer):
@@ -1255,7 +1258,8 @@ class ModelicaLexer(RegexLexer):
         ],
         'classes': [
             (r'(block|class|connector|function|model|package|'
-             r'record|type)\b', Name.Class),
+             r'record|type)(\s+)([A-Za-z_]+)',
+             bygroups(Keyword, Text, Name.Class))
         ],
         'string': [
             (r'"', String, '#pop'),
@@ -1483,9 +1487,9 @@ class RebolLexer(RegexLexer):
             (r'}', Comment, '#pop'),
         ],
         'commentBlock': [
-            (r'\[',Comment, '#push'),
-            (r'\]',Comment, '#pop'),
-            (r'[^(\[\])]*', Comment),
+            (r'\[', Comment, '#push'),
+            (r'\]', Comment, '#pop'),
+            (r'[^(\[\])]+', Comment),
         ],
     }
 
@@ -1736,6 +1740,7 @@ class NewspeakLexer(RegexLexer):
        ]
     }
 
+
 class GherkinLexer(RegexLexer):
     """
     For `Gherkin <http://github.com/aslakhellesoy/gherkin/>` syntax.
@@ -1832,10 +1837,16 @@ class GherkinLexer(RegexLexer):
             include('table_vars'),
             include('numbers'),
             (r'(\s*)(@[^@\r\n\t ]+)', bygroups(Name.Function, Name.Tag)),
-            (step_keywords, bygroups(Name.Function, Keyword), "step_content_root"),
-            (feature_keywords, bygroups(Keyword, Keyword, Name.Function), 'narrative'),
-            (feature_element_keywords, bygroups(Name.Function, Keyword, Keyword, Name.Function), "feature_elements"),
-            (examples_keywords, bygroups(Name.Function, Keyword, Keyword, Name.Function), "examples_table"),
+            (step_keywords, bygroups(Name.Function, Keyword),
+             'step_content_root'),
+            (feature_keywords, bygroups(Keyword, Keyword, Name.Function),
+             'narrative'),
+            (feature_element_keywords,
+             bygroups(Name.Function, Keyword, Keyword, Name.Function),
+             'feature_elements'),
+            (examples_keywords,
+             bygroups(Name.Function, Keyword, Keyword, Name.Function),
+             'examples_table'),
             (r'(\s|.)', Name.Function),
         ]
     }
@@ -2771,7 +2782,7 @@ class OpenEdgeLexer(RegexLexer):
 
     keywords = (r'(?i)(^|(?<=[^0-9a-z_\-]))(' +
                 r'|'.join(OPENEDGEKEYWORDS) +
-                r')\s*($|(?=[^0-9a-z_\-]))') 
+                r')\s*($|(?=[^0-9a-z_\-]))')
     tokens = {
         'root': [
             (r'/\*', Comment.Multiline, 'comment'),
@@ -2834,7 +2845,7 @@ class BroLexer(RegexLexer):
              r'|pattern|port|record|set|string|subnet|table|time|timer'
              r'|vector)\b', Keyword.Type),
             (r'(T|F)\b', Keyword.Constant),
-            (r'(&)((?:add|delete|expire)_func|attr|(create|read|write)_expire'
+            (r'(&)((?:add|delete|expire)_func|attr|(?:create|read|write)_expire'
              r'|default|disable_print_hook|raw_output|encrypt|group|log'
              r'|mergeable|optional|persistent|priority|redef'
              r'|rotate_(?:interval|size)|synchronized)\b', bygroups(Punctuation,
@@ -2880,6 +2891,44 @@ class BroLexer(RegexLexer):
             (r'\\', String.Regex)
         ]
     }
+
+
+class CbmBasicV2Lexer(RegexLexer):
+    """
+    For CBM BASIC V2 sources.
+
+    *New in Pygments 1.6.*
+    """
+    name = 'CBM BASIC V2'
+    aliases = ['cbmbas']
+    filenames = ['*.bas']
+
+    flags = re.IGNORECASE
+
+    tokens = {
+        'root': [
+            (r'rem.*\n', Comment.Single),
+            (r'\s+', Text),
+            (r'new|run|end|for|to|next|step|go(to|sub)?|on|return|stop|cont'
+             r'|if|then|input#?|read|wait|load|save|verify|poke|sys|print#?'
+             r'|list|clr|cmd|open|close|get#?', Keyword.Reserved),
+            (r'data|restore|dim|let|def|fn', Keyword.Declaration),
+            (r'tab|spc|sgn|int|abs|usr|fre|pos|sqr|rnd|log|exp|cos|sin|tan|atn'
+             r'|peek|len|val|asc|(str|chr|left|right|mid)\$', Name.Builtin),
+            (r'[-+*/^<>=]', Operator),
+            (r'not|and|or', Operator.Word),
+            (r'"[^"\n]*.', String),
+            (r'\d+|[-+]?\d*\.\d*(e[-+]?\d+)?', Number.Float),
+            (r'[\(\),:;]', Punctuation),
+            (r'\w+[$%]?', Name),
+        ]
+    }
+
+    def analyse_text(self, text):
+        # if it starts with a line number, it shouldn't be a "modern" Basic
+        # like VB.net
+        if re.match(r'\d+', text):
+            return True
 
 
 class MscgenLexer(RegexLexer):
@@ -3156,5 +3205,463 @@ class SourcePawnLexer(RegexLexer):
                     if value in self.SM_TYPES:
                         token = Keyword.Type
                     elif value in self._functions:
-                        tokens = Name.Builtin
+                        token = Name.Builtin
             yield index, token, value
+
+
+class PuppetLexer(RegexLexer):
+    """
+    For `Puppet <http://puppetlabs.com/>`__ configuration DSL.
+
+    *New in Pygments 1.6.*
+    """
+    name = 'Puppet'
+    aliases = ['puppet']
+    filenames = ['*.pp']
+
+    tokens = {
+        'root': [
+            include('comments'),
+            include('keywords'),
+            include('names'),
+            include('numbers'),
+            include('operators'),
+            include('strings'),
+
+            (r'[]{}:(),;[]', Punctuation),
+            (r'[^\S\n]+', Text),
+        ],
+
+        'comments': [
+            (r'\s*#.*$', Comment),
+            (r'/(\\\n)?[*](.|\n)*?[*](\\\n)?/', Comment.Multiline),
+        ],
+
+        'operators': [
+            (r'(=>|\?|<|>|=|\+|-|/|\*|~|!|\|)', Operator),
+            (r'(in|and|or|not)\b', Operator.Word),
+        ],
+
+        'names': [
+            ('[a-zA-Z_][a-zA-Z0-9_]*', Name.Attribute),
+            (r'(\$\S+)(\[)(\S+)(\])', bygroups(Name.Variable, Punctuation,
+                                               String, Punctuation)),
+            (r'\$\S+', Name.Variable),
+        ],
+
+        'numbers': [
+            # Copypasta from the Python lexer
+            (r'(\d+\.\d*|\d*\.\d+)([eE][+-]?[0-9]+)?j?', Number.Float),
+            (r'\d+[eE][+-]?[0-9]+j?', Number.Float),
+            (r'0[0-7]+j?', Number.Oct),
+            (r'0[xX][a-fA-F0-9]+', Number.Hex),
+            (r'\d+L', Number.Integer.Long),
+            (r'\d+j?', Number.Integer)
+        ],
+
+        'keywords': [
+            # Left out 'group' and 'require'
+            # Since they're often used as attributes
+            (r'(?i)(absent|alert|alias|audit|augeas|before|case|check|class|'
+             r'computer|configured|contained|create_resources|crit|cron|debug|'
+             r'default|define|defined|directory|else|elsif|emerg|err|exec|'
+             r'extlookup|fail|false|file|filebucket|fqdn_rand|generate|host|if|'
+             r'import|include|info|inherits|inline_template|installed|'
+             r'interface|k5login|latest|link|loglevel|macauthorization|'
+             r'mailalias|maillist|mcx|md5|mount|mounted|nagios_command|'
+             r'nagios_contact|nagios_contactgroup|nagios_host|'
+             r'nagios_hostdependency|nagios_hostescalation|nagios_hostextinfo|'
+             r'nagios_hostgroup|nagios_service|nagios_servicedependency|'
+             r'nagios_serviceescalation|nagios_serviceextinfo|'
+             r'nagios_servicegroup|nagios_timeperiod|node|noop|notice|notify|'
+             r'package|present|purged|realize|regsubst|resources|role|router|'
+             r'running|schedule|scheduled_task|search|selboolean|selmodule|'
+             r'service|sha1|shellquote|split|sprintf|ssh_authorized_key|sshkey|'
+             r'stage|stopped|subscribe|tag|tagged|template|tidy|true|undef|'
+             r'unmounted|user|versioncmp|vlan|warning|yumrepo|zfs|zone|'
+             r'zpool)\b', Keyword),
+        ],
+
+        'strings': [
+            (r'"([^"])*"', String),
+            (r'\'([^\'])*\'', String),
+        ],
+
+    }
+
+
+class NSISLexer(RegexLexer):
+    """
+    For `NSIS <http://nsis.sourceforge.net/>`_ scripts.
+
+    *New in Pygments 1.6.*
+    """
+    name = 'NSIS'
+    aliases = ['nsis', 'nsi', 'nsh']
+    filenames = ['*.nsi', '*.nsh']
+    mimetypes = ['text/x-nsis']
+
+    flags = re.IGNORECASE
+
+    tokens = {
+        'root': [
+            (r'[;\#].*\n', Comment),
+            (r"'.*'", String.Single),
+            (r'"', String.Double, 'str_double'),
+            (r'`', String.Backtick, 'str_backtick'),
+            include('macro'),
+            include('interpol'),
+            include('basic'),
+            (r'\$\{[a-z_|][\w|]*\}', Keyword.Pseudo),
+            (r'/[a-z_]\w*', Name.Attribute),
+            ('.', Text),
+        ],
+        'basic': [
+            (r'(\n)(Function)(\s+)([._a-z][.\w]*)\b',
+             bygroups(Text, Keyword, Text, Name.Function)),
+            (r'\b([_a-z]\w*)(::)([a-z][a-z0-9]*)\b',
+             bygroups(Keyword.Namespace, Punctuation, Name.Function)),
+            (r'\b([_a-z]\w*)(:)', bygroups(Name.Label, Punctuation)),
+            (r'(\b[ULS]|\B)([\!\<\>=]?=|\<\>?|\>)\B', Operator),
+            (r'[|+-]', Operator),
+            (r'\\', Punctuation),
+            (r'\b(Abort|Add(?:BrandingImage|Size)|'
+             r'Allow(?:RootDirInstall|SkipFiles)|AutoCloseWindow|'
+             r'BG(?:Font|Gradient)|BrandingText|BringToFront|Call(?:InstDLL)?|'
+             r'(?:Sub)?Caption|ChangeUI|CheckBitmap|ClearErrors|CompletedText|'
+             r'ComponentText|CopyFiles|CRCCheck|'
+             r'Create(?:Directory|Font|Shortcut)|Delete(?:INI(?:Sec|Str)|'
+             r'Reg(?:Key|Value))?|DetailPrint|DetailsButtonText|'
+             r'Dir(?:Show|Text|Var|Verify)|(?:Disabled|Enabled)Bitmap|'
+             r'EnableWindow|EnumReg(?:Key|Value)|Exch|Exec(?:Shell|Wait)?|'
+             r'ExpandEnvStrings|File(?:BufSize|Close|ErrorText|Open|'
+             r'Read(?:Byte)?|Seek|Write(?:Byte)?)?|'
+             r'Find(?:Close|First|Next|Window)|FlushINI|Function(?:End)?|'
+             r'Get(?:CurInstType|CurrentAddress|DlgItem|DLLVersion(?:Local)?|'
+             r'ErrorLevel|FileTime(?:Local)?|FullPathName|FunctionAddress|'
+             r'InstDirError|LabelAddress|TempFileName)|'
+             r'Goto|HideWindow|Icon|'
+             r'If(?:Abort|Errors|FileExists|RebootFlag|Silent)|'
+             r'InitPluginsDir|Install(?:ButtonText|Colors|Dir(?:RegKey)?)|'
+             r'Inst(?:ProgressFlags|Type(?:[GS]etText)?)|Int(?:CmpU?|Fmt|Op)|'
+             r'IsWindow|LangString(?:UP)?|'
+             r'License(?:BkColor|Data|ForceSelection|LangString|Text)|'
+             r'LoadLanguageFile|LockWindow|Log(?:Set|Text)|MessageBox|'
+             r'MiscButtonText|Name|Nop|OutFile|(?:Uninst)?Page(?:Ex(?:End)?)?|'
+             r'PluginDir|Pop|Push|Quit|Read(?:(?:Env|INI|Reg)Str|RegDWORD)|'
+             r'Reboot|(?:Un)?RegDLL|Rename|RequestExecutionLevel|ReserveFile|'
+             r'Return|RMDir|SearchPath|Section(?:Divider|End|'
+             r'(?:(?:Get|Set)(?:Flags|InstTypes|Size|Text))|Group(?:End)?|In)?|'
+             r'SendMessage|Set(?:AutoClose|BrandingImage|Compress(?:ionLevel|'
+             r'or(?:DictSize)?)?|CtlColors|CurInstType|DatablockOptimize|'
+             r'DateSave|Details(?:Print|View)|Error(?:s|Level)|FileAttributes|'
+             r'Font|OutPath|Overwrite|PluginUnload|RebootFlag|ShellVarContext|'
+             r'Silent|StaticBkColor)|'
+             r'Show(?:(?:I|Uni)nstDetails|Window)|Silent(?:Un)?Install|Sleep|'
+             r'SpaceTexts|Str(?:CmpS?|Cpy|Len)|SubSection(?:End)?|'
+             r'Uninstall(?:ButtonText|(?:Sub)?Caption|EXEName|Icon|Text)|'
+             r'UninstPage|Var|VI(?:AddVersionKey|ProductVersion)|WindowIcon|'
+             r'Write(?:INIStr|Reg(:?Bin|DWORD|(?:Expand)?Str)|Uninstaller)|'
+             r'XPStyle)\b', Keyword),
+            (r'\b(CUR|END|(?:FILE_ATTRIBUTE_)?'
+             r'(?:ARCHIVE|HIDDEN|NORMAL|OFFLINE|READONLY|SYSTEM|TEMPORARY)|'
+             r'HK(CC|CR|CU|DD|LM|PD|U)|'
+             r'HKEY_(?:CLASSES_ROOT|CURRENT_(?:CONFIG|USER)|DYN_DATA|'
+             r'LOCAL_MACHINE|PERFORMANCE_DATA|USERS)|'
+             r'ID(?:ABORT|CANCEL|IGNORE|NO|OK|RETRY|YES)|'
+             r'MB_(?:ABORTRETRYIGNORE|DEFBUTTON[1-4]|'
+             r'ICON(?:EXCLAMATION|INFORMATION|QUESTION|STOP)|'
+             r'OK(?:CANCEL)?|RETRYCANCEL|RIGHT|SETFOREGROUND|TOPMOST|USERICON|'
+             r'YESNO(?:CANCEL)?)|SET|SHCTX|'
+             r'SW_(?:HIDE|SHOW(?:MAXIMIZED|MINIMIZED|NORMAL))|'
+             r'admin|all|auto|both|bottom|bzip2|checkbox|colored|current|false|'
+             r'force|hide|highest|if(?:diff|newer)|lastused|leave|left|'
+             r'listonly|lzma|nevershow|none|normal|off|on|pop|push|'
+             r'radiobuttons|right|show|silent|silentlog|smooth|textonly|top|'
+             r'true|try|user|zlib)\b', Name.Constant),
+        ],
+        'macro': [
+            (r'\!(addincludedir(?:dir)?|addplugindir|appendfile|cd|define|'
+             r'delfilefile|echo(?:message)?|else|endif|error|execute|'
+             r'if(?:macro)?n?(?:def)?|include|insertmacro|macro(?:end)?|packhdr|'
+             r'search(?:parse|replace)|system|tempfilesymbol|undef|verbose|'
+             r'warning)\b', Comment.Preproc),
+        ],
+        'interpol': [
+            (r'\$(R?[0-9])', Name.Builtin.Pseudo),    # registers
+            (r'\$(ADMINTOOLS|APPDATA|CDBURN_AREA|COOKIES|COMMONFILES(?:32|64)|'
+            r'DESKTOP|DOCUMENTS|EXE(?:DIR|FILE|PATH)|FAVORITES|FONTS|HISTORY|'
+            r'HWNDPARENT|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|PICTURES|'
+            r'PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(?:32|64)|QUICKLAUNCH|'
+            r'RECENT|RESOURCES(?:_LOCALIZED)?|SENDTO|SM(?:PROGRAMS|STARTUP)|'
+            r'STARTMENU|SYSDIR|TEMP(?:LATES)?|VIDEOS|WINDIR|\{NSISDIR\})',
+             Name.Builtin),
+            (r'\$(CMDLINE|INSTDIR|OUTDIR|LANGUAGE)', Name.Variable.Global),
+            (r'\$[a-z_]\w*', Name.Variable),
+        ],
+        'str_double': [
+            (r'"', String, '#pop'),
+            (r'\$(\\[nrt"]|\$)', String.Escape),
+            include('interpol'),
+            (r'.', String.Double),
+        ],
+        'str_backtick': [
+            (r'`', String, '#pop'),
+            (r'\$(\\[nrt"]|\$)', String.Escape),
+            include('interpol'),
+            (r'.', String.Double),
+        ],
+    }
+
+
+class RPMSpecLexer(RegexLexer):
+    """
+    For RPM *.spec files
+
+    *New in Pygments 1.6.*
+    """
+
+    name = 'RPMSpec'
+    aliases = ['spec']
+    filenames = ['*.spec']
+    mimetypes = ['text/x-rpm-spec']
+
+    _directives = ('(?:package|prep|build|install|clean|check|pre[a-z]*|'
+                   'post[a-z]*|trigger[a-z]*|files)')
+
+    tokens = {
+        'root': [
+            (r'#.*\n', Comment),
+            include('basic'),
+        ],
+        'description': [
+            (r'^(%' + _directives + ')(.*)$',
+             bygroups(Name.Decorator, Text), '#pop'),
+            (r'\n', Text),
+            (r'.', Text),
+        ],
+        'changelog': [
+            (r'\*.*\n', Generic.Subheading),
+            (r'^(%' + _directives + ')(.*)$',
+             bygroups(Name.Decorator, Text), '#pop'),
+            (r'\n', Text),
+            (r'.', Text),
+        ],
+        'string': [
+            (r'"', String.Double, '#pop'),
+            (r'\\([\\abfnrtv"\']|x[a-fA-F0-9]{2,4}|[0-7]{1,3})', String.Escape),
+            include('interpol'),
+            (r'.', String.Double),
+        ],
+        'basic': [
+            include('macro'),
+            (r'(?i)^(Name|Version|Release|Epoch|Summary|Group|License|Packager|'
+             r'Vendor|Icon|URL|Distribution|Prefix|Patch[0-9]*|Source[0-9]*|'
+             r'Requires\(?[a-z]*\)?|[a-z]+Req|Obsoletes|Provides|Conflicts|'
+             r'Build[a-z]+|[a-z]+Arch|Auto[a-z]+)(:)(.*)$',
+             bygroups(Generic.Heading, Punctuation, using(this))),
+            (r'^%description', Name.Decorator, 'description'),
+            (r'^%changelog', Name.Decorator, 'changelog'),
+            (r'^(%' + _directives + ')(.*)$', bygroups(Name.Decorator, Text)),
+            (r'%(attr|defattr|dir|doc(?:dir)?|setup|config(?:ure)?|'
+             r'make(?:install)|ghost|patch[0-9]+|find_lang|exclude|verify)',
+             Keyword),
+            include('interpol'),
+            (r"'.*'", String.Single),
+            (r'"', String.Double, 'string'),
+            (r'.', Text),
+        ],
+        'macro': [
+            (r'%define.*\n', Comment.Preproc),
+            (r'%\{\!\?.*%define.*\}', Comment.Preproc),
+            (r'(%(?:if(?:n?arch)?|else(?:if)?|endif))(.*)$',
+             bygroups(Comment.Preproc, Text)),
+        ],
+        'interpol': [
+            (r'%\{?__[a-z_]+\}?', Name.Function),
+            (r'%\{?_([a-z_]+dir|[a-z_]+path|prefix)\}?', Keyword.Pseudo),
+            (r'%\{\?[A-Za-z0-9_]+\}', Name.Variable),
+            (r'\$\{?RPM_[A-Z0-9_]+\}?', Name.Variable.Global),
+            (r'%\{[a-zA-Z][a-zA-Z0-9_]+\}', Keyword.Constant),
+        ]
+    }
+
+
+class AutoItLexer(RegexLexer):
+    """
+    For `AutoIt <http://www.autoitscript.com/site/autoit/>`_ files.
+
+    AutoIt is a freeware BASIC-like scripting language
+    designed for automating the Windows GUI and general scripting
+
+    *New in Pygments 1.6.*
+    """
+    name = 'AutoIt'
+    aliases = ['autoit', 'Autoit']
+    filenames = ['*.au3']
+    mimetypes = ['text/x-autoit']
+
+    # Keywords, functions, macros from au3.keywords.properties
+    # which can be found in AutoIt installed directory, e.g.
+    # c:\Program Files (x86)\AutoIt3\SciTE\au3.keywords.properties
+
+    keywords = """\
+    #include-once #include #endregion #forcedef #forceref #region
+    and byref case continueloop dim do else elseif endfunc endif
+    endselect exit exitloop for func global
+    if local next not or return select step
+    then to until wend while exit""".split()
+
+    functions = """\
+    abs acos adlibregister adlibunregister asc ascw asin assign atan
+    autoitsetoption autoitwingettitle autoitwinsettitle beep binary binarylen
+    binarymid binarytostring bitand bitnot bitor bitrotate bitshift bitxor
+    blockinput break call cdtray ceiling chr chrw clipget clipput consoleread
+    consolewrite consolewriteerror controlclick controlcommand controldisable
+    controlenable controlfocus controlgetfocus controlgethandle controlgetpos
+    controlgettext controlhide controllistview controlmove controlsend
+    controlsettext controlshow controltreeview cos dec dircopy dircreate
+    dirgetsize dirmove dirremove dllcall dllcalladdress dllcallbackfree
+    dllcallbackgetptr dllcallbackregister dllclose dllopen dllstructcreate
+    dllstructgetdata dllstructgetptr dllstructgetsize dllstructsetdata
+    drivegetdrive drivegetfilesystem drivegetlabel drivegetserial drivegettype
+    drivemapadd drivemapdel drivemapget drivesetlabel drivespacefree
+    drivespacetotal drivestatus envget envset envupdate eval execute exp
+    filechangedir fileclose filecopy filecreatentfslink filecreateshortcut
+    filedelete fileexists filefindfirstfile filefindnextfile fileflush
+    filegetattrib filegetencoding filegetlongname filegetpos filegetshortcut
+    filegetshortname filegetsize filegettime filegetversion fileinstall filemove
+    fileopen fileopendialog fileread filereadline filerecycle filerecycleempty
+    filesavedialog fileselectfolder filesetattrib filesetpos filesettime
+    filewrite filewriteline floor ftpsetproxy guicreate guictrlcreateavi
+    guictrlcreatebutton guictrlcreatecheckbox guictrlcreatecombo
+    guictrlcreatecontextmenu guictrlcreatedate guictrlcreatedummy
+    guictrlcreateedit guictrlcreategraphic guictrlcreategroup guictrlcreateicon
+    guictrlcreateinput guictrlcreatelabel guictrlcreatelist
+    guictrlcreatelistview guictrlcreatelistviewitem guictrlcreatemenu
+    guictrlcreatemenuitem guictrlcreatemonthcal guictrlcreateobj
+    guictrlcreatepic guictrlcreateprogress guictrlcreateradio
+    guictrlcreateslider guictrlcreatetab guictrlcreatetabitem
+    guictrlcreatetreeview guictrlcreatetreeviewitem guictrlcreateupdown
+    guictrldelete guictrlgethandle guictrlgetstate guictrlread guictrlrecvmsg
+    guictrlregisterlistviewsort guictrlsendmsg guictrlsendtodummy
+    guictrlsetbkcolor guictrlsetcolor guictrlsetcursor guictrlsetdata
+    guictrlsetdefbkcolor guictrlsetdefcolor guictrlsetfont guictrlsetgraphic
+    guictrlsetimage guictrlsetlimit guictrlsetonevent guictrlsetpos
+    guictrlsetresizing guictrlsetstate guictrlsetstyle guictrlsettip guidelete
+    guigetcursorinfo guigetmsg guigetstyle guiregistermsg guisetaccelerators
+    guisetbkcolor guisetcoord guisetcursor guisetfont guisethelp guiseticon
+    guisetonevent guisetstate guisetstyle guistartgroup guiswitch hex hotkeyset
+    httpsetproxy httpsetuseragent hwnd inetclose inetget inetgetinfo inetgetsize
+    inetread inidelete iniread inireadsection inireadsectionnames
+    inirenamesection iniwrite iniwritesection inputbox int isadmin isarray
+    isbinary isbool isdeclared isdllstruct isfloat ishwnd isint iskeyword
+    isnumber isobj isptr isstring log memgetstats mod mouseclick mouseclickdrag
+    mousedown mousegetcursor mousegetpos mousemove mouseup mousewheel msgbox
+    number objcreate objcreateinterface objevent objevent objget objname
+    onautoitexitregister onautoitexitunregister opt ping pixelchecksum
+    pixelgetcolor pixelsearch pluginclose pluginopen processclose processexists
+    processgetstats processlist processsetpriority processwait processwaitclose
+    progressoff progresson progressset ptr random regdelete regenumkey
+    regenumval regread regwrite round run runas runaswait runwait send
+    sendkeepactive seterror setextended shellexecute shellexecutewait shutdown
+    sin sleep soundplay soundsetwavevolume splashimageon splashoff splashtexton
+    sqrt srandom statusbargettext stderrread stdinwrite stdioclose stdoutread
+    string stringaddcr stringcompare stringformat stringfromasciiarray
+    stringinstr stringisalnum stringisalpha stringisascii stringisdigit
+    stringisfloat stringisint stringislower stringisspace stringisupper
+    stringisxdigit stringleft stringlen stringlower stringmid stringregexp
+    stringregexpreplace stringreplace stringright stringsplit stringstripcr
+    stringstripws stringtoasciiarray stringtobinary stringtrimleft
+    stringtrimright stringupper tan tcpaccept tcpclosesocket tcpconnect
+    tcplisten tcpnametoip tcprecv tcpsend tcpshutdown tcpstartup timerdiff
+    timerinit tooltip traycreateitem traycreatemenu traygetmsg trayitemdelete
+    trayitemgethandle trayitemgetstate trayitemgettext trayitemsetonevent
+    trayitemsetstate trayitemsettext traysetclick trayseticon traysetonevent
+    traysetpauseicon traysetstate traysettooltip traytip ubound udpbind
+    udpclosesocket udpopen udprecv udpsend udpshutdown udpstartup vargettype
+    winactivate winactive winclose winexists winflash wingetcaretpos
+    wingetclasslist wingetclientsize wingethandle wingetpos wingetprocess
+    wingetstate wingettext wingettitle winkill winlist winmenuselectitem
+    winminimizeall winminimizeallundo winmove winsetontop winsetstate
+    winsettitle winsettrans winwait winwaitactive winwaitclose
+    winwaitnotactive""".split()
+
+    macros = """\
+    @appdatacommondir @appdatadir @autoitexe @autoitpid @autoitversion
+    @autoitx64 @com_eventobj @commonfilesdir @compiled @computername @comspec
+    @cpuarch @cr @crlf @desktopcommondir @desktopdepth @desktopdir
+    @desktopheight @desktoprefresh @desktopwidth @documentscommondir @error
+    @exitcode @exitmethod @extended @favoritescommondir @favoritesdir
+    @gui_ctrlhandle @gui_ctrlid @gui_dragfile @gui_dragid @gui_dropid
+    @gui_winhandle @homedrive @homepath @homeshare @hotkeypressed @hour
+    @ipaddress1 @ipaddress2 @ipaddress3 @ipaddress4 @kblayout @lf
+    @logondnsdomain @logondomain @logonserver @mday @min @mon @msec @muilang
+    @mydocumentsdir @numparams @osarch @osbuild @oslang @osservicepack @ostype
+    @osversion @programfilesdir @programscommondir @programsdir @scriptdir
+    @scriptfullpath @scriptlinenumber @scriptname @sec @startmenucommondir
+    @startmenudir @startupcommondir @startupdir @sw_disable @sw_enable @sw_hide
+    @sw_lock @sw_maximize @sw_minimize @sw_restore @sw_show @sw_showdefault
+    @sw_showmaximized @sw_showminimized @sw_showminnoactive @sw_showna
+    @sw_shownoactivate @sw_shownormal @sw_unlock @systemdir @tab @tempdir
+    @tray_id @trayiconflashing @trayiconvisible @username @userprofiledir @wday
+    @windowsdir @workingdir @yday @year""".split()
+
+    tokens = {
+        'root': [
+            (r';.*\n', Comment.Single),
+            (r'(#comments-start|#cs).*?(#comments-end|#ce)', Comment.Multiline),
+            (r'[\[\]{}(),;]', Punctuation),
+            (r'(and|or|not)\b', Operator.Word),
+            (r'[\$|@][a-zA-Z_][a-zA-Z0-9_]*', Name.Variable),
+            (r'!=|==|:=|\.=|<<|>>|[-~+/*%=<>&^|?:!.]', Operator),
+            include('commands'),
+            include('labels'),
+            include('builtInFunctions'),
+            include('builtInMarcros'),
+            (r'"', String, combined('stringescape', 'dqs')),
+            include('numbers'),
+            (r'[a-zA-Z_#@$][a-zA-Z0-9_#@$]*', Name),
+            (r'\\|\'', Text),
+            (r'\`([\,\%\`abfnrtv\-\+;])', String.Escape),
+            (r'_\n', Text), # Line continuation
+            include('garbage'),
+        ],
+        'commands': [
+            (r'(?i)(\s*)(%s)\b' % '|'.join(keywords),
+            bygroups(Text, Name.Builtin)),
+        ],
+        'builtInFunctions': [
+            (r'(?i)(%s)\b' % '|'.join(functions),
+             Name.Function),
+        ],
+        'builtInMarcros': [
+            (r'(?i)(%s)\b' % '|'.join(macros),
+             Name.Variable.Global),
+        ],
+        'labels': [
+            # sendkeys
+            (r'(^\s*)({\S+?})', bygroups(Text, Name.Label)),
+        ],
+        'numbers': [
+            (r'(\d+\.\d*|\d*\.\d+)([eE][+-]?[0-9]+)?', Number.Float),
+            (r'\d+[eE][+-]?[0-9]+', Number.Float),
+            (r'0\d+', Number.Oct),
+            (r'0[xX][a-fA-F0-9]+', Number.Hex),
+            (r'\d+L', Number.Integer.Long),
+            (r'\d+', Number.Integer)
+        ],
+        'stringescape': [
+            (r'\"\"|\`([\,\%\`abfnrtv])', String.Escape),
+        ],
+        'strings': [
+            (r'[^"\n]+', String),
+        ],
+        'dqs': [
+            (r'"', String, '#pop'),
+            include('strings')
+        ],
+        'garbage': [
+            (r'[^\S\n]', Text),
+        ],
+    }

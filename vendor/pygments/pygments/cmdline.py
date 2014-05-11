@@ -5,7 +5,7 @@
 
     Command line interface.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 import sys
@@ -192,6 +192,14 @@ def main(args=sys.argv):
 
     usage = USAGE % ((args[0],) * 6)
 
+    if sys.platform in ['win32', 'cygwin']:
+        try:
+            # Provide coloring under Windows, if possible
+            import colorama
+            colorama.init()
+        except ImportError:
+            pass
+
     try:
         popts, args = getopt.getopt(args[1:], "l:f:F:o:O:P:LS:a:N:hVHg")
     except getopt.GetoptError, err:
@@ -219,7 +227,7 @@ def main(args=sys.argv):
         return 0
 
     if opts.pop('-V', None) is not None:
-        print 'Pygments version %s, (c) 2006-2012 by Georg Brandl.' % __version__
+        print 'Pygments version %s, (c) 2006-2013 by Georg Brandl.' % __version__
         return 0
 
     # handle ``pygmentize -L``
@@ -370,9 +378,9 @@ def main(args=sys.argv):
             except ClassNotFound, err:
                 if '-g' in opts:
                     try:
-                        lexer = guess_lexer(code)
+                        lexer = guess_lexer(code, **parsed_opts)
                     except ClassNotFound:
-                        lexer = TextLexer()
+                        lexer = TextLexer(**parsed_opts)
                 else:
                     print >>sys.stderr, 'Error:', err
                     return 1
@@ -384,9 +392,9 @@ def main(args=sys.argv):
         if '-g' in opts:
             code = sys.stdin.read()
             try:
-                lexer = guess_lexer(code)
+                lexer = guess_lexer(code, **parsed_opts)
             except ClassNotFound:
-                lexer = TextLexer()
+                lexer = TextLexer(**parsed_opts)
         elif not lexer:
             print >>sys.stderr, 'Error: no lexer name given and reading ' + \
                                 'from stdin (try using -g or -l <lexer>)'

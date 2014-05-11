@@ -5,7 +5,7 @@
 
     Lexers for assembly languages.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -17,7 +17,7 @@ from pygments.token import Text, Name, Number, String, Comment, Punctuation, \
      Other, Keyword, Operator
 
 __all__ = ['GasLexer', 'ObjdumpLexer','DObjdumpLexer', 'CppObjdumpLexer',
-           'CObjdumpLexer', 'LlvmLexer', 'NasmLexer']
+           'CObjdumpLexer', 'LlvmLexer', 'NasmLexer', 'Ca65Lexer']
 
 
 class GasLexer(RegexLexer):
@@ -240,8 +240,8 @@ class LlvmLexer(RegexLexer):
              r'|linkonce_odr|weak|weak_odr|appending|dllimport|dllexport'
              r'|common|default|hidden|protected|extern_weak|external'
              r'|thread_local|zeroinitializer|undef|null|to|tail|target|triple'
-             r'|deplibs|datalayout|volatile|nuw|nsw|exact|inbounds|align'
-             r'|addrspace|section|alias|module|asm|sideeffect|gc|dbg'
+             r'|datalayout|volatile|nuw|nsw|nnan|ninf|nsz|arcp|fast|exact|inbounds'
+             r'|align|addrspace|section|alias|module|asm|sideeffect|gc|dbg'
 
              r'|ccc|fastcc|coldcc|x86_stdcallcc|x86_fastcallcc|arm_apcscc'
              r'|arm_aapcscc|arm_aapcs_vfpcc'
@@ -358,3 +358,41 @@ class NasmLexer(RegexLexer):
             (type, Keyword.Type)
         ],
     }
+
+
+class Ca65Lexer(RegexLexer):
+    """
+    For ca65 assembler sources.
+
+    *New in Pygments 1.6.*
+    """
+    name = 'ca65'
+    aliases = ['ca65']
+    filenames = ['*.s']
+
+    flags = re.IGNORECASE
+
+    tokens = {
+        'root': [
+            (r';.*', Comment.Single),
+            (r'\s+', Text),
+            (r'[a-z_.@$][\w.@$]*:', Name.Label),
+            (r'((ld|st)[axy]|(in|de)[cxy]|asl|lsr|ro[lr]|adc|sbc|cmp|cp[xy]'
+             r'|cl[cvdi]|se[cdi]|jmp|jsr|bne|beq|bpl|bmi|bvc|bvs|bcc|bcs'
+             r'|p[lh][ap]|rt[is]|brk|nop|ta[xy]|t[xy]a|txs|tsx|and|ora|eor'
+             r'|bit)\b', Keyword),
+            (r'\.[a-z0-9_]+', Keyword.Pseudo),
+            (r'[-+~*/^&|!<>=]', Operator),
+            (r'"[^"\n]*.', String),
+            (r"'[^'\n]*.", String.Char),
+            (r'\$[0-9a-f]+|[0-9a-f]+h\b', Number.Hex),
+            (r'\d+|%[01]+', Number.Integer),
+            (r'[#,.:()=]', Punctuation),
+            (r'[a-z_.@$][\w.@$]*', Name),
+        ]
+    }
+
+    def analyse_text(self, text):
+        # comments in GAS start with "#"
+        if re.match(r'^\s*;', text, re.MULTILINE):
+            return 0.9

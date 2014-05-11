@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+    pygments.lexers._openedgebuiltins
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Builtin list for the OpenEdgeLexer.
+
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+
 OPENEDGEKEYWORDS = [
     'ABSOLUTE', 'ABS', 'ABSO', 'ABSOL', 'ABSOLU', 'ABSOLUT', 'ACCELERATOR',
     'ACCUM', 'ACCUMULATE', 'ACCUM', 'ACCUMU', 'ACCUMUL', 'ACCUMULA',

@@ -5,7 +5,7 @@
 
     Lexers for various shells.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -18,7 +18,7 @@ from pygments.util import shebang_matches
 
 
 __all__ = ['BashLexer', 'BashSessionLexer', 'TcshLexer', 'BatchLexer',
-           'PowerShellLexer']
+           'PowerShellLexer', 'ShellSessionLexer']
 
 line_re  = re.compile('.*?\n')
 
@@ -139,6 +139,52 @@ class BashSessionLexer(Lexer):
                 insertions.append((len(curcode),
                                    [(0, Generic.Prompt, line[:1])]))
                 curcode += line[1:]
+            else:
+                if insertions:
+                    toks = bashlexer.get_tokens_unprocessed(curcode)
+                    for i, t, v in do_insertions(insertions, toks):
+                        yield pos+i, t, v
+                yield match.start(), Generic.Output, line
+                insertions = []
+                curcode = ''
+        if insertions:
+            for i, t, v in do_insertions(insertions,
+                                         bashlexer.get_tokens_unprocessed(curcode)):
+                yield pos+i, t, v
+
+
+class ShellSessionLexer(Lexer):
+    """
+    Lexer for shell sessions that works with different command prompts
+
+    *New in Pygments 1.6.*
+    """
+
+    name = 'Shell Session'
+    aliases = ['shell-session']
+    filenames = ['*.shell-session']
+    mimetypes = ['application/x-sh-session']
+
+    def get_tokens_unprocessed(self, text):
+        bashlexer = BashLexer(**self.options)
+
+        pos = 0
+        curcode = ''
+        insertions = []
+
+        for match in line_re.finditer(text):
+            line = match.group()
+            m = re.match(r'^((?:\[?\S+@[^$#%]+)[$#%])(.*\n?)', line)
+            if m:
+                # To support output lexers (say diff output), the output
+                # needs to be broken by prompts whenever the output lexer
+                # changes.
+                if not insertions:
+                    pos = match.start()
+
+                insertions.append((len(curcode),
+                                   [(0, Generic.Prompt, m.group(1))]))
+                curcode += m.group(2)
             else:
                 if insertions:
                     toks = bashlexer.get_tokens_unprocessed(curcode)
