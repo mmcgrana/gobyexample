@@ -83,7 +83,7 @@ func cachedPygmentize(lex string, src string) string {
 }
 
 func markdown(src string) string {
-    return string(blackfriday.MarkdownCommon([]byte(src)))
+    return string(blackfriday.MarkdownBasic([]byte(src)))
 }
 
 func readLines(path string) []string {
