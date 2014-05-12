@@ -33,7 +33,7 @@ func main() {
     // by `Open`ing a file to obtain an `os.File` value.
     f, err := os.Open("/tmp/dat")
     check(err)
-    
+
     // Read some bytes from the beginning of the file.
     // Allow up to 5 to be read but also note how many
     // actually were read.
