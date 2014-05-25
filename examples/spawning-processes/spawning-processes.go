@@ -19,7 +19,7 @@ func main() {
     // to represent this external process.
     dateCmd := exec.Command("date")
 
-    // `.Output` is another helper than handles the common
+    // `.Output` is another helper that handles the common
     // case of running a command, waiting for it to finish,
     // and collecting its output. If there were no errors,
     // `dateOut` will hold bytes with the date info.
