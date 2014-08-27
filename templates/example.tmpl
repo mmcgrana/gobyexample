@@ -35,13 +35,18 @@
         {{end}}
       </table>
       {{end}}
+      {{if .PrevExample}}
+      <p class="next">
+        Previous example: <a href="{{.PrevExample.Id}}">{{.PrevExample.Name}}</a>.
+      </p>
+      {{end}}
       {{if .NextExample}}
       <p class="next">
         Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.Id}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.Id}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>
