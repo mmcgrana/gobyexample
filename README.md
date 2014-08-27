@@ -1,7 +1,7 @@
 ## Go by Example
 
 Content, toolchain, and web server for [Go by Example](https://gobyexample.com).
-[Porting for GO 1.3.1](https://dlintw/github.com/gobyexample)
+[Porting for Go 1.3.1](https://dlintw.github.io/gobyexample)
 
 ### Overview
 
@@ -20,6 +20,7 @@ We include a lightweight Go server in `server.go`.
 To build the site:
 
 ```console
+$ # install python-pygments package on your linux distribuiton.
 $ go get github.com/russross/blackfriday
 $ tools/build
 $ open public/index.html
