@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p><em>Functions</em> are central in Go. We&rsquo;ll learn about
+            <p><em>Functions</em> are central in Go. We’ll learn about
 functions with a few different examples.</p>
 
           </td>
@@ -40,7 +40,7 @@ functions with a few different examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2EXoOWfGf_"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/_-e_2lf1P9"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -61,7 +61,7 @@ functions with a few different examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a function that takes two <code>int</code>s and returns
+            <p>Here’s a function that takes two <code>int</code>s and returns
 their sum as an <code>int</code>.</p>
 
           </td>
@@ -75,14 +75,14 @@ their sum as an <code>int</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Go requires explicit returns, i.e. it won&rsquo;t
+            <p>Go requires explicit returns, i.e. it won’t
 automatically return the value of the last
 expression.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+            <div class="highlight"><pre>	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -103,14 +103,14 @@ expression.</p>
         
         <tr>
           <td class="docs">
-            <p>Call a function just as you&rsquo;d expect, with
+            <p>Call a function just as you’d expect, with
 <code>name(args)</code>.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;1+2 =&quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">res</span> <span class="o">:=</span> <span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;1+2 =&quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -137,7 +137,7 @@ expression.</p>
         <tr>
           <td class="docs">
             <p>There are several other features to Go functions. One is
-multiple return values, which we&rsquo;ll look at next.</p>
+multiple return values, which we’ll look at next.</p>
 
           </td>
           <td class="code empty">
@@ -150,11 +150,16 @@ multiple return values, which we&rsquo;ll look at next.</p>
       
       
       <p class="next">
+        Previous example: <a href="range">Range</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="multiple-return-values">Multiple Return Values</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

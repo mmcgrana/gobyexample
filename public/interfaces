@@ -40,7 +40,7 @@ signatures.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/vx8bwC-Bmq"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/KHSqPYmXaK"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,14 +62,14 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic interface for geometric shapes.</p>
+            <p>Here’s a basic interface for geometric shapes.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">geometry</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span>
-    <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span>
+	<span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span>
+	<span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -78,17 +78,17 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll implement this interface on
+            <p>For our example we’ll implement this interface on
 <code>square</code> and <code>circle</code> types.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">square</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
+	<span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
 <span class="p">}</span>
 <span class="kd">type</span> <span class="nx">circle</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">radius</span> <span class="kt">float64</span>
+	<span class="nx">radius</span> <span class="kt">float64</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -105,10 +105,10 @@ implement <code>geometry</code> on <code>square</code>s.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">square</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">height</span>
+	<span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">square</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span>
+	<span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -123,10 +123,10 @@ implement <code>geometry</code> on <code>square</code>s.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+	<span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+	<span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -136,7 +136,7 @@ implement <code>geometry</code> on <code>square</code>s.</p>
         <tr>
           <td class="docs">
             <p>If a variable has an interface type, then we can call
-methods that are in the named interface. Here&rsquo;s a
+methods that are in the named interface. Here’s a
 generic <code>measure</code> function taking advantage of this
 to work on any <code>geometry</code>.</p>
 
@@ -144,9 +144,9 @@ to work on any <code>geometry</code>.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">measure</span><span class="p">(</span><span class="nx">g</span> <span class="nx">geometry</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -160,8 +160,8 @@ to work on any <code>geometry</code>.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">square</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">square</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 </pre></div>
 
           </td>
@@ -172,13 +172,13 @@ to work on any <code>geometry</code>.</p>
             <p>The <code>circle</code> and <code>square</code> struct types both
 implement the <code>geometry</code> interface so we can use
 instances of
-these structs as arguments to measure.</p>
+these structs as arguments to `measure.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">measure</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="nx">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">measure</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+	<span class="nx">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -209,7 +209,7 @@ these structs as arguments to measure.</p>
         
         <tr>
           <td class="docs">
-            <p>To learn more about Go&rsquo;s interfaces, check out this
+            <p>To learn more about Go’s interfaces, check out this
 <a href="http://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go">great blog post</a>.</p>
 
           </td>
@@ -223,11 +223,16 @@ these structs as arguments to measure.</p>
       
       
       <p class="next">
+        Previous example: <a href="methods">Methods</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="errors">Errors</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/interfaces">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/interfaces">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

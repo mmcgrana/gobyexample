@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <code>sort</code> package implements sorting for builtins
-and user-defined types. We&rsquo;ll look at sorting for
+            <p>Go’s <code>sort</code> package implements sorting for builtins
+and user-defined types. We’ll look at sorting for
 builtins first.</p>
 
           </td>
@@ -41,7 +41,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/roQOJXtqAb"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Nam4vYMBu4"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -76,16 +76,16 @@ builtins first.</p>
         <tr>
           <td class="docs">
             <p>Sort methods are specific to the builtin type;
-here&rsquo;s an example for strings. Note that sorting is
-in-place, so it changes the given slice and doesn&rsquo;t
+here’s an example for strings. Note that sorting is
+in-place, so it changes the given slice and doesn’t
 return a new one.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">strs</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Strings:&quot;</span><span class="p">,</span> <span class="nx">strs</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">}</span>
+	<span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">strs</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Strings:&quot;</span><span class="p">,</span> <span class="nx">strs</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -98,9 +98,9 @@ return a new one.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nx">Ints</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Ints:   &quot;</span><span class="p">,</span> <span class="nx">ints</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nx">sort</span><span class="p">.</span><span class="nx">Ints</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Ints:   &quot;</span><span class="p">,</span> <span class="nx">ints</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -114,8 +114,8 @@ already in sorted order.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -147,11 +147,16 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
       
       
       <p class="next">
+        Previous example: <a href="stateful-goroutines">Stateful Goroutines</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="sorting-by-functions">Sorting by Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

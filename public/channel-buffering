@@ -44,7 +44,7 @@ those values.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/34PVHwO6Bn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/PD7FryJyBM"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -83,7 +83,7 @@ those values.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -98,8 +98,8 @@ concurrent receive.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;buffered&quot;</span>
-    <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;channel&quot;</span>
+            <div class="highlight"><pre>	<span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;buffered&quot;</span>
+	<span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;channel&quot;</span>
 </pre></div>
 
           </td>
@@ -112,8 +112,8 @@ concurrent receive.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">messages</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -142,11 +142,16 @@ concurrent receive.</p>
       
       
       <p class="next">
+        Previous example: <a href="channels">Channels</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="channel-synchronization">Channel Synchronization</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channel-buffering">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channel-buffering">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

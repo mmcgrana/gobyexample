@@ -41,7 +41,7 @@ within your program.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/KdE4TBbUL2"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/_Ty5YSztj1"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +62,7 @@ within your program.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll show how pointers work in contrast to values with
+            <p>We’ll show how pointers work in contrast to values with
 2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an
 <code>int</code> parameter, so arguments will be passed to it by
 value. <code>zeroval</code> will get a copy of <code>ival</code> distinct
@@ -72,7 +72,7 @@ from the one in the calling function.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">zeroval</span><span class="p">(</span><span class="nx">ival</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">ival</span> <span class="p">=</span> <span class="mi">0</span>
+	<span class="nx">ival</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -92,7 +92,7 @@ value at the referenced address.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">zeroptr</span><span class="p">(</span><span class="nx">iptr</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">iptr</span> <span class="p">=</span> <span class="mi">0</span>
+	<span class="o">*</span><span class="nx">iptr</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -106,8 +106,8 @@ value at the referenced address.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;initial:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;initial:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -119,8 +119,8 @@ value at the referenced address.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">zeroval</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroval:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">zeroval</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroval:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -134,8 +134,8 @@ i.e. a pointer to <code>i</code>.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">zeroptr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroptr:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">zeroptr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroptr:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -148,7 +148,7 @@ i.e. a pointer to <code>i</code>.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;pointer:&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;pointer:&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -161,7 +161,7 @@ i.e. a pointer to <code>i</code>.</p>
         
         <tr>
           <td class="docs">
-            <p><code>zeroval</code> doesn&rsquo;t change the <code>i</code> in <code>main</code>, but
+            <p><code>zeroval</code> doesn’t change the <code>i</code> in <code>main</code>, but
 <code>zeroptr</code> does because it has a reference to
 the memory address for that variable.</p>
 
@@ -182,11 +182,16 @@ the memory address for that variable.</p>
       
       
       <p class="next">
+        Previous example: <a href="recursion">Recursion</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="structs">Structs</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/pointers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/pointers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

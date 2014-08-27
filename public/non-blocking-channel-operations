@@ -42,7 +42,7 @@ non-blocking multi-way <code>select</code>s.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/M972dltae2"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/OTYysYdIic"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -68,8 +68,8 @@ non-blocking multi-way <code>select</code>s.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
-    <span class="nx">signals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
+	<span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+	<span class="nx">signals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -77,7 +77,7 @@ non-blocking multi-way <code>select</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a non-blocking receive. If a value is
+            <p>Here’s a non-blocking receive. If a value is
 available on <code>messages</code> then <code>select</code> will take
 the <code>&lt;-messages</code> <code>case</code> with that value. If not
 it will immediately take the <code>default</code> case.</p>
@@ -85,12 +85,12 @@ it will immediately take the <code>default</code> case.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message received&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">select</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message received&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -103,13 +103,13 @@ it will immediately take the <code>default</code> case.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&quot;hi&quot;</span>
-    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="nx">msg</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message sent&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">msg</span> <span class="o">:=</span> <span class="s">&quot;hi&quot;</span>
+	<span class="k">select</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="nx">msg</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message sent&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -125,14 +125,14 @@ on both <code>messages</code> and <code>signals</code>.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">signals</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received signal&quot;</span><span class="p">,</span> <span class="nx">sig</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no activity&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">select</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+	<span class="k">case</span> <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">signals</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received signal&quot;</span><span class="p">,</span> <span class="nx">sig</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no activity&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -162,11 +162,16 @@ on both <code>messages</code> and <code>signals</code>.</p>
       
       
       <p class="next">
+        Previous example: <a href="timeouts">Timeouts</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="closing-channels">Closing Channels</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/non-blocking-channel-operations">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/non-blocking-channel-operations">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

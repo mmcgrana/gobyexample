@@ -42,7 +42,7 @@ function.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/wRPLOM1VIH"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/T6-_T7KOIg"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -63,19 +63,19 @@ function.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a function that will take an arbitrary number
+            <p>Here’s a function that will take an arbitrary number
 of <code>ints</code> as arguments.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
-    <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
-        <span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">total</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+	<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
+		<span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">total</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -102,8 +102,8 @@ with individual arguments.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -118,8 +118,8 @@ apply them to a variadic function using
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span><span class="o">...</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">nums</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span><span class="o">...</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -148,7 +148,7 @@ apply them to a variadic function using
         <tr>
           <td class="docs">
             <p>Another key aspect of functions in Go is their ability
-to form closures, which we&rsquo;ll look at next.</p>
+to form closures, which we’ll look at next.</p>
 
           </td>
           <td class="code empty">
@@ -161,11 +161,16 @@ to form closures, which we&rsquo;ll look at next.</p>
       
       
       <p class="next">
+        Previous example: <a href="multiple-return-values">Multiple Return Values</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="closures">Closures</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/variadic-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/variadic-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

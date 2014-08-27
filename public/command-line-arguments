@@ -42,7 +42,7 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/44uyYt_TRl"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/rE16oHMoJD"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -84,8 +84,8 @@ holds the arguments to the program.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">argsWithProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span>
-    <span class="nx">argsWithoutProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <div class="highlight"><pre>	<span class="nx">argsWithProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span>
+	<span class="nx">argsWithoutProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 
           </td>
@@ -98,7 +98,7 @@ holds the arguments to the program.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">arg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <div class="highlight"><pre>	<span class="nx">arg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
           </td>
@@ -110,9 +110,9 @@ holds the arguments to the program.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">argsWithProg</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">argsWithoutProg</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">argsWithProg</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">argsWithoutProg</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -125,7 +125,7 @@ holds the arguments to the program.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with command-line arguments it&rsquo;s best to
+            <p>To experiment with command-line arguments it’s best to
 build a binary with <code>go build</code> first.</p>
 
           </td>
@@ -143,7 +143,7 @@ build a binary with <code>go build</code> first.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at more advanced command-line processing
+            <p>Next we’ll look at more advanced command-line processing
 with flags.</p>
 
           </td>
@@ -157,11 +157,16 @@ with flags.</p>
       
       
       <p class="next">
+        Previous example: <a href="line-filters">Line Filters</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="command-line-flags">Command-Line Flags</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-arguments">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-arguments">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

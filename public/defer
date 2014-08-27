@@ -26,7 +26,7 @@
         <tr>
           <td class="docs">
             <p><em>Defer</em> is used to ensure that a function call is
-performed later in a program&rsquo;s execution, usually for
+performed later in a program’s execution, usually for
 purposes of cleanup. <code>defer</code> is often used where e.g.
 <code>ensure</code> and <code>finally</code> would be used in other languages.</p>
 
@@ -42,7 +42,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9aoHwzHcAo"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/5Y0CcDEwLu"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -65,7 +65,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
         <tr>
           <td class="docs">
             <p>Suppose we wanted to create a file, write to it,
-and then close when we&rsquo;re done. Here&rsquo;s how we could
+and then close when we’re done. Here’s how we could
 do that with <code>defer</code>.</p>
 
           </td>
@@ -88,9 +88,9 @@ of the enclosing function (<code>main</code>), after
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span> <span class="o">:=</span> <span class="nx">createFile</span><span class="p">(</span><span class="s">&quot;/tmp/defer.txt&quot;</span><span class="p">)</span>
-    <span class="k">defer</span> <span class="nx">closeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="nx">writeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">f</span> <span class="o">:=</span> <span class="nx">createFile</span><span class="p">(</span><span class="s">&quot;/tmp/defer.txt&quot;</span><span class="p">)</span>
+	<span class="k">defer</span> <span class="nx">closeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+	<span class="nx">writeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -104,12 +104,12 @@ of the enclosing function (<code>main</code>), after
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">createFile</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;creating&quot;</span><span class="p">)</span>
-    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">f</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;creating&quot;</span><span class="p">)</span>
+	<span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">f</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -123,8 +123,8 @@ of the enclosing function (<code>main</code>), after
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">writeFile</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;writing&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;writing&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -149,8 +149,8 @@ of the enclosing function (<code>main</code>), after
           <td class="code">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">closeFile</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;closing&quot;</span><span class="p">)</span>
-    <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;closing&quot;</span><span class="p">)</span>
+	<span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -182,11 +182,16 @@ after being written.</p>
       
       
       <p class="next">
+        Previous example: <a href="panic">Panic</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="collection-functions">Collection Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/defer">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/defer">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

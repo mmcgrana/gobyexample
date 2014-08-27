@@ -27,8 +27,8 @@
           <td class="docs">
             <p>The primary mechanism for managing state in Go is
 communication over channels. We saw this for example
-with <a href="worker-pools">worker pools</a>. There are a few other
-options for managing state though. Here we&rsquo;ll
+with <a>worker pools</a>. There are a few other
+options for managing state though. Here we’ll
 look at using the <code>sync/atomic</code> package for <em>atomic
 counters</em> accessed by multiple goroutines.</p>
 
@@ -44,7 +44,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2h8nvrnaHP"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/J8YruNWUvt"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -80,13 +80,13 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use an unsigned integer to represent our
+            <p>We’ll use an unsigned integer to represent our
 (always-positive) counter.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">ops</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
 </pre></div>
 
           </td>
@@ -94,16 +94,16 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>To simulate concurrent updates, we&rsquo;ll start 50
+            <p>To simulate concurrent updates, we’ll start 50
 goroutines that each increment the counter about
 once a millisecond.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="p">{</span>
+            <div class="highlight"><pre>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">for</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -119,7 +119,7 @@ address of our <code>ops</code> counter with the
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <div class="highlight"><pre>				<span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -132,10 +132,10 @@ address of our <code>ops</code> counter with the
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
-            <span class="p">}</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>				<span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -148,7 +148,7 @@ address of our <code>ops</code> counter with the
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -156,7 +156,7 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            <p>In order to safely use the counter while it&rsquo;s still
+            <p>In order to safely use the counter while it’s still
 being updated by other goroutines, we extract a
 copy of the current value into <code>opsFinal</code> via
 <code>LoadUint64</code>. As above we need to give this
@@ -166,8 +166,8 @@ fetch the value.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -195,7 +195,7 @@ fetch the value.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at mutexes, another tool for managing
+            <p>Next we’ll look at mutexes, another tool for managing
 state.</p>
 
           </td>
@@ -209,11 +209,16 @@ state.</p>
       
       
       <p class="next">
+        Previous example: <a href="rate-limiting">Rate Limiting</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="mutexes">Mutexes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/atomic-counters">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/atomic-counters">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

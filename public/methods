@@ -39,7 +39,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/254m_9Yjwa"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/W0gLhRx3Do"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -65,7 +65,7 @@
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span>
+	<span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -80,7 +80,7 @@
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">rect</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+	<span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -90,13 +90,13 @@
         <tr>
           <td class="docs">
             <p>Methods can be defined for either pointer or value
-receiver types. Here&rsquo;s an example of a value receiver.</p>
+receiver types. Here’s an example of a value receiver.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+	<span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -110,7 +110,7 @@ receiver types. Here&rsquo;s an example of a value receiver.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 </pre></div>
 
           </td>
@@ -123,8 +123,8 @@ receiver types. Here&rsquo;s an example of a value receiver.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
 </pre></div>
 
           </td>
@@ -141,9 +141,9 @@ receiving struct.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">rp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">r</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">rp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">r</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -172,7 +172,7 @@ receiving struct.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at Go&rsquo;s mechanism for grouping and
+            <p>Next we’ll look at Go’s mechanism for grouping and
 naming related sets of methods: interfaces.</p>
 
           </td>
@@ -186,11 +186,16 @@ naming related sets of methods: interfaces.</p>
       
       
       <p class="next">
+        Previous example: <a href="structs">Structs</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="interfaces">Interfaces</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/methods">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/methods">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

@@ -26,7 +26,7 @@
         <tr>
           <td class="docs">
             <p>Parsing numbers from strings is a basic but common task
-in many programs; here&rsquo;s how to do it in Go.</p>
+in many programs; here’s how to do it in Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ in many programs; here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/N90EppECFk"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/r5dG6X5YuF"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -82,8 +82,8 @@ precision to parse.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="s">&quot;1.234&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">f</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="s">&quot;1.234&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -98,8 +98,8 @@ bits.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -112,8 +112,8 @@ bits.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;0x1c8&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;0x1c8&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -126,8 +126,8 @@ bits.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">u</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseUint</span><span class="p">(</span><span class="s">&quot;789&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">u</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseUint</span><span class="p">(</span><span class="s">&quot;789&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -141,8 +141,8 @@ bits.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;135&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;135&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -155,8 +155,8 @@ bits.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;wat&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;wat&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -187,7 +187,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at another common parsing task: URLs.</p>
+            <p>Next we’ll look at another common parsing task: URLs.</p>
 
           </td>
           <td class="code empty">
@@ -200,11 +200,16 @@ bits.</p>
       
       
       <p class="next">
+        Previous example: <a href="random-numbers">Random Numbers</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="url-parsing">URL Parsing</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/number-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/number-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

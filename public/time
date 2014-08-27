@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s offers extensive support for times and durations;
+            <p>Go’s offers extensive support for times and durations;
 here are some examples.</p>
 
           </td>
@@ -40,7 +40,7 @@ here are some examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/NxuQTlVA2l"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZFnE-r-G3t"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -67,7 +67,7 @@ here are some examples.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+	<span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
           </td>
@@ -75,13 +75,13 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start by getting the current time.</p>
+            <p>We’ll start by getting the current time.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -96,9 +96,9 @@ with a <code>Location</code>, i.e. time zone.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Date</span><span class="p">(</span>
-        <span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">651387237</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">)</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Date</span><span class="p">(</span>
+		<span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">651387237</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -112,14 +112,14 @@ value as expected.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Year</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Month</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Hour</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Minute</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Nanosecond</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Location</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Year</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Month</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Hour</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Minute</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Nanosecond</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Location</span><span class="p">())</span>
 </pre></div>
 
           </td>
@@ -132,7 +132,7 @@ value as expected.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Weekday</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Weekday</span><span class="p">())</span>
 </pre></div>
 
           </td>
@@ -147,9 +147,9 @@ as the second, respectively.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -163,8 +163,8 @@ the interval between two times.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -178,10 +178,10 @@ various units.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Hours</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Minutes</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Seconds</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Nanoseconds</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Hours</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Minutes</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Seconds</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Nanoseconds</span><span class="p">())</span>
 </pre></div>
 
           </td>
@@ -196,8 +196,8 @@ duration.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">diff</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">diff</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -243,7 +243,7 @@ duration.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at the related idea of time relative to
+            <p>Next we’ll look at the related idea of time relative to
 the Unix epoch.</p>
 
           </td>
@@ -257,11 +257,16 @@ the Unix epoch.</p>
       
       
       <p class="next">
+        Previous example: <a href="json">JSON</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="epoch">Epoch</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

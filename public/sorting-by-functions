@@ -25,10 +25,10 @@
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to sort a collection by something
+            <p>Sometimes we’ll want to sort a collection by something
 other than its natural order. For example, suppose we
 wanted to sort strings by their length instead of
-alphabetically. Here&rsquo;s an example of custom sorts
+alphabetically. Here’s an example of custom sorts
 in Go.</p>
 
           </td>
@@ -43,7 +43,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/N6GbEgBffd"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/uXMR4p3Rw8"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -66,7 +66,7 @@ in Go.</p>
         <tr>
           <td class="docs">
             <p>In order to sort by a custom function in Go, we need a
-corresponding type. Here we&rsquo;ve created a <code>ByLength</code>
+corresponding type. Here we’ve created a <code>ByLength</code>
 type that is just an alias for the builtin <code>[]string</code>
 type.</p>
 
@@ -82,7 +82,7 @@ type.</p>
         <tr>
           <td class="docs">
             <p>We implement <code>sort.Interface</code> - <code>Len</code>, <code>Less</code>, and
-<code>Swap</code> - on our type so we can use the <code>sort</code> package&rsquo;s
+<code>Swap</code> - on our type so we can use the <code>sort</code> package’s
 generic <code>Sort</code> function. <code>Len</code> and <code>Swap</code>
 will usually be similar across types and <code>Less</code> will
 hold the actual custom sorting logic. In our case we
@@ -93,13 +93,13 @@ we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+	<span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
+	<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -117,9 +117,9 @@ slice.</p>
           <td class="code">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="nx">ByLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
+	<span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">}</span>
+	<span class="nx">sort</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="nx">ByLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -164,11 +164,16 @@ functions.</p>
       
       
       <p class="next">
+        Previous example: <a href="sorting">Sorting</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="panic">Panic</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting-by-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting-by-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

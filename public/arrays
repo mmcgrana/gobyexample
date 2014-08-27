@@ -40,7 +40,7 @@ specific length.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/l-A8eBnwio"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/caFVGkRhCq"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,14 +75,14 @@ specific length.</p>
           <td class="docs">
             <p>Here we create an array <code>a</code> that will hold exactly
 5 <code>int</code>s. The type of elements and length are both
-part of the array&rsquo;s type. By default an array is
+part of the array’s type. By default an array is
 zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;emp:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;emp:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -97,9 +97,9 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;set:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;get:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+            <div class="highlight"><pre>	<span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;set:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;get:&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 
           </td>
@@ -112,7 +112,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;len:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;len:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -126,8 +126,8 @@ in one line.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;dcl:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;dcl:&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -142,13 +142,13 @@ structures.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">twoD</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
-            <span class="nx">twoD</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;2d: &quot;</span><span class="p">,</span> <span class="nx">twoD</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">twoD</span> <span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">twoD</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">j</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;2d: &quot;</span><span class="p">,</span> <span class="nx">twoD</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -181,8 +181,8 @@ when printed with <code>fmt.Println</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>You&rsquo;ll see <em>slices</em> much more often than arrays in
-typical Go. We&rsquo;ll look at slices next.</p>
+            <p>You’ll see <em>slices</em> much more often than arrays in
+typical Go. We’ll look at slices next.</p>
 
           </td>
           <td class="code empty">
@@ -195,11 +195,16 @@ typical Go. We&rsquo;ll look at slices next.</p>
       
       
       <p class="next">
+        Previous example: <a href="switch">Switch</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="slices">Slices</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/arrays">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/arrays">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

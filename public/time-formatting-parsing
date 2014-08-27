@@ -40,7 +40,7 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/SGS6wIVnDd"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Dw7D4JJ7EC"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -67,7 +67,7 @@ pattern-based layouts.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+	<span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
           </td>
@@ -75,15 +75,15 @@ pattern-based layouts.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic example of formatting a time
+            <p>Here’s a basic example of formatting a time
 according to RFC3339, using the corresponding layout
 constant.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -96,10 +96,10 @@ constant.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
-        <span class="s">&quot;2012-11-01T22:08:41+00:00&quot;</span><span class="p">)</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
+		<span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
+		<span class="s">&quot;2012-11-01T22:08:41+00:00&quot;</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -108,7 +108,7 @@ constant.</p>
         <tr>
           <td class="docs">
             <p><code>Format</code> and <code>Parse</code> uses example-based layouts. Usually
-you&rsquo;ll use a constant from <code>time</code> for these layouts, but
+you’ll use a constant from <code>time</code> for these layouts, but
 you can also supply custom layouts. Layouts must use the
 reference time <code>Mon Jan 2 15:04:05 MST 2006</code> to show the
 pattern with which to format/parse a given time/string.
@@ -118,12 +118,12 @@ The example time must be exactly as shown: the year 2006,
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span><span class="p">))</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
-    <span class="nx">form</span> <span class="o">:=</span> <span class="s">&quot;3 04 PM&quot;</span>
-    <span class="nx">t2</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="s">&quot;8 41 PM&quot;</span><span class="p">)</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
+	<span class="nx">form</span> <span class="o">:=</span> <span class="s">&quot;3 04 PM&quot;</span>
+	<span class="nx">t2</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="s">&quot;8 41 PM&quot;</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -138,9 +138,9 @@ components of the time value.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
+		<span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span>
+		<span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
 </pre></div>
 
           </td>
@@ -154,9 +154,9 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
-    <span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
+	<span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -191,11 +191,16 @@ explaining the parsing problem.</p>
       
       
       <p class="next">
+        Previous example: <a href="epoch">Epoch</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="random-numbers">Random Numbers</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

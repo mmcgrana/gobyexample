@@ -26,11 +26,11 @@
         <tr>
           <td class="docs">
             <p>In the previous example we looked at
-<a href="spawning-processes">spawning external processes</a>. We
+<a>spawning external processes</a>. We
 do this when we need an external process accessible to
 a running Go process. Sometimes we just want to
 completely replace the current Go process with another
-(perhaps non-Go) one. To do this we&rsquo;ll use Go&rsquo;s
+(perhaps non-Go) one. To do this we’ll use Go’s
 implementation of the classic
 <a href="http://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
 function.</p>
@@ -47,7 +47,7 @@ function.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/iEAD2cYC-h"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/sMRjuXzg8w"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -82,18 +82,18 @@ function.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll exec <code>ls</code>. Go requires an
+            <p>For our example we’ll exec <code>ls</code>. Go requires an
 absolute path to the binary we want to execute, so
-we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
+we’ll use <code>exec.LookPath</code> to find it (probably
 <code>/bin/ls</code>).</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">binary</span><span class="p">,</span> <span class="nx">lookErr</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">LookPath</span><span class="p">(</span><span class="s">&quot;ls&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">lookErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">lookErr</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">binary</span><span class="p">,</span> <span class="nx">lookErr</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">LookPath</span><span class="p">(</span><span class="s">&quot;ls&quot;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">lookErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">lookErr</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -102,14 +102,14 @@ we&rsquo;ll use <code>exec.LookPath</code> to find it (probably
         <tr>
           <td class="docs">
             <p><code>Exec</code> requires arguments in slice form (as
-apposed to one big string). We&rsquo;ll give <code>ls</code> a few
+apposed to one big string). We’ll give <code>ls</code> a few
 common arguments. Note that the first argument should
 be the program name.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;ls&quot;</span><span class="p">,</span> <span class="s">&quot;-a&quot;</span><span class="p">,</span> <span class="s">&quot;-l&quot;</span><span class="p">,</span> <span class="s">&quot;-h&quot;</span><span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">args</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;ls&quot;</span><span class="p">,</span> <span class="s">&quot;-a&quot;</span><span class="p">,</span> <span class="s">&quot;-l&quot;</span><span class="p">,</span> <span class="s">&quot;-h&quot;</span><span class="p">}</span>
 </pre></div>
 
           </td>
@@ -117,14 +117,14 @@ be the program name.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Exec</code> also needs a set of <a href="environment-variables">environment variables</a>
+            <p><code>Exec</code> also needs a set of <a>environment variables</a>
 to use. Here we just provide our current
 environment.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">env</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Environ</span><span class="p">()</span>
+            <div class="highlight"><pre>	<span class="nx">env</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Environ</span><span class="p">()</span>
 </pre></div>
 
           </td>
@@ -132,19 +132,19 @@ environment.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the actual <code>os.Exec</code> call. If this call is
+            <p>Here’s the actual <code>os.Exec</code> call. If this call is
 successful, the execution of our process will end
 here and be replaced by the <code>/bin/ls -a -l -h</code>
-process. If there is an error we&rsquo;ll get a return
+process. If there is an error we’ll get a return
 value.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">execErr</span> <span class="o">:=</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">binary</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">execErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">execErr</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">execErr</span> <span class="o">:=</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">binary</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">execErr</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">execErr</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -175,8 +175,8 @@ value.</p>
         <tr>
           <td class="docs">
             <p>Note that Go does not offer a classic Unix <code>fork</code>
-function. Usually this isn&rsquo;t an issue though, since
-starting goroutines, spawning processes, and exec&rsquo;ing
+function. Usually this isn’t an issue though, since
+starting goroutines, spawning processes, and exec’ing
 processes covers most use cases for <code>fork</code>.</p>
 
           </td>
@@ -190,11 +190,16 @@ processes covers most use cases for <code>fork</code>.</p>
       
       
       <p class="next">
+        Previous example: <a href="spawning-processes">Spawning Processes</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="signals">Signals</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/execing-processes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/execing-processes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

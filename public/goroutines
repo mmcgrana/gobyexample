@@ -39,7 +39,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/aIO_Wi3hJj"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/fFJ5UjgVqF"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -65,9 +65,9 @@
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f</span><span class="p">(</span><span class="nx">from</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -88,14 +88,14 @@
         
         <tr>
           <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
+            <p>Suppose we have a function call <code>f(s)</code>. Here’s how
+we’d call that in the usual way, running it
 synchronously.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span><span class="p">(</span><span class="s">&quot;direct&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">f</span><span class="p">(</span><span class="s">&quot;direct&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -110,7 +110,7 @@ concurrently with the calling one.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">go</span> <span class="nx">f</span><span class="p">(</span><span class="s">&quot;goroutine&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="k">go</span> <span class="nx">f</span><span class="p">(</span><span class="s">&quot;goroutine&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -124,9 +124,9 @@ function call.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
-    <span class="p">}(</span><span class="s">&quot;going&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+	<span class="p">}(</span><span class="s">&quot;going&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -142,9 +142,9 @@ before the program exits.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">input</span> <span class="kt">string</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">input</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">input</span> <span class="kt">string</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">input</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -182,7 +182,7 @@ goroutines being run concurrently by the Go runtime.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
+            <p>Next we’ll look at a complement to goroutines in
 concurrent Go programs: channels.</p>
 
           </td>
@@ -196,11 +196,16 @@ concurrent Go programs: channels.</p>
       
       
       <p class="next">
+        Previous example: <a href="errors">Errors</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="channels">Channels</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

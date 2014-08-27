@@ -40,7 +40,7 @@ status.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/CDiAh9SXRM"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/7gfRtyeqT3"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -80,7 +80,7 @@ this <code>fmt.Println</code> will never be called.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -93,7 +93,7 @@ this <code>fmt.Println</code> will never be called.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -104,7 +104,7 @@ this <code>fmt.Println</code> will never be called.</p>
           <td class="docs">
             <p>Note that unlike e.g. C, Go does not use an integer
 return value from <code>main</code> to indicate exit status. If
-you&rsquo;d like to exit with a non-zero status you should
+you’d like to exit with a non-zero status you should
 use <code>os.Exit</code>.</p>
 
           </td>
@@ -164,8 +164,13 @@ the status in the terminal.</p>
       </table>
       
       
+      <p class="next">
+        Previous example: <a href="signals">Signals</a>.
+      </p>
+      
+      
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/exit">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/exit">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p>In a <a href="range">previous</a> example we saw how <code>for</code> and
+            <p>In a <a>previous</a> example we saw how <code>for</code> and
 <code>range</code> provide iteration over basic data structures.
 We can also use this syntax to iterate over
 values received from a channel.</p>
@@ -42,7 +42,7 @@ values received from a channel.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/WN7NNh9tvh"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/g_cEaZCMZp"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,15 +75,15 @@ values received from a channel.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll iterate over 2 values in the <code>queue</code> channel.</p>
+            <p>We’ll iterate over 2 values in the <code>queue</code> channel.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
-    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
-    <span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
+	<span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
+	<span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -91,18 +91,18 @@ values received from a channel.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>range</code> iterates over each element as it&rsquo;s
+            <p>This <code>range</code> iterates over each element as it’s
 received from <code>queue</code>. Because we <code>close</code>d the
 channel above, the iteration terminates after
-receiving the 2 elements. If we didn&rsquo;t <code>close</code> it
-we&rsquo;d block on a 3rd receive in the loop.</p>
+receiving the 2 elements. If we didn’t <code>close</code> it
+we’d block on a 3rd receive in the loop.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -129,7 +129,7 @@ we&rsquo;d block on a 3rd receive in the loop.</p>
         
         <tr>
           <td class="docs">
-            <p>This example also showed that it&rsquo;s possible to close
+            <p>This example also showed that it’s possible to close
 a non-empty channel but still have the remaining
 values be received.</p>
 
@@ -144,11 +144,16 @@ values be received.</p>
       
       
       <p class="next">
+        Previous example: <a href="closing-channels">Closing Channels</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="timers">Timers</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/range-over-channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/range-over-channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

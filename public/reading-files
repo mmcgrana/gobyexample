@@ -26,7 +26,7 @@
         <tr>
           <td class="docs">
             <p>Reading and writing files are basic tasks needed for
-many Go programs. First we&rsquo;ll look at some examples of
+many Go programs. First we’ll look at some examples of
 reading files.</p>
 
           </td>
@@ -41,7 +41,7 @@ reading files.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2kEKXq-kUV"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/_z0UeGSbtK"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -55,11 +55,11 @@ reading files.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;bufio&quot;</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;io&quot;</span>
-    <span class="s">&quot;io/ioutil&quot;</span>
-    <span class="s">&quot;os&quot;</span>
+	<span class="s">&quot;bufio&quot;</span>
+	<span class="s">&quot;fmt&quot;</span>
+	<span class="s">&quot;io&quot;</span>
+	<span class="s">&quot;io/ioutil&quot;</span>
+	<span class="s">&quot;os&quot;</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -75,9 +75,9 @@ This helper will streamline our error checks below.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-    <span class="p">}</span>
+	<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -99,14 +99,14 @@ This helper will streamline our error checks below.</p>
         <tr>
           <td class="docs">
             <p>Perhaps the most basic file reading task is
-slurping a file&rsquo;s entire contents into memory.</p>
+slurping a file’s entire contents into memory.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -114,15 +114,15 @@ slurping a file&rsquo;s entire contents into memory.</p>
         
         <tr>
           <td class="docs">
-            <p>You&rsquo;ll often want more control over how and what
+            <p>You’ll often want more control over how and what
 parts of a file are read. For these tasks, start
 by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -137,10 +137,10 @@ actually were read.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes: %s\n&quot;</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b1</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+	<span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes: %s\n&quot;</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b1</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -154,12 +154,12 @@ and <code>Read</code> from there.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">b2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b2</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes @ %d: %s\n&quot;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">o2</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b2</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">b2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b2</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes @ %d: %s\n&quot;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">o2</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b2</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -175,12 +175,12 @@ implemented with <code>ReadAtLeast</code>.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">b3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">ReadAtLeast</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">b3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes @ %d: %s\n&quot;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">,</span> <span class="nx">o3</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b3</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">b3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">ReadAtLeast</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">b3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d bytes @ %d: %s\n&quot;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">,</span> <span class="nx">o3</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b3</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -194,8 +194,8 @@ accomplishes this.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -211,10 +211,10 @@ reading methods it provides.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nx">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;5 bytes: %s\n&quot;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b4</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+	<span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nx">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;5 bytes: %s\n&quot;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b4</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -222,14 +222,14 @@ reading methods it provides.</p>
         
         <tr>
           <td class="docs">
-            <p>Close the file when you&rsquo;re done (usually this would
+            <p>Close the file when you’re done (usually this would
 be scheduled immediately after <code>Open</code>ing with
 <code>defer</code>).</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+            <div class="highlight"><pre>	<span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 </pre></div>
 
           </td>
@@ -273,7 +273,7 @@ be scheduled immediately after <code>Open</code>ing with
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at writing files.</p>
+            <p>Next we’ll look at writing files.</p>
 
           </td>
           <td class="code empty">
@@ -286,11 +286,16 @@ be scheduled immediately after <code>Open</code>ing with
       
       
       <p class="next">
+        Previous example: <a href="base64-encoding">Base64 Encoding</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="writing-files">Writing Files</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/reading-files">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/reading-files">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

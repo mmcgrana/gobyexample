@@ -41,7 +41,7 @@ data types.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/scgxBwACYx"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/yHXU5eXkss"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -64,19 +64,19 @@ data types.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use these two structs to demonstrate encoding and
+            <p>We’ll use these two structs to demonstrate encoding and
 decoding of custom types below.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">Response1</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">Page</span>   <span class="kt">int</span>
-    <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span>
+	<span class="nx">Page</span>   <span class="kt">int</span>
+	<span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span>
 <span class="p">}</span>
 <span class="kd">type</span> <span class="nx">Response2</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">Page</span>   <span class="kt">int</span>      <span class="s">`json:&quot;page&quot;`</span>
-    <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span> <span class="s">`json:&quot;fruits&quot;`</span>
+	<span class="nx">Page</span>   <span class="kt">int</span>      <span class="s">`json:&quot;page&quot;`</span>
+	<span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span> <span class="s">`json:&quot;fruits&quot;`</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -97,15 +97,15 @@ decoding of custom types below.</p>
         
         <tr>
           <td class="docs">
-            <p>First we&rsquo;ll look at encoding basic data types to
+            <p>First we’ll look at encoding basic data types to
 JSON strings. Here are some examples for atomic
 values.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">bolB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bolB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">bolB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bolB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -117,8 +117,8 @@ values.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">intB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">intB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">intB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">intB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -130,8 +130,8 @@ values.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fltB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mf">2.34</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fltB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">fltB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mf">2.34</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fltB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -143,8 +143,8 @@ values.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">strB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="s">&quot;gopher&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">strB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">strB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="s">&quot;gopher&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">strB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -153,14 +153,14 @@ values.</p>
         <tr>
           <td class="docs">
             <p>And here are some for slices and maps, which encode
-to JSON arrays and objects as you&rsquo;d expect.</p>
+to JSON arrays and objects as you’d expect.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">slcD</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}</span>
-    <span class="nx">slcB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">slcD</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">slcB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">slcD</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}</span>
+	<span class="nx">slcB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">slcD</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">slcB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -172,9 +172,9 @@ to JSON arrays and objects as you&rsquo;d expect.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">mapD</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
-    <span class="nx">mapB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">mapD</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">mapB</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">mapD</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
+	<span class="nx">mapB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">mapD</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">mapB</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -190,11 +190,11 @@ use those names as the JSON keys.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">res1D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response1</span><span class="p">{</span>
-        <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
-    <span class="nx">res1B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res1D</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">res1B</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">res1D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response1</span><span class="p">{</span>
+		<span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
+		<span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
+	<span class="nx">res1B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res1D</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">res1B</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -210,11 +210,11 @@ of such tags.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">res2D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{</span>
-        <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
-    <span class="nx">res2B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res2D</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">res2B</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">res2D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{</span>
+		<span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
+		<span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
+	<span class="nx">res2B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res2D</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">res2B</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -222,14 +222,14 @@ of such tags.</p>
         
         <tr>
           <td class="docs">
-            <p>Now let&rsquo;s look at decoding JSON data into Go
-values. Here&rsquo;s an example for a generic data
+            <p>Now let’s look at decoding JSON data into Go
+values. Here’s an example for a generic data
 structure.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">byt</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&quot;num&quot;:6.13,&quot;strs&quot;:[&quot;a&quot;,&quot;b&quot;]}`</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">byt</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&quot;num&quot;:6.13,&quot;strs&quot;:[&quot;a&quot;,&quot;b&quot;]}`</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -245,7 +245,7 @@ to arbitrary data types.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">dat</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">dat</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
 </pre></div>
 
           </td>
@@ -253,16 +253,16 @@ to arbitrary data types.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the actual decoding, and a check for
+            <p>Here’s the actual decoding, and a check for
 associated errors.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">byt</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">dat</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">dat</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">byt</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">dat</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">dat</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -271,15 +271,15 @@ associated errors.</p>
         <tr>
           <td class="docs">
             <p>In order to use the values in the decoded map,
-we&rsquo;ll need to cast them to their appropriate type.
+we’ll need to cast them to their appropriate type.
 For example here we cast the value in <code>num</code> to
 the expected <code>float64</code> type.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">num</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;num&quot;</span><span class="p">].(</span><span class="kt">float64</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">num</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;num&quot;</span><span class="p">].(</span><span class="kt">float64</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -293,9 +293,9 @@ casts.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">strs</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;strs&quot;</span><span class="p">].([]</span><span class="kd">interface</span><span class="p">{})</span>
-    <span class="nx">str1</span> <span class="o">:=</span> <span class="nx">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str1</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">strs</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;strs&quot;</span><span class="p">].([]</span><span class="kd">interface</span><span class="p">{})</span>
+	<span class="nx">str1</span> <span class="o">:=</span> <span class="nx">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str1</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -312,11 +312,11 @@ data.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">str</span> <span class="o">:=</span> <span class="s">`{&quot;page&quot;: 1, &quot;fruits&quot;: [&quot;apple&quot;, &quot;peach&quot;]}`</span>
-    <span class="nx">res</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{}</span>
-    <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">res</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <div class="highlight"><pre>	<span class="nx">str</span> <span class="o">:=</span> <span class="s">`{&quot;page&quot;: 1, &quot;fruits&quot;: [&quot;apple&quot;, &quot;peach&quot;]}`</span>
+	<span class="nx">res</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{}</span>
+	<span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">res</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
           </td>
@@ -333,9 +333,9 @@ stream JSON encodings directly to <code>os.Writer</code>s like
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">enc</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
-    <span class="nx">d</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
-    <span class="nx">enc</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">enc</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
+	<span class="nx">d</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
+	<span class="nx">enc</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -374,7 +374,7 @@ stream JSON encodings directly to <code>os.Writer</code>s like
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ve covered the basic of JSON in Go here, but check
+            <p>We’ve covered the basic of JSON in Go here, but check
 out the <a href="http://blog.golang.org/2011/01/json-and-go.html">JSON and Go</a>
 blog post and <a href="http://golang.org/pkg/encoding/json/">JSON package docs</a>
 for more.</p>
@@ -390,11 +390,16 @@ for more.</p>
       
       
       <p class="next">
+        Previous example: <a href="regular-expressions">Regular Expressions</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="time">Time</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/json">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/json">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

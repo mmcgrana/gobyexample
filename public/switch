@@ -40,7 +40,7 @@ branches.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/8b5CajPcHn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Cb9vKKu0P-"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,21 +74,21 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic <code>switch</code>.</p>
+            <p>Here’s a basic <code>switch</code>.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;write &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; as &quot;</span><span class="p">)</span>
-    <span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;write &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; as &quot;</span><span class="p">)</span>
+	<span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -103,12 +103,12 @@ in the same <code>case</code> statement. We use the optional
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s the weekend&quot;</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s a weekday&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s the weekend&quot;</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s a weekday&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -123,13 +123,13 @@ to express if/else logic. Here we also show how the
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-    <span class="k">switch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s before noon&quot;</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s before noon&quot;</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -159,11 +159,16 @@ to express if/else logic. Here we also show how the
       
       
       <p class="next">
+        Previous example: <a href="if-else">If/Else</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="arrays">Arrays</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/switch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/switch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

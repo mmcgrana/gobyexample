@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>select</em> lets you wait on multiple channel
+            <p>Go’s <em>select</em> lets you wait on multiple channel
 operations. Combining goroutines and channels with
 select is a powerful feature of Go.</p>
 
@@ -41,7 +41,7 @@ select is a powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Vco7d8Lmhn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/9cC2r7XsgK"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,13 +75,13 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll select across two channels.</p>
+            <p>For our example we’ll select across two channels.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
-    <span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+	<span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -96,14 +96,14 @@ executing in concurrent goroutines.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
-    <span class="p">}()</span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="nx">c2</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
-    <span class="p">}()</span>
+            <div class="highlight"><pre>	<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
+	<span class="p">}()</span>
+	<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="nx">c2</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
+	<span class="p">}()</span>
 </pre></div>
 
           </td>
@@ -111,20 +111,20 @@ executing in concurrent goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use <code>select</code> to await both of these values
+            <p>We’ll use <code>select</code> to await both of these values
 simultaneously, printing each one as it arrives.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">select</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="nx">msg1</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg1</span><span class="p">)</span>
-        <span class="k">case</span> <span class="nx">msg2</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c2</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg2</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">select</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="nx">msg1</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg1</span><span class="p">)</span>
+		<span class="k">case</span> <span class="nx">msg2</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c2</span><span class="p">:</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg2</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -137,7 +137,7 @@ simultaneously, printing each one as it arrives.</p>
         
         <tr>
           <td class="docs">
-            <p>We receive the values <code>&quot;one&quot;</code> and then <code>&quot;two&quot;</code> as
+            <p>We receive the values <code>&#34;one&#34;</code> and then <code>&#34;two&#34;</code> as
 expected.</p>
 
           </td>
@@ -170,11 +170,16 @@ concurrently.</p>
       
       
       <p class="next">
+        Previous example: <a href="channel-directions">Channel Directions</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="timeouts">Timeouts</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/select">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/select">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

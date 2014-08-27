@@ -42,7 +42,7 @@ the program.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/P9Fujfpa1f"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/R2oqdcxxZu"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -71,7 +71,7 @@ receive on this channel.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">ping</span><span class="p">(</span><span class="nx">pings</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">pings</span> <span class="o">&lt;-</span> <span class="nx">msg</span>
+	<span class="nx">pings</span> <span class="o">&lt;-</span> <span class="nx">msg</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -87,8 +87,8 @@ receive on this channel.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">pong</span><span class="p">(</span><span class="nx">pings</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">pongs</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">pings</span>
-    <span class="nx">pongs</span> <span class="o">&lt;-</span> <span class="nx">msg</span>
+	<span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">pings</span>
+	<span class="nx">pongs</span> <span class="o">&lt;-</span> <span class="nx">msg</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -102,11 +102,11 @@ receive on this channel.</p>
           <td class="code">
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">pings</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nx">pongs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nx">ping</span><span class="p">(</span><span class="nx">pings</span><span class="p">,</span> <span class="s">&quot;passed message&quot;</span><span class="p">)</span>
-    <span class="nx">pong</span><span class="p">(</span><span class="nx">pings</span><span class="p">,</span> <span class="nx">pongs</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">pongs</span><span class="p">)</span>
+	<span class="nx">pings</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="nx">pongs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="nx">ping</span><span class="p">(</span><span class="nx">pings</span><span class="p">,</span> <span class="s">&quot;passed message&quot;</span><span class="p">)</span>
+	<span class="nx">pong</span><span class="p">(</span><span class="nx">pings</span><span class="p">,</span> <span class="nx">pongs</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="nx">pongs</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -134,11 +134,16 @@ receive on this channel.</p>
       
       
       <p class="next">
+        Previous example: <a href="channel-synchronization">Channel Synchronization</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="select">Select</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channel-directions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channel-directions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

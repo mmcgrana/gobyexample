@@ -28,7 +28,7 @@
             <p>A common requirement in programs is getting the number
 of seconds, milliseconds, or nanoseconds since the
 <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>.
-Here&rsquo;s how to do it in Go.</p>
+Here’s how to do it in Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +42,7 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/GP_zEjhlWk"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/bq2h3h0YKp"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -83,10 +83,10 @@ nanoseconds, respectively.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-    <span class="nx">secs</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()</span>
-    <span class="nx">nanos</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">UnixNano</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="nx">secs</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()</span>
+	<span class="nx">nanos</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">UnixNano</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -95,16 +95,16 @@ nanoseconds, respectively.</p>
         <tr>
           <td class="docs">
             <p>Note that there is no <code>UnixMillis</code>, so to get the
-milliseconds since epoch you&rsquo;ll need to manually
+milliseconds since epoch you’ll need to manually
 divide from nanoseconds.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">secs</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">millis</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">secs</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">millis</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -118,8 +118,8 @@ since the epoch into the corresponding <code>time</code>.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">nanos</span><span class="p">))</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">nanos</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -150,7 +150,7 @@ since the epoch into the corresponding <code>time</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at another time-related task: time
+            <p>Next we’ll look at another time-related task: time
 parsing and formatting.</p>
 
           </td>
@@ -164,11 +164,16 @@ parsing and formatting.</p>
       
       
       <p class="next">
+        Previous example: <a href="time">Time</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="time-formatting-parsing">Time Formatting / Parsing</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/epoch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/epoch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

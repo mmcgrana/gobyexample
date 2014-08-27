@@ -26,7 +26,7 @@
         <tr>
           <td class="docs">
             <p>URLs provide a <a href="http://adam.heroku.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/">uniform way to locate resources</a>.
-Here&rsquo;s how to parse URLs in Go.</p>
+Here’s how to parse URLs in Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ Here&rsquo;s how to parse URLs in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/eaMv0skOfY"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/IipvLT7rxL"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,14 +75,14 @@ Here&rsquo;s how to parse URLs in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll parse this example URL, which includes a
+            <p>We’ll parse this example URL, which includes a
 scheme, authentication info, host, port, path,
 query params, and query fragment.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;</span>
+            <div class="highlight"><pre>	<span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;</span>
 </pre></div>
 
           </td>
@@ -95,10 +95,10 @@ query params, and query fragment.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -111,7 +111,7 @@ query params, and query fragment.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -126,10 +126,10 @@ values.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Username</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Password</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Username</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Password</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -144,10 +144,10 @@ the port.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
-    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+	<span class="nx">h</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
           </td>
@@ -161,8 +161,8 @@ the <code>#</code>.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -179,10 +179,10 @@ if you only want the first value.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;k&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+	<span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;k&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -223,11 +223,16 @@ pieces that we extracted.</p>
       
       
       <p class="next">
+        Previous example: <a href="number-parsing">Number Parsing</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="sha1-hashes">SHA1 Hashes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/url-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/url-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

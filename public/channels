@@ -42,7 +42,7 @@ goroutine.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Kd8B0T_JGK"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/LB8s_p7MxM"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -81,7 +81,7 @@ Channels are typed by the values they convey.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -90,13 +90,13 @@ Channels are typed by the values they convey.</p>
         <tr>
           <td class="docs">
             <p><em>Send</em> a value into a channel using the <code>channel &lt;-</code>
-syntax. Here we send <code>&quot;ping&quot;</code>  to the <code>messages</code>
+syntax. Here we send <code>&#34;ping&#34;</code>  to the <code>messages</code>
 channel we made above, from a new goroutine.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;ping&quot;</span> <span class="p">}()</span>
+            <div class="highlight"><pre>	<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;ping&quot;</span> <span class="p">}()</span>
 </pre></div>
 
           </td>
@@ -105,14 +105,14 @@ channel we made above, from a new goroutine.</p>
         <tr>
           <td class="docs">
             <p>The <code>&lt;-channel</code> syntax <em>receives</em> a value from the
-channel. Here we&rsquo;ll receive the <code>&quot;ping&quot;</code> message
+channel. Here we’ll receive the <code>&#34;ping&#34;</code> message
 we sent above and print it out.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -125,7 +125,7 @@ we sent above and print it out.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run the program the <code>&quot;ping&quot;</code> message is
+            <p>When we run the program the <code>&#34;ping&#34;</code> message is
 successfully passed from one goroutine to another via
 our channel.</p>
 
@@ -143,7 +143,7 @@ our channel.</p>
           <td class="docs">
             <p>By default sends and receives block until both the
 sender and receiver are ready. This property allowed
-us to wait at the end of our program for the <code>&quot;ping&quot;</code>
+us to wait at the end of our program for the <code>&#34;ping&#34;</code>
 message without having to use any other synchronization.</p>
 
           </td>
@@ -157,11 +157,16 @@ message without having to use any other synchronization.</p>
       
       
       <p class="next">
+        Previous example: <a href="goroutines">Goroutines</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="channel-buffering">Channel Buffering</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

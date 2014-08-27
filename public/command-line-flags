@@ -42,7 +42,7 @@ command-line flag.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9xlvGqQjhl"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/9cHoIaC2mt"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -52,7 +52,7 @@ command-line flag.</p>
         <tr>
           <td class="docs">
             <p>Go provides a <code>flag</code> package supporting basic
-command-line flag parsing. We&rsquo;ll use this package to
+command-line flag parsing. We’ll use this package to
 implement our example command-line program.</p>
 
           </td>
@@ -81,15 +81,15 @@ implement our example command-line program.</p>
           <td class="docs">
             <p>Basic flag declarations are available for string,
 integer, and boolean options. Here we declare a
-string flag <code>word</code> with a default value <code>&quot;foo&quot;</code>
+string flag <code>word</code> with a default value <code>&#34;foo&#34;</code>
 and a short description. This <code>flag.String</code> function
 returns a string pointer (not a string value);
-we&rsquo;ll see how to use this pointer below.</p>
+we’ll see how to use this pointer below.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;a string&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;a string&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -103,8 +103,8 @@ similar approach to the <code>word</code> flag.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;numb&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&quot;an int&quot;</span><span class="p">)</span>
-    <span class="nx">boolPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;a bool&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;numb&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&quot;an int&quot;</span><span class="p">)</span>
+	<span class="nx">boolPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;a bool&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -112,7 +112,7 @@ similar approach to the <code>word</code> flag.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s also possible to declare an option that uses an
+            <p>It’s also possible to declare an option that uses an
 existing var declared elsewhere in the program.
 Note that we need to pass in a pointer to the flag
 declaration function.</p>
@@ -120,8 +120,8 @@ declaration function.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
-    <span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&quot;svar&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;a string var&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
+	<span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&quot;svar&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;a string var&quot;</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -135,7 +135,7 @@ to execute the command-line parsing.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+            <div class="highlight"><pre>	<span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 </pre></div>
 
           </td>
@@ -143,7 +143,7 @@ to execute the command-line parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we&rsquo;ll just dump out the parsed options and
+            <p>Here we’ll just dump out the parsed options and
 any trailing positional arguments. Note that we
 need to dereference the points with e.g. <code>*wordPtr</code>
 to get the actual option values.</p>
@@ -151,11 +151,11 @@ to get the actual option values.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;word:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;numb:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;fork:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">boolPtr</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;svar:&quot;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;tail:&quot;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Args</span><span class="p">())</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;word:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;numb:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;fork:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">boolPtr</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;svar:&quot;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;tail:&quot;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Args</span><span class="p">())</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -168,7 +168,7 @@ to get the actual option values.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with the command-line flags program it&rsquo;s
+            <p>To experiment with the command-line flags program it’s
 best to first compile it and then run the resulting
 binary directly.</p>
 
@@ -277,7 +277,7 @@ generated help text for the command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>If you provide a flag that wasn&rsquo;t specified to the
+            <p>If you provide a flag that wasn’t specified to the
 <code>flag</code> package, the program will print an error message
 an show the help text again.</p>
 
@@ -295,7 +295,7 @@ an show the help text again.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
+            <p>Next we’ll look at environment variables, another common
 way to parameterize programs.</p>
 
           </td>
@@ -309,11 +309,16 @@ way to parameterize programs.</p>
       
       
       <p class="next">
+        Previous example: <a href="command-line-arguments">Command-Line Arguments</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="environment-variables">Environment Variables</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-flags">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-flags">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

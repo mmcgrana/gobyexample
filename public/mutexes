@@ -42,7 +42,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/-_LKNceBru"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/fqmIaGf3XU"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -56,12 +56,12 @@ to safely access data across multiple goroutines.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;math/rand&quot;</span>
-    <span class="s">&quot;runtime&quot;</span>
-    <span class="s">&quot;sync&quot;</span>
-    <span class="s">&quot;sync/atomic&quot;</span>
-    <span class="s">&quot;time&quot;</span>
+	<span class="s">&quot;fmt&quot;</span>
+	<span class="s">&quot;math/rand&quot;</span>
+	<span class="s">&quot;runtime&quot;</span>
+	<span class="s">&quot;sync&quot;</span>
+	<span class="s">&quot;sync/atomic&quot;</span>
+	<span class="s">&quot;time&quot;</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -87,7 +87,7 @@ to safely access data across multiple goroutines.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -100,7 +100,7 @@ to safely access data across multiple goroutines.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">mutex</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">{}</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">mutex</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="p">{}</span>
 </pre></div>
 
           </td>
@@ -109,13 +109,13 @@ to safely access data across multiple goroutines.</p>
         <tr>
           <td class="docs">
             <p>To compare the mutex-based approach with another
-we&rsquo;ll see later, <code>ops</code> will count how many
+we’ll see later, <code>ops</code> will count how many
 operations we perform against the state.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
 </pre></div>
 
           </td>
@@ -129,10 +129,10 @@ reads against the state.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
-            <span class="k">for</span> <span class="p">{</span>
+            <div class="highlight"><pre>	<span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+			<span class="k">for</span> <span class="p">{</span>
 </pre></div>
 
           </td>
@@ -150,11 +150,11 @@ the <code>ops</code> count.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-                <span class="nx">total</span> <span class="o">+=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
-                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <div class="highlight"><pre>				<span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+				<span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+				<span class="nx">total</span> <span class="o">+=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+				<span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+				<span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -163,7 +163,7 @@ the <code>ops</code> count.</p>
         <tr>
           <td class="docs">
             <p>In order to ensure that this goroutine
-doesn&rsquo;t starve the scheduler, we explicitly
+doesn’t starve the scheduler, we explicitly
 yield after each operation with
 <code>runtime.Gosched()</code>. This yielding is
 handled automatically with e.g. every
@@ -174,10 +174,10 @@ case we need to do it manually.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
-            <span class="p">}</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>				<span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -185,25 +185,25 @@ case we need to do it manually.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll also start 10 goroutines to simulate writes,
+            <p>We’ll also start 10 goroutines to simulate writes,
 using the same pattern we did for reads.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="p">{</span>
-                <span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-                <span class="nx">val</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-                <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">val</span>
-                <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
-            <span class="p">}</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
+            <div class="highlight"><pre>	<span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">for</span> <span class="p">{</span>
+				<span class="nx">key</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+				<span class="nx">val</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+				<span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+				<span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">val</span>
+				<span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+				<span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+				<span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
+	<span class="p">}</span>
 </pre></div>
 
           </td>
@@ -217,7 +217,7 @@ using the same pattern we did for reads.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -230,8 +230,8 @@ using the same pattern we did for reads.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -244,9 +244,9 @@ using the same pattern we did for reads.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state:&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
-    <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+            <div class="highlight"><pre>	<span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;state:&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span>
+	<span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -276,7 +276,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at implementing this same state
+            <p>Next we’ll look at implementing this same state
 management task using only goroutines and channels.</p>
 
           </td>
@@ -290,11 +290,16 @@ management task using only goroutines and channels.</p>
       
       
       <p class="next">
+        Previous example: <a href="atomic-counters">Atomic Counters</a>.
+      </p>
+      
+      
+      <p class="next">
         Next example: <a href="stateful-goroutines">Stateful Goroutines</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/mutexes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/mutexes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>
