@@ -1,0 +1,86 @@
+#category,author,example
+basic,mmcgrana,Hello World
+basic,mmcgrana,Values
+basic,mmcgrana,Variables
+basic,mmcgrana,Constants
+basic,mmcgrana,For
+basic,mmcgrana,If/Else
+basic,mmcgrana,Switch
+basic,mmcgrana,Arrays
+basic,mmcgrana,Slices
+basic,mmcgrana,Maps
+basic,mmcgrana,Range
+basic,mmcgrana,Functions
+basic,mmcgrana,Multiple Return Values
+basic,mmcgrana,Variadic Functions
+basic,mmcgrana,Closures
+basic,mmcgrana,Recursion
+basic,mmcgrana,Pointers
+basic,mmcgrana,Structs
+basic,mmcgrana,Methods
+basic,mmcgrana,Interfaces
+basic,mmcgrana,Errors
+basic,mmcgrana,Goroutines
+basic,mmcgrana,Channels
+basic,mmcgrana,Channel Buffering
+basic,mmcgrana,Channel Synchronization
+basic,mmcgrana,Channel Directions
+basic,mmcgrana,Select
+basic,mmcgrana,Timeouts
+basic,mmcgrana,Non-Blocking Channel Operations
+basic,mmcgrana,Closing Channels
+basic,mmcgrana,Range over Channels
+basic,mmcgrana,Timers
+basic,mmcgrana,Tickers
+basic,mmcgrana,Worker Pools
+basic,mmcgrana,Rate Limiting
+basic,mmcgrana,Atomic Counters
+basic,mmcgrana,Mutexes
+basic,mmcgrana,Stateful Goroutines
+basic,mmcgrana,Sorting
+basic,mmcgrana,Sorting by Functions
+basic,mmcgrana,Panic
+basic,mmcgrana,Defer
+basic,mmcgrana,Collection Functions
+basic,mmcgrana,String Functions
+basic,mmcgrana,String Formatting
+basic,mmcgrana,Regular Expressions
+basic,mmcgrana,JSON
+basic,mmcgrana,Time
+basic,mmcgrana,Epoch
+basic,mmcgrana,Time Formatting / Parsing
+basic,mmcgrana,Random Numbers
+basic,mmcgrana,Number Parsing
+basic,mmcgrana,URL Parsing
+basic,mmcgrana,SHA1 Hashes
+basic,mmcgrana,Base64 Encoding
+basic,mmcgrana,Reading Files
+basic,mmcgrana,Writing Files
+basic,mmcgrana,Line Filters
+basic,mmcgrana,Command-Line Arguments
+basic,mmcgrana,Command-Line Flags
+basic,mmcgrana,Environment Variables
+basic,mmcgrana,Spawning Processes
+basic,mmcgrana,Exec'ing Processes
+basic,mmcgrana,Signals
+basic,mmcgrana,Exit
+# HTTP Client
+# HTTPS Client
+# Redis
+# Postgres
+# Hello Web
+# Responses
+# Request Routing
+# Request Logging
+# Static Content
+# Basic Authentication
+# Canonical Hosts
+# Middleware
+# Graceful Shutdown
+# HTTPS Servers
+# Testing
+# CPU Profiling
+# Memory Profiling
+# Factoring Packages
+# Shipping Libraries
+# Shipping Commands

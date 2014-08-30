@@ -1,8 +1,13 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
 	"crypto/sha1"
+	"encoding/csv"
+	"encoding/gob"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -39,7 +44,7 @@ func copyFile(src, dst string) {
 }
 
 func pipe(bin string, arg []string, src string) []byte {
-	fmt.Println("dbg:", bin, arg, src)
+	debug(fmt.Sprintln("**", bin, arg, "\n", src))
 	cmd := exec.Command(bin, arg...)
 	in, err := cmd.StdinPipe()
 	check(err)
@@ -71,17 +76,55 @@ func mustReadFile(path string) string {
 	return string(bytes)
 }
 
+var cacheData map[string]string
+
+func loadCache(cacheFileName string) {
+	cacheData = make(map[string]string)
+	var b bytes.Buffer
+	f, err := os.Open(cacheFileName)
+	if err != nil { // skip error
+		fmt.Println("Ignore cache:", err)
+		return
+	}
+	_, err = io.Copy(&b, f)
+	check(err)
+	dec := gob.NewDecoder(&b)
+	err = dec.Decode(&cacheData)
+	check(err)
+}
+func saveCache(cacheFileName string) {
+	var b bytes.Buffer
+	enc := gob.NewEncoder(&b)
+	err := enc.Encode(cacheData)
+	check(err)
+	f, err := os.Create(cacheFileName)
+	check(err)
+	_, err = io.Copy(f, &b)
+	check(err)
+}
+
+// rm -rf /tmp/gobyexample-cache, use disk to cache: 235.83
+// rm -rf /tmp/gobyexample-cache/gob, use memory to cache: 231.59
 func cachedPygmentize(lex string, src string) string {
 	ensureDir(cacheDir)
 	arg := []string{"-l", lex, "-f", "html"}
+
 	cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
-	cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
-	if cacheErr == nil {
-		return string(cacheBytes)
+	/*
+		cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
+		if cacheErr == nil {
+			return string(cacheBytes)
+		}
+	*/
+	if cache, ok := cacheData[cachePath]; ok {
+		return cache
 	}
 	renderBytes := pipe(pygmentizeBin, arg, src)
-	writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
-	check(writeErr)
+	/*
+		writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
+		check(writeErr)
+	*/
+	cacheData[cachePath] = string(renderBytes)
 	return string(renderBytes)
 }
 
@@ -127,7 +170,7 @@ type Seg struct {
 }
 
 type Example struct {
-	Id, Name                    string
+	Id, Name, Category, Author  string
 	GoCode, GoCodeHash, UrlHash string
 	Segs                        [][]*Seg
 	PrevExample                 *Example
@@ -203,6 +246,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
+	fmt.Println("Generating:", sourcePath)
 	segs, filecontent := parseSegs(sourcePath)
 	lexer := whichLexer(sourcePath)
 	for _, seg := range segs {
@@ -220,37 +264,68 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	return segs, filecontent
 }
 
-func parseExamples() []*Example {
-	exampleNames := readLines("examples.txt")
-	examples := make([]*Example, 0)
-	for _, exampleName := range exampleNames {
-		if (exampleName != "") && !strings.HasPrefix(exampleName, "#") {
-			example := Example{Name: exampleName}
-			exampleId := strings.ToLower(exampleName)
-			exampleId = strings.Replace(exampleId, " ", "-", -1)
-			exampleId = strings.Replace(exampleId, "/", "-", -1)
-			exampleId = strings.Replace(exampleId, "'", "", -1)
-			exampleId = dashPat.ReplaceAllString(exampleId, "-")
-			example.Id = exampleId
-			example.Segs = make([][]*Seg, 0)
-			sourcePaths := mustGlob("examples/" + exampleId + "/*")
-			for _, sourcePath := range sourcePaths {
-				if strings.HasSuffix(sourcePath, ".hash") {
-					example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
-				} else {
-					sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
-					if filecontents != "" {
-						example.GoCode = filecontents
-					}
-					example.Segs = append(example.Segs, sourceSegs)
-				}
-			}
-			newCodeHash := sha1Sum(example.GoCode)
-			if example.GoCodeHash != newCodeHash {
-				example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
-			}
-			examples = append(examples, &example)
+func loadCSV(csvFileName string) [][]string {
+	fmt.Println("loading ...", csvFileName)
+	f, err := os.Open(csvFileName)
+	check(err)
+	defer f.Close()
+	r := bufio.NewReader(f)
+	// skip BOM
+	bom, err := r.Peek(3)
+	check(err)
+	if bom[0] == 0xEF && bom[1] == 0xBB && bom[2] == 0xBF {
+		r.ReadByte()
+		r.ReadByte()
+		r.ReadByte()
+	}
+	csvR := csv.NewReader(r)
+	csvR.FieldsPerRecord = -1 // skip checking fields count
+	csvR.TrimLeadingSpace = true
+	out, err := csvR.ReadAll()
+	check(err)
+	var result [][]string
+	for _, line := range out {
+		if line[0][0] == '#' { // remove # comment lines
+			continue
 		}
+		if len(line) != 3 {
+			fmt.Println("Err: invalid csv format on line", line)
+			os.Exit(1)
+		}
+		result = append(result, line)
+	}
+	return result
+}
+func parseExamples() []*Example {
+	lines := loadCSV("examples.csv")
+	examples := make([]*Example, 0)
+	for _, line := range lines {
+		cat, author, exampleName := line[0], line[1], line[2]
+		example := Example{Name: exampleName, Category: cat, Author: author}
+		exampleId := strings.ToLower(exampleName)
+		exampleId = strings.Replace(exampleId, " ", "-", -1)
+		exampleId = strings.Replace(exampleId, "/", "-", -1)
+		exampleId = strings.Replace(exampleId, "'", "", -1)
+		exampleId = dashPat.ReplaceAllString(exampleId, "-")
+		example.Id = exampleId
+		example.Segs = make([][]*Seg, 0)
+		sourcePaths := mustGlob("examples/" + exampleId + "/*")
+		for _, sourcePath := range sourcePaths {
+			if strings.HasSuffix(sourcePath, ".hash") {
+				example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+			} else {
+				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+				if filecontents != "" {
+					example.GoCode = filecontents
+				}
+				example.Segs = append(example.Segs, sourceSegs)
+			}
+		}
+		newCodeHash := sha1Sum(example.GoCode)
+		if example.GoCodeHash != newCodeHash {
+			example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
+		}
+		examples = append(examples, &example)
 	}
 	for i, example := range examples {
 		if i > 0 {
@@ -284,6 +359,7 @@ func renderExamples(examples []*Example) {
 }
 
 func main() {
+	loadCache(cacheDir + "/gob")
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
 	copyFile("templates/404.html", siteDir+"/404.html")
@@ -291,4 +367,5 @@ func main() {
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
+	saveCache(cacheDir + "/gob")
 }
