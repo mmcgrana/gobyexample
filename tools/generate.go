@@ -20,7 +20,7 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var cacheDir = "/tmp/gobyexample-cache"
+var cacheDir = "."
 var siteDir = "./public"
 
 var pygmentizeBin = "./tools/pygmentize"
@@ -359,7 +359,7 @@ func renderExamples(examples []*Example) {
 }
 
 func main() {
-	loadCache(cacheDir + "/gob")
+	loadCache(cacheDir + "/cache.gob")
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
 	copyFile("templates/404.html", siteDir+"/404.html")
@@ -367,5 +367,5 @@ func main() {
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
-	saveCache(cacheDir + "/gob")
+	saveCache(cacheDir + "/cache.gob")
 }

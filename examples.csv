@@ -20,49 +20,49 @@ basic,mmcgrana,Structs
 basic,mmcgrana,Methods
 basic,mmcgrana,Interfaces
 basic,mmcgrana,Errors
-basic,mmcgrana,Goroutines
-basic,mmcgrana,Channels
-basic,mmcgrana,Channel Buffering
-basic,mmcgrana,Channel Synchronization
-basic,mmcgrana,Channel Directions
+multitask,mmcgrana,Goroutines
+multitask,mmcgrana,Channels
+multitask,mmcgrana,Channel Buffering
+multitask,mmcgrana,Channel Synchronization
+multitask,mmcgrana,Channel Directions
 basic,mmcgrana,Select
-basic,mmcgrana,Timeouts
-basic,mmcgrana,Non-Blocking Channel Operations
-basic,mmcgrana,Closing Channels
-basic,mmcgrana,Range over Channels
-basic,mmcgrana,Timers
-basic,mmcgrana,Tickers
-basic,mmcgrana,Worker Pools
-basic,mmcgrana,Rate Limiting
-basic,mmcgrana,Atomic Counters
-basic,mmcgrana,Mutexes
-basic,mmcgrana,Stateful Goroutines
-basic,mmcgrana,Sorting
-basic,mmcgrana,Sorting by Functions
+multitask,mmcgrana,Timeouts
+multitask,mmcgrana,Non-Blocking Channel Operations
+multitask,mmcgrana,Closing Channels
+multitask,mmcgrana,Range over Channels
+multitask,mmcgrana,Timers
+multitask,mmcgrana,Tickers
+multitask,mmcgrana,Worker Pools
+multitask,mmcgrana,Rate Limiting
+multitask,mmcgrana,Atomic Counters
+multitask,mmcgrana,Mutexes
+multitask,mmcgrana,Stateful Goroutines
+lib,mmcgrana,Sorting
+lib,mmcgrana,Sorting by Functions
 basic,mmcgrana,Panic
 basic,mmcgrana,Defer
-basic,mmcgrana,Collection Functions
-basic,mmcgrana,String Functions
-basic,mmcgrana,String Formatting
-basic,mmcgrana,Regular Expressions
-basic,mmcgrana,JSON
-basic,mmcgrana,Time
-basic,mmcgrana,Epoch
-basic,mmcgrana,Time Formatting / Parsing
-basic,mmcgrana,Random Numbers
-basic,mmcgrana,Number Parsing
-basic,mmcgrana,URL Parsing
-basic,mmcgrana,SHA1 Hashes
-basic,mmcgrana,Base64 Encoding
-basic,mmcgrana,Reading Files
-basic,mmcgrana,Writing Files
-basic,mmcgrana,Line Filters
-basic,mmcgrana,Command-Line Arguments
-basic,mmcgrana,Command-Line Flags
-basic,mmcgrana,Environment Variables
-basic,mmcgrana,Spawning Processes
-basic,mmcgrana,Exec'ing Processes
-basic,mmcgrana,Signals
+lib,mmcgrana,Collection Functions
+lib,mmcgrana,String Functions
+lib,mmcgrana,String Formatting
+lib,mmcgrana,Regular Expressions
+lib,mmcgrana,JSON
+lib,mmcgrana,Time
+lib,mmcgrana,Epoch
+lib,mmcgrana,Time Formatting / Parsing
+lib,mmcgrana,Random Numbers
+lib,mmcgrana,Number Parsing
+lib,mmcgrana,URL Parsing
+lib,mmcgrana,SHA1 Hashes
+lib,mmcgrana,Base64 Encoding
+lib,mmcgrana,Reading Files
+lib,mmcgrana,Writing Files
+lib,mmcgrana,Line Filters
+lib,mmcgrana,Command-Line Arguments
+lib,mmcgrana,Command-Line Flags
+lib,mmcgrana,Environment Variables
+lib,mmcgrana,Spawning Processes
+lib,mmcgrana,Exec'ing Processes
+lib,mmcgrana,Signals
 basic,mmcgrana,Exit
 # HTTP Client
 # HTTPS Client
