@@ -3,5 +3,13 @@
 set -e
 
 tools/gofmt
-tools/measure
-tools/generate
+if [ -x tools/measure.exe ] ; then
+  tools/measure.exe
+else
+  tools/measure
+fi
+if [ -x tools/generate ] ; then
+  tools/generate.exe
+else
+  tools/generate
+fi

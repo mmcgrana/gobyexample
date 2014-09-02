@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e -x
+go build -o measure.exe measure.go
+go build -o generate.exe generate.go

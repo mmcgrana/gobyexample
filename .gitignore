@@ -1,3 +1,4 @@
 .anvil
 *.gob
 *.pyc
+tools/*.exe
