@@ -17,6 +17,25 @@
     <![endif]-->
   </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Go by Example</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#by-sequence">By Sequence</a></li>
+      <li class="active"><a href="#by-category">By Category</a></li>
+    </ul>
+  </div>
+</div> <!-- container-fluid -->
+</nav>
 <div class="container">
 <div class="jumbotron">
   <h2><a href="./">Go by Example</a></h2>
@@ -33,14 +52,18 @@
   </p>
 </div>
 <div class="row"><div class="col-md-4">
-  <b>Order by release sequence</b>
+  <h3 id="by-sequence">Order by release sequence</h3>
   <ol>
   {{range .}}
     <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
       {{.Name}}</attr></a></li>
   {{end}}
   </ol>
-</div></div>
+</div>
+<div class="row"><div class="col-md-4">
+  <h3 id="by-category">Order by category</h3>
+</div>
+</div> <!-- row -->
 <div class="row">
   <p class="footer">
     orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
