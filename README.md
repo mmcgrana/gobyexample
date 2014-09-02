@@ -24,6 +24,7 @@ To build the site:
 # install python-pygments package on your linux distribution.
 $ go get github.com/russross/blackfriday  # markdown processor
 $ rm public/*  # optional step for force re-generate
+$ cd tools ; $ ./buildexe ; cd ..        # optional for reduce build time
 $ tools/build
 $ open index.html or public/index.html
 ```
