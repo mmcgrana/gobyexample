@@ -16,27 +16,34 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<body>
-<nav class="navbar navbar-default" role="navigation">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Go by Example</a>
-  </div>
-  <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#by-sequence">By Sequence</a></li>
-      <li class="active"><a href="#by-category">By Category</a></li>
-    </ul>
-  </div>
-</div> <!-- container-fluid -->
-</nav>
-<div class="container">
+<body role="document">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Go by Example</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#by-sequence">By Sequence</a></li>
+        <li class="dropdown"><a href="#by-category" class="dropdown-toggle" data-toggle="dropdown">
+            By Category <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          {{range $k, $v := .Categories}}
+              <li><a href="#cat.{{$k}}">{{$k}}</a></li>
+          {{end}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div> <!-- container -->
+</div>
+<div class="container theme-showcase" role="main">
 <div class="jumbotron">
   <h2><a href="./">Go by Example</a></h2>
   <p class="lead">
@@ -54,7 +61,7 @@
 <div class="row"><div class="col-md-4">
   <h3 id="by-sequence">Order by release sequence</h3>
   <ol>
-  {{range .}}
+  {{range .Seqs}}
     <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
       {{.Name}}</attr></a></li>
   {{end}}
@@ -62,7 +69,16 @@
 </div>
 <div class="row"><div class="col-md-4">
   <h3 id="by-category">Order by category</h3>
-</div>
+  {{range $k, $v := .Categories}}
+    <h4 id="cat.{{$k}}">{{$k}} ({{len $v}})</h4>
+    <ol>
+    {{range $v}}
+      <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
+          {{.Name}}</attr></a></li> 
+    {{end}}
+    </ol>
+ {{end}}
+ </div>
 </div> <!-- row -->
 <div class="row">
   <p class="footer">

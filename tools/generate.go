@@ -177,6 +177,11 @@ type Example struct {
 	NextExample                 *Example
 }
 
+type IndexData struct {
+	Seqs       []*Example
+	Categories map[string][]*Example
+}
+
 func parseHashFile(sourcePath string) (string, string) {
 	lines := readLines(sourcePath)
 	return lines[0], lines[1]
@@ -338,23 +343,34 @@ func parseExamples() []*Example {
 	return examples
 }
 
-func renderIndex(examples []*Example) {
-	indexTmpl := template.New("index")
-	_, err := indexTmpl.Parse(mustReadFile("templates/index.tmpl"))
-	check(err)
+func buildIndexData(exs []*Example) IndexData {
+	d := IndexData{Seqs: exs, Categories: make(map[string][]*Example)}
+	for _, ex := range exs {
+		if m, ok := d.Categories[ex.Category]; ok {
+			d.Categories[ex.Category] = append(m, ex)
+		} else {
+			m := make([]*Example, 0)
+			d.Categories[ex.Category] = append(m, ex)
+		}
+	}
+	return d
+}
+
+func renderIndex(indexData IndexData) {
+	tmpl := template.Must(template.ParseFiles("templates/index.tmpl"))
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
-	indexTmpl.Execute(indexF, examples)
+	err = tmpl.ExecuteTemplate(indexF, "index.tmpl", indexData)
+	check(err)
 }
 
 func renderExamples(examples []*Example) {
-	exampleTmpl := template.New("example")
-	_, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
-	check(err)
+	tmpl := template.Must(template.ParseFiles("templates/example.tmpl"))
 	for _, example := range examples {
 		exampleF, err := os.Create(siteDir + "/" + example.Id + ".html")
 		check(err)
-		exampleTmpl.Execute(exampleF, example)
+		err = tmpl.ExecuteTemplate(exampleF, "example.tmpl", example)
+		check(err)
 	}
 }
 
@@ -365,7 +381,8 @@ func main() {
 	copyFile("templates/404.html", siteDir+"/404.html")
 	copyFile("templates/play.png", siteDir+"/play.png")
 	examples := parseExamples()
-	renderIndex(examples)
+	indexData := buildIndexData(examples)
+	renderIndex(indexData)
 	renderExamples(examples)
 	saveCache(cacheDir + "/cache.gob")
 }

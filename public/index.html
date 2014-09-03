@@ -16,27 +16,38 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<body>
-<nav class="navbar navbar-default" role="navigation">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Go by Example</a>
-  </div>
-  <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#by-sequence">By Sequence</a></li>
-      <li class="active"><a href="#by-category">By Category</a></li>
-    </ul>
-  </div>
-</div> <!-- container-fluid -->
-</nav>
-<div class="container">
+<body role="document">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Go by Example</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#by-sequence">By Sequence</a></li>
+        <li class="dropdown"><a href="#by-category" class="dropdown-toggle" data-toggle="dropdown">
+            By Category <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          
+              <li><a href="#cat.basic">basic</a></li>
+          
+              <li><a href="#cat.lib">lib</a></li>
+          
+              <li><a href="#cat.multitask">multitask</a></li>
+          
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div> <!-- container -->
+</div>
+<div class="container theme-showcase" role="main">
 <div class="jumbotron">
   <h2><a href="./">Go by Example</a></h2>
   <p class="lead">
@@ -254,7 +265,218 @@
 </div>
 <div class="row"><div class="col-md-4">
   <h3 id="by-category">Order by category</h3>
-</div>
+  
+    <h4 id="cat.basic">basic (25)</h4>
+    <ol>
+    
+      <li><a href="hello-world.html" ><attr title="Category:basic by mmcgrana">
+          Hello World</attr></a></li> 
+    
+      <li><a href="values.html" ><attr title="Category:basic by mmcgrana">
+          Values</attr></a></li> 
+    
+      <li><a href="variables.html" ><attr title="Category:basic by mmcgrana">
+          Variables</attr></a></li> 
+    
+      <li><a href="constants.html" ><attr title="Category:basic by mmcgrana">
+          Constants</attr></a></li> 
+    
+      <li><a href="for.html" ><attr title="Category:basic by mmcgrana">
+          For</attr></a></li> 
+    
+      <li><a href="if-else.html" ><attr title="Category:basic by mmcgrana">
+          If/Else</attr></a></li> 
+    
+      <li><a href="switch.html" ><attr title="Category:basic by mmcgrana">
+          Switch</attr></a></li> 
+    
+      <li><a href="arrays.html" ><attr title="Category:basic by mmcgrana">
+          Arrays</attr></a></li> 
+    
+      <li><a href="slices.html" ><attr title="Category:basic by mmcgrana">
+          Slices</attr></a></li> 
+    
+      <li><a href="maps.html" ><attr title="Category:basic by mmcgrana">
+          Maps</attr></a></li> 
+    
+      <li><a href="range.html" ><attr title="Category:basic by mmcgrana">
+          Range</attr></a></li> 
+    
+      <li><a href="functions.html" ><attr title="Category:basic by mmcgrana">
+          Functions</attr></a></li> 
+    
+      <li><a href="multiple-return-values.html" ><attr title="Category:basic by mmcgrana">
+          Multiple Return Values</attr></a></li> 
+    
+      <li><a href="variadic-functions.html" ><attr title="Category:basic by mmcgrana">
+          Variadic Functions</attr></a></li> 
+    
+      <li><a href="closures.html" ><attr title="Category:basic by mmcgrana">
+          Closures</attr></a></li> 
+    
+      <li><a href="recursion.html" ><attr title="Category:basic by mmcgrana">
+          Recursion</attr></a></li> 
+    
+      <li><a href="pointers.html" ><attr title="Category:basic by mmcgrana">
+          Pointers</attr></a></li> 
+    
+      <li><a href="structs.html" ><attr title="Category:basic by mmcgrana">
+          Structs</attr></a></li> 
+    
+      <li><a href="methods.html" ><attr title="Category:basic by mmcgrana">
+          Methods</attr></a></li> 
+    
+      <li><a href="interfaces.html" ><attr title="Category:basic by mmcgrana">
+          Interfaces</attr></a></li> 
+    
+      <li><a href="errors.html" ><attr title="Category:basic by mmcgrana">
+          Errors</attr></a></li> 
+    
+      <li><a href="select.html" ><attr title="Category:basic by mmcgrana">
+          Select</attr></a></li> 
+    
+      <li><a href="panic.html" ><attr title="Category:basic by mmcgrana">
+          Panic</attr></a></li> 
+    
+      <li><a href="defer.html" ><attr title="Category:basic by mmcgrana">
+          Defer</attr></a></li> 
+    
+      <li><a href="exit.html" ><attr title="Category:basic by mmcgrana">
+          Exit</attr></a></li> 
+    
+    </ol>
+ 
+    <h4 id="cat.lib">lib (24)</h4>
+    <ol>
+    
+      <li><a href="sorting.html" ><attr title="Category:lib by mmcgrana">
+          Sorting</attr></a></li> 
+    
+      <li><a href="sorting-by-functions.html" ><attr title="Category:lib by mmcgrana">
+          Sorting by Functions</attr></a></li> 
+    
+      <li><a href="collection-functions.html" ><attr title="Category:lib by mmcgrana">
+          Collection Functions</attr></a></li> 
+    
+      <li><a href="string-functions.html" ><attr title="Category:lib by mmcgrana">
+          String Functions</attr></a></li> 
+    
+      <li><a href="string-formatting.html" ><attr title="Category:lib by mmcgrana">
+          String Formatting</attr></a></li> 
+    
+      <li><a href="regular-expressions.html" ><attr title="Category:lib by mmcgrana">
+          Regular Expressions</attr></a></li> 
+    
+      <li><a href="json.html" ><attr title="Category:lib by mmcgrana">
+          JSON</attr></a></li> 
+    
+      <li><a href="time.html" ><attr title="Category:lib by mmcgrana">
+          Time</attr></a></li> 
+    
+      <li><a href="epoch.html" ><attr title="Category:lib by mmcgrana">
+          Epoch</attr></a></li> 
+    
+      <li><a href="time-formatting-parsing.html" ><attr title="Category:lib by mmcgrana">
+          Time Formatting / Parsing</attr></a></li> 
+    
+      <li><a href="random-numbers.html" ><attr title="Category:lib by mmcgrana">
+          Random Numbers</attr></a></li> 
+    
+      <li><a href="number-parsing.html" ><attr title="Category:lib by mmcgrana">
+          Number Parsing</attr></a></li> 
+    
+      <li><a href="url-parsing.html" ><attr title="Category:lib by mmcgrana">
+          URL Parsing</attr></a></li> 
+    
+      <li><a href="sha1-hashes.html" ><attr title="Category:lib by mmcgrana">
+          SHA1 Hashes</attr></a></li> 
+    
+      <li><a href="base64-encoding.html" ><attr title="Category:lib by mmcgrana">
+          Base64 Encoding</attr></a></li> 
+    
+      <li><a href="reading-files.html" ><attr title="Category:lib by mmcgrana">
+          Reading Files</attr></a></li> 
+    
+      <li><a href="writing-files.html" ><attr title="Category:lib by mmcgrana">
+          Writing Files</attr></a></li> 
+    
+      <li><a href="line-filters.html" ><attr title="Category:lib by mmcgrana">
+          Line Filters</attr></a></li> 
+    
+      <li><a href="command-line-arguments.html" ><attr title="Category:lib by mmcgrana">
+          Command-Line Arguments</attr></a></li> 
+    
+      <li><a href="command-line-flags.html" ><attr title="Category:lib by mmcgrana">
+          Command-Line Flags</attr></a></li> 
+    
+      <li><a href="environment-variables.html" ><attr title="Category:lib by mmcgrana">
+          Environment Variables</attr></a></li> 
+    
+      <li><a href="spawning-processes.html" ><attr title="Category:lib by mmcgrana">
+          Spawning Processes</attr></a></li> 
+    
+      <li><a href="execing-processes.html" ><attr title="Category:lib by mmcgrana">
+          Exec'ing Processes</attr></a></li> 
+    
+      <li><a href="signals.html" ><attr title="Category:lib by mmcgrana">
+          Signals</attr></a></li> 
+    
+    </ol>
+ 
+    <h4 id="cat.multitask">multitask (16)</h4>
+    <ol>
+    
+      <li><a href="goroutines.html" ><attr title="Category:multitask by mmcgrana">
+          Goroutines</attr></a></li> 
+    
+      <li><a href="channels.html" ><attr title="Category:multitask by mmcgrana">
+          Channels</attr></a></li> 
+    
+      <li><a href="channel-buffering.html" ><attr title="Category:multitask by mmcgrana">
+          Channel Buffering</attr></a></li> 
+    
+      <li><a href="channel-synchronization.html" ><attr title="Category:multitask by mmcgrana">
+          Channel Synchronization</attr></a></li> 
+    
+      <li><a href="channel-directions.html" ><attr title="Category:multitask by mmcgrana">
+          Channel Directions</attr></a></li> 
+    
+      <li><a href="timeouts.html" ><attr title="Category:multitask by mmcgrana">
+          Timeouts</attr></a></li> 
+    
+      <li><a href="non-blocking-channel-operations.html" ><attr title="Category:multitask by mmcgrana">
+          Non-Blocking Channel Operations</attr></a></li> 
+    
+      <li><a href="closing-channels.html" ><attr title="Category:multitask by mmcgrana">
+          Closing Channels</attr></a></li> 
+    
+      <li><a href="range-over-channels.html" ><attr title="Category:multitask by mmcgrana">
+          Range over Channels</attr></a></li> 
+    
+      <li><a href="timers.html" ><attr title="Category:multitask by mmcgrana">
+          Timers</attr></a></li> 
+    
+      <li><a href="tickers.html" ><attr title="Category:multitask by mmcgrana">
+          Tickers</attr></a></li> 
+    
+      <li><a href="worker-pools.html" ><attr title="Category:multitask by mmcgrana">
+          Worker Pools</attr></a></li> 
+    
+      <li><a href="rate-limiting.html" ><attr title="Category:multitask by mmcgrana">
+          Rate Limiting</attr></a></li> 
+    
+      <li><a href="atomic-counters.html" ><attr title="Category:multitask by mmcgrana">
+          Atomic Counters</attr></a></li> 
+    
+      <li><a href="mutexes.html" ><attr title="Category:multitask by mmcgrana">
+          Mutexes</attr></a></li> 
+    
+      <li><a href="stateful-goroutines.html" ><attr title="Category:multitask by mmcgrana">
+          Stateful Goroutines</attr></a></li> 
+    
+    </ol>
+ 
+ </div>
 </div> <!-- row -->
 <div class="row">
   <p class="footer">
