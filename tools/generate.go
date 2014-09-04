@@ -180,6 +180,7 @@ type Example struct {
 type IndexData struct {
 	Seqs       []*Example
 	Categories map[string][]*Example
+	Authors    map[string][]*Example
 }
 
 func parseHashFile(sourcePath string) (string, string) {
@@ -344,13 +345,21 @@ func parseExamples() []*Example {
 }
 
 func buildIndexData(exs []*Example) IndexData {
-	d := IndexData{Seqs: exs, Categories: make(map[string][]*Example)}
+	d := IndexData{Seqs: exs,
+		Categories: make(map[string][]*Example),
+		Authors:    make(map[string][]*Example)}
 	for _, ex := range exs {
 		if m, ok := d.Categories[ex.Category]; ok {
 			d.Categories[ex.Category] = append(m, ex)
 		} else {
 			m := make([]*Example, 0)
 			d.Categories[ex.Category] = append(m, ex)
+		}
+		if m, ok := d.Authors[ex.Author]; ok {
+			d.Authors[ex.Author] = append(m, ex)
+		} else {
+			m := make([]*Example, 0)
+			d.Authors[ex.Author] = append(m, ex)
 		}
 	}
 	return d

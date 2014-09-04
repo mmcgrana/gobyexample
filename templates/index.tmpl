@@ -33,6 +33,14 @@
           {{end}}
           </ul>
         </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">By Author<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          {{range $k, $v := .Authors}}
+              <li><a href="#author-{{$k}}">{{$k}}</a></li>
+          {{end}}
+          </ul>
+        </li>
       </ul>
     </div>
   </div> <!-- container -->
@@ -78,7 +86,27 @@
     {{end}}
   </div>
 
+  <div class="col-md-4">
+    <h3>Order by author</h3>
+    {{range $k, $v := .Authors}}
+      <h4 id="author-{{$k}}">{{$k}} ({{len $v}})</h4>
+      <ol>
+      {{range $v}}
+        <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
+          {{.Name}}</attr></a></li> 
+      {{end}}
+      </ol>
+    {{end}}
+  </div>
+
 </div> <!-- row -->
+<div class="row">
+  <p class="footer">
+    orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+    | <a href="https://github.com/dlintw/gobyexample">source</a>
+    | <a href="https://github.com/dlintw/gobyexample#license">license</a>
+  </p>
+</div>
 
 </div> <!-- container -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
