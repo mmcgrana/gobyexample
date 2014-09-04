@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
-    <title>Go by Example</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-<body role="document">
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico">
+  <title>Go by Example</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,11 +25,11 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#by-sequence">By Sequence</a></li>
-        <li class="dropdown"><a href="#by-category" class="dropdown-toggle" data-toggle="dropdown">
-            By Category <span class="caret"></span></a>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">By Category<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           {{range $k, $v := .Categories}}
-              <li><a href="#cat.{{$k}}">{{$k}}</a></li>
+              <li><a href="#cate-{{$k}}">{{$k}}</a></li>
           {{end}}
           </ul>
         </li>
@@ -43,7 +37,8 @@
     </div>
   </div> <!-- container -->
 </div>
-<div class="container theme-showcase" role="main">
+
+<div class="container" role="main">
 <div class="jumbotron">
   <h2><a href="./">Go by Example</a></h2>
   <p class="lead">
@@ -58,35 +53,33 @@
     browse the full list below.
   </p>
 </div>
-<div class="row"><div class="col-md-4">
-  <h3 id="by-sequence">Order by release sequence</h3>
-  <ol>
-  {{range .Seqs}}
-    <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
-      {{.Name}}</attr></a></li>
-  {{end}}
-  </ol>
-</div>
-<div class="row"><div class="col-md-4">
-  <h3 id="by-category">Order by category</h3>
-  {{range $k, $v := .Categories}}
-    <h4 id="cat.{{$k}}">{{$k}} ({{len $v}})</h4>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3 id="by-sequence">Order by release sequence</h3>
     <ol>
-    {{range $v}}
+    {{range .Seqs}}
       <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
-          {{.Name}}</attr></a></li> 
+        {{.Name}}</attr></a></li>
     {{end}}
     </ol>
- {{end}}
- </div>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Order by category</h3>
+    {{range $k, $v := .Categories}}
+      <h4 id="cate-{{$k}}">{{$k}} ({{len $v}})</h4>
+      <ol>
+      {{range $v}}
+        <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
+          {{.Name}}</attr></a></li> 
+      {{end}}
+      </ol>
+    {{end}}
+  </div>
+
 </div> <!-- row -->
-<div class="row">
-  <p class="footer">
-    orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
-    | <a href="https://github.com/dlintw/gobyexample">source</a>
-    | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-  </p>
-</div>
+
 </div> <!-- container -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
