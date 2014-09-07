@@ -9,10 +9,13 @@
   <title>Go by Example - Google Go (golang) code examples</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style>
+body { padding-top: 50px; }
+</style>
 </head>
 <body>
 <!-- Fixed navbar -->
-<div class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -65,7 +68,7 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h3 id="by-sequence">Order by release sequence</h3>
+    <h3 id="by-sequence" style="padding-top:50px">Order by release sequence</h3>
     <ol>
     {{range .Seqs}}
       <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
@@ -77,7 +80,7 @@
   <div class="col-md-4">
     <h3>Order by category</h3>
     {{range $k, $v := .Categories}}
-      <h4 id="cate-{{$k}}">{{$k}} ({{len $v}})</h4>
+      <h4 id="cate-{{$k}}" style="padding-top:50px">{{$k}} ({{len $v}})</h4>
       <ol>
       {{range $v}}
         <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
@@ -90,7 +93,7 @@
   <div class="col-md-4">
     <h3>Order by author</h3>
     {{range $k, $v := .Authors}}
-      <h4 id="author-{{$k}}">{{$k}} ({{len $v}})</h4>
+      <h4 id="author-{{$k}}" style="padding-top:50px">{{$k}} ({{len $v}})</h4>
       <ol>
       {{range $v}}
         <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
