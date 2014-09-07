@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -70,8 +71,8 @@ func sha1Sum(s string) string {
 	return fmt.Sprintf("%x", b)
 }
 
-func mustReadFile(path string) string {
-	bytes, err := ioutil.ReadFile(path)
+func mustReadFile(fileName string) string {
+	bytes, err := ioutil.ReadFile(fileName)
 	check(err)
 	return string(bytes)
 }
@@ -132,8 +133,8 @@ func markdown(src string) string {
 	return string(blackfriday.MarkdownCommon([]byte(src)))
 }
 
-func readLines(path string) []string {
-	src := mustReadFile(path)
+func readLines(fileName string) []string {
+	src := mustReadFile(fileName)
 	return strings.Split(src, "\n")
 }
 
@@ -143,13 +144,13 @@ func mustGlob(glob string) []string {
 	return paths
 }
 
-func whichLexer(path string) string {
-	if strings.HasSuffix(path, ".go") {
+func whichLexer(fileName string) string {
+	if strings.HasSuffix(fileName, ".go") {
 		return "go"
-	} else if strings.HasSuffix(path, ".sh") {
+	} else if strings.HasSuffix(fileName, ".sh") {
 		return "console"
 	}
-	panic("No lexer for " + path)
+	panic("No lexer for " + fileName)
 	return ""
 }
 
@@ -324,7 +325,7 @@ func parseExamples() []*Example {
 		for _, sourcePath := range sourcePaths {
 			if strings.HasSuffix(sourcePath, ".hash") {
 				example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
-			} else if strings.HasPrefix(sourcePath, ".") {
+			} else if strings.HasPrefix(path.Base(sourcePath), ".") {
 				continue // skip .*.swp files
 			} else {
 				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)

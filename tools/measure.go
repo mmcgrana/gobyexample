@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -29,6 +30,9 @@ func main() {
 	check(err)
 	foundLongFile := false
 	for _, sourcePath := range sourcePaths {
+		if strings.HasPrefix(path.Base(sourcePath), ".") {
+			continue // skip .*.swp files
+		}
 		foundLongLine := false
 		lines := readLines(sourcePath)
 		for i, line := range lines {
