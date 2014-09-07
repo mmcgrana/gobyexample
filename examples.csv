@@ -56,6 +56,7 @@ lib,mmcgrana,SHA1 Hashes
 lib,mmcgrana,Base64 Encoding
 lib,mmcgrana,Reading Files
 lib,mmcgrana,Writing Files
+lib,dlintw,File Name Parsing
 lib,mmcgrana,Line Filters
 lib,mmcgrana,Command-Line Arguments
 lib,mmcgrana,Command-Line Flags
@@ -64,7 +65,7 @@ lib,mmcgrana,Spawning Processes
 lib,mmcgrana,Exec'ing Processes
 lib,mmcgrana,Signals
 basic,mmcgrana,Exit
-# HTTP Client
+robot,dlintw,HTTP Client
 # HTTPS Client
 # Redis
 # Postgres
