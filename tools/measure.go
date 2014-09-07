@@ -11,6 +11,8 @@ import (
 	"unicode/utf8"
 )
 
+const maxColumn = 58
+
 func check(err error) {
 	if err != nil {
 		panic(err)
@@ -36,8 +38,9 @@ func main() {
 		foundLongLine := false
 		lines := readLines(sourcePath)
 		for i, line := range lines {
-			if !foundLongLine && !commentPat.MatchString(line) && (utf8.RuneCountInString(line) > 58) {
-				fmt.Printf("measure: %s:%d\n", sourcePath, i+1)
+			if !foundLongLine && !commentPat.MatchString(line) && (utf8.RuneCountInString(line) > maxColumn) {
+				fmt.Printf("measure over %d column: %s:%d\n",
+					maxColumn, sourcePath, i+1)
 				foundLongLine = true
 				foundLongFile = true
 			}
