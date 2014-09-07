@@ -252,7 +252,6 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
-	fmt.Println("Generating:", sourcePath)
 	segs, filecontent := parseSegs(sourcePath)
 	lexer := whichLexer(sourcePath)
 	for _, seg := range segs {
@@ -315,10 +314,18 @@ func parseExamples() []*Example {
 		exampleId = dashPat.ReplaceAllString(exampleId, "-")
 		example.Id = exampleId
 		example.Segs = make([][]*Seg, 0)
+		fmt.Println("Generating:", exampleId)
 		sourcePaths := mustGlob("examples/" + exampleId + "/*")
+		if len(sourcePaths) < 2 {
+			fmt.Println("Err: missing .go or .sh in", exampleId,
+				":", sourcePaths)
+			os.Exit(1)
+		}
 		for _, sourcePath := range sourcePaths {
 			if strings.HasSuffix(sourcePath, ".hash") {
 				example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+			} else if strings.HasPrefix(sourcePath, ".") {
+				continue // skip .*.swp files
 			} else {
 				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
 				if filecontents != "" {

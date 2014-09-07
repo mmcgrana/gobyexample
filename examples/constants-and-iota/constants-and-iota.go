@@ -1,14 +1,39 @@
 // Go supports _constants_ of character, string, boolean,
 // and numeric values.
+// We can use _iota_ to simulate C's enum or #define constant.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 import "math"
 
 // `const` declares a constant value.
 const s string = "constant"
 
+// Here we simulate C's `enum` by Go's `iota`
+type Season uint8
+
+const (
+	Spring = Season(iota)
+	Summer
+	Autumn
+	Winner
+)
+
+// output function for Season variable
+func (s Season) String() string {
+	name := []string{"spring", "summer", "autumn", "winner"}
+	i := uint8(s)
+	switch {
+	case i <= uint8(Winner):
+		return name[i]
+	default:
+		return strconv.Itoa(int(i))
+	}
+}
 func main() {
 	fmt.Println(s)
 
@@ -30,4 +55,11 @@ func main() {
 	// assignment or function call. For example, here
 	// `math.Sin` expects a `float64`.
 	fmt.Println(math.Sin(n))
+
+	// Assign Season variable and print it
+	s := Summer
+	fmt.Println(s)
+	// Assign invalid range Season variable and print it
+	s = Season(9)
+	fmt.Println(s)
 }
