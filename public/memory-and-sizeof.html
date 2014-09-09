@@ -17,7 +17,7 @@
 
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/C6PlxACua6"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/nr6RxmdGM6"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -33,6 +33,7 @@
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&quot;fmt&quot;</span>
 	<span class="s">&quot;runtime&quot;</span>
+	<span class="s">&quot;strconv&quot;</span>
 	<span class="s">&quot;unsafe&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -79,13 +80,41 @@ depends on its implementation.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">printMem</span><span class="p">(</span><span class="nx">m1</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">*</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">MemStats</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;Alloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">Alloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">Alloc</span><span class="p">)</span>
-	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;TotalAlloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">TotalAlloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">TotalAlloc</span><span class="p">)</span>
-	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;HeapAlloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">HeapAlloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">HeapAlloc</span><span class="p">)</span>
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">memUsage</span><span class="p">(</span><span class="nx">m1</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">*</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">MemStats</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;Alloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">Alloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">Alloc</span><span class="p">,</span>
+		<span class="s">&quot;TotalAlloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">TotalAlloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">TotalAlloc</span><span class="p">,</span>
+		<span class="s">&quot;HeapAlloc:&quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">HeapAlloc</span><span class="o">-</span><span class="nx">m1</span><span class="p">.</span><span class="nx">HeapAlloc</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">m2</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">MemStats</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Here is a tricky to get pointer size</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="kd">const</span> <span class="nx">PtrSize</span> <span class="p">=</span> <span class="mi">32</span> <span class="o">&lt;&lt;</span> <span class="nb">uintptr</span><span class="p">(^</span><span class="nb">uintptr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="mi">63</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;PtrSize=&quot;</span><span class="p">,</span> <span class="nx">PtrSize</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;IntSize=&quot;</span><span class="p">,</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">IntSize</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can see the this structure is 4 + 4 + 4 + 8 + 12 = 32 bytes
+There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">m2</span><span class="p">,</span> <span class="nx">m3</span><span class="p">,</span> <span class="nx">m4</span><span class="p">,</span> <span class="nx">m5</span><span class="p">,</span> <span class="nx">m6</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">MemStats</span>
 	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m1</span><span class="p">)</span>
 	<span class="nx">t</span> <span class="o">:=</span> <span class="nx">T</span><span class="p">{}</span>
 	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m2</span><span class="p">)</span>
@@ -106,14 +135,69 @@ depends on its implementation.</p>
         
         <tr>
           <td class="docs">
-            <p>We can see the this structure is 4 + 4 + 4 + 8 + 12 = 32 bytes
-There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
+            <p>We will see 0 bytes, because it is on stack, so sizeof is the
+proper method to tell how much memory allocated.</p>
 
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;sizeof(T)&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">memUsage</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">m2</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Even string assignment is in stack.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m3</span><span class="p">)</span>
+	<span class="nx">t2</span> <span class="o">:=</span> <span class="s">&quot;abc&quot;</span>
+	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m4</span><span class="p">)</span>
+	<span class="nx">memUsage</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m3</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">m4</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>map will alloc memory in heap</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m5</span><span class="p">)</span>
+	<span class="nx">t3</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;x&quot;</span><span class="p">}</span>
+	<span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m6</span><span class="p">)</span>
+	<span class="nx">memUsage</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m5</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">m6</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;sizeof(T)&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
-	<span class="nx">printMem</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">m2</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t2</span><span class="p">,</span> <span class="nx">t3</span><span class="p">)</span> <span class="c1">// prevent compiler error</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -130,16 +214,19 @@ There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="go">go run memory-and-sizeof.go</span>
+            <div class="highlight"><pre><span class="gp">$</span> go run memory-and-sizeof.go
+<span class="go">PtrSize= 32</span>
+<span class="go">IntSize= 32</span>
 <span class="go">sizeof(uint8) 1 offset= 0</span>
 <span class="go">sizeof(int) 4 offset= 4</span>
 <span class="go">sizeof(*int) 4 offset= 8</span>
 <span class="go">sizeof(string) 8 offset= 12</span>
 <span class="go">sizeof([]string) 12 offset= 20</span>
 <span class="go">sizeof(T) 32</span>
-<span class="go">Alloc: 0</span>
-<span class="go">TotalAlloc: 0</span>
-<span class="go">HeapAlloc: 0</span>
+<span class="go">Alloc: 0 TotalAlloc: 0 HeapAlloc: 0</span>
+<span class="go">Alloc: 0 TotalAlloc: 0 HeapAlloc: 0</span>
+<span class="go">Alloc: 144 TotalAlloc: 144 HeapAlloc: 144</span>
+<span class="go">abc map[1:x]</span>
 </pre></div>
 
           </td>
@@ -152,6 +239,10 @@ There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
         Previous example: <a href="http-client.html">HTTP Client</a>.
       </p>
       
+      
+      <p class="next">
+        Next example: <a href="text-template.html">Text Template</a>.
+      </p>
       
       <p class="footer">
         <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>

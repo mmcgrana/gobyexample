@@ -28,7 +28,7 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Dw7D4JJ7EC"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/URmGGASXbK"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -54,7 +54,12 @@ pattern-based layouts.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 	<span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
@@ -87,6 +92,7 @@ constant.</p>
             <div class="highlight"><pre>	<span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
 		<span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
 		<span class="s">&quot;2012-11-01T22:08:41+00:00&quot;</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 	<span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
 </pre></div>
 
@@ -111,7 +117,25 @@ The example time must be exactly as shown: the year 2006,
 	<span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
 	<span class="nx">form</span> <span class="o">:=</span> <span class="s">&quot;3 04 PM&quot;</span>
 	<span class="nx">t2</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="s">&quot;8 41 PM&quot;</span><span class="p">)</span>
-	<span class="nx">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;Parse:&quot;</span><span class="p">,</span> <span class="nx">t2</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Generally, we want to save time in Local time zone.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">loc</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">LoadLocation</span><span class="p">(</span><span class="s">&quot;Local&quot;</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="nx">t3</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">ParseInLocation</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="s">&quot;8 41 PM&quot;</span><span class="p">,</span> <span class="nx">loc</span><span class="p">)</span>
+	<span class="nx">check</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;ParseInLocation:&quot;</span><span class="p">,</span> <span class="nx">t3</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -142,8 +166,8 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>	<span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
-	<span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
+            <div class="highlight"><pre>	<span class="nx">yyyymm</span> <span class="o">:=</span> <span class="s">&quot;2006&quot;</span>
+	<span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">yyyymm</span><span class="p">,</span> <span class="s">&quot;08:41&quot;</span><span class="p">)</span>
 	<span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -161,15 +185,16 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run <span class="nb">time</span>-formatting-parsing.go 
-<span class="go">2014-04-15T18:00:15-07:00</span>
+            <div class="highlight"><pre><span class="gp">$</span> go run <span class="nb">time</span>-formatting-parsing.go
+<span class="go">2014-09-08T12:40:56+08:00</span>
 <span class="go">2012-11-01 22:08:41 +0000 +0000</span>
-<span class="go">6:00PM</span>
-<span class="go">Tue Apr 15 18:00:15 2014</span>
-<span class="go">2014-04-15T18:00:15.161182-07:00</span>
-<span class="go">0000-01-01 20:41:00 +0000 UTC</span>
-<span class="go">2014-04-15T18:00:15-00:00</span>
-<span class="go">parsing time &quot;8:41PM&quot; as &quot;Mon Jan _2 15:04:05 2006&quot;: ...</span>
+<span class="go">12:40PM</span>
+<span class="go">Mon Sep  8 12:40:56 2014</span>
+<span class="go">2014-09-08T12:40:56.048654+08:00</span>
+<span class="go">Parse: 0000-01-01T20:41:00Z</span>
+<span class="go">ParseInLocation: 0000-01-01T20:41:00+08:00</span>
+<span class="go">2014-09-08T12:40:56-00:00</span>
+<span class="go">parsing time &quot;08:41&quot; as &quot;2006&quot;: cannot parse &quot;1&quot; as &quot;2006&quot;</span>
 </pre></div>
 
           </td>

@@ -29,7 +29,7 @@ We can use <em>iota</em> to simulate C’s enum or #define constant.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/CWDXD6KOmV"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/NyE38kC4q7"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -60,6 +60,21 @@ We can use <em>iota</em> to simulate C’s enum or #define constant.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kd">const</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;constant&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Sepcial method to generate maximum of uint.
+Ref: <a href="http://blog.golang.org/constants">http://blog.golang.org/constants</a></p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">const</span> <span class="nx">MaxUint</span> <span class="p">=</span> <span class="p">^</span><span class="nb">uint</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">MaxUint32</span> <span class="p">=</span> <span class="p">^</span><span class="nb">uint32</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -197,10 +212,23 @@ assignment or function call. For example, here
             <p>Assign invalid range Season variable and print it</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
 	        
             <div class="highlight"><pre>	<span class="nx">s</span> <span class="p">=</span> <span class="nx">Season</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">MaxUint</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">MaxUint32</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -224,6 +252,8 @@ assignment or function call. For example, here
 <span class="go">-0.28470407323754404</span>
 <span class="go">summer</span>
 <span class="go">9</span>
+<span class="go">18446744073709551615</span>
+<span class="go">4294967295</span>
 </pre></div>
 
           </td>
