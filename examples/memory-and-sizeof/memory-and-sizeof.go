@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"strconv"
 	"unsafe"
 )
 
@@ -26,6 +27,11 @@ func memUsage(m1, m2 *runtime.MemStats) {
 		"HeapAlloc:", m2.HeapAlloc-m1.HeapAlloc)
 }
 func main() {
+	// Here is a tricky to get pointer size
+	const PtrSize = 32 << uintptr(^uintptr(0)>>63)
+	p("PtrSize=", PtrSize)
+	p("IntSize=", strconv.IntSize)
+
 	var m1, m2, m3, m4, m5, m6 runtime.MemStats
 	runtime.ReadMemStats(&m1)
 	t := T{}

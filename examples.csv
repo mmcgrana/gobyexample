@@ -1,71 +1,71 @@
-#category,author,example
-basic,mmcgrana,Hello World
-basic,mmcgrana,Values
-basic,mmcgrana,Variables
-basic,mmcgrana,Constants and iota
-basic,mmcgrana,For
-basic,mmcgrana,If/Else
-basic,mmcgrana,Switch
-basic,mmcgrana,Arrays
-basic,mmcgrana,Slices
-basic,mmcgrana,Maps
-basic,mmcgrana,Range
-basic,mmcgrana,Functions
-basic,mmcgrana,Multiple Return Values
-basic,mmcgrana,Variadic Functions
-basic,mmcgrana,Closures
-basic,mmcgrana,Recursion
-basic,mmcgrana,Pointers
-basic,mmcgrana,Structs
-basic,mmcgrana,Methods
-basic,mmcgrana,Interfaces
-basic,mmcgrana,Errors
-multitask,mmcgrana,Goroutines
-multitask,mmcgrana,Channels
-multitask,mmcgrana,Channel Buffering
-multitask,mmcgrana,Channel Synchronization
-multitask,mmcgrana,Channel Directions
-basic,mmcgrana,Select
-multitask,mmcgrana,Timeouts
-multitask,mmcgrana,Non-Blocking Channel Operations
-multitask,mmcgrana,Closing Channels
-multitask,mmcgrana,Range over Channels
-multitask,mmcgrana,Timers
-multitask,mmcgrana,Tickers
-multitask,mmcgrana,Worker Pools
-multitask,mmcgrana,Rate Limiting
-multitask,mmcgrana,Atomic Counters
-multitask,mmcgrana,Mutexes
-multitask,mmcgrana,Stateful Goroutines
-lib,mmcgrana,Sorting
-lib,mmcgrana,Sorting by Functions
-basic,mmcgrana,Panic
-basic,mmcgrana,Defer
-lib,mmcgrana,Collection Functions
-lib,mmcgrana,String Functions
-lib,mmcgrana,String Formatting
-lib,mmcgrana,Regular Expressions
-lib,mmcgrana,JSON
-lib,mmcgrana,Time
-lib,mmcgrana,Epoch
-lib,mmcgrana,Time Formatting / Parsing
-lib,mmcgrana,Random Numbers
-lib,mmcgrana,Number Parsing
-lib,mmcgrana,URL Parsing
-lib,mmcgrana,SHA1 Hashes
-lib,mmcgrana,Base64 Encoding
-lib,mmcgrana,Reading Files
-lib,mmcgrana,Writing Files
-lib,dlintw,File Name Parsing
-lib,mmcgrana,Line Filters
-lib,mmcgrana,Command-Line Arguments
-lib,mmcgrana,Command-Line Flags
-lib,mmcgrana,Environment Variables
-lib,mmcgrana,Spawning Processes
-lib,mmcgrana,Exec'ing Processes
-lib,mmcgrana,Signals
-basic,mmcgrana,Exit
-robot,dlintw,HTTP Client
+#date,category,author,example
+20121231,basic,mmcgrana,Hello World
+20121231,basic,mmcgrana,Values
+20121231,basic,mmcgrana,Variables
+20140909,basic,mmcgrana,Constants and iota
+20121231,basic,mmcgrana,For
+20121231,basic,mmcgrana,If/Else
+20121231,basic,mmcgrana,Switch
+20121231,basic,mmcgrana,Arrays
+20121231,basic,mmcgrana,Slices
+20121231,basic,mmcgrana,Maps
+20121231,basic,mmcgrana,Range
+20121231,basic,mmcgrana,Functions
+20121231,basic,mmcgrana,Multiple Return Values
+20121231,basic,mmcgrana,Variadic Functions
+20121231,basic,mmcgrana,Closures
+20121231,basic,mmcgrana,Recursion
+20121231,basic,mmcgrana,Pointers
+20121231,basic,mmcgrana,Structs
+20121231,basic,mmcgrana,Methods
+20121231,basic,mmcgrana,Interfaces
+20121231,basic,mmcgrana,Errors
+20121231,multitask,mmcgrana,Goroutines
+20121231,multitask,mmcgrana,Channels
+20121231,multitask,mmcgrana,Channel Buffering
+20121231,multitask,mmcgrana,Channel Synchronization
+20121231,multitask,mmcgrana,Channel Directions
+20121231,basic,mmcgrana,Select
+20121231,multitask,mmcgrana,Timeouts
+20121231,multitask,mmcgrana,Non-Blocking Channel Operations
+20121231,multitask,mmcgrana,Closing Channels
+20121231,multitask,mmcgrana,Range over Channels
+20121231,multitask,mmcgrana,Timers
+20121231,multitask,mmcgrana,Tickers
+20121231,multitask,mmcgrana,Worker Pools
+20121231,multitask,mmcgrana,Rate Limiting
+20121231,multitask,mmcgrana,Atomic Counters
+20121231,multitask,mmcgrana,Mutexes
+20121231,multitask,mmcgrana,Stateful Goroutines
+20121231,lib,mmcgrana,Sorting
+20121231,lib,mmcgrana,Sorting by Functions
+20121231,basic,mmcgrana,Panic
+20121231,basic,mmcgrana,Defer
+20121231,lib,mmcgrana,Collection Functions
+20121231,lib,mmcgrana,String Functions
+20121231,lib,mmcgrana,String Formatting
+20121231,lib,mmcgrana,Regular Expressions
+20121231,lib,mmcgrana,JSON
+20140909,lib,mmcgrana,Time
+20121231,lib,mmcgrana,Epoch
+20140908,lib,mmcgrana,Time Formatting / Parsing
+20121231,lib,mmcgrana,Random Numbers
+20121231,lib,mmcgrana,Number Parsing
+20121231,lib,mmcgrana,URL Parsing
+20121231,lib,mmcgrana,SHA1 Hashes
+20121231,lib,mmcgrana,Base64 Encoding
+20121231,lib,mmcgrana,Reading Files
+20121231,lib,mmcgrana,Writing Files
+20140907,lib,dlintw,File Name Parsing
+20121231,lib,mmcgrana,Line Filters
+20121231,lib,mmcgrana,Command-Line Arguments
+20121231,lib,mmcgrana,Command-Line Flags
+20121231,lib,mmcgrana,Environment Variables
+20121231,lib,mmcgrana,Spawning Processes
+20121231,lib,mmcgrana,Exec'ing Processes
+20121231,lib,mmcgrana,Signals
+20121231,basic,mmcgrana,Exit
+20140907,robot,dlintw,HTTP Client
 # HTTPS Client
 # Redis
 # Postgres
@@ -85,3 +85,5 @@ robot,dlintw,HTTP Client
 # Factoring Packages
 # Shipping Libraries
 # Shipping Commands
+20140908,Advanced,dlintw,Memory and Sizeof
+20140909,lib,dlintw,Text Template

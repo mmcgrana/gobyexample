@@ -1,4 +1,6 @@
 $ go run memory-and-sizeof.go
+PtrSize= 32
+IntSize= 32
 sizeof(uint8) 1 offset= 0
 sizeof(int) 4 offset= 4
 sizeof(*int) 4 offset= 8
