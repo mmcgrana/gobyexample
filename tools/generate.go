@@ -15,10 +15,22 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/russross/blackfriday"
+)
+
+type CsvIdx uint8
+
+const (
+	cDate CsvIdx = iota
+	cCategory
+	cAuthor
+	cExample
+	cFieldCount
 )
 
 var cacheDir = "."
@@ -171,6 +183,9 @@ type Seg struct {
 }
 
 type Example struct {
+	//UpdateTime                  time.Time
+	IsNew                       bool
+	UpdateTime                  string
 	Id, Name, Category, Author  string
 	GoCode, GoCodeHash, UrlHash string
 	Segs                        [][]*Seg
@@ -180,6 +195,7 @@ type Example struct {
 
 type IndexData struct {
 	Seqs       []*Example
+	Updates    []*Example
 	Categories map[string][]*Example
 	Authors    map[string][]*Example
 }
@@ -191,9 +207,11 @@ func parseHashFile(sourcePath string) (string, string) {
 
 func resetUrlHashFile(codehash, code, sourcePath string) string {
 	payload := strings.NewReader(code)
-	resp, err := http.Post("http://play.golang.org/share", "text/plain", payload)
+	resp, err := http.Post("http://play.golang.org/share", "text/plain",
+		payload)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		os.Exit(1)
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
@@ -294,7 +312,7 @@ func loadCSV(csvFileName string) [][]string {
 		if line[0][0] == '#' { // remove # comment lines
 			continue
 		}
-		if len(line) != 3 {
+		if len(line) != int(cFieldCount) {
 			fmt.Println("Err: invalid csv format on line", line)
 			os.Exit(1)
 		}
@@ -305,9 +323,20 @@ func loadCSV(csvFileName string) [][]string {
 func parseExamples() []*Example {
 	lines := loadCSV("examples.csv")
 	examples := make([]*Example, 0)
+	newDate := time.Now().AddDate(0, -1, 0).Format("2006/01/02")
+	//loc, err := time.LoadLocation("Local")
+	//check(err)
 	for _, line := range lines {
-		cat, author, exampleName := line[0], line[1], line[2]
-		example := Example{Name: exampleName, Category: cat, Author: author}
+		updateDate, cat, author, exampleName := line[cDate],
+			line[cCategory], line[cAuthor], line[cExample]
+		//updateTime, err := time.ParseInLocation("20060102", updateDate,
+		//	loc)
+		//check(err)
+		updateTime := updateDate[:4] + "/" + updateDate[4:6] + "/" +
+			updateDate[6:8]
+		example := Example{UpdateTime: updateTime, Name: exampleName,
+			IsNew:    (updateTime >= newDate),
+			Category: cat, Author: author}
 		exampleId := strings.ToLower(exampleName)
 		exampleId = strings.Replace(exampleId, " ", "-", -1)
 		exampleId = strings.Replace(exampleId, "/", "-", -1)
@@ -352,8 +381,20 @@ func parseExamples() []*Example {
 	return examples
 }
 
+type ByUpdate []*Example
+
+func (a ByUpdate) Len() int      { return len(a) }
+func (a ByUpdate) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+func (a ByUpdate) Less(i, j int) bool {
+	// order by reversed time + Name
+	return (a[i].UpdateTime > a[j].UpdateTime) ||
+		((a[i].UpdateTime == a[j].UpdateTime) &&
+			(a[i].Name < a[j].Name))
+
+}
 func buildIndexData(exs []*Example) IndexData {
 	d := IndexData{Seqs: exs,
+		Updates:    make([]*Example, len(exs)),
 		Categories: make(map[string][]*Example),
 		Authors:    make(map[string][]*Example)}
 	for _, ex := range exs {
@@ -370,19 +411,19 @@ func buildIndexData(exs []*Example) IndexData {
 			d.Authors[ex.Author] = append(m, ex)
 		}
 	}
+	copy(d.Updates, d.Seqs)
+	sort.Sort(ByUpdate(d.Updates))
 	return d
 }
 
-func renderIndex(indexData IndexData) {
-	tmpl := template.Must(template.ParseFiles("templates/index.tmpl"))
+func renderIndex(indexData IndexData, tmpl *template.Template) {
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
 	err = tmpl.ExecuteTemplate(indexF, "index.tmpl", indexData)
 	check(err)
 }
 
-func renderExamples(examples []*Example) {
-	tmpl := template.Must(template.ParseFiles("templates/example.tmpl"))
+func renderExamples(examples []*Example, tmpl *template.Template) {
 	for _, example := range examples {
 		exampleF, err := os.Create(siteDir + "/" + example.Id + ".html")
 		check(err)
@@ -399,7 +440,8 @@ func main() {
 	copyFile("templates/play.png", siteDir+"/play.png")
 	examples := parseExamples()
 	indexData := buildIndexData(examples)
-	renderIndex(indexData)
-	renderExamples(examples)
+	tmpl := template.Must(template.ParseGlob("templates/*.tmpl"))
+	renderIndex(indexData, tmpl)
+	renderExamples(examples, tmpl)
 	saveCache(cacheDir + "/cache.gob")
 }
