@@ -13,6 +13,11 @@ import "math"
 // `const` declares a constant value.
 const s string = "constant"
 
+// Sepcial method to generate maximum of uint.
+// Ref: http://blog.golang.org/constants
+const MaxUint = ^uint(0)
+const MaxUint32 = ^uint32(0)
+
 // Here we simulate C's `enum` by Go's `iota`
 type Season uint8
 
@@ -62,4 +67,7 @@ func main() {
 	// Assign invalid range Season variable and print it
 	s = Season(9)
 	fmt.Println(s)
+
+	fmt.Println(MaxUint)
+	fmt.Println(MaxUint32)
 }
