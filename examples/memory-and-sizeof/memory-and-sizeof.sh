@@ -1,9 +1,11 @@
-go run memory-and-sizeof.go
+$ go run memory-and-sizeof.go
 sizeof(uint8) 1 offset= 0
-sizeof(string) 8 offset= 4
-sizeof(int) 4 offset= 12
-sizeof(T) 16
-m1:Alloc:%!u(uint64=88192) TotalAlloc:%!u(uint64=88208)
-m2:Alloc:%!u(uint64=88192) TotalAlloc:%!u(uint64=88208)
-m1:HeapAlloc:%!u(uint64=88192) TotalAlloc:%!u(uint64=88208)
-m2:HeapAlloc:%!u(uint64=88192) TotalAlloc:%!u(uint64=88208)
+sizeof(int) 4 offset= 4
+sizeof(*int) 4 offset= 8
+sizeof(string) 8 offset= 12
+sizeof([]string) 12 offset= 20
+sizeof(T) 32
+Alloc: 0 TotalAlloc: 0 HeapAlloc: 0
+Alloc: 0 TotalAlloc: 0 HeapAlloc: 0
+Alloc: 144 TotalAlloc: 144 HeapAlloc: 144
+abc map[1:x]
