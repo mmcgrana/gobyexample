@@ -23,14 +23,14 @@
         {{end}}
       </table>
       {{end}}
-      {{if .PrevExample}}
+      {{with .PrevExample}}
       <p class="next">
-        Previous example: <a href="{{.PrevExample.Id}}.html">{{.PrevExample.Name}}</a>.
+        Previous example: <a href="{{.Id}}.html">{{.Name}}</a>.
       </p>
       {{end}}
-      {{if .NextExample}}
+      {{with .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.Id}}.html">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{.Id}}.html">{{.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">

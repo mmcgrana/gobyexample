@@ -28,7 +28,8 @@ body { padding-top: 50px; }
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#by-sequence">By Sequence</a></li>
+        <li class="active"><a href="#by-update">By Update</a></li>
+        <li><a href="#by-sequence">By Sequence</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">By Category<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -66,43 +67,36 @@ body { padding-top: 50px; }
   </p>
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-    <h3 id="by-sequence" style="padding-top:50px">Order by release sequence</h3>
-    <ol>
-    {{range .Seqs}}
-      <li><a href="{{.Id}}.html" ><attr title="Category:{{.Category}} by {{.Author}}">
-        {{.Name}}</attr></a></li>
-    {{end}}
-    </ol>
-  </div>
+{{define "exItem"}}<li><a href="{{.Id}}.html">
+<attr title="Date:{{.UpdateTime}} Category:{{.Category}} by {{.Author}}">
+{{.Name}}</attr></a>
+{{if .IsNew}}<span class="glyphicon glyphicon-flash"></span>
+<small>{{.UpdateTime}}</small>{{end}}</li>
+{{end}}
 
-  <div class="col-md-4">
+<div class="row">
+  <div class="col-md-3">
+    <h3 id="by-update" style="padding-top:50px">Order by Update</h3>
+    <ol>{{range .Updates}}{{template "exItem" .}}{{end}}</ol>
+  </div>
+  <div class="col-md-3">
+    <h3 id="by-sequence" style="padding-top:50px">Order by sequence</h3>
+    <ol>{{range .Seqs}}{{template "exItem" .}}{{end}}</ol>
+  </div>
+  <div class="col-md-3">
     <h3>Order by category</h3>
     {{range $k, $v := .Categories}}
       <h4 id="cate-{{$k}}" style="padding-top:50px">{{$k}} ({{len $v}})</h4>
-      <ol>
-      {{range $v}}
-        <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
-          {{.Name}}</attr></a></li> 
-      {{end}}
-      </ol>
+      <ol>{{range $v}}{{template "exItem" .}}{{end}}</ol>
     {{end}}
   </div>
-
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h3>Order by author</h3>
     {{range $k, $v := .Authors}}
       <h4 id="author-{{$k}}" style="padding-top:50px">{{$k}} ({{len $v}})</h4>
-      <ol>
-      {{range $v}}
-        <li><a href="{{.Id}}.html"><attr title="Category:{{.Category}} by {{.Author}}">
-          {{.Name}}</attr></a></li> 
-      {{end}}
-      </ol>
+      <ol>{{range $v}}{{template "exItem" .}}{{end}}</ol>
     {{end}}
   </div>
-
 </div> <!-- row -->
 <div class="row">
   <p class="footer">
