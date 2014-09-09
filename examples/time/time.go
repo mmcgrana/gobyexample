@@ -1,5 +1,5 @@
 // Go's offers extensive support for times and durations;
-// here are some examples.
+// More examples: http://golang.org/pkg/time/#pkg-examples
 
 package main
 
@@ -58,4 +58,13 @@ func main() {
 	// duration.
 	p(then.Add(diff))
 	p(then.Add(-diff))
+
+	// Use constants like: Nanosecond, Microsecond, Millisecond,
+	// Second, Minute, Hour to get new time, like this example to
+	// print date after/before 30 days. Note: Substract one month
+	// is not equal to 30 days.
+	p(now.Add(30 * 24 * time.Hour).Format("2006-01-02"))
+	p(now.Add(-30 * 24 * time.Hour).Format("2006-01-02"))
+	p(now.AddDate(0, -1, 0).Format("2006-01-02"))
+	p(now.AddDate(0, 0, -30).Format("2006-01-02"))
 }
