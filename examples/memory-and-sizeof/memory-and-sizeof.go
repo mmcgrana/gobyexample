@@ -44,11 +44,16 @@ func main() {
 		"offset=", unsafe.Offsetof(t.P))
 	p("sizeof(string)", unsafe.Sizeof(t.S),
 		"offset=", unsafe.Offsetof(t.S))
+
+	// Slice is a structure of Pointer, Len and Cap.
+	// Detail [here](http://blog.golang.org/go-slices-usage-and-internals)
 	p("sizeof([]string)", unsafe.Sizeof(t.SS),
 		"offset=", unsafe.Offsetof(t.SS))
+
 	// We can see the this structure is 4 + 4 + 4 + 8 + 12 = 32 bytes
 	// There are 3 padding bytes of first t.B expanded to 4 bytes.
 	p("sizeof(T)", unsafe.Sizeof(t))
+
 	// We will see 0 bytes, because it is on stack, so sizeof is the
 	// proper method to tell how much memory allocated.
 	memUsage(&m1, &m2)

@@ -17,7 +17,7 @@
 
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/nr6RxmdGM6"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ImRaCLE92N"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -108,9 +108,7 @@ depends on its implementation.</p>
         
         <tr>
           <td class="docs">
-            <p>We can see the this structure is 4 + 4 + 4 + 8 + 12 = 32 bytes
-There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
-
+            
           </td>
           <td class="code leading">
 	        
@@ -126,7 +124,20 @@ There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
 		<span class="s">&quot;offset=&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Offsetof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">P</span><span class="p">))</span>
 	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;sizeof(string)&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">),</span>
 		<span class="s">&quot;offset=&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Offsetof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">S</span><span class="p">))</span>
-	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;sizeof([]string)&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">SS</span><span class="p">),</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Slice is a structure of Pointer, Len and Cap.
+Detail <a href="http://blog.golang.org/go-slices-usage-and-internals">here</a></p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="s">&quot;sizeof([]string)&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Sizeof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">SS</span><span class="p">),</span>
 		<span class="s">&quot;offset=&quot;</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Offsetof</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">SS</span><span class="p">))</span>
 </pre></div>
 
@@ -135,8 +146,8 @@ There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
         
         <tr>
           <td class="docs">
-            <p>We will see 0 bytes, because it is on stack, so sizeof is the
-proper method to tell how much memory allocated.</p>
+            <p>We can see the this structure is 4 + 4 + 4 + 8 + 12 = 32 bytes
+There are 3 padding bytes of first t.B expanded to 4 bytes.</p>
 
           </td>
           <td class="code leading">
@@ -149,7 +160,9 @@ proper method to tell how much memory allocated.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>We will see 0 bytes, because it is on stack, so sizeof is the
+proper method to tell how much memory allocated.</p>
+
           </td>
           <td class="code leading">
 	        
