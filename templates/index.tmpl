@@ -51,7 +51,7 @@ a:visited{color:#000000 !important;}
   </div> <!-- container -->
 </nav>
 
-<div class="container" role="main">
+<div class="container-fluid" role="main">
 <div class="jumbotron">
   <h2><a href="./">Go by Example</a></h2>
   <p class="lead">
@@ -75,14 +75,17 @@ a:visited{color:#000000 !important;}
 {{end}}
 {{define "menuHeight"}}style="padding-top:50px"{{end}}
 <div class="row">
+  <div class="col-md-2">
+    <h3 id="by-sequence" {{template "menuHeight"}}>Order by sequence</h3>
+    <ol>{{range .Seqs}}{{template "exItem" .}}{{end}}</ol>
+  </div>
+  <div class="col-md-10"><iframe id="ex" src="hello-world.html" width="100%" height="768"></iframe></div>
+</div><div class="row">
   <div class="col-md-3">
     <h3 id="by-update" {{template "menuHeight"}}>Order by Update</h3>
     <ol>{{range .Updates}}{{template "exItem" .}}{{end}}</ol>
   </div>
-  <div class="col-md-3">
-    <h3 id="by-sequence" {{template "menuHeight"}}>Order by sequence</h3>
-    <ol>{{range .Seqs}}{{template "exItem" .}}{{end}}</ol>
-  </div>
+</div><div class="row">
   <div class="col-md-3">
     <h3>Order by category</h3>
     {{range $k, $v := .Categories}}
@@ -90,6 +93,7 @@ a:visited{color:#000000 !important;}
       <ol>{{range $v}}{{template "exItem" .}}{{end}}</ol>
     {{end}}
   </div>
+</div><div class="row">
   <div class="col-md-3">
     <h3>Order by author</h3>
     {{range $k, $v := .Authors}}
