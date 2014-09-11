@@ -7,7 +7,6 @@
   <meta name="description" content="Go By Example - Google Go (golang) code examples" />
   <link rel="icon" href="favicon.ico">
   <title>Go by Example - Google Go (golang) code examples</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <style>
 body{padding-top:50px !important;}
 a:visited{color:#000000 !important;}
@@ -1269,9 +1268,10 @@ Exit</attr></a>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>if(typeof($.fn.modal)==='undefined'){document.write('<script src="js/bootstrap.min.js"><\/script>')}</script>
 <script>
-$(document).ready(function(){
-if ($('body').css('color') != 'rgb(51, 51, 51)') {
-  $("head").prepend('<link rel="stylsheet" href="css/bootstrap.min.css">');}});
+$(document).ready(function(){ 
+  if ($('body').css('color') != 'rgb(51, 51, 51)') {
+    $("head").prepend('<link rel="stylesheet" href="css/bootstrap.min.css">');
+}});
 </script>
 <script>
   if (window.location.host == "dlintw.github.io") {
@@ -1288,5 +1288,6 @@ if ($('body').css('color') != 'rgb(51, 51, 51)') {
 </script>
 </body>
 </html>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!-- vim:et sw=2 ts=2
 -->

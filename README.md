@@ -25,6 +25,7 @@ To build the site:
 $ go get github.com/russross/blackfriday  # markdown processor
 $ rm public/*  # optional step for force re-generate
 $ cd tools ; make ; cd .. # build *.go binaray for reduce rebuild time
+$ cd tools ; make css ; cd .. # use yuicompresser to compress site.css
 $ tools/build
 $ open index.html or public/index.html
 ```
