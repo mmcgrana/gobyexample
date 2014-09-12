@@ -2,5 +2,3 @@
 *.gob
 *.pyc
 tools/*.exe
-public/css/*
-public/js/*
