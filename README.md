@@ -24,8 +24,6 @@ To build the site:
 # install python-pygments package on your linux distribution.
 $ go get github.com/russross/blackfriday  # markdown processor
 $ rm public/*  # optional step for force re-generate
-$ cd tools ; make ; cd .. # build *.go binaray for reduce rebuild time
-$ cd tools ; make css ; cd .. # use yuicompresser to compress site.css
 $ tools/build
 $ open index.html or public/index.html
 ```
@@ -36,6 +34,16 @@ To build continuously in a loop:
 $ tools/build-loop
 ```
 
+### Optional Tools
+
+```console
+$ cd tools
+$ make clean # remove all generated data
+$ make local # cache css/js files in local disk for networkless environment
+$ make css   # use yuicompresser to compress site.css
+$ make       # build *.go binaray for reduce rebuild time in 1 second
+	     # make also call 'make css' and generate pages
+```
 ### License
 
 This work is copyright Mark McGranaghan and licensed under a

@@ -198,6 +198,7 @@ type IndexData struct {
 	Updates    []*Example
 	Categories map[string][]*Example
 	Authors    map[string][]*Example
+	Newest     *Example
 }
 
 func parseHashFile(sourcePath string) (string, string) {
@@ -413,6 +414,7 @@ func buildIndexData(exs []*Example) IndexData {
 	}
 	copy(d.Updates, d.Seqs)
 	sort.Sort(ByUpdate(d.Updates))
+	d.Newest = d.Updates[0]
 	return d
 }
 

@@ -7,9 +7,15 @@
   <meta name="description" content="Go By Example - Google Go (golang) code examples" />
   <link rel="icon" href="favicon.ico">
   <title>Go by Example - Google Go (golang) code examples</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <style>
 body{padding-top:50px !important;}
 a:visited{color:#000000 !important;}
+.jumbotron {
+padding-top: 10px;
+padding-bottom: 10px;
+}
 </style>
 </head>
 <body>
@@ -62,7 +68,7 @@ a:visited{color:#000000 !important;}
 
 <div class="container-fluid" role="main">
 <div class="jumbotron">
-  <h2><a href="./">Go by Example</a></h2>
+  <h3><a href="./">Go by Example</a></h3>
   <p class="lead">
     <a href="http://golang.org">Go</a> is an
     open source programming language designed for
@@ -72,7 +78,7 @@ a:visited{color:#000000 !important;}
     <em>Go by Example</em> is a hands-on introduction
     to Go using annotated example programs. 
   </p>Check out the <a href="hello-world.html">first example</a> or
-    browse the full list below.
+    browse the <a href="#by-sequence">full list</a> below.
   </p>
 </div>
 
@@ -80,881 +86,1090 @@ a:visited{color:#000000 !important;}
 
 <div class="row">
   <div class="col-md-2">
-    <h3 id="by-sequence" style="padding-top:50px">Order by sequence</h3>
-    <ol><li><a href="hello-world.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Hello World</attr></a>
-</li>
-<li><a href="values.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Values</attr></a>
-</li>
-<li><a href="variables.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variables</attr></a>
-</li>
-<li><a href="constants-and-iota.html">
-<attr title="Date:2014/09/09 Category:basic by mmcgrana">
-Constants and iota</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
-<li><a href="for.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-For</attr></a>
-</li>
-<li><a href="if-else.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-If/Else</attr></a>
-</li>
-<li><a href="switch.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Switch</attr></a>
-</li>
-<li><a href="arrays.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Arrays</attr></a>
-</li>
-<li><a href="slices.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Slices</attr></a>
-</li>
-<li><a href="maps.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Maps</attr></a>
-</li>
-<li><a href="range.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Range</attr></a>
-</li>
-<li><a href="functions.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Functions</attr></a>
-</li>
-<li><a href="multiple-return-values.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Multiple Return Values</attr></a>
-</li>
-<li><a href="variadic-functions.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variadic Functions</attr></a>
-</li>
-<li><a href="closures.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Closures</attr></a>
-</li>
-<li><a href="recursion.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Recursion</attr></a>
-</li>
-<li><a href="pointers.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Pointers</attr></a>
-</li>
-<li><a href="structs.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Structs</attr></a>
-</li>
-<li><a href="methods.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Methods</attr></a>
-</li>
-<li><a href="interfaces.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Interfaces</attr></a>
-</li>
-<li><a href="errors.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Errors</attr></a>
-</li>
-<li><a href="goroutines.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Goroutines</attr></a>
-</li>
-<li><a href="channels.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channels</attr></a>
-</li>
-<li><a href="channel-buffering.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Buffering</attr></a>
-</li>
-<li><a href="channel-synchronization.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Synchronization</attr></a>
-</li>
-<li><a href="channel-directions.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Directions</attr></a>
-</li>
-<li><a href="select.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Select</attr></a>
-</li>
-<li><a href="timeouts.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timeouts</attr></a>
-</li>
-<li><a href="non-blocking-channel-operations.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Non-Blocking Channel Operations</attr></a>
-</li>
-<li><a href="closing-channels.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Closing Channels</attr></a>
-</li>
-<li><a href="range-over-channels.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Range over Channels</attr></a>
-</li>
-<li><a href="timers.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timers</attr></a>
-</li>
-<li><a href="tickers.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Tickers</attr></a>
-</li>
-<li><a href="worker-pools.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Worker Pools</attr></a>
-</li>
-<li><a href="rate-limiting.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Rate Limiting</attr></a>
-</li>
-<li><a href="atomic-counters.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Atomic Counters</attr></a>
-</li>
-<li><a href="mutexes.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Mutexes</attr></a>
-</li>
-<li><a href="stateful-goroutines.html">
-<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Stateful Goroutines</attr></a>
-</li>
-<li><a href="sorting.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting</attr></a>
-</li>
-<li><a href="sorting-by-functions.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting by Functions</attr></a>
-</li>
-<li><a href="panic.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Panic</attr></a>
-</li>
-<li><a href="defer.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Defer</attr></a>
-</li>
-<li><a href="collection-functions.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Collection Functions</attr></a>
-</li>
-<li><a href="string-functions.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Functions</attr></a>
-</li>
-<li><a href="string-formatting.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Formatting</attr></a>
-</li>
-<li><a href="regular-expressions.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Regular Expressions</attr></a>
-</li>
-<li><a href="json.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-JSON</attr></a>
-</li>
-<li><a href="time.html">
-<attr title="Date:2014/09/09 Category:lib by mmcgrana">
-Time</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
-<li><a href="epoch.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Epoch</attr></a>
-</li>
-<li><a href="time-formatting-parsing.html">
-<attr title="Date:2014/09/08 Category:lib by mmcgrana">
-Time Formatting / Parsing</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/08</small></li>
-<li><a href="random-numbers.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Random Numbers</attr></a>
-</li>
-<li><a href="number-parsing.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Number Parsing</attr></a>
-</li>
-<li><a href="url-parsing.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-URL Parsing</attr></a>
-</li>
-<li><a href="sha1-hashes.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-SHA1 Hashes</attr></a>
-</li>
-<li><a href="base64-encoding.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Base64 Encoding</attr></a>
-</li>
-<li><a href="reading-files.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Reading Files</attr></a>
-</li>
-<li><a href="writing-files.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Writing Files</attr></a>
-</li>
-<li><a href="file-name-parsing.html">
-<attr title="Date:2014/09/07 Category:lib by dlintw">
-File Name Parsing</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
-<li><a href="line-filters.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Line Filters</attr></a>
-</li>
-<li><a href="command-line-arguments.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Arguments</attr></a>
-</li>
-<li><a href="command-line-flags.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Flags</attr></a>
-</li>
-<li><a href="environment-variables.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Environment Variables</attr></a>
-</li>
-<li><a href="spawning-processes.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Spawning Processes</attr></a>
-</li>
-<li><a href="execing-processes.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Exec'ing Processes</attr></a>
-</li>
-<li><a href="signals.html">
-<attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Signals</attr></a>
-</li>
-<li><a href="exit.html">
-<attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Exit</attr></a>
-</li>
-<li><a href="http-client.html">
-<attr title="Date:2014/09/07 Category:robot by dlintw">
-HTTP Client</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
-<li><a href="memory-and-sizeof.html">
-<attr title="Date:2014/09/10 Category:Advanced by dlintw">
-Memory and Sizeof</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/10</small></li>
-<li><a href="text-template.html">
-<attr title="Date:2014/09/09 Category:lib by dlintw">
-Text Template</attr></a>
-<span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
-</ol>
-  </div>
-  <div class="col-md-10"><iframe id="ex" src="hello-world.html" width="100%" height="768"></iframe></div>
-</div><div class="row">
-  <div class="col-md-3">
     <h3 id="by-update" style="padding-top:50px">Order by Update</h3>
     <ol><li><a href="memory-and-sizeof.html">
 <attr title="Date:2014/09/10 Category:Advanced by dlintw">
-Memory and Sizeof</attr></a>
+Memory and Sizeof</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/10</small></li>
+<small>2014/09/10</small>
+</a></li>
 <li><a href="constants-and-iota.html">
 <attr title="Date:2014/09/09 Category:basic by mmcgrana">
-Constants and iota</attr></a>
+Constants and iota</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="text-template.html">
 <attr title="Date:2014/09/09 Category:lib by dlintw">
-Text Template</attr></a>
+Text Template</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="time.html">
 <attr title="Date:2014/09/09 Category:lib by mmcgrana">
-Time</attr></a>
+Time</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="time-formatting-parsing.html">
 <attr title="Date:2014/09/08 Category:lib by mmcgrana">
-Time Formatting / Parsing</attr></a>
+Time Formatting / Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/08</small></li>
+<small>2014/09/08</small>
+</a></li>
 <li><a href="file-name-parsing.html">
 <attr title="Date:2014/09/07 Category:lib by dlintw">
-File Name Parsing</attr></a>
+File Name Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 <li><a href="http-client.html">
 <attr title="Date:2014/09/07 Category:robot by dlintw">
-HTTP Client</attr></a>
+HTTP Client</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 <li><a href="arrays.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Arrays</attr></a>
-</li>
+Arrays</attr>
+
+</a></li>
 <li><a href="atomic-counters.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Atomic Counters</attr></a>
-</li>
+Atomic Counters</attr>
+
+</a></li>
 <li><a href="base64-encoding.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Base64 Encoding</attr></a>
-</li>
+Base64 Encoding</attr>
+
+</a></li>
 <li><a href="channel-buffering.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Buffering</attr></a>
-</li>
+Channel Buffering</attr>
+
+</a></li>
 <li><a href="channel-directions.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Directions</attr></a>
-</li>
+Channel Directions</attr>
+
+</a></li>
 <li><a href="channel-synchronization.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Synchronization</attr></a>
-</li>
+Channel Synchronization</attr>
+
+</a></li>
 <li><a href="channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channels</attr></a>
-</li>
+Channels</attr>
+
+</a></li>
 <li><a href="closing-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Closing Channels</attr></a>
-</li>
+Closing Channels</attr>
+
+</a></li>
 <li><a href="closures.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Closures</attr></a>
-</li>
+Closures</attr>
+
+</a></li>
 <li><a href="collection-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Collection Functions</attr></a>
-</li>
+Collection Functions</attr>
+
+</a></li>
 <li><a href="command-line-arguments.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Arguments</attr></a>
-</li>
+Command-Line Arguments</attr>
+
+</a></li>
 <li><a href="command-line-flags.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Flags</attr></a>
-</li>
+Command-Line Flags</attr>
+
+</a></li>
 <li><a href="defer.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Defer</attr></a>
-</li>
+Defer</attr>
+
+</a></li>
 <li><a href="environment-variables.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Environment Variables</attr></a>
-</li>
+Environment Variables</attr>
+
+</a></li>
 <li><a href="epoch.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Epoch</attr></a>
-</li>
+Epoch</attr>
+
+</a></li>
 <li><a href="errors.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Errors</attr></a>
-</li>
+Errors</attr>
+
+</a></li>
 <li><a href="execing-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Exec'ing Processes</attr></a>
-</li>
+Exec'ing Processes</attr>
+
+</a></li>
 <li><a href="exit.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Exit</attr></a>
-</li>
+Exit</attr>
+
+</a></li>
 <li><a href="for.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-For</attr></a>
-</li>
+For</attr>
+
+</a></li>
 <li><a href="functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Functions</attr></a>
-</li>
+Functions</attr>
+
+</a></li>
 <li><a href="goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Goroutines</attr></a>
-</li>
+Goroutines</attr>
+
+</a></li>
 <li><a href="hello-world.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Hello World</attr></a>
-</li>
+Hello World</attr>
+
+</a></li>
 <li><a href="if-else.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-If/Else</attr></a>
-</li>
+If/Else</attr>
+
+</a></li>
 <li><a href="interfaces.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Interfaces</attr></a>
-</li>
+Interfaces</attr>
+
+</a></li>
 <li><a href="json.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-JSON</attr></a>
-</li>
+JSON</attr>
+
+</a></li>
 <li><a href="line-filters.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Line Filters</attr></a>
-</li>
+Line Filters</attr>
+
+</a></li>
 <li><a href="maps.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Maps</attr></a>
-</li>
+Maps</attr>
+
+</a></li>
 <li><a href="methods.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Methods</attr></a>
-</li>
+Methods</attr>
+
+</a></li>
 <li><a href="multiple-return-values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Multiple Return Values</attr></a>
-</li>
+Multiple Return Values</attr>
+
+</a></li>
 <li><a href="mutexes.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Mutexes</attr></a>
-</li>
+Mutexes</attr>
+
+</a></li>
 <li><a href="non-blocking-channel-operations.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Non-Blocking Channel Operations</attr></a>
-</li>
+Non-Blocking Channel Operations</attr>
+
+</a></li>
 <li><a href="number-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Number Parsing</attr></a>
-</li>
+Number Parsing</attr>
+
+</a></li>
 <li><a href="panic.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Panic</attr></a>
-</li>
+Panic</attr>
+
+</a></li>
 <li><a href="pointers.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Pointers</attr></a>
-</li>
+Pointers</attr>
+
+</a></li>
 <li><a href="random-numbers.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Random Numbers</attr></a>
-</li>
+Random Numbers</attr>
+
+</a></li>
 <li><a href="range.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Range</attr></a>
-</li>
+Range</attr>
+
+</a></li>
 <li><a href="range-over-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Range over Channels</attr></a>
-</li>
+Range over Channels</attr>
+
+</a></li>
 <li><a href="rate-limiting.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Rate Limiting</attr></a>
-</li>
+Rate Limiting</attr>
+
+</a></li>
 <li><a href="reading-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Reading Files</attr></a>
-</li>
+Reading Files</attr>
+
+</a></li>
 <li><a href="recursion.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Recursion</attr></a>
-</li>
+Recursion</attr>
+
+</a></li>
 <li><a href="regular-expressions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Regular Expressions</attr></a>
-</li>
+Regular Expressions</attr>
+
+</a></li>
 <li><a href="sha1-hashes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-SHA1 Hashes</attr></a>
-</li>
+SHA1 Hashes</attr>
+
+</a></li>
 <li><a href="select.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Select</attr></a>
-</li>
+Select</attr>
+
+</a></li>
 <li><a href="signals.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Signals</attr></a>
-</li>
+Signals</attr>
+
+</a></li>
 <li><a href="slices.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Slices</attr></a>
-</li>
+Slices</attr>
+
+</a></li>
 <li><a href="sorting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting</attr></a>
-</li>
+Sorting</attr>
+
+</a></li>
 <li><a href="sorting-by-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting by Functions</attr></a>
-</li>
+Sorting by Functions</attr>
+
+</a></li>
 <li><a href="spawning-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Spawning Processes</attr></a>
-</li>
+Spawning Processes</attr>
+
+</a></li>
 <li><a href="stateful-goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Stateful Goroutines</attr></a>
-</li>
+Stateful Goroutines</attr>
+
+</a></li>
 <li><a href="string-formatting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Formatting</attr></a>
-</li>
+String Formatting</attr>
+
+</a></li>
 <li><a href="string-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Functions</attr></a>
-</li>
+String Functions</attr>
+
+</a></li>
 <li><a href="structs.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Structs</attr></a>
-</li>
+Structs</attr>
+
+</a></li>
 <li><a href="switch.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Switch</attr></a>
-</li>
+Switch</attr>
+
+</a></li>
 <li><a href="tickers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Tickers</attr></a>
-</li>
+Tickers</attr>
+
+</a></li>
 <li><a href="timeouts.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timeouts</attr></a>
-</li>
+Timeouts</attr>
+
+</a></li>
 <li><a href="timers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timers</attr></a>
-</li>
+Timers</attr>
+
+</a></li>
 <li><a href="url-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-URL Parsing</attr></a>
-</li>
+URL Parsing</attr>
+
+</a></li>
 <li><a href="values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Values</attr></a>
-</li>
+Values</attr>
+
+</a></li>
 <li><a href="variables.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variables</attr></a>
-</li>
+Variables</attr>
+
+</a></li>
 <li><a href="variadic-functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variadic Functions</attr></a>
-</li>
+Variadic Functions</attr>
+
+</a></li>
 <li><a href="worker-pools.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Worker Pools</attr></a>
-</li>
+Worker Pools</attr>
+
+</a></li>
 <li><a href="writing-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Writing Files</attr></a>
-</li>
+Writing Files</attr>
+
+</a></li>
+</ol>
+  </div>
+ <div class="col-md-10">
+  <Center><h2>Last Update Example: <small>2014/09/10</small></h2></Center>
+  <iframe id="ex" src="memory-and-sizeof.html" width="100%" height="1024" seamless></iframe></div>
+</div><div class="row">
+  <div class="col-md-2">
+    <h3 id="by-sequence" style="padding-top:50px">Order by sequence</h3>
+    <ol><li><a href="hello-world.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Hello World</attr>
+
+</a></li>
+<li><a href="values.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Values</attr>
+
+</a></li>
+<li><a href="variables.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Variables</attr>
+
+</a></li>
+<li><a href="constants-and-iota.html">
+<attr title="Date:2014/09/09 Category:basic by mmcgrana">
+Constants and iota</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/09</small>
+</a></li>
+<li><a href="for.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+For</attr>
+
+</a></li>
+<li><a href="if-else.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+If/Else</attr>
+
+</a></li>
+<li><a href="switch.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Switch</attr>
+
+</a></li>
+<li><a href="arrays.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Arrays</attr>
+
+</a></li>
+<li><a href="slices.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Slices</attr>
+
+</a></li>
+<li><a href="maps.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Maps</attr>
+
+</a></li>
+<li><a href="range.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Range</attr>
+
+</a></li>
+<li><a href="functions.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Functions</attr>
+
+</a></li>
+<li><a href="multiple-return-values.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Multiple Return Values</attr>
+
+</a></li>
+<li><a href="variadic-functions.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Variadic Functions</attr>
+
+</a></li>
+<li><a href="closures.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Closures</attr>
+
+</a></li>
+<li><a href="recursion.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Recursion</attr>
+
+</a></li>
+<li><a href="pointers.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Pointers</attr>
+
+</a></li>
+<li><a href="structs.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Structs</attr>
+
+</a></li>
+<li><a href="methods.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Methods</attr>
+
+</a></li>
+<li><a href="interfaces.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Interfaces</attr>
+
+</a></li>
+<li><a href="errors.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Errors</attr>
+
+</a></li>
+<li><a href="goroutines.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Goroutines</attr>
+
+</a></li>
+<li><a href="channels.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Channels</attr>
+
+</a></li>
+<li><a href="channel-buffering.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Channel Buffering</attr>
+
+</a></li>
+<li><a href="channel-synchronization.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Channel Synchronization</attr>
+
+</a></li>
+<li><a href="channel-directions.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Channel Directions</attr>
+
+</a></li>
+<li><a href="select.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Select</attr>
+
+</a></li>
+<li><a href="timeouts.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Timeouts</attr>
+
+</a></li>
+<li><a href="non-blocking-channel-operations.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Non-Blocking Channel Operations</attr>
+
+</a></li>
+<li><a href="closing-channels.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Closing Channels</attr>
+
+</a></li>
+<li><a href="range-over-channels.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Range over Channels</attr>
+
+</a></li>
+<li><a href="timers.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Timers</attr>
+
+</a></li>
+<li><a href="tickers.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Tickers</attr>
+
+</a></li>
+<li><a href="worker-pools.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Worker Pools</attr>
+
+</a></li>
+<li><a href="rate-limiting.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Rate Limiting</attr>
+
+</a></li>
+<li><a href="atomic-counters.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Atomic Counters</attr>
+
+</a></li>
+<li><a href="mutexes.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Mutexes</attr>
+
+</a></li>
+<li><a href="stateful-goroutines.html">
+<attr title="Date:2012/12/31 Category:multitask by mmcgrana">
+Stateful Goroutines</attr>
+
+</a></li>
+<li><a href="sorting.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Sorting</attr>
+
+</a></li>
+<li><a href="sorting-by-functions.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Sorting by Functions</attr>
+
+</a></li>
+<li><a href="panic.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Panic</attr>
+
+</a></li>
+<li><a href="defer.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Defer</attr>
+
+</a></li>
+<li><a href="collection-functions.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Collection Functions</attr>
+
+</a></li>
+<li><a href="string-functions.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+String Functions</attr>
+
+</a></li>
+<li><a href="string-formatting.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+String Formatting</attr>
+
+</a></li>
+<li><a href="regular-expressions.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Regular Expressions</attr>
+
+</a></li>
+<li><a href="json.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+JSON</attr>
+
+</a></li>
+<li><a href="time.html">
+<attr title="Date:2014/09/09 Category:lib by mmcgrana">
+Time</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/09</small>
+</a></li>
+<li><a href="epoch.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Epoch</attr>
+
+</a></li>
+<li><a href="time-formatting-parsing.html">
+<attr title="Date:2014/09/08 Category:lib by mmcgrana">
+Time Formatting / Parsing</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/08</small>
+</a></li>
+<li><a href="random-numbers.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Random Numbers</attr>
+
+</a></li>
+<li><a href="number-parsing.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Number Parsing</attr>
+
+</a></li>
+<li><a href="url-parsing.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+URL Parsing</attr>
+
+</a></li>
+<li><a href="sha1-hashes.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+SHA1 Hashes</attr>
+
+</a></li>
+<li><a href="base64-encoding.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Base64 Encoding</attr>
+
+</a></li>
+<li><a href="reading-files.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Reading Files</attr>
+
+</a></li>
+<li><a href="writing-files.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Writing Files</attr>
+
+</a></li>
+<li><a href="file-name-parsing.html">
+<attr title="Date:2014/09/07 Category:lib by dlintw">
+File Name Parsing</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/07</small>
+</a></li>
+<li><a href="line-filters.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Line Filters</attr>
+
+</a></li>
+<li><a href="command-line-arguments.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Command-Line Arguments</attr>
+
+</a></li>
+<li><a href="command-line-flags.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Command-Line Flags</attr>
+
+</a></li>
+<li><a href="environment-variables.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Environment Variables</attr>
+
+</a></li>
+<li><a href="spawning-processes.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Spawning Processes</attr>
+
+</a></li>
+<li><a href="execing-processes.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Exec'ing Processes</attr>
+
+</a></li>
+<li><a href="signals.html">
+<attr title="Date:2012/12/31 Category:lib by mmcgrana">
+Signals</attr>
+
+</a></li>
+<li><a href="exit.html">
+<attr title="Date:2012/12/31 Category:basic by mmcgrana">
+Exit</attr>
+
+</a></li>
+<li><a href="http-client.html">
+<attr title="Date:2014/09/07 Category:robot by dlintw">
+HTTP Client</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/07</small>
+</a></li>
+<li><a href="memory-and-sizeof.html">
+<attr title="Date:2014/09/10 Category:Advanced by dlintw">
+Memory and Sizeof</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/10</small>
+</a></li>
+<li><a href="text-template.html">
+<attr title="Date:2014/09/09 Category:lib by dlintw">
+Text Template</attr>
+<span class="glyphicon glyphicon-flash"></span>
+<small>2014/09/09</small>
+</a></li>
 </ol>
   </div>
 </div><div class="row">
-  <div class="col-md-3">
+   <div class="col-md-3">
     <h3>Order by category</h3>
     
       <h4 id="cate-Advanced" style="padding-top:50px">Advanced (1)</h4>
       <ol><li><a href="memory-and-sizeof.html">
 <attr title="Date:2014/09/10 Category:Advanced by dlintw">
-Memory and Sizeof</attr></a>
+Memory and Sizeof</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/10</small></li>
+<small>2014/09/10</small>
+</a></li>
 </ol>
     
       <h4 id="cate-basic" style="padding-top:50px">basic (25)</h4>
       <ol><li><a href="hello-world.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Hello World</attr></a>
-</li>
+Hello World</attr>
+
+</a></li>
 <li><a href="values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Values</attr></a>
-</li>
+Values</attr>
+
+</a></li>
 <li><a href="variables.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variables</attr></a>
-</li>
+Variables</attr>
+
+</a></li>
 <li><a href="constants-and-iota.html">
 <attr title="Date:2014/09/09 Category:basic by mmcgrana">
-Constants and iota</attr></a>
+Constants and iota</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="for.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-For</attr></a>
-</li>
+For</attr>
+
+</a></li>
 <li><a href="if-else.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-If/Else</attr></a>
-</li>
+If/Else</attr>
+
+</a></li>
 <li><a href="switch.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Switch</attr></a>
-</li>
+Switch</attr>
+
+</a></li>
 <li><a href="arrays.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Arrays</attr></a>
-</li>
+Arrays</attr>
+
+</a></li>
 <li><a href="slices.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Slices</attr></a>
-</li>
+Slices</attr>
+
+</a></li>
 <li><a href="maps.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Maps</attr></a>
-</li>
+Maps</attr>
+
+</a></li>
 <li><a href="range.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Range</attr></a>
-</li>
+Range</attr>
+
+</a></li>
 <li><a href="functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Functions</attr></a>
-</li>
+Functions</attr>
+
+</a></li>
 <li><a href="multiple-return-values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Multiple Return Values</attr></a>
-</li>
+Multiple Return Values</attr>
+
+</a></li>
 <li><a href="variadic-functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variadic Functions</attr></a>
-</li>
+Variadic Functions</attr>
+
+</a></li>
 <li><a href="closures.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Closures</attr></a>
-</li>
+Closures</attr>
+
+</a></li>
 <li><a href="recursion.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Recursion</attr></a>
-</li>
+Recursion</attr>
+
+</a></li>
 <li><a href="pointers.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Pointers</attr></a>
-</li>
+Pointers</attr>
+
+</a></li>
 <li><a href="structs.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Structs</attr></a>
-</li>
+Structs</attr>
+
+</a></li>
 <li><a href="methods.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Methods</attr></a>
-</li>
+Methods</attr>
+
+</a></li>
 <li><a href="interfaces.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Interfaces</attr></a>
-</li>
+Interfaces</attr>
+
+</a></li>
 <li><a href="errors.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Errors</attr></a>
-</li>
+Errors</attr>
+
+</a></li>
 <li><a href="select.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Select</attr></a>
-</li>
+Select</attr>
+
+</a></li>
 <li><a href="panic.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Panic</attr></a>
-</li>
+Panic</attr>
+
+</a></li>
 <li><a href="defer.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Defer</attr></a>
-</li>
+Defer</attr>
+
+</a></li>
 <li><a href="exit.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Exit</attr></a>
-</li>
+Exit</attr>
+
+</a></li>
 </ol>
     
       <h4 id="cate-lib" style="padding-top:50px">lib (26)</h4>
       <ol><li><a href="sorting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting</attr></a>
-</li>
+Sorting</attr>
+
+</a></li>
 <li><a href="sorting-by-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting by Functions</attr></a>
-</li>
+Sorting by Functions</attr>
+
+</a></li>
 <li><a href="collection-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Collection Functions</attr></a>
-</li>
+Collection Functions</attr>
+
+</a></li>
 <li><a href="string-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Functions</attr></a>
-</li>
+String Functions</attr>
+
+</a></li>
 <li><a href="string-formatting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Formatting</attr></a>
-</li>
+String Formatting</attr>
+
+</a></li>
 <li><a href="regular-expressions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Regular Expressions</attr></a>
-</li>
+Regular Expressions</attr>
+
+</a></li>
 <li><a href="json.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-JSON</attr></a>
-</li>
+JSON</attr>
+
+</a></li>
 <li><a href="time.html">
 <attr title="Date:2014/09/09 Category:lib by mmcgrana">
-Time</attr></a>
+Time</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="epoch.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Epoch</attr></a>
-</li>
+Epoch</attr>
+
+</a></li>
 <li><a href="time-formatting-parsing.html">
 <attr title="Date:2014/09/08 Category:lib by mmcgrana">
-Time Formatting / Parsing</attr></a>
+Time Formatting / Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/08</small></li>
+<small>2014/09/08</small>
+</a></li>
 <li><a href="random-numbers.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Random Numbers</attr></a>
-</li>
+Random Numbers</attr>
+
+</a></li>
 <li><a href="number-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Number Parsing</attr></a>
-</li>
+Number Parsing</attr>
+
+</a></li>
 <li><a href="url-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-URL Parsing</attr></a>
-</li>
+URL Parsing</attr>
+
+</a></li>
 <li><a href="sha1-hashes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-SHA1 Hashes</attr></a>
-</li>
+SHA1 Hashes</attr>
+
+</a></li>
 <li><a href="base64-encoding.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Base64 Encoding</attr></a>
-</li>
+Base64 Encoding</attr>
+
+</a></li>
 <li><a href="reading-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Reading Files</attr></a>
-</li>
+Reading Files</attr>
+
+</a></li>
 <li><a href="writing-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Writing Files</attr></a>
-</li>
+Writing Files</attr>
+
+</a></li>
 <li><a href="file-name-parsing.html">
 <attr title="Date:2014/09/07 Category:lib by dlintw">
-File Name Parsing</attr></a>
+File Name Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 <li><a href="line-filters.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Line Filters</attr></a>
-</li>
+Line Filters</attr>
+
+</a></li>
 <li><a href="command-line-arguments.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Arguments</attr></a>
-</li>
+Command-Line Arguments</attr>
+
+</a></li>
 <li><a href="command-line-flags.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Flags</attr></a>
-</li>
+Command-Line Flags</attr>
+
+</a></li>
 <li><a href="environment-variables.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Environment Variables</attr></a>
-</li>
+Environment Variables</attr>
+
+</a></li>
 <li><a href="spawning-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Spawning Processes</attr></a>
-</li>
+Spawning Processes</attr>
+
+</a></li>
 <li><a href="execing-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Exec'ing Processes</attr></a>
-</li>
+Exec'ing Processes</attr>
+
+</a></li>
 <li><a href="signals.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Signals</attr></a>
-</li>
+Signals</attr>
+
+</a></li>
 <li><a href="text-template.html">
 <attr title="Date:2014/09/09 Category:lib by dlintw">
-Text Template</attr></a>
+Text Template</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 </ol>
     
       <h4 id="cate-multitask" style="padding-top:50px">multitask (16)</h4>
       <ol><li><a href="goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Goroutines</attr></a>
-</li>
+Goroutines</attr>
+
+</a></li>
 <li><a href="channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channels</attr></a>
-</li>
+Channels</attr>
+
+</a></li>
 <li><a href="channel-buffering.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Buffering</attr></a>
-</li>
+Channel Buffering</attr>
+
+</a></li>
 <li><a href="channel-synchronization.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Synchronization</attr></a>
-</li>
+Channel Synchronization</attr>
+
+</a></li>
 <li><a href="channel-directions.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Directions</attr></a>
-</li>
+Channel Directions</attr>
+
+</a></li>
 <li><a href="timeouts.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timeouts</attr></a>
-</li>
+Timeouts</attr>
+
+</a></li>
 <li><a href="non-blocking-channel-operations.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Non-Blocking Channel Operations</attr></a>
-</li>
+Non-Blocking Channel Operations</attr>
+
+</a></li>
 <li><a href="closing-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Closing Channels</attr></a>
-</li>
+Closing Channels</attr>
+
+</a></li>
 <li><a href="range-over-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Range over Channels</attr></a>
-</li>
+Range over Channels</attr>
+
+</a></li>
 <li><a href="timers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timers</attr></a>
-</li>
+Timers</attr>
+
+</a></li>
 <li><a href="tickers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Tickers</attr></a>
-</li>
+Tickers</attr>
+
+</a></li>
 <li><a href="worker-pools.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Worker Pools</attr></a>
-</li>
+Worker Pools</attr>
+
+</a></li>
 <li><a href="rate-limiting.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Rate Limiting</attr></a>
-</li>
+Rate Limiting</attr>
+
+</a></li>
 <li><a href="atomic-counters.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Atomic Counters</attr></a>
-</li>
+Atomic Counters</attr>
+
+</a></li>
 <li><a href="mutexes.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Mutexes</attr></a>
-</li>
+Mutexes</attr>
+
+</a></li>
 <li><a href="stateful-goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Stateful Goroutines</attr></a>
-</li>
+Stateful Goroutines</attr>
+
+</a></li>
 </ol>
     
       <h4 id="cate-robot" style="padding-top:50px">robot (1)</h4>
       <ol><li><a href="http-client.html">
 <attr title="Date:2014/09/07 Category:robot by dlintw">
-HTTP Client</attr></a>
+HTTP Client</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 </ol>
     
   </div>
@@ -965,290 +1180,359 @@ HTTP Client</attr></a>
       <h4 id="author-dlintw" style="padding-top:50px">dlintw (4)</h4>
       <ol><li><a href="file-name-parsing.html">
 <attr title="Date:2014/09/07 Category:lib by dlintw">
-File Name Parsing</attr></a>
+File Name Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 <li><a href="http-client.html">
 <attr title="Date:2014/09/07 Category:robot by dlintw">
-HTTP Client</attr></a>
+HTTP Client</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/07</small></li>
+<small>2014/09/07</small>
+</a></li>
 <li><a href="memory-and-sizeof.html">
 <attr title="Date:2014/09/10 Category:Advanced by dlintw">
-Memory and Sizeof</attr></a>
+Memory and Sizeof</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/10</small></li>
+<small>2014/09/10</small>
+</a></li>
 <li><a href="text-template.html">
 <attr title="Date:2014/09/09 Category:lib by dlintw">
-Text Template</attr></a>
+Text Template</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 </ol>
     
       <h4 id="author-mmcgrana" style="padding-top:50px">mmcgrana (65)</h4>
       <ol><li><a href="hello-world.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Hello World</attr></a>
-</li>
+Hello World</attr>
+
+</a></li>
 <li><a href="values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Values</attr></a>
-</li>
+Values</attr>
+
+</a></li>
 <li><a href="variables.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variables</attr></a>
-</li>
+Variables</attr>
+
+</a></li>
 <li><a href="constants-and-iota.html">
 <attr title="Date:2014/09/09 Category:basic by mmcgrana">
-Constants and iota</attr></a>
+Constants and iota</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="for.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-For</attr></a>
-</li>
+For</attr>
+
+</a></li>
 <li><a href="if-else.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-If/Else</attr></a>
-</li>
+If/Else</attr>
+
+</a></li>
 <li><a href="switch.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Switch</attr></a>
-</li>
+Switch</attr>
+
+</a></li>
 <li><a href="arrays.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Arrays</attr></a>
-</li>
+Arrays</attr>
+
+</a></li>
 <li><a href="slices.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Slices</attr></a>
-</li>
+Slices</attr>
+
+</a></li>
 <li><a href="maps.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Maps</attr></a>
-</li>
+Maps</attr>
+
+</a></li>
 <li><a href="range.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Range</attr></a>
-</li>
+Range</attr>
+
+</a></li>
 <li><a href="functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Functions</attr></a>
-</li>
+Functions</attr>
+
+</a></li>
 <li><a href="multiple-return-values.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Multiple Return Values</attr></a>
-</li>
+Multiple Return Values</attr>
+
+</a></li>
 <li><a href="variadic-functions.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Variadic Functions</attr></a>
-</li>
+Variadic Functions</attr>
+
+</a></li>
 <li><a href="closures.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Closures</attr></a>
-</li>
+Closures</attr>
+
+</a></li>
 <li><a href="recursion.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Recursion</attr></a>
-</li>
+Recursion</attr>
+
+</a></li>
 <li><a href="pointers.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Pointers</attr></a>
-</li>
+Pointers</attr>
+
+</a></li>
 <li><a href="structs.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Structs</attr></a>
-</li>
+Structs</attr>
+
+</a></li>
 <li><a href="methods.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Methods</attr></a>
-</li>
+Methods</attr>
+
+</a></li>
 <li><a href="interfaces.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Interfaces</attr></a>
-</li>
+Interfaces</attr>
+
+</a></li>
 <li><a href="errors.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Errors</attr></a>
-</li>
+Errors</attr>
+
+</a></li>
 <li><a href="goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Goroutines</attr></a>
-</li>
+Goroutines</attr>
+
+</a></li>
 <li><a href="channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channels</attr></a>
-</li>
+Channels</attr>
+
+</a></li>
 <li><a href="channel-buffering.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Buffering</attr></a>
-</li>
+Channel Buffering</attr>
+
+</a></li>
 <li><a href="channel-synchronization.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Synchronization</attr></a>
-</li>
+Channel Synchronization</attr>
+
+</a></li>
 <li><a href="channel-directions.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Channel Directions</attr></a>
-</li>
+Channel Directions</attr>
+
+</a></li>
 <li><a href="select.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Select</attr></a>
-</li>
+Select</attr>
+
+</a></li>
 <li><a href="timeouts.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timeouts</attr></a>
-</li>
+Timeouts</attr>
+
+</a></li>
 <li><a href="non-blocking-channel-operations.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Non-Blocking Channel Operations</attr></a>
-</li>
+Non-Blocking Channel Operations</attr>
+
+</a></li>
 <li><a href="closing-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Closing Channels</attr></a>
-</li>
+Closing Channels</attr>
+
+</a></li>
 <li><a href="range-over-channels.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Range over Channels</attr></a>
-</li>
+Range over Channels</attr>
+
+</a></li>
 <li><a href="timers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Timers</attr></a>
-</li>
+Timers</attr>
+
+</a></li>
 <li><a href="tickers.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Tickers</attr></a>
-</li>
+Tickers</attr>
+
+</a></li>
 <li><a href="worker-pools.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Worker Pools</attr></a>
-</li>
+Worker Pools</attr>
+
+</a></li>
 <li><a href="rate-limiting.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Rate Limiting</attr></a>
-</li>
+Rate Limiting</attr>
+
+</a></li>
 <li><a href="atomic-counters.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Atomic Counters</attr></a>
-</li>
+Atomic Counters</attr>
+
+</a></li>
 <li><a href="mutexes.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Mutexes</attr></a>
-</li>
+Mutexes</attr>
+
+</a></li>
 <li><a href="stateful-goroutines.html">
 <attr title="Date:2012/12/31 Category:multitask by mmcgrana">
-Stateful Goroutines</attr></a>
-</li>
+Stateful Goroutines</attr>
+
+</a></li>
 <li><a href="sorting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting</attr></a>
-</li>
+Sorting</attr>
+
+</a></li>
 <li><a href="sorting-by-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Sorting by Functions</attr></a>
-</li>
+Sorting by Functions</attr>
+
+</a></li>
 <li><a href="panic.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Panic</attr></a>
-</li>
+Panic</attr>
+
+</a></li>
 <li><a href="defer.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Defer</attr></a>
-</li>
+Defer</attr>
+
+</a></li>
 <li><a href="collection-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Collection Functions</attr></a>
-</li>
+Collection Functions</attr>
+
+</a></li>
 <li><a href="string-functions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Functions</attr></a>
-</li>
+String Functions</attr>
+
+</a></li>
 <li><a href="string-formatting.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-String Formatting</attr></a>
-</li>
+String Formatting</attr>
+
+</a></li>
 <li><a href="regular-expressions.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Regular Expressions</attr></a>
-</li>
+Regular Expressions</attr>
+
+</a></li>
 <li><a href="json.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-JSON</attr></a>
-</li>
+JSON</attr>
+
+</a></li>
 <li><a href="time.html">
 <attr title="Date:2014/09/09 Category:lib by mmcgrana">
-Time</attr></a>
+Time</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/09</small></li>
+<small>2014/09/09</small>
+</a></li>
 <li><a href="epoch.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Epoch</attr></a>
-</li>
+Epoch</attr>
+
+</a></li>
 <li><a href="time-formatting-parsing.html">
 <attr title="Date:2014/09/08 Category:lib by mmcgrana">
-Time Formatting / Parsing</attr></a>
+Time Formatting / Parsing</attr>
 <span class="glyphicon glyphicon-flash"></span>
-<small>2014/09/08</small></li>
+<small>2014/09/08</small>
+</a></li>
 <li><a href="random-numbers.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Random Numbers</attr></a>
-</li>
+Random Numbers</attr>
+
+</a></li>
 <li><a href="number-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Number Parsing</attr></a>
-</li>
+Number Parsing</attr>
+
+</a></li>
 <li><a href="url-parsing.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-URL Parsing</attr></a>
-</li>
+URL Parsing</attr>
+
+</a></li>
 <li><a href="sha1-hashes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-SHA1 Hashes</attr></a>
-</li>
+SHA1 Hashes</attr>
+
+</a></li>
 <li><a href="base64-encoding.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Base64 Encoding</attr></a>
-</li>
+Base64 Encoding</attr>
+
+</a></li>
 <li><a href="reading-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Reading Files</attr></a>
-</li>
+Reading Files</attr>
+
+</a></li>
 <li><a href="writing-files.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Writing Files</attr></a>
-</li>
+Writing Files</attr>
+
+</a></li>
 <li><a href="line-filters.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Line Filters</attr></a>
-</li>
+Line Filters</attr>
+
+</a></li>
 <li><a href="command-line-arguments.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Arguments</attr></a>
-</li>
+Command-Line Arguments</attr>
+
+</a></li>
 <li><a href="command-line-flags.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Command-Line Flags</attr></a>
-</li>
+Command-Line Flags</attr>
+
+</a></li>
 <li><a href="environment-variables.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Environment Variables</attr></a>
-</li>
+Environment Variables</attr>
+
+</a></li>
 <li><a href="spawning-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Spawning Processes</attr></a>
-</li>
+Spawning Processes</attr>
+
+</a></li>
 <li><a href="execing-processes.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Exec'ing Processes</attr></a>
-</li>
+Exec'ing Processes</attr>
+
+</a></li>
 <li><a href="signals.html">
 <attr title="Date:2012/12/31 Category:lib by mmcgrana">
-Signals</attr></a>
-</li>
+Signals</attr>
+
+</a></li>
 <li><a href="exit.html">
 <attr title="Date:2012/12/31 Category:basic by mmcgrana">
-Exit</attr></a>
-</li>
+Exit</attr>
+
+</a></li>
 </ol>
     
   </div>
@@ -1262,12 +1546,21 @@ Exit</attr></a>
 </div>
 
 </div> <!-- container -->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Load jquery & bootstrap -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script>
-<script src="js/bootstrap.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>if(typeof($.fn.modal)==='undefined'){document.write('<script src="js/bootstrap.min.js"><\/script>')}</script>
+<!-- load local css if remote can not access -->
 <script>
-  if (window.location.host == "dlintw.github.io") {
+$(document).ready(function(){ if ($('body').css('color') != 'rgb(51, 51, 51)') {
+  $("head").prepend('<link rel="stylesheet" href="css/bootstrap.min.css">');
+  $("head").prepend('<link rel="stylesheet" href="css/bootstrap-theme.min.css">');
+}});
+</script>
+<!-- Google Analytics -->
+<script>
+  if (window.location.host != "localhost") {
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1281,6 +1574,5 @@ Exit</attr></a>
 </script>
 </body>
 </html>
-<link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- vim:et sw=2 ts=2
 -->
