@@ -85,5 +85,6 @@
 # Factoring Packages
 # Shipping Libraries
 # Shipping Commands
-20140910,Advanced,dlintw,Memory and Sizeof
 20140909,lib,dlintw,Text Template
+20140910,Advanced,dlintw,Memory and Sizeof
+20140913,Advanced,dlintw,Optimize String Append
