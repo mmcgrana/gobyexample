@@ -81,28 +81,26 @@ padding-bottom: 10px;
 {{end}}
 {{define "menuHeight"}}style="padding-top:50px"{{end}}
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 col-xs-12 col-sm-12">
     <h3 id="by-update" {{template "menuHeight"}}>Order by Update</h3>
     <ol>{{range .Updates}}{{template "exItem" .}}{{end}}</ol>
   </div>
- <div class="col-md-10">
+  <div class="col-md-10 hidden-xs hidden-sm">
   <Center><h2>Last Update Example: <small>{{.Newest.UpdateTime}}</small></h2></Center>
   <iframe id="ex" src="{{.Newest.Id}}.html" width="100%" height="1024" seamless></iframe></div>
 </div><div class="row">
-  <div class="col-md-2">
+  <div class="col-md-12">
     <h3 id="by-sequence" {{template "menuHeight"}}>Order by sequence</h3>
     <ol>{{range .Seqs}}{{template "exItem" .}}{{end}}</ol>
   </div>
-</div><div class="row">
-   <div class="col-md-3">
+  <div class="col-md-12">
     <h3>Order by category</h3>
     {{range $k, $v := .Categories}}
       <h4 id="cate-{{$k}}" {{template "menuHeight"}}>{{$k}} ({{len $v}})</h4>
       <ol>{{range $v}}{{template "exItem" .}}{{end}}</ol>
     {{end}}
   </div>
-</div><div class="row">
-  <div class="col-md-3">
+  <div class="col-md-12">
     <h3>Order by author</h3>
     {{range $k, $v := .Authors}}
       <h4 id="author-{{$k}}" {{template "menuHeight"}}>{{$k}} ({{len $v}})</h4>
