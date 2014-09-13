@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: HTTP Client</title>
+  </head>
+  <body>
+    <div class="example" id="http-client">
+      <h2><a href="./">Go by Example</a>: HTTP Client</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go contains rich function for grab web contents. <em>net/http</em> is the major
+library.
+Ref: <a href="http://golang.org/pkg/net/http/#pkg-examples">golang.org</a>.</p>
+
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/U-MSaBeR03"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&quot;net/http&quot;</span>
+	<span class="s">&quot;net/url&quot;</span>
+<span class="p">)</span>
+<span class="kn">import</span> <span class="s">&quot;io/ioutil&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;strings&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>keep first n lines</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">keepLines</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="nx">result</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">)[:</span><span class="nx">n</span><span class="p">],</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="s">&quot;\r&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can use GET form to get result.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;http://g.cn/robots.txt&quot;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+	<span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;get:\n&quot;</span><span class="p">,</span> <span class="nx">keepLines</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can use POST form to get result, too.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&quot;http://duckduckgo.com&quot;</span><span class="p">,</span>
+		<span class="nx">url</span><span class="p">.</span><span class="nx">Values</span><span class="p">{</span><span class="s">&quot;q&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;github&quot;</span><span class="p">}})</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+	<span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;post:\n&quot;</span><span class="p">,</span> <span class="nx">keepLines</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run http-client.go
+<span class="go">get:</span>
+<span class="go"> User-agent: *</span>
+<span class="go">Disallow: /search</span>
+<span class="go">Disallow: /sdch</span>
+<span class="go">post:</span>
+<span class="go"> &lt;html&gt;</span>
+<span class="go">&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;</span>
+<span class="go">&lt;body bgcolor=&quot;white&quot;&gt;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="exit.html">Exit</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="text-template.html">Text Template</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/http-client">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

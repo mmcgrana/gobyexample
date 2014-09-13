@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Channel Synchronization</title>
+  </head>
+  <body>
+    <div class="example" id="channel-synchronization">
+      <h2><a href="./">Go by Example</a>: Channel Synchronization</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>We can use channels to synchronize execution
+across goroutines. Here’s an example of using a
+blocking receive to wait for a goroutine to finish.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/sjTr1nyY7o"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>This is the function we’ll run in a goroutine. The
+<code>done</code> channel will be used to notify another
+goroutine that this function’s work is done.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">done</span> <span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;working...&quot;</span><span class="p">)</span>
+	<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Send a value to notify that we’re done.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Start a worker goroutine, giving it the channel to
+notify on.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="k">go</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Block until we receive a notification from the
+worker on the channel.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="o">&lt;-</span><span class="nx">done</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run channel-synchronization.go      
+<span class="go">working...done                  </span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If you removed the <code>&lt;- done</code> line from this program, the
+program would exit before the <code>worker</code> even
+started.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="channel-buffering.html">Channel Buffering</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="channel-directions.html">Channel Directions</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/channel-synchronization">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

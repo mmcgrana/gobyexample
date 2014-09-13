@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: File Name Parsing</title>
+  </head>
+  <body>
+    <div class="example" id="file-name-parsing">
+      <h2><a href="./">Go by Example</a>: File Name Parsing</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>File name parsing could did by <em>path</em> package.
+Ref: <a href="http://golang.org/pkg/path/#pkg-examples">golang.org</a></p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/JgzzsAcjR9"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&quot;fmt&quot;</span>
+	<span class="s">&quot;path&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="s">&quot;/a/b/c/d.e&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note: Ext() get the extra dot (eg. <code>.e</code> instead of <code>e</code>)</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Ext</span><span class="p">(</span><span class="s">&quot;/a/b/c/d.e&quot;</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Base</span><span class="p">(</span><span class="s">&quot;/a/b/c/d.e&quot;</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="s">&quot;/a/b/../c/d.e&quot;</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Clean</span><span class="p">(</span><span class="s">&quot;/a/b/../c/d.e&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run file-name-parsing.go
+<span class="go">/a/b/c</span>
+<span class="go">.e</span>
+<span class="go">d.e</span>
+<span class="go">/a/b/../c/ d.e</span>
+<span class="go">/a/c/d.e</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="writing-files.html">Writing Files</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="line-filters.html">Line Filters</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/file-name-parsing">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

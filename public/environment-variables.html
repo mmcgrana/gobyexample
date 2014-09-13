@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Environment Variables</title>
+  </head>
+  <body>
+    <div class="example" id="environment-variables">
+      <h2><a href="./">Go by Example</a>: Environment Variables</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><a href="http://en.wikipedia.org/wiki/Environment_variable">Environment variables</a>
+are a universal mechanism for <a href="http://www.12factor.net/config">conveying configuration
+information to Unix programs</a>.
+Let’s look at how to set, get, and list environment variables.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/ocloGGbgM8"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;os&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;strings&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To set a key/value pair, use <code>os.Setenv</code>. To get a
+value for a key, use <code>os.Getenv</code>. This will return
+an empty string if the key isn’t present in the
+environment.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;FOO:&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;FOO&quot;</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;BAR:&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;BAR&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Use <code>os.Environ</code> to list all key/value pairs in the
+environment. This returns a slice of strings in the
+form <code>KEY=value</code>. You can <code>strings.Split</code> them to
+get the key and value. Here we print all the keys.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Environ</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">pair</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">)</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Running the program shows that we pick up the value
+value for <code>FOO</code> that we set in the program, but that
+<code>BAR</code> is empty.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run environment-variables.go
+<span class="go">FOO: 1</span>
+<span class="go">BAR: </span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The list of keys in the environment will depend on your
+particular machine.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="go">TERM_PROGRAM</span>
+<span class="go">PATH</span>
+<span class="go">SHELL</span>
+<span class="go">...</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If we set <code>BAR</code> in the environment first, the running
+program picks that value up.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> <span class="nv">BAR</span><span class="o">=</span>2 go run environment-variables.go
+<span class="go">FOO: 1</span>
+<span class="go">BAR: 2</span>
+<span class="go">...</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="command-line-flags.html">Command-Line Flags</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="spawning-processes.html">Spawning Processes</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/environment-variables">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

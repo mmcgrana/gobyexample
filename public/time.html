@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Time</title>
+  </head>
+  <body>
+    <div class="example" id="time">
+      <h2><a href="./">Go by Example</a>: Time</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go’s offers extensive support for times and durations;
+More examples: <a href="http://golang.org/pkg/time/#pkg-examples">http://golang.org/pkg/time/#pkg-examples</a></p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/Umaq_JVFWz"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We’ll start by getting the current time.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can build a <code>time</code> struct by providing the
+year, month, day, etc. Times are always associated
+with a <code>Location</code>, i.e. time zone.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">then</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Date</span><span class="p">(</span>
+		<span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">651387237</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can extract the various components of the time
+value as expected.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Year</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Month</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Hour</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Minute</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Nanosecond</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Location</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The Monday-Sunday <code>Weekday</code> is also available.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Weekday</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>These methods compare two times, testing if the
+first occurs before, after, or at the same time
+as the second, respectively.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Before</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">now</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The <code>Sub</code> methods returns a <code>Duration</code> representing
+the interval between two times.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">diff</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">then</span><span class="p">)</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can compute the length of the duration in
+various units.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Hours</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Minutes</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Seconds</span><span class="p">())</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">diff</span><span class="p">.</span><span class="nx">Nanoseconds</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can use <code>Add</code> to advance a time by a given
+duration, or with a <code>-</code> to move backwards by a
+duration.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="nx">diff</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">then</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">diff</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Use constants like: Nanosecond, Microsecond, Millisecond,
+Second, Minute, Hour to get new time, like this example to
+print date after/before 30 days. Note: Substract one month
+is not equal to 30 days.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">).</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02&quot;</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">).</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02&quot;</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nx">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02&quot;</span><span class="p">))</span>
+	<span class="nx">p</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nx">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">).</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run time.go
+<span class="go">2014-09-09 17:17:15.474872708 +0800 CST</span>
+<span class="go">2009-11-17 20:34:58.651387237 +0000 UTC</span>
+<span class="go">2009</span>
+<span class="go">November</span>
+<span class="go">17</span>
+<span class="go">20</span>
+<span class="go">34</span>
+<span class="go">58</span>
+<span class="go">651387237</span>
+<span class="go">UTC</span>
+<span class="go">Tuesday</span>
+<span class="go">true</span>
+<span class="go">false</span>
+<span class="go">false</span>
+<span class="go">42156h42m16.823485471s</span>
+<span class="go">42156.70467319041</span>
+<span class="go">2.5294022803914244e+06</span>
+<span class="go">1.5176413682348546e+08</span>
+<span class="go">151764136823485471</span>
+<span class="go">2014-09-09 09:17:15.474872708 +0000 UTC</span>
+<span class="go">2005-01-26 07:52:41.827901766 +0000 UTC</span>
+<span class="go">2014-10-09</span>
+<span class="go">2014-08-10</span>
+<span class="go">2014-08-09</span>
+<span class="go">2014-08-10</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="json.html">JSON</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="epoch.html">Epoch</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/time">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

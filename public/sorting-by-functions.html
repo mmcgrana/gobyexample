@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Sorting by Functions</title>
+  </head>
+  <body>
+    <div class="example" id="sorting-by-functions">
+      <h2><a href="./">Go by Example</a>: Sorting by Functions</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Sometimes we’ll want to sort a collection by something
+other than its natural order. For example, suppose we
+wanted to sort strings by their length instead of
+alphabetically. Here’s an example of custom sorts
+in Go.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/uXMR4p3Rw8"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;sort&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>In order to sort by a custom function in Go, we need a
+corresponding type. Here we’ve created a <code>ByLength</code>
+type that is just an alias for the builtin <code>[]string</code>
+type.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">ByLength</span> <span class="p">[]</span><span class="kt">string</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We implement <code>sort.Interface</code> - <code>Len</code>, <code>Less</code>, and
+<code>Swap</code> - on our type so we can use the <code>sort</code> package’s
+generic <code>Sort</code> function. <code>Len</code> and <code>Swap</code>
+will usually be similar across types and <code>Less</code> will
+hold the actual custom sorting logic. In our case we
+want to sort in order of increasing string length, so
+we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>With all of this in place, we can now implement our
+custom sort by casting the original <code>fruits</code> slice to
+<code>ByLength</code>, and then use <code>sort.Sort</code> on that typed
+slice.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">}</span>
+	<span class="nx">sort</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="nx">ByLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Running our program shows a list sorted by string
+length, as desired.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run sorting-by-functions.go 
+<span class="go">[kiwi peach banana]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>By following this same pattern of creating a custom
+type, implementing the three <code>Interface</code> methods on that
+type, and then calling sort.Sort on a collection of that
+custom type, we can sort Go slices by arbitrary
+functions.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="sorting.html">Sorting</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="panic.html">Panic</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/sorting-by-functions">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

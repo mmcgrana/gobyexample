@@ -3,20 +3,7 @@
   <head>
     <meta http-eqiv="content-type" content="text/html;charset=utf-8">
     <title>Go by Example: {{.Name}}</title>
-    <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="{{.Id}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
@@ -35,14 +22,35 @@
         {{end}}
       </table>
       {{end}}
-      {{if .NextExample}}
+      {{with .PrevExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
+        Previous example: <a href="{{.Id}}.html">{{.Name}}</a>.
+      </p>
+      {{end}}
+      {{with .NextExample}}
+      <p class="next">
+        Next example: <a href="{{.Id}}.html">{{.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.Id}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/{{.Id}}">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
-  </body>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
 </html>
+<link rel=stylesheet href="site.min.css">

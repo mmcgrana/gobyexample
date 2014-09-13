@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Maps</title>
+  </head>
+  <body>
+    <div class="example" id="maps">
+      <h2><a href="./">Go by Example</a>: Maps</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><em>Maps</em> are Go’s built-in <a href="http://en.wikipedia.org/wiki/Associative_array">associative data type</a>
+(sometimes called <em>hashes</em> or <em>dicts</em> in other languages).</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/yj5SjR7QnD"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To create an empty map, use the builtin <code>make</code>:
+<code>make(map[key-type]val-type)</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Set key/value pairs using typical <code>name[key] = val</code>
+syntax.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">m</span><span class="p">[</span><span class="s">&quot;k1&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
+	<span class="nx">m</span><span class="p">[</span><span class="s">&quot;k2&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">13</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Printing a map with e.g. <code>Println</code> will show all of
+its key/value pairs.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Get a value for a key with <code>name[key]</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k1&quot;</span><span class="p">]</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v1: &quot;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The builtin <code>len</code> returns the number of key/value
+pairs when called on a map.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;len:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The builtin <code>delete</code> removes key/value pairs from
+a map.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&quot;k2&quot;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The optional second return value when getting a
+value from a map indicates if the key was present
+in the map. This can be used to disambiguate
+between missing keys and keys with zero values
+like <code>0</code> or <code>&#34;&#34;</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">_</span><span class="p">,</span> <span class="nx">prs</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k2&quot;</span><span class="p">]</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;prs:&quot;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can also declare and initialize a new map in
+the same line with this syntax.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">n</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that maps appear in the form <code>map[k:v k:v]</code> when
+printed with <code>fmt.Println</code>.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run maps.go 
+<span class="go">map: map[k1:7 k2:13]</span>
+<span class="go">v1:  7</span>
+<span class="go">len: 2</span>
+<span class="go">map: map[k1:7]</span>
+<span class="go">prs: false</span>
+<span class="go">map: map[foo:1 bar:2]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="slices.html">Slices</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="range.html">Range</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/maps">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Pointers</title>
+  </head>
+  <body>
+    <div class="example" id="pointers">
+      <h2><a href="./">Go by Example</a>: Pointers</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go supports <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
+allowing you to pass references to values and records
+within your program.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/_Ty5YSztj1"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We’ll show how pointers work in contrast to values with
+2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an
+<code>int</code> parameter, so arguments will be passed to it by
+value. <code>zeroval</code> will get a copy of <code>ival</code> distinct
+from the one in the calling function.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">zeroval</span><span class="p">(</span><span class="nx">ival</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">ival</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>zeroptr</code> in contrast has an <code>*int</code> parameter, meaning
+that it takes an <code>int</code> pointer. The <code>*iptr</code> code in the
+function body then <em>dereferences</em> the pointer from its
+memory address to the current value at that address.
+Assigning a value to a dereferenced pointer changes the
+value at the referenced address.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">zeroptr</span><span class="p">(</span><span class="nx">iptr</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="o">*</span><span class="nx">iptr</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;initial:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">zeroval</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroval:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The <code>&amp;i</code> syntax gives the memory address of <code>i</code>,
+i.e. a pointer to <code>i</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">zeroptr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;zeroptr:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Pointers can be printed too.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;pointer:&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><code>zeroval</code> doesn’t change the <code>i</code> in <code>main</code>, but
+<code>zeroptr</code> does because it has a reference to
+the memory address for that variable.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run pointers.go
+<span class="go">initial: 1</span>
+<span class="go">zeroval: 1</span>
+<span class="go">zeroptr: 0</span>
+<span class="go">pointer: 0x42131100</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="recursion.html">Recursion</a>.
+      </p>
+      
+      
+      <p class="next">
+        Next example: <a href="structs.html">Structs</a>.
+      </p>
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/pointers">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">

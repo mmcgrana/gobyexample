@@ -1,7 +1,8 @@
 ## Go by Example
 
-Content, toolchain, and web server for [Go by Example](https://gobyexample.com).
+Content, toolchain, and web server for [Go by Example](https://dlintw.github.io/gobyexample)
 
+The original source come from [gobyexample.com](https://gobyexample.com).
 
 ### Overview
 
@@ -20,9 +21,11 @@ We include a lightweight Go server in `server.go`.
 To build the site:
 
 ```console
-$ go get github.com/russross/blackfriday
+# install python-pygments package on your linux distribution.
+$ go get github.com/russross/blackfriday  # markdown processor
+$ rm public/*  # optional step for force re-generate
 $ tools/build
-$ open public/index.html
+$ open index.html or public/index.html
 ```
 
 To build continuously in a loop:
@@ -31,55 +34,16 @@ To build continuously in a loop:
 $ tools/build-loop
 ```
 
+### Optional Tools
 
-### Local Deploy
-
-```bash
-$ mkdir -p $GOPATH/src/github.com/mmcgrana
-$ cd $GOPATH/src/github.com/mmcgrana
-$ git clone git@github.com:mmcgrana/gobyexample.git
-$ cd gobyexample
-$ go get
-$ foreman start
-$ foreman open
+```console
+$ cd tools
+$ make clean # remove all generated data
+$ make local # cache css/js files in local disk for networkless environment
+$ make css   # use yuicompresser to compress site.css
+$ make       # build *.go binaray for reduce rebuild time in 1 second
+	     # make also call 'make css' and generate pages
 ```
-
-
-### Platform Deploy
-
-Basic setup:
-
-```bash
-$ export DEPLOY=$USER
-$ export APP=gobyexample-$USER
-$ heroku create $APP -r $DEPLOY
-$ heroku config:add -a $APP
-    BUILDPACK_URL=https://github.com/mmcgrana/buildpack-go.git
-    CANONICAL_HOST=$APP.herokuapp.com \
-    FORCE_HTTPS=1 \
-    AUTH=go:byexample
-$ heroku labs:enable dot-profile-d -a $APP
-$ git push $DEPLOY master
-$ heroku open -a $APP
-```
-
-Add a domain + SSL:
-
-```bash
-$ heroku domains:add $DOMAIN
-$ heroku addons:add ssl -r $DEPLOY
-# order ssl cert for domain
-$ cat > /tmp/server.key
-$ cat > /tmp/server.crt.orig
-$ curl https://knowledge.rapidssl.com/library/VERISIGN/ALL_OTHER/RapidSSL%20Intermediate/RapidSSL_CA_bundle.pem > /tmp/rapidssl_bundle.pem
-$ cat /tmp/server.crt.orig /tmp/rapidssl_bundle.pem > /tmp/server.crt
-$ heroku certs:add /tmp/server.crt /tmp/server.key -r $DEPLOY
-# add ALIAS record from domain to ssl endpoint dns
-$ heroku config:add CANONICAL_HOST=$DOMAIN -r $DEPLOY
-$ heroku open -r $DEPLOY
-```
-
-
 ### License
 
 This work is copyright Mark McGranaghan and licensed under a

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <title>Go by Example: Optimize String Append</title>
+  </head>
+  <body>
+    <div class="example" id="optimize-string-append">
+      <h2><a href="./">Go by Example</a>: Optimize String Append</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>This example is inspired from this <a href="http://herman.asia/efficient-string-concatenation-in-go">benchmark.</a>
+If string join is your program’s bottleneck. It is worth to rewrite your code.</p>
+
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/doOZ4D11xe"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&quot;fmt&quot;</span>
+	<span class="s">&quot;os&quot;</span>
+	<span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">testCnt</span> <span class="p">=</span> <span class="mi">100</span>
+	<span class="kd">const</span> <span class="nx">concatCnt</span> <span class="p">=</span> <span class="mi">1000</span>
+	<span class="nx">s1</span> <span class="o">:=</span> <span class="s">&quot;abcdefghijkl&quot;</span>
+	<span class="nx">expectSize</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">concatCnt</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We use normal ‘+’ operater and require 1779.8ms</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">t0</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">testCnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">out</span> <span class="kt">string</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">concatCnt</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">out</span> <span class="o">+=</span> <span class="nx">s1</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">expectSize</span> <span class="p">{</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Err: invalid length&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+			<span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">d</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">t0</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Normal +:&quot;</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We use byte array, and convert it to string  at the last step.
+The required time reduce to 53.7ms (about <sup>1</sup>⁄<sub>33</sub> of original time)</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>	<span class="nx">t0</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">testCnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">byte</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">concatCnt</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">s1</span><span class="o">...</span><span class="p">)</span>
+		<span class="p">}</span>
+		<span class="nx">out</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">s</span><span class="p">[:])</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">expectSize</span> <span class="p">{</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Err: invalid length&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+			<span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">d</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">t0</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;append by []byte:&quot;</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We use pre-allocated byte array, and convert it to string
+at the last step.
+The required time reduce to 19.6ms (about <sup>1</sup>⁄<sub>90</sub>.8)</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>	<span class="nx">t0</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">testCnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">s</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">expectSize</span><span class="p">)</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">concatCnt</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">s1</span><span class="o">...</span><span class="p">)</span>
+		<span class="p">}</span>
+		<span class="nx">out</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">s</span><span class="p">[:])</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">expectSize</span> <span class="p">{</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Err: invalid length&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+			<span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">d</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">t0</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;append by pre-allocated []byte:&quot;</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run optimize-string-append.go
+<span class="go">Normal +: 1.779820305s</span>
+<span class="go">append by []byte: 53.735766ms</span>
+<span class="go">append by pre-allocated []byte: 19.591257ms</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Previous example: <a href="memory-and-sizeof.html">Memory and Sizeof</a>.
+      </p>
+      
+      
+      <p class="footer">
+        <a href="index.html">Index</a> | orignal by <a href="mailto:mmcgrana@gmail.com">mmcgrana</a>
+        | <a href="https://github.com/dlintw/gobyexample/tree/gh-pages/examples/optimize-string-append">source</a>
+        | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+<script type="text/javascript">
+  if (window.location.host == "dlintw.github.io") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1577224-3', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  }
+</script>
+</body>
+</html>
+<link rel=stylesheet href="site.min.css">
