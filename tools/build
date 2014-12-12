@@ -2,6 +2,6 @@
 
 set -e
 
-tools/gofmt
+tools/format
 tools/measure
 tools/generate
