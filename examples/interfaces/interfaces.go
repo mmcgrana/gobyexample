@@ -56,7 +56,7 @@ func main() {
     // The `circle` and `square` struct types both
     // implement the `geometry` interface so we can use
     // instances of
-    // these structs as arguments to `measure.
+    // these structs as arguments to `measure`.
     measure(s)
     measure(c)
 }
