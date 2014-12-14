@@ -63,6 +63,7 @@ Spawning Processes
 Exec'ing Processes
 Signals
 Exit
+# Type Switch
 # HTTP Client
 # HTTPS Client
 # Redis
