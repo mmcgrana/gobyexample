@@ -63,23 +63,3 @@ Spawning Processes
 Exec'ing Processes
 Signals
 Exit
-# HTTP Client
-# HTTPS Client
-# Redis
-# Postgres
-# Hello Web
-# Responses
-# Request Routing
-# Request Logging
-# Static Content
-# Basic Authentication
-# Canonical Hosts
-# Middleware
-# Graceful Shutdown
-# HTTPS Servers
-# Testing
-# CPU Profiling
-# Memory Profiling
-# Factoring Packages
-# Shipping Libraries
-# Shipping Commands
