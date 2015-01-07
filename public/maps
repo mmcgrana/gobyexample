@@ -159,7 +159,10 @@ a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The optional second return value when getting a
+            <p> Above we didn&rsquo;t
+need the index, so we ignored it with the
+<em>blank identifier</em> <code>_</code>.
+The optional second return value when getting a
 value from a map indicates if the key was present
 in the map. This can be used to disambiguate
 between missing keys and keys with zero values
