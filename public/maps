@@ -40,7 +40,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/D-F9YN_V8r"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Z2ORjMdW_u"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -166,7 +166,8 @@ The optional second return value when getting a
 value from a map indicates if the key was present
 in the map. This can be used to disambiguate
 between missing keys and keys with zero values
-like <code>0</code> or <code>&quot;&quot;</code>.</p>
+like <code>0</code> or <code>&quot;&quot;</code>. Here we didn&rsquo;t the value itself, so
+we ignored it with the <em>blank identifier</em> <code>_</code>.</p>
 
           </td>
           <td class="code leading">
