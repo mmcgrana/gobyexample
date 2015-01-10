@@ -28,7 +28,7 @@ func main() {
         fmt.Println(msg)
     }("going")
 
-    // Our two goroutines are running asynchronously in
+    // Our two functions are running asynchronously in
     // separate goroutines now, so execution falls through
     // to here. This `Scanln` code requires we press a key
     // before the program exits.
