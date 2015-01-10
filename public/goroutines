@@ -134,7 +134,7 @@ function call.</p>
         
         <tr>
           <td class="docs">
-            <p>Our two goroutines are running asynchronously in
+            <p>Our two functions are running asynchronously in
 separate goroutines now, so execution falls through
 to here. This <code>Scanln</code> code requires we press a key
 before the program exits.</p>
