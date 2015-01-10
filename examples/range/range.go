@@ -20,7 +20,7 @@ func main() {
     // `range` on arrays and slices provides both the
     // index and value for each entry. Above we didn't
     // need the index, so we ignored it with the
-    // _blank identifier_ `_`. Sometimes we actually want
+    // blank identifier `_`. Sometimes we actually want
     // the indexes though.
     for i, num := range nums {
         if num == 3 {

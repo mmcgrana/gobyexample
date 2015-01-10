@@ -37,7 +37,8 @@ func main() {
     // value from a map indicates if the key was present
     // in the map. This can be used to disambiguate
     // between missing keys and keys with zero values
-    // like `0` or `""`.
+    // like `0` or `""`. Here we didn't the value itself, so
+    // we ignored it with the _blank identifier_ `_`.
     _, prs := m["k2"]
     fmt.Println("prs:", prs)
 
