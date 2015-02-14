@@ -40,7 +40,7 @@ Here&rsquo;s how to parse URLs in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/eaMv0skOfY"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/e8HvuLLUw_"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -54,8 +54,8 @@ Here&rsquo;s how to parse URLs in Go.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;net&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;net/url&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;strings&quot;</span>
 </pre></div>
 
           </td>
@@ -138,16 +138,15 @@ values.</p>
         <tr>
           <td class="docs">
             <p>The <code>Host</code> contains both the hostname and the port,
-if present. <code>Split</code> the <code>Host</code> manually to extract
-the port.</p>
+if present. Use <code>SplitHostPort</code> to extract them.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
-    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">SplitHostPort</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">host</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">port</span><span class="p">)</span>
 </pre></div>
 
           </td>
