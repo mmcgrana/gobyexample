@@ -4,8 +4,8 @@
 package main
 
 import "fmt"
+import "net"
 import "net/url"
-import "strings"
 
 func main() {
 
@@ -35,9 +35,9 @@ func main() {
     // if present. `Split` the `Host` manually to extract
     // the port.
     fmt.Println(u.Host)
-    h := strings.Split(u.Host, ":")
-    fmt.Println(h[0])
-    fmt.Println(h[1])
+    host, port, _ := net.SplitHostPort(u.Host)
+    fmt.Println(host)
+    fmt.Println(port)
 
     // Here we extract the `path` and the fragment after
     // the `#`.
