@@ -36,7 +36,7 @@ func main() {
     // environment.
     env := os.Environ()
 
-    // Here's the actual `os.Exec` call. If this call is
+    // Here's the actual `syscall.Exec` call. If this call is
     // successful, the execution of our process will end
     // here and be replaced by the `/bin/ls -a -l -h`
     // process. If there is an error we'll get a return

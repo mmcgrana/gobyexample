@@ -63,7 +63,7 @@ func main() {
     // To double-quote strings as in Go source, use `%q`.
     fmt.Printf("%q\n", "\"string\"")
 
-    // As with integers as seen earlier, `%x` renders
+    // As with integers seen earlier, `%x` renders
     // the string in base-16, with two output characters
     // per byte of input.
     fmt.Printf("%x\n", "hex this")
