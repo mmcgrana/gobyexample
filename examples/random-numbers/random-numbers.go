@@ -30,7 +30,7 @@ func main() {
     s1 := rand.NewSource(42)
     r1 := rand.New(s1)
 
-    // Call the resulting `rand.Source` just like the
+    // Call the resulting `rand.Rand` just like the
     // functions on the `rand` package.
     fmt.Print(r1.Intn(100), ",")
     fmt.Print(r1.Intn(100))
