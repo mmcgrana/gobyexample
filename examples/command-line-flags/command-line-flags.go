@@ -39,7 +39,7 @@ func main() {
 
     // Here we'll just dump out the parsed options and
     // any trailing positional arguments. Note that we
-    // need to dereference the points with e.g. `*wordPtr`
+    // need to dereference the pointers with e.g. `*wordPtr`
     // to get the actual option values.
     fmt.Println("word:", *wordPtr)
     fmt.Println("numb:", *numbPtr)

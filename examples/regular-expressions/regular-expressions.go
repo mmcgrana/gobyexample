@@ -26,7 +26,7 @@ func main() {
     // This finds the match for the regexp.
     fmt.Println(r.FindString("peach punch"))
 
-    // The also finds the first match but returns the
+    // This also finds the first match but returns the
     // start and end indexes for the match instead of the
     // matching text.
     fmt.Println(r.FindStringIndex("peach punch"))

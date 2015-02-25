@@ -21,7 +21,7 @@ func main() {
         "2012-11-01T22:08:41+00:00")
     p(t1)
 
-    // `Format` and `Parse` uses example-based layouts. Usually
+    // `Format` and `Parse` use example-based layouts. Usually
     // you'll use a constant from `time` for these layouts, but
     // you can also supply custom layouts. Layouts must use the
     // reference time `Mon Jan 2 15:04:05 MST 2006` to show the

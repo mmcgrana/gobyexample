@@ -1,5 +1,5 @@
 # Running the program shows that we pick up the value
-# value for `FOO` that we set in the program, but that
+# for `FOO` that we set in the program, but that
 # `BAR` is empty.
 $ go run environment-variables.go
 FOO: 1
