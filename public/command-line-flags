@@ -42,7 +42,7 @@ command-line flag.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9xlvGqQjhl"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/NASEOq2R3n"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -145,7 +145,7 @@ to execute the command-line parsing.</p>
           <td class="docs">
             <p>Here we&rsquo;ll just dump out the parsed options and
 any trailing positional arguments. Note that we
-need to dereference the points with e.g. <code>*wordPtr</code>
+need to dereference the pointers with e.g. <code>*wordPtr</code>
 to get the actual option values.</p>
 
           </td>

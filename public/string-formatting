@@ -41,7 +41,7 @@ common string formatting tasks.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/qayRuqXHym"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/JJAAFGxHVq"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -269,7 +269,7 @@ different versions of) scientific notation.</p>
         
         <tr>
           <td class="docs">
-            <p>As with integers as seen earlier, <code>%x</code> renders
+            <p>As with integers seen earlier, <code>%x</code> renders
 the string in base-16, with two output characters
 per byte of input.</p>
 

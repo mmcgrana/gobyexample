@@ -121,7 +121,7 @@ get the key and value. Here we print all the keys.</p>
         <tr>
           <td class="docs">
             <p>Running the program shows that we pick up the value
-value for <code>FOO</code> that we set in the program, but that
+for <code>FOO</code> that we set in the program, but that
 <code>BAR</code> is empty.</p>
 
           </td>
