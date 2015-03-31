@@ -2,11 +2,23 @@
 
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "runtime"
+)
 
 func f(from string) {
     for i := 0; i < 3; i++ {
         fmt.Println(from, ":", i)
+
+        // The reason to call `runtime.GoSched()` is to transfer
+        // execution to the next goroutine. This is necessary when
+        // Go runs in a single system thread, since in that case
+        // it won't yield to another goroutine unless asked for
+        // with an explicit call as below or during a system call.
+        // It's also possible to set the max number of system
+        // threads with the `GOMAXPROCS` environment variable.
+        runtime.Gosched()
     }
 }
 
