@@ -13,8 +13,8 @@ type geometry interface {
 }
 
 // For our example we'll implement this interface on
-// `square` and `circle` types.
-type square struct {
+// `rect` and `circle` types.
+type rect struct {
     width, height float64
 }
 type circle struct {
@@ -23,12 +23,12 @@ type circle struct {
 
 // To implement an interface in Go, we just need to
 // implement all the methods in the interface. Here we
-// implement `geometry` on `square`s.
-func (s square) area() float64 {
-    return s.width * s.height
+// implement `geometry` on `rect`s.
+func (r rect) area() float64 {
+    return r.width * r.height
 }
-func (s square) perim() float64 {
-    return 2*s.width + 2*s.height
+func (r rect) perim() float64 {
+    return 2*r.width + 2*r.height
 }
 
 // The implementation for `circle`s.
@@ -50,13 +50,13 @@ func measure(g geometry) {
 }
 
 func main() {
-    s := square{width: 3, height: 4}
+    r := rect{width: 3, height: 4}
     c := circle{radius: 5}
 
-    // The `circle` and `square` struct types both
+    // The `circle` and `rect` struct types both
     // implement the `geometry` interface so we can use
     // instances of
     // these structs as arguments to `measure`.
-    measure(s)
+    measure(r)
     measure(c)
 }
