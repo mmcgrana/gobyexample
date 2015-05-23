@@ -17,7 +17,7 @@ We include a lightweight Go server in `server.go`.
 
 ### Building
 
-To build the site:
+To build the site you'll need Go and Python installed. Run:
 
 ```console
 $ go get github.com/russross/blackfriday
@@ -34,20 +34,22 @@ $ tools/build-loop
 
 ### Local Deploy
 
+Ro run and view the site locally:
+
 ```bash
 $ mkdir -p $GOPATH/src/github.com/mmcgrana
 $ cd $GOPATH/src/github.com/mmcgrana
 $ git clone git@github.com:mmcgrana/gobyexample.git
 $ cd gobyexample
 $ go get
-$ foreman start
-$ foreman open
+$ PORT=5000 CANONICAL_HOST=127.0.0.1 FORCE_HTTPS=0 gobyexample
+$ open http://127.0.0.1:5000/
 ```
 
 
-### Platform Deploy
+### Heroku Deploy
 
-Basic setup:
+To setup the site on Heroku:
 
 ```bash
 $ export DEPLOY=$USER
