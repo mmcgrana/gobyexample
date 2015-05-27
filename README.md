@@ -95,7 +95,7 @@ The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and
 
 Contributor translations of the Go by Example site are available in:
 
-* [Chinese](http://everyx.github.io/gobyexample/) by [everyx](https://github.com/everyx)
+* [Chinese](http://gobyexample.everyx.in/) by [everyx](https://github.com/everyx)
 
 
 ### Thanks
