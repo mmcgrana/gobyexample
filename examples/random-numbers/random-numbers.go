@@ -4,6 +4,7 @@
 
 package main
 
+import "time"
 import "fmt"
 import "math/rand"
 
@@ -25,9 +26,12 @@ func main() {
     fmt.Print((rand.Float64() * 5) + 5)
     fmt.Println()
 
-    // To make the pseudorandom generator deterministic,
-    // give it a well-known seed.
-    s1 := rand.NewSource(42)
+    // The default number generator is deterministic, so it'll
+    // produce the same sequence of numbers each time by default.
+    // To produce varying sequences, give it a seed that changes.
+    // Note that this is not safe to use for random numbers you
+    // intend to be secret, use `crypto/rand` for those.
+    s1 := rand.NewSource(time.Now().UnixNano())
     r1 := rand.New(s1)
 
     // Call the resulting `rand.Rand` just like the
