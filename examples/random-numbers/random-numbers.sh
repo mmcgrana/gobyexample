@@ -1,4 +1,4 @@
-$ go run random-numbers.go 
+$ go run random-numbers.go
 81,87
 0.6645600532184904
 7.123187485356329,8.434115364335547
