@@ -24,8 +24,8 @@ func main() {
 
     // Tickers can be stopped like timers. Once a ticker
     // is stopped it won't receive any more values on its
-    // channel. We'll stop ours after 1500ms.
-    time.Sleep(time.Millisecond * 1500)
+    // channel. We'll stop ours after 1600ms.
+    time.Sleep(time.Millisecond * 1600)
     ticker.Stop()
     fmt.Println("Ticker stopped")
 }

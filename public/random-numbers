@@ -41,7 +41,7 @@ generation.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/TZElZIwNU1"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZdFpbahgC1"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -124,7 +124,7 @@ other ranges, for example <code>5.0 &lt;= f' &lt; 10.0</code>.</p>
           <td class="docs">
             <p>The default number generator is deterministic, so it&rsquo;ll
 produce the same sequence of numbers each time by default.
-To make it non-deterministic, give it a seed that changes.
+To produce varying sequences, give it a seed that changes.
 Note that this is not safe to use for random numbers you
 intend to be secret, use <code>crypto/rand</code> for those.</p>
 
@@ -167,6 +167,10 @@ produces the same sequence of random numbers.</p>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">r2</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">r2</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+    <span class="nx">s3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">NewSource</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="nx">r3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">r3</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">r3</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -187,6 +191,7 @@ produces the same sequence of random numbers.</p>
 <span class="go">81,87</span>
 <span class="go">0.6645600532184904</span>
 <span class="go">7.123187485356329,8.434115364335547</span>
+<span class="go">0,28</span>
 <span class="go">5,87</span>
 <span class="go">5,87</span>
 </pre></div>

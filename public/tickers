@@ -43,7 +43,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/U0PO7ZZU3l"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/MO3ndiv5qR"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -100,12 +100,12 @@ the values as they arrive every 500ms.</p>
           <td class="docs">
             <p>Tickers can be stopped like timers. Once a ticker
 is stopped it won&rsquo;t receive any more values on its
-channel. We&rsquo;ll stop ours after 1500ms.</p>
+channel. We&rsquo;ll stop ours after 1600ms.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">1500</span><span class="p">)</span>
+            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">1600</span><span class="p">)</span>
     <span class="nx">ticker</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Ticker stopped&quot;</span><span class="p">)</span>
 <span class="p">}</span>
