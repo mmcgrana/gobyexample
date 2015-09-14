@@ -10,7 +10,7 @@ true
 map[num:6.13 strs:[a b]]
 6.13
 a
-&{1 [apple peach]}
+{1 [apple peach]}
 apple
 {"apple":5,"lettuce":7}
 

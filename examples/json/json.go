@@ -103,7 +103,7 @@ func main() {
     // need for type assertions when accessing the decoded
     // data.
     str := `{"page": 1, "fruits": ["apple", "peach"]}`
-    res := &Response2{}
+    res := Response2{}
     json.Unmarshal([]byte(str), &res)
     fmt.Println(res)
     fmt.Println(res.Fruits[0])

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-eqiv="content-type" content="text/html;charset=utf-8">
+    <meta charset="utf-8">
     <title>Go by Example: JSON</title>
     <link rel=stylesheet href="site.css">
   </head>
@@ -41,7 +41,7 @@ data types.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/scgxBwACYx"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/WxRgpycMaH"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -313,7 +313,7 @@ data.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">str</span> <span class="o">:=</span> <span class="s">`{&quot;page&quot;: 1, &quot;fruits&quot;: [&quot;apple&quot;, &quot;peach&quot;]}`</span>
-    <span class="nx">res</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{}</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">Response2</span><span class="p">{}</span>
     <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">res</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -364,7 +364,7 @@ stream JSON encodings directly to <code>os.Writer</code>s like
 <span class="go">map[num:6.13 strs:[a b]]</span>
 <span class="go">6.13</span>
 <span class="go">a</span>
-<span class="go">&amp;{1 [apple peach]}</span>
+<span class="go">{1 [apple peach]}</span>
 <span class="go">apple</span>
 <span class="go">{&quot;apple&quot;:5,&quot;lettuce&quot;:7}</span>
 </pre></div>
