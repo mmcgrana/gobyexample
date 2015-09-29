@@ -34,7 +34,7 @@ $ tools/build-loop
 
 ### Local Deploy
 
-Ro run and view the site locally:
+To run and view the site locally:
 
 ```bash
 $ mkdir -p $GOPATH/src/github.com/mmcgrana
