@@ -1,9 +1,10 @@
-// Our first program will print the classic "hello world"
-// message. Here's the full source code.
+// Il nostro primo programma scriverà il solito messaggio
+// "hello world" nel terminale. Qui vi è il codice
+// sorgente completo.
 package main
 
 import "fmt"
 
 func main() {
-    fmt.Println("hello world")
+	fmt.Println("hello world")
 }
