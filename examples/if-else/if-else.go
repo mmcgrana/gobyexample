@@ -1,5 +1,5 @@
-// Branching with `if` and `else` in Go is
-// straight-forward.
+// Modificare il flusso di controllo con `if` ed `else` in Go
+// è semplice e ricalca la classica sintassi vista in altri linguaggi.
 
 package main
 
@@ -7,29 +7,29 @@ import "fmt"
 
 func main() {
 
-    // Here's a basic example.
-    if 7%2 == 0 {
-        fmt.Println("7 is even")
-    } else {
-        fmt.Println("7 is odd")
-    }
+	// Questo è un esempio base
+	if 7%2 == 0 {
+		fmt.Println("7 e' pari")
+	} else {
+		fmt.Println("7 e' dispari")
+	}
 
-    // You can have an `if` statement without an else.
-    if 8%4 == 0 {
-        fmt.Println("8 is divisible by 4")
-    }
+	// È possibile avere un comando `if` senza il ramo `else`
+	if 8%4 == 0 {
+		fmt.Println("8 e' divisibile per 4")
+	}
 
-    // A statement can precede conditionals; any variables
-    // declared in this statement are available in all
-    // branches.
-    if num := 9; num < 0 {
-        fmt.Println(num, "is negative")
-    } else if num < 10 {
-        fmt.Println(num, "has 1 digit")
-    } else {
-        fmt.Println(num, "has multiple digits")
-    }
+	// Un comando può precedere il test del comando `if`.
+	// Qualsiasi variabile dichiarata all'interno di questo comando
+	// è visibile all'interno di tutti i branch del comando `if`
+	if num := 9; num < 0 {
+		fmt.Println(num, "e' negativo")
+	} else if num < 10 {
+		fmt.Println(num, "ha una cifra")
+	} else {
+		fmt.Println(num, "ha piu' di una cifra")
+	}
 }
 
-// Note that you don't need parentheses around conditions
-// in Go, but that the braces are required.
+// Nota che non sono necessarie le parentesi intorno alle condizioni
+// del comando `if` in Go, ma le parentesi graffe sono necessarie.
