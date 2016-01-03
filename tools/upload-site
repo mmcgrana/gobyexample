@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+# Upload the contents in public/ to the S3 bucket from which we serve
+# gobyexample.com. We use this instead of `aws iam sync` because that command
+# doesn't correctly guess the text/html mime time of the extension-less files.
+# We didn't write this in Go because we had already written it in Ruby for
+# another website and didn't want to re-write it.
+
+require "aws-sdk"
+require "set"
+
+s3 = Aws::S3::Client.new(
+  region: "us-east-1",
+  credentials: Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"])
+)
+
+# (Re-)upload each file to S3. We're not worried about what's currently there.
+Dir.glob("./public/**/**").each do |local_path|
+  next if File.directory?(local_path)
+
+  # Derive final path.
+  s3_path = local_path.sub("./public/", "")
+
+  # Infer content type, including for HTML files that need pretty URLs.
+  content_type =
+    case s3_path
+    when /\.ico$/ then "image/x-icon"
+    when /\.png$/ then "image/png"
+    when /\.css$/ then "text/css"
+    else "text/html"
+    end
+ 
+  puts("Uploading #{s3_path} (#{content_type})")
+
+  File.open(local_path, "rb") do |local_file|
+    s3.put_object(
+      bucket: "gobyexample.com",
+      key: s3_path,
+      content_type: content_type,
+      body: local_file)
+  end
+end
