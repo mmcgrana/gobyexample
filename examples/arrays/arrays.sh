@@ -8,5 +8,5 @@ len: 5
 dcl: [1 2 3 4 5]
 2d:  [[0 1 2] [1 2 3]]
 
-# Vedrai che gli _slices_ vengono utilizzati molto più spesso degli
+# Noterai che gli _slice_ vengono utilizzati molto più spesso degli
 # array in Go. Vedremo gli slices nel prossimo esempio

@@ -1,5 +1,5 @@
 // In Go, un _array_ è una sequenza numerata di elementi con una
-// specifica lunghezza
+// lunghezza specifica
 
 package main
 
