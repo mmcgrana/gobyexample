@@ -9,25 +9,25 @@ func main() {
 
 	// Questo è un esempio base
 	if 7%2 == 0 {
-		fmt.Println("7 e' pari")
+		fmt.Println("7 è pari")
 	} else {
-		fmt.Println("7 e' dispari")
+		fmt.Println("7 è dispari")
 	}
 
 	// È possibile avere un comando `if` senza il ramo `else`
 	if 8%4 == 0 {
-		fmt.Println("8 e' divisibile per 4")
+		fmt.Println("8 è divisibile per 4")
 	}
 
 	// Un comando può precedere il test del comando `if`.
-	// Qualsiasi variabile dichiarata all'interno di questo comando
-	// è visibile all'interno di tutti i branch del comando `if`
+	// Qualsiasi variabile dichiarata in questo comando
+	// è visibile all'interno di tutti i rami del comando `if`
 	if num := 9; num < 0 {
-		fmt.Println(num, "e' negativo")
+		fmt.Println(num, "è negativo")
 	} else if num < 10 {
 		fmt.Println(num, "ha una cifra")
 	} else {
-		fmt.Println(num, "ha piu' di una cifra")
+		fmt.Println(num, "ha più di una cifra")
 	}
 }
 
