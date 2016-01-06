@@ -1,7 +1,7 @@
 ## Go by Example
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
-site that teaches Go via annotated example programs.
+a site that teaches Go via annotated example programs.
 
 
 ### Overview
