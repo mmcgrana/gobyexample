@@ -1,5 +1,5 @@
-// In Go, an _array_ is a numbered sequence of elements of a
-// specific length.
+// In Go, un _array_ è una sequenza numerata di elementi con una
+// lunghezza specifica
 
 package main
 
@@ -7,36 +7,37 @@ import "fmt"
 
 func main() {
 
-    // Here we create an array `a` that will hold exactly
-    // 5 `int`s. The type of elements and length are both
-    // part of the array's type. By default an array is
-    // zero-valued, which for `int`s means `0`s.
-    var a [5]int
-    fmt.Println("emp:", a)
+	// Qui creaiamo un array chiamato `a` che conterrà esattamente
+	// 5 elementi di tipo `int`. Il tipo degli elementi e la lunghezza
+	// sono entrambi parti integranti del tipo dell'array. Per default
+	// gli array vengono inizializzati allo _zero value_, che per gli
+	// elementi di tipo `int` significa essere inizializzati a `0`.
+	var a [5]int
+	fmt.Println("emp:", a)
 
-    // We can set a value at an index using the
-    // `array[index] = value` syntax, and get a value with
-    // `array[index]`.
-    a[4] = 100
-    fmt.Println("set:", a)
-    fmt.Println("get:", a[4])
+	// Possiamo assegnare un valore ad uno specifico indice utilizzando
+	// la classica sintassi:
+	// `array[indice] = valore` , e possiamo ottenere il valore con
+	// `array[indice]`.
+	a[4] = 100
+	fmt.Println("set:", a)
+	fmt.Println("get:", a[4])
 
-    // The builtin `len` returns the length of an array.
-    fmt.Println("len:", len(a))
+	// La funzione builtin `len` ritorna la lunghezza dell'array.
+	fmt.Println("len:", len(a))
 
-    // Use this syntax to declare and initialize an array
-    // in one line.
-    b := [5]int{1, 2, 3, 4, 5}
-    fmt.Println("dcl:", b)
+	// Utilizza questa sintassi per dichiarare ed inizializzare
+	// un array nella stessa linea.
+	b := [5]int{1, 2, 3, 4, 5}
+	fmt.Println("dcl:", b)
 
-    // Array types are one-dimensional, but you can
-    // compose types to build multi-dimensional data
-    // structures.
-    var twoD [2][3]int
-    for i := 0; i < 2; i++ {
-        for j := 0; j < 3; j++ {
-            twoD[i][j] = i + j
-        }
-    }
-    fmt.Println("2d: ", twoD)
+	// Gli array sono di base monodimensionali, ma possono essere composti
+	// per costruire strutture di dati multidimensionali
+	var twoD [2][3]int
+	for i := 0; i < 2; i++ {
+		for j := 0; j < 3; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("2d: ", twoD)
 }
