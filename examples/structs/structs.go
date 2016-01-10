@@ -1,12 +1,13 @@
-// Go's _structs_ are typed collections of fields.
-// They're useful for grouping data together to form
-// records.
+// In Go le _structs_ sono collezioni di field (campi) a cui è associato
+// un tipo. Sono utili per raccogliere insieme dati in modo
+// da formare dei record
 
 package main
 
 import "fmt"
 
-// This `person` struct type has `name` and `age` fields.
+// Questa struct `person` possiede due campi,
+// rispettivamente `name` ed `age`.
 type person struct {
     name string
     age  int
@@ -14,28 +15,31 @@ type person struct {
 
 func main() {
 
-    // This syntax creates a new struct.
-    fmt.Println(person{"Bob", 20})
+    // Con questa sintassi si crea una nuova struct.
+    fmt.Println(person{"Nicola", 20})
 
-    // You can name the fields when initializing a struct.
-    fmt.Println(person{name: "Alice", age: 30})
+    // Puoi indicare il nome del campo quando crei una struct.
+    fmt.Println(person{name: "Luigi", age: 30})
 
-    // Omitted fields will be zero-valued.
-    fmt.Println(person{name: "Fred"})
+    // I field non indicati verrano inizialittati con 
+    // il loro zero-value.
+    fmt.Println(person{name: "Alessandro"})
 
-    // An `&` prefix yields a pointer to the struct.
-    fmt.Println(&person{name: "Ann", age: 40})
+    // Inserire un `&` a prefisso della dichiarazione permetterà 
+    // di ottenere un puntatore alla struttura
+    fmt.Println(&person{name: "Luca", age: 40})
 
-    // Access struct fields with a dot.
-    s := person{name: "Sean", age: 50}
+    // Puoi accedere ai campi della struttura con 
+    // l'operatore `.` (punto).
+    s := person{name: "Mario", age: 50}
     fmt.Println(s.name)
 
-    // You can also use dots with struct pointers - the
-    // pointers are automatically dereferenced.
+    // Puoi utilizzare il punto anche per i puntatori a struttura.
+    // Il puntatore verrà dereferenziato automaticamente.
     sp := &s
     fmt.Println(sp.age)
 
-    // Structs are mutable.
+    // Le struct sono mutabili.
     sp.age = 51
     fmt.Println(sp.age)
 }
