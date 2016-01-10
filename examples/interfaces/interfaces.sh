@@ -6,5 +6,5 @@ $ go run interfaces.go
 78.53981633974483
 31.41592653589793
 
-# To learn more about Go's interfaces, check out this
-# [great blog post](http://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go).
+# Per saperne di più sulle interfacce in Go dai un'occhiata questo
+# [interessante articolo](http://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go).
