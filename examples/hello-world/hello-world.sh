@@ -1,5 +1,5 @@
 # Per eseguire il programma, metti il codice in
-# `hello-world.go` e usa `go run`.
+# `hello-world.go` e invoca `go run` in un terminale.
 $ go run hello-world.go
 hello world
 
@@ -16,5 +16,5 @@ $ ./hello-world
 hello world
 
 # Ora che sappiamo come eseguire e compilare programmi
-# basilari in Go, approfondiamo ciò che riguarda il
-# linguaggio in sé.
+# basilari in Go, approfondiamo quelli che sono i
+# costrutti e le strutture base del linguaggio
