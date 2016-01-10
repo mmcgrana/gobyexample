@@ -1,6 +1,7 @@
-// In Go, _variables_ are explicitly declared and used by
-// the compiler to e.g. check type-correctness of function
-// calls.
+// In Go, le _variabli_ sono dichiarate esplicitamente e
+// sono usate dal compilatore, ad esempio, per contriollare
+// la correttezza dei tipi di valori nelle invocazioni
+// delle funzioni.
 
 package main
 
@@ -8,27 +9,27 @@ import "fmt"
 
 func main() {
 
-    // `var` declares 1 or more variables.
-    var a string = "initial"
-    fmt.Println(a)
+	// `var` dichiara una o più variabili.
+	var a string = "initial"
+	fmt.Println(a)
 
-    // You can declare multiple variables at once.
-    var b, c int = 1, 2
-    fmt.Println(b, c)
+	// Puoi dichiarare più variabili in un colpo solo.
+	var b, c int = 1, 2
+	fmt.Println(b, c)
 
-    // Go will infer the type of initialized variables.
-    var d = true
-    fmt.Println(d)
+	// Go dedurrà il tipo delle variabili inizializzate.
+	var d = true
+	fmt.Println(d)
 
-    // Variables declared without a corresponding
-    // initialization are _zero-valued_. For example, the
-    // zero value for an `int` is `0`.
-    var e int
-    fmt.Println(e)
+	// Variabili dichiarate senza una inizializzazione
+	// corrispondente sono _zero-valued_. Ad esempio, il
+	// zero value di un `int` è `0`.
+	var e int
+	fmt.Println(e)
 
-    // The `:=` syntax is shorthand for declaring and
-    // initializing a variable, e.g. for
-    // `var f string = "short"` in this case.
-    f := "short"
-    fmt.Println(f)
+	// La sintassi `:=` è una abbreviazione per dichiarare
+	// e inizializzare una variabile, in questo caso è
+	// l'abbreviazione di `var f string = "short"`.
+	f := "short"
+	fmt.Println(f)
 }
