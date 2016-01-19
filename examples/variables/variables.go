@@ -1,5 +1,5 @@
 // In Go, le _variabli_ sono dichiarate esplicitamente e
-// sono usate dal compilatore, ad esempio, per contriollare
+// sono usate dal compilatore, ad esempio, per contrillare
 // la correttezza dei tipi di valori nelle invocazioni
 // delle funzioni.
 
@@ -22,13 +22,13 @@ func main() {
 	fmt.Println(d)
 
 	// Variabili dichiarate senza una inizializzazione
-	// corrispondente sono _zero-valued_. Ad esempio, il
-	// zero value di un `int` è `0`.
+	// corrispondente sono _zero-valued_. Ad esempio, lo
+	// zero-value di un `int` è `0`.
 	var e int
 	fmt.Println(e)
 
 	// La sintassi `:=` è una abbreviazione per dichiarare
-	// e inizializzare una variabile, in questo caso è
+	// ed inizializzare una variabile, in questo caso è
 	// l'abbreviazione di `var f string = "short"`.
 	f := "short"
 	fmt.Println(f)
