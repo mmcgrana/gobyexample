@@ -7,6 +7,6 @@ $ go run for.go
 9
 loop
 
-# We'll see some other `for` forms later when we look at
-# `range` statements, channels, and other data
-# structures.
+# Vedremo degli altri cicli `for` dopo, quando daremo
+# un'occhiata allo statement `range`, ai channel, e altre
+# strutture di dati.
