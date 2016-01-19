@@ -39,16 +39,16 @@ func main() {
     // il secondo valore di ritorno opzionale che indica
     // la presenza o meno di una chiave all'interno di una map.
     // Questo parametro può essere utilizzato per discernere
-    // il caso in cui una chiave non è presente, dal caso in cui
-    // una chiave ha assegnato lo zero-value (ad esempio `0` o `""`)
+    // il caso in cui una chiave non è presente dal caso in cui
+    // una chiave ha assegnato lo zero-value (ad esempio `0` o `""`).
     // In questo caso non abbiamo nemmeno bisogno del valore
     // associato alla chiave, per cui scartiamo il primo parametro
     // utilizzando l'identificatore _blank_ `_`
     _, prs := m["k2"]
     fmt.Println("prs:", prs)
 
-    // È possiiblle anche dichiarare ed inizializzare una
-    // nuova map inline con la sintassi seguente
+    // È anche possibile dichiarare ed inizializzare una
+    // nuova map con la sintassi seguente
     n := map[string]int{"foo": 1, "bar": 2}
     fmt.Println("map:", n)
 }
