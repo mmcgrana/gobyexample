@@ -8,5 +8,5 @@ $ go run for.go
 loop
 
 # Vedremo degli altri cicli `for` dopo, quando daremo
-# un'occhiata agli `range` statement, ai canali, e altre
+# un'occhiata allo statement `range`, ai channel, e altre
 # strutture di dati.

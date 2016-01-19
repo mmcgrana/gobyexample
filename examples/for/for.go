@@ -1,5 +1,6 @@
-// `for` è l'unico costrutto di cicli in Go. Qui
-// vengono presentati tre tipi di cicli `for`.
+// `for` è l'unico costrutto per eseguire cicli
+// in Go. Qui vengono presentati tre tipi di cicli
+// `for`.
 
 package main
 
@@ -7,7 +8,7 @@ import "fmt"
 
 func main() {
 
-	// Il tipo più semplice, con una singola condizione.
+	// Il ciclo più semplice, con una singola condizione.
 	// (simile al while degli altri linguaggi)
 	i := 1
 	for i <= 3 {
@@ -15,7 +16,7 @@ func main() {
 		i = i + 1
 	}
 
-	// Un classico ciclo `for` inizio/condizione/di-seguito.
+	// Un classico ciclo `for` inizializzazione/test/incremento.
 	for j := 7; j <= 9; j++ {
 		fmt.Println(j)
 	}
