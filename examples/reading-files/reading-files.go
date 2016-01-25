@@ -14,9 +14,13 @@ import (
 
 // Reading files requires checking most calls for errors.
 // This helper will streamline our error checks below.
-func check(e error) {
-    if e != nil {
-        panic(e)
+// Printing an error and then exiting is an appropriate way
+// to handle errors at the top level of a command line
+// program, but not in general purpose library functions.
+func check(err error) {
+    if err != nil {
+        fmt.Println("Fatal:", err)
+        os.Exit(1)
     }
 }
 
@@ -76,9 +80,12 @@ func main() {
     check(err)
     fmt.Printf("5 bytes: %s\n", string(b4))
 
-    // Close the file when you're done (usually this would
+    // Close the file when you're done - usually this would
     // be scheduled immediately after `Open`ing with
-    // `defer`).
-    f.Close()
+    // `defer`, but we can't do that when writing to a file.
+    // We need error checking here because a write error may
+    // not show up until a file is flushed and closed.
+    err = f.Close()
+    check(err)
 
 }
