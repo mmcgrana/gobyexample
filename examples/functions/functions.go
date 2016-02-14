@@ -10,7 +10,7 @@ import "fmt"
 func plus(a int, b int) int {
 
     // In Go è strettamente necessario terminare una funzione
-    // con il comando `return`. Go non ritonrerà automaticamente 
+    // con il comando `return`. Go non ritornerà automaticamente 
     // il valore dell'ultima espressione
     return a + b
 }
