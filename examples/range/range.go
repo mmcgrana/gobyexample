@@ -34,6 +34,11 @@ func main() {
         fmt.Printf("%s -> %s\n", k, v)
     }
 
+    // `range` can also iterate over just the keys of a map.
+    for k := range kvs {
+      fmt.Println("key:", k)
+    }
+
     // `range` on strings iterates over Unicode code
     // points. The first value is the starting byte index
     // of the `rune` and the second the `rune` itself.
