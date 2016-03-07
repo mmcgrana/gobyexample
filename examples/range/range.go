@@ -36,7 +36,7 @@ func main() {
 
     // `range` can also iterate over just the keys of a map.
     for k := range kvs {
-      fmt.Println("key:", k)
+        fmt.Println("key:", k)
     }
 
     // `range` on strings iterates over Unicode code

@@ -27,7 +27,7 @@
           <td class="docs">
             <p>In the previous example we saw how to manage simple
 counter state using atomic operations. For more complex
-state we can use a <em><a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a></em>
+state we can use a _<a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a>_
 to safely access data across multiple goroutines.</p>
 
           </td>

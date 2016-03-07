@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p><em><a href="http://en.wikipedia.org/wiki/Rate_limiting">Rate limiting</a></em>
+            <p>_<a href="http://en.wikipedia.org/wiki/Rate_limiting">Rate limiting</a>_
 is an important mechanism for controlling resource
 utilization and maintaining quality of service. Go
 elegantly supports rate limiting with goroutines,
