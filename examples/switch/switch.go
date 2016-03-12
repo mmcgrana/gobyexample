@@ -24,7 +24,7 @@ func main() {
 	// espressioni nella stessa dichiarazione `case`.
 	// In questo esempio utilizziamo anche il caso
 	// opzionale `default`, che viene eseguito nel
-	// caso l'espressione non possa essere eseguita
+	// caso l'espressione non possa essere valutata
 	// in nessuno dei rami precedenti.
 	switch time.Now().Weekday() {
 	case time.Saturday, time.Sunday:
@@ -47,7 +47,7 @@ func main() {
 
 	// Nel caso volessimo fare cose differenti per una
 	// variabile di cui non conosciamo il tipo
-	// (ad esempio, una variabile interface{} che vedremo
+	// (ad esempio, una variabile `interface{}` che vedremo
 	// più avanti), possiamo utilizzare un `type switch`.
 	// In questo caso, stiamo prima convertendo la variabile
 	// v in una `interface{}`, dopo stiamo usando `.(type)`
@@ -62,5 +62,3 @@ func main() {
 		fmt.Println("non sappiamo come gestire questo tipo")
 	}
 }
-
-// todo: type switches
