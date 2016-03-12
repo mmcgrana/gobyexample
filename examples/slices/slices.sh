@@ -1,5 +1,5 @@
-# Nota che anche se gli slice sono dei tipi diversi dagli
-# array, essi sono stampati similarmente da `fmt.Println`.
+# Nota che, anche se gli slice sono dei tipi diversi dagli
+# array, anche essi possono essere stampati tramite `fmt.Println`.
 $ go run slices.go
 emp: [  ]
 set: [a b c]
