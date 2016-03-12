@@ -1,5 +1,5 @@
 // Gli _Slice_ sono un data type fondamentale di Go,
-// rendendo la gestione degli array più semplice e
+// e rendono la gestione degli array più semplice e
 // potente.
 
 package main
@@ -36,12 +36,12 @@ func main() {
 	// contentente uno o più ulteriori valori.
 	// Nota che abbiamo bisogno di accettare il valore
 	// ritornato da append, visto che potremmo ricevere
-	// una slico completamente nuovo.
+	// uno slice completamente nuovo.
 	s = append(s, "d")
 	s = append(s, "e", "f")
 	fmt.Println("apd:", s)
 
-	// Gli slice possono anche essere copiate con la
+	// Gli slice possono anche essere copiati con la
 	// funzione `copy`. Di seguito creiamo uno slice
 	// vuoto `c` della stessa lunghezza di s e copiamo
 	// i valori di `s` in `c`.
@@ -50,7 +50,7 @@ func main() {
 	fmt.Println("cpy:", c)
 
 	// Gli slice supportano un operatore "slice" che ha
-	// la sintassi `variabileSlice[minore:maggiore]`. Per
+	// la sintassi `variabileSlice[inizio:fine]`. Per
 	// esempio, di seguente generiamo uno slice degli
 	// elementi `s[2]`, `s[3]` e `s[4]`.
 	l := s[2:5]
