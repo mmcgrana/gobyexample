@@ -1,35 +1,35 @@
-// _Functions_ are central in Go. We'll learn about
-// functions with a few different examples.
+// Le _Funzioni_ svolgono un ruolo fondamentale in Go.
+// Capiremo come usare le funzioni tramite una serie di esempi
 
 package main
 
 import "fmt"
 
-// Here's a function that takes two `int`s and returns
-// their sum as an `int`.
+// Questa è una funzione che accetta due parametri
+// di tipo `int` e ritorna la loro somma (sempre di tipo `int`).
 func plus(a int, b int) int {
 
-    // Go requires explicit returns, i.e. it won't
-    // automatically return the value of the last
-    // expression.
-    return a + b
+	// Go non ritornerà il valore dell'ultima espressione: se
+	// bisogna ritornare un valore, lo si deve ritornare
+	// esplicitamente con il comando `return`
+	return a + b
 }
 
-// When you have multiple consecutive parameters of
-// the same type, you may omit the type name for the
-// like-typed parameters up to the final parameter that
-// declares the type.
+// Nelle funzioni con parametri multipli dello stesso tipo
+// si può omettere il tipo per i parametri consecutivi che
+// hanno lo stesso tipo, e indicare il tipo solo per
+// l'ultimo parametro.
 func plusPlus(a, b, c int) int {
-    return a + b + c
+	return a + b + c
 }
 
 func main() {
 
-    // Call a function just as you'd expect, with
-    // `name(args)`.
-    res := plus(1, 2)
-    fmt.Println("1+2 =", res)
+	// Puoi chiamare una funzione con la classica
+	// sintassi `nomefunzione(parametri)`.
+	res := plus(1, 2)
+	fmt.Println("1+2 =", res)
 
-    res = plusPlus(1, 2, 3)
-    fmt.Println("1+2+3 =", res)
+	res = plusPlus(1, 2, 3)
+	fmt.Println("1+2+3 =", res)
 }
