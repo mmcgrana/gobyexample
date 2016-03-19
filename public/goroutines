@@ -25,7 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p>A <em>goroutine</em> is a lightweight thread of execution.</p>
+            <p>Una <em>goroutine</em> è di fatto un <a href="https://en.wikipedia.org/wiki/Green_threads">green thread</a> che permette di
+rendere concorrente l&rsquo;esecuzione del nostro programma.</p>
 
           </td>
           <td class="code empty leading">
@@ -39,7 +40,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/RW_RSAHfj-"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/i5lg3HGV9C"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -88,9 +89,9 @@
         
         <tr>
           <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
-synchronously.</p>
+            <p>Supponiamo di avere una chiamata di funzione <code>f(s)</code>.
+Questo è il modo classico di invocarla, che la eseguirà
+in modo sincrono.</p>
 
           </td>
           <td class="code leading">
@@ -103,9 +104,9 @@ synchronously.</p>
         
         <tr>
           <td class="docs">
-            <p>To invoke this function in a goroutine, use
-<code>go f(s)</code>. This new goroutine will execute
-concurrently with the calling one.</p>
+            <p>Per invocare questa funzione in una goroutine, utilizza
+<code>go f(s)</code>. Questa nuova goroutine eseguirà in parallelo alla
+goroutine dove è stata invocata.</p>
 
           </td>
           <td class="code leading">
@@ -118,8 +119,7 @@ concurrently with the calling one.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also start a goroutine for an anonymous
-function call.</p>
+            <p>È possibile far partire una goroutine anche con una funzione anonima.</p>
 
           </td>
           <td class="code leading">
@@ -134,10 +134,10 @@ function call.</p>
         
         <tr>
           <td class="docs">
-            <p>Our two function calls are running asynchronously in
-separate goroutines now, so execution falls through
-to here. This <code>Scanln</code> code requires we press a key
-before the program exits.</p>
+            <p>Le nostre due chiamte di funzione stanno eseguendo in modo asincrono,
+su due goroutine separate. La funzione <code>Scanln</code> richiede che si prema un tasto,
+prima di far terminare l&rsquo;esecuzione della goroutine principale
+(che terminerà tutte le altre goroutine).</p>
 
           </td>
           <td class="code">
@@ -157,10 +157,12 @@ before the program exits.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run this program, we see the output of the
-blocking call first, then the interleaved output of the
-two gouroutines. This interleaving reflects the
-goroutines being run concurrently by the Go runtime.</p>
+            <p>Quando si esegue questo programma si può notare prima
+l&rsquo;output delle chiamate bloccanti. Successivamente si
+nota come le due goroutine lanciate producano
+dell&rsquo;output &ldquo;disordinato&rdquo;. Questo disordine riflette
+l&rsquo;esecuzione concorrente delle goroutine da parte del
+runtime di Go.</p>
 
           </td>
           <td class="code leading">
@@ -182,8 +184,8 @@ goroutines being run concurrently by the Go runtime.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
-concurrent Go programs: channels.</p>
+            <p>Adesso siamo pronti per analizzare la struttura
+complementare alle goroutine in Go: i channel.</p>
 
           </td>
           <td class="code empty">
@@ -196,7 +198,7 @@ concurrent Go programs: channels.</p>
       
       
       <p class="next">
-        Next example: <a href="channels">Channels</a>.
+        Prossimo esempio: <a href="channels">Channels</a>.
       </p>
       
       <p class="footer">

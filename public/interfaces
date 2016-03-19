@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p><em>Interfaces</em> are named collections of method
-signatures.</p>
+            <p>Le <em>Interfacce</em> in Go sono collezioni di
+<a href="https://it.wikipedia.org/wiki/Firma_(programmazione)">firme (signature)</a> di metodi.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ signatures.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/313UebA3rD"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/XKSHAobMQX"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +62,7 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic interface for geometric shapes.</p>
+            <p>Questa è una semplice interfaccia per le forme geometriche.</p>
 
           </td>
           <td class="code leading">
@@ -78,8 +78,8 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll implement this interface on
-<code>rect</code> and <code>circle</code> types.</p>
+            <p>Per il nostro esempio implementeremo questa inferfaccia
+per le struct <code>rect</code> e <code>circle</code>.</p>
 
           </td>
           <td class="code leading">
@@ -97,9 +97,9 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>To implement an interface in Go, we just need to
-implement all the methods in the interface. Here we
-implement <code>geometry</code> on <code>rect</code>s.</p>
+            <p>Per implementare un interfaccia in Go è sufficiente implementare
+tutti i metodi dell&rsquo;interfaccia.
+Qui stiamo implementando l&rsquo;interfaccia <code>geometry</code> per il tipo <code>rect</code>.</p>
 
           </td>
           <td class="code leading">
@@ -117,7 +117,7 @@ implement <code>geometry</code> on <code>rect</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>The implementation for <code>circle</code>s.</p>
+            <p>Qui invece l&rsquo;implementazione per <code>circle</code>.</p>
 
           </td>
           <td class="code leading">
@@ -135,10 +135,9 @@ implement <code>geometry</code> on <code>rect</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>If a variable has an interface type, then we can call
-methods that are in the named interface. Here&rsquo;s a
-generic <code>measure</code> function taking advantage of this
-to work on any <code>geometry</code>.</p>
+            <p>Se una variabile ha il tipo di un&rsquo;interfaccia possiamo invocare i metodi
+dell&rsquo;interfaccia stessa. Qui è presente una funzione <code>measure</code> generica
+che funzionerà su ogni variabile di tipo <code>geometry</code>.</p>
 
           </td>
           <td class="code leading">
@@ -169,10 +168,9 @@ to work on any <code>geometry</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>circle</code> and <code>rect</code> struct types both
-implement the <code>geometry</code> interface so we can use
-instances of
-these structs as arguments to <code>measure</code>.</p>
+            <p>Sia <code>circle</code> che <code>rect</code> implementano l&rsquo;interfaccia
+<code>geometry</code>, possiamo quindi passare alla funzione
+<code>measure</code> istance di queste due struct.</p>
 
           </td>
           <td class="code">
@@ -209,8 +207,8 @@ these structs as arguments to <code>measure</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>To learn more about Go&rsquo;s interfaces, check out this
-<a href="http://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go">great blog post</a>.</p>
+            <p>Per saperne di più sulle interfacce in Go dai
+un&rsquo;occhiata a questo <a href="http://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go">interessante articolo</a>.</p>
 
           </td>
           <td class="code empty">
@@ -223,7 +221,7 @@ these structs as arguments to <code>measure</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="errors">Errors</a>.
+        Prossimo esempio: <a href="errors">Errors</a>.
       </p>
       
       <p class="footer">

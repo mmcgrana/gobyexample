@@ -3,7 +3,6 @@ package main
 import (
     "crypto/sha1"
     "fmt"
-    "github.com/russross/blackfriday"
     "io/ioutil"
     "net/http"
     "os"
@@ -12,6 +11,8 @@ import (
     "regexp"
     "strings"
     "text/template"
+
+    "github.com/russross/blackfriday"
 )
 
 var cacheDir = "/tmp/gobyexample-cache"
@@ -42,6 +43,8 @@ func pipe(bin string, arg []string, src string) []byte {
     check(err)
     out, err := cmd.StdoutPipe()
     check(err)
+    stderr, err := cmd.StderrPipe()
+    check(err)
     err = cmd.Start()
     check(err)
     _, err = in.Write([]byte(src))
@@ -50,8 +53,14 @@ func pipe(bin string, arg []string, src string) []byte {
     check(err)
     bytes, err := ioutil.ReadAll(out)
     check(err)
-    err = cmd.Wait()
+    bytesErr, err := ioutil.ReadAll(stderr)
     check(err)
+    err = cmd.Wait()
+    if err != nil {
+        fmt.Println(string(bytes))
+        fmt.Println(string(bytesErr))
+        panic(err)
+    }
     return bytes
 }
 
@@ -70,7 +79,7 @@ func mustReadFile(path string) string {
 
 func cachedPygmentize(lex string, src string) string {
     ensureDir(cacheDir)
-    arg := []string{"-l", lex, "-f", "html"}
+    arg := []string{"-O", "encoding=utf-8", "-l", lex, "-f", "html"}
     cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
     cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
     if cacheErr == nil {

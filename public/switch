@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p><em>Switch statements</em> express conditionals across many
-branches.</p>
+            <p>Gli <em>switch</em> esprimono condizionali attraverso più
+rami.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ branches.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/8b5CajPcHn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/n60hmuLq8e"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,20 +74,20 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic <code>switch</code>.</p>
+            <p>Ecco uno switch semplice.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;write &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; as &quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="s">&quot; in lettere è &quot;</span><span class="p">)</span>
     <span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
     <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;due&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;tre&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre></div>
 
@@ -96,18 +96,21 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use commas to separate multiple expressions
-in the same <code>case</code> statement. We use the optional
-<code>default</code> case in this example as well.</p>
+            <p>Puoi utilizzare le virgole per dividere più
+espressioni nella stessa dichiarazione <code>case</code>.
+In questo esempio utilizziamo anche il caso
+opzionale <code>default</code>, che viene eseguito nel
+caso l&rsquo;espressione non possa essere valutata
+in nessuno dei rami precedenti.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s the weekend&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;siamo nel fine settimana&quot;</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s a weekday&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;oggi è un giorno feriale&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre></div>
 
@@ -116,19 +119,47 @@ in the same <code>case</code> statement. We use the optional
         
         <tr>
           <td class="docs">
-            <p><code>switch</code> without an expression is an alternate way
-to express if/else logic. Here we also show how the
-<code>case</code> expressions can be non-constants.</p>
+            <p>Uno <code>switch</code> senza espressione è un metodo
+alternativo per esprimere la logica degli if/else.
+Qui vediamo anche come le espressioni dei <code>case</code>
+possono anche non essere costanti.</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
     <span class="k">switch</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s before noon&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;non è ancora passato mezzogiorno&quot;</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;è passato mezzogiorno&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nel caso volessimo fare cose differenti per una
+variabile di cui non conosciamo il tipo
+(ad esempio, una variabile <code>interface{}</code> che vedremo
+più avanti), possiamo utilizzare un <code>type switch</code>.
+In questo caso, stiamo prima convertendo la variabile
+v in una <code>interface{}</code>, dopo stiamo usando <code>.(type)</code>
+che segnala di usare il type switch.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">v</span> <span class="o">:=</span> <span class="mi">3</span>
+    <span class="k">switch</span> <span class="kd">interface</span><span class="p">{}(</span><span class="nx">v</span><span class="p">).(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v è di tipo `string`&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v è di tipo `int`&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v è di un altro tipo ancora&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -146,10 +177,11 @@ to express if/else logic. Here we also show how the
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run switch.go 
-<span class="go">write 2 as two</span>
-<span class="go">it&#39;s the weekend</span>
-<span class="go">it&#39;s before noon</span>
+            <div class="highlight"><pre><span class="gp">$</span> go run switch.go
+<span class="go">2 in lettere è due</span>
+<span class="go">siamo nel fine settimana</span>
+<span class="go">non è ancora passato mezzogiorno</span>
+<span class="go">v è di tipo `int`</span>
 </pre></div>
 
           </td>
@@ -159,7 +191,7 @@ to express if/else logic. Here we also show how the
       
       
       <p class="next">
-        Next example: <a href="arrays">Arrays</a>.
+        Prossimo esempio: <a href="arrays">Arrays</a>.
       </p>
       
       <p class="footer">

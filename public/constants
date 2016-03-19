@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports <em>constants</em> of character, string, boolean,
-and numeric values.</p>
+            <p>Go ammette l&rsquo;utilizzo di <em>costanti</em> di tipo string, boolean,
+e di tipo numerico</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/T5sj0eINnp"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/dNE4cVVj4x"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +62,7 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p><code>const</code> declares a constant value.</p>
+            <p>La keyword <code>const</code> viene utilizzata per dichiarare una costante</p>
 
           </td>
           <td class="code leading">
@@ -88,8 +88,8 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>const</code> statement can appear anywhere a <code>var</code>
-statement can.</p>
+            <p>La keyword <code>const</code> può essere utilizzata ovunuque
+la keyword <code>var</code> è ammessa</p>
 
           </td>
           <td class="code leading">
@@ -102,8 +102,8 @@ statement can.</p>
         
         <tr>
           <td class="docs">
-            <p>Constant expressions perform arithmetic with
-arbitrary precision.</p>
+            <p>Le espressioni costanti vengono calcolate in aritmetica
+a precisione arbitraria</p>
 
           </td>
           <td class="code leading">
@@ -117,8 +117,8 @@ arbitrary precision.</p>
         
         <tr>
           <td class="docs">
-            <p>A numeric constant has no type until it&rsquo;s given
-one, such as by an explicit cast.</p>
+            <p>Una costante numerica non ha un tipo fin quando non gli
+viene assegnato esplicitamente, ad esempio tramite un cast.</p>
 
           </td>
           <td class="code leading">
@@ -131,10 +131,10 @@ one, such as by an explicit cast.</p>
         
         <tr>
           <td class="docs">
-            <p>A number can be given a type by using it in a
-context that requires one, such as a variable
-assignment or function call. For example, here
-<code>math.Sin</code> expects a <code>float64</code>.</p>
+            <p>Per assegnare un tipo ad una costante di tipo numerico
+si può anche utilizzare la constante in un contesto che richiede
+un tipo, quali un assegnamento od una chiamata di funzione.
+In questo caso <code>math.Sin</code> si aspetta un valore di tipo <code>float64</code>.</p>
 
           </td>
           <td class="code">
@@ -170,7 +170,7 @@ assignment or function call. For example, here
       
       
       <p class="next">
-        Next example: <a href="for">For</a>.
+        Prossimo esempio: <a href="for">For</a>.
       </p>
       
       <p class="footer">

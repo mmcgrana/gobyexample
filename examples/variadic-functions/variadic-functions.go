@@ -19,7 +19,7 @@ func sum(nums ...int) {
 
 func main() {
 
-    // Le funzioni variadiche possono essere invocate nel 
+    // Le funzioni variadiche possono essere invocate nel
     // classico modo indicando ogni parametro separatamente
     sum(1, 2)
     sum(1, 2, 3)
