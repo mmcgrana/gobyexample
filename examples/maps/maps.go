@@ -26,11 +26,11 @@ func main() {
     v1 := m["k1"]
     fmt.Println("v1: ", v1)
 
-    // La funzione built-in `len` ritorna il numero di coppie 
+    // La funzione built-in `len` ritorna il numero di coppie
     // chiave-valore se la si invoca su una map
     fmt.Println("len:", len(m))
 
-    // La funzione built-in `delete` rimuove le coppie 
+    // La funzione built-in `delete` rimuove le coppie
     // chiave-valore dalla map
     delete(m, "k2")
     fmt.Println("map:", m)

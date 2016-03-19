@@ -25,8 +25,9 @@
         
         <tr>
           <td class="docs">
-            <p><em>Maps</em> are Go&rsquo;s built-in <a href="http://en.wikipedia.org/wiki/Associative_array">associative data type</a>
-(sometimes called <em>hashes</em> or <em>dicts</em> in other languages).</p>
+            <p>Le <em>Map</em> sono la struttura built-in di Go per gli <a href="https://it.wikipedia.org/wiki/Array_associativo">Array associativi</a>
+(in altri linguaggi si possono trovare strutture simili sotto
+il nome di <em>hash table</em> o <em>dizionari</em>).</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +41,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/E6cGoiKqka"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/5ZOBl630qy"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,8 +74,9 @@
         
         <tr>
           <td class="docs">
-            <p>To create an empty map, use the builtin <code>make</code>:
-<code>make(map[key-type]val-type)</code>.</p>
+            <p>Per creare una nuova map vuota, utilizza
+la funzione built-in <code>make</code>:
+<code>make(map[tipo-chiave]tipo-valore)</code>.</p>
 
           </td>
           <td class="code leading">
@@ -87,8 +89,8 @@
         
         <tr>
           <td class="docs">
-            <p>Set key/value pairs using typical <code>name[key] = val</code>
-syntax.</p>
+            <p>Puoi impostare i valori della map utilizzando la sintassi
+tipica <code>nomemap[chiave] = valore</code></p>
 
           </td>
           <td class="code leading">
@@ -102,8 +104,8 @@ syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Printing a map with e.g. <code>Println</code> will show all of
-its key/value pairs.</p>
+            <p>Passare la map ad una funzione di stampa (tipo <code>Println</code>)
+mostrerà tutte le coppie chiave-valore della map</p>
 
           </td>
           <td class="code leading">
@@ -116,7 +118,7 @@ its key/value pairs.</p>
         
         <tr>
           <td class="docs">
-            <p>Get a value for a key with <code>name[key]</code>.</p>
+            <p>Puoi ottenere il valore di una chiave con <code>nomemap[chiave]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -130,8 +132,8 @@ its key/value pairs.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>len</code> returns the number of key/value
-pairs when called on a map.</p>
+            <p>La funzione built-in <code>len</code> ritorna il numero di coppie
+chiave-valore se la si invoca su una map</p>
 
           </td>
           <td class="code leading">
@@ -144,8 +146,8 @@ pairs when called on a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>delete</code> removes key/value pairs from
-a map.</p>
+            <p>La funzione built-in <code>delete</code> rimuove le coppie
+chiave-valore dalla map</p>
 
           </td>
           <td class="code leading">
@@ -159,13 +161,15 @@ a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The optional second return value when getting a
-value from a map indicates if the key was present
-in the map. This can be used to disambiguate
-between missing keys and keys with zero values
-like <code>0</code> or <code>&quot;&quot;</code>. Here we didn&rsquo;t need the value
-itself, so we ignored it with the <em>blank identifier</em>
-<code>_</code>.</p>
+            <p>Quando si accede ad una map è possibile controllare
+il secondo valore di ritorno opzionale che indica
+la presenza o meno di una chiave all&rsquo;interno di una map.
+Questo parametro può essere utilizzato per discernere
+il caso in cui una chiave non è presente dal caso in cui
+una chiave ha assegnato lo zero-value (ad esempio <code>0</code> o <code>&quot;&quot;</code>).
+In questo caso non abbiamo nemmeno bisogno del valore
+associato alla chiave, per cui scartiamo il primo parametro
+utilizzando l&rsquo;identificatore <em>blank</em> <code>_</code></p>
 
           </td>
           <td class="code leading">
@@ -179,8 +183,8 @@ itself, so we ignored it with the <em>blank identifier</em>
         
         <tr>
           <td class="docs">
-            <p>You can also declare and initialize a new map in
-the same line with this syntax.</p>
+            <p>È anche possibile dichiarare ed inizializzare una
+nuova map con la sintassi seguente</p>
 
           </td>
           <td class="code">
@@ -199,8 +203,8 @@ the same line with this syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that maps appear in the form <code>map[k:v k:v]</code> when
-printed with <code>fmt.Println</code>.</p>
+            <p>Nota che le map vengono mostrate nel formato
+<code>map[k:v k:v]</code> se vengono stampate con <code>fmt.Println</code>.</p>
 
           </td>
           <td class="code">
@@ -221,7 +225,7 @@ printed with <code>fmt.Println</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="range">Range</a>.
+        Prossimo esempio: <a href="range">Range</a>.
       </p>
       
       <p class="footer">

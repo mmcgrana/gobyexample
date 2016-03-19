@@ -25,9 +25,10 @@
         
         <tr>
           <td class="docs">
-            <p>Go has various value types including strings,
-integers, floats, booleans, etc. Here are a few
-basic examples.</p>
+            <p>In Go è possibile utilizzare valori di svariati tipi
+fra i quali anche string, integer, boolean
+float, etc. Vediamo insieme qualche esempio
+basilare su come usare questi tipi.</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +42,7 @@ basic examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/fgGVOyuZdu"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/H92m5sy3np"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +75,7 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Strings, which can be added together with <code>+</code>.</p>
+            <p>String, che possono essere concatenate con <code>+</code>.</p>
 
           </td>
           <td class="code leading">
@@ -87,7 +88,7 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Integers and floats.</p>
+            <p>Integer e float.</p>
 
           </td>
           <td class="code leading">
@@ -101,7 +102,8 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Booleans, with boolean operators as you&rsquo;d expect.</p>
+            <p>Boolean, con i classici operatori booleani
+AND, OR e NOT.</p>
 
           </td>
           <td class="code">
@@ -141,7 +143,7 @@ basic examples.</p>
       
       
       <p class="next">
-        Next example: <a href="variables">Variables</a>.
+        Prossimo esempio: <a href="variables">Variables</a>.
       </p>
       
       <p class="footer">

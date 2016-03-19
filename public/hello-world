@@ -25,12 +25,13 @@
         
         <tr>
           <td class="docs">
-            <p>Our first program will print the classic &ldquo;hello world&rdquo;
-message. Here&rsquo;s the full source code.</p>
+            <p>Il nostro primo programma scriverà il solito messaggio
+&ldquo;hello world&rdquo; nel terminale. Qui vi è il codice
+sorgente completo.</p>
 
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2C7wwJ6nxG"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/npMQdX5XAE"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -69,8 +70,8 @@ message. Here&rsquo;s the full source code.</p>
         
         <tr>
           <td class="docs">
-            <p>To run the program, put the code in <code>hello-world.go</code> and
-use <code>go run</code>.</p>
+            <p>Per eseguire il programma, metti il codice in
+<code>hello-world.go</code> e invoca <code>go run</code> in un terminale.</p>
 
           </td>
           <td class="code leading">
@@ -84,8 +85,9 @@ use <code>go run</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to build our programs into
-binaries. We can do this using <code>go build</code>.</p>
+            <p>A volte ci sarà la necessità di compilare i nostri
+programmi in un file binario. Possiamo fare ciò usando
+<code>go build</code>.</p>
 
           </td>
           <td class="code leading">
@@ -100,7 +102,8 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can then execute the built binary directly.</p>
+            <p>Dopodiché, possiamo eseguire il binario compilato
+direttamente (senza passare per il compilatore di Go).</p>
 
           </td>
           <td class="code leading">
@@ -114,8 +117,9 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we can run and build basic Go programs, let&rsquo;s
-learn more about the language.</p>
+            <p>Ora che sappiamo come eseguire e compilare programmi
+basilari in Go, approfondiamo quelli che sono i
+costrutti e le strutture base del linguaggio</p>
 
           </td>
           <td class="code empty">
@@ -128,7 +132,7 @@ learn more about the language.</p>
       
       
       <p class="next">
-        Next example: <a href="values">Values</a>.
+        Prossimo esempio: <a href="values">Values</a>.
       </p>
       
       <p class="footer">

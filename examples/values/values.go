@@ -9,16 +9,16 @@ import "fmt"
 
 func main() {
 
-	// String, che possono essere concatenate con `+`.
-	fmt.Println("go" + "lang")
+    // String, che possono essere concatenate con `+`.
+    fmt.Println("go" + "lang")
 
-	// Integer e float.
-	fmt.Println("1+1 =", 1+1)
-	fmt.Println("7.0/3.0 =", 7.0/3.0)
+    // Integer e float.
+    fmt.Println("1+1 =", 1+1)
+    fmt.Println("7.0/3.0 =", 7.0/3.0)
 
-	// Boolean, con i classici operatori booleani
-	// AND, OR e NOT.
-	fmt.Println(true && false)
-	fmt.Println(true || false)
-	fmt.Println(!true)
+    // Boolean, con i classici operatori booleani
+    // AND, OR e NOT.
+    fmt.Println(true && false)
+    fmt.Println(true || false)
+    fmt.Println(!true)
 }

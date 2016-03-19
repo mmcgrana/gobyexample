@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p>In Go, an <em>array</em> is a numbered sequence of elements of a
-specific length.</p>
+            <p>In Go, un <em>array</em> è una sequenza numerata di elementi con una
+lunghezza specifica</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ specific length.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/l-A8eBnwio"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/-K1RJBQ8T7"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,10 +73,11 @@ specific length.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we create an array <code>a</code> that will hold exactly
-5 <code>int</code>s. The type of elements and length are both
-part of the array&rsquo;s type. By default an array is
-zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
+            <p>Qui creaiamo un array chiamato <code>a</code> che conterrà esattamente
+5 elementi di tipo <code>int</code>. Il tipo degli elementi e la lunghezza
+sono entrambi parti integranti del tipo dell&rsquo;array. Per default
+gli array vengono inizializzati allo <em>zero value</em>, che per gli
+elementi di tipo <code>int</code> significa essere inizializzati a <code>0</code>.</p>
 
           </td>
           <td class="code leading">
@@ -90,9 +91,10 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>We can set a value at an index using the
-<code>array[index] = value</code> syntax, and get a value with
-<code>array[index]</code>.</p>
+            <p>Possiamo assegnare un valore ad uno specifico indice utilizzando
+la classica sintassi:
+<code>array[indice] = valore</code> , e possiamo ottenere il valore con
+<code>array[indice]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -107,7 +109,7 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>len</code> returns the length of an array.</p>
+            <p>La funzione builtin <code>len</code> ritorna la lunghezza dell&rsquo;array.</p>
 
           </td>
           <td class="code leading">
@@ -120,8 +122,8 @@ zero-valued, which for <code>int</code>s means <code>0</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Use this syntax to declare and initialize an array
-in one line.</p>
+            <p>Utilizza questa sintassi per dichiarare ed inizializzare
+un array nella stessa linea.</p>
 
           </td>
           <td class="code leading">
@@ -135,9 +137,8 @@ in one line.</p>
         
         <tr>
           <td class="docs">
-            <p>Array types are one-dimensional, but you can
-compose types to build multi-dimensional data
-structures.</p>
+            <p>Gli array sono di base monodimensionali, ma possono essere composti
+per costruire strutture di dati multidimensionali</p>
 
           </td>
           <td class="code">
@@ -161,8 +162,9 @@ structures.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that arrays appear in the form <code>[v1 v2 v3 ...]</code>
-when printed with <code>fmt.Println</code>.</p>
+            <p>Nota che gli array vengono visualizzati nella forma
+[v1 v2 v3 &hellip;] se stampati con la funzione
+<code>fmt.Println</code>.</p>
 
           </td>
           <td class="code leading">
@@ -181,8 +183,9 @@ when printed with <code>fmt.Println</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>You&rsquo;ll see <em>slices</em> much more often than arrays in
-typical Go. We&rsquo;ll look at slices next.</p>
+            <p>Noterai che gli <em>slice</em> vengono utilizzati molto più
+spesso degli array in Go. Vedremo gli slices nel
+prossimo esempio.</p>
 
           </td>
           <td class="code empty">
@@ -195,7 +198,7 @@ typical Go. We&rsquo;ll look at slices next.</p>
       
       
       <p class="next">
-        Next example: <a href="slices">Slices</a>.
+        Prossimo esempio: <a href="slices">Slices</a>.
       </p>
       
       <p class="footer">

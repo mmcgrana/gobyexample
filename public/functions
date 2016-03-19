@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p><em>Functions</em> are central in Go. We&rsquo;ll learn about
-functions with a few different examples.</p>
+            <p>Le <em>Funzioni</em> svolgono un ruolo fondamentale in Go.
+Capiremo come usare le funzioni tramite una serie di esempi</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ functions with a few different examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9Nky-Dn49f"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/dkBVJR0L1s"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -61,8 +61,8 @@ functions with a few different examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a function that takes two <code>int</code>s and returns
-their sum as an <code>int</code>.</p>
+            <p>Questa è una funzione che accetta due parametri
+di tipo <code>int</code> e ritorna la loro somma (sempre di tipo <code>int</code>).</p>
 
           </td>
           <td class="code leading">
@@ -75,9 +75,9 @@ their sum as an <code>int</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Go requires explicit returns, i.e. it won&rsquo;t
-automatically return the value of the last
-expression.</p>
+            <p>Go non ritornerà il valore dell&rsquo;ultima espressione: se
+bisogna ritornare un valore, lo si deve ritornare
+esplicitamente con il comando <code>return</code></p>
 
           </td>
           <td class="code leading">
@@ -91,10 +91,10 @@ expression.</p>
         
         <tr>
           <td class="docs">
-            <p>When you have multiple consecutive parameters of
-the same type, you may omit the type name for the
-like-typed parameters up to the final parameter that
-declares the type.</p>
+            <p>Nelle funzioni con parametri multipli dello stesso tipo
+si può omettere il tipo per i parametri consecutivi che
+hanno lo stesso tipo, e indicare il tipo solo per
+l&rsquo;ultimo parametro.</p>
 
           </td>
           <td class="code leading">
@@ -121,8 +121,8 @@ declares the type.</p>
         
         <tr>
           <td class="docs">
-            <p>Call a function just as you&rsquo;d expect, with
-<code>name(args)</code>.</p>
+            <p>Puoi chiamare una funzione con la classica
+sintassi <code>nomefunzione(parametri)</code>.</p>
 
           </td>
           <td class="code leading">
@@ -168,8 +168,9 @@ declares the type.</p>
         
         <tr>
           <td class="docs">
-            <p>There are several other features to Go functions. One is
-multiple return values, which we&rsquo;ll look at next.</p>
+            <p>Go possiede svariate features legate alle funzioni.
+Una di queste è la possibilità di ritornare valori
+multipli, come vedremo nel prossimo esempio.</p>
 
           </td>
           <td class="code empty">
@@ -182,7 +183,7 @@ multiple return values, which we&rsquo;ll look at next.</p>
       
       
       <p class="next">
-        Next example: <a href="multiple-return-values">Multiple Return Values</a>.
+        Prossimo esempio: <a href="multiple-return-values">Multiple Return Values</a>.
       </p>
       
       <p class="footer">

@@ -25,8 +25,9 @@
         
         <tr>
           <td class="docs">
-            <p><code>for</code> is Go&rsquo;s only looping construct. Here are
-three basic types of <code>for</code> loops.</p>
+            <p><code>for</code> è l&rsquo;unico costrutto per eseguire cicli
+in Go. Qui vengono presentati tre tipi di cicli
+<code>for</code>.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +41,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/mGqqcBZ0jv"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/G1nXIp3MzQ"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,7 +74,8 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p>The most basic type, with a single condition.</p>
+            <p>Il ciclo più semplice, con una singola condizione.
+(simile al while degli altri linguaggi)</p>
 
           </td>
           <td class="code leading">
@@ -90,7 +92,7 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p>A classic initial/condition/after <code>for</code> loop.</p>
+            <p>Un classico ciclo <code>for</code> inizializzazione/test/incremento.</p>
 
           </td>
           <td class="code leading">
@@ -105,9 +107,9 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p><code>for</code> without a condition will loop repeatedly
-until you <code>break</code> out of the loop or <code>return</code> from
-the enclosing function.</p>
+            <p>Un <code>for</code> senza condizioni si ripeterà sempre finché
+non esci dal ciclo con un <code>break</code> oppure fai
+un <code>return</code> per la funzione che lo racchiude.</p>
 
           </td>
           <td class="code">
@@ -147,9 +149,9 @@ the enclosing function.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll see some other <code>for</code> forms later when we look at
-<code>range</code> statements, channels, and other data
-structures.</p>
+            <p>Vedremo degli altri cicli <code>for</code> dopo, quando daremo
+un&rsquo;occhiata allo statement <code>range</code>, ai channel, e altre
+strutture di dati.</p>
 
           </td>
           <td class="code empty">
@@ -162,7 +164,7 @@ structures.</p>
       
       
       <p class="next">
-        Next example: <a href="if-else">If/Else</a>.
+        Prossimo esempio: <a href="if-else">If/Else</a>.
       </p>
       
       <p class="footer">
