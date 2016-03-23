@@ -1,37 +1,40 @@
-// Go supports _methods_ defined on struct types.
+// Go permette l'utilizzo dei <a href="https://it.wikipedia.org/wiki/Metodo_(programmazione)"><em>metodi</em></a>
+// definiti su tipi all'interno di uno stesso package.
 
 package main
 
 import "fmt"
 
 type rect struct {
-    width, height int
+	width, height int
 }
 
-// This `area` method has a _receiver type_ of `*rect`.
+// Questo metodo `area` ha un _receiver type_ `*rect`.
 func (r *rect) area() int {
-    return r.width * r.height
+	return r.width * r.height
 }
 
-// Methods can be defined for either pointer or value
-// receiver types. Here's an example of a value receiver.
+// I metodi possono essere definiti o per un puntatore
+// o per semplicemente un valore. Ecco un esempio di
+// metodo con il _receiver type_ valore.
 func (r rect) perim() int {
-    return 2*r.width + 2*r.height
+	return 2*r.width + 2*r.height
 }
 
 func main() {
-    r := rect{width: 10, height: 5}
+	r := rect{width: 10, height: 5}
 
-    // Here we call the 2 methods defined for our struct.
-    fmt.Println("area: ", r.area())
-    fmt.Println("perim:", r.perim())
+	// Qui chiamiamo i 2 metodi definiti per la nostra struct.
+	fmt.Println("area: ", r.area())
+	fmt.Println("perim:", r.perim())
 
-    // Go automatically handles conversion between values
-    // and pointers for method calls. You may want to use
-    // a pointer receiver type to avoid copying on method
-    // calls or to allow the method to mutate the
-    // receiving struct.
-    rp := &r
-    fmt.Println("area: ", rp.area())
-    fmt.Println("perim:", rp.perim())
+	// Le conversioni tra puntatori e valori per le
+	// chiamate a metodi vengono effettuate
+	// automaticamente da Go. Potresti voler usare un
+	// puntatore come receiver type per evitare di copiare
+	// nelle chiamate al metodo o per permettere al metodo
+	// di modificare il valore originale della variabile.
+	rp := &r
+	fmt.Println("area: ", rp.area())
+	fmt.Println("perim:", rp.perim())
 }
