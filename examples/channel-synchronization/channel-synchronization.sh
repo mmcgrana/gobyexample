@@ -1,6 +1,6 @@
 $ go run channel-synchronization.go      
-working...done                  
+sto lavorando...fatto                  
 
-# If you removed the `<- done` line from this program, the
-# program would exit before the `worker` even
-# started.
+# Se rimuovessi la linea `<- done` da questo programma,
+# allora quest'ultimo sarebbe terminato addirittura prima
+# che la goroutine lavoratrice fosse avviata.
