@@ -1,8 +1,9 @@
-// We often want to execute Go code at some point in the
-// future, or repeatedly at some interval. Go's built-in
-// _timer_ and _ticker_ features make both of these tasks
-// easy. We'll look first at timers and then
-// at [tickers](tickers).
+// Spesso ci troviamo nella situazione di voler eseguire
+// del codice Go in un certo istante nel futuro, oppure
+// ripeterne l'esecuzione ad intervalli fissati. Le funzioni
+// built-in di Go _timer_ e _ticker_ risolvono questi
+// problemi facilmente. Vedremo prima i timer e a seguire
+// i [ticker](tickers).
 
 package main
 
@@ -11,29 +12,32 @@ import "fmt"
 
 func main() {
 
-    // Timers represent a single event in the future. You
-    // tell the timer how long you want to wait, and it
-    // provides a channel that will be notified at that
-    // time. This timer will wait 2 seconds.
-    timer1 := time.NewTimer(time.Second * 2)
+	// I timer rappresentano un singolo evento nel futuro.
+	// Si indica al timer quanto si vuole attendere e
+	// questo ci fornisce un channel sul quale riceveremo
+	// una notifica dopo il tempo desiderato. In questo caso
+	// si aspettano due secondi.
+	timer1 := time.NewTimer(time.Second * 2)
 
-    // The `<-timer1.C` blocks on the timer's channel `C`
-    // until it sends a value indicating that the timer
-    // expired.
-    <-timer1.C
-    fmt.Println("Timer 1 expired")
+	// Il comando `<-timer1.C` permette di bloccarsi sul
+	// channel del timer `C` fino a quando non riceve un
+	// valore, nel momento in cui il timer scatta.
+	<-timer1.C
+	fmt.Println("Timer 1 scaduto")
 
-    // If you just wanted to wait, you could have used
-    // `time.Sleep`. One reason a timer may be useful is
-    // that you can cancel the timer before it expires.
-    // Here's an example of that.
-    timer2 := time.NewTimer(time.Second)
-    go func() {
-        <-timer2.C
-        fmt.Println("Timer 2 expired")
-    }()
-    stop2 := timer2.Stop()
-    if stop2 {
-        fmt.Println("Timer 2 stopped")
-    }
+	// Se si vuole semplicemente aspettare del tempo è
+	// possibile utilizzare la funzione `time.Sleep`.
+	// Un buon caso d'uso per cui i timer risultano utili
+	// è rappresentato dalla necessità di fermare il timer
+	// prima che sia scattato. Qui vediamo un esempio di
+	// questo use caso d'uso.
+	timer2 := time.NewTimer(time.Second)
+	go func() {
+		<-timer2.C
+		fmt.Println("Timer 2 scaduto")
+	}()
+	stop2 := timer2.Stop()
+	if stop2 {
+		fmt.Println("Timer 2 fermato")
+	}
 }
