@@ -25,9 +25,9 @@
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>structs</em> are typed collections of fields.
-They&rsquo;re useful for grouping data together to form
-records.</p>
+            <p>In Go le <em>structs</em> sono collezioni di field (campi) a cui è associato
+un tipo. Sono utili per raccogliere insieme dati in modo
+da formare dei record</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +41,7 @@ records.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/OMCP5KFC10"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/cOoVdcEoLT"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +62,8 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>person</code> struct type has <code>name</code> and <code>age</code> fields.</p>
+            <p>Questa struct <code>person</code> possiede due campi,
+rispettivamente <code>name</code> ed <code>age</code>.</p>
 
           </td>
           <td class="code leading">
@@ -90,12 +91,12 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>This syntax creates a new struct.</p>
+            <p>Con questa sintassi si crea una nuova struct.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">})</span>
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="s">&quot;Nicola&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">})</span>
 </pre></div>
 
           </td>
@@ -103,12 +104,12 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>You can name the fields when initializing a struct.</p>
+            <p>Puoi indicare il nome del campo quando crei una struct.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Luigi&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
 </pre></div>
 
           </td>
@@ -116,12 +117,13 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>Omitted fields will be zero-valued.</p>
+            <p>I field non indicati verrano inizializzati con
+il loro zero-value.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">})</span>
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alessandro&quot;</span><span class="p">})</span>
 </pre></div>
 
           </td>
@@ -129,12 +131,13 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>An <code>&amp;</code> prefix yields a pointer to the struct.</p>
+            <p>Inserire un <code>&amp;</code> a prefisso della dichiarazione permetterà
+di ottenere un puntatore alla struct</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Ann&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">})</span>
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Luca&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">})</span>
 </pre></div>
 
           </td>
@@ -142,12 +145,13 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>Access struct fields with a dot.</p>
+            <p>Puoi accedere ai campi della struct con
+l&rsquo;operatore <code>.</code> (punto).</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sean&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+            <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Mario&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
 </pre></div>
 
@@ -156,8 +160,8 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also use dots with struct pointers - the
-pointers are automatically dereferenced.</p>
+            <p>Puoi utilizzare il punto anche per i puntatori a struct.
+Il puntatore verrà dereferenziato automaticamente.</p>
 
           </td>
           <td class="code leading">
@@ -171,7 +175,7 @@ pointers are automatically dereferenced.</p>
         
         <tr>
           <td class="docs">
-            <p>Structs are mutable.</p>
+            <p>Le struct sono mutabili.</p>
 
           </td>
           <td class="code">
@@ -195,11 +199,11 @@ pointers are automatically dereferenced.</p>
           <td class="code">
 	        
             <div class="highlight"><pre><span class="gp">$</span> go run structs.go
-<span class="go">{Bob 20}</span>
-<span class="go">{Alice 30}</span>
-<span class="go">{Fred 0}</span>
-<span class="go">&amp;{Ann 40}</span>
-<span class="go">Sean</span>
+<span class="go">{Nicola 20}</span>
+<span class="go">{Luigi 30}</span>
+<span class="go">{Alessandro 0}</span>
+<span class="go">&amp;{Luca 40}</span>
+<span class="go">Mario</span>
 <span class="go">50</span>
 <span class="go">51</span>
 </pre></div>
@@ -211,7 +215,7 @@ pointers are automatically dereferenced.</p>
       
       
       <p class="next">
-        Next example: <a href="methods">Methods</a>.
+        Prossimo esempio: <a href="methods">Methods</a>.
       </p>
       
       <p class="footer">

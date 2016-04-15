@@ -1,17 +1,20 @@
-# To run the program, put the code in `hello-world.go` and
-# use `go run`.
+# Per eseguire il programma, metti il codice in
+# `hello-world.go` e invoca `go run` in un terminale.
 $ go run hello-world.go
 hello world
 
-# Sometimes we'll want to build our programs into
-# binaries. We can do this using `go build`.
+# A volte ci sarà la necessità di compilare i nostri
+# programmi in un file binario. Possiamo fare ciò usando
+# `go build`.
 $ go build hello-world.go
 $ ls
 hello-world	hello-world.go
 
-# We can then execute the built binary directly.
+# Dopodiché, possiamo eseguire il binario compilato
+# direttamente (senza passare per il compilatore di Go).
 $ ./hello-world
 hello world
 
-# Now that we can run and build basic Go programs, let's
-# learn more about the language.
+# Ora che sappiamo come eseguire e compilare programmi
+# basilari in Go, approfondiamo quelli che sono i
+# costrutti e le strutture base del linguaggio

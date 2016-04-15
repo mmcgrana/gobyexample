@@ -1,5 +1,6 @@
-// _Maps_ are Go's built-in [associative data type](http://en.wikipedia.org/wiki/Associative_array)
-// (sometimes called _hashes_ or _dicts_ in other languages).
+// Le _Map_ sono la struttura built-in di Go per gli [Array associativi](https://it.wikipedia.org/wiki/Array_associativo)
+// (in altri linguaggi si possono trovare strutture simili sotto
+// il nome di _hash table_ o _dizionari_).
 
 package main
 
@@ -7,44 +8,47 @@ import "fmt"
 
 func main() {
 
-    // To create an empty map, use the builtin `make`:
-    // `make(map[key-type]val-type)`.
+    // Per creare una nuova map vuota, utilizza
+    // la funzione built-in `make`:
+    // `make(map[tipo-chiave]tipo-valore)`.
     m := make(map[string]int)
 
-    // Set key/value pairs using typical `name[key] = val`
-    // syntax.
+    // Puoi impostare i valori della map utilizzando la sintassi
+    // tipica `nomemap[chiave] = valore`
     m["k1"] = 7
     m["k2"] = 13
 
-    // Printing a map with e.g. `Println` will show all of
-    // its key/value pairs.
+    // Passare la map ad una funzione di stampa (tipo `Println`)
+    // mostrerà tutte le coppie chiave-valore della map
     fmt.Println("map:", m)
 
-    // Get a value for a key with `name[key]`.
+    // Puoi ottenere il valore di una chiave con `nomemap[chiave]`.
     v1 := m["k1"]
     fmt.Println("v1: ", v1)
 
-    // The builtin `len` returns the number of key/value
-    // pairs when called on a map.
+    // La funzione built-in `len` ritorna il numero di coppie
+    // chiave-valore se la si invoca su una map
     fmt.Println("len:", len(m))
 
-    // The builtin `delete` removes key/value pairs from
-    // a map.
+    // La funzione built-in `delete` rimuove le coppie
+    // chiave-valore dalla map
     delete(m, "k2")
     fmt.Println("map:", m)
 
-    // The optional second return value when getting a
-    // value from a map indicates if the key was present
-    // in the map. This can be used to disambiguate
-    // between missing keys and keys with zero values
-    // like `0` or `""`. Here we didn't need the value
-    // itself, so we ignored it with the _blank identifier_
-    // `_`.
+    // Quando si accede ad una map è possibile controllare
+    // il secondo valore di ritorno opzionale che indica
+    // la presenza o meno di una chiave all'interno di una map.
+    // Questo parametro può essere utilizzato per discernere
+    // il caso in cui una chiave non è presente dal caso in cui
+    // una chiave ha assegnato lo zero-value (ad esempio `0` o `""`).
+    // In questo caso non abbiamo nemmeno bisogno del valore
+    // associato alla chiave, per cui scartiamo il primo parametro
+    // utilizzando l'identificatore _blank_ `_`
     _, prs := m["k2"]
     fmt.Println("prs:", prs)
 
-    // You can also declare and initialize a new map in
-    // the same line with this syntax.
+    // È anche possibile dichiarare ed inizializzare una
+    // nuova map con la sintassi seguente
     n := map[string]int{"foo": 1, "bar": 2}
     fmt.Println("map:", n)
 }

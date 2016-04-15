@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p>Branching with <code>if</code> and <code>else</code> in Go is
-straight-forward.</p>
+            <p>Modificare il flusso di controllo con <code>if</code> ed <code>else</code> in Go
+è semplice e ricalca la classica sintassi vista in altri linguaggi.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +40,7 @@ straight-forward.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/g-aqMz0Ivf"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/1ieiuzFwGl"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,15 +73,15 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic example.</p>
+            <p>Questo è un esempio base</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 is even&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 è pari&quot;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 is odd&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;7 è dispari&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre></div>
 
@@ -90,13 +90,13 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>You can have an <code>if</code> statement without an else.</p>
+            <p>È possibile avere un comando <code>if</code> senza il ramo <code>else</code></p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;8 is divisible by 4&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;8 è divisibile per 4&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre></div>
 
@@ -105,19 +105,19 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>A statement can precede conditionals; any variables
-declared in this statement are available in all
-branches.</p>
+            <p>Un comando può precedere il test del comando <code>if</code>.
+Qualsiasi variabile dichiarata in questo comando
+è visibile all&rsquo;interno di tutti i rami del comando <code>if</code></p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">num</span> <span class="o">:=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;is negative&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;è negativo&quot;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;has 1 digit&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;ha una cifra&quot;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;has multiple digits&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&quot;ha più di una cifra&quot;</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -127,8 +127,8 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that you don&rsquo;t need parentheses around conditions
-in Go, but that the braces are required.</p>
+            <p>Nota che non sono necessarie le parentesi intorno alle condizioni
+del comando <code>if</code> in Go, ma le parentesi graffe sono necessarie.</p>
 
           </td>
           <td class="code empty">
@@ -147,10 +147,10 @@ in Go, but that the braces are required.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run <span class="k">if</span>-else.go 
-<span class="go">7 is odd</span>
-<span class="go">8 is divisible by 4</span>
-<span class="go">9 has 1 digit</span>
+            <div class="highlight"><pre><span class="gp">$</span> go run <span class="k">if</span>-else.go
+<span class="go">7 è pari</span>
+<span class="go">8 è divisibile per 4</span>
+<span class="go">9 ha una cifra</span>
 </pre></div>
 
           </td>
@@ -158,9 +158,9 @@ in Go, but that the braces are required.</p>
         
         <tr>
           <td class="docs">
-            <p>There is no <a href="http://en.wikipedia.org/wiki/%3F:">ternary if</a>
-in Go, so you&rsquo;ll need to use a full <code>if</code> statement even
-for basic conditions.</p>
+            <p>Non esiste un <a href="http://it.wikipedia.org/wiki/%3F:">operatore condizionale ternario</a>
+in Go, quindi è necessario utilizzare un comando <code>if</code>
+completo anche per semplici istruzioni/test.</p>
 
           </td>
           <td class="code empty">
@@ -173,7 +173,7 @@ for basic conditions.</p>
       
       
       <p class="next">
-        Next example: <a href="switch">Switch</a>.
+        Prossimo esempio: <a href="switch">Switch</a>.
       </p>
       
       <p class="footer">

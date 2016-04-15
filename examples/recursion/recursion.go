@@ -1,13 +1,12 @@
-// Go supports
-// <a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)"><em>recursive functions</em></a>.
-// Here's a classic factorial example.
+// Go supporta le [Funzioni ricorsive](https://it.wikipedia.org/wiki/Algoritmo_ricorsivo)
+// Ecco il classico esempio di una funzione ricorsiva, il fattoriale.
 
 package main
 
 import "fmt"
 
-// This `fact` function calls itself until it reaches the
-// base case of `fact(0)`.
+// Questa funzione `fact` invoca se stessa fin quando
+// non raggiunge il caso base per `n` uguale a `0`.
 func fact(n int) int {
     if n == 0 {
         return 1
