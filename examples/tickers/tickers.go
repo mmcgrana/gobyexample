@@ -28,4 +28,27 @@ func main() {
 	time.Sleep(time.Millisecond * 1600)
 	ticker.Stop()
 	fmt.Println("Ticker stopped")
+
+	// Stop does not close the ticker channel to prevent
+	// a read from the channel succeeding incorrectly,
+	// so you can use an additional channel to avoid
+	// a goroutine leak
+	ticker2 := time.NewTicker(time.Millisecond * 500)
+	tdone := make(chan bool, 1)
+	go func() {
+		for {
+			select {
+			case t := <-ticker2.C:
+				fmt.Println("Tick at", t)
+			case <-tdone:
+				fmt.Println("x")
+				ticker2.Stop()
+				return
+			}
+		}
+	}()
+
+	time.Sleep(time.Millisecond * 1600)
+	close(tdone)
+	fmt.Println("Ticker stopped")
 }
