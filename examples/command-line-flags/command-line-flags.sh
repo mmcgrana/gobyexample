@@ -36,7 +36,7 @@ word: opt
 numb: 42
 fork: false
 svar: bar
-trailing: [a1 a2 a3 -numb=7]
+tail: [a1 a2 a3 -numb=7]
 
 # Use `-h` or `--help` flags to get automatically
 # generated help text for the command-line program.
