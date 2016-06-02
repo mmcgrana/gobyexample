@@ -25,7 +25,7 @@
         
         <tr>
           <td class="docs">
-            <p><em>range</em> iterates over of elements in a variety of
+            <p><em>range</em> iterates over elements in a variety of
 data structures. Let&rsquo;s see how to use <code>range</code> with some
 of the data structures we&rsquo;ve already learned.</p>
 
