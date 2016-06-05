@@ -250,7 +250,7 @@ will be interpreted as positional arguments).</p>
 <span class="go">numb: 42</span>
 <span class="go">fork: false</span>
 <span class="go">svar: bar</span>
-<span class="go">trailing: [a1 a2 a3 -numb=7]</span>
+<span class="go">tail: [a1 a2 a3 -numb=7]</span>
 </pre></div>
 
           </td>
