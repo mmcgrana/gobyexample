@@ -25,8 +25,8 @@
         
         <tr>
           <td class="docs">
-            <p><em>range</em> iterates over of elements in a variety of
-data structures. Let&rsquo;s see how to use <code>range</code> with some
+            <p><em>range</em> iterates over elements in a variety of data
+structures. Let&rsquo;s see how to use <code>range</code> with some
 of the data structures we&rsquo;ve already learned.</p>
 
           </td>
@@ -41,7 +41,7 @@ of the data structures we&rsquo;ve already learned.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/u2yg3m1eFT"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/g9DqcAkPVA"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
