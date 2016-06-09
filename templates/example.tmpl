@@ -28,7 +28,7 @@
             {{.DocsRendered}}
           </td>
           <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-                {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.UrlHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
+               {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.UrlHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
             {{.CodeRendered}}
           </td>
         </tr>
@@ -40,7 +40,7 @@
         Previous example: <a href="{{.PrevExample.Id}}">{{.PrevExample.Name}}</a>.
       </p>
       {{end}}
-      {{if .PrevExample}}
+      {{if .NextExample}}
       <p class="next">
         Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
       </p>
