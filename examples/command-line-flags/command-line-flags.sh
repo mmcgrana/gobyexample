@@ -49,7 +49,7 @@ Usage of ./command-line-flags:
 
 # If you provide a flag that wasn't specified to the
 # `flag` package, the program will print an error message
-# an show the help text again.
+# and show the help text again.
 $ ./command-line-flags -wat
 flag provided but not defined: -wat
 Usage of ./command-line-flags:
