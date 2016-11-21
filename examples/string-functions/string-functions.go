@@ -41,3 +41,11 @@ func main() {
     p("Len: ", len("hello"))
     p("Char:", "hello"[1])
 }
+
+// *NOTE - Getting the index of a string technically gets that byte,
+// and not necessarily the character (as in multi-byte unicode characters).
+// The length of a string is its length in bytes, and not necessarily
+// the length in characters.
+// You could get a character by the index of a rune slice, or by
+// using a range loop.*
+// You can read more [Here](https://blog.golang.org/strings).
