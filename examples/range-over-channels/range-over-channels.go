@@ -18,8 +18,7 @@ func main() {
     // This `range` iterates over each element as it's
     // received from `queue`. Because we `close`d the
     // channel above, the iteration terminates after
-    // receiving the 2 elements. If we didn't `close` it
-    // we'd block on a 3rd receive in the loop.
+    // receiving the 2 elements.
     for elem := range queue {
         fmt.Println(elem)
     }
