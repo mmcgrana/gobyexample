@@ -181,7 +181,7 @@ lowercase lines.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> cat /tmp/lines | go run line-filters.go
+            <div class="highlight"><pre><span class="gp">$</span> cat /tmp/lines <span class="p">|</span> go run line-filters.go
 <span class="go">HELLO</span>
 <span class="go">FILTER</span>
 </pre></div>

@@ -175,7 +175,7 @@ binary directly.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go build <span class="nb">command</span>-line-flags.go
+            <div class="highlight"><pre><span class="gp">$</span> go build command-line-flags.go
 </pre></div>
 
           </td>
@@ -189,7 +189,7 @@ all flags.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt -numb<span class="o">=</span>7 -fork -svar<span class="o">=</span>flag
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt -numb<span class="o">=</span><span class="m">7</span> -fork -svar<span class="o">=</span>flag
 <span class="go">word: opt</span>
 <span class="go">numb: 7</span>
 <span class="go">fork: true</span>

@@ -173,7 +173,7 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run <span class="nb">time</span>-formatting-parsing.go 
+            <div class="highlight"><pre><span class="gp">$</span> go run time-formatting-parsing.go 
 <span class="go">2014-04-15T18:00:15-07:00</span>
 <span class="go">2012-11-01 22:08:41 +0000 +0000</span>
 <span class="go">6:00PM</span>

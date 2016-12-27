@@ -131,7 +131,7 @@ build a binary with <code>go build</code> first.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go build <span class="nb">command</span>-line-arguments.go
+            <div class="highlight"><pre><span class="gp">$</span> go build command-line-arguments.go
 <span class="gp">$</span> ./command-line-arguments a b c d
 <span class="go">[./command-line-arguments a b c d]       </span>
 <span class="go">[a b c d]</span>

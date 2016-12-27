@@ -160,7 +160,7 @@ program picks that value up.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> <span class="nv">BAR</span><span class="o">=</span>2 go run environment-variables.go
+            <div class="highlight"><pre><span class="gp">$</span> <span class="nv">BAR</span><span class="o">=</span><span class="m">2</span> go run environment-variables.go
 <span class="go">FOO: 1</span>
 <span class="go">BAR: 2</span>
 <span class="go">...</span>

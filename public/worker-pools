@@ -174,7 +174,7 @@ there are 3 workers operating concurrently.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> <span class="nb">time </span>go run worker-pools.go 
+            <div class="highlight"><pre><span class="gp">$</span> <span class="nb">time</span> go run worker-pools.go 
 <span class="go">worker 1 processing job 1</span>
 <span class="go">worker 2 processing job 2</span>
 <span class="go">worker 3 processing job 3</span>
