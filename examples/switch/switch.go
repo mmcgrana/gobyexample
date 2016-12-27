@@ -40,6 +40,22 @@ func main() {
     default:
         fmt.Println("it's after noon")
     }
+
+    // The default behavior of a `case` block is to break
+    // out of the `switch` statement on completion. You
+    // can use the `fallthrough` statement to indicate that
+    // control flow should continue to the next block.
+    s := 1
+    switch s {
+    case 1:
+        fallthrough
+    case 2:
+        fallthrough
+    case 3:
+        fmt.Println("s is either 1, 2 or 3")
+    default:
+        fmt.Println("s is not 1, 2 or 3")
+    }
 }
 
 // todo: type switches
