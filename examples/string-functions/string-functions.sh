@@ -9,7 +9,7 @@ Repeat:     aaaaa
 Replace:    f00
 Replace:    f0o
 Split:      [a b c d e]
-toLower:    test
+ToLower:    test
 ToUpper:    TEST
 
 Len:  5

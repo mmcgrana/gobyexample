@@ -166,7 +166,7 @@ and getting a character by index.</p>
 <span class="go">Replace:    f00</span>
 <span class="go">Replace:    f0o</span>
 <span class="go">Split:      [a b c d e]</span>
-<span class="go">toLower:    test</span>
+<span class="go">ToLower:    test</span>
 <span class="go">ToUpper:    TEST</span>
 </pre></div>
 
