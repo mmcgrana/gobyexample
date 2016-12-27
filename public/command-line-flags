@@ -279,7 +279,7 @@ generated help text for the command-line program.</p>
           <td class="docs">
             <p>If you provide a flag that wasn&rsquo;t specified to the
 <code>flag</code> package, the program will print an error message
-an show the help text again.</p>
+and show the help text again.</p>
 
           </td>
           <td class="code leading">
