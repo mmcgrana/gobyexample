@@ -1,6 +1,6 @@
 // In the previous example we used explicit locking with
-// mutexes to synchronize access to shared state across
-// multiple goroutines. Another option is to use the
+// [mutexes](mutexes) to synchronize access to shared state
+// across multiple goroutines. Another option is to use the
 // built-in synchronization features of  goroutines and
 // channels to achieve the same result. This channel-based
 // approach aligns with Go's ideas of sharing memory by
