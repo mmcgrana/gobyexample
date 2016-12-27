@@ -9,7 +9,6 @@
 
 package main
 
-import "errors"
 import "fmt"
 
 // By convention, errors are the last return value and
@@ -17,9 +16,10 @@ import "fmt"
 func f1(arg int) (int, error) {
     if arg == 42 {
 
-        // `errors.New` constructs a basic `error` value
-        // with the given error message.
-        return -1, errors.New("can't work with 42")
+        // `fmt.Errorf` is a wrapper to `errors.New` that
+        // constructs a basic `error` value with
+        // the given error message.
+        return -1, fmt.Errorf("can't work with %d", arg)
 
     }
 
