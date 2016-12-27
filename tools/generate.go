@@ -129,6 +129,7 @@ type Example struct {
     GoCode, GoCodeHash, UrlHash string
     Segs                        [][]*Seg
     NextExample                 *Example
+    PrevExample                 *Example
 }
 
 func parseHashFile(sourcePath string) (string, string) {
@@ -249,6 +250,9 @@ func parseExamples() []*Example {
     for i, example := range examples {
         if i < (len(examples) - 1) {
             example.NextExample = examples[i+1]
+        }
+        if i > 0 {
+            example.PrevExample = examples[i-1]
         }
     }
     return examples

@@ -28,12 +28,17 @@
             {{.DocsRendered}}
           </td>
           <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-	        {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.UrlHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
+               {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.UrlHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
             {{.CodeRendered}}
           </td>
         </tr>
         {{end}}
       </table>
+      {{end}}
+      {{if .PrevExample}}
+      <p class="next">
+        Previous example: <a href="{{.PrevExample.Id}}">{{.PrevExample.Name}}</a>.
+      </p>
       {{end}}
       {{if .NextExample}}
       <p class="next">
