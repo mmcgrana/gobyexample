@@ -13,8 +13,9 @@ import "time"
 // simulate an expensive task.
 func worker(id int, jobs <-chan int, results chan<- int) {
     for j := range jobs {
-        fmt.Println("worker", id, "processing job", j)
+        fmt.Println("worker", id, "started  job", j)
         time.Sleep(time.Second)
+        fmt.Println("worker", id, "finished job", j)
         results <- j * 2
     }
 }
@@ -33,15 +34,15 @@ func main() {
         go worker(w, jobs, results)
     }
 
-    // Here we send 9 `jobs` and then `close` that
+    // Here we send 5 `jobs` and then `close` that
     // channel to indicate that's all the work we have.
-    for j := 1; j <= 9; j++ {
+    for j := 1; j <= 5; j++ {
         jobs <- j
     }
     close(jobs)
 
     // Finally we collect all the results of the work.
-    for a := 1; a <= 9; a++ {
+    for a := 1; a <= 5; a++ {
         <-results
     }
 }
