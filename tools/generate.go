@@ -77,9 +77,11 @@ func cachedPygmentize(lex string, src string) string {
         return string(cacheBytes)
     }
     renderBytes := pipe(pygmentizeBin, arg, src)
-    writeErr := ioutil.WriteFile(cachePath, renderBytes, 0600)
+    // Newer versions of Pygments add silly empty spans.
+    renderCleanString := strings.Replace(string(renderBytes), "<span></span>", "", -1)
+    writeErr := ioutil.WriteFile(cachePath, []byte(renderCleanString), 0600)
     check(writeErr)
-    return string(renderBytes)
+    return renderCleanString
 }
 
 func markdown(src string) string {
