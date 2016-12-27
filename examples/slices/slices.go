@@ -56,6 +56,13 @@ func main() {
     l = s[2:]
     fmt.Println("sl3:", l)
 
+    // When you create a slice using the "slice" operator
+    // note that any changes to the new slice will also
+    // change the old slice
+    l[0] = "Z"
+    fmt.Println("l[0]:", l)
+    fmt.Println("s[2]:", s[2])
+
     // We can declare and initialize a variable for slice
     // in a single line as well.
     t := []string{"g", "h", "i"}

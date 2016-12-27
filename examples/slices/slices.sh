@@ -10,6 +10,8 @@ cpy: [a b c d e f]
 sl1: [c d e]
 sl2: [a b c d e]
 sl3: [c d e f]
+l[0]: [Z d e f]
+s[2]: Z
 dcl: [g h i]
 2d:  [[0] [1 2] [2 3 4]]
 
