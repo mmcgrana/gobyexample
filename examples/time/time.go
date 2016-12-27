@@ -1,4 +1,4 @@
-// Go's offers extensive support for times and durations;
+// Go offers extensive support for times and durations;
 // here are some examples.
 
 package main
