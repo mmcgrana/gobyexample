@@ -40,7 +40,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/mGqqcBZ0jv"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/egSvQrHmW6"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -110,11 +110,29 @@ until you <code>break</code> out of the loop or <code>return</code> from
 the enclosing function.</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">for</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;loop&quot;</span><span class="p">)</span>
         <span class="k">break</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can also <code>continue</code> to the next loop</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">n</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">n</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -140,6 +158,11 @@ the enclosing function.</p>
 <span class="go">8</span>
 <span class="go">9</span>
 <span class="go">loop</span>
+<span class="go">1</span>
+<span class="go">3</span>
+<span class="go">5</span>
+<span class="go">7</span>
+<span class="go">9</span>
 </pre></div>
 
           </td>

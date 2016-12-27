@@ -6,6 +6,11 @@ $ go run for.go
 8
 9
 loop
+1
+3
+5
+7
+9
 
 # We'll see some other `for` forms later when we look at
 # `range` statements, channels, and other data
