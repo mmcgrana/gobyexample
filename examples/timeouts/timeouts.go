@@ -46,5 +46,3 @@ func main() {
         fmt.Println("timeout 2")
     }
 }
-
-// todo: cancellation?

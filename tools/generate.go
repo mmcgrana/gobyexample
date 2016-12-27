@@ -116,7 +116,6 @@ func debug(msg string) {
 }
 
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
-var todoPat = regexp.MustCompile("\\/\\/ todo: ")
 var dashPat = regexp.MustCompile("\\-+")
 
 type Seg struct {
@@ -159,9 +158,6 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
     for _, line := range lines {
         if line == "" {
             lastSeen = ""
-            continue
-        }
-        if todoPat.MatchString(line) {
             continue
         }
         matchDocs := docsPat.MatchString(line)

@@ -25,6 +25,3 @@ func main() {
     _, c := vals()
     fmt.Println(c)
 }
-
-// todo: named return parameters
-// todo: naked returns
