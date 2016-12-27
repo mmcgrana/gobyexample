@@ -10,7 +10,6 @@ package main
 import "fmt"
 import "time"
 import "sync/atomic"
-import "runtime"
 
 func main() {
 
@@ -30,8 +29,8 @@ func main() {
                 // `&` syntax.
                 atomic.AddUint64(&ops, 1)
 
-                // Allow other goroutines to proceed.
-                runtime.Gosched()
+                // Wait a bit between increments.
+                time.Sleep(time.Millisecond)
             }
         }()
     }

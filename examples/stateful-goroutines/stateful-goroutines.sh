@@ -1,8 +1,9 @@
 # Running our program shows that the goroutine-based
-# state management example achieves about 800,000
-# operations per second.
+# state management example completes about 80,000
+# total operations.
 $ go run stateful-goroutines.go
-ops: 807434
+readOps: 71708
+writeOps: 7177
 
 # For this particular case the goroutine-based approach
 # was a bit more involved than the mutex-based one. It

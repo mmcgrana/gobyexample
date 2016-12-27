@@ -42,7 +42,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/kZrod-Rkos"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/a9Wky7k-Bw"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -58,7 +58,6 @@ to safely access data across multiple goroutines.</p>
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;fmt&quot;</span>
     <span class="s">&quot;math/rand&quot;</span>
-    <span class="s">&quot;runtime&quot;</span>
     <span class="s">&quot;sync&quot;</span>
     <span class="s">&quot;sync/atomic&quot;</span>
     <span class="s">&quot;time&quot;</span>
@@ -108,14 +107,14 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>To compare the mutex-based approach with another
-we&rsquo;ll see later, <code>ops</code> will count how many
-operations we perform against the state.</p>
+            <p>We&rsquo;ll keep track of how many read and write
+operations we do.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">readOps</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nx">writeOps</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
 </pre></div>
 
           </td>
@@ -124,7 +123,8 @@ operations we perform against the state.</p>
         <tr>
           <td class="docs">
             <p>Here we start 100 goroutines to execute repeated
-reads against the state.</p>
+reads against the state, once per millisecond in
+each goroutine.</p>
 
           </td>
           <td class="code leading">
@@ -145,7 +145,7 @@ reads against the state.</p>
 exclusive access to the <code>state</code>, read
 the value at the chosen key,
 <code>Unlock()</code> the mutex, and increment
-the <code>ops</code> count.</p>
+the <code>readOps</code> count.</p>
 
           </td>
           <td class="code leading">
@@ -154,7 +154,7 @@ the <code>ops</code> count.</p>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
                 <span class="nx">total</span> <span class="o">+=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">readOps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -162,19 +162,12 @@ the <code>ops</code> count.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to ensure that this goroutine
-doesn&rsquo;t starve the scheduler, we explicitly
-yield after each operation with
-<code>runtime.Gosched()</code>. This yielding is
-handled automatically with e.g. every
-channel operation and for blocking
-calls like <code>time.Sleep</code>, but in this
-case we need to do it manually.</p>
+            <p>Wait a bit between reads.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+            <div class="highlight"><pre>                <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}()</span>
     <span class="p">}</span>
@@ -199,8 +192,8 @@ using the same pattern we did for reads.</p>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
                 <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">val</span>
                 <span class="nx">mutex</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">writeOps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}()</span>
     <span class="p">}</span>
@@ -225,13 +218,15 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Take and report a final operations count.</p>
+            <p>Take and report final operation counts.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+            <div class="highlight"><pre>    <span class="nx">readOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">readOps</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;readOps:&quot;</span><span class="p">,</span> <span class="nx">readOpsFinal</span><span class="p">)</span>
+    <span class="nx">writeOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">writeOps</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;writeOps:&quot;</span><span class="p">,</span> <span class="nx">writeOpsFinal</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -260,15 +255,16 @@ using the same pattern we did for reads.</p>
         <tr>
           <td class="docs">
             <p>Running the program shows that we executed about
-3,500,000 operations against our <code>mutex</code>-synchronized
+90,000 total operations against our <code>mutex</code>-synchronized
 <code>state</code>.</p>
 
           </td>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="gp">$</span> go run mutexes.go
-<span class="go">ops: 3598302</span>
-<span class="go">state: map[1:38 4:98 2:23 3:85 0:44]</span>
+<span class="go">readOps: 83285</span>
+<span class="go">writeOps: 8320</span>
+<span class="go">state: map[1:97 4:53 0:33 2:15 3:2]</span>
 </pre></div>
 
           </td>

@@ -44,7 +44,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/2h8nvrnaHP"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/8p48eFFxDZ"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -60,7 +60,6 @@ counters</em> accessed by multiple goroutines.</p>
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;time&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;sync/atomic&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;runtime&quot;</span>
 </pre></div>
 
           </td>
@@ -127,12 +126,12 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            <p>Allow other goroutines to proceed.</p>
+            <p>Wait a bit between increments.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+            <div class="highlight"><pre>                <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}()</span>
     <span class="p">}</span>
@@ -187,7 +186,7 @@ fetch the value.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre><span class="gp">$</span> go run atomic-counters.go
-<span class="go">ops: 40200</span>
+<span class="go">ops: 41419</span>
 </pre></div>
 
           </td>

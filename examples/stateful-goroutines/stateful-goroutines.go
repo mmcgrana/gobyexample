@@ -37,7 +37,8 @@ type writeOp struct {
 func main() {
 
     // As before we'll count how many operations we perform.
-    var ops int64 = 0
+    var readOps uint64 = 0
+    var writeOps uint64 = 0
 
     // The `reads` and `writes` channels will be used by
     // other goroutines to issue read and write requests,
@@ -80,7 +81,8 @@ func main() {
                     resp: make(chan int)}
                 reads <- read
                 <-read.resp
-                atomic.AddInt64(&ops, 1)
+                atomic.AddUint64(&readOps, 1)
+                time.Sleep(time.Millisecond)
             }
         }()
     }
@@ -96,7 +98,8 @@ func main() {
                     resp: make(chan bool)}
                 writes <- write
                 <-write.resp
-                atomic.AddInt64(&ops, 1)
+                atomic.AddUint64(&writeOps, 1)
+                time.Sleep(time.Millisecond)
             }
         }()
     }
@@ -104,7 +107,9 @@ func main() {
     // Let the goroutines work for a second.
     time.Sleep(time.Second)
 
-    // Finally, capture and report the `ops` count.
-    opsFinal := atomic.LoadInt64(&ops)
-    fmt.Println("ops:", opsFinal)
+    // Finally, capture and report the op counts.
+    readOpsFinal := atomic.LoadUint64(&readOps)
+    fmt.Println("readOps:", readOpsFinal)
+    writeOpsFinal := atomic.LoadUint64(&writeOps)
+    fmt.Println("writeOps:", writeOpsFinal)
 }

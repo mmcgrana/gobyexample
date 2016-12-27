@@ -8,7 +8,6 @@ package main
 import (
     "fmt"
     "math/rand"
-    "runtime"
     "sync"
     "sync/atomic"
     "time"
@@ -22,13 +21,14 @@ func main() {
     // This `mutex` will synchronize access to `state`.
     var mutex = &sync.Mutex{}
 
-    // To compare the mutex-based approach with another
-    // we'll see later, `ops` will count how many
-    // operations we perform against the state.
-    var ops int64 = 0
+    // We'll keep track of how many read and write
+    // operations we do.
+    var readOps uint64 = 0
+    var writeOps uint64 = 0
 
     // Here we start 100 goroutines to execute repeated
-    // reads against the state.
+    // reads against the state, once per millisecond in
+    // each goroutine.
     for r := 0; r < 100; r++ {
         go func() {
             total := 0
@@ -39,22 +39,15 @@ func main() {
                 // exclusive access to the `state`, read
                 // the value at the chosen key,
                 // `Unlock()` the mutex, and increment
-                // the `ops` count.
+                // the `readOps` count.
                 key := rand.Intn(5)
                 mutex.Lock()
                 total += state[key]
                 mutex.Unlock()
-                atomic.AddInt64(&ops, 1)
+                atomic.AddUint64(&readOps, 1)
 
-                // In order to ensure that this goroutine
-                // doesn't starve the scheduler, we explicitly
-                // yield after each operation with
-                // `runtime.Gosched()`. This yielding is
-                // handled automatically with e.g. every
-                // channel operation and for blocking
-                // calls like `time.Sleep`, but in this
-                // case we need to do it manually.
-                runtime.Gosched()
+                // Wait a bit between reads.
+                time.Sleep(time.Millisecond)
             }
         }()
     }
@@ -69,8 +62,8 @@ func main() {
                 mutex.Lock()
                 state[key] = val
                 mutex.Unlock()
-                atomic.AddInt64(&ops, 1)
-                runtime.Gosched()
+                atomic.AddUint64(&writeOps, 1)
+                time.Sleep(time.Millisecond)
             }
         }()
     }
@@ -79,9 +72,11 @@ func main() {
     // `mutex` for a second.
     time.Sleep(time.Second)
 
-    // Take and report a final operations count.
-    opsFinal := atomic.LoadInt64(&ops)
-    fmt.Println("ops:", opsFinal)
+    // Take and report final operation counts.
+    readOpsFinal := atomic.LoadUint64(&readOps)
+    fmt.Println("readOps:", readOpsFinal)
+    writeOpsFinal := atomic.LoadUint64(&writeOps)
+    fmt.Println("writeOps:", writeOpsFinal)
 
     // With a final lock of `state`, show how it ended up.
     mutex.Lock()
