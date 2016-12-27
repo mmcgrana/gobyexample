@@ -28,6 +28,7 @@ func main() {
                 // address of our `ops` counter with the
                 // `&` syntax.
                 atomic.AddUint64(&ops, 1)
+                time.Sleep(time.Millisecond)
 
                 // Wait a bit between increments.
                 time.Sleep(time.Millisecond)
