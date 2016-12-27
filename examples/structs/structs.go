@@ -38,4 +38,7 @@ func main() {
     // Structs are mutable.
     sp.age = 51
     fmt.Println(sp.age)
+    
+    // Pointers impact the original struct
+    fmt.Println(s)
 }
