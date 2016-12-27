@@ -7,7 +7,9 @@ dashes-identifiers = ->
 underscores_i$d = ->
   /regexp1/
   //regexp2//g
-  'strings' and "strings" and \strings
+  'strings' and "strings" and \strings and \#$-"\'strings
+
+another-word-list = <[ more words ]>
 
 [2 til 10]
   |> map (* 2)

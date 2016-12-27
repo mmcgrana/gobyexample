@@ -1,0 +1,32 @@
+* Easytrieve Plus example programm.
+
+* Environtment section.
+PARM DEBUG(FLOW FLDCHK)
+
+* Library Section.
+FILE PERSNL FB(150 1800)
+  NAME  17 8 A
+  EMP#   9 5 N * Note: '#' is a valid character for names.
+  DEPT  98 3 N. GROSS 94 4 P 2
+  *           ^ 2 field definitions in 1 line.
+
+* Call macro in example.mac.
+FILE EXAMPLE FB(80 200)
+%EXAMPLE SOMEFILE SOME
+
+* Activity Section.
+JOB INPUT PERSNL NAME FIRST-PROGRAM START AT-START FINISH AT_FINISH
+  PRINT PAY-RPT
+REPORT PAY-RPT LINESIZE 80
+  TITLE 01 'PERSONNEL REPORT EXAMPLE-1'
+  LINE 01 DEPT NAME EMP# GROSS
+
+* Procedure declarations.
+AT-START. PROC
+  DISPLAY 'PROCESSING...'
+END-PROC
+
+AT-FINISH
+PROC
+  DISPLAY 'DONE.'
+END-PROC

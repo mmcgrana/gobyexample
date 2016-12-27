@@ -1,0 +1,33 @@
+
+/// @section  StringLiteralRef 
+
+record StringLiteralRef (
+    sizep : Pointer[SizeT],
+);
+
+
+/// @section  predicates 
+
+overload ContiguousSequence?(#StringLiteralRef) : Bool = true;
+[s when StringLiteral?(s)]
+overload ContiguousSequence?(#Static[s]) : Bool = true;
+
+
+
+/// @section  size, begin, end, index 
+
+forceinline overload size(a:StringLiteralRef) = a.sizep^;
+
+forceinline overload begin(a:StringLiteralRef) : Pointer[Char] = Pointer[Char](a.sizep + 1);
+forceinline overload end(a:StringLiteralRef) = begin(a) + size(a);
+
+[I when Integer?(I)]
+forceinline overload index(a:StringLiteralRef, i:I) : ByRef[Char] {
+    assert["boundsChecks"](i >= 0 and i < size(a), "StringLiteralRef index out of bounds");
+    return ref (begin(a) + i)^;
+}
+
+foo() = """
+long\tlong
+story
+"""

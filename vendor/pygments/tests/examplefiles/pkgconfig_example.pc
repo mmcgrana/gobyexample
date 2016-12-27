@@ -1,0 +1,18 @@
+# This is for a fictional package `yet another portable hatchpotch generator'.
+prefix=/usr/local/opt/site/private # define variable `prefix`
+exec_prefix=${prefix} # using variable reference
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+just_for_test=$${this is not a part of variable reference} # escape with `$$`
+
+Name: YAPHatchPotchGen
+Description: Yet Another Portable HatchPotch GENerator.
+Version: 352.9.3
+URL: http://www9.yaphatchpotchgen.net  # Don't access.
+Requires: piyohogelib-9.0 = 9.5.3
+Requires.private: nyorolib-3.0 = 3.0.9
+Conflicts: apiyohoge <= 8.3
+Libs: -L${libdir} -lyaphatchpotchgen-352.9 # using variable reference
+Libs.private: -ll -ly
+Cflags: -I${includedir}/piyohogelib-9.0 -I${libdir}/yaphatchpotchgen/include
+

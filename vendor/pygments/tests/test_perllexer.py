@@ -3,7 +3,7 @@
     Pygments regex lexer tests
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -11,7 +11,7 @@ import time
 import unittest
 
 from pygments.token import String
-from pygments.lexers.agile import PerlLexer
+from pygments.lexers.perl import PerlLexer
 
 
 class RunawayRegexTest(unittest.TestCase):

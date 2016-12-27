@@ -1,0 +1,115 @@
+node 167906355: sle12-a
+node 167906357: sle12-c \
+	description="The second node" \
+	utilization memory=64
+node node1 \
+	attributes mem=16G
+node node2 utilization cpu=4
+primitive st stonith:ssh \
+	params hostlist="node1 node2" \
+	meta target-role="Started" \
+	op start requires=nothing timeout=60s \
+	op monitor interval=60m timeout=60s
+primitive d1 ocf:pacemaker:Dummy \
+	operations $id=d1-ops \
+	op monitor interval=60m \
+	op monitor interval=120m OCF_CHECK_LEVEL=10
+primitive fs1 Filesystem \
+	params device="/dev/nfs-vg/fs1" directory="/srv/nfs" fstype=ext3 \
+	op monitor interval=10s
+primitive nfs-server nfsserver \
+	params nfs_shared_infodir="/srv/nfs/state" nfs_ip=10.2.12.100 \
+	op monitor interval=0 trace_ra=1
+primitive nfs-vg LVM \
+	params volgrpname=nfs-vg
+primitive p_drbd_nfs ocf:linbit:drbd \
+	params drbd_resource=nfs \
+	op monitor interval=15 role=Master \
+	op monitor interval=30 role=Slave \
+	op start interval=0 timeout=300 \
+	op stop interval=0 timeout=120
+primitive s-libvirt stonith:external/libvirt \
+	params hostlist="sle12-a sle12-c" hypervisor_uri="qemu+ssh://hex-10.suse.de/system?keyfile=/root/.ssh/xen" reset_method=reboot \
+	op monitor interval=5m timeout=60s
+primitive virtual-ip IPaddr2 \
+	params ip=10.2.12.100
+primitive xen0 @vm_scheme1 xmfile=/etc/xen/vm/xen0
+primitive d7 Dummy \
+	params rule inf: #uname eq node1 fake=1 \
+	params rule inf: #uname eq node2 fake=2
+primitive very-primitive Dummy \
+  params 3: rule #uname eq node1 interface=eth1 \
+  params 2: rule #uname string:eq node2 interface=eth2 port=8888 \
+  params 1: interface=eth0 port=9999 \
+  operations $id-ref=those_other_ops
+fencing_topology poison-pill power
+fencing_topology \
+    node-a: poison-pill power \
+	node-b: ipmi serial
+role nfs_admin \
+    write meta:nfs-server:target-role \
+    write meta:nfs-server:is-managed \
+    write location:nfs-server \
+    read ref:nfs-server
+role basic-read \
+	read status \
+	read type:node attribute:uname \
+	read type:node attribute:type \
+	read property
+role basic-read-basic \
+	read cib
+role d0-admin \
+	write meta:d0:target-role \
+	write meta:d0:is-managed \
+	read xpath:"//nodes//attributes" \
+	read ref:d0
+acl_target joe \
+	nfs_admin
+tag nfs: nfs-server nfs-vg
+group nfs-disk nfs-vg fs1
+group nfs-srv virtual-ip nfs-server
+ms ms_drbd_nfs p_drbd_nfs \
+	meta notify=true clone-max=2
+location nfs-pref virtual-ip 100: sle12-a
+location l1 nfs-srv 100: node1
+location l2 d1 \
+	rule 100: #uname eq node1
+location l3 d1 \
+	rule inf: #uname eq node1 and pingd gt 0
+location l4 d1 \
+	rule -inf: not_defined pingd or pingd lte 0
+location l5 fs1 \
+	rule -inf: not_defined pingd or pingd lte 0 \
+	rule #uname eq node1 and pingd gt 0 \
+	rule date lt 2009-05-26 and date in start=2009-05-26 end=2009-07-26 and date in start=2009-05-26 years=2009 and date spec years=2009 hours=09-17
+location l6 d1 \
+	rule $id-ref=l2-rule1
+location l7 d1 \
+	rule $id-ref=l2
+colocation c-nfs inf: nfs-server fs1
+colocation vg-with-drbd inf: nfs-vg ms_drbd_nfs:Master
+# drbd device is the nfs-vg PV
+order drbd-before-vg inf: ms_drbd_nfs:promote nfs-vg:start
+# need fs1 for the NFS server
+order o-nfs inf: fs1 nfs-server
+rsc_ticket ticket-A_m6 ticket-A: d1
+rsc_ticket ticket-B_m6_m5 ticket-B: d1 d7 loss-policy=fence
+rsc_ticket ticket-C_master ticket-C: d1 ms_drbd_nfs:Master loss-policy=fence
+property cpset2: \
+	maintenance-mode=true
+property cib-bootstrap-options: \
+	dc-version=1.1.12-ad083a8 \
+	cluster-infrastructure=corosync \
+	cluster-name=sle12-test3l-public \
+	no-quorum-policy=ignore \
+	startup-fencing=false \
+	last-lrm-refresh=1415877622 \
+	maintenance-mode=false
+op_defaults op-options: \
+	timeout=120s
+rsc_defaults rsc-options: \
+	failure-timeout=10m
+op_defaults opsdef2: \
+	rule 100: #uname eq node1 \
+	record-pending=true
+tag t1: d1 d7 opsdef2

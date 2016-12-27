@@ -1,0 +1,40 @@
+##################
+# A sample graph
+##################
+
+import some-definition.graph;
+import another-definition.graph;
+
+VM {
+	installer : target;
+	children: deployable;
+}
+
+facet deployable {
+	# nothing
+}
+
+# Sample deployables
+mysql {
+	insTaller: puppet;
+	facets: deployable;
+	exports: ip, port = 3306;
+}
+
+tomcat {
+	installer: bash;
+	facets: deployable;
+	exports: ip;
+	children: web-application;
+}
+
+facet web-application {
+	exports: full-path = undefined;
+}
+
+my-war-1 {
+	facets: web-application;
+	installer: file;
+	exports: full-path = apps/my-war-1;	# the relative path
+	imports: mysql.*;
+}

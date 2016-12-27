@@ -1,0 +1,375 @@
+!% $SMALL ! This is ICL, not a comment.
+!% -w
+
+!% A comprehensive test of Inform6Lexer.
+
+Switches d2SDq;
+
+Constant Story "Informal Testing";
+Constant Headline "^Not a game.^";!% This is a comment, not ICL.
+
+Release 3;
+Serial "151213";
+Version 5;
+
+Ifndef TARGET_ZCODE;
+Ifndef TARGET_GLULX;
+Ifndef WORDSIZE;
+Default WORDSIZE 2;
+Constant TARGET_ZCODE;
+Endif;
+Endif;
+Endif;
+
+Ifv3; Message "Compiling to version 3"; Endif;
+Ifv5; Message "Not compiling to version 3"; endif;
+ifdef TARGET_ZCODE;
+#IFTRUE (#version_number == 5);
+Message "Compiling to version 5";
+#ENDIF;
+endif ;
+
+Replace CreatureTest;
+
+Include "Parser";
+Include "VerbLib";
+
+# ! A hash is optional at the top level.
+Object kitchen "Kitchen"
+    with description "You are in a kitchen.",
+        arr 1 2 3 4,
+    has light;
+
+#[ Initialise;
+    location = kitchen;
+    print "v"; inversion; "^";
+];
+
+Ifdef VN_1633;
+Replace IsSeeThrough IsSeeThroughOrig;
+[ IsSeeThrough * o;
+    return o hasnt opaque || IsSeeThroughOrig(o);
+];
+Endif;
+
+Abbreviate "test";
+
+Array table buffer 260;
+
+Attribute reversed;
+Attribute opaque alias locked;
+Constant to reversed;
+
+Property long additive additive long alias;
+Property long long long wingspan alias alias;
+
+Class Flier with wingspan 5;
+Class Bird(10) has animate class Flier with wingspan 2;
+
+Constant Constant1;
+Constant Constant2 Constant1;
+Constant Constant3 = Constant2;
+Ifdef VN_1633; Undef Constant; Endif;
+
+Ifdef VN_1633;
+Dictionary 'word' 1 2;
+Ifnot;
+Dictionary dict_word "word";
+Endif;
+
+Fake_action NotReal;
+
+Global global1;
+Global global2 = 69105;
+
+Lowstring low_string "low string";
+
+Iftrue false;
+Message error "Uh-oh!^~false~ shouldn't be ~true~.";
+Endif;
+Iffalse true;
+Message fatalerror "Uh-oh!^~true~ shouldn't be ~false~.";
+Endif;
+
+Nearby person "person"
+    with name 'person',
+         description "This person is barely implemented.",
+         life [ * x y z;
+             Ask: print_ret (The) self, " says nothing.";
+             Answer: print (The) self, " didn't say anything.^"; rfalse;
+         ]
+    has has animate transparent;
+
+Object -> -> test_tube "test tube"
+    with name 'test' "tube" 'testtube',
+    has ~openable ~opaque container;
+
+Bird -> pigeon
+    with name 'pigeon',
+        description [;
+            "The pigeon has a wingspan of ", self.&wingspan-->0, " wing units.";
+        ];
+
+Object -> "thimble" with name 'thimble';
+
+Object -> pebble "pebble" with name 'pebble';
+
+Ifdef TARGET_ZCODE; Trace objects; Endif;
+
+Statusline score;
+
+Stub StubR 3;
+
+Ifdef TARGET_ZCODE;
+Zcharacter "abcdefghijklmnopqrstuvwxyz"
+           "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+           "123456789.,!?_#'0/@{005C}-:()";
+Zcharacter table '@!!' '@<<' '@'A';
+Zcharacter table + '@AE' '@{dc}' '@et' '@:y';
+Ifnot;
+Ifdef TARGET_GLULX;
+Message "Glulx doesn't use ~Zcharacter~.^Oh well."; ! '~' and '^' work here.
+Ifnot;
+Message warning "Uh-oh! ^~^"; ! They don't work in other Messages.
+Endif;
+Endif;
+
+Include "Grammar";
+
+Verb"acquire"'collect'='take';
+
+[ NounFilter; return noun ofclass Bird; ];
+
+[ ScopeFilter obj;
+    switch (scope_stage) {
+    1: rtrue;
+    2: objectloop (obj in compass) PlaceInScope(obj);
+    3: "Nothing is in scope.";
+    }
+];
+
+Verb meta "t" 'test'
+    * 'held' held -> TestHeld
+    * number -> TestNumber
+    * reversed -> TestAttribute
+    * 'creature' creature -> TestCreature
+    * 'multiheld' multiheld -> TestMultiheld
+    * 'm' multiexcept 'into'/"in" noun -> TestMultiexcept
+    * 'm' multiinside 'from' noun -> TestMultiinside
+    * multi -> TestMulti
+    * 'filter'/'f' noun=NounFilter -> TestNounFilter
+    * 'filter'/'f' scope=ScopeFilter -> TestScopeFilter
+    * 'special' special -> TestSpecial
+    * topic -> TestTopic;
+
+Verb 'reverse' 'swap' 'exchange'
+    * held 'for' noun -> reverse
+    * noun 'with' noun -> reverse reverse;
+
+Extend "t" last * noun -> TestNoun;
+
+Extend 't' first * -> Test;
+
+Extend 'wave' replace * -> NewWave;
+
+Extend only 'feel' 'touch' replace * noun -> Feel;
+
+[ TestSub "a\
+           " b o "@@98"; ! Not an escape sequence.
+    string 25 low_string;
+    print "Test what?> ";
+    table->0 = 260;
+    parse->0 = 61;
+    #Ifdef TARGET_ZCODE;
+    read buffer parse;
+    #Ifnot; ! TARGET_GLULX
+    KeyboardPrimitive(buffer, parse);
+    #Endif; ! TARGET_
+    switch (parse-->1) {
+    'save':
+        #Ifdef TARGET_ZCODE;
+        #Ifv3;
+        @save ?saved;
+        #Ifnot;
+        save saved;
+        #Endif;
+        #Endif;
+        print "Saving failed.^";
+    'restore':
+        #Ifdef TARGET_ZCODE;
+        restore saved;
+        #Endif;
+        print "Restoring failed.^";
+    'restart':
+        @restart;
+    'quit', 'q//':
+        quit;
+        return 2; rtrue; rfalse; return;
+    'print', 'p//':
+        print "Print:^",
+            " (string): ", (string) "xyzzy^",
+            " (number): ", (number) 123, "^",
+            " (char): ", (char) 'x', "^",
+            " (address): ", (address) 'plugh//p', "^",
+            " (The): ", (The) person, "^",
+            " (the): ", (the) person, "^",
+            " (A): ", (A) person, "^",
+            " (a): ", (a) person, "^",
+            " (an): ", (an) person, "^",
+            " (name): ", (name) person, "^",
+            " (object): ", (object) person, "^",
+            " (property): ", (property) alias, "^",
+            " (<routine>): ", (LanguageNumber) 123, "^",
+            " <expression>: ", a * 2 - 1, "^",
+            " (<expression>): ", (a + person), "^";
+        print "Escapes:^",
+            " by mnemonic: @!! @<< @'A @AE @et @:y^",
+            " by decimal value: @@64 @@126^",
+            " by Unicode value: @{DC}@{002b}^",
+            " by string variable: @25^";
+    'font', 'style': 
+        font off; print "font off^";
+        font on; print "font on^";
+        style reverse; print "style reverse^"; style roman;
+        style bold; print "style bold^";
+        style underline; print "style underline^";
+        style fixed; print "style fixed^";
+        style roman; print "style roman^";
+    'statements':
+        spaces 8;
+        objectloop (o) {
+            print "objectloop (o): ", (the) o, "^";
+        }
+        objectloop (o in compass) { ! 'in' is a keyword
+            print "objectloop (o in compass): ", (the) o, "^";
+        }
+        objectloop (o in compass && true) { ! 'in' is an operator
+            print "objectloop (o in compass && true): ", (the) o, "^";
+        }
+        objectloop (o from se_obj) {
+            print "objectloop (o from se_obj): ", (the) o, "^";
+        }
+        objectloop (o near person) {
+            print "objectloop (o near person): ", (the) o, "^";
+        }
+        #Ifdef TARGET_ZCODE;
+        #Trace assembly on;
+@ ! This is assembly.
+        add -4 ($$1+$3)*2 -> b;
+        @get_sibling test_tube -> b ?saved;
+        @inc [b];
+        @je sp (1+3*0) ? equal;
+        @je 1 ((sp)) ?~ different;
+        .! This is a label:
+            equal;
+        print "sp == 1^";
+        jump label;
+        .different;
+        print "sp @@126= 1^";
+        .label;
+        #Trace off; #Endif; ! TARGET_ZCODE
+        a = random(10);
+        switch (a) {
+        1, 9:
+            box "Testing oneself is best when done alone."
+                "                         -- Jimmy Carter";
+        2, 6, to, 3 to 5, to to to:
+            <Take pigeon>;
+            #Ifdef VN_1633;
+            <Jump, person>;
+            #Endif;
+            a = ##Drop;
+            < ! The angle brackets may be separated by whitespace.
+                < (a) pigeon > >;
+        default:
+            do {
+                give person general ~general;
+            } until (person provides life && ~~false);
+            if (a == 7) a = 4;
+            else a = 5;
+        }
+    'expressions':
+        a = 1+1-1*1/1%1&1|1&&1||1==(1~=(1>(1<(1>=(1<=1)))));
+        a++; ++a; a--; --a;
+        a = person.life;
+        a = kitchen.&arr;
+        a = kitchen.#arr;
+        a = Bird::wingspan;
+        a = kitchen has general;
+        a = kitchen hasnt general;
+        a = kitchen provides arr;
+        a = person in kitchen;
+        a = person notin kitchen;
+        a = person ofclass Bird;
+        a = a == 0 or 1;
+        a = StubR();
+        a = StubR(a);
+        a = StubR(, a);
+        a = "string";
+        a = 'word';
+        a = '''; ! character
+        a = $09afAF;
+        a = $$01;
+        a = ##Eat; a = #a$Eat;
+        a = #g$self;
+        a = #n$!word;
+        a = #r$StubR;
+        a = #dict_par1;
+    default:
+        for (a = 2, b = a; (a < buffer->1 + 2) && (Bird::wingspan): ++a, b--) {
+            print (char) buffer->a;
+        }
+        new_line;
+        for (::) break;
+    }
+    .saved;;
+];
+
+[ TestNumberSub;
+    print_ret parsed_number, " is ", (number) parsed_number, ".";
+];
+
+[ TestAttributeSub; print_ret (The) noun, " has been reversed."; ];
+
+[ CreatureTest obj; return obj has animate; ];
+
+[ TestCreatureSub; print_ret (The) noun, " is a creature."; ];
+
+[ TestMultiheldSub; print_ret "You are holding ", (the) noun, "."; ];
+
+[ TestMultiexceptSub; "You test ", (the) noun, " with ", (the) second, "."; ];
+
+[ TestMultiinsideSub; "You test ", (the) noun, " from ", (the) second, "."; ];
+
+[ TestMultiSub; print_ret (The) noun, " is a thing."; ];
+
+[ TestNounFilterSub; print_ret (The) noun, " is a bird."; ];
+
+[ TestScopeFilterSub; print_ret (The) noun, " is a direction."; ];
+
+[ TestSpecialSub; "Your lucky number is ", parsed_number, "."; ];
+
+[ TestTopicSub; "You discuss a topic."; ];
+
+[ TestNounSub; "That is ", (a) noun, "."; ];
+
+[ TestHeldSub; "You are holding ", (a) noun, "."; ];
+
+[ NewWaveSub; "That would be foolish."; ];
+
+[ FeelSub; print_ret (The) noun, " feels normal."; ];
+
+[ ReverseSub from;
+    from = parent(noun);
+    move noun to parent(second);
+    if (from == to)
+        move second to to;
+    else
+        move second to from;
+    give noun to;
+    from = to;
+    give second from;
+    "You swap ", (the) noun, " and ", (the) second, ".";
+];
+
+End: The End directive ends the source code.

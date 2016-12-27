@@ -1,0 +1,118 @@
+x = r"""
+>>> import os
+>>> print os
+<module 'os' from '/file/path.py'>
+>>> for x in range(10):
+...     y = x + 2
+...     print(x)
+...     if x > 5:
+...         raise Exception
+...
+0
+1
+2
+3
+4
+5
+6
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+Exception
+>>>
+>>> while True:
+...     pass
+...
+^CTraceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyboardInterrupt
+
+>>> class A(Exception):pass
+...
+>>> class B(Exception):pass
+...
+>>> try:
+...     try:
+...         raise A('first')
+...     finally:
+...         raise B('second')
+... except A as c:
+...     print(c)
+...
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+__main__.A: first
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+__main__.B: second
+
+>>> x =
+  File "<stdin>", line 1
+    x =
+       ^
+SyntaxError: invalid syntax
+>>>
+
+>>> x = 3
+>>> with 5 as y:
+...    print(x + y)
+...
+8
+
+# TODO
+#>>> raise ValueError('multi\n    line\ndetail')
+#Traceback (most recent call last):
+#........
+#ValueError: multi
+#    line
+#detail
+
+>>> raise ValueError('multi\n    line\ndetail')
+Traceback (most recent call last):
+ .123
+ValueError: multi
+    line
+detail
+
+>>> raise ValueError('multi\n    line\ndetail')
+Traceback (most recent call last):
+    ...
+ValueError: multi
+    line
+detail
+
+>>> raise ValueError('multi\n    line\ndetail')
+Traceback (most recent call last):
+    ....
+ValueError: multi
+    line
+detail
+
+>>> raise ValueError('multi\n    line\ndetail')
+Traceback (most recent call last):
+     ....
+ValueError: multi
+    line
+detail
+
+>>> raise ValueError('multi\n    line\ndetail')
+Traceback (most recent call last):
+  ...
+ValueError: multi
+    line
+detail
+
+>>> raise Exception
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+Exception
+>>> import somemodule
+>>> somemodule.blah()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/path/to/stuff/somemodule/blah.py", line 658, in blah
+    raise Exception('Hi.')
+Exception: Hi.
+

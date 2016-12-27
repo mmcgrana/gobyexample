@@ -31,7 +31,7 @@
     .. _directive documentation:
        http://docutils.sourceforge.net/docs/howto/rst-directives.html
 
-    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -75,9 +75,8 @@ class Pygments(Directive):
             # no lexer found - use the text one instead of an exception
             lexer = TextLexer()
         # take an arbitrary option if more than one is given
-        formatter = self.options and VARIANTS[self.options.keys()[0]] or DEFAULT
+        formatter = self.options and VARIANTS[list(self.options)[0]] or DEFAULT
         parsed = highlight(u'\n'.join(self.content), lexer, formatter)
         return [nodes.raw('', parsed, format='html')]
 
 directives.register_directive('sourcecode', Pygments)
-

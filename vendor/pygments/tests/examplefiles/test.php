@@ -1,5 +1,7 @@
 <?php
 
+$disapproval_ಠ_ಠ_of_php = 'unicode var';
+
 $test = function($a) { $lambda = 1; }
 
 /**
@@ -16,7 +18,7 @@ if(!defined('UNLOCK') || !UNLOCK)
 // Load the parent archive class
 require_once(ROOT_PATH.'/classes/archive.class.php');
 
-class Zip\Zipp {
+class Zip\Zippಠ_ಠ_ {
 
 }
 
@@ -502,4 +504,12 @@ function &byref() {
     $x = array();
     return $x;
 }
+
+     echo <<<EOF
+
+     Test the heredocs...
+
+     EOF;
+
 ?>
+

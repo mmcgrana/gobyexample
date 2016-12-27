@@ -1,0 +1,75 @@
+#!/usr/bin/env kal
+
+# This demo executes GET requests in parallel and in series
+# using `for` loops and `wait for` statements.
+
+# Notice how the serial GET requests always return in order
+# and take longer in total. Parallel requests come back in
+# order of receipt.
+
+http = require 'http'
+
+urls = ['http://www.google.com'
+        'http://www.apple.com'
+        'http://www.microsoft.com'
+        'http://www.nodejs.org'
+        'http://www.yahoo.com']
+
+# This function does a GET request for each URL in series
+# It will wait for a response from each request before moving on
+# to the next request. Notice the output will be in the same order as the
+# urls variable every time regardless of response time.
+# It is a task rather than a function because it is called asynchronously
+# This allows us to use `return` to implicitly call back
+task series_demo()
+  # The `series` keyword is optional here (for loops are serial by default)
+  total_time = 0
+
+  for series url in urls
+    timer = new Date
+
+    # we use the `safe` keyword because get is a "nonstandard" task
+    # that does not call back with an error argument
+    safe wait for response from http.get url
+
+    delay = new Date() - timer
+    total_time += delay
+
+    print "GET #{url} - #{response.statusCode} - #{response.connection.bytesRead} bytes - #{delay} ms"
+
+  # because we are in a task rather than a function, this actually exectutes a callback
+  return total_time
+
+# This function does a GET request for each URL in parallel
+# It will NOT wait for a response from each request before moving on
+# to the next request. Notice the output will be determined by the order in which
+# the requests complete!
+task parallel_demo()
+  total_time = 0
+
+  # The `parallel` keyword is only meaningful here because the loop contains
+  # a `wait for` statement (meaning callbacks are used)
+  for parallel url in urls
+    timer = new Date
+
+    # we use the `safe` keyword because get is a "nonstandard" task
+    # that does not call back with an error argument
+    safe wait for response from http.get url
+
+    delay = new Date() - timer
+    total_time += delay
+
+    print "GET #{url} - #{response.statusCode} - #{response.connection.bytesRead} bytes - #{delay}ms"
+
+  # because we are in a task rather than a function, this actually exectutes a callback
+  return total_time
+
+print 'Series Requests...'
+wait for time1 from series_demo()
+print "Total duration #{time1}ms"
+
+print ''
+
+print 'Parallel Requests...'
+wait for time2 from parallel_demo()
+print "Total duration #{time2}ms"

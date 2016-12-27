@@ -1,3 +1,9 @@
+preface.... everything what is before header is not evaluated
+so this should not be colorized:
+1 + 2
+
+REBOL [] ;<- this is minimal header, everything behind it must be colorized
+
 ;## String tests ##
 print "Hello ^"World" ;<- with escaped char
 multiline-string: {
@@ -52,15 +58,29 @@ type? #ff0000 ;== issue!
 to integer! (1 + (x / 4.5) * 1E-4)
 
 ;## some spec comments
-comment now
-comment 10
+1 + 1
+comment "aa"								
+2 + 2
+comment {aa}
+3 + 3
+comment {a^{}
+4 + 4
+comment {{}}
+5 + 5
 comment {
-    bla
-    bla
+	foo: 6
 }
-comment [
-    quit
-]
+6 + 6
+comment [foo: 6]
+7 + 7
+comment [foo: "[" ]
+8 + 8
+comment [foo: {^{} ]
+9 + 9
+comment [foo: {boo} ]
+10 + 10
+comment 5-May-2014/11:17:34+2:00
+5-May-2014/11:17:34+2:00 11 + 11	
 
 ;## other tests ##
 ---: 1

@@ -1,0 +1,20 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+task sayHello << {
+    def x = SomeClass.worldString
+    println "Hello ${x}"
+}
+
+private class SomeClass {
+    public static String getWorldString() {
+        return "world"
+    }
+}

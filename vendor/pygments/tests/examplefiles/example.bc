@@ -1,0 +1,53 @@
+/*
+ * Calculate the Greatest Common Divisor of a and b.
+ */
+define gcd(a, b) {
+    auto tmp;
+
+    /*
+     * Euclidean algorithm
+     */
+    while (b != 0) {
+        tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+    return a;
+}
+"gcd(225, 150) = " ; gcd(225, 150)
+
+/* assign operators */
+a = 10
+a += 1
+a++
+++a
+a--
+--a
+a += 5
+a -= 5
+a *= 2
+a /= 3
+a ^= 2
+a %= 2
+
+/* comparison */
+if (a > 2) {
+}
+if (a >= 2) {
+}
+if (a == 2) {
+}
+if (a != 2) {
+}
+if (a <= 2) {
+}
+if (a < 2) {
+}
+
+a /* /*/ * 2        /* == a * 2       */
+a //* /*/ 1.5       /* == a / 1.5     */
+a /*/*/ * 3         /* == a * 3       */
+a * 3 /**/ * 4      /* == a * 3 * 4   */
+a / 3 //*//*/ .4    /* == a / 3 / 0.4 */
+a / 3 //*//*/ 1.3   /* == a / 3 / 1.4 */
+a / 3 /*//*// 1.3   /* == a / 3 / 1.4 */

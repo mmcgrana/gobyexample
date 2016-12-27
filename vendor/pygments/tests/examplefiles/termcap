@@ -1,0 +1,1340 @@
+######## This example from excerpt of <http://www.catb.org/esr/terminfo/>:
+#
+#	Version 11.0.1
+#	$Date: 2000/03/02 15:51:11 $
+#	termcap syntax
+#
+
+######## ANSI, UNIX CONSOLE, AND SPECIAL TYPES
+#
+# This section describes terminal classes and brands that are still
+# quite common.
+#
+
+#### Specials
+#
+# Special "terminals".  These are used to label tty lines when you don't
+# know what kind of terminal is on it.  The characteristics of an unknown
+# terminal are the lowest common denominator - they look about like a ti 700.
+#
+
+dumb|80-column dumb tty:\
+	:am:\
+	:co#80:\
+	:bl=^G:cr=^M:do=^J:sf=^J:
+unknown|unknown terminal type:\
+	:gn:tc=dumb:
+lpr|printer|line printer:\
+	:bs:hc:os:\
+	:co#132:li#66:\
+	:bl=^G:cr=^M:do=^J:ff=^L:le=^H:sf=^J:
+glasstty|classic glass tty interpreting ASCII control characters:\
+	:am:bs:\
+	:co#80:\
+	:bl=^G:cl=^L:cr=^M:do=^J:kd=^J:kl=^H:le=^H:nw=^M^J:ta=^I:
+vanilla:\
+	:bs:\
+	:bl=^G:cr=^M:do=^J:sf=^J:
+
+#### ANSI.SYS/ISO 6429/ECMA-48 Capabilities
+#
+# See the end-of-file comment for more on these.
+#
+
+# ANSI capabilities are broken up into pieces, so that a terminal
+# implementing some ANSI subset can use many of them.
+ansi+local1:\
+	:do=\E[B:le=\E[D:nd=\E[C:up=\E[A:
+ansi+local:\
+	:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC:UP=\E[%dA:tc=ansi+local1:
+ansi+tabs:\
+	:bt=\E[Z:ct=\E[2g:st=\EH:ta=^I:
+ansi+inittabs:\
+	:it#8:tc=ansi+tabs:
+ansi+erase:\
+	:cd=\E[J:ce=\E[K:cl=\E[H\E[J:
+ansi+rca:\
+	:ch=\E[%+^AG:cv=\E[%+^Ad:
+ansi+cup:\
+	:cm=\E[%i%d;%dH:ho=\E[H:
+ansi+rep:\
+	:..rp=%p1%c\E[%p2%{1}%-%db:
+ansi+idl1:\
+	:al=\E[L:dl=\E[M:
+ansi+idl:\
+	:AL=\E[%dL:DL=\E[%dM:tc=ansi+idl1:
+ansi+idc:\
+	:IC=\E[%d@:dc=\E[P:ei=\E6:ic=\E[@:im=\E6:
+ansi+arrows:\
+	:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:
+ansi+sgr|ansi graphic renditions:\
+	:mb=\E[5m:me=\E[0m:mk=\E[8m:mr=\E[7m:
+ansi+sgrso|ansi standout only:\
+	:se=\E[m:so=\E[7m:
+ansi+sgrul|ansi underline only:\
+	:ue=\E[m:us=\E[4m:
+ansi+sgrbold|ansi graphic renditions; assuming terminal has bold; not dim:\
+	:md=\E[1m:\
+	:..sa=\E[%?%p1%t7;%;%?%p2%t4;%;%?%p3%t7;%;%?%p4%t5;%;%?%p6%t1;%;m:tc=ansi+sgr:tc=ansi+sgrso:tc=ansi+sgrul:
+ansi+sgrdim|ansi graphic renditions; assuming terminal has dim; not bold:\
+	:mh=\E[2m:\
+	:..sa=\E[%?%p1%t7;%;%?%p2%t4;%;%?%p3%t7;%;%?%p4%t5;%;%?%p5%t2;%;m:tc=ansi+sgr:tc=ansi+sgrso:tc=ansi+sgrul:
+ansi+pp|ansi printer port:\
+	:pf=\E[4i:po=\E[5i:ps=\E[0i:
+ansi+csr|ansi scroll-region plus cursor save & restore:\
+	:cs=\E[%i%d;%dr:rc=\E8:sc=\E7:
+
+# The IBM PC alternate character set.  Plug this into any Intel console entry.
+# We use \E[11m for rmacs rather than \E[12m so the <acsc> string can use the
+# ROM graphics for control characters such as the diamond, up- and down-arrow.
+# This works with the System V, Linux, and BSDI consoles.  It's a safe bet this
+# will work with any Intel console, they all seem to have inherited \E[11m
+# from the ANSI.SYS de-facto standard.
+klone+acs|alternate character set for ansi.sys displays:\
+	:ac=+\020\054\021-\030.^Y0\333`\004a\261f\370g\361h\260j\331k\277l\332m\300n\305o~p\304q\304r\304s_t\303u\264v\301w\302x\263y\363z\362{\343|\330}\234~\376:\
+	:ae=\E[10m:as=\E[11m:
+
+# Highlight controls corresponding to the ANSI.SYS standard.  Most 
+# console drivers for Intel boxes obey these.  Makes the same assumption
+# about \E[11m as klone+acs.  True ANSI/ECMA-48 would have :se=\E[27m:,
+# :ue=\E[24m:, but this isn't a documented feature of ANSI.SYS.
+klone+sgr|attribute control for ansi.sys displays:\
+	:S2=\E[11m:S3=\E[10m:mb=\E[5m:md=\E[1m:me=\E[0;10m:\
+	:mk=\E[8m:mr=\E[7m:\
+	:..sa=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p6%t;1%;%?%p7%t;8%;%?%p9%t;11%;m:\
+	:se=\E[m:so=\E[7m:ue=\E[m:us=\E[4m:\
+	:tc=klone+acs:
+
+# Highlight controls corresponding to the ANSI.SYS standard.  *All*
+# console drivers for Intel boxes obey these.  Does not assume \E[11m will
+# work; uses \E[12m instead, which is pretty bulletproof but loses you the ACS
+# diamond and arrow characters under curses.
+klone+sgr-dumb|attribute control for ansi.sys displays (no ESC [ 11 m):\
+	:as=\E[12m:mb=\E[5m:md=\E[1m:me=\E[0;10m:mk=\E[8m:\
+	:mr=\E[7m:\
+	:..sa=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p6%t;1%;%?%p7%t;8%;%?%p9%t;12%;m:\
+	:se=\E[m:so=\E[7m:ue=\E[m:us=\E[4m:\
+	:tc=klone+acs:
+
+# KOI8-R (RFC1489) acs (alternate character set)
+# From: Qing Long <qinglong@Bolizm.ihep.su>, 24 Feb 1996.
+klone+koi8acs|alternate character set for ansi.sys displays with KOI8 charset:\
+	:ac=+\020\054\021-\036.^_0\215`\004a\237f\234g\232h\222i\220j\205k\203l\202m\204n\212o\213p\216q\0r\217s\214t\206u\207v\210w\211x\201y\230z\231{\267|\274}L~\225:\
+	:ae=\E[10m:as=\E[11m:
+
+# ANSI.SYS color control.  The setab/setaf caps depend on the coincidence
+# between SVr4/XPG4's color numbers and ANSI.SYS attributes.  Here are longer
+# but equivalent strings that don't rely on that coincidence:
+# setb=\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m,
+# setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m,
+# The DOS 5 manual asserts that these sequences meet the ISO 6429 standard.
+# They match a subset of ECMA-48.
+klone+color|color control for ansi.sys and ISO6429-compatible displays:\
+	:Co#8:NC#3:pa#64:\
+	:AB=\E[4%p1%dm:AF=\E[3%p1%dm:op=\E[37;40m:
+
+# This is better than klone+color, it doesn't assume white-on-black as the
+# default color pair,  but many `ANSI' terminals don't grok the <op> cap.
+ecma+color|color control for ECMA-48-compatible terminals:\
+	:Co#8:NC#3:pa#64:\
+	:AB=\E[4%p1%dm:AF=\E[3%p1%dm:op=\E[39;49m:
+
+# Attribute control for ECMA-48-compatible terminals
+ecma+sgr|attribute capabilities for true ECMA-48 terminals:\
+	:se=\E[27m:ue=\E[24m:\
+	:tc=klone+sgr:
+
+# For comparison, here are all the capabilities implied by the Intel
+# Binary Compatibility Standard (level 2) that fit within terminfo.
+# For more detail on this rather pathetic standard, see the comments
+# near the end of this file.
+ibcs2|Intel Binary Compatibility Standard prescriptions:\
+	:AL=\E[%dL:DC=\E[%dP:DO=\E[%dB:IC=\E[%d@:LE=\E[%dD:\
+	:RA=\E[?7l:RI=\E[%dC:S1=\E=%p1%dg:SA=\E[?7h:SF=\E[%dS:\
+	:SR=\E[%dT:UP=\E[%dA:bt=\E[Z:ch=\E[%i%dG:cl=\Ec:\
+	:cm=\E[%i%d;%dH:ct=\E[g:cv=\E[%i%dd:ec=\E[%dX:ei=:im=:\
+	:rc=\E7:sc=\E7:st=\EH:
+
+#### ANSI/ECMA-48 terminals and terminal emulators
+#
+# See near the end of this file for details on ANSI conformance.
+# Don't mess with these entries!  Lots of other entries depend on them!
+#
+# This section lists entries in a least-capable to most-capable order.
+# if you're in doubt about what `ANSI' matches yours, try them in that
+# order and back off from the first that breaks.
+
+# ansi-mr is for ANSI terminals with ONLY relative cursor addressing
+# and more than one page of memory.  It uses local motions instead of
+# direct cursor addressing, and makes almost no assumptions. It does
+# assume auto margins, no padding and/or xon/xoff, and a 24x80 screen.
+ansi-mr|mem rel cup ansi:\
+	:am:xo:\
+	:co#80:li#24:tc=vanilla:tc=ansi+erase:tc=ansi+local1:
+
+# ansi-mini is a bare minimum ANSI terminal. This should work on anything, but 
+# beware of screen size problems and memory relative cursor addressing.
+ansi-mini|minimum ansi standard terminal:\
+	:am:xo:\
+	:co#80:li#24:tc=vanilla:tc=ansi+cup:tc=ansi+erase:
+
+# ansi-mtabs adds relative addressing and minimal tab support 
+ansi-mtabs|any ansi terminal with pessimistic assumptions:\
+	:it#8:\
+	:ta=^I:tc=ansi+local1:tc=ansi-mini:
+
+# ANSI X3.64 from emory!mlhhh (Hugh Hansard) via BRL
+#
+# The following is an entry for the full ANSI 3.64 (1977).  It lacks
+# padding, but most terminals using the standard are "fast" enough
+# not to require any -- even at 9600 bps.  If you encounter problems,
+# try including the padding specifications.
+#
+# Note: the :as: and :ae: specifications are not implemented here, for
+# the available termcap documentation does not make clear WHICH alternate
+# character set to specify.  ANSI 3.64 seems to make allowances for several.
+# Please make the appropriate adjustments to fit your needs -- that is
+# if you will be using alternate character sets.
+#
+# There are very few terminals running the full ANSI 3.64 standard,
+# so I could only test this entry on one verified terminal (Visual 102).
+# I would appreciate the results on other terminals sent to me.
+#
+# Please report comments, changes, and problems to:
+#
+# U.S. MAIL:   Hugh Hansard
+#              Box: 22830
+#              Emory University
+#              Atlanta, GA. 30322.
+#
+# USENET {akgua,msdc,sb1,sb6,gatech}!emory!mlhhh.
+#
+# (Added vt100 :rc:,:sc: to quiet a tic warning --esr)
+ansi77|ansi 3.64 standard 1977 version:\
+	:am:bs:mi:\
+	:co#80:it#8:li#24:\
+	:al=5*\E[L:bl=^G:cd=\E[J:ce=\E[K:cl=\E[;H\E[2J:\
+	:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:dc=\E[P:dl=5*\E[M:\
+	:do=\E[B:ei=\E[4l:ho=\E[H:im=\E[4h:k1=\EOP:k2=\EOR:k4=\EOS:\
+	:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:\
+	:nd=\E[C:nw=^M\ED:rc=\E8:sc=\E7:se=\E[m:sf=\ED:so=\E[7m:\
+	:sr=\EM:ta=^I:ue=\E[m:up=\E[A:us=\E[4m:
+
+# Procomm and some other ANSI emulations don't recognize all of the ANSI-
+# standard capabilities.  This entry deletes :UP:, :RI:, :DO:, :LE:, and 
+# <vpa>/<hpa> capabilities, forcing curses to use repetitions of :up:, 
+# :nd:, :do: and :le:.  Also deleted :IC: and :ic:, as QModem up to 
+# 5.03 doesn't recognize these.  Finally, we delete :rp: and :sr:, which seem
+# to confuse many emulators.  On the other hand, we can count on these programs
+# doing :ae:/:as:/:sa:. Older versions of this entry featured 
+# <invis=\E[9m>, but <invis=\E[8m> now seems to be more common under
+# ANSI.SYS influence.
+# From: Eric S. Raymond <esr@snark.thyrsus.com> Oct 30 1995
+pcansi-m|pcansi-mono|ibm-pc terminal programs claiming to be ansi (mono mode):\
+	:am:bs:mi:ms:\
+	:co#80:it#8:li#24:\
+	:al=\E[L:bl=^G:bt=\E[Z:cd=\E[J:ce=\E[K:cl=\E[H\E[J:\
+	:cm=\E[%i%d;%dH:cr=^M:ct=\E[2g:dc=\E[P:dl=\E[M:do=\E[B:\
+	:ho=\E[H:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:\
+	:le=\E[D:nd=\E[C:sf=^J:st=\EH:ta=^I:up=\E[A:\
+	:tc=klone+sgr-dumb:
+pcansi-25-m|pcansi25m|ibm-pc terminal programs with 25 lines (mono mode):\
+	:li#25:tc=pcansi-m:
+pcansi-33-m|pcansi33m|ibm-pc terminal programs with 33 lines (mono mode):\
+	:li#33:tc=pcansi-m:
+pcansi-43-m|ansi43m|ibm-pc terminal programs with 43 lines (mono mode):\
+	:li#43:tc=pcansi-m:
+# The color versions.  All PC emulators do color...
+pcansi|ibm-pc terminal programs claiming to be ansi:\
+	:tc=klone+color:tc=pcansi-m:
+pcansi-25|pcansi25|ibm-pc terminal programs with 25 lines:\
+	:li#25:tc=pcansi:
+pcansi-33|pcansi33|ibm-pc terminal programs with 33 lines:\
+	:li#33:tc=pcansi:
+pcansi-43|pcansi43|ibm-pc terminal programs with 43 lines:\
+	:li#43:tc=pcansi:
+
+# ansi-m -- full ANSI X3.64 with ANSI.SYS-compatible attributes, no color.
+# If you want pound signs rather than dollars, replace `B' with `A'
+# in the <s0ds>, <s1ds>, <s2ds>, and <s3ds> capabilities.
+# From: Eric S. Raymond <esr@snark.thyrsus.com> Nov 6 1995
+ansi-m|ansi-mono|ANSI X3.64-1979 terminal with ANSI.SYS compatible attributes:\
+	:5i:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:LE=\E[%dD:RI=\E[%dC:SF=\E[%dS:SR=\E[%dT:UP=\E[%dA:\
+	:cb=\E[1K:ch=\E[%i%dG:ct=\E[2g:cv=\E[%i%dd:ec=\E[%dX:ei=:\
+	:im=:kB=\E[Z:kI=\E[L:kb=^H:kd=\E[B:kl=\E[D:kr=\E[C:ku=\E[A:\
+	:nw=\r\E[S:pf=\E[4i:po=\E[5i:..rp=%p1%c\E[%p2%{1}%-%db:\
+	:s0=\E(B:s1=\E)B:s2=\E*B:s3=\E+B:ta=\E[I:\
+	:tc=pcansi-m:
+
+# ansi -- this terminfo expresses the largest subset of X3.64 that will fit in
+# standard terminfo.  Assumes ANSI.SYS-compatible attributes and color.
+# From: Eric S. Raymond <esr@snark.thyrsus.com> Nov 6 1995
+ansi|ansi/pc-term compatible with color:\
+	:u6=\E[%i%d;%dR:u7=\E[6n:..u8=\E[?%[;0123456789]c:\
+	:u9=\E[c:\
+	:tc=ecma+color:tc=klone+sgr:tc=ansi-m:
+
+# ansi-generic is a vanilla ANSI terminal. This is assumed to implement 
+# all the normal ANSI stuff with no extensions. It assumes 
+# insert/delete line/char is there, so it won't work with 
+# vt100 clones. It assumes video attributes for bold, blink, 
+# underline, and reverse, which won't matter much if the terminal 
+# can't do some of those. Padding is assumed to be zero, which 
+# shouldn't hurt since xon/xoff is assumed.
+ansi-generic|generic ansi standard terminal:\
+	:am:xo:\
+	:co#80:li#24:tc=vanilla:tc=ansi+csr:tc=ansi+cup:\
+	:tc=ansi+rca:tc=ansi+erase:tc=ansi+tabs:tc=ansi+local:\
+	:tc=ansi+idc:tc=ansi+idl:tc=ansi+rep:tc=ansi+sgrbold:\
+	:tc=ansi+arrows:
+
+#### Linux consoles
+#
+
+# This entry is good for the 1.2.13 or later version of the Linux console.
+#
+# ***************************************************************************
+# *                                                                         *
+# *                           WARNING:                                      *
+# * Linuxes come with a default keyboard mapping kcbt=^I.  This entry, in   *
+# * response to user requests, assumes kcbt=\E[Z, the ANSI/ECMA reverse-tab *
+# * character. Here are the keymap replacement lines that will set this up: *
+# *                                                                         *
+#	keycode  15 = Tab             Tab
+#		alt     keycode  15 = Meta_Tab
+#		shift	keycode  15 = F26
+#	string F26 ="\033[Z"
+# *                                                                         *
+# * This has to use a key slot which is unfortunate (any unused one will    *
+# * do, F26 is the higher-numbered one).  The change ought to be built      *
+# * into the kernel tables.                                                 *
+# *                                                                         *
+# ***************************************************************************
+#
+# The 1.3.x kernels add color-change capabilities; if yours doesn't have this
+# and it matters, turn off <ccc>.  The %02x escape used to implement this is
+# not back-portable to SV curses and not supported in ncurses versions before
+# 1.9.9. All linux kernels since 1.2.13 (at least) set the screen size
+# themselves; this entry assumes that capability.
+#
+# This entry is good for the 1.2.13 or later version of the Linux console.
+#
+# ***************************************************************************
+# *                                                                         *
+# *                           WARNING:                                      *
+# * Linuxes come with a default keyboard mapping kcbt=^I.  This entry, in   *
+# * response to user requests, assumes kcbt=\E[Z, the ANSI/ECMA reverse-tab *
+# * character. Here are the keymap replacement lines that will set this up: *
+# *                                                                         *
+#	keycode  15 = Tab             Tab
+#		alt     keycode  15 = Meta_Tab
+#		shift	keycode  15 = F26
+#	string F26 ="\033[Z"
+# *                                                                         *
+# * This has to use a key slot which is unfortunate (any unused one will    *
+# * do, F26 is the higher-numbered one).  The change ought to be built      *
+# * into the kernel tables.                                                 *
+# *                                                                         *
+# ***************************************************************************
+#
+# The 1.3.x kernels add color-change capabilities; if yours doesn't have this
+# and it matters, turn off <ccc>.  The %02x escape used to implement this is
+# not back-portable to SV curses and not supported in ncurses versions before
+# 1.9.9. All linux kernels since 1.2.13 (at least) set the screen size
+# themselves; this entry assumes that capability.
+#
+# The 2.2.x kernels add a private mode that sets the cursor type; use that to
+# get a block cursor for cvvis.
+# reported by Frank Heckenbach <frank@g-n-u.de>.
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+# (sgr removed to fit entry within 1023 bytes)
+# (terminfo-only capabilities suppressed to fit entry within 1023 bytes)
+linux|linux console:\
+	:am:eo:mi:ms:xn:xo:\
+	:it#8:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:IC=\E[%d@:K2=\E[G:al=\E[L:\
+	:bl=^G:cd=\E[J:ce=\E[K:cl=\E[H\E[J:cm=\E[%i%d;%dH:cr=^M:\
+	:cs=\E[%i%d;%dr:ct=\E[3g:dc=\E[P:dl=\E[M:do=^J:ec=\E[%dX:\
+	:ei=\E[4l:ho=\E[H:ic=\E[@:im=\E[4h:k1=\E[[A:k2=\E[[B:\
+	:k3=\E[[C:k4=\E[[D:k5=\E[[E:k6=\E[17~:k7=\E[18~:k8=\E[19~:\
+	:k9=\E[20~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:kb=\177:\
+	:kd=\E[B:kh=\E[1~:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:mh=\E[2m:\
+	:mr=\E[7m:nd=\E[C:nw=^M^J:rc=\E8:sc=\E7:se=\E[27m:sf=^J:\
+	:sr=\EM:st=\EH:ta=^I:ue=\E[24m:up=\E[A:us=\E[4m:\
+	:vb=200\E[?5h\E[?5l:ve=\E[?25h\E[?0c:vi=\E[?25l\E[?1c:\
+	:vs=\E[?25h\E[?8c:\
+	:tc=klone+sgr:tc=ecma+color:
+linux-m|Linux console no color:\
+	:Co@:pa@:\
+	:AB@:AF@:Sb@:Sf@:tc=linux:
+linux-c-nc|linux console 1.3.x hack for ncurses only:\
+	:cc:\
+	:..Ic=\E]P%p1%x%p2%{255}%*%{1000}%/%02x%p3%{255}%*%{1000}%/%02x%p4%{255}%*%{1000}%/%02x:\
+	:oc=\E]R:\
+	:tc=linux:
+# From: Dennis Henriksen <opus@osrl.dk>, 9 July 1996
+linux-c|linux console 1.3.6+ with private palette for each virtual console:\
+	:cc:\
+	:Co#8:pa#64:\
+	:..Ic=\E]P%?%p1%{9}%>%t%p1%{10}%-%'a'%+%c%e%p1%d%;%p2%{255}%&%Pr%gr%{16}%/%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;%gr%{15}%&%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;%p3%{255}%&%Pr%gr%{16}%/%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;%gr%{15}%&%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;%p4%{255}%&%Pr%gr%{16}%/%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;%gr%{15}%&%Px%?%gx%{9}%>%t%gx%{10}%-%'A'%+%c%e%gx%d%;:\
+	:oc=\E]R:\
+	:tc=linux:
+
+# See the note on ICH/ICH1 VERSUS RMIR/SMIR near the end of file
+linux-nic|linux with ich/ich1 suppressed for non-curses programs:\
+	:IC@:ei=:ic@:im=:\
+	:tc=linux:
+
+# This assumes you have used setfont(8) to load one of the Linux koi8-r fonts.
+# acsc entry from Pavel Roskin" <pavel@absolute.spb.su>, 29 Sep 1997.
+linux-koi8|linux with koi8 alternate character set:\
+	:ac=+\020\054\021-\030.^Y0\215`\004a\221f\234g\237h\220i\276j\205k\203l\202m\204n\212o~p\0q\0r\0s_t\206u\207v\211w\210x\201y\230z\231{\267|\274~\224:tc=linux:\
+	:tc=klone+koi8acs:
+
+# Another entry for KOI8-r with Qing Long's acsc.
+# (which one better complies with the standard?)
+linux-koi8r|linux with koi8-r alternate character set:\
+	:tc=linux:tc=klone+koi8acs:
+
+# Entry for the latin1 and latin2 fonts
+linux-lat|linux with latin1 or latin2 alternate character set:\
+	:ac=+\020\054\021-\030.^Y0\333`\004a\013f\370g\361h\260i\316j\211k\214l\206m\203n\305o~p\304q\212r\304s_t\207u\215v\301w\302x\205y\363z\362{\343|\330}\234~\376:\
+	:tc=linux:
+
+#### NetBSD consoles
+#
+# pcvt termcap database entries (corresponding to release 3.31)
+# Author's last edit-date: [Fri Sep 15 20:29:10 1995]
+#
+# (For the terminfo master file, I translated these into terminfo syntax.
+# Then I dropped all the pseudo-HP entries. we don't want and can't use
+# the :Xs: flag. Then I split :is: into a size-independent :i1: and a
+# size-dependent :is:.  Finally, I added <rmam>/<smam> -- esr)
+
+# NOTE: :ic: has been taken out of this entry. for reference, it should
+# be <ich1=\E[@>.  For discussion, see ICH/ICH1 VERSUS RMIR/SMIR below.
+# (esr: added :vi: and :ve: to resolve NetBSD Problem Report #4583)
+pcvtXX|pcvt vt200 emulator (DEC VT220):\
+	:am:km:mi:ms:xn:\
+	:it#8:vt#3:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:LE=\E[%dD:RA=\E[?7l:RI=\E[%dC:SA=\E[?7h:SF=\E[%dS:\
+	:SR=\E[%dT:UP=\E[%dA:\
+	:ac=++\054\054--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz~~:\
+	:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cb=\E[1K:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[J:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:ct=\E[3g:dc=\E[P:dl=\E[M:do=\E[B:ei=\E[4l:ho=\E[H:\
+	:i1=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:im=\E[4h:\
+	:k1=\E[17~:k2=\E[18~:k3=\E[19~:k4=\E[20~:k5=\E[21~:\
+	:k6=\E[23~:k7=\E[24~:k8=\E[25~:kD=\E[3~:kH=\E[4~:kI=\E[2~:\
+	:kN=\E[6~:kP=\E[5~:kb=\177:kd=\EOB:ke=\E[?1l\E>:kh=\E[1~:\
+	:kl=\EOD:kr=\EOC:ks=\E[?1h\E=:ku=\EOA:le=^H:mb=\E[5m:\
+	:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:nw=\EE:\
+	:r1=\Ec\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rc=\E8:\
+	:rf=/usr/share/tabset/vt100:sc=\E7:se=\E[27m:sf=\ED:\
+	:so=\E[7m:sr=\EM:st=\EH:ta=^I:ue=\E[24m:up=\E[A:us=\E[4m:\
+	:ve=\E[?25h:vi=\E[?25l:
+
+#	NetBSD/FreeBSD vt220 terminal emulator console (pc keyboard & monitor)
+#	termcap entries for pure VT220-Emulation and 25, 28, 35, 40, 43 and
+#	50 lines entries; 80 columns
+pcvt25|dec vt220 emulation with 25 lines:\
+	:co#80:li#25:\
+	:is=\E[1;25r\E[25;1H:tc=pcvtXX:
+pcvt28|dec vt220 emulation with 28 lines:\
+	:co#80:li#28:\
+	:is=\E[1;28r\E[28;1H:tc=pcvtXX:
+pcvt35|dec vt220 emulation with 35 lines:\
+	:co#80:li#35:\
+	:is=\E[1;35r\E[35;1H:tc=pcvtXX:
+pcvt40|dec vt220 emulation with 40 lines:\
+	:co#80:li#40:\
+	:is=\E[1;40r\E[40;1H:tc=pcvtXX:
+pcvt43|dec vt220 emulation with 43 lines:\
+	:co#80:li#43:\
+	:is=\E[1;43r\E[43;1H:tc=pcvtXX:
+pcvt50|dec vt220 emulation with 50 lines:\
+	:co#80:li#50:\
+	:is=\E[1;50r\E[50;1H:tc=pcvtXX:
+
+#	NetBSD/FreeBSD vt220 terminal emulator console (pc keyboard & monitor)
+#	termcap entries for pure VT220-Emulation and 25, 28, 35, 40, 43 and
+#	50 lines entries; 132 columns
+pcvt25w|dec vt220 emulation with 25 lines and 132 cols:\
+	:co#132:li#25:\
+	:is=\E[1;25r\E[25;1H:tc=pcvtXX:
+pcvt28w|dec vt220 emulation with 28 lines and 132 cols:\
+	:co#132:li#28:\
+	:is=\E[1;28r\E[28;1H:tc=pcvtXX:
+pcvt35w|dec vt220 emulation with 35 lines and 132 cols:\
+	:co#132:li#35:\
+	:is=\E[1;35r\E[35;1H:tc=pcvtXX:
+pcvt40w|dec vt220 emulation with 40 lines and 132 cols:\
+	:co#132:li#40:\
+	:is=\E[1;40r\E[40;1H:tc=pcvtXX:
+pcvt43w|dec vt220 emulation with 43 lines and 132 cols:\
+	:co#132:li#43:\
+	:is=\E[1;43r\E[43;1H:tc=pcvtXX:
+pcvt50w|dec vt220 emulation with 50 lines and 132 cols:\
+	:co#132:li#50:\
+	:is=\E[1;50r\E[50;1H:tc=pcvtXX:
+
+# Terminfo entries to enable the use of the ncurses library in colour on a
+# NetBSD-arm32 console (only tested on a RiscPC).
+# Created by Dave Millen <dmill@globalnet.co.uk> 22.07.98
+# modified codes for setf/setb to setaf/setab, then to klone+color, corrected
+# typo in invis - TD
+arm100|arm100-am|Arm(RiscPC) ncurses compatible (for 640x480):\
+	:am:ms:ut:xn:xo:\
+	:co#80:it#8:li#30:\
+	:@8=\E[M:DO=\E[%dB:K1=\E[q:K2=\E[r:K3=\E[s:K4=\E[p:K5=\E[n:\
+	:LE=\E[%dD:RA=\E[?7l:RI=\E[%dC:SA=\E[?7h:UP=\E[%dA:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=^O:as=^N:bl=^G:cb=\E[1K:cd=\E[J:ce=\E[K:cl=\E[H\E[J:\
+	:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:ct=\E[3g:do=^J:\
+	:eA=\E(B\E)0:ho=\E[H:k0=\E[y:k1=\E[P:k2=\E[Q:k3=\E[R:\
+	:k4=\E[S:k5=\E[t:k6=\E[u:k7=\E[v:k8=\E[l:k9=\E[w:k;=\E[x:\
+	:kb=^H:kd=\E[B:ke=\E[?1l\E>:kl=\E[D:kr=\E[C:ks=\E[?1h\E=:\
+	:ku=\E[A:le=^H:mb=\E[5m:md=\E[1m:me=\E[m\017:mk=\E[8m:\
+	:mr=\E[6m:nd=\E[C:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:rc=\E8:\
+	:..sa=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m%?%p9%t\016%e\017%;:\
+	:sc=\E7:se=\E[m:sf=^J:so=\E[7m:sr=\EM:st=\EH:ta=^I:ue=\E[m:\
+	:up=\E[A:us=\E[4m:\
+	:tc=ecma+sgr:tc=klone+color:
+arm100-w|arm100-wam|Arm(RiscPC) ncurses compatible (for 1024x768):\
+	:co#132:li#50:tc=arm100:
+
+# NetBSD/x68k console vt200 emulator. This port runs on a 68K machine
+# manufactured by Sharp for the Japenese market.
+# From Minoura Makoto <minoura@netlaputa.or.jp>, 12 May 1996
+x68k|x68k-ite|NetBSD/x68k ITE:\
+	:co#96:li#32:\
+	:%1=\E[28~:kC=\E[9~:tc=vt220:
+
+# <tv@pobox.com>:
+# Entry for the DNARD OpenFirmware console, close to ANSI but not quite.
+#
+# (still unfinished, but good enough so far.)
+ofcons:\
+	:bw:\
+	:co#80:li#30:\
+	:AL=\233%dL:DC=\233%dP:DL=\233%dM:DO=\233%dB:IC=\233%d@:\
+	:LE=\233%dD:RI=\233%dC:UP=\233%dA:al=\233L:bl=^G:cd=\233J:\
+	:ce=\233K:cl=^L:cm=\233%i%d;%dH:cr=^M:dc=\233P:dl=\233M:\
+	:do=\233B:ei=:ic=\233@:im=:k1=\2330P:k2=\2330Q:k3=\2330W:\
+	:k4=\2330x:k5=\2330t:k6=\2330u:k7=\2330q:k8=\2330r:\
+	:k9=\2330p:k;=\2330M:kD=\233P:kN=\233/:kP=\233?:kb=^H:\
+	:kd=\233B:kl=\233D:kr=\233C:ku=\233A:le=\233D:mb=\2337;2m:\
+	:md=\2331m:me=\2330m:mh=\2332m:mk=\2338m:mr=\2337m:\
+	:nd=\233C:nw=^M^J:se=\2330m:sf=^J:ta=^I:ue=\2330m:up=\233A:\
+	:vb=^G:
+
+# NetBSD "wscons" emulator in vt220 mode
+# These are micro-minimal and probably need to be redone for real
+# after the manner of the pcvt entries.
+wsvt25|NetBSD wscons in 25 line DEC VT220 mode:\
+	:co#80:li#25:tc=vt220:
+
+wsvt25m|NetBSD wscons in 25 line DEC VT220 mode with Meta:\
+	:km:\
+	:co#80:li#25:tc=vt220:
+
+# `rasterconsole' provided by 4.4BSD, NetBSD and OpenBSD on SPARC, and 
+# DECstation/pmax.
+rcons|BSD rasterconsole:\
+	:tc=sun-il:
+# Color version of above. Color currenly only provided by NetBSD.
+rcons-color|BSD rasterconsole with ANSI color:\
+	:ut:\
+	:Co#8:pa#64:\
+	:AB=\E[4%dm:AF=\E[3%dm:op=\E[m:tc=rcons:
+
+#### FreeBSD console entries
+#
+# From: Andrey Chernov <ache@astral.msk.su> 29 Mar 1996
+# Andrey Chernov maintains the FreeBSD termcap distributions.
+#
+# Note: Users of FreeBSD 2.1.0 and older versions must either upgrade
+# or comment out the :cb: capability in the console entry.
+#
+# Alexander Lukyanov reports:
+# I have seen FreeBSD-2.1.5R... The old el1 bug changed, but it is still there.
+# Now el1 clears not only to the line beginning, but also a large chunk
+# of previous line. But there is another bug - ech does not work at all.
+#
+
+# for syscons
+# common entry without semigraphics
+# Bug: The <op> capability resets attributes.
+# Bug? The ech and el1 attributes appear to move the cursor in some cases; for
+# instance el1 does if the cursor is moved to the right margin first.  Removed
+# by T.Dickey 97/5/3 (ech=\E[%p1%dX, el1=\E[1K)
+#
+# Setting colors turns off reverse; we cannot guarantee order, so use ncv.
+# Note that this disables standout with color.
+cons25w|ansiw|ansi80x25-raw|freebsd console (25-line raw mode):\
+	:NP:am:bw:eo:ms:ut:\
+	:Co#8:NC#21:co#80:it#8:li#25:pa#64:\
+	:@7=\E[F:AB=\E[4%p1%dm:AF=\E[3%p1%dm:AL=\E[%dL:DC=\E[%dP:\
+	:DL=\E[%dM:DO=\E[%dB:F1=\E[W:F2=\E[X:IC=\E[%d@:K2=\E[E:\
+	:LE=\E[%dD:RI=\E[%dC:SF=\E[%dS:SR=\E[%dT:UP=\E[%dA:\
+	:al=\E[L:bl=^G:bt=\E[Z:cd=\E[J:ce=\E[K:ch=\E[%i%d`:\
+	:cl=\E[H\E[J:cm=\E[%i%d;%dH:cr=^M:cv=\E[%i%dd:dc=\E[P:\
+	:dl=\E[M:do=\E[B:ei=:ho=\E[H:ic=\E[@:im=:k1=\E[M:k2=\E[N:\
+	:k3=\E[O:k4=\E[P:k5=\E[Q:k6=\E[R:k7=\E[S:k8=\E[T:k9=\E[U:\
+	:k;=\E[V:kB=\E[Z:kD=\177:kI=\E[L:kN=\E[G:kP=\E[I:kb=^H:\
+	:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:mb=\E[5m:\
+	:md=\E[1m:me=\E[m:mh=\E[30;1m:mr=\E[7m:nd=\E[C:nw=\E[E:\
+	:op=\E[x:r1=\E[x\E[m\Ec:se=\E[m:sf=\E[S:so=\E[7m:sr=\E[T:\
+	:ta=^I:up=\E[A:ve=\E[=0C:vs=\E[=1C:
+cons25|ansis|ansi80x25|freebsd console (25-line ansi mode):\
+	:ac=-\030.^Y0\333`\004a\260f\370g\361h\261i\025j\331k\277l\332m\300n\305q\304t\303u\264v\301w\302x\263y\363z\362~\371:\
+	:tc=cons25w:
+cons25-m|ansis-mono|ansi80x25-mono|freebsd console (25-line mono ansi mode):\
+	:Co@:pa@:\
+	:AB@:AF@:md@:mh@:op@:ue=\E[m:us=\E[4m:tc=cons25:
+cons30|ansi80x30|freebsd console (30-line ansi mode):\
+	:li#30:tc=cons25:
+cons30-m|ansi80x30-mono|freebsd console (30-line mono ansi mode):\
+	:li#30:tc=cons25-m:
+cons43|ansi80x43|freebsd console (43-line ansi mode):\
+	:li#43:tc=cons25:
+cons43-m|ansi80x43-mono|freebsd console (43-line mono ansi mode):\
+	:li#43:tc=cons25-m:
+cons50|ansil|ansi80x50|freebsd console (50-line ansi mode):\
+	:li#50:tc=cons25:
+cons50-m|ansil-mono|ansi80x50-mono|freebsd console (50-line mono ansi mode):\
+	:li#50:tc=cons25-m:
+cons60|ansi80x60|freebsd console (60-line ansi mode):\
+	:li#60:tc=cons25:
+cons60-m|ansi80x60-mono|freebsd console (60-line mono ansi mode):\
+	:li#60:tc=cons25-m:
+cons25r|pc3r|ibmpc3r|cons25-koi8-r|freebsd console w/koi8-r cyrillic:\
+	:ac=-\030.^Y0\215`\004a\220f\234h\221i\025j\205k\203l\202m\204n\212q\0t\206u\207v\211w\210x\201y\230z\231~\225:\
+	:tc=cons25w:
+cons25r-m|pc3r-m|ibmpc3r-mono|cons25-koi8r-m|freebsd console w/koi8-r cyrillic (mono):\
+	:Co@:pa@:\
+	:AB@:AF@:op@:ue=\E[m:us=\E[4m:tc=cons25r:
+cons50r|cons50-koi8r|freebsd console w/koi8-r cyrillic (50 lines):\
+	:li#50:tc=cons25r:
+cons50r-m|cons50-koi8r-m|freebsd console w/koi8-r cyrillic (50-line mono):\
+	:li#50:tc=cons25r-m:
+cons60r|cons60-koi8r|freebsd console w/koi8-r cyrillic (60 lines):\
+	:li#60:tc=cons25r:
+cons60r-m|cons60-koi8r-m|freebsd console w/koi8-r cyrillic (60-line mono):\
+	:li#60:tc=cons25r-m:
+# ISO 8859-1 FreeBSD console
+cons25l1|cons25-iso8859|freebsd console w/iso 8859-1 chars:\
+	:ac=+\253\054\273-\030.\031`\201a\202f\207g\210i\247j\213k\214l\215m\216n\217o\220p\221q\222r\223s\224t\225u\226v\227w\230x\231y\232z\233~\237:\
+	:tc=cons25w:
+cons25l1-m|cons25-iso-m|freebsd console w/iso 8859-1 chars (mono):\
+	:Co@:pa@:\
+	:AB@:AF@:md@:mh@:op@:ue=\E[m:us=\E[4m:tc=cons25l1:
+cons50l1|cons50-iso8859|freebsd console w/iso 8859-1 chars (50 lines):\
+	:li#50:tc=cons25l1:
+cons50l1-m|cons50-iso-m|freebsd console w/iso 8859-1 chars (50-line mono):\
+	:li#50:tc=cons25l1-m:
+cons60l1|cons60-iso|freebsd console w/iso 8859-1 chars (60 lines):\
+	:li#60:tc=cons25l1:
+cons60l1-m|cons60-iso-m|freebsd console w/iso 8859-1 chars (60-line mono):\
+	:li#60:tc=cons25l1-m:
+
+#### 386BSD and BSD/OS Consoles
+#
+
+# This was the original 386BSD console entry (I think).  
+# Some places it's named oldpc3|oldibmpc3.
+# From: Alex R.N. Wetmore <aw2t@andrew.cmu.edu>
+origpc3|origibmpc3|IBM PC 386BSD Console:\
+	:am:bw:eo:xo:\
+	:co#80:li#25:\
+	:ac=j\331k\277l\332m\300n\305q\304t\303u\264v\301w\302x\263:\
+	:cd=\E[J:ce=\E[K:cl=\Ec:cm=\E[%i%2;%2H:do=\E[B:ho=\E[H:\
+	:kd=\E[B:kh=\E[Y:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:md=\E[7m:\
+	:me=\E[m\E[1;0x\E[2;7x:nd=\E[C:se=\E[1;0x\E[2;7x:\
+	:sf=\E[S:so=\E[1;7x\E[2;0x:sr=\E[T:ue=\E[1;0x\E[2;7x:\
+	:up=\E[A:us=\E[1;7x\E[2;0x:
+
+# description of BSD/386 console emulator in version 1.0 (supplied by BSDI)
+oldpc3|oldibmpc3|old IBM PC BSD/386 Console:\
+	:km:\
+	:li#25:\
+	:al=\E[L:bl=^G:cr=^M:dl=\E[M:do=^J:kH=\E[F:kI=\E[L:kN=\E[G:\
+	:kP=\E[I:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:\
+	:md=\E[=15F:me=\E[=R:mh=\E[=8F:nw=^M^J:sf=^J:ta=^I:
+
+# Description of BSD/OS console emulator in version 1.1, 2.0, 2.1
+# Note, the emulator supports many of the additional console features
+# listed in the iBCS2 (e.g. character-set selection) though not all
+# are described here.  This entry really ought to be upgraded.
+# Also note, the console will also work with fewer lines after doing
+# "stty rows NN", e.g. to use 24 lines.
+# (Color support from Kevin Rosenberg <kevin@cyberport.com>, 2 May 1996) 
+# Bug: The <op> capability resets attributes.
+bsdos-pc-nobold|BSD/OS PC console w/o bold:\
+	:am:eo:km:xo:\
+	:co#80:it#8:li#25:\
+	:AL=\E[%dL:DL=\E[%dM:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC:\
+	:UP=\E[%dA:al=\E[L:bl=^G:cd=\E[J:ce=\E[K:cl=\Ec:\
+	:cm=\E[%i%d;%dH:cr=^M:dl=\E[M:do=^J:ho=\E[H:kH=\E[F:\
+	:kI=\E[L:kN=\E[G:kP=\E[I:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:\
+	:kr=\E[C:ku=\E[A:le=^H:nd=\E[C:nw=^M^J:rc=\E8:\
+	:..sa=\E[0;10%?%p1%t;7%;%?%p3%t;7%;%?%p4%t;5%;%?%p6%t;1%;%?%p7%t;8%;%?%p9%t;11%;m%?%p5%t\E[=8F%;:\
+	:sc=\E7:sf=^J:ta=^I:up=\E[A:\
+	:tc=klone+sgr:tc=klone+color:
+bsdos-pc|IBM PC BSD/OS Console:\
+	:..sa=\E[0;10%?%p1%t;7%;%?%p2%t;1%;%?%p3%t;7%;%?%p4%t;5%;%?%p6%t;1%;%?%p7%t;8%;%?%p9%t;11%;m:tc=bsdos-pc-nobold:
+
+# Old names for BSD/OS PC console used in releases before 4.1. 
+pc3|BSD/OS on the PC Console:\
+	:tc=bsdos-pc-nobold:
+ibmpc3|pc3-bold|BSD/OS on the PC Console with bold instead of underline:\
+	:tc=bsdos-pc:
+ 
+# BSD/OS on the SPARC 
+bsdos-sparc|Sun SPARC BSD/OS Console:\
+	:tc=sun:
+	 
+# BSD/OS on the PowerPC 
+bsdos-ppc|PowerPC BSD/OS Console:\
+	:tc=bsdos-pc:
+
+#### DEC VT100 and compatibles
+#
+# DEC terminals from the vt100 forward are collected here. Older DEC terminals
+# and micro consoles can be found in the `obsolete' section.  More details on
+# the relationship between the VT100 and ANSI X3.64/ISO 6429/ECMA-48 may be
+# found near the end of this file.
+#
+# Except where noted, these entries are DEC's official terminfos.
+# Contact Bill Hedberg <hedberg@hannah.enet.dec.com> of Terminal Support
+# Engineering for more information.  Updated terminfos and termcaps 
+# are kept available at ftp://gatekeeper.dec.com/pub/DEC/termcaps.
+#
+# In October 1995 DEC sold its terminals business, including the VT and Dorio
+# line and trademark, to SunRiver Data Systems.  SunRiver has since changed
+# its name to Boundless Technologies; see http://www.boundless.com.
+#
+
+# NOTE:  Any VT100 emulation, whether in hardware or software, almost
+# certainly includes what DEC called the `Level 1 editing extension' codes;
+# only the very oldest VT100s lacked these and there probably aren't any of
+# those left alive.  To capture these, use one of the VT102 entries.
+#
+# Note that the :xn: glitch in vt100 is not quite the same as on the Concept,
+# since the cursor is left in a different position while in the
+# weird state (concept at beginning of next line, vt100 at end
+# of this line) so all versions of vi before 3.7 don't handle
+# :xn: right on vt100. The correct way to handle :xn: is when
+# you output the char in column 80, immediately output CR LF
+# and then assume you are in column 1 of the next line. If :xn:
+# is on, am should be on too.
+# 
+# I assume you have smooth scroll off or are at a slow enough baud
+# rate that it doesn't matter (1200? or less). Also this assumes
+# that you set auto-nl to "on", if you set it off use vt100-nam 
+# below.
+# 
+# The padding requirements listed here are guesses. It is strongly
+# recommended that xon/xoff be enabled, as this is assumed here.
+# 
+# The vt100 uses <rs2> and <rf> rather than :is:/:ct:/:st: because the 
+# tab settings are in non-volatile memory and don't need to be 
+# reset upon login. Also setting the number of columns glitches 
+# the screen annoyingly. You can type "reset" to get them set.
+#
+# The VT100 series terminals have cursor ("arrows") keys which can operate
+# in two different modes: Cursor Mode and Application Mode.  Cursor Mode
+# is the reset state, and is assumed to be the normal state.  Application
+# Mode is the "set" state.  In Cursor Mode, the cursor keys transmit
+# "Esc [ {code}" sequences, conforming to ANSI standards.  In Application
+# Mode, the cursor keys transmit "Esc O <code>" sequences.  Application Mode
+# was provided primarily as an aid to the porting of VT52 applications.  It is
+# assumed that the cursor keys are normally in Cursor Mode, and expected that
+# applications such as vi will always transmit the :ks: string.  Therefore,
+# the definitions for the cursor keys are made to match what the terminal
+# transmits after the :ks: string is transmitted.  If the :ks: string
+# is a null string or is not defined, then cursor keys are assumed to be in
+# "Cursor Mode", and the cursor keys definitions should match that assumption,
+# else the appication may fail.  It is also expected that applications will
+# always transmit the :ke: string to the terminal before they exit.
+#
+# The VT100 series terminals have an auxilliary keypad, commonly referred to as
+# the "Numeric Keypad", because it is a cluster of numeric and function keys.
+# The Numeric Keypad which can operate in two different modes: Numeric Mode and
+# Application Mode.  Numeric Mode is the reset state, and is assumed to be
+# the normal state.  Application Mode is the "set" state.  In Numeric Mode,
+# the numeric and punctuation keys transmit ASCII 7-bit characters, and the 
+# Enter key transmits the same as the Return key (Note: the Return key
+# can be configured to send either LF (\015) or CR LF).  In Application Mode,
+# all the keypad keys transmit "Esc O {code}" sequences.  The PF1 - PF4 keys
+# always send the same "Esc O {code}" sequences.  It is assumed that the keypad
+# is normally in Numeric Mode.  If an application requires that the keypad be
+# in Application Mode then it is expected that the user, or the application,
+# will set the TERM environment variable to point to a terminfo entry which has
+# defined the :ks: string to include the codes that switch the keypad into
+# Application Mode, and the terminfo entry will also define function key
+# fields to match the Application Mode control codes.  If the :ks: string
+# is a null string or is not defined, then the keypad is assumed to be in
+# Numeric Mode.  If the :ks: string switches the keypad into Application
+# Mode, it is expected that the :ke: string will contain the control codes
+# necessary to reset the keypad to "Normal" mode, and it is also expected that
+# applications which transmit the :ks: string will also always transmit the
+# :ke: string to the terminal before they exit.
+#
+# Here's a diagram of the VT100 keypad keys with their bindings.
+# The top line is the name of the key (some DEC keyboards have the keys
+# labelled somewhat differently, like GOLD instead of PF1, but this is
+# the most "official" name).  The second line is the escape sequence it
+# generates in Application Keypad mode (where "$" means the ESC
+# character).  The third line contains two items, first the mapping of
+# the key in terminfo, and then in termcap.
+#   _______________________________________
+#  |   PF1   |   PF2   |   PF3   |   PF4   |
+#  |   $OP   |   $OQ   |   $OR   |   $OS   |
+#  |_kf1__k1_|_kf2__k2_|_kf3__k3_|_kf4__k4_|
+#  |    7         8         9         -    |
+#  |   $Ow   |   $Ox   |   $Oy   |   $Om   |
+#  |_kf9__k9_|_kf10_k;_|_kf0__k0_|_________|
+#  |    4    |    5    |    6    |    ,    |
+#  |   $Ot   |   $Ou   |   $Ov   |   $Ol   |
+#  |_kf5__k5_|_kf6__k6_|_kf7__k7_|_kf8__k8_|
+#  |    1    |    2    |    3    |         |
+#  |   $Oq   |   $Or   |   $Os   |  enter  |
+#  |_ka1__K1_|_kb2__K2_|_ka3__K3_|  $OM    |
+#  |         0         |   .     |         |
+#  |        $Op        |  $On    |         |
+#  |___kc1_______K4____|_kc3__K5_|_kent_@8_|
+#
+# And here, for those of you with orphaned VT100s lacking documentation, is
+# a description of the soft switches invoked when you do `Set Up'.
+# 
+#  Scroll 0-Jump               Shifted 3   0-#
+#  |      1-Smooth             |           1-British pound sign
+#  | Autorepeat 0-Off          | Wrap Around 0-Off
+#  | |          1-On           | |           1-On
+#  | | Screen 0-Dark Bkg       | | New Line 0-Off
+#  | | |      1-Light Bkg      | | |        1-On
+#  | | | Cursor 0-Underline    | | | Interlace 0-Off
+#  | | | |      1-Block        | | | |         1-On
+#  | | | |                     | | | |
+#  1 1 0 1       1 1 1 1       0 1 0 0       0 0 1 0       <--Standard Settings
+#                | | | |                     | | | |
+#                | | | Auto XON/XOFF 0-Off   | | | Power 0-60 Hz
+#                | | |               1-On    | | |       1-50 Hz
+#                | | Ansi/VT52 0-VT52        | | Bits Per Char. 0-7 Bits
+#                | |           1-ANSI        | |                1-8 Bits
+#                | Keyclick 0-Off            | Parity 0-Off
+#                |          1-On             |        1-On
+#                Margin Bell 0-Off           Parity Sense 0-Odd
+#                            1-On                         1-Even
+#
+# The following SET-UP modes are assumed for normal operation:
+#	ANSI_MODE	AUTO_XON/XOFF_ON	NEWLINE_OFF	80_COLUMNS
+#	WRAP_AROUND_ON  JUMP_SCROLL_OFF
+# Other SET-UP modes may be set for operator convenience or communication
+# requirements; I recommend
+#	AUTOREPEAT_ON	BLOCK_CURSOR	MARGIN_BELL_OFF    SHIFTED_3_#
+# Unless you have a graphics add-on such as Digital Engineering's VT640
+# (and even then, whenever it can be arranged!) you should set
+#	INTERLACE_OFF
+#
+# (vt100: I added <rmam>/<smam> based on the init string, also :bs:. -- esr)
+vt100|vt100-am|dec vt100 (w/advanced video):\
+	:am:bs:ms:xn:xo:\
+	:co#80:it#8:li#24:vt#3:\
+	:@8=\EOM:DO=\E[%dB:K1=\EOq:K2=\EOr:K3=\EOs:K4=\EOp:K5=\EOn:\
+	:LE=\E[%dD:RA=\E[?7l:RI=\E[%dC:SA=\E[?7h:UP=\E[%dA:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=^O:as=^N:bl=^G:cb=\E[1K:cd=\E[J:ce=\E[K:cl=\E[H\E[J:\
+	:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:ct=\E[3g:do=^J:\
+	:eA=\E(B\E)0:ho=\E[H:k0=\EOy:k1=\EOP:k2=\EOQ:k3=\EOR:\
+	:k4=\EOS:k5=\EOt:k6=\EOu:k7=\EOv:k8=\EOl:k9=\EOw:k;=\EOx:\
+	:kb=^H:kd=\EOB:ke=\E[?1l\E>:kl=\EOD:kr=\EOC:ks=\E[?1h\E=:\
+	:ku=\EOA:le=^H:mb=\E[5m:md=\E[1m:me=\E[m\017:mr=\E[7m:\
+	:nd=\E[C:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rc=\E8:\
+	:..sa=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m%?%p9%t\016%e\017%;:\
+	:sc=\E7:se=\E[m:sf=^J:so=\E[7m:sr=\EM:st=\EH:ta=^I:ue=\E[m:\
+	:up=\E[A:us=\E[4m:
+vt100nam|vt100-nam|vt100 no automargins:\
+	:am@:xn@:tc=vt100-am:
+vt100-vb|dec vt100 (w/advanced video) & no beep:\
+	:bl@:vb=\E[?5h\E[?5l:tc=vt100:
+
+# Ordinary vt100 in 132 column ("wide") mode.
+vt100-w|vt100-w-am|dec vt100 132 cols (w/advanced video):\
+	:co#132:li#24:\
+	:r2=\E>\E[?3h\E[?4l\E[?5l\E[?8h:tc=vt100-am:
+vt100-w-nam|vt100-nam-w|dec vt100 132 cols (w/advanced video no automargin):\
+	:co#132:li#14:vt@:\
+	:r2=\E>\E[?3h\E[?4l\E[?5l\E[?8h:tc=vt100-nam:
+
+# vt100 with no advanced video.
+vt100-nav|vt100 without advanced video option:\
+	:sg#1:\
+	:mb@:md@:me@:mr@:sa@:se=\E[m:so=\E[7m:ue@:us@:tc=vt100:
+vt100-nav-w|vt100-w-nav|dec vt100 132 cols 14 lines (no advanced video option):\
+	:co#132:li#14:tc=vt100-nav:
+
+# vt100 with one of the 24 lines used as a status line.
+# We put the status line on the top.
+vt100-s|vt100-s-top|vt100-top-s|vt100 for use with top sysline:\
+	:es:hs:\
+	:li#23:\
+	:cl=\E[2;1H\E[J:cm=\E[%i%+^A;%dH:cs=\E[%i%i%d;%dr:\
+	:ds=\E7\E[1;24r\E8:fs=\E8:ho=\E[2;1H:is=\E7\E[2;24r\E8:\
+	:ts=\E7\E[1;%p1%dH\E[1K:\
+	:tc=vt100-am:
+
+# Status line at bottom. 
+# Clearing the screen will clobber status line.
+vt100-s-bot|vt100-bot-s|vt100 for use with bottom sysline:\
+	:es:hs:\
+	:li#23:\
+	:ds=\E7\E[1;24r\E8:fs=\E8:is=\E[1;23r\E[23;1H:\
+	:ts=\E7\E[24;%p1%dH\E[1K:\
+	:tc=vt100-am:
+
+# Most of the `vt100' emulators out there actually emulate a vt102
+# This entry (or vt102-nsgr) is probably the right thing to use for
+# these.  
+vt102|dec vt102:\
+	:mi:\
+	:al=\E[L:dc=\E[P:dl=\E[M:ei=\E[4l:im=\E[4h:tc=vt100:
+vt102-w|dec vt102 in wide mode:\
+	:co#132:\
+	:r3=\E[?3h:tc=vt102:
+
+# Many brain-dead PC comm programs that pretend to be `vt100-compatible'
+# fail to interpret the ^O and ^N escapes properly.  Symptom: the :me:
+# string in the canonical vt100 entry above leaves the screen littered
+# with little  snowflake or star characters (IBM PC ROM character \017 = ^O)
+# after highlight turnoffs.  This entry should fix that, and even leave
+# ACS support working, at the cost of making multiple-highlight changes 
+# slightly more expensive.
+# From: Eric S. Raymond <esr@snark.thyrsus.com> July 22 1995
+vt102-nsgr|vt102 no sgr (use if you see snowflakes after highlight changes):\
+	:me=\E[m:sa@:\
+	:tc=vt102:
+
+# VT125 Graphics CRT.  Clear screen also erases graphics
+vt125|vt125 graphics terminal:\
+	:cl=\E[H\E[2J\EPpS(E)\E\:tc=vt100:
+
+# This isn't a DEC entry, it came from University of Wisconsin.
+# (vt131: I added <rmam>/<smam> based on the init string, also :bs: -- esr)
+vt131|dec vt131:\
+	:am:bs:xn:\
+	:co#80:it#8:li#24:vt#3:\
+	:RA=\E[?7h:SA=\E[?7h:bl=^G:cd=50\E[J:ce=3\E[K:\
+	:cl=50\E[;H\E[2J:cm=5\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:do=^J:ho=\E[H:is=\E[1;24r\E[24;1H:k1=\EOP:k2=\EOQ:\
+	:k3=\EOR:k4=\EOS:kb=^H:kd=\EOB:ke=\E[?1l\E>:kl=\EOD:\
+	:kr=\EOC:ks=\E[?1h\E=:ku=\EOA:le=^H:mb=2\E[5m:md=2\E[1m:\
+	:me=2\E[m:mr=2\E[7m:nd=2\E[C:nw=^M^J:\
+	:r1=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rc=\E8:sc=\E7:\
+	:se=2\E[m:so=2\E[7m:sr=5\EM:ta=^I:ue=2\E[m:up=2\E[A:\
+	:us=2\E[4m:
+
+# vt132 - like vt100 but slower and has ins/del line and such.
+# I'm told that :im:/:ei: are backwards in the terminal from the
+# manual and from the ANSI standard, this describes the actual 
+# terminal. I've never actually used a vt132 myself, so this 
+# is untested.
+#
+vt132|DEC vt132:\
+	:xn:\
+	:al=\E[L:dc=\E[P:dl=\E[M:ei=\E[4h:im=\E[4l:ip=:sf=\n:tc=vt100:
+
+# This vt220 description maps F5--F9 to the second block of function keys
+# at the top of the keyboard.  The "DO" key is used as F10 to avoid conflict
+# with the key marked (ESC) on the vt220.  See vt220d for an alternate mapping.
+# PF1--PF4 are used as F1--F4.
+#
+vt220-old|vt200-old|DEC VT220 in vt100 emulation mode:\
+	:am:bs:mi:pt:xn:xo:\
+	:co#80:li#24:vt#3:\
+	:@7=\E[4~:RA=\E[?7l:SA=\E[?7h:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:dc=\E[P:dl=\E[M:do=\E[B:ei=\E[4l:ho=\E[H:\
+	:if=/usr/share/tabset/vt100:im=\E[4h:\
+	:is=\E[1;24r\E[24;1H:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:\
+	:k5=\E[17~:k6=\E[18~:k7=\E[19~:k8=\E[20~:k9=\E[21~:\
+	:k;=\E[29~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:kb=^H:\
+	:kd=\E[B:kh=\E[1~:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:mb=\E[5m:\
+	:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:nl=^J:\
+	:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rc=\E8:\
+	:rf=/usr/share/tabset/vt100:\
+	:..sa=\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p4%t;5%;%?%p1%p3%|%t;7%;m%?%p9%t\E(0%e\E(B%;:\
+	:sc=\E7:se=\E[27m:sf=20\ED:so=\E[7m:sr=14\EM:ta=^I:\
+	:ue=\E[24m:up=\E[A:us=\E[4m:ve=\E[?25h:vi=\E[?25l:
+
+# A much better description of the VT200/220; used to be vt220-8
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+# (sgr removed to fit entry within 1023 bytes)
+# (terminfo-only capabilities suppressed to fit entry within 1023 bytes)
+vt220|vt200|dec vt220:\
+	:am:bs:mi:ms:xn:xo:\
+	:co#80:it#8:li#24:vt#3:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:LE=\E[%dD:RI=\E[%dC:UP=\E[%dA:ae=^O:al=\E[L:as=^N:bl=^G:\
+	:cd=\E[J:ce=\E[K:cl=\E[H\E[J:cm=\E[%i%d;%dH:cr=^M:\
+	:cs=\E[%i%d;%dr:ct=\E[3g:dc=\E[P:dl=\E[M:do=^J:ec=\E[%dX:\
+	:ei=\E[4l:ho=\E[H:if=/usr/share/tabset/vt100:im=\E[4h:\
+	:is=\E[?7h\E[>\E[?1h\E F\E[?4l:k1=\EOP:k2=\EOQ:k3=\EOR:\
+	:k4=\EOS:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:kI=\E[2~:\
+	:kN=\E[6~:kP=\E[5~:kb=^H:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:\
+	:ku=\E[A:le=^H:mb=\E[5m:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:\
+	:nw=\EE:rc=\E8:sc=\E7:se=\E[27m:sf=\ED:so=\E[7m:sr=\EM:\
+	:st=\EH:ta=^I:ue=\E[24m:up=\E[A:us=\E[4m:vb=\E[?5h\E[?5l:
+vt220-w|vt200-w|DEC vt220 in wide mode:\
+	:co#132:\
+	:r3=\E[?3h:tc=vt220:
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+# (sgr removed to fit entry within 1023 bytes)
+# (terminfo-only capabilities suppressed to fit entry within 1023 bytes)
+vt220-8bit|vt220-8|vt200-8bit|vt200-8|dec vt220/200 in 8-bit mode:\
+	:am:bs:mi:ms:xn:xo:\
+	:co#80:it#8:li#24:vt#3:\
+	:AL=\233%dL:DC=\233%dP:DL=\233%dM:DO=\233%dB:IC=\233%d@:\
+	:LE=\233%dD:RI=\233%dC:UP=\233%dA:ae=^O:al=\233L:as=^N:\
+	:bl=^G:cd=\233J:ce=\233K:cl=\233H\233J:cm=\233%i%d;%dH:\
+	:cr=^M:cs=\233%i%d;%dr:ct=\2333g:dc=\233P:dl=\233M:do=^J:\
+	:ec=\233%dX:ei=\2334l:ho=\233H:\
+	:if=/usr/share/tabset/vt100:im=\2334h:\
+	:is=\233?7h\233>\233?1h\E F\233?4l:k1=\EOP:k2=\EOQ:\
+	:k3=\EOR:k4=\EOS:k6=\23317~:k7=\23318~:k8=\23319~:\
+	:k9=\23320~:kI=\2332~:kN=\2336~:kP=\2335~:kb=^H:kd=\233B:\
+	:kh=\233H:kl=\233D:kr=\233C:ku=\233A:le=^H:mb=\2335m:\
+	:md=\2331m:me=\233m:mr=\2337m:nd=\233C:nw=\EE:rc=\E8:\
+	:sc=\E7:se=\23327m:sf=\ED:so=\2337m:sr=\EM:st=\EH:ta=^I:\
+	:ue=\23324m:up=\233A:us=\2334m:vb=\233?5h\233?5l:
+
+#
+# vt220d:
+# This vt220 description regards F6--F10 as the second block of function keys
+# at the top of the keyboard.  This mapping follows the description given
+# in the VT220 Programmer Reference Manual and agrees with the labeling
+# on some terminals that emulate the vt220.  There is no support for an F5.
+# See vt220 for an alternate mapping. 
+#
+vt220d|DEC VT220 in vt100 mode with DEC function key labeling:\
+	:F1=\E[23~:F2=\E[24~:F3=\E[25~:F4=\E[26~:F5=\E[28~:\
+	:F6=\E[29~:F7=\E[31~:F8=\E[32~:F9=\E[33~:FA=\E[34~:k5@:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:k;=\E[21~:\
+	:tc=vt220-old:
+
+vt220-nam|v200-nam|VT220 in vt100 mode with no auto margins:\
+	:am@:\
+	:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7l\E[?8h:tc=vt220:
+
+# vt220 termcap written Tue Oct 25 20:41:10 1988 by Alex Latzko
+# (not an official DEC entry!)
+# The problem with real vt220 terminals is they don't send escapes when in
+# in vt220 mode.  This can be gotten around two ways.  1> don't send
+# escapes or 2> put the vt220 into vt100 mode and use all the nifty
+# features of vt100 advanced video which it then has.
+#
+# This entry takes the view of putting a vt220 into vt100 mode so
+# you can use the escape key in emacs and everything else which needs it.
+#
+# You probably don't want to use this on a VMS machine since VMS will think
+# it has a vt220 and will get fouled up coming out of emacs
+#
+# From: Alexander Latzko <latzko@marsenius.rutgers.edu>, 30 Dec 1996
+# (Added vt100 :rc:,:sc: to quiet a tic warning -- esr)
+vt200-js|vt220-js|dec vt200 series with jump scroll:\
+	:am:\
+	:co#80:\
+	:al=\E[L:bl=^G:cd=\E[J:ce=\E[K:cl=\E[H\E[J:cm=\E[%i%d;%dH:\
+	:cr=^M:cs=\E[%i%d;%dr:dc=\E[P:dl=\E[M:dm=:do=^J:ed=:\
+	:ei=\E[4l:ho=\E[H:im=\E[4h:\
+	:is=\E[61"p\E[H\E[?3l\E[?4l\E[?1l\E[?5l\E[?6l\E[?7h\E[?8h\E[?25h\E>\E[m:\
+	:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:kb=^H:kd=\EOB:\
+	:ke=\E[?1l\E>:kl=\EOD:kr=\EOC:ks=\E[?1h\E=:ku=\EOA:le=^H:\
+	:nw=^M\ED:r1=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rc=\E8:\
+	:rf=/usr/lib/tabset/vt100:sc=\E7:se=5\E[27m:sf=\ED:\
+	:so=5\E[7m:sr=\EM:ta=^I:ue=\E[24m:up=\E[A:us=\E[4m:
+ 
+
+# This was DEC's vt320.  Use the purpose-built one below instead 
+#vt320|DEC VT320 in vt100 emulation mode,
+#	use=vt220,
+
+#
+# Use v320n for SCO's LYRIX.  Otherwise, use Adam Thompson's vt320-nam.
+#
+vt320nam|v320n|DEC VT320 in vt100 emul. mode with NO AUTO WRAP mode:\
+	:am@:\
+	:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7l\E[?8h:tc=vt220:
+
+# These entries are not DEC's official ones, they were purpose-built for the 
+# VT320.  Here are the designer's notes:
+# <kel> is end on a PC kbd.  Actually 'select' on a VT.  Mapped to 
+# 'Erase to End of Field'... since nothing seems to use 'end' anyways...
+# khome is Home on a PC kbd.  Actually 'FIND' on a VT.
+# Things that use <knxt> usually use tab anyways... and things that don't use
+# tab usually use <knxt> instead...
+# kprv is same as tab - Backtab is useless...
+# I left out :sa: because of its RIDICULOUS complexity,
+# and the resulting fact that it causes the termcap translation of the entry
+# to SMASH the 1k-barrier...
+# From: Adam Thompson <athompso@pangea.ca> Sept 10 1995
+# (vt320: uncommented :fs:, comnmmented out <kslt> to avoid a conflict --esr) 
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+# (sgr removed to fit entry within 1023 bytes)
+# (terminfo-only capabilities suppressed to fit entry within 1023 bytes)
+vt320|vt300|dec vt320 7 bit terminal:\
+	:am:es:hs:mi:ms:xn:\
+	:co#80:li#24:ws#80:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:K1=\EOw:K2=\EOu:K3=\EOy:K4=\EOq:K5=\EOs:LE=\E[%dD:\
+	:RI=\E[%dC:UP=\E[%dA:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cd=\E[J:\
+	:ce=\E[K:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=^M:\
+	:cs=\E[%i%d;%dr:ct=\E[3g:dc=\E[P:dl=\E[M:do=^J:ec=\E[%dX:\
+	:ei=\E[4l:fs=\E[0$}:ho=\E[H:im=\E[4h:\
+	:is=\E>\E[?3l\E[?4l\E[5?l\E[?7h\E[?8h\E[1;24r\E[24;1H:\
+	:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:k6=\E[17~:k7=\E[18~:\
+	:k8=\E[19~:k9=\E[20~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:\
+	:kb=\177:kd=\EOB:ke=\E[?1l\E>:kh=\E[1~:kl=\EOD:kr=\EOC:\
+	:ks=\E[?1h\E=:ku=\EOA:le=^H:mb=\E[5m:md=\E[1m:me=\E[m:\
+	:mr=\E[7m:nd=\E[C:nw=\EE:rc=\E8:sc=\E7:se=\E[m:sf=\ED:\
+	:so=\E[7m:sr=\EM:st=\EH:ta=^I:ts=\E[1$}\E[H\E[K:ue=\E[m:\
+	:up=\E[A:us=\E[4m:ve=\E[?25h:vi=\E[?25l:
+vt320-nam|vt300-nam|dec vt320 7 bit terminal with no am to make SAS happy:\
+	:am@:\
+	:is=\E>\E[?3l\E[?4l\E[5?l\E[?7l\E[?8h\E[1;24r\E[24;1H:\
+	:r2=\E>\E[?3l\E[?4l\E[5?l\E[?7l\E[?8h\E[1;24r\E[24;1H:\
+	:tc=vt320:
+# We have to init 132-col mode, not 80-col mode.
+vt320-w|vt300-w|dec vt320 wide 7 bit terminal:\
+	:co#132:ws#132:\
+	:is=\E>\E[?3h\E[?4l\E[5?l\E[?7h\E[?8h\E[1;24r\E[24;1H:\
+	:r2=\E>\E[?3h\E[?4l\E[5?l\E[?7h\E[?8h\E[1;24r\E[24;1H:\
+	:tc=vt320:
+vt320-w-nam|vt300-w-nam|dec vt320 wide 7 bit terminal with no am:\
+	:am@:\
+	:is=\E>\E[?3h\E[?4l\E[5?l\E[?7l\E[?8h\E[1;24r\E[24;1H:\
+	:r2=\E>\E[?3h\E[?4l\E[5?l\E[?7l\E[?8h\E[1;24r\E[24;1H:\
+	:tc=vt320-w:
+
+# VT330 and VT340 -- These are ReGIS and SIXEL graphics terminals
+#   which are pretty much a superset of the VT320.  They have the
+#   host writable status line, yet another different DRCS matrix size,
+#   and such, but they add the DEC Technical character set, Multiple text
+#   pages, selectable length pages, and the like.  The difference between
+#   the vt330 and vt340 is that the latter has only 2 planes and a monochrome
+#   monitor, the former has 4 planes and a color monitor.  These terminals
+#   support VT131 and ANSI block mode, but as with much of these things,
+#   termcap/terminfo doesn't deal with these features.
+#
+# Note that this entry is are set up in what was the standard way for GNU
+# Emacs v18 terminal modes to deal with the cursor keys in that the arrow
+# keys were switched into application mode at the same time the numeric pad
+# is switched into application mode.  This changes the definitions of the
+# arrow keys.  Emacs v19 is smarter and mines its keys directly out of 
+# your termcap or terminfo entry,
+#
+# From: Daniel Glasser <dag@persoft.persoft.com>, 13 Oct 1993
+# (vt340: string capability "sb=\E[M" corrected to "sr";
+# also, added <rmam>/<smam> based on the init string -- esr)
+vt340|dec-vt340|vt330|dec-vt330|dec vt340 graphics terminal with 24 line page:\
+	:am:es:hs:mi:ms:xn:xo:\
+	:co#80:it#8:li#24:vt#3:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:LE=\E[%dD:RA=\E[?7l:RI=\E[%dC:SA=\E[?7h:UP=\E[%dA:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=^O:al=\E[L:as=^N:cd=\E[J:ce=\E[K:cl=\E[H\E[J:\
+	:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:ct=\E[3g:dc=\E[P:\
+	:dl=\E[M:do=^J:ds=\E[2$~\r\E[1$}\E[K\E[$}:ei=\E[4l:\
+	:fs=\E[$}:ho=\E[H:im=\E[4h:\
+	:is=\E<\E F\E>\E[?1h\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h\E[1;24r\E[24;1H:\
+	:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:k6=\E[17~:k7=\E[18~:\
+	:k8=\E[19~:k9=\E[20~:kb=^H:kd=\EOB:ke=\E[?1l\E>:kl=\EOD:\
+	:kr=\EOC:ks=\E[?1h\E=:ku=\EOA:l1=pf1:l2=pf2:l3=pf3:l4=pf4:\
+	:le=^H:mb=\E[5m:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:nw=^M\ED:\
+	:r1=\E[?3l:rc=\E8:rf=/usr/share/tabset/vt300:sc=\E7:\
+	:se=\E[27m:sf=\ED:so=\E[7m:sr=\EM:st=\EH:ta=^I:\
+	:ts=\E[2$~\E[1$}\E[1;%dH:ue=\E[24m:up=\E[A:us=\E[4m:\
+	:vb=200\E[?5h\E[?5l:ve=\E[?25h:vi=\E[?25l:vs=\E[?25h:
+
+# DEC doesn't supply a vt400 description, so we add Daniel Glasser's
+# (originally written with vt420 as its primary name, and usable for it).
+# 
+# VT400/420 -- This terminal is a superset of the vt320.  It adds the multiple 
+#    text pages and long text pages with selectable length of the vt340, along
+#    with left and right margins, rectangular area text copy, fill, and erase
+#    operations, selected region character attribute change operations,
+#    page memory and rectangle checksums, insert/delete column, reception
+#    macros, and other features too numerous to remember right now.  TERMCAP
+#    can only take advantage of a few of these added features.
+#
+# Note that this entry is are set up in what was the standard way for GNU
+# Emacs v18 terminal modes to deal with the cursor keys in that the arrow
+# keys were switched into application mode at the same time the numeric pad
+# is switched into application mode.  This changes the definitions of the
+# arrow keys.  Emacs v19 is smarter and mines its keys directly out of 
+# your termcap entry,
+#
+# From: Daniel Glasser <dag@persoft.persoft.com>, 13 Oct 1993
+# (vt400: string capability ":sb=\E[M:" corrected to ":sr=\E[M:";
+# also, added <rmam>/<smam> based on the init string -- esr)
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+# (sgr removed to fit entry within 1023 bytes)
+# (terminfo-only capabilities suppressed to fit entry within 1023 bytes)
+vt400|vt400-24|dec-vt400|dec vt400 24x80 column autowrap:\
+	:am:es:hs:mi:ms:xn:xo:\
+	:co#80:it#8:li#24:vt#3:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:IC=\E[%d@:\
+	:LE=\E[%dD:RI=\E[%dC:UP=\E[%dA:ae=^O:al=\E[L:as=^N:\
+	:cd=10\E[J:ce=4\E[K:cl=10\E[H\E[J:cm=\E[%i%d;%dH:cr=^M:\
+	:cs=\E[%i%d;%dr:ct=\E[3g:dc=\E[P:dl=\E[M:do=^J:\
+	:ds=\E[2$~\r\E[1$}\E[K\E[$}:ei=\E[4l:fs=\E[$}:ho=\E[H:\
+	:ic=\E[@:im=\E[4h:\
+	:is=\E<\E F\E>\E[?1h\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h\E[1;24r\E[24;1H:\
+	:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:k6=\E[17~:k7=\E[18~:\
+	:k8=\E[19~:k9=\E[20~:kb=^H:kd=\EOB:ke=\E[?1l\E>:kl=\EOD:\
+	:kr=\EOC:ks=\E[?1h\E=:ku=\EOA:le=^H:mb=\E[5m:md=\E[1m:\
+	:me=\E[m:mr=\E[7m:nd=\E[C:nw=^M\ED:rc=\E8:sc=\E7:se=\E[27m:\
+	:sf=\ED:so=\E[7m:sr=\EM:st=\EH:ta=^I:\
+	:ts=\E[2$~\E[1$}\E[1;%dH:ue=\E[24m:up=\E[A:us=\E[4m:\
+	:vb=200\E[?5h\E[?5l:ve=\E[?25h:vi=\E[?25l:vs=\E[?25h:
+
+# (vt420: I removed :k0:, it collided with <kf10>.  I also restored
+# a missing :sc: -- esr)
+vt420|DEC VT420:\
+	:am:mi:xn:xo:\
+	:co#80:li#24:vt#3:\
+	:*6=\E[4~:@0=\E[1~:RA=\E[?7l:\
+	:S5=\E[?0;0r\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:SA=\E[?7h:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:dc=\E[P:dl=\E[M:do=\E[B:ei=\E[4l:ho=\E[H:\
+	:i2=\E[?67h\E[64;1"p:if=/usr/share/tabset/vt300:\
+	:im=\E[4h:is=\E[1;24r\E[24;1H:k1=\EOP:k2=\EOQ:k3=\EOR:\
+	:k4=\EOS:k5=\E[17~:k6=\E[18~:k7=\E[19~:k8=\E[20~:\
+	:k9=\E[21~:k;=\E[29~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:\
+	:kb=^H:kd=\E[B:ke=\E>:kl=\E[D:kr=\E[C:ks=\E=:ku=\E[A:le=^H:\
+	:mb=\E[5m:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:\
+	:r3=\E[?67h\E[64;1"p:rc=\E8:rf=/usr/share/tabset/vt300:\
+	:..sa=\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p4%t;5%;%?%p1%p3%|%t;7%;m%?%p9%t\E(0%e\E(B%;:\
+	:sc=\E7:se=\E[m:sf=\ED:so=\E[7m:sr=\EM:ta=^I:ue=\E[m:\
+	:up=\E[A:us=\E[4m:
+
+#
+# DEC VT220 and up support DECUDK (user-defined keys).  DECUDK (i.e., pfx)
+# takes two parameters, the key and the string.  Translating the key is
+# straightforward (keys 1-5 are not defined on real terminals, though some
+# emulators define these):
+#
+#               if (key < 16) then  value = key;
+#               else if (key < 21) then value = key + 1; 
+#               else if (key < 25) then value = key + 2;
+#               else if (key < 27) then value = key + 3;
+#               else if (key < 30) then value = key + 4;
+#               else value = key + 5;
+#
+# The string must be the hexadecimal equivalent, e.g., "5052494E" for "PRINT". 
+# There's no provision in terminfo for emitting a string in this format, so the
+# application has to know it.
+#
+vt420pc|DEC VT420 w/PC keyboard:\
+	:@7=\E[4~:F1=\E[23~:F2=\E[24~:F3=\E[11;2~:F4=\E[12;2~:\
+	:F5=\E[13;2~:F6=\E[14;2~:F7=\E[15;2~:F8=\E[17;2~:\
+	:F9=\E[18;2~:FA=\E[19;2~:FB=\E[20;2~:FC=\E[21;2~:\
+	:FD=\E[23;2~:FE=\E[24;2~:FF=\E[23~:FG=\E[24~:FH=\E[25~:\
+	:FI=\E[26~:FJ=\E[28~:FK=\E[29~:FL=\E[31~:FM=\E[32~:\
+	:FN=\E[33~:FO=\E[34~:FP=\E[35~:FQ=\E[36~:FR=\E[23;2~:\
+	:FS=\E[24;2~:FT=\E[25;2~:FU=\E[26;2~:FV=\E[28;2~:\
+	:FW=\E[29;2~:FX=\E[31;2~:FY=\E[32;2~:FZ=\E[33;2~:\
+	:Fa=\E[34;2~:Fb=\E[35;2~:Fc=\E[36;2~:\
+	:S6=USR_TERM\072vt420pcdos\072:k1=\E[11~:k2=\E[12~:\
+	:k3=\E[13~:k4=\E[14~:k5=\E[15~:k6=\E[17~:k7=\E[18~:\
+	:k8=\E[19~:k9=\E[20~:k;=\E[21~:kD=\177:kh=\E[H:\
+	:..px=\EP1;1|%?%{16}%p1%>%t%{0}%e%{21}%p1%>%t%{1}%e%{25}%p1%>%t%{2}%e%{27}%p1%>%t%{3}%e%{30}%p1%>%t%{4}%e%{5}%;%p1%+%d/%p2%s\E\:tc=vt420:
+
+vt420pcdos|DEC VT420 w/PC for DOS Merge:\
+	:li#25:\
+	:S1=%?%p2%{19}%=%t\E\023\021%e%p2%{32}%<%t\E%p2%c%e%p2%{127}%=%t\E\177%e%p2%c%;:\
+	:S4=\E[?1;2r\E[34h:\
+	:S5=\E[?0;0r\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:S6@:\
+	:me=\E[m:sa@:\
+	:tc=vt420pc:
+
+vt420f|DEC VT420 with VT kbd; VT400 mode; F1-F5 used as Fkeys:\
+	:F1=\E[23~:F2=\E[24~:F3=\E[25~:F4=\E[26~:F5=\E[28~:\
+	:F6=\E[29~:F7=\E[31~:F8=\E[32~:F9=\E[33~:FA=\E[34~:\
+	:k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~:k5=\E[15~:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:k;=\E[21~:\
+	:kD=\177:kh=\E[H:l1=\EOP:l2=\EOQ:l3=\EOR:l4=\EOS:\
+	:tc=vt420:
+
+vt510|DEC VT510:\
+	:tc=vt420:
+vt510pc|DEC VT510 w/PC keyboard:\
+	:tc=vt420pc:
+vt510pcdos|DEC VT510 w/PC for DOS Merge:\
+	:tc=vt420pcdos:
+
+# VT520/VT525
+#
+# The VT520 is a monochrome text terminal capable of managing up to
+# four independent sessions in the terminal.  It has multiple ANSI
+# emulations (VT520, VT420, VT320, VT220, VT100, VT PCTerm, SCO Console)
+# and ASCII emulations (WY160/60, PCTerm, 50/50+, 150/120, TVI 950,
+# 925 910+, ADDS A2).  This terminfo data is for the ANSI emulations only.
+#
+# Terminal Set-Up is entered by pressing [F3], [Caps Lock]/[F3] or
+# [Alt]/[Print Screen] depending upon which keyboard and which
+# terminal mode is being used.  If Set-Up has been disabled or
+# assigned to an unknown key, Set-Up may be entered by pressing
+# [F3] as the first key after power up, regardless of keyboard type.
+# (vt520: I added <rmam>/<smam> based on the init string, also :sc: -- esr)
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+vt520|DEC VT520:\
+	:am:mi:xn:xo:\
+	:co#80:li#24:vt#3:\
+	:*6=\E[4~:@0=\E[1~:RA=\E[?7l:\
+	:S5=\E[?0;0r\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:SA=\E[?7h:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:dc=\E[P:dl=\E[M:do=\E[B:ei=\E[4l:ho=\E[H:\
+	:i2=\E[?67h\E[64;1"p:if=/usr/share/tabset/vt300:\
+	:im=\E[4h:is=\E[1;24r\E[24;1H:k0=\E[29~:k1=\EOP:k2=\EOQ:\
+	:k3=\EOR:k4=\EOS:k5=\E[17~:k6=\E[18~:k7=\E[19~:k8=\E[20~:\
+	:k9=\E[21~:k;=\E[29~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:\
+	:kb=^H:kd=\E[B:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:mb=\E[5m:\
+	:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:r3=\E[?67h\E[64;1"p:\
+	:rc=\E8:rf=/usr/share/tabset/vt300:sc=\E7:se=\E[m:sf=\ED:\
+	:so=\E[7m:sr=\EM:ta=^I:ue=\E[m:up=\E[A:us=\E[4m:
+
+# (vt525: I added <rmam>/<smam> based on the init string;
+# removed :se:=\E[m, :ue:=\E[m, added :sc: -- esr)
+# (untranslatable capabilities removed to fit entry within 1023 bytes)
+vt525|DEC VT525:\
+	:am:mi:xn:xo:\
+	:co#80:li#24:vt#3:\
+	:*6=\E[4~:@0=\E[1~:RA=\E[?7l:\
+	:S5=\E[?0;0r\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:SA=\E[?7h:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=\E(B:al=\E[L:as=\E(0:bl=^G:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=^M:cs=\E[%i%d;%dr:\
+	:dc=\E[P:dl=\E[M:do=\E[B:ei=\E[4l:ho=\E[H:\
+	:i2=\E[?67h\E[64;1"p:if=/usr/share/tabset/vt300:\
+	:im=\E[4h:is=\E[1;24r\E[24;1H:k0=\E[29~:k1=\EOP:k2=\EOQ:\
+	:k3=\EOR:k4=\EOS:k5=\E[17~:k6=\E[18~:k7=\E[19~:k8=\E[20~:\
+	:k9=\E[21~:k;=\E[29~:kD=\E[3~:kI=\E[2~:kN=\E[6~:kP=\E[5~:\
+	:kb=^H:kd=\E[B:kl=\E[D:kr=\E[C:ku=\E[A:le=^H:mb=\E[5m:\
+	:md=\E[1m:me=\E[m:mr=\E[7m:nd=\E[C:r3=\E[?67h\E[64;1"p:\
+	:rc=\E8:rf=/usr/share/tabset/vt300:sc=\E7:se=\E[m:sf=\ED:\
+	:so=\E[7m:sr=\EM:ta=^I:ue=\E[m:up=\E[A:us=\E[4m:

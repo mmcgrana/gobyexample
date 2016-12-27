@@ -1,0 +1,9 @@
+crlf        =  %d13.10
+
+command     =  "command string"
+
+char-line = %x0D.0A *(%x20-7E) %x0D.0A
+
+without-ws-and-ctl = %d1-8 / %d11 / %d12 / %d14-31 / %d127
+
+three-blank-lines = %x0D.0A.0D.0A.0D.0A

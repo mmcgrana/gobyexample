@@ -1,0 +1,33 @@
+{{#view EmberFirebaseChat.ChatView class="chat-container"}}
+  <div class="chat-messages-container">
+    <ul class="chat-messages">
+      {{#each message in content}}
+      <li>
+        [{{formatTimestamp "message.timestamp" fmtString="h:mm:ss A"}}] 
+        <strong>{{message.sender}}</strong>: {{message.content}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  {{! Comment }}
+  {{{unescaped value}}}
+
+  {{#view EmberFirebaseChat.InputView class="chat-input-container"}}
+    <form class="form-inline">
+      {{#if "auth.authed"}}
+        {{#if "auth.hasName"}}
+          <input type="text" id="message" placeholder="Message">
+          <button {{action "postMessage" target="view"}} class="btn">Send</button>
+        {{else}}
+          <input type="text" id="username" placeholder="Enter your username...">
+          <button {{action "pickName" target="view"}} class="btn">Send</button>
+        {{/if}}
+      {{else}}
+        <input type="text" placeholder="Log in with Persona to chat!" disabled="disabled">
+        <button {{action "login"}} class="btn">Login</button>
+      {{/if}}
+    </form>
+  {{/view}}
+{{/view}}
+

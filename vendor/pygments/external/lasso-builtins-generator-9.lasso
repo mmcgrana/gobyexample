@@ -4,14 +4,20 @@
 	Builtins Generator for Lasso 9
 
 	This is the shell script that was used to extract Lasso 9's built-in keywords
-	and generate most of the _lassobuiltins.py file. When run, it creates a file
-	named "lassobuiltins-9.py" containing the types, traits, and methods of the
-	currently-installed version of Lasso 9.
+	and generate most of the _lasso_builtins.py file. When run, it creates a file
+	containing the types, traits, methods, and members of the currently-installed
+	version of Lasso 9.
 
-	A partial list of keywords in Lasso 8 can be generated with this code:
+	A list of tags in Lasso 8 can be generated with this code:
 
 	<?LassoScript
-		local('l8tags' = list);
+		local('l8tags' = list,
+					'l8libs' = array('Cache','ChartFX','Client','Database','File','HTTP',
+						'iCal','Lasso','Link','List','PDF','Response','Stock','String',
+						'Thread','Valid','WAP','XML'));
+		iterate(#l8libs, local('library'));
+			local('result' = namespace_load(#library));
+		/iterate;
 		iterate(tags_list, local('i'));
 			#l8tags->insert(string_removeleading(#i, -pattern='_global_'));
 		/iterate;
@@ -23,98 +29,133 @@
 */
 
 output("This output statement is required for a complete list of methods.")
-local(f) = file("lassobuiltins-9.py")
+local(f) = file("_lasso_builtins-9.py")
 #f->doWithClose => {
 
-#f->openWrite
+#f->openTruncate
 #f->writeString('# -*- coding: utf-8 -*-
 """
-    pygments.lexers._lassobuiltins
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    pygments.lexers._lasso_builtins
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Built-in Lasso types, traits, and methods.
+    Built-in Lasso types, traits, methods, and members.
+
+    :copyright: Copyright 2006-'+date->year+' by the Pygments team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
 """
 
 ')
 
-lcapi_loadModules
+// Load and register contents of $LASSO9_MASTER_HOME/LassoModules/
+database_initialize
 
 // Load all of the libraries from builtins and lassoserver
 // This forces all possible available types and methods to be registered
 local(srcs =
-		tie(
-			dir(sys_masterHomePath + 'LassoLibraries/builtins/')->eachFilePath,
-			dir(sys_masterHomePath + 'LassoLibraries/lassoserver/')->eachFilePath
-		)
+	(:
+		dir(sys_masterHomePath + '/LassoLibraries/builtins/')->eachFilePath,
+		dir(sys_masterHomePath + '/LassoLibraries/lassoserver/')->eachFilePath
+	)
 )
 
-with topLevelDir in #srcs
-where !#topLevelDir->lastComponent->beginsWith('.')
+with topLevelDir in delve(#srcs)
+where not #topLevelDir->lastComponent->beginsWith('.')
 do protect => {
-  handle_error => {
+	handle_error => {
 		stdoutnl('Unable to load: ' + #topLevelDir + ' ' + error_msg)
 	}
 	library_thread_loader->loadLibrary(#topLevelDir)
 	stdoutnl('Loaded: ' + #topLevelDir)
 }
 
+email_initialize
+log_initialize
+session_initialize
+
 local(
-	typesList = list(),
-	traitsList = list(),
-	methodsList = list()
+	typesList = set(),
+	traitsList = set(),
+	unboundMethodsList = set(),
+	memberMethodsList = set()
 )
-
-// unbound methods
-with method in sys_listUnboundMethods
-where !#method->methodName->asString->endsWith('=')
-where #method->methodName->asString->isalpha(1)
-where #methodsList !>> #method->methodName->asString
-do #methodsList->insert(#method->methodName->asString)
-
-// traits
-with trait in sys_listTraits
-where !#trait->asString->beginsWith('$')
-where #traitsList !>> #trait->asString
-do {
-	#traitsList->insert(#trait->asString)
-	with tmethod in tie(#trait->getType->provides, #trait->getType->requires)
-	where !#tmethod->methodName->asString->endsWith('=')
-	where #tmethod->methodName->asString->isalpha(1)
-	where #methodsList !>> #tmethod->methodName->asString
-	do #methodsList->insert(#tmethod->methodName->asString)
-}
 
 // types
 with type in sys_listTypes
-where #typesList !>> #type->asString
+where not #type->asString->endsWith('$')		// skip threads
 do {
-	#typesList->insert(#type->asString)
-	with tmethod in #type->getType->listMethods
-	where !#tmethod->methodName->asString->endsWith('=')
-	where #tmethod->methodName->asString->isalpha(1)
-	where #methodsList !>> #tmethod->methodName->asString
-	do #methodsList->insert(#tmethod->methodName->asString)
+	#typesList->insert(#type)
 }
 
-#f->writeString("BUILTINS = {
-    'Types': [
-")
-with t in #typesList
-do #f->writeString("        '"+string_lowercase(#t)+"',\n")
+// traits
+with trait in sys_listTraits
+where not #trait->asString->beginsWith('$')		// skip combined traits
+do {
+	#traitsList->insert(#trait)
+}
 
-#f->writeString("    ],
-    'Traits': [
-")
-with t in #traitsList
-do #f->writeString("        '"+string_lowercase(#t)+"',\n")
+// member methods
+with type in #typesList
+do {
+	with method in #type->getType->listMethods
+	where #method->typeName == #type	 // skip inherited methods
+	let name = #method->methodName
+	where not #name->asString->endsWith('=')		// skip setter methods
+	where #name->asString->isAlpha(1)		// skip unpublished methods
+	do {
+		#memberMethodsList->insert(#name)
+	}
+}
+with trait in #traitsList
+do {
+	with method in #trait->getType->provides
+	where #method->typeName == #trait		// skip inherited methods
+	let name = #method->methodName
+	where not #name->asString->endsWith('=')		// skip setter methods
+	where #name->asString->isAlpha(1)		// skip unpublished methods
+	do {
+		#memberMethodsList->insert(#name)
+	}
+}
 
-#f->writeString("    ],
-    'Methods': [
-")
-with t in #methodsList
-do #f->writeString("        '"+string_lowercase(#t)+"',\n")
+// unbound methods
+with method in sys_listUnboundMethods
+let name = #method->methodName
+where not #name->asString->endsWith('=')		// skip setter methods
+where #name->asString->isAlpha(1)		// skip unpublished methods
+where #typesList !>> #name
+where #traitsList !>> #name
+do {
+	#unboundMethodsList->insert(#name)
+}
 
-#f->writeString("    ],
+// write to file
+with i in (:
+	pair(#typesList, "BUILTINS = {
+    'Types': (
+"),
+	pair(#traitsList, "    ),
+    'Traits': (
+"),
+	pair(#unboundMethodsList, "    ),
+    'Unbound Methods': (
+"),
+	pair(#memberMethodsList, "    )
+}
+MEMBERS = {
+    'Member Methods': (
+")
+)
+do {
+	#f->writeString(#i->second)
+	with t in (#i->first)
+	let ts = #t->asString
+	order by #ts
+	do {
+		#f->writeString("        '"+#ts->lowercase&asString+"',\n")
+	}
+}
+
+#f->writeString("    )
 }
 ")
 

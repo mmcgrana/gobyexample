@@ -1,0 +1,27 @@
+{
+  "@context": {
+     "schema": "http://schema.org/",
+     "name": "schema:name",
+     "body": "schema:articleBody",
+     "words": "schema:wordCount",
+     "post": {
+       "@id": "schema:blogPost",
+       "@container": "@index"
+     }
+  },
+  "@id": "http://example.com/",
+  "@type": "schema:Blog",
+  "name": "World Financial News",
+  "post": {
+     "en": {
+       "@id": "http://example.com/posts/1/en",
+       "body": "World commodities were up today with heavy trading of crude oil...",
+       "words": 1539
+     },
+     "de": {
+       "@id": "http://example.com/posts/1/de",
+       "body": "Die Werte an Warenbörsen stiegen im Sog eines starken Handels von Rohöl...",
+       "words": 1204
+     }
+  }
+}

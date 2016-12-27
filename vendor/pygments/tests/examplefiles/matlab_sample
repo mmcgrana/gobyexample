@@ -28,3 +28,7 @@ y = exp(x);
  {%
 a block comment
  %}
+
+function no_arg_func
+fprintf('%s\n', 'function with no args')
+end

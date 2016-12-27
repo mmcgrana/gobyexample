@@ -1,0 +1,38 @@
+/*
+ * Example input for CAmkES lexer.
+ */
+
+import <std_connector.camkes>;
+
+// A single-line comment.
+
+import "components/Client/Client.camkes";
+import "components/Echo/Echo.camkes";
+
+component Foo {
+  include "proc_defn.h";
+  control;
+  dataport Buf my_port;
+}
+
+#ifdef BAR_AVAILABLE
+  component Bar {
+    provides CharAccess ca;
+  }
+#endif
+
+    #define HASH_DEF_WITH_LEADING_SPACE
+
+assembly { /* Another multiline comment. */
+  composition {
+    component Echo echo;
+    component Client client;
+
+    connection seL4RPC simple(from client.s, to echo.s);
+  }
+
+  configuration {
+    echo.dma_pool = 4096;
+  }
+}
+

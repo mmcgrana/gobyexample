@@ -1,0 +1,4 @@
+transformation Foo(uml: SimpleUML,
+  rdbms : SimpleRDBMS) {
+}
+/* comment */

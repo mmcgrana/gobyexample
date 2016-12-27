@@ -1,0 +1,149 @@
+	--
+	-- Example fragment of an openEHR Archetype, written in cADL, a subsyntax of the Archetype Definition Language (ADL)
+	-- definition available here: http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf
+	--	Author: Thomas Beale
+	--
+
+	EVALUATION[id1] matches {	-- Adverse Reaction
+		data matches {
+			ITEM_TREE[id2] matches {
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[id3] matches {	-- Substance/Agent
+						value matches {
+							DV_TEXT[id51] 
+						}
+					}
+					ELEMENT[id5] occurrences matches {0..1} matches {	-- Absolute Contraindication?
+						value matches {
+							DV_BOOLEAN[id52] matches {
+								value matches {True}
+							}
+						}
+					}
+					ELEMENT[id50] occurrences matches {0..1} matches {	-- Future Use
+						value matches {
+							DV_TEXT[id53] 
+						}
+					}
+					ELEMENT[id7] occurrences matches {0..1} matches {	-- Overall Comment
+						value matches {
+							DV_TEXT[id54] 
+						}
+					}
+					CLUSTER[id10] matches {	-- Reaction Event
+						items matches {
+							ELEMENT[id11] occurrences matches {0..1} matches {	-- Specific Substance/Agent
+								value matches {
+									DV_TEXT[id55] 
+								}
+							}
+							ELEMENT[id12] matches {	-- Manifestation
+								value matches {
+									DV_TEXT[id56] 
+								}
+							}
+							ELEMENT[id17] occurrences matches {0..1} matches {	-- Reaction Type
+								value matches {
+									DV_TEXT[id57] 
+								}
+							}
+							ELEMENT[id22] occurrences matches {0..1} matches {	-- Certainty
+								value matches {
+									DV_CODED_TEXT[id58] matches {
+										defining_code matches {[ac1]}		-- Certainty (synthesised)
+									}
+								}
+							}
+							ELEMENT[id13] occurrences matches {0..1} matches {	-- Reaction Description
+								value matches {
+									DV_TEXT[id59] 
+								}
+							}
+							ELEMENT[id28] occurrences matches {0..1} matches {	-- Onset of Reaction
+								value matches {
+									DV_DATE_TIME[id60] 
+								}
+							}
+							ELEMENT[id29] occurrences matches {0..1} matches {	-- Duration of Reaction
+								value matches {
+									DV_DURATION[id61] 
+								}
+							}
+							allow_archetype CLUSTER[id30] matches {	-- Additional Reaction Detail
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[id19] occurrences matches {0..1} matches {	-- Exposure Description
+								value matches {
+									DV_TEXT[id62] 
+								}
+							}
+							ELEMENT[id21] occurrences matches {0..1} matches {	-- Earliest Exposure
+								value matches {
+									DV_DATE_TIME[id63] 
+								}
+							}
+							ELEMENT[id26] occurrences matches {0..1} matches {	-- Duration of Exposure
+								value matches {
+									DV_DURATION[id64] 
+								}
+							}
+							allow_archetype CLUSTER[id20] matches {	-- Additional Exposure Detail
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.amount(-a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.medication_admin(-a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.timing(-a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[id41] occurrences matches {0..1} matches {	-- Clinical Management Description
+								value matches {
+									DV_TEXT[id65] 
+								}
+							}
+							ELEMENT[id32] matches {	-- Multimedia
+								value matches {
+									DV_MULTIMEDIA[id66] matches {
+										media_type 
+									}
+								}
+							}
+							allow_archetype CLUSTER[id42] matches {	-- Reporting Details
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[id33] occurrences matches {0..1} matches {	-- Reaction Comment
+								value matches {
+									DV_TEXT[id67] 
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[id43] matches {
+				items matches {
+					ELEMENT[id45] occurrences matches {0..1} matches {	-- Reaction Reported?
+						value matches {
+							DV_BOOLEAN[id68] matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[id49] occurrences matches {0..1} matches {	-- Report Comment
+						value matches {
+							DV_TEXT[id69] 
+						}
+					}
+					ELEMENT[id46] matches {	-- Adverse Reaction Report
+						value matches {
+							DV_URI[id70] 
+						}
+					}
+					ELEMENT[id48] occurrences matches {0..1} matches {	-- Supporting Clinical Record Information
+						value matches {
+							DV_EHR_URI[id71] 
+						}
+					}
+				}
+			}
+		}
+	}

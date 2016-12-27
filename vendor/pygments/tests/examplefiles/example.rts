@@ -1,0 +1,118 @@
+# Example of a Riverbed TrafficScript (*.rts) file.
+
+http.setHeader( "Host", "secure.mysite.com" );
+$body = http.getBody( ); # get the POST data
+$single = 'Hello \
+world';
+$double = "Hello \
+world";
+$pi = 3.14157;
+$message = "The URL path is " . http.GetPath();
+$four = 2 + 2;
+# Sets $ratio to "75%" (for example)
+$ratio = ( $a / ($a + $b) * 100 ) . "%";
+$contentLength = http.getHeader( "Content-Length" );
+if( $contentLength > 1024 * 1024 ) {
+  log.warn( "Large request body: ".$contentLength );
+}
+4 + 7.5 * $a
+-$b / $c - 1
+7 % 3    # Returns 1
+"foo" && !0 # true
+( 1 < 2 ) && ( 3 < 4 ) # true
+$a || $b # true if $a or $b is true
+0x1234 & 255         # 0x34
+1|2|4 #7
+1^3 #2
+~1 & 0xffff          # 65534
+1 << 2               # 4
+2 >> 1               # 1
+$foo *= 5 # Product equals ($foo = $foo * 5)
+$foo /= 2 # Quotient equals ($foo = $foo / 5)
+$foo %= 2 # Modulo equals ($foo = $foo % 5)
+$foo <<= 2 # Bit-shift left equals ($foo = $foo << 2)
+$foo >>= 2 # Bit-shift right equals ($foo = $foo >> 2)
+$foo &= 2 # Bitwise AND equals ($foo = $foo & 2)
+$foo |= 2 # Bitwise OR equals ($foo = $foo | 2)
+$foo ^= 2 # Bitwise XOR equals ($foo = $foo ^ 2)
+$int = 10;
+$double = 2.71828;
+string.len( $double ); # casts to string, returns 7
+# Convert $string to a number, and add 4:
+$r = $string + 4;  # $r is 14
+if( string.startsWith( $path, "/secure" ) ) {
+    pool.use( "secure pool" );
+} else {
+    pool.use( "non-secure pool" );
+}
+
+for( $count = 0; $count < 10; $count++ ) {
+    log.info( "In loop, count = " . $count );
+}
+
+i$count = 0;
+while( $count < 10 ) {
+    log.info( "In loop, count = " . $count );
+    $count = $count + 1;
+}
+
+$count = 0;
+do {
+   log.info( "In loop, count = " . $count );
+   $count = $count + 1;
+} while( $count < 10 );
+
+$mime = http.getResponseHeader( "Content-Type" );
+if( !string.startsWith( $mime, "text/html" )) break;
+$array = [ "Alex", "Matt", "Oliver", "Laurence" ];
+$someone = $array[0];
+$arraylen = array.length($array);
+log.info("My array has " . $arraylen . " elements.\n");
+
+for ( $i = 0; $i < $arraylen; $i++ ){
+    log.info ( "Element #" . $i . " " . $array[$i]);
+}
+
+$hash = [ "orange" => "fruit",
+          "apple" => "fruit",
+          "cabbage" => "vegetable",
+          "pear" => "fruit" ];
+
+foreach ( $key in hash.keys($hash)){
+   log.info("Key: " . $key . "; Value: " . $hash[$key] .
+";"); }
+
+# Declare a subroutine to calculate factorials
+sub factorial( $n ) {
+    if( $n == 0 ) return 1;
+       return $n*factorial( $n-1 );
+}
+# Put entries into the array
+$c = 0;
+while( $c <= 10 ) {
+   $msg = "Did you know that ". $c ."! is ". factorial( $c )
+."?" ;
+   data.set( "myarray".$c, $msg );
+$c++; }
+# Look up several entries.  Note: the 1000th entry is empty
+$msg = "";
+$msg .= "Index 1000: ".data.get( "myarray1000" )."\n";
+# delete the entire array (but no other data stored by data.set)
+data.reset( "myarray" );
+http.sendResponse( "200 OK", "text/plain", $msg, "" );
+sub headbug(){
+   # Prints each header to the event log.
+   $headers = http.listHeaderNames();
+   foreach ($header in $headers){
+      log.info( $header . ": " . http.getheader($header));
+} }
+
+import foo;
+foo.headbug();
+# Sets the regex string as ^192\.168\. ; the two examples
+# below have the same effect
+$regex = "^(192)\\.168\\.";
+$regex = '^192\.168\.';
+if ( string.regexMatch( $ip, $regex ) ) {
+    # IP is on 192.168.* network
+}

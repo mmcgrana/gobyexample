@@ -21,6 +21,17 @@ class Horse extends Animal {
     }
 }
 
+@View({
+    templateUrl: "app/components/LoginForm.html",
+    directives: [FORM_DIRECTIVES, NgIf]
+})
+@Component({
+    selector: "login-form"
+})
+class LoginForm {
+
+}
+
 var sam = new Snake("Sammy the Python")
 var tom: Animal = new Horse("Tommy the Palomino")
 

@@ -1,0 +1,28 @@
+--
+-- Example of an openEHR Archetype, written in the Archetype Definition Language (ADL)
+-- Definition available here: http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf
+-- Author: derived from the openEHR-EHR-EVALUATION.adverse_reaction.v1 archetype at http://www.openEHR.org/ckm
+--
+
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-EVALUATION.adverse_reaction.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	lifecycle_state = <"unmanaged">
+
+definition
+	EVALUATION[id1]
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Adverse Reaction">
+				description = <"xxx">
+			>
+		>
+	>
+

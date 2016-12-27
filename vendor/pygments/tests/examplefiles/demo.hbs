@@ -1,0 +1,12 @@
+<!-- post.handlebars -->
+
+<div class='intro'>
+  {{intro}}
+</div>
+
+{{#if isExpanded}}
+  <div class='body'>{{body}}</div>
+  <button {{action contract}}>Contract</button>
+{{else}}
+  <button {{action expand}}>Show More...</button>
+{{/if}}

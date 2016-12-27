@@ -1,0 +1,401 @@
+/*
+ * pygments14.css
+ * ~~~~~~~~~~~~~~
+ *
+ * Sphinx stylesheet -- pygments14 theme.  Heavily copied from sphinx13.
+ *
+ * :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+@import url("basic.css");
+
+/* -- page layout ----------------------------------------------------------- */
+
+body {
+    font-family: {{ theme_font }}, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    background-image: url(bodybg.png);
+    background-color: {{ theme_background }};
+    color: black;
+    padding: 0;
+    /*
+    border-right: 1px solid {{ theme_border }};
+    border-left: 1px solid {{ theme_border }};
+    */
+
+    margin: 0 auto;
+    min-width: 780px;
+    max-width: 1080px;
+}
+
+.outerwrapper {
+    background-image: url(docbg.png);
+    background-attachment: fixed;
+}
+
+.pageheader {
+    text-align: left;
+    padding: 10px 15px;
+}
+
+.pageheader ul {
+    float: right;
+    color: white;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 40px;
+    margin-right: 10px;
+}
+
+.pageheader li {
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+.pageheader li a {
+    border-radius: 3px;
+    padding: 8px 12px;
+    color: {{ theme_darkgray }};
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.pageheader li a:hover {
+    background-color: {{ theme_yellow }};
+    color: black;
+    text-shadow: none;
+}
+
+div.document {
+    text-align: left;
+    /*border-left: 1em solid {{ theme_lightyellow }};*/
+}
+
+div.bodywrapper {
+    margin: 0 12px 0 240px;
+    background-color: white;
+/*    border-right: 1px solid {{ theme_border }}; */
+}
+
+div.body {
+    margin: 0;
+    padding: 0.5em 20px 20px 20px;
+}
+
+div.related {
+    font-size: 1em;
+    color: {{ theme_darkgray }};
+}
+
+div.related ul {
+    background-image: url(relbg.png);
+    background-repeat: repeat-y;
+    background-color: {{ theme_yellow }};
+    height: 1.9em;
+    /*
+    border-top: 1px solid {{ theme_border }};
+    border-bottom: 1px solid {{ theme_border }};
+    */
+}
+
+div.related ul li {
+    margin: 0 5px 0 0;
+    padding: 0;
+    float: left;
+}
+
+div.related ul li.right {
+    float: right;
+    margin-right: 5px;
+}
+
+div.related ul li a {
+    margin: 0;
+    padding: 0 5px 0 5px;
+    line-height: 1.75em;
+    color: {{ theme_darkgray }};
+    /*text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);*/
+}
+
+div.related ul li a:hover {
+    text-decoration: underline;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5);
+}
+
+div.sphinxsidebarwrapper {
+    position: relative;
+    top: 0px;
+    padding: 0;
+}
+
+div.sphinxsidebar {
+    margin: 0;
+    padding: 0 0px 15px 15px;
+    width: 210px;
+    float: left;
+    font-size: 1em;
+    text-align: left;
+}
+
+div.sphinxsidebar .logo {
+    font-size: 1.8em;
+    color: #666;
+    font-weight: 300;
+    text-align: center;
+}
+
+div.sphinxsidebar .logo img {
+    vertical-align: middle;
+}
+
+div.sphinxsidebar input {
+    border: 1px solid #aaa;
+    font-family: {{ theme_font }}, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif;
+    font-size: 1em;
+}
+
+div.sphinxsidebar h3 {
+    font-size: 1.5em;
+    /* border-top: 1px solid {{ theme_border }}; */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+div.sphinxsidebar h4 {
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+
+div.sphinxsidebar h3, div.sphinxsidebar h4 {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-right: 14px;
+    padding-left: 14px;
+    color: #333;
+    font-weight: 300;
+    /*text-shadow: 0px 0px 0.5px rgba(0, 0, 0, 0.4);*/
+}
+
+div.sphinxsidebarwrapper > h3:first-child {
+    margin-top: 0.5em;
+    border: none;
+}
+
+div.sphinxsidebar h3 a {
+    color: #333;
+}
+
+div.sphinxsidebar ul {
+    color: #444;
+    margin-top: 7px;
+    padding: 0;
+    line-height: 130%;
+}
+
+div.sphinxsidebar ul ul {
+    margin-left: 20px;
+    list-style-image: url(listitem.png);
+}
+
+div.footer {
+    color: {{ theme_darkgray }};
+    text-shadow: 0 0 .2px rgba(255, 255, 255, 0.8);
+    padding: 2em;
+    text-align: center;
+    clear: both;
+    font-size: 0.8em;
+}
+
+/* -- body styles ----------------------------------------------------------- */
+
+p {    
+    margin: 0.8em 0 0.5em 0;
+}
+
+a {
+    color: {{ theme_darkgreen }};
+    text-decoration: none;
+}
+
+a:hover {
+    color: {{ theme_darkyellow }};
+}
+
+div.body a {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 10px 0 0 0;
+    font-size: 2.4em;
+    color: {{ theme_darkgray }};
+    font-weight: 300;
+}
+
+h2 {
+    margin: 1.em 0 0.2em 0;
+    font-size: 1.5em;
+    font-weight: 300;
+    padding: 0;
+    color: {{ theme_darkgreen }};
+}
+
+h3 {
+    margin: 1em 0 -0.3em 0;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+div.body h1 a, div.body h2 a, div.body h3 a, div.body h4 a, div.body h5 a, div.body h6 a {
+    text-decoration: none;
+}
+
+div.body h1 a tt, div.body h2 a tt, div.body h3 a tt, div.body h4 a tt, div.body h5 a tt, div.body h6 a tt {
+    color: {{ theme_darkgreen }} !important;
+    font-size: inherit !important;
+}
+
+a.headerlink {
+    color: {{ theme_green }} !important;
+    font-size: 12px;
+    margin-left: 6px;
+    padding: 0 4px 0 4px;
+    text-decoration: none !important;
+    float: right;
+}
+
+a.headerlink:hover {
+    background-color: #ccc;
+    color: white!important;
+}
+
+cite, code, tt {
+    font-family: 'Consolas', 'DejaVu Sans Mono',
+                 'Bitstream Vera Sans Mono', monospace;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+}
+
+tt {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    color: #333;
+    padding: 1px;
+}
+
+tt.descname, tt.descclassname, tt.xref {
+    border: 0;
+}
+
+hr {
+    border: 1px solid #abc;
+    margin: 2em;
+}
+
+a tt {
+    border: 0;
+    color: {{ theme_darkgreen }};
+}
+
+a tt:hover {
+    color: {{ theme_darkyellow }};
+}
+
+pre {
+    font-family: 'Consolas', 'DejaVu Sans Mono',
+                 'Bitstream Vera Sans Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.015em;
+    line-height: 120%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #f8f8f8;
+}
+
+pre a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+td.linenos pre {
+    padding: 0.5em 0;
+}
+
+div.quotebar {
+    background-color: #f8f8f8;
+    max-width: 250px;
+    float: right;
+    padding: 0px 7px;
+    border: 1px solid #ccc;
+    margin-left: 1em;
+}
+
+div.topic {
+    background-color: #f8f8f8;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 -0.5em 0 -0.5em;
+}
+
+table td, table th {
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+div.admonition, div.warning {
+    font-size: 0.9em;
+    margin: 1em 0 1em 0;
+    border: 1px solid #86989B;
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    padding: 0;
+}
+
+div.admonition p, div.warning p {
+    margin: 0.5em 1em 0.5em 1em;
+    padding: 0;
+}
+
+div.admonition pre, div.warning pre {
+    margin: 0.4em 1em 0.4em 1em;
+}
+
+div.admonition p.admonition-title,
+div.warning p.admonition-title {
+    margin-top: 1em;
+    padding-top: 0.5em;
+    font-weight: bold;
+}
+
+div.warning {
+    border: 1px solid #940000;
+/*    background-color: #FFCCCF;*/
+}
+
+div.warning p.admonition-title {
+}
+
+div.admonition ul, div.admonition ol,
+div.warning ul, div.warning ol {
+    margin: 0.1em 0.5em 0.5em 3em;
+    padding: 0;
+}
+
+.viewcode-back {
+    font-family: {{ theme_font }}, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif;
+}
+
+div.viewcode-block:target {
+    background-color: #f4debf;
+    border-top: 1px solid #ac9;
+    border-bottom: 1px solid #ac9;
+}

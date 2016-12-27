@@ -195,7 +195,7 @@ char convertType(int type) {
 		case TYPE_INT:     return 'I';
 		case TYPE_FLOAT:   return 'F';
 		case TYPE_BOOLEAN: return 'Z';
-		default: yyerror("compiler-intern error in convertType().\n");
+		default : yyerror("compiler-intern error in convertType().\n");
 	}
 	return 0; /* to avoid compiler-warning */
 }

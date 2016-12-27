@@ -7,3 +7,5 @@
 2007 Sep 01 00:23:55  <root> Welcome to the BitlBee gateway!
 2007 Sep 01 00:23:55  <root> 
 2007 Sep 01 00:23:55  <root> If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQ's are answered there.
+# check for fixed pathological matching behavior
+1111111111111111111111111111111

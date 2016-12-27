@@ -1,4 +1,7 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6 FATAL_ERROR)
+
 SET( SOURCES back.c io.c main.c )
+SET( PATH $ENV{PATH} )
 MESSAGE( ${SOURCES}   )      # three arguments, prints "back.cio.cmain.c"
 MESSAGE( "${SOURCES}" )      # one argument,    prints "back.c;io.c;main.c"
 MESSAGE( "" )                # one argument,    prints "" an empty line

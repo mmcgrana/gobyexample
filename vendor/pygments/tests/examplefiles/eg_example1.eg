@@ -1,0 +1,155 @@
+;; filepath tests
+require:
+   library
+   ./awesome
+   ./variable/greatness/file
+
+
+;; Strings
+"Hello World!"
+"Hello!\nWorld!"
+'sasadads\ssdasdasd{ @method variable }'
+var dstring = .dotted-string
+
+key-dash
+but-can-it-do-ops +
+   yes-it-can:
+      100 +
+         print "So cool!"
+         100
+      {that = "is awesome", you = "are hilarious"} +
+         jiminy-crickets:
+            oliver-twist each mr-bojangles +
+               kittens =
+                  12
+
+check-it:
+   still-works:
+      {1, 2, 3}.reversed.reversed.awesome{}.that.sort().what.map with
+         x -> x * x
+      (1, 2, 3) + this
+
+if total awesomeness > great stupidity:
+   print "You've won!"
+   not-sure-what-this-does @@ but-it-wont-capture
+else:
+   print "Keep trying!"
+   needs-work ++ you
+
+;; with tests
+needs-obj('awesome') with {"greatness values"}
+object.field.method with {1, 2, 3}
+
+;; object assignment
+obj = {
+   key = "oh yeah"
+   tree = "schmoh cheah"
+}
+obj.field = {
+   that = super cool: "wowzers!"
+   thatFunc = {x} -> x
+}
+
+;; match statements
+match @awesome.great:
+   {head, *tail} -> [print head; tail]
+   Array[]       -> convert(.arr)
+   String?       -> convert(.str)
+   else          -> throw E.error("This is an error!")
+
+unimpl-func = -> pass
+
+;; if / elif / else test
+if coolness > 11:
+   add something: something-else
+elif true:
+   add nothing: something-else
+else:
+   add everything: the-castle
+
+;; nested if / elif / else test
+mad-function = bananas ->
+   if bananas > 5:
+      print "You've got a lot of bananas!"
+   elif bananas == 5:
+      print "You might want to consider getting more bananas"
+   else:
+      print "Go get more bananas now!"
+
+;; class test
+class Dog:
+   constructor(@name, @breed) =
+      this.awesomesauce = 100
+
+   unimpl-meth = -> pass
+
+   bark(@, sd)
+
+;; error test
+try:
+   throw E.test.my-error("This is my error.")
+catch TypeError? e:
+   print "There was a type error."
+catch E.my-error? e:
+   print "My error!"
+catch e:
+   print "Some other error."
+finally:
+   print "We are done."
+
+;; method shorthand operator
+stream-of-twos = *->
+   while [true]: yield 2 ;; need to fix literals with colons after them.
+
+;; gen shorthand operator
+full-name = @->
+   '{@first-name} {@last-name}'
+
+name-method = @->
+   @name.parents.full-name()
+
+;; Keyword highlight test
+key x
+key +x; key @x; key .x ; key "x"; key 0; .asdasd
+key (x); key [x]; key {x}
+nokey.x(); nokey{x}
+key x + y
+key key x
+x + key y
+x - key y
+nokey + x
+nokey
+key: x
+key nokey: y
+key x > nokey: z
+x + key nokey: z
+x and {y, z}
+x + nokey: y
+x mod nokey: y
+x = key: y ;; comments work after keywords!
+x each key: y
+x each* k ;;
+a.b{c.d, e.f}
+a.bad-method(c.d, e.f)
+#a{}
+nokey mod: y ;; do not highlight nokey
+;; because mod is an operator
+
+;; Highlight all of these:
+await; break; chain; continue; else:; expr-value
+match; return; yield
+
+;; Edge-case highlighting test
+key-word: xyz
+nokey - x: yz
+
+;; Some keywords may contain operators as a subpart. If your regexp
+;; uses \b to single out operators like each, is or in, you may
+;; fail to highlight these properly:
+beaches           ;; Do not highlight each inside the word beaches
+each-thing        ;; Do not highlight each
+sleep-in          ;; Do not highlight in
+before-each: xyz  ;; Highlight before-each as a keyword
+is-great: xyz     ;; Highlight is-great as a keyword
+
+send()

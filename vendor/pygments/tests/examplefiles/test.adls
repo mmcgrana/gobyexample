@@ -1,0 +1,313 @@
+--
+-- Example of an openEHR Archetype, written in the Archetype Definition Language (ADL)
+-- Definition available here: http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf
+-- Author: derived from the openEHR-EHR-EVALUATION.adverse_reaction.v1 archetype at http://www.openEHR.org/ckm
+--
+
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-EVALUATION.adverse_reaction.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2010-11-08">
+	>
+	copyright = <"© openEHR Foundation">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information about any harmful...">
+			use = <"Use to record all information about the presence ...">
+			keywords = <"reaction", "allergy", "allergic", "adverse">
+			misuse = <"Not to be used for recording the absence (or ...">
+		>
+	>
+	other_contributors = <"Jane Doe, Australia">
+	other_details = <
+		["references"] = <"Adverse Reaction, draft archetype, ...">
+		["MD5-CAM-1.0.1"] = <"260699D2EFDE4F7C7BC3C6C501A51A61">
+	>
+
+definition
+	EVALUATION[id1] matches {	-- Adverse Reaction
+		data matches {
+			ITEM_TREE[id2] matches {
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[id3] matches {	-- Substance/Agent
+						value matches {
+							DV_TEXT[id51] 
+						}
+					}
+					ELEMENT[id5] occurrences matches {0..1} matches {	-- Absolute Contraindication?
+						value matches {
+							DV_BOOLEAN[id52] matches {
+								value matches {True}
+							}
+						}
+					}
+					ELEMENT[id50] occurrences matches {0..1} matches {	-- Future Use
+						value matches {
+							DV_TEXT[id53] 
+						}
+					}
+					ELEMENT[id7] occurrences matches {0..1} matches {	-- Overall Comment
+						value matches {
+							DV_TEXT[id54] 
+						}
+					}
+					CLUSTER[id10] matches {	-- Reaction Event
+						items matches {
+							ELEMENT[id11] occurrences matches {0..1} matches {	-- Specific Substance/Agent
+								value matches {
+									DV_TEXT[id55] 
+								}
+							}
+							ELEMENT[id12] matches {	-- Manifestation
+								value matches {
+									DV_TEXT[id56] 
+								}
+							}
+							ELEMENT[id17] occurrences matches {0..1} matches {	-- Reaction Type
+								value matches {
+									DV_TEXT[id57] 
+								}
+							}
+							ELEMENT[id22] occurrences matches {0..1} matches {	-- Certainty
+								value matches {
+									DV_CODED_TEXT[id58] matches {
+										defining_code matches {[ac1]}		-- Certainty (synthesised)
+									}
+								}
+							}
+							ELEMENT[id13] occurrences matches {0..1} matches {	-- Reaction Description
+								value matches {
+									DV_TEXT[id59] 
+								}
+							}
+							ELEMENT[id28] occurrences matches {0..1} matches {	-- Onset of Reaction
+								value matches {
+									DV_DATE_TIME[id60] 
+								}
+							}
+							ELEMENT[id29] occurrences matches {0..1} matches {	-- Duration of Reaction
+								value matches {
+									DV_DURATION[id61] 
+								}
+							}
+							allow_archetype CLUSTER[id30] matches {	-- Additional Reaction Detail
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[id19] occurrences matches {0..1} matches {	-- Exposure Description
+								value matches {
+									DV_TEXT[id62] 
+								}
+							}
+							ELEMENT[id21] occurrences matches {0..1} matches {	-- Earliest Exposure
+								value matches {
+									DV_DATE_TIME[id63] 
+								}
+							}
+							ELEMENT[id26] occurrences matches {0..1} matches {	-- Duration of Exposure
+								value matches {
+									DV_DURATION[id64] 
+								}
+							}
+							allow_archetype CLUSTER[id20] matches {	-- Additional Exposure Detail
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.amount(-a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.medication_admin(-a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.timing(-a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[id41] occurrences matches {0..1} matches {	-- Clinical Management Description
+								value matches {
+									DV_TEXT[id65] 
+								}
+							}
+							ELEMENT[id32] matches {	-- Multimedia
+								value matches {
+									DV_MULTIMEDIA[id66] matches {
+										media_type 
+									}
+								}
+							}
+							allow_archetype CLUSTER[id42] matches {	-- Reporting Details
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[id33] occurrences matches {0..1} matches {	-- Reaction Comment
+								value matches {
+									DV_TEXT[id67] 
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[id43] matches {
+				items matches {
+					ELEMENT[id45] occurrences matches {0..1} matches {	-- Reaction Reported?
+						value matches {
+							DV_BOOLEAN[id68] matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[id49] occurrences matches {0..1} matches {	-- Report Comment
+						value matches {
+							DV_TEXT[id69] 
+						}
+					}
+					ELEMENT[id46] matches {	-- Adverse Reaction Report
+						value matches {
+							DV_URI[id70] 
+						}
+					}
+					ELEMENT[id48] occurrences matches {0..1} matches {	-- Supporting Clinical Record Information
+						value matches {
+							DV_EHR_URI[id71] 
+						}
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Adverse Reaction">
+				description = <"A harmful or undesirable, unexpected effect associated with exposure to any substance or agent, including food, plants, animals, venom from animal stings, or a medication at therapeutic or sub-therapeutic doses.">
+			>
+			["id3"] = <
+				text = <"Substance/Agent">
+				description = <"Identification of a substance, agent, or a class of substance, that is considered to be responsible for the Adverse Reaction.">
+			>
+			["id5"] = <
+				text = <"Absolute Contraindication?">
+				description = <"Is administration of this Substance/Agent absolutely contraindicated in this individual?">
+			>
+			["id7"] = <
+				text = <"Overall Comment">
+				description = <"Additional narrative about the Adverse Reaction as a whole, not captured in other fields.">
+			>
+			["id10"] = <
+				text = <"Reaction Event">
+				description = <"Details about each Adverse Reaction Event.">
+			>
+			["id11"] = <
+				text = <"Specific Substance/Agent">
+				description = <"Specific identification of the actual Substance/Agent considered to be responsible for the Adverse Reaction event.">
+			>
+			["id12"] = <
+				text = <"Manifestation">
+				description = <"Clinical manifestation of the Adverse Reaction expressed as a single word, phrase or brief description, e.g. nausea or rash.">
+			>
+			["id13"] = <
+				text = <"Reaction Description">
+				description = <"Narrative description of the Adverse Reaction.">
+			>
+			["id17"] = <
+				text = <"Reaction Type">
+				description = <"The type of Adverse Reaction as determined by the clinician.">
+			>
+			["id19"] = <
+				text = <"Exposure Description">
+				description = <"Description about exposure to the Substance/Agent.">
+			>
+			["id20"] = <
+				text = <"Additional Exposure Detail">
+				description = <"Additional detail about exposure/s for this Adverse Reaction event, including structured medication amount/frequency/route information.">
+			>
+			["id21"] = <
+				text = <"Earliest Exposure">
+				description = <"Record of the date and/or time of the earliest or initial exposure to the Substance/Agent.">
+			>
+			["id22"] = <
+				text = <"Certainty">
+				description = <"Degree of certainty, as assessed by a clinician, that the specific Substance/Agent was the cause of the Adverse Reaction.">
+			>
+			["at23"] = <
+				text = <"Suspected">
+				description = <"Possibly the causative agent.">
+			>
+			["at24"] = <
+				text = <"Probable">
+				description = <"Likely to be the causative agent, but not confirmed by testing or rechallenge.">
+			>
+			["at25"] = <
+				text = <"Confirmed">
+				description = <"Confirmed as the causative agent, by testing or rechallenge.">
+			>
+			["id26"] = <
+				text = <"Duration of Exposure">
+				description = <"The amount of time of exposure to the Substance/Agent.">
+			>
+			["id28"] = <
+				text = <"Onset of Reaction">
+				description = <"Record of the date and/or time of the onset of the Adverse Reaction.">
+			>
+			["id29"] = <
+				text = <"Duration of Reaction">
+				description = <"The amount of time that the Adverse Reaction was present.">
+			>
+			["id30"] = <
+				text = <"Additional Reaction Detail">
+				description = <"Additional detail about the Adverse Reaction, including anatomical location.">
+			>
+			["id32"] = <
+				text = <"Multimedia">
+				description = <"Inclusion of any multimedia file to support the recording of the Adverse Reaction event.">
+			>
+			["id33"] = <
+				text = <"Reaction Comment">
+				description = <"Additional narrative about the Adverse Reaction event not captured in other fields.">
+			>
+			["id41"] = <
+				text = <"Clinical Management Description">
+				description = <"Narrative description of the clinical management provided.">
+			>
+			["id42"] = <
+				text = <"Reporting Details">
+				description = <"Further details required for reporting to regulatory bodies.">
+			>
+			["id45"] = <
+				text = <"Reaction Reported?">
+				description = <"Was the Adverse Reaction reported to a regulatory body?">
+			>
+			["id46"] = <
+				text = <"Adverse Reaction Report">
+				description = <"Link to an Adverse Reaction Report sent to a regulatory body.">
+			>
+			["id48"] = <
+				text = <"Supporting Clinical Record Information">
+				description = <"Link to further information about the presentation and findings that exist elsewhere in the health record, including allergy test reports.">
+			>
+			["id49"] = <
+				text = <"Report Comment">
+				description = <"Additional narrative about the Adverse Reaction Report, including the reason for non-reporting, if required.">
+			>
+			["id50"] = <
+				text = <"Future Use">
+				description = <"Narrative description of clinician instructions or advice related to future exposure to, or administration of, the Substance/Agent.">
+			>
+			["ac1"] = <
+				text = <"Certainty (synthesised)">
+				description = <"Degree of certainty, as assessed by a clinician, that the specific Substance/Agent was the cause of the Adverse Reaction. (synthesised)">
+			>
+		>
+	>
+	value_sets = <
+		["ac1"] = <
+			id = <"ac1">
+			members = <"at23", "at24", "at25">
+		>
+	>
+

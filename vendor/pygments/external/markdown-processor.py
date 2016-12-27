@@ -6,14 +6,9 @@
     This fragment is a Markdown_ preprocessor that renders source code
     to HTML via Pygments.  To use it, invoke Markdown like so::
 
-        from markdown import Markdown
+        import markdown
 
-        md = Markdown()
-        md.textPreprocessors.insert(0, CodeBlockPreprocessor())
-        html = md.convert(someText)
-
-    markdown is then a callable that can be passed to the context of
-    a template and used in that template, for example.
+        html = markdown.markdown(someText, extensions=[CodeBlockExtension()])
 
     This uses CSS classes by default, so use
     ``pygmentize -S <some style> -f html > pygments.css``
@@ -25,9 +20,9 @@
         some code
         [/sourcecode]
 
-    .. _Markdown: http://www.freewisdom.org/projects/python-markdown/
+    .. _Markdown: https://pypi.python.org/pypi/Markdown
 
-    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -40,17 +35,17 @@ INLINESTYLES = False
 
 import re
 
-from markdown import TextPreprocessor
+from markdown.preprocessors import Preprocessor
+from markdown.extensions import Extension
 
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name, TextLexer
 
 
-class CodeBlockPreprocessor(TextPreprocessor):
+class CodeBlockPreprocessor(Preprocessor):
 
-    pattern = re.compile(
-        r'\[sourcecode:(.+?)\](.+?)\[/sourcecode\]', re.S)
+    pattern = re.compile(r'\[sourcecode:(.+?)\](.+?)\[/sourcecode\]', re.S)
 
     formatter = HtmlFormatter(noclasses=INLINESTYLES)
 
@@ -63,5 +58,10 @@ class CodeBlockPreprocessor(TextPreprocessor):
             code = highlight(m.group(2), lexer, self.formatter)
             code = code.replace('\n\n', '\n&nbsp;\n').replace('\n', '<br />')
             return '\n\n<div class="code">%s</div>\n\n' % code
-        return self.pattern.sub(
-            repl, lines)
+        joined_lines = "\n".join(lines)
+        joined_lines = self.pattern.sub(repl, joined_lines)
+        return joined_lines.split("\n")
+
+class CodeBlockExtension(Extension):
+    def extendMarkdown(self, md, md_globals):
+        md.preprocessors.add('CodeBlockPreprocessor', CodeBlockPreprocessor(), '_begin')

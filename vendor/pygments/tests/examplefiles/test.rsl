@@ -1,0 +1,111 @@
+scheme COMPILER = 
+class
+  type
+    Prog == mk_Prog(stmt : Stmt),  
+
+    Stmt ==  
+      mk_Asgn(ide : Identifier,  expr : Expr) |   
+      mk_If(cond : Expr,  s1 : Stmt, s2 : Stmt) |   
+      mk_Seq(head : Stmt,  last : Stmt),  
+
+    Expr == 
+      mk_Const(const : Int) |  
+      mk_Plus(fst : Expr,  snd : Expr) |
+      mk_Id(ide : Identifier),
+    Identifier = Text
+
+type /* storage for program variables */
+  `Sigma = Identifier -m-> Int 
+
+value     
+  m : Prog -> `Sigma -> `Sigma
+  m(p)(`sigma)  is  m(stmt(p))(`sigma),  
+
+  m : Stmt -> `Sigma -> `Sigma
+  m(s)(`sigma)  is  
+    case s of 
+      mk_Asgn(i, e) -> `sigma !! [i +> m(e)(`sigma)], 
+      mk_Seq(s1, s2) -> m(s2)(m(s1)(`sigma)), 
+      mk_If(c, s1, s2) -> 
+        if m(c)(`sigma) ~= 0 then m(s1)(`sigma) else m(s2)(`sigma) end      
+    end,
+  
+  m : Expr -> `Sigma -> Int
+  m(e)(`sigma)  is  
+    case e of 
+      mk_Const(n) -> n, 
+      mk_Plus(e1, e2) -> m(e1)(`sigma) + m(e2)(`sigma), 
+      mk_Id(id) -> if id isin  dom `sigma then `sigma(id) else 0 end 
+    end 
+
+type
+  MProg = Inst-list,
+  Inst == 
+     mk_Push(ide1 : Identifier) | 
+     mk_Pop(Unit) | 
+     mk_Add(Unit) | 
+     mk_Cnst(val : Int) | 
+     mk_Store(ide2 : Identifier) | 
+     mk_Jumpfalse(off1 : Int) | 
+     mk_Jump(off2 : Int) 
+
+
+/* An interpreter for SMALL instructions */
+
+type  Stack = Int-list
+value 
+  I : MProg >< Int >< Stack -> (`Sigma ->`Sigma)
+  I(mp, pc, s)(`sigma) is 
+    if pc <= 0 \/ pc > len mp then `sigma else
+      case  mp(pc) of
+        mk_Push(x) -> if x isin dom `sigma 
+          then I(mp, pc + 1, <.`sigma(x).> ^ s)(`sigma)
+          else  I(mp, pc + 1, <.0.> ^ s)(`sigma) end,
+        mk_Pop(()) -> if len s = 0 then `sigma
+          else I(mp, pc + 1, tl s)(`sigma) end,
+        mk_Cnst(n)  -> I(mp, pc + 1, <.n.> ^  s)(`sigma),
+        mk_Add(()) -> if len s < 2 then `sigma 
+          else  I(mp, pc + 1,<.s(1) + s(2).> ^ tl tl s)(`sigma) end,
+        mk_Store(x) -> if len s = 0 then `sigma
+          else I(mp, pc + 1, s)(`sigma !! [x +> s(1)]) end,
+        mk_Jumpfalse(n) -> if len s = 0 then `sigma
+          elsif  hd s ~= 0  then I(mp, pc + 1, s)(`sigma) 
+          else I(mp, pc + n, s)(`sigma) end,
+        mk_Jump(n) -> I(mp, pc + n, s)(`sigma) 
+      end
+    end  
+
+value
+  comp_Prog : Prog -> MProg
+  comp_Prog(p) is comp_Stmt(stmt(p)),
+
+  comp_Stmt : Stmt -> MProg
+  comp_Stmt(s) is
+    case s of
+      mk_Asgn(id, e) -> comp_Expr(e) ^ <. mk_Store(id), mk_Pop() .>,
+      mk_Seq(s1, s2) -> comp_Stmt(s1) ^ comp_Stmt(s2),
+      mk_If(e, s1, s2) -> 
+       let 
+         ce = comp_Expr(e), 
+         cs1 = comp_Stmt(s1), cs2 = comp_Stmt(s2) 
+       in
+           ce ^ 
+           <. mk_Jumpfalse(len cs1 + 3) .> ^
+           <. mk_Pop() .> ^
+           cs1 ^
+           <. mk_Jump(len cs2 + 2) .> ^
+           <. mk_Pop() .> ^
+           cs2
+       end
+    end,
+
+  comp_Expr : Expr -> MProg
+  comp_Expr(e) is 
+    case e of
+      mk_Const(n) -> <. mk_Cnst(n) .>,
+      mk_Plus(e1, e2) -> 
+        comp_Expr(e1) ^ comp_Expr(e2) ^ <. mk_Add() .>,
+      mk_Id(id) -> <. mk_Push(id) .>
+    end
+
+end

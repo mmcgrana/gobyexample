@@ -1,0 +1,34 @@
+Any N, N2 where N is Note, N2 is Note, N a_faire_par P1, P1 nom 'john', N2 a_faire_par P2, P2 nom 'jane' ;
+DISTINCT Any N, D, C, T, A ORDERBY D DESC LIMIT 40 where N is Note, N diem D, W is Workcase, W concerned_by N, N cost C, N text T, N author A, N diem <= today
+Bookmark B WHERE B owned_by G, G eid 5;
+Any X WHERE E eid 22762, NOT E is_in X, X modification_date D ORDERBY D DESC LIMIT 41;
+Any A, R, SUB ORDERBY R WHERE A is "Workcase", S is Division, S concerned_by A, A subject SUB, S eid 85, A ref R;
+Any D, T, L WHERE D is Document, A concerned_by D,A eid 14533, D title T, D location L;
+Any N,A,B,C,D ORDERBY A DESC WHERE N is Note, W concerned_by N, W eid 14533, N diem A,N author B,N text C,N cost D;
+Any X ORDERBY D DESC LIMIT 41 WHERE E eid 18134, NOT E concerned_by X, X modification_date D
+DISTINCT Any N, D, C, T, A ORDERBY D ASC LIMIT 40 WHERE N is Note, N diem D, P is Person, N to_be_contacted_by G, N cost C, N text T, N author A, G login "john";
+INSERT Person X: X surname "Doe", X firstname "John";
+Workcase W where W ref "ABCD12";
+Workcase W where W ref LIKE "AB%";
+Any X WHERE X X eid 53
+Any X WHERE X Document X occurence_of F, F class C, C name 'Comics' X owned_by U, U login 'syt' X available true
+Person P WHERE P work_for P, S name 'Acme', P interested_by T, T name 'training'
+Note N WHERE N written_on D, D day> (today -10), N written_by P, P name 'joe' or P name 'jack'
+Person P WHERE (P interested_by T, T name 'training') or (P city 'Paris')
+Any N, P WHERE X is Person, X name N, X first_name P
+String N, P WHERE X is Person, X name N, X first_name P
+INSERT Person X: X name 'widget'
+INSERT Person X, Person Y: X name 'foo', Y name 'nice', X friend Y
+INSERT Person X: X name 'foo', X friend  Y WHERE name 'nice'
+SET X name 'bar', X first_name 'original' where X is Person X name 'foo'
+SET X know Y  WHERE X friend Y
+DELETE Person X WHERE X name 'foo'
+DELETE X friend Y WHERE X is Person, X name 'foo'
+Any X WHERE X name LIKE '%lt'
+Any X WHERE X name IN ( 'joe', 'jack', 'william', 'averell')
+Any X, V WHERE X concerns P, P eid 42, X corrected_in V?
+Any C, P WHERE C is Card, P? documented_by C
+Point P where P abs X, P ord Y, P value X+Y
+Document X where X class C, C name 'Cartoon', X owned_by U, U login 'joe', X available true
+(Any X WHERE X is Document) UNION (Any X WHERE X is File)
+Any A,B WHERE A creation_date B WITH A BEING (Any X WHERE X is Document) UNION (Any X WHERE X is File)

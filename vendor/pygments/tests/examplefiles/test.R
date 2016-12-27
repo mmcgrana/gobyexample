@@ -33,10 +33,11 @@ NA_foo_ <- NULL
 123456.78901
 123e3
 123E3
-1.23e-3
-1.23e3
-1.23e-3
-## integer constants
+6.02e23	
+1.6e-35	
+1.E12
+.1234
+## integers
 123L
 1.23L
 ## imaginary numbers
@@ -80,7 +81,7 @@ repeat {1+1}
 ## Switch
 x <- 3
 switch(x, 2+2, mean(1:10), rnorm(5))
-## Function, dot-dot-dot, return
+## Function, dot-dot-dot, return, sum
 foo <- function(...) {
     return(sum(...))
 }
@@ -151,3 +152,34 @@ world!'
 
 ## Backtick strings
 `foo123 +!"bar'baz` <- 2 + 2
+
+## Builtin funcitons
+file.create()
+gamma()
+grep()
+paste()
+rbind()
+rownames()
+R.Version()
+R.version.string()
+sample()
+sapply()
+save.image()
+seq()
+setwd()
+sin()
+
+## Data structures
+servo <- matrix(1:25, nrow = 5)
+numeric()
+vector(servo)
+data.frame()
+list1 <- list(time = 1:40)
+# multidimensional array 
+array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
+
+## Namespace
+library(ggplot2)
+require(plyr)
+attach(cars)
+source("test.R")

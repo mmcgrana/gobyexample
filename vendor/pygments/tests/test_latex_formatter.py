@@ -3,9 +3,11 @@
     Pygments LaTeX formatter tests
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: Copyright 2006-2013 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
+
+from __future__ import print_function
 
 import os
 import unittest
@@ -22,11 +24,8 @@ TESTFILE, TESTDIR = support.location(__file__)
 class LatexFormatterTest(unittest.TestCase):
 
     def test_valid_output(self):
-        fp = open(TESTFILE)
-        try:
+        with open(TESTFILE) as fp:
             tokensource = list(PythonLexer().get_tokens(fp.read()))
-        finally:
-            fp.close()
         fmt = LatexFormatter(full=True, encoding='latin1')
 
         handle, pathname = tempfile.mkstemp('.tex')
@@ -45,10 +44,10 @@ class LatexFormatterTest(unittest.TestCase):
             po.stdout.close()
         except OSError:
             # latex not available
-            pass
+            raise support.SkipTest
         else:
             if ret:
-                print output
+                print(output)
             self.assertFalse(ret, 'latex run reported errors')
 
         os.unlink(pathname)

@@ -1,0 +1,42 @@
+# This is an example file. Process it with `./pygmentize -O full -f html -o /liquid-example.html example.liquid`.
+
+{% raw %}
+some {{raw}} liquid syntax
+
+{% raw %}
+{% endraw %}
+
+Just regular text - what happens?
+
+{% comment %}My lovely {{comment}} {% comment %}{% endcomment %}
+
+{% custom_tag params: true %}
+{% custom_block my="abc" c = false %}
+	Just usual {{liquid}}.
+{% endcustom_block %}
+
+{% another_tag "my string param" %}
+
+{{ variable | upcase }}
+{{ var.field | textilize | markdownify }}
+{{ var.field.property | textilize | markdownify }}
+{{ 'string' | truncate: 100 param='df"g' }}
+
+{% cycle '1', 2, var %}
+{% cycle 'group1': '1', var, 2 %}
+{% cycle group2: '1', var, 2 %}
+
+{% if a == 'B' %}
+{% elsif a == 'C%}' %}
+{% else %}
+{% endif %}
+
+{% unless not a %}
+{% else %}
+{% endunless %}
+
+{% case a %}
+{% when 'B' %}
+{% when 'C' %}
+{% else %}
+{% endcase %}

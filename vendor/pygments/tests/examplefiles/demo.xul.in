@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<window
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+#if defined(__foo__)
+<description value="Text" />
+#endif
+</window>

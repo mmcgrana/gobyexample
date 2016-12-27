@@ -1,0 +1,23 @@
+iex> :" multi
+...>  line ' \s \123 \x20
+...> atom"
+:" multi\n line '   S  \natom"
+
+iex(1)> <<"hello"::binary, c :: utf8, x::[4, unit(2)]>> = "hello™1"
+"hello™1"
+
+iex(2)> c
+8482
+
+iex> 1 + :atom
+** (ArithmeticError) bad argument in arithmetic expression
+    :erlang.+(1, :atom)
+
+iex(3)> 1 +
+...(3)> 2 +
+...(3)> 3
+6
+
+iex> IO.puts "Hello world"
+Hello world
+:ok

@@ -1,5 +1,5 @@
-re  = import!
-sys = import!
+import '/re'
+import '/sys'
 
 
 # IPv6address    =  hexpart [ ":" IPv4address ]
@@ -20,7 +20,7 @@ addrv6  = re.compile $ r'(?i)(?:{})(?::{})?$'.format hexpart addrv4
 #
 # :return: a decimal integer
 #
-base_n = (q digits) -> foldl (x y) -> (x * q + y) 0 digits
+base_n = q digits -> foldl (x y -> x * q + y) 0 digits
 
 
 # Parse a sequence of hexadecimal numbers
@@ -29,7 +29,7 @@ base_n = (q digits) -> foldl (x y) -> (x * q + y) 0 digits
 #
 # :return: an iterable of Python ints
 #
-unhex = q -> q and map p -> (int p 16) (q.split ':')
+unhex = q -> q and map (p -> int p 16) (q.split ':')
 
 
 # Parse an IPv6 address as specified in RFC 4291.
@@ -39,33 +39,33 @@ unhex = q -> q and map p -> (int p 16) (q.split ':')
 # :return: an integer which, written in binary form, points to the same node.
 #
 inet_pton6 = address ->
-  raise $ ValueError 'not a valid IPv6 address' if not (match = addrv6.match address)
+  not (match = addrv6.match address) => raise $ ValueError 'not a valid IPv6 address'
   start, end, *ipv4 = match.groups!
 
   is_ipv4 = not $ None in ipv4
   shift   = (7 - start.count ':' - 2 * is_ipv4) * 16
 
-  raise $ ValueError 'not a valid IPv6 address' if (end is None and shift) or shift < 0
+  (end is None and shift) or shift < 0 => raise $ ValueError 'not a valid IPv6 address'
   hexaddr = (base_n 0x10000 (unhex start) << shift) + base_n 0x10000 (unhex $ end or '')
-  (hexaddr << 32) + base_n 0x100 (map int ipv4) if is_ipv4 else hexaddr
+  if (is_ipv4 => (hexaddr << 32) + base_n 0x100 (map int ipv4)) (otherwise => hexaddr)
 
 
-inet6_type = q -> switch
-  not q = 'unspecified'
-  q == 1 = 'loopback'
-  (q >>  32)              == 0x000000000000ffff = 'IPv4-mapped'
-  (q >>  64)              == 0xfe80000000000000 = 'link-local'
-  (q >> 120)              != 0x00000000000000ff = 'general unicast'
-  (q >> 112) % (1 << 4)   == 0x0000000000000000 = 'multicast w/ reserved scope value'
-  (q >> 112) % (1 << 4)   == 0x000000000000000f = 'multicast w/ reserved scope value'
-  (q >> 112) % (1 << 4)   == 0x0000000000000001 = 'interface-local multicast'
-  (q >> 112) % (1 << 4)   == 0x0000000000000004 = 'admin-local multicast'
-  (q >> 112) % (1 << 4)   == 0x0000000000000005 = 'site-local multicast'
-  (q >> 112) % (1 << 4)   == 0x0000000000000008 = 'organization-local multicast'
-  (q >> 112) % (1 << 4)   == 0x000000000000000e = 'global multicast'
-  (q >> 112) % (1 << 4)   != 0x0000000000000002 = 'multicast w/ unknown scope value'
-  (q >>  24) % (1 << 112) == 0x00000000000001ff = 'solicited-node multicast'
-  True = 'link-local multicast'
+inet6_type = q -> if
+  q == 0 => 'unspecified'
+  q == 1 => 'loopback'
+  (q >>  32)              == 0x000000000000ffff => 'IPv4-mapped'
+  (q >>  64)              == 0xfe80000000000000 => 'link-local'
+  (q >> 120)              != 0x00000000000000ff => 'general unicast'
+  (q >> 112) % (1 << 4)   == 0x0000000000000000 => 'multicast w/ reserved scope value'
+  (q >> 112) % (1 << 4)   == 0x000000000000000f => 'multicast w/ reserved scope value'
+  (q >> 112) % (1 << 4)   == 0x0000000000000001 => 'interface-local multicast'
+  (q >> 112) % (1 << 4)   == 0x0000000000000004 => 'admin-local multicast'
+  (q >> 112) % (1 << 4)   == 0x0000000000000005 => 'site-local multicast'
+  (q >> 112) % (1 << 4)   == 0x0000000000000008 => 'organization-local multicast'
+  (q >> 112) % (1 << 4)   == 0x000000000000000e => 'global multicast'
+  (q >> 112) % (1 << 4)   != 0x0000000000000002 => 'multicast w/ unknown scope value'
+  (q >>  24) % (1 << 112) == 0x00000000000001ff => 'solicited-node multicast'
+  otherwise => 'link-local multicast'
 
 
-print $ (x -> (inet6_type x, hex x)) $ inet_pton6 $ sys.stdin.read!.strip!
+print $ (x -> inet6_type x, hex x) $ inet_pton6 $ sys.stdin.read!.strip!

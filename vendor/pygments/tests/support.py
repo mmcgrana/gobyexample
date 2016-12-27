@@ -5,6 +5,8 @@ Support for Pygments tests
 
 import os
 
+from nose import SkipTest
+
 
 def location(mod_name):
     """

@@ -1,0 +1,43 @@
+@base  <http://example.com> .
+@prefix dcterms: <http://purl.org/dc/terms/>. @prefix xs: <http://www.w3.org/2001/XMLSchema> .
+@prefix mads: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@PREFIX dc: <http://purl.org/dc/elements/1.1/>  # SPARQL-like syntax is OK
+@prefix : <http://xmlns.com/foaf/0.1/> .  # empty prefix is OK
+
+<http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
+
+<#doc1> a <#document>
+	dc:creator "Smith", "Jones"; 
+	:knows <http://getopenid.com/jsmith>
+	dcterms:hasPart [ # A comment
+		dc:title "Some title", "Some other title";
+		dc:creator "برشت، برتولد"@ar;
+		dc:date "2009"^^xs:date
+	];
+	dc:title "A sample title", 23.0;
+	dcterms:isPartOf [
+		dc:title "another", "title"
+	] ;
+	:exists true .
+
+<http://data.ub.uio.no/realfagstermer/006839> a mads:Topic,
+    skos:Concept ;
+    dcterms:created "2014-08-25"^^xsd:date ;
+    dcterms:modified "2014-11-12"^^xsd:date ;
+    dcterms:identifier "REAL006839" ;
+    skos:prefLabel "Flerbørstemarker"@nb,
+        "Polychaeta"@la ;
+    skos:altLabel "Flerbørsteormer"@nb,
+        "Mangebørstemark"@nb,
+        "Mangebørsteormer"@nb,
+        "Havbørsteormer"@nb,
+        "Havbørstemarker"@nb,
+        "Polycheter"@nb.
+    skos:inScheme <http://data.ub.uio.no/realfagstermer/> ;
+    skos:narrower <http://data.ub.uio.no/realfagstermer/018529>,
+        <http://data.ub.uio.no/realfagstermer/024538>,
+        <http://data.ub.uio.no/realfagstermer/026723> ;
+    skos:exactMatch <http://ntnu.no/ub/data/tekord#NTUB17114>,
+        <http://dewey.info/class/592.62/e23/>,
+        <http://aims.fao.org/aos/agrovoc/c_29110> .

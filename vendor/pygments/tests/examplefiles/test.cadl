@@ -1,0 +1,32 @@
+	--
+	-- Example fragment of an openEHR Archetype, written in cADL, a subsyntax of the Archetype Definition Language (ADL)
+	-- definition available here: http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf
+	--	Author: Thomas Beale
+	--
+
+	EVALUATION[id1] matches {	-- Adverse Reaction
+		data matches {
+			ITEM_TREE[id2] matches {
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[id3] matches {	-- Substance/Agent
+						value matches {
+							DV_TEXT[id51] 
+						}
+					}
+					ELEMENT[id50] occurrences matches {0..1} matches {	-- Future Use
+						value matches {
+							DV_TEXT[id53] 
+						}
+					}
+					CLUSTER[id10] matches {	-- Reaction Event
+						items matches {
+							allow_archetype CLUSTER[id30] matches {	-- Additional Reaction Detail
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-a-zA-Z0-9_]+)*\.v1/}
+							}
+						}
+					}
+				}
+			}
+		}
+	}

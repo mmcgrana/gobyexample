@@ -1,0 +1,9 @@
+root:table {
+  usage:string { "Usage: genrb [Options] files" }
+  version:int { 122 }
+  errorcodes:array {
+    :string { "Invalid argument" }
+    :string { "File not found" }
+    :string { "\x00 \r \t \n \u1234" }
+  }
+}

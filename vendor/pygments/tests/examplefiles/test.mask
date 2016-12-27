@@ -1,0 +1,41 @@
+
+// comment
+h4.class-1#id.class-2.other checked='true' disabled name = x param > 'Enter  ..'
+input placeholder=Password type=password >
+    :dualbind x-signal='dom:create' value=user.passord;
+% each='flowers' > 
+    div style='
+        position: absolute;
+        display: inline-block;
+        background: url("image.png") center center no-repeat;
+    ';
+#skippedDiv.other {
+    img src='~[url]';
+    div style="text-align:center;" {
+        '~[: $obj.foo("username", name) + 2]'
+        "~[Localize: stringId]"
+    }
+
+    p > """
+
+        Hello "world"
+    """
+
+    p > '
+        Hello "world"
+    '
+
+    p > "Hello 'world'"
+
+    :customComponent x-value='tt';
+    /* footer > '(c) 2014' */
+}
+
+.skippedDiv >
+    span >
+        #skipped >
+            table >
+                td >
+                    tr > ';)'
+
+br;

@@ -1200,3 +1200,19 @@ Henry Baker:
 
 (unless (clos::funcallable-instance-p #'clos::class-name)
   (fmakunbound 'clos::class-name))
+
+
+(keywordp :junk)
+  T
+
+(keywordp ::junk)
+  T
+
+(symbol-name ::junk)
+  "JUNK"
+
+(symbol-name :#junk)
+  "#JUNK"
+
+(symbol-name :#.junk)
+  "#.JUNK"

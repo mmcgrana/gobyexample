@@ -1,0 +1,21 @@
+" A comment
+
+:py print "py"
+::pyt print 'pyt'
+  pyth	print '''pyth'''
+ : pytho print "pytho"
+python print """python"""
+
+  : : python<<E OF
+print """my script"""
+
+def MyFunc(str):
+  """ My Function """
+  print str
+E OF
+
+let py = 42
+echo py
+
+let foo = 42
+echo foo

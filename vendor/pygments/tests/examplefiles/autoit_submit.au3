@@ -16,8 +16,10 @@ _IEFormElementOptionSelect ($oSelect, "S2", 1, "byText")
 ;options raido
 _IEFormElementRadioSelect($oForm, "2nd", "type", 1, "byValue")
 
+#cs
 ConsoleWrite(@Error)
 Sleep(10000)
+#ce
 _IEFormSubmit($oForm, 0)
 _IELoadWait($oIE)
 Sleep(60000)

@@ -1,0 +1,6 @@
+def me := object: {
+    def name := "Kevin";
+    def sayHello(peerName) {
+        system.println(peerName + " says hello!");
+    };
+};

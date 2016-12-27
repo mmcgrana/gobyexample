@@ -1,0 +1,25 @@
+<h3>Download</h3>
+{% if version.endswith('(hg)') %}
+<p>This documentation is for version <b>{{ version }}</b>, which is
+  not released yet.</p>
+<p>You can use it from the
+  <a href="http://bitbucket.org/birkenfeld/sphinx/">Mercurial repo</a> or look for
+  released versions in the <a href="http://pypi.python.org/pypi/Sphinx">Python
+    Package Index</a>.</p>
+{% else %}
+<p>Current version: <b>{{ version }}</b></p>
+<p>Get Pygments from the <a href="http://pypi.python.org/pypi/Pygments">Python Package
+Index</a>, or install it with:</p>
+<pre>pip install Pygments</pre>
+{% endif %}
+
+<h3>Questions? Suggestions?</h3>
+
+<p>Clone at <a href="https://bitbucket.org/birkenfeld/pygments-main">Bitbucket</a>
+or come to the <tt>#pocoo</tt> channel on FreeNode.</p>
+<p>You can also open an issue at the
+  <a href="https://www.bitbucket.org/birkenfeld/pygments-main/issues/">tracker</a>.</p>
+
+<p class="logo">A <a href="http://pocoo.org/">
+  <img src="{{ pathto("_static/pocoo.png", 1) }}" /></a> project</a></p>
+

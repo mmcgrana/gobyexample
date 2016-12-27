@@ -1,0 +1,354 @@
+(* Test Cases for Modula-2 Lexer *)
+
+(* Notes:
+   (1) Without dialect option nor embedded dialect tag, the lexer operates in
+       fallback mode, recognising the *combined* literals, punctuation symbols
+       and operators of all supported dialects, and the *combined* reserved
+       words and builtins of PIM Modula-2, ISO Modula-2 and Modula-2 R10.
+   (1) If multiple embedded dialect tags are present, the lexer will use the
+       first valid tag and ignore any subsequent dialect tags in the file.
+   (2) An embedded dialect tag overrides any command line dialect option. *)
+
+
+(* Testing command line dialect option *)
+
+(* for PIM Modula-2 : pygmentize -O full,dialect=m2pim ...
+   for ISO Modula-2 : pygmentize -O full,dialect=m2iso ...
+   for Modula-2 R10 : pygmentize -O full,dialect=m2r10 ...
+   for Objective Modula-2 : pygmentize -O full,dialect=objm2 ... *)
+
+(* for Aglet extensions : pygmentize -O full,dialect=m2iso+aglet ...
+   for GNU extensions : pygmentize -O full,dialect=m2pim+gm2 ...
+   for p1 extensions : pygmentize -O full,dialect=m2iso+p1 ...
+   for XDS extensions : pygmentize -O full,dialect=m2iso+xds ...
+
+
+(* Testing embedded dialect tags *)
+
+(* !m2pim*) (* <-- remove whitespace before ! for PIM Modula-2 *)
+(* !m2iso*) (* <-- remove whitespace before ! for ISO Modula-2 *)
+(* !m2r10*) (* <-- remove whitespace before ! for Modula-2 R10 *)
+(* !objm2*) (* <-- remove whitespace before ! for Objective Modula-2 *)
+
+(* !m2iso+aglet*) (* <-- remove whitespace before ! for Aglet extensions *)
+(* !m2pim+gm2*)   (* <-- remove whitespace before ! for GNU extensions *)
+(* !m2iso+p1*)    (* <-- remove whitespace before ! for p1 extensions *)
+(* !m2iso+xds*)   (* <-- remove whitespace before ! for XDS extensions *)
+
+
+(* Dialect Indicating Names *)
+
+(* recognised names should be highlighted *)
+
+QUALIFIED (* PIM and ISO *)
+
+PACKEDSET (* ISO only *)
+
+ARGLIST (* M2 R10 and ObjM2 *)
+
+BYCOPY (* ObjM2 only *)
+
+BITSET8 (* Aglet, GNU and M2 R10 *)
+
+__FILE__ (* GNU only *)
+
+BCD (* p1 and M2 R10 *)
+
+SEQ (* XDS only *)
+
+
+(* Literal Tests *)
+
+(* recognised literals should be rendered as one unit
+   unrecognised literals should be rendered as error *)
+
+ch := 'a'; ch := "a"; (* all dialects *)
+ch := 0u20; unich := 0u2038 (* M2 R10 *)
+
+s := 'The cat said "meow!".';
+s := "It is eight O'clock.";
+
+
+n := 123; n = 1000000; (* all dialects *)
+n := 123; n = 1'000'000; (* M2 R10 *)
+
+n := 0b0110; n:= 0b0110'1100'0111; (* M2 R10 *)
+n := 0xFF00; n:= 0xDEAD'BEEF'0F00; (* M2 R10 *)
+
+r := 1.23; r := 1000000.000001; (* all dialects *)
+r := 1.23; r := 1'000'000.000'001; (* M2 R10 *)
+
+r := 1.234E6; r:= 1.234E-6; r := 1.234567E1000; (* PIM + ISO *)
+r := 1.234e6; r:= 1.234e-6; r := 1.234'567e1'000; (* M2 R10 *)
+
+ch := 0377C; n := 0377B; n := 07FF0H; (* ISO + PIM *)
+
+
+(* Non-Alphabetic Operator Tests *)
+
+(* supported operators should be rendered as one unit
+   unsupported operators should be rendered as errors *)
+
+a := b + c - d * e / f; (* all dialects *)
+
+SetDiff := A \ B; (* M2 R10 *)
+
+dotProduct := v1 *. v2; catArray := array1 +> array2; (* M2 R10 *)
+
+bool := a = b; bool := a > b; bool := a < b;
+bool := a # b; bool := a >= b; bool := a <= b;
+
+bool := a <> b; (* PIM + ISO *)
+
+bool := a == b; (* M2 R10 *)
+
+(*&*) IF a & b THEN ... END; (* PIM + ISO *)
+
+(*~*) IF ~ b THEN ... END; (* PIM + ISO *)
+
+(*::*) int := real :: INTEGER; (* M2 R10 *)
+
+(*++*) FOR i++ IN range DO ... END; (* M2 R10 *)
+(*--*) FOR i-- IN range DO ... END; (* M2 R10 *)
+
+(*^*) next := this^.next; (* all dialects *)
+(*@*) next := this@.next; (* ISO *)
+
+(*`*) str := `NSString alloc init; (* ObjM2 *)
+
+
+(* Punctuation Tests *)
+
+(* supported punctuation should be rendered as one unit
+   unsupported punctuation should be rendered as an error *)
+
+(*.*) Foo.Bar.Baz; (*..*) TYPE Sign = [-1..1] OF INTEGER;
+
+(*|:*) CASE foo OF | 1 : bar | 2 : bam | 3 : boo END;
+(*!:*) CASE foo OF 1 : bar ! 2 : bam ! 3 : boo END; (* ISO *)
+
+(*[]()*) array[n] := foo();
+
+(*{}*) CONST Bar = { 1, 2, 3 };
+
+(*?*) TPROPERTIES = isCollection, isIndexed | isRigid?; (* M2 R10 *)
+
+(*~*) CONST ~ isFoobar = Foo AND Bar; (* M2 R10 *)
+(*->*) isFoobar -> PROCEDURE [ABS]; (* M2 R10 *)
+
+(*<<>>*) GENLIB Foo FROM Template FOR Bar = <<ARRAY OF CHAR>> END; (* M2 R10 *)
+
+
+(* Single Line Comment Test *)
+
+(* should be rendered as comment if supported, as error if unsupported *)
+
+// This is a single line comment (M2 R10 + ObjM2)
+
+
+(* Pragma Delimiter Tests *)
+
+(* PIM style pragma should be rendered as pragma in PIM dialects,
+   as multiline comment in all other dialects. *)
+   
+(*$INLINE*) (* PIM *)
+
+(* ISO style pragma should be rendered as error in PIM dialects,
+   as pragma in all other dialects. *)
+
+<*INLINE*>  (* all other dialects *)
+
+
+(* Operator Substitution Test When in Algol mode *)
+
+IF foo # bar THEN ... END; (* # should be rendered as not equal symbol *)
+
+IF foo >= bar THEN ... END; (* >= should be rendered as not less symbol *)
+
+IF foo <= bar THEN ... END; (* <= should be rendered as not greater symbol *)
+
+IF foo == bar THEN ... END; (* == should be rendered as identity symbol *)
+
+dotProduct := v1 *. v2; (* *. should be rendered as dot product symbol *)
+
+
+(* Reserved Words and Builtins Test *)
+
+(* supported reserved words and builtins should be highlighted *)
+
+(* reserved words common to all dialects *)
+
+AND ARRAY BEGIN BY CASE CONST DEFINITION DIV DO ELSE ELSIF END EXIT FOR FROM
+IF IMPLEMENTATION IMPORT IN LOOP MOD MODULE NOT OF OR POINTER PROCEDURE
+RECORD REPEAT RETURN SET THEN TO TYPE UNTIL VAR WHILE
+
+(* builtins common to all dialects *)
+
+ABS BOOLEAN CARDINAL CHAR CHR FALSE INTEGER LONGINT LONGREAL
+MAX MIN NIL ODD ORD REAL TRUE
+
+(* pseudo builtins common to all dialects *)
+
+ADDRESS BYTE WORD ADR
+
+
+(* additional reserved words for PIM *)
+
+EXPORT QUALIFIED WITH
+
+(* additional builtins for PIM *)
+
+BITSET CAP DEC DISPOSE EXCL FLOAT HALT HIGH INC INCL NEW NIL PROC SIZE TRUNC VAL
+
+(* additional pseudo-builtins for PIM *)
+
+SYSTEM PROCESS TSIZE NEWPROCESS TRANSFER
+
+
+(* additional reserved words for ISO 10514-1 *)
+
+EXCEPT EXPORT FINALLY FORWARD PACKEDSET QUALIFIED REM RETRY WITH
+
+(* additional reserved words for ISO 10514-2 & ISO 10514-3 *)
+
+ABSTRACT AS CLASS GUARD INHERIT OVERRIDE READONLY REVEAL TRACED UNSAFEGUARDED
+
+(* additional builtins for ISO 10514-1 *)
+
+BITSET CAP CMPLX COMPLEX DEC DISPOSE EXCL FLOAT HALT HIGH IM INC INCL INT
+INTERRUPTIBLE LENGTH LFLOAT LONGCOMPLEX NEW PROC PROTECTION RE SIZE TRUNC
+UNINTERRUBTIBLE VAL
+
+(* additional builtins for ISO 10514-2 & ISO 10514-3 *)
+
+CREATE DESTROY EMPTY ISMEMBER SELF
+
+
+(* additional pseudo-builtins for ISO *)
+
+(* SYSTEM *)
+SYSTEM BITSPERLOC LOCSPERBYTE LOCSPERWORD LOC ADDADR SUBADR DIFADR MAKEADR
+ADR ROTATE SHIFT CAST TSIZE
+
+(* COROUTINES *)
+COROUTINES ATTACH COROUTINE CURRENT DETACH HANDLER INTERRUPTSOURCE IOTRANSFER
+IsATTACHED LISTEN NEWCOROUTINE PROT TRANSFER
+ 
+(* EXCEPTIONS *)
+EXCEPTIONS AllocateSource CurrentNumber ExceptionNumber ExceptionSource
+GetMessage IsCurrentSource IsExceptionalExecution RAISE
+
+(* TERMINATION *)
+TERMINATION IsTerminating HasHalted
+
+(* M2EXCEPTION *)
+M2EXCEPTION M2Exceptions M2Exception IsM2Exception indexException rangeException
+caseSelectException invalidLocation functionException wholeValueException
+wholeDivException realValueException realDivException complexValueException
+complexDivException protException sysException coException exException
+
+
+(* additional reserved words for M2 R10 *)
+
+ALIAS ARGLIST BLUEPRINT COPY GENLIB INDETERMINATE NEW NONE OPAQUE REFERENTIAL
+RELEASE RETAIN
+
+(* with symbolic assembler language extension *)
+ASM REG
+
+(* additional builtins for M2 R10 *)
+
+CARDINAL COUNT EMPTY EXISTS INSERT LENGTH LONGCARD OCTET PTR PRED READ READNEW
+REMOVE RETRIEVE SORT STORE SUBSET SUCC TLIMIT TMAX TMIN TRUE TSIZE UNICHAR
+WRITE WRITEF
+
+(* additional pseudo-builtins for M2 R10 *)
+
+(* TPROPERTIES *)
+TPROPERTIES PROPERTY LITERAL TPROPERTY TLITERAL TBUILTIN TDYN TREFC TNIL
+TBASE TPRECISION TMAXEXP TMINEXP 
+
+(* CONVERSION *)
+CONVERSION TSXFSIZE SXF VAL
+
+(* UNSAFE *)
+UNSAFE CAST INTRINSIC AVAIL ADD SUB ADDC SUBC FETCHADD FETCHSUB SHL SHR ASHR
+ROTL ROTR ROTLC ROTRC BWNOT BWAND BWOR BWXOR BWNAND BWNOR SETBIT TESTBIT
+LSBIT MSBIT CSBITS BAIL HALT TODO FFI ADDR VARGLIST VARGC
+
+(* ATOMIC *)
+ATOMIC INTRINSIC AVAIL SWAP CAS INC DEC BWAND BWNAND BWOR BWXOR
+
+(* COMPILER *)
+COMPILER DEBUG MODNAME PROCNAME LINENUM DEFAULT HASH
+
+(* ASSEMBLER *)
+ASSEMBLER REGISTER SETREG GETREG CODE
+
+
+(* standard library ADT identifiers for M2 R10 *)
+
+(* rendered as builtins when dialect is set to Modula-2 R10,
+   this can be turned off by option treat_stdlib_adts_as_builtins=off *)
+BCD LONGBCD BITSET SHORTBITSET LONGBITSET LONGLONGBITSET COMPLEX LONGCOMPLEX
+SHORTCARD LONGLONGCARD SHORTINT LONGLONGINT POSINT SHORTPOSINT LONGPOSINT
+LONGLONGPOSINT BITSET8 BITSET16 BITSET32 BITSET64 BITSET128 BS8 BS16 BS32
+BS64 BS128 CARDINAL8 CARDINAL16 CARDINAL32 CARDINAL64 CARDINAL128 CARD8
+CARD16 CARD32 CARD64 CARD128 INTEGER8 INTEGER16 INTEGER32 INTEGER64
+INTEGER128 INT8 INT16 INT32 INT64 INT128 STRING UNISTRING
+
+
+(* additional reserved words for ObjM2 *)
+
+(* Note: ObjM2 is a superset of M2 R10 *)
+
+BYCOPY BYREF CLASS CONTINUE CRITICAL INOUT METHOD ON OPTIONAL OUT PRIVATE
+PROTECTED PROTOCOL PUBLIC SUPER TRY
+
+(* additional builtins for ObjM2 *)
+
+OBJECT NO YES
+
+
+(* additional builtins for Aglet Extensions to ISO *)
+
+BITSET8 BITSET16 BITSET32 CARDINAL8 CARDINAL16 CARDINAL32 INTEGER8 INTEGER16
+INTEGER32
+
+
+(* additional reserved words for GNU Extensions to PIM *)
+
+ASM __ATTRIBUTE__ __BUILTIN__ __COLUMN__ __DATE__ __FILE__ __FUNCTION__
+__LINE__ __MODULE__ VOLATILE
+
+(* additional builtins for GNU Extensions to PIM *)
+
+BITSET8 BITSET16 BITSET32 CARDINAL8 CARDINAL16 CARDINAL32 CARDINAL64 COMPLEX32
+COMPLEX64 COMPLEX96 COMPLEX128 INTEGER8 INTEGER16 INTEGER32 INTEGER64 REAL8
+REAL16 REAL32 REAL96 REAL128 THROW
+
+
+(* additional pseudo-builtins for p1 Extensions to ISO *)
+
+BCD
+
+
+(* additional reserved words for XDS Extensions to ISO *)
+
+SEQ
+
+(* additional builtins for XDS Extensions to ISO *)
+
+ASH ASSERT DIFFADR_TYPE ENTIER INDEX LEN LONGCARD SHORTCARD SHORTINT
+
+(* additional pseudo-builtins for XDS Extensions to ISO *)
+
+(* SYSTEM *)
+PROCESS NEWPROCESS BOOL8 BOOL16 BOOL32 CARD8 CARD16 CARD32 INT8 INT16 INT32
+REF MOVE FILL GET PUT CC int unsigned size_t void
+
+(* COMPILER *)
+COMPILER OPTION EQUATION
+
+
+(* end of file *)

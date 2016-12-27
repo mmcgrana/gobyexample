@@ -1,0 +1,24 @@
+
+# Deal with imports
+import others.instances;
+
+instance of VM {
+	name: VM-mysql;
+	instance of mysql {
+		name: MySQL;
+	}
+}
+
+instance of VM {
+	name: VM ;
+	count: 5;
+	
+	INSTANCE of tomcat {
+		name: Tomcat;
+		
+		instance of my-war-1 {
+			name: my-war-1;
+			full-path: apps/my-war;
+		}
+	}
+}

@@ -1,0 +1,6 @@
+* Example Easytrieve macro declaration. For an example on calling this
+* macro, see example.ezt.
+MACRO FILENAME PREFIX
+&FILENAME.
+&PREFIX.-LINE 1 80 A
+&PREFIX.-KEY  1  8 A
