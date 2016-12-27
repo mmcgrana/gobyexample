@@ -41,7 +41,7 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/COXm374QWe"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Gkc5rDaeaN"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -90,7 +90,7 @@ it a lot below.</p>
         <tr>
           <td class="docs">
             <p>Here&rsquo;s a sample of the functions available in
-<code>strings</code>. Note that these are all functions from
+<code>strings</code>. Note that these are all functions from the
 package, not methods on the string object itself.
 This means that we need pass the string in question
 as the first argument to the function.</p>

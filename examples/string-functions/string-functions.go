@@ -14,7 +14,7 @@ var p = fmt.Println
 func main() {
 
     // Here's a sample of the functions available in
-    // `strings`. Note that these are all functions from
+    // `strings`. Note that these are all functions from the
     // package, not methods on the string object itself.
     // This means that we need pass the string in question
     // as the first argument to the function.
