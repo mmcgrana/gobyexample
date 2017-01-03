@@ -120,7 +120,7 @@ var dashPat = regexp.MustCompile("\\-+")
 
 type Seg struct {
     Docs, DocsRendered              string
-    Code, CodeRendered              string
+    Code, CodeRendered, CodeForJs   string
     CodeEmpty, CodeLeading, CodeRun bool
 }
 
@@ -205,6 +205,10 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
         }
         if seg.Code != "" {
             seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
+            // adding the content to the js code for copying to the clipboard
+            if strings.HasSuffix(sourcePath, ".go") {
+                seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
+            }
         }
     }
     // we are only interested in the 'go' code to pass to play.golang.org
@@ -276,9 +280,11 @@ func renderExamples(examples []*Example) {
 
 func main() {
     copyFile("templates/site.css", siteDir+"/site.css")
+    copyFile("templates/site.js", siteDir+"/site.js")
     copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
     copyFile("templates/404.html", siteDir+"/404.html")
     copyFile("templates/play.png", siteDir+"/play.png")
+    copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
     examples := parseExamples()
     renderIndex(examples)
     renderExamples(examples)
