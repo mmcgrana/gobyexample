@@ -23,7 +23,7 @@ func f1(arg int) (int, error) {
 
     }
 
-    // A nil value in the error position indicates that
+    // A `nil` value in the error position indicates that
     // there was no error.
     return arg + 3, nil
 }
@@ -74,7 +74,7 @@ func main() {
     }
 
     // If you want to programmatically use the data in
-    // a custom error, you'll need to get the error  as an
+    // a custom error, you'll need to get the error as an
     // instance of the custom error type via type
     // assertion.
     _, e := f2(42)
