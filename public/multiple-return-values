@@ -63,7 +63,7 @@ to return both result and error values from a function.</p>
         <tr>
           <td class="docs">
             <p>The <code>(int, int)</code> in this function signature shows that
-the function returns 2 <code>int</code>s.</p>
+the function returns 2 <code>int</code>s. Parentheses are required when returning multiple values.</p>
 
           </td>
           <td class="code leading">
