@@ -2,11 +2,23 @@
 
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "runtime"
+)
 
 func f(from string) {
     for i := 0; i < 3; i++ {
         fmt.Println(from, ":", i)
+
+        // `runtime.GoSched()` transfers execution to the next
+        // goroutine. Since goroutines are multiplexed across
+        // system threads, if there's only one thread it won't
+        // yield to another goroutine unless asked explicitly
+        // as with the call as below or during a system call.
+        // Note that you can control the number of system
+        // threads with the `GOMAXPROCS` environment variable.
+        runtime.Gosched()
     }
 }
 
