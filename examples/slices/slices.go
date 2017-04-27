@@ -48,11 +48,11 @@ func main() {
     l := s[2:5]
     fmt.Println("sl1:", l)
 
-    // This slices up to (but excluding) `s[5]`.
+    // This slices up to (but excluding) `s[:5]`.
     l = s[:5]
     fmt.Println("sl2:", l)
 
-    // And this slices up from (and including) `s[2]`.
+    // And this slices up from (and including) `s[2:]`.
     l = s[2:]
     fmt.Println("sl3:", l)
 
