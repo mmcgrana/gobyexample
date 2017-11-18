@@ -48,7 +48,7 @@ The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and
 
 Contributor translations of the Go by Example site are available in:
 
-* [Chinese](http://gobyexample.everyx.in/) by [everyx](https://github.com/everyx)
+* [Chinese](https://gobyexample.xgwang.me/) by [xg-wang](https://github.com/xg-wang/gobyexample)
 * [French](http://le-go-par-l-exemple.keiruaprod.fr) by [keirua](https://github.com/keirua/gobyexample)
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
