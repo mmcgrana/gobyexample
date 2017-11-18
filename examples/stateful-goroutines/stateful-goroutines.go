@@ -87,7 +87,7 @@ func main() {
         }()
     }
 
-    // We start 10 writes as well, using a similar
+    // We start 10 goroutines to issue writes as well, using a similar
     // approach.
     for w := 0; w < 10; w++ {
         go func() {
