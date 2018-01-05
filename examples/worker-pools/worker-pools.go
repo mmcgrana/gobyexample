@@ -25,8 +25,8 @@ func main() {
     // In order to use our pool of workers we need to send
     // them work and collect their results. We make 2
     // channels for this.
-    jobs := make(chan int, 100)
-    results := make(chan int, 100)
+    jobs := make(chan int, 2)
+    results := make(chan int, 2)
 
     // This starts up 3 workers, initially blocked
     // because there are no jobs yet.
@@ -34,15 +34,19 @@ func main() {
         go worker(w, jobs, results)
     }
 
-    // Here we send 5 `jobs` and then `close` that
-    // channel to indicate that's all the work we have.
-    for j := 1; j <= 5; j++ {
-        jobs <- j
-    }
-    close(jobs)
+    go func() {
+        // Here we send 5 `jobs` and then `close` that
+        // channel to indicate that's all the work we have.
+        // Note that this is a non blocking call since filling
+        // up of job channel should not hamper our main program.
+        for j := 1; j <= 10; j++ {
+            jobs <- j
+        }
+        close(jobs)
+    }()
 
     // Finally we collect all the results of the work.
-    for a := 1; a <= 5; a++ {
+    for a := 1; a <= 10; a++ {
         <-results
     }
 }
