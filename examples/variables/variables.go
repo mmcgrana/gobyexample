@@ -9,7 +9,7 @@ import "fmt"
 func main() {
 
     // `var` declares 1 or more variables.
-    var a string = "initial"
+    var a = "initial"
     fmt.Println(a)
 
     // You can declare multiple variables at once.
