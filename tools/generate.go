@@ -106,7 +106,6 @@ func whichLexer(path string) string {
         return "console"
     }
     panic("No lexer for " + path)
-    return ""
 }
 
 func debug(msg string) {
