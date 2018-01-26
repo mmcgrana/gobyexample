@@ -127,7 +127,7 @@ type Seg struct {
 
 // Example is info extracted from an example file
 type Example struct {
-    Id, Name                    string
+    ID, Name                    string
     GoCode, GoCodeHash, UrlHash string
     Segs                        [][]*Seg
     NextExample                 *Example
@@ -222,14 +222,14 @@ func parseExamples() []*Example {
     for _, exampleName := range exampleNames {
         if (exampleName != "") && !strings.HasPrefix(exampleName, "#") {
             example := Example{Name: exampleName}
-            exampleId := strings.ToLower(exampleName)
-            exampleId = strings.Replace(exampleId, " ", "-", -1)
-            exampleId = strings.Replace(exampleId, "/", "-", -1)
-            exampleId = strings.Replace(exampleId, "'", "", -1)
-            exampleId = dashPat.ReplaceAllString(exampleId, "-")
-            example.Id = exampleId
+            exampleID := strings.ToLower(exampleName)
+            exampleID = strings.Replace(exampleID, " ", "-", -1)
+            exampleID = strings.Replace(exampleID, "/", "-", -1)
+            exampleID = strings.Replace(exampleID, "'", "", -1)
+            exampleID = dashPat.ReplaceAllString(exampleID, "-")
+            example.ID = exampleID
             example.Segs = make([][]*Seg, 0)
-            sourcePaths := mustGlob("examples/" + exampleId + "/*")
+            sourcePaths := mustGlob("examples/" + exampleID + "/*")
             for _, sourcePath := range sourcePaths {
                 if strings.HasSuffix(sourcePath, ".hash") {
                     example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
@@ -243,7 +243,7 @@ func parseExamples() []*Example {
             }
             newCodeHash := sha1Sum(example.GoCode)
             if example.GoCodeHash != newCodeHash {
-                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
+                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
             }
             examples = append(examples, &example)
         }
@@ -270,7 +270,7 @@ func renderExamples(examples []*Example) {
     _, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
     check(err)
     for _, example := range examples {
-        exampleF, err := os.Create(siteDir + "/" + example.Id)
+        exampleF, err := os.Create(siteDir + "/" + example.ID)
         check(err)
         exampleTmpl.Execute(exampleF, example)
     }
