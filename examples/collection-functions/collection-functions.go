@@ -21,7 +21,7 @@ package main
 import "strings"
 import "fmt"
 
-// Returns the first index of the target string `t`, or
+// Index returns the first index of the target string `t`, or
 // -1 if no match is found.
 func Index(vs []string, t string) int {
     for i, v := range vs {
@@ -32,13 +32,13 @@ func Index(vs []string, t string) int {
     return -1
 }
 
-// Returns `true` if the target string t is in the
+// Include returns `true` if the target string t is in the
 // slice.
 func Include(vs []string, t string) bool {
     return Index(vs, t) >= 0
 }
 
-// Returns `true` if one of the strings in the slice
+// Any returns `true` if one of the strings in the slice
 // satisfies the predicate `f`.
 func Any(vs []string, f func(string) bool) bool {
     for _, v := range vs {
@@ -49,7 +49,7 @@ func Any(vs []string, f func(string) bool) bool {
     return false
 }
 
-// Returns `true` if all of the strings in the slice
+// All returns `true` if all of the strings in the slice
 // satisfy the predicate `f`.
 func All(vs []string, f func(string) bool) bool {
     for _, v := range vs {
@@ -60,7 +60,7 @@ func All(vs []string, f func(string) bool) bool {
     return true
 }
 
-// Returns a new slice containing all strings in the
+// Filter returns a new slice containing all strings in the
 // slice that satisfy the predicate `f`.
 func Filter(vs []string, f func(string) bool) []string {
     vsf := make([]string, 0)
@@ -72,7 +72,7 @@ func Filter(vs []string, f func(string) bool) []string {
     return vsf
 }
 
-// Returns a new slice containing the results of applying
+// Map returns a new slice containing the results of applying
 // the function `f` to each string in the original slice.
 func Map(vs []string, f func(string) string) []string {
     vsm := make([]string, len(vs))
