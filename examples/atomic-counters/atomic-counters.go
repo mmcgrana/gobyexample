@@ -15,7 +15,7 @@ func main() {
 
     // We'll use an unsigned integer to represent our
     // (always-positive) counter.
-    var ops uint64 = 0
+    var ops uint64
 
     // To simulate concurrent updates, we'll start 50
     // goroutines that each increment the counter about

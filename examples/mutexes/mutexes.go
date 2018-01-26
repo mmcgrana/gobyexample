@@ -23,8 +23,8 @@ func main() {
 
     // We'll keep track of how many read and write
     // operations we do.
-    var readOps uint64 = 0
-    var writeOps uint64 = 0
+    var readOps uint64
+    var writeOps uint64
 
     // Here we start 100 goroutines to execute repeated
     // reads against the state, once per millisecond in

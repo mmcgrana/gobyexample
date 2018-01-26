@@ -37,8 +37,8 @@ type writeOp struct {
 func main() {
 
     // As before we'll count how many operations we perform.
-    var readOps uint64 = 0
-    var writeOps uint64 = 0
+    var readOps uint64
+    var writeOps uint64
 
     // The `reads` and `writes` channels will be used by
     // other goroutines to issue read and write requests,
