@@ -118,12 +118,14 @@ func debug(msg string) {
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var dashPat = regexp.MustCompile("\\-+")
 
+// Seg is a segment of an example
 type Seg struct {
     Docs, DocsRendered              string
     Code, CodeRendered              string
     CodeEmpty, CodeLeading, CodeRun bool
 }
 
+// Example is info extracted from an example file
 type Example struct {
     Id, Name                    string
     GoCode, GoCodeHash, UrlHash string
