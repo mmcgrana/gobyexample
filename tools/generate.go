@@ -128,7 +128,7 @@ type Seg struct {
 // Example is info extracted from an example file
 type Example struct {
     ID, Name                    string
-    GoCode, GoCodeHash, UrlHash string
+    GoCode, GoCodeHash, URLHash string
     Segs                        [][]*Seg
     NextExample                 *Example
 }
@@ -138,7 +138,7 @@ func parseHashFile(sourcePath string) (string, string) {
     return lines[0], lines[1]
 }
 
-func resetUrlHashFile(codehash, code, sourcePath string) string {
+func resetURLHashFile(codehash, code, sourcePath string) string {
     payload := strings.NewReader(code)
     resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
     if err != nil {
@@ -232,7 +232,7 @@ func parseExamples() []*Example {
             sourcePaths := mustGlob("examples/" + exampleID + "/*")
             for _, sourcePath := range sourcePaths {
                 if strings.HasSuffix(sourcePath, ".hash") {
-                    example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+                    example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
                 } else {
                     sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
                     if filecontents != "" {
@@ -243,7 +243,7 @@ func parseExamples() []*Example {
             }
             newCodeHash := sha1Sum(example.GoCode)
             if example.GoCodeHash != newCodeHash {
-                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
+                example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
             }
             examples = append(examples, &example)
         }
