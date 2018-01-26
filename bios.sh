@@ -11,4 +11,3 @@ PKGS=$(go list $PKG/... | grep -v examples)
 run -s "Linting"  golint -set_exit_status $PKGS
 run -s "Vetting"  go vet -x $PKGS
 run -s "Building" tools/build
-run -s "Testing"  go test -v $PKGS
