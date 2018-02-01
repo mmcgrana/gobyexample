@@ -14,4 +14,4 @@ $ ./hello-world
 hello world
 
 # Now that we can run and build basic Go programs, let's
-# learn more about the language.
+# learn more about the language. Wat.
