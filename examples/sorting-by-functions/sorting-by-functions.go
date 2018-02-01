@@ -10,7 +10,7 @@ import "sort"
 import "fmt"
 
 // In order to sort by a custom function in Go, we need a
-// corresponding type. Here we've created a `ByLength`
+// corresponding type. Here we've created a `byLength`
 // type that is just an alias for the builtin `[]string`
 // type.
 type byLength []string
