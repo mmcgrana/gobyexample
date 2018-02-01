@@ -40,7 +40,7 @@ branches.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/kxkBPpY_ue"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/TJ4Az0KuLfL"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -138,7 +138,7 @@ to express if/else logic. Here we also show how the
         <tr>
           <td class="docs">
             <p>A type <code>switch</code> compares types instead of values.  You
-can use this to discover the the type of an interface
+can use this to discover the type of an interface
 value.  In this example, the variable <code>t</code> will have the
 type corresponding to its clause.</p>
 
