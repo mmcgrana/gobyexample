@@ -73,7 +73,7 @@ helper function.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/3PNdke3Wia"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/BJB_npWH516"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -95,7 +95,7 @@ helper function.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns the first index of the target string <code>t</code>, or
+            <p>Index returns the first index of the target string <code>t</code>, or
 -1 if no match is found.</p>
 
           </td>
@@ -116,7 +116,7 @@ helper function.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns <code>true</code> if the target string t is in the
+            <p>Include returns <code>true</code> if the target string t is in the
 slice.</p>
 
           </td>
@@ -132,7 +132,7 @@ slice.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns <code>true</code> if one of the strings in the slice
+            <p>Any returns <code>true</code> if one of the strings in the slice
 satisfies the predicate <code>f</code>.</p>
 
           </td>
@@ -153,7 +153,7 @@ satisfies the predicate <code>f</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns <code>true</code> if all of the strings in the slice
+            <p>All returns <code>true</code> if all of the strings in the slice
 satisfy the predicate <code>f</code>.</p>
 
           </td>
@@ -174,7 +174,7 @@ satisfy the predicate <code>f</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns a new slice containing all strings in the
+            <p>Filter returns a new slice containing all strings in the
 slice that satisfy the predicate <code>f</code>.</p>
 
           </td>
@@ -196,7 +196,7 @@ slice that satisfy the predicate <code>f</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Returns a new slice containing the results of applying
+            <p>Map returns a new slice containing the results of applying
 the function <code>f</code> to each string in the original slice.</p>
 
           </td>

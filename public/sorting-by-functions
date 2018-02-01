@@ -43,7 +43,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/N6GbEgBffd"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/4b7_qiGp33y"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -66,14 +66,14 @@ in Go.</p>
         <tr>
           <td class="docs">
             <p>In order to sort by a custom function in Go, we need a
-corresponding type. Here we&rsquo;ve created a <code>ByLength</code>
+corresponding type. Here we&rsquo;ve created a <code>byLength</code>
 type that is just an alias for the builtin <code>[]string</code>
 type.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">ByLength</span> <span class="p">[]</span><span class="kt">string</span>
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">byLength</span> <span class="p">[]</span><span class="kt">string</span>
 </pre></div>
 
           </td>
@@ -92,13 +92,13 @@ we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+            <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nx">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nx">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">ByLength</span><span class="p">)</span> <span class="nx">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nx">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
@@ -110,7 +110,7 @@ we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
           <td class="docs">
             <p>With all of this in place, we can now implement our
 custom sort by casting the original <code>fruits</code> slice to
-<code>ByLength</code>, and then use <code>sort.Sort</code> on that typed
+<code>byLength</code>, and then use <code>sort.Sort</code> on that typed
 slice.</p>
 
           </td>
@@ -118,7 +118,7 @@ slice.</p>
 	        
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;kiwi&quot;</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="nx">ByLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
+    <span class="nx">sort</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="nx">byLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>

@@ -41,7 +41,7 @@ data types.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/WxRgpycMaH"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/UGeNKd-cw34"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -70,11 +70,11 @@ decoding of custom types below.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">Response1</span> <span class="kd">struct</span> <span class="p">{</span>
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">response1</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">Page</span>   <span class="kt">int</span>
     <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span>
 <span class="p">}</span>
-<span class="kd">type</span> <span class="nx">Response2</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="kd">type</span> <span class="nx">response2</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">Page</span>   <span class="kt">int</span>      <span class="s">`json:&quot;page&quot;`</span>
     <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span> <span class="s">`json:&quot;fruits&quot;`</span>
 <span class="p">}</span>
@@ -190,7 +190,7 @@ use those names as the JSON keys.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">res1D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response1</span><span class="p">{</span>
+            <div class="highlight"><pre>    <span class="nx">res1D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">response1</span><span class="p">{</span>
         <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
         <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
     <span class="nx">res1B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res1D</span><span class="p">)</span>
@@ -204,13 +204,13 @@ use those names as the JSON keys.</p>
           <td class="docs">
             <p>You can use tags on struct field declarations
 to customize the encoded JSON key names. Check the
-definition of <code>Response2</code> above to see an example
+definition of <code>response2</code> above to see an example
 of such tags.</p>
 
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre>    <span class="nx">res2D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Response2</span><span class="p">{</span>
+            <div class="highlight"><pre>    <span class="nx">res2D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">response2</span><span class="p">{</span>
         <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
         <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
     <span class="nx">res2B</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">res2D</span><span class="p">)</span>
@@ -313,7 +313,7 @@ data.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">str</span> <span class="o">:=</span> <span class="s">`{&quot;page&quot;: 1, &quot;fruits&quot;: [&quot;apple&quot;, &quot;peach&quot;]}`</span>
-    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">Response2</span><span class="p">{}</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">response2</span><span class="p">{}</span>
     <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">res</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
