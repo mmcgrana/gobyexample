@@ -18,7 +18,7 @@
     }
   </script>
   <body>
-    <div class="example" id="{{.Id}}">
+    <div class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
       <table>
@@ -28,7 +28,7 @@
             {{.DocsRendered}}
           </td>
           <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
-	        {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.UrlHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
+	        {{if .CodeRun}}<a href="http://play.golang.org/p/{{$.URLHash}}"><img title="Run code" src="play.png" class="run" /></a>{{end}}
             {{.CodeRendered}}
           </td>
         </tr>
@@ -37,11 +37,11 @@
       {{end}}
       {{if .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.Id}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.ID}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>
