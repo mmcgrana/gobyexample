@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-paths=$(ls tools/*.go examples/*/*.go)
+paths=$(ls examples/*/*.go)
 
 gbe_to_4spaces() {
   local os=$(tr [A-Z] [a-z] <<< "`uname`")
