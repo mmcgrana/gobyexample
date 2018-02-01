@@ -1,6 +1,6 @@
 # We receive the values `"one"` and then `"two"` as
 # expected.
-$ time go run select.go 
+$ go run select.go 
 received one
 received two
 
