@@ -34,6 +34,16 @@ To build continuously in a loop:
 $ tools/build-loop
 ```
 
+### Publishing
+
+To upload the site:
+
+```console
+$ gem install aws-sdk
+$ export export AWS_ACCESS_KEY_ID=...
+$ export AWS_SECRET_ACCESS_KEY=...
+$ tools/upload-site
+```
 
 ### License
 
