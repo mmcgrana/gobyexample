@@ -30,7 +30,7 @@ func main() {
     // arrays. One is the builtin `append`, which
     // returns a slice containing one or more new values.
     // Note that we need to accept a return value from
-    // append as we may get a new slice value.
+    // `append` as we may get a new slice value.
     s = append(s, "d")
     s = append(s, "e", "f")
     fmt.Println("apd:", s)
