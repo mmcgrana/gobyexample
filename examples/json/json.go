@@ -58,7 +58,7 @@ func main() {
 
     // You can use tags on struct field declarations
     // to customize the encoded JSON key names. Check the
-    // definition of `Response2` above to see an example
+    // definition of `response2` above to see an example
     // of such tags.
     res2D := &response2{
         Page:   1,
