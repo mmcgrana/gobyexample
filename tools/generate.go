@@ -106,7 +106,6 @@ func whichLexer(path string) string {
         return "console"
     }
     panic("No lexer for " + path)
-    return ""
 }
 
 func debug(msg string) {
@@ -118,15 +117,17 @@ func debug(msg string) {
 var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
 var dashPat = regexp.MustCompile("\\-+")
 
+// Seg is a segment of an example
 type Seg struct {
     Docs, DocsRendered              string
     Code, CodeRendered              string
     CodeEmpty, CodeLeading, CodeRun bool
 }
 
+// Example is info extracted from an example file
 type Example struct {
-    Id, Name                    string
-    GoCode, GoCodeHash, UrlHash string
+    ID, Name                    string
+    GoCode, GoCodeHash, URLHash string
     Segs                        [][]*Seg
     NextExample                 *Example
 }
@@ -136,7 +137,7 @@ func parseHashFile(sourcePath string) (string, string) {
     return lines[0], lines[1]
 }
 
-func resetUrlHashFile(codehash, code, sourcePath string) string {
+func resetURLHashFile(codehash, code, sourcePath string) string {
     payload := strings.NewReader(code)
     resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
     if err != nil {
@@ -220,17 +221,17 @@ func parseExamples() []*Example {
     for _, exampleName := range exampleNames {
         if (exampleName != "") && !strings.HasPrefix(exampleName, "#") {
             example := Example{Name: exampleName}
-            exampleId := strings.ToLower(exampleName)
-            exampleId = strings.Replace(exampleId, " ", "-", -1)
-            exampleId = strings.Replace(exampleId, "/", "-", -1)
-            exampleId = strings.Replace(exampleId, "'", "", -1)
-            exampleId = dashPat.ReplaceAllString(exampleId, "-")
-            example.Id = exampleId
+            exampleID := strings.ToLower(exampleName)
+            exampleID = strings.Replace(exampleID, " ", "-", -1)
+            exampleID = strings.Replace(exampleID, "/", "-", -1)
+            exampleID = strings.Replace(exampleID, "'", "", -1)
+            exampleID = dashPat.ReplaceAllString(exampleID, "-")
+            example.ID = exampleID
             example.Segs = make([][]*Seg, 0)
-            sourcePaths := mustGlob("examples/" + exampleId + "/*")
+            sourcePaths := mustGlob("examples/" + exampleID + "/*")
             for _, sourcePath := range sourcePaths {
                 if strings.HasSuffix(sourcePath, ".hash") {
-                    example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+                    example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
                 } else {
                     sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
                     if filecontents != "" {
@@ -241,7 +242,7 @@ func parseExamples() []*Example {
             }
             newCodeHash := sha1Sum(example.GoCode)
             if example.GoCodeHash != newCodeHash {
-                example.UrlHash = resetUrlHashFile(newCodeHash, example.GoCode, "examples/"+example.Id+"/"+example.Id+".hash")
+                example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
             }
             examples = append(examples, &example)
         }
@@ -268,7 +269,7 @@ func renderExamples(examples []*Example) {
     _, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
     check(err)
     for _, example := range examples {
-        exampleF, err := os.Create(siteDir + "/" + example.Id)
+        exampleF, err := os.Create(siteDir + "/" + example.ID)
         check(err)
         exampleTmpl.Execute(exampleF, example)
     }
