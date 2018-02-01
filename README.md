@@ -61,6 +61,7 @@ Contributor translations of the Go by Example site are available in:
 * [Chinese](http://gobyexample.everyx.in/) by [everyx](https://github.com/everyx)
 * [French](http://le-go-par-l-exemple.keiruaprod.fr) by [keirua](https://github.com/keirua/gobyexample)
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
+* [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
 
 ### Thanks
