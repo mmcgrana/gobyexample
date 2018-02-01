@@ -261,7 +261,8 @@ func renderIndex(examples []*Example) {
     check(err)
     indexF, err := os.Create(siteDir + "/index.html")
     check(err)
-    indexTmpl.Execute(indexF, examples)
+    err = indexTmpl.Execute(indexF, examples)
+    check(err)
 }
 
 func renderExamples(examples []*Example) {
