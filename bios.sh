@@ -15,3 +15,5 @@ PKGS=$(go list $PKG/... | grep -v examples/panic)
 run -s "Vetting"  go vet -x $PKGS
 
 run -s "Building" tools/build
+
+run -s "Verifying" git diff --exit-code
