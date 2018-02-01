@@ -16,7 +16,7 @@ func main() {
     m["k1"] = 7
     m["k2"] = 13
 
-    // Printing a map with e.g. `Println` will show all of
+    // Printing a map with e.g. `fmt.Println` will show all of
     // its key/value pairs.
     fmt.Println("map:", m)
 
