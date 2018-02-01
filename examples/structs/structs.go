@@ -18,6 +18,7 @@ func main() {
     fmt.Println(person{"Bob", 20})
 
     // You can name the fields when initializing a struct.
+    // This helps with readability.
     fmt.Println(person{name: "Alice", age: 30})
 
     // Omitted fields will be zero-valued.
