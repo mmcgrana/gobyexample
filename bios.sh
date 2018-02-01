@@ -7,7 +7,10 @@ git reset --hard $SHA
 
 go get github.com/russross/blackfriday
 
-PKGS=$(go list $PKG/... | grep -v examples)
+PKGS=$(go list $PKG/... | grep -v examples/variables)
 run -s "Linting"  golint -set_exit_status $PKGS
+
+PKGS=$(go list $PKG/... | grep -v examples/panic)
 run -s "Vetting"  go vet -x $PKGS
+
 run -s "Building" tools/build
