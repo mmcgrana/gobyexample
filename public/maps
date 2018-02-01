@@ -40,7 +40,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/E6cGoiKqka"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/U67R66Oab8r"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -102,7 +102,7 @@ syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Printing a map with e.g. <code>Println</code> will show all of
+            <p>Printing a map with e.g. <code>fmt.Println</code> will show all of
 its key/value pairs.</p>
 
           </td>
