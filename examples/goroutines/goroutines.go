@@ -30,9 +30,8 @@ func main() {
 
     // Our two function calls are running asynchronously in
     // separate goroutines now, so execution falls through
-    // to here. This `Scanln` code requires we press a key
+    // to here. This `Scanln` requires we press a key
     // before the program exits.
-    var input string
-    fmt.Scanln(&input)
+    fmt.Scanln()
     fmt.Println("done")
 }
