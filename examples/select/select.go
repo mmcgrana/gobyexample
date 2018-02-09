@@ -17,11 +17,11 @@ func main() {
     // of time, to simulate e.g. blocking RPC operations
     // executing in concurrent goroutines.
     go func() {
-        time.Sleep(time.Second * 1)
+        time.Sleep(1 * time.Second)
         c1 <- "one"
     }()
     go func() {
-        time.Sleep(time.Second * 2)
+        time.Sleep(2 * time.Second)
         c2 <- "two"
     }()
 

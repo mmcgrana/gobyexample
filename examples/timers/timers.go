@@ -15,7 +15,7 @@ func main() {
     // tell the timer how long you want to wait, and it
     // provides a channel that will be notified at that
     // time. This timer will wait 2 seconds.
-    timer1 := time.NewTimer(time.Second * 2)
+    timer1 := time.NewTimer(2 * time.Second)
 
     // The `<-timer1.C` blocks on the timer's channel `C`
     // until it sends a value indicating that the timer
