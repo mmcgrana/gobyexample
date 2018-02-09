@@ -24,7 +24,7 @@ func main() {
     // This `limiter` channel will receive a value
     // every 200 milliseconds. This is the regulator in
     // our rate limiting scheme.
-    limiter := time.Tick(time.Millisecond * 200)
+    limiter := time.Tick(200 * time.Millisecond)
 
     // By blocking on a receive from the `limiter` channel
     // before serving each request, we limit ourselves to
@@ -49,7 +49,7 @@ func main() {
     // Every 200 milliseconds we'll try to add a new
     // value to `burstyLimiter`, up to its limit of 3.
     go func() {
-        for t := range time.Tick(time.Millisecond * 200) {
+        for t := range time.Tick(200 * time.Millisecond) {
             burstyLimiter <- t
         }
     }()

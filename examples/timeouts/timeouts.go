@@ -15,7 +15,7 @@ func main() {
     // after 2s.
     c1 := make(chan string, 1)
     go func() {
-        time.Sleep(time.Second * 2)
+        time.Sleep(2 * time.Second)
         c1 <- "result 1"
     }()
 
@@ -28,7 +28,7 @@ func main() {
     select {
     case res := <-c1:
         fmt.Println(res)
-    case <-time.After(time.Second * 1):
+    case <-time.After(1 * time.Second):
         fmt.Println("timeout 1")
     }
 
@@ -36,13 +36,13 @@ func main() {
     // from `c2` will succeed and we'll print the result.
     c2 := make(chan string, 1)
     go func() {
-        time.Sleep(time.Second * 2)
+        time.Sleep(2 * time.Second)
         c2 <- "result 2"
     }()
     select {
     case res := <-c2:
         fmt.Println(res)
-    case <-time.After(time.Second * 3):
+    case <-time.After(3 * time.Second):
         fmt.Println("timeout 2")
     }
 }

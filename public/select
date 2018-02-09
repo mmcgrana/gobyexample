@@ -41,7 +41,7 @@ select is a powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Vco7d8Lmhn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZdSOPe1Gj13"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -97,11 +97,11 @@ executing in concurrent goroutines.</p>
           <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
         <span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
     <span class="p">}()</span>
     <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
         <span class="nx">c2</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
     <span class="p">}()</span>
 </pre></div>
