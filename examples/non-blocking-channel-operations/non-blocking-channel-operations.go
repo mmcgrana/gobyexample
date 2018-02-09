@@ -22,7 +22,10 @@ func main() {
         fmt.Println("no message received")
     }
 
-    // A non-blocking send works similarly.
+    // A non-blocking send works similarly. Here `msg`
+    // cannot be sent to the `messages` channel, because
+    // the channel has no buffer and there is no receiver.
+    // Therefore the `default` case is selected.
     msg := "hi"
     select {
     case messages <- msg:
