@@ -63,6 +63,7 @@ Contributor translations of the Go by Example site are available in:
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
 * [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
+* [Ukrainian](http://gobyexample.com.ua/) by [butuzov](https://github.com/butuzov/gobyexample)
 
 ### Thanks
 
