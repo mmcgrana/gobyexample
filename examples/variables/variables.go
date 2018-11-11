@@ -6,9 +6,13 @@ package main
 
 import "fmt"
 
+// `var` declares 1 or more variables and can be used
+// at the top level scope.
+var outer = "outer"
+
 func main() {
 
-    // `var` declares 1 or more variables.
+    // `var` can be used in a function as well.
     var a = "initial"
     fmt.Println(a)
 
@@ -29,6 +33,7 @@ func main() {
     // The `:=` syntax is shorthand for declaring and
     // initializing a variable, e.g. for
     // `var f string = "short"` in this case.
+    // This can only be used in a function context.
     f := "short"
     fmt.Println(f)
 }
