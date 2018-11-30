@@ -11,7 +11,7 @@ import "fmt"
 // to a worker goroutine. When we have no more jobs for
 // the worker we'll `close` the `jobs` channel.
 func main() {
-    jobs := make(chan int, 5)
+    jobs := make(chan int)
     done := make(chan bool)
 
     // Here's the worker goroutine. It repeatedly receives
