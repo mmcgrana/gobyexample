@@ -95,10 +95,6 @@ func main() {
         return strings.HasPrefix(v, "p")
     }))
 
-    fmt.Println(All(strs, func(v string) bool {
-        return strings.HasPrefix(v, "p")
-    }))
-
     fmt.Println(Filter(strs, func(v string) bool {
         return strings.Contains(v, "e")
     }))
