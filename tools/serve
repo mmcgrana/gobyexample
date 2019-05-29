@@ -1,17 +1,3 @@
-#!/usr/bin/python
+#!/bin/bash
 
-import SimpleHTTPServer
-import SocketServer
-import os
-
-PORT = 8000
-
-public_dir = os.path.join(os.path.dirname(__file__), '..', 'public')
-os.chdir(public_dir)
-
-Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-Handler.extensions_map.update({
-    '': 'text/html',
-});
-httpd = SocketServer.TCPServer(("", PORT), Handler)
-httpd.serve_forever()
+exec go run tools/serve.go
