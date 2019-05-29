@@ -11,7 +11,7 @@ go get github.com/golang/lint/golint
 PKGS=$(go list $PKG/... | grep -v examples/variables)
 run -s "Linting"  golint -set_exit_status $PKGS
 
-PKGS=$(go list $PKG/... | grep -v examples/panic)
+PKGS=$(go list $PKG/... | grep -v examples/panic | grep -v tools/)
 run -s "Vetting"  go vet -x $PKGS
 
 run -s "Building" tools/build
