@@ -23,6 +23,7 @@ Goroutines
 Channels
 Channel Buffering
 Channel Synchronization
+Waiting For Goroutines To Finish
 Channel Directions
 Select
 Timeouts

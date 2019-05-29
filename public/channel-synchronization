@@ -27,7 +27,9 @@
           <td class="docs">
             <p>We can use channels to synchronize execution
 across goroutines. Here&rsquo;s an example of using a
-blocking receive to wait for a goroutine to finish.</p>
+blocking receive to wait for a goroutine to finish.
+When waiting for multiple goroutines to finish,
+you may prefer to <a href="waiting-for-goroutines-to-finish">use a WaitGroup</a>.</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +43,7 @@ blocking receive to wait for a goroutine to finish.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/0DfW-1RMqi"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/f6qTtt1agmN"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -169,7 +171,7 @@ started.</p>
       
       
       <p class="next">
-        Next example: <a href="channel-directions">Channel Directions</a>.
+        Next example: <a href="waiting-for-goroutines-to-finish">Waiting For Goroutines To Finish</a>.
       </p>
       
       <p class="footer">
