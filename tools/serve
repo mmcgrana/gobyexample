@@ -14,4 +14,6 @@ Handler.extensions_map.update({
     '': 'text/html',
 });
 httpd = SocketServer.TCPServer(("", PORT), Handler)
+
+print("Serving Go by Example at http://127.0.0.1:{}".format(PORT))
 httpd.serve_forever()
