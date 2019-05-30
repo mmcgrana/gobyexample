@@ -19,7 +19,7 @@ func worker(id int, wg *sync.WaitGroup) {
     time.Sleep(time.Second)
     fmt.Printf("Worker %d done\n", id)
 
-    // Notify the WaitGroup that we're done.
+    // Notify the WaitGroup that this worker is done.
     wg.Done()
 }
 
