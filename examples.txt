@@ -32,6 +32,7 @@ Range over Channels
 Timers
 Tickers
 Worker Pools
+WaitGroups
 Rate Limiting
 Atomic Counters
 Mutexes
