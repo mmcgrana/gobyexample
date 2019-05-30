@@ -2,6 +2,7 @@
 
 set -e
 
+tools/test
 tools/format
 tools/measure
 tools/generate
