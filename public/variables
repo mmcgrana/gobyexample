@@ -41,7 +41,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/1FnG0dJfxs8"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/kwm2xuWnlKq"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -134,12 +134,12 @@ zero value for an <code>int</code> is <code>0</code>.</p>
           <td class="docs">
             <p>The <code>:=</code> syntax is shorthand for declaring and
 initializing a variable, e.g. for
-<code>var f string = &quot;short&quot;</code> in this case.</p>
+<code>var f string = &quot;apple&quot;</code> in this case.</p>
 
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre>    <span class="nx">f</span> <span class="o">:=</span> <span class="s">&quot;short&quot;</span>
+            <div class="highlight"><pre>    <span class="nx">f</span> <span class="o">:=</span> <span class="s">&quot;apple&quot;</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
