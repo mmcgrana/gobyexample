@@ -42,7 +42,7 @@ To upload the site:
 $ gem install aws-sdk
 $ export AWS_ACCESS_KEY_ID=...
 $ export AWS_SECRET_ACCESS_KEY=...
-$ tools/upload-site
+$ tools/upload
 ```
 
 ### License
