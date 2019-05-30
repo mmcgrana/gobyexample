@@ -29,7 +29,7 @@ func main() {
     // goroutines launched here to finish.
     var wg sync.WaitGroup
 
-    // Launch several goroutines and increment the WorkGroup
+    // Launch several goroutines and increment the WaitGroup
     // counter for each.
     for i := 1; i <= 5; i++ {
         wg.Add(1)
