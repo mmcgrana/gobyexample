@@ -1,27 +1,22 @@
 // To wait for multiple goroutines to finish, we can
-// use a sync.WaitGroup.
+// use a *wait group*.
 
 package main
 
 import (
     "fmt"
-    "math/rand"
     "sync"
     "time"
 )
 
 // This is the function we'll run in every goroutine.
-// wg is the WaitGroup it uses to notify that it's done.
 // Note that a WaitGroup must be passed to functions by
 // pointer.
 func worker(id int, wg *sync.WaitGroup) {
     fmt.Printf("Worker %d starting\n", id)
 
-    // Sleep for a random duration between 500-700 ms
-    // to simulate work. See the [random numbers](random-numbers)
-    // example for more details on *rand*.
-    msToSleep := time.Duration(500 + rand.Intn(200))
-    time.Sleep(msToSleep * time.Millisecond)
+    // Sleep to simulate an expensive task.
+    time.Sleep(time.Second)
     fmt.Printf("Worker %d done\n", id)
 
     // Notify the WaitGroup that we're done.

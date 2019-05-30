@@ -23,7 +23,6 @@ Goroutines
 Channels
 Channel Buffering
 Channel Synchronization
-Waiting For Goroutines To Finish
 Channel Directions
 Select
 Timeouts
@@ -33,6 +32,7 @@ Range over Channels
 Timers
 Tickers
 Worker Pools
+WaitGroup
 Rate Limiting
 Atomic Counters
 Mutexes

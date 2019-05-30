@@ -171,7 +171,7 @@ started.</p>
       
       
       <p class="next">
-        Next example: <a href="waiting-for-goroutines-to-finish">Waiting For Goroutines To Finish</a>.
+        Next example: <a href="channel-directions">Channel Directions</a>.
       </p>
       
       <p class="footer">

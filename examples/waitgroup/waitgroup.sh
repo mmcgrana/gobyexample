@@ -1,4 +1,4 @@
-$ go run waiting-for-goroutines-to-finish.go
+$ go run waitgroup.go
 Worker 5 starting
 Worker 3 starting
 Worker 4 starting
