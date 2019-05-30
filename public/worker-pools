@@ -40,7 +40,7 @@ a <em>worker pool</em> using goroutines and channels.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Q5r-XtrWWL-"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/yuHsGf712D1"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -150,7 +150,7 @@ channel to indicate that&rsquo;s all the work we have.</p>
             <p>Finally we collect all the results of the work.
 This also ensures that the worker goroutines have
 finished. An alternative way to wait for multiple
-goroutines is to use a <a href="waitgroup">WaitGroup</a>.</p>
+goroutines is to use a <a href="waitgroups">WaitGroup</a>.</p>
 
           </td>
           <td class="code">
@@ -210,7 +210,7 @@ there are 3 workers operating concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="waitgroup">WaitGroup</a>.
+        Next example: <a href="waitgroups">WaitGroups</a>.
       </p>
       
       <p class="footer">

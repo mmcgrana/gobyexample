@@ -2,7 +2,7 @@
 // across goroutines. Here's an example of using a
 // blocking receive to wait for a goroutine to finish.
 // When waiting for multiple goroutines to finish,
-// you may prefer to use a [WaitGroup](waiting-for-goroutines-to-finish).
+// you may prefer to use a [WaitGroup](waitgroups).
 
 package main
 

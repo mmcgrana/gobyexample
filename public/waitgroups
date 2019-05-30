@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: WaitGroup</title>
+    <title>Go by Example: WaitGroups</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script type="text/javascript">
@@ -18,8 +18,8 @@
     }
   </script>
   <body>
-    <div class="example" id="waitgroup">
-      <h2><a href="./">Go by Example</a>: WaitGroup</h2>
+    <div class="example" id="waitgroups">
+      <h2><a href="./">Go by Example</a>: WaitGroups</h2>
       
       <table>
         
@@ -40,7 +40,7 @@ use a <em>wait group</em>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/8cD2V9CgI0J"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/gLLmgcR7YkP"><img title="Run code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -95,7 +95,7 @@ pointer.</p>
         
         <tr>
           <td class="docs">
-            <p>Notify the WaitGroup that we&rsquo;re done.</p>
+            <p>Notify the WaitGroup that this worker is done.</p>
 
           </td>
           <td class="code leading">
@@ -135,7 +135,7 @@ goroutines launched here to finish.</p>
         
         <tr>
           <td class="docs">
-            <p>Launch several goroutines and increment the WorkGroup
+            <p>Launch several goroutines and increment the WaitGroup
 counter for each.</p>
 
           </td>
@@ -152,7 +152,7 @@ counter for each.</p>
         
         <tr>
           <td class="docs">
-            <p>Block until the WorkGroup counter goes back to 0;
+            <p>Block until the WaitGroup counter goes back to 0;
 all the workers notified they&rsquo;re done.</p>
 
           </td>
@@ -175,7 +175,7 @@ all the workers notified they&rsquo;re done.</p>
           </td>
           <td class="code leading">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run waitgroup.go
+            <div class="highlight"><pre><span class="gp">$</span> go run waitgroups.go
 <span class="go">Worker 5 starting</span>
 <span class="go">Worker 3 starting</span>
 <span class="go">Worker 4 starting</span>
@@ -211,7 +211,7 @@ is likely to be different for each invocation.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/waitgroup">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/waitgroups">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

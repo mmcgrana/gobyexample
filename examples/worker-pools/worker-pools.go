@@ -44,7 +44,7 @@ func main() {
     // Finally we collect all the results of the work.
     // This also ensures that the worker goroutines have
     // finished. An alternative way to wait for multiple
-    // goroutines is to use a [WaitGroup](waitgroup).
+    // goroutines is to use a [WaitGroup](waitgroups).
     for a := 1; a <= 5; a++ {
         <-results
     }

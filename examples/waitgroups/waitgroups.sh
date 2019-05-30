@@ -1,4 +1,4 @@
-$ go run waitgroup.go
+$ go run waitgroups.go
 Worker 5 starting
 Worker 3 starting
 Worker 4 starting
