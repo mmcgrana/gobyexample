@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Sanity testing of the examples.
+
+set -eo pipefail
+
+# go vet will attempt to build each example, making sure it compiles. It will
+# also report known issues with the code. Disabling the -unreachable check
+# because it will fire false positives for some examples demonstrating panics.
+go vet -unreachable=false ./examples/...
