@@ -36,7 +36,7 @@ func main() {
         go worker(i, &wg)
     }
 
-    // Block until the WorkGroup counter goes back to 0;
+    // Block until the WaitGroup counter goes back to 0;
     // all the workers notified they're done.
     wg.Wait()
 }
