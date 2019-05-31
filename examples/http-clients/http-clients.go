@@ -12,10 +12,10 @@ import (
 
 func main() {
 
-    // Issue an HTTP GET request to a server. http.Get is a
-    // convenient shortcut around creating an http.Client
-    // object and calling its Get() method; it uses the
-    // http.DefaultClient object which has useful default
+    // Issue an HTTP GET request to a server. `http.Get` is a
+    // convenient shortcut around creating an `http.Client`
+    // object and calling its `Get` method; it uses the
+    // `http.DefaultClient` object which has useful default
     // settings.
     resp, err := http.Get("http://gobyexample.com")
     if err != nil {
