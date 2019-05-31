@@ -199,7 +199,7 @@ printed with <code>fmt.Println</code>.</p>
 <span class="go">len: 2</span>
 <span class="go">map: map[k1:7]</span>
 <span class="go">prs: false</span>
-<span class="go">map: map[foo:1 bar:2]</span>
+<span class="go">map: map[bar:2 foo:1]</span>
 </pre></div>
 
           </td>

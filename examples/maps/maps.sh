@@ -7,5 +7,3 @@ len: 2
 map: map[k1:7]
 prs: false
 map: map[bar:2 foo:1]
-
-
