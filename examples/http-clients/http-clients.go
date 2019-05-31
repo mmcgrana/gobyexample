@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
     // Issue a HTTP GET request to a server. http.Get is a
     // convenient shortcut around creating a http.Client
     // object and calling its Get() method; it uses the
