@@ -60,6 +60,7 @@ Line Filters
 Command-Line Arguments
 Command-Line Flags
 Environment Variables
+HTTP Clients
 Spawning Processes
 Exec'ing Processes
 Signals
