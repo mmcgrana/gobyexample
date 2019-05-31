@@ -33,8 +33,8 @@ func (s byLength) Less(i, j int) bool {
 }
 
 // With all of this in place, we can now implement our
-// custom sort by casting the original `fruits` slice to
-// `byLength`, and then use `sort.Sort` on that typed
+// custom sort by converting the original `fruits` slice
+// to `byLength`, and then use `sort.Sort` on that typed
 // slice.
 func main() {
     fruits := []string{"peach", "banana", "kiwi"}

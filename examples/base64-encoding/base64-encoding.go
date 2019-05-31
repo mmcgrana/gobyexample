@@ -17,7 +17,7 @@ func main() {
     // Go supports both standard and URL-compatible
     // base64. Here's how to encode using the standard
     // encoder. The encoder requires a `[]byte` so we
-    // cast our `string` to that type.
+    // convert our `string` to that type.
     sEnc := b64.StdEncoding.EncodeToString([]byte(data))
     fmt.Println(sEnc)
 

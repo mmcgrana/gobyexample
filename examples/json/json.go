@@ -85,14 +85,14 @@ func main() {
     fmt.Println(dat)
 
     // In order to use the values in the decoded map,
-    // we'll need to cast them to their appropriate type.
-    // For example here we cast the value in `num` to
+    // we'll need to convert them to their appropriate type.
+    // For example here we convert the value in `num` to
     // the expected `float64` type.
     num := dat["num"].(float64)
     fmt.Println(num)
 
     // Accessing nested data requires a series of
-    // casts.
+    // conversions.
     strs := dat["strs"].([]interface{})
     str1 := strs[0].(string)
     fmt.Println(str1)
