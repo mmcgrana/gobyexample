@@ -148,7 +148,7 @@ concurrently.</p>
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="go">real	0m2.245s</span>
+            <div class="highlight"><pre><span class="go">real    0m2.245s</span>
 </pre></div>
 
           </td>

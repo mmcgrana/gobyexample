@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/sha1"
 	"fmt"
-	"github.com/russross/blackfriday"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -12,6 +11,8 @@ import (
 	"regexp"
 	"strings"
 	"text/template"
+
+	"github.com/russross/blackfriday"
 )
 
 var cacheDir = "/tmp/gobyexample-cache"
@@ -152,7 +153,11 @@ func resetURLHashFile(codehash, code, sourcePath string) string {
 }
 
 func parseSegs(sourcePath string) ([]*Seg, string) {
-	lines := readLines(sourcePath)
+	var lines []string
+	// Convert tabs to spaces for uniform rendering.
+	for _, line := range readLines(sourcePath) {
+		lines = append(lines, strings.Replace(line, "\t", "    ", -1))
+	}
 	filecontent := strings.Join(lines, "\n")
 	segs := []*Seg{}
 	lastSeen := ""

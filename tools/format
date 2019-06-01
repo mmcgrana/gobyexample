@@ -4,24 +4,6 @@ set -eo pipefail
 
 paths=$(ls examples/*/*.go)
 
-gbe_to_4spaces() {
-  local os=$(tr [A-Z] [a-z] <<< "`uname`")
-  case $os in
-    darwin*)
-      sed -i '' -e 's/	/    /g' $1
-      ;;
-    linux*)
-      sed -i -e 's/	/    /g' $1
-      ;;
-    *)
-      echo "$os is not supported."
-      echo "Add a proper 'sed' command for your platform to ./tools/format"
-      return 1
-      ;;
-  esac
-}
-
 for path in $paths; do
   gofmt -w=true $path
-  gbe_to_4spaces $path
 done

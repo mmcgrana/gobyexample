@@ -23,13 +23,13 @@ type byLength []string
 // want to sort in order of increasing string length, so
 // we use `len(s[i])` and `len(s[j])` here.
 func (s byLength) Len() int {
-    return len(s)
+	return len(s)
 }
 func (s byLength) Swap(i, j int) {
-    s[i], s[j] = s[j], s[i]
+	s[i], s[j] = s[j], s[i]
 }
 func (s byLength) Less(i, j int) bool {
-    return len(s[i]) < len(s[j])
+	return len(s[i]) < len(s[j])
 }
 
 // With all of this in place, we can now implement our
@@ -37,7 +37,7 @@ func (s byLength) Less(i, j int) bool {
 // to `byLength`, and then use `sort.Sort` on that typed
 // slice.
 func main() {
-    fruits := []string{"peach", "banana", "kiwi"}
-    sort.Sort(byLength(fruits))
-    fmt.Println(fruits)
+	fruits := []string{"peach", "banana", "kiwi"}
+	sort.Sort(byLength(fruits))
+	fmt.Println(fruits)
 }
