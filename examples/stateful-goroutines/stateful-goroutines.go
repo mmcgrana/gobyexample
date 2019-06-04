@@ -43,8 +43,8 @@ func main() {
 	// The `reads` and `writes` channels will be used by
 	// other goroutines to issue read and write requests,
 	// respectively.
-	reads := make(chan *readOp)
-	writes := make(chan *writeOp)
+	reads := make(chan readOp)
+	writes := make(chan writeOp)
 
 	// Here is the goroutine that owns the `state`, which
 	// is a map as in the previous example but now private
@@ -76,7 +76,7 @@ func main() {
 	for r := 0; r < 100; r++ {
 		go func() {
 			for {
-				read := &readOp{
+				read := readOp{
 					key:  rand.Intn(5),
 					resp: make(chan int)}
 				reads <- read
@@ -92,7 +92,7 @@ func main() {
 	for w := 0; w < 10; w++ {
 		go func() {
 			for {
-				write := &writeOp{
+				write := writeOp{
 					key:  rand.Intn(5),
 					val:  rand.Intn(100),
 					resp: make(chan bool)}
