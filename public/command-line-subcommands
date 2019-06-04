@@ -176,7 +176,7 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>First invoke the foo subcommand</p>
+            <p>First invoke the foo subcommand.</p>
 
           </td>
           <td class="code leading">
@@ -193,7 +193,7 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>Now try bar</p>
+            <p>Now try bar.</p>
 
           </td>
           <td class="code leading">
@@ -209,7 +209,7 @@ have access to trailing positional arguments.</p>
         
         <tr>
           <td class="docs">
-            <p>But bar won&rsquo;t accept foo&rsquo;s flags</p>
+            <p>But bar won&rsquo;t accept foo&rsquo;s flags.</p>
 
           </td>
           <td class="code">
