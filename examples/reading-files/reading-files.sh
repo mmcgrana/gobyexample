@@ -1,6 +1,6 @@
 $ echo "hello" > /tmp/dat
 $ echo "go" >>   /tmp/dat
-$ go run reading-files.go 
+$ go run reading-files.go
 hello
 go
 5 bytes: hello
