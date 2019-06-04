@@ -36,10 +36,10 @@ func main() {
 
     // Check which subcommand is invoked.
     switch os.Args[1] {
-    case "foo":
 
-        // For every subcommand, we parse its own flags and
-        // have access to trailing positional arguments.
+    // For every subcommand, we parse its own flags and
+    // have access to trailing positional arguments.
+    case "foo":
         fooCmd.Parse(os.Args[2:])
         fmt.Println("subcommand 'foo'")
         fmt.Println("  enable:", *fooEnable)
