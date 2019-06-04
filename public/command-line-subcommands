@@ -218,7 +218,7 @@ have access to trailing positional arguments.</p>
 <span class="go">flag provided but not defined: -enable</span>
 <span class="go">Usage of bar:</span>
 <span class="go">  -level int</span>
-<span class="go">    	level</span>
+<span class="go">        level</span>
 </pre></div>
 
           </td>
