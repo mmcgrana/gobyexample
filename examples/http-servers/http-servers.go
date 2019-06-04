@@ -1,4 +1,4 @@
-// Writing a basic HTTP server is very easy using the
+// Writing a basic HTTP server is easy using the
 // `net/http` package.
 package main
 
