@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - 1.12
+
+before_install:
+  # We need Python to run pygmentize for generating HTML.
+  - sudo apt-get update
+  - sudo apt-get install python
+
+install:
+  - go get -u github.com/russross/blackfriday
+
+script:
+  - 'tools/build'
