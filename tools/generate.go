@@ -225,7 +225,9 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseExamples() []*Example {
-	fmt.Println("Parsing examples")
+	if verbose() {
+		fmt.Println("Parsing examples")
+	}
 	exampleNames := readLines("examples.txt")
 	examples := make([]*Example, 0)
 	for _, exampleName := range exampleNames {
