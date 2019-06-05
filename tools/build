@@ -2,7 +2,16 @@
 
 set -e
 
+verbose() [[ -v VERBOSE ]]
+
+verbose && echo "Running tests..."
 tools/test
+
+verbose && echo "Formatting code..."
 tools/format
+
+verbose && echo "Measuring line lengths..."
 tools/measure
+
+verbose && echo "Generating HTML..."
 tools/generate

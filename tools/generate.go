@@ -19,6 +19,10 @@ var cacheDir = "/tmp/gobyexample-cache"
 var siteDir = "./public"
 var pygmentizeBin = "./vendor/pygments/pygmentize"
 
+func verbose() bool {
+	return len(os.Getenv("VERBOSE")) > 0
+}
+
 func check(err error) {
 	if err != nil {
 		panic(err)
@@ -221,6 +225,7 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseExamples() []*Example {
+	fmt.Println("Parsing examples")
 	exampleNames := readLines("examples.txt")
 	examples := make([]*Example, 0)
 	for _, exampleName := range exampleNames {
@@ -261,6 +266,9 @@ func parseExamples() []*Example {
 }
 
 func renderIndex(examples []*Example) {
+	if verbose() {
+		fmt.Println("Rendering index")
+	}
 	indexTmpl := template.New("index")
 	_, err := indexTmpl.Parse(mustReadFile("templates/index.tmpl"))
 	check(err)
@@ -274,7 +282,10 @@ func renderExamples(examples []*Example) {
 	exampleTmpl := template.New("example")
 	_, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
 	check(err)
-	for _, example := range examples {
+	for i, example := range examples {
+		if verbose() {
+			fmt.Printf("Rendering %s [%d/%d]\n", example.Name, i, len(examples))
+		}
 		exampleF, err := os.Create(siteDir + "/" + example.ID)
 		check(err)
 		exampleTmpl.Execute(exampleF, example)

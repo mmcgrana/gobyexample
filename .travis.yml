@@ -12,4 +12,7 @@ install:
   - go get -u github.com/russross/blackfriday
 
 script:
-  - 'tools/build'
+  - tools/build
+
+env:
+  - VERBOSE=1
