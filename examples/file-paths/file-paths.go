@@ -32,22 +32,24 @@ func main() {
 	fmt.Println("Dir(p):", filepath.Dir(p))
 	fmt.Println("Base(p):", filepath.Base(p))
 
-	// To check whether a path is absolute, use `IsAbs`.
+	// We can check whether a path is absolute.
 	fmt.Println(filepath.IsAbs("dir/file"))
 	fmt.Println(filepath.IsAbs("/dir/file"))
 
 	filename := "config.json"
 
-	// To find a file's extension, use `Ext`.
+	// Some file names have extensions following a dot. We
+	// can split the extension out of such names with `Ext`.
 	ext := filepath.Ext(filename)
 	fmt.Println(ext)
 
 	// To find the file's name with the extension removed,
-	// use `TrimSuffix`.
+	// use `strings.TrimSuffix`.
 	fmt.Println(strings.TrimSuffix(filename, ext))
 
 	// `Rel` finds a relative path between a *base* and a
-	// *target*.
+	// *target*. It returns an error if the target cannot
+	// be made relative to base.
 	rel, err := filepath.Rel("a/b", "a/b/t/file")
 	if err != nil {
 		panic(err)

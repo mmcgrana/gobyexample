@@ -20,7 +20,7 @@ between operating systems; <code>dir/file</code> on Linux vs.
 
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/eUhAltl7_sI">
+            <a href="http://play.golang.org/p/QIitbMNiFRx">
               <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
             </a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
@@ -109,7 +109,7 @@ return both in the same call.</p>
         
         <tr>
           <td class="docs">
-            <p>To check whether a path is absolute, use <code>IsAbs</code>.</p>
+            <p>We can check whether a path is absolute.</p>
 
           </td>
           <td class="code leading">
@@ -135,7 +135,8 @@ return both in the same call.</p>
         
         <tr>
           <td class="docs">
-            <p>To find a file&rsquo;s extension, use <code>Ext</code>.</p>
+            <p>Some file names have extensions following a dot. We
+can split the extension out of such names with <code>Ext</code>.</p>
 
           </td>
           <td class="code leading">
@@ -150,7 +151,7 @@ return both in the same call.</p>
         <tr>
           <td class="docs">
             <p>To find the file&rsquo;s name with the extension removed,
-use <code>TrimSuffix</code>.</p>
+use <code>strings.TrimSuffix</code>.</p>
 
           </td>
           <td class="code leading">
@@ -164,7 +165,8 @@ use <code>TrimSuffix</code>.</p>
         <tr>
           <td class="docs">
             <p><code>Rel</code> finds a relative path between a <em>base</em> and a
-<em>target</em>.</p>
+<em>target</em>. It returns an error if the target cannot
+be made relative to base.</p>
 
           </td>
           <td class="code leading">
