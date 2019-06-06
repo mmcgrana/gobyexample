@@ -1,8 +1,7 @@
-## Go by Example
+# Go by Example
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
 a site that teaches Go via annotated example programs.
-
 
 ### Overview
 
@@ -17,8 +16,9 @@ The built `public` directory can be served by any
 static content system. The production site uses S3 and
 CloudFront, for example.
 
-
 ### Building
+
+[![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
 
 To build the site you'll need Go and Python installed. Run:
 
