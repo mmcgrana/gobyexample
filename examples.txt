@@ -57,6 +57,7 @@ Base64 Encoding
 Reading Files
 Writing Files
 Line Filters
+File Paths
 Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
