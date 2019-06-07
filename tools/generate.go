@@ -143,6 +143,9 @@ func parseHashFile(sourcePath string) (string, string) {
 }
 
 func resetURLHashFile(codehash, code, sourcePath string) string {
+	if verbose() {
+		fmt.Println("  Sending request to play.golang.org")
+	}
 	payload := strings.NewReader(code)
 	resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
 	if err != nil {
