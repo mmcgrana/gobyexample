@@ -285,7 +285,7 @@ func renderIndex(examples []*Example) {
 
 func renderExamples(examples []*Example) {
 	if verbose() {
-		fmt.Println("Generating HTML")
+		fmt.Println("Rendering templates")
 	}
 	exampleTmpl := template.New("example")
 	_, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
