@@ -225,39 +225,42 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func parseExamples() []*Example {
-	if verbose() {
-		fmt.Println("Parsing examples")
-	}
-	exampleNames := readLines("examples.txt")
-	examples := make([]*Example, 0)
-	for _, exampleName := range exampleNames {
-		if (exampleName != "") && !strings.HasPrefix(exampleName, "#") {
-			example := Example{Name: exampleName}
-			exampleID := strings.ToLower(exampleName)
-			exampleID = strings.Replace(exampleID, " ", "-", -1)
-			exampleID = strings.Replace(exampleID, "/", "-", -1)
-			exampleID = strings.Replace(exampleID, "'", "", -1)
-			exampleID = dashPat.ReplaceAllString(exampleID, "-")
-			example.ID = exampleID
-			example.Segs = make([][]*Seg, 0)
-			sourcePaths := mustGlob("examples/" + exampleID + "/*")
-			for _, sourcePath := range sourcePaths {
-				if strings.HasSuffix(sourcePath, ".hash") {
-					example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
-				} else {
-					sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
-					if filecontents != "" {
-						example.GoCode = filecontents
-					}
-					example.Segs = append(example.Segs, sourceSegs)
-				}
-			}
-			newCodeHash := sha1Sum(example.GoCode)
-			if example.GoCodeHash != newCodeHash {
-				example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
-			}
-			examples = append(examples, &example)
+	var exampleNames []string
+	for _, line := range readLines("examples.txt") {
+		if line != "" && !strings.HasPrefix(line, "#") {
+			exampleNames = append(exampleNames, line)
 		}
+	}
+	examples := make([]*Example, 0)
+	for i, exampleName := range exampleNames {
+		if verbose() {
+			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
+		}
+		example := Example{Name: exampleName}
+		exampleID := strings.ToLower(exampleName)
+		exampleID = strings.Replace(exampleID, " ", "-", -1)
+		exampleID = strings.Replace(exampleID, "/", "-", -1)
+		exampleID = strings.Replace(exampleID, "'", "", -1)
+		exampleID = dashPat.ReplaceAllString(exampleID, "-")
+		example.ID = exampleID
+		example.Segs = make([][]*Seg, 0)
+		sourcePaths := mustGlob("examples/" + exampleID + "/*")
+		for _, sourcePath := range sourcePaths {
+			if strings.HasSuffix(sourcePath, ".hash") {
+				example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
+			} else {
+				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+				if filecontents != "" {
+					example.GoCode = filecontents
+				}
+				example.Segs = append(example.Segs, sourceSegs)
+			}
+		}
+		newCodeHash := sha1Sum(example.GoCode)
+		if example.GoCodeHash != newCodeHash {
+			example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
+		}
+		examples = append(examples, &example)
 	}
 	for i, example := range examples {
 		if i < (len(examples) - 1) {
@@ -281,13 +284,13 @@ func renderIndex(examples []*Example) {
 }
 
 func renderExamples(examples []*Example) {
+	if verbose() {
+		fmt.Println("Generating HTML")
+	}
 	exampleTmpl := template.New("example")
 	_, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
 	check(err)
-	for i, example := range examples {
-		if verbose() {
-			fmt.Printf("Rendering %s [%d/%d]\n", example.Name, i, len(examples))
-		}
+	for _, example := range examples {
 		exampleF, err := os.Create(siteDir + "/" + example.ID)
 		check(err)
 		exampleTmpl.Execute(exampleF, example)
