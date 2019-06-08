@@ -37,7 +37,7 @@ func main() {
 	createEmptyFile("subdir/file1")
 
 	// We can create a hierarchy of directories, including
-	// parents wiht `MkdirAll`. This is similar to the
+	// parents with `MkdirAll`. This is similar to the
 	// command-line `mkdir -p`.
 	err = os.MkdirAll("subdir/parent/child", 0755)
 	check(err)
