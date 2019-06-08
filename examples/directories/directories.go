@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 )
 
 func check(e error) {
@@ -53,7 +54,7 @@ func main() {
 
 	fmt.Println("Listing subdir/parent")
 	for _, entry := range c {
-		fmt.Println(entry.Name(), entry.IsDir())
+		fmt.Println(" ", entry.Name(), entry.IsDir())
 	}
 
 	// `Chdir` lets us change the current working directory,
@@ -68,10 +69,27 @@ func main() {
 
 	fmt.Println("Listing subdir/parent/child")
 	for _, entry := range c {
-		fmt.Println(entry.Name(), entry.IsDir())
+		fmt.Println(" ", entry.Name(), entry.IsDir())
 	}
 
 	// `cd` back to where we started.
 	err = os.Chdir("../../..")
 	check(err)
+
+	// We can also visit a directory *recursively*,
+	// including all its sub-directories. `Walk` accepts
+	// a callback function to handle every file or
+	// directory visited.
+	fmt.Println("Visiting subdir")
+	err = filepath.Walk("subdir", visit)
+}
+
+// visit is called for every file or directory found
+// recursively by `filepath.Walk`.
+func visit(p string, info os.FileInfo, err error) error {
+	if err != nil {
+		return err
+	}
+	fmt.Println(" ", p, info.IsDir())
+	return nil
 }
