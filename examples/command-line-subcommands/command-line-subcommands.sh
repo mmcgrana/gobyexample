@@ -19,3 +19,6 @@ flag provided but not defined: -enable
 Usage of bar:
   -level int
     	level
+
+# Next we'll look at environment variables, another common
+# way to parameterize programs.
