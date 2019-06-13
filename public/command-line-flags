@@ -272,7 +272,7 @@ generated help text for the command-line program.</p>
 and show the help text again.</p>
 
           </td>
-          <td class="code leading">
+          <td class="code">
             
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -wat
 <span class="go">flag provided but not defined: -wat</span>
@@ -280,18 +280,6 @@ and show the help text again.</p>
 <span class="go">...</span>
 </pre></div>
 
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
-way to parameterize programs.</p>
-
-          </td>
-          <td class="code empty">
-            
-            
           </td>
         </tr>
         
