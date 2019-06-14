@@ -54,6 +54,3 @@ $ ./command-line-flags -wat
 flag provided but not defined: -wat
 Usage of ./command-line-flags:
 ...
-
-# Next we'll look at environment variables, another common
-# way to parameterize programs.
