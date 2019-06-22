@@ -10,6 +10,8 @@ before_install:
 
 install:
   - go get -u github.com/russross/blackfriday
+  - go get -u golang.org/x/text/transform
+  - go get -u "golang.org/x/text/unicode/norm"
 
 script:
   - tools/build
