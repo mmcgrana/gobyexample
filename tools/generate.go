@@ -305,6 +305,7 @@ func main() {
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
 	copyFile("templates/404.html", siteDir+"/404.html")
 	copyFile("templates/play.png", siteDir+"/play.png")
+	copyFile("templates/live.js", siteDir+"/live.js")
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
