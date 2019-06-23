@@ -5,6 +5,20 @@
     <title>Go by Example: For</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'constants';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'if-else';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="for">
       <h2><a href="./">Go by Example</a>: For</h2>

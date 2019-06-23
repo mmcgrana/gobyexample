@@ -5,6 +5,20 @@
     <title>Go by Example: Stateful Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'mutexes';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sorting';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="stateful-goroutines">
       <h2><a href="./">Go by Example</a>: Stateful Goroutines</h2>

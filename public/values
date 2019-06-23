@@ -5,6 +5,20 @@
     <title>Go by Example: Values</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'hello-world';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'variables';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="values">
       <h2><a href="./">Go by Example</a>: Values</h2>

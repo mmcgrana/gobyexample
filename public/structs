@@ -5,6 +5,20 @@
     <title>Go by Example: Structs</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'pointers';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'methods';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="structs">
       <h2><a href="./">Go by Example</a>: Structs</h2>

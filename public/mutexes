@@ -5,6 +5,20 @@
     <title>Go by Example: Mutexes</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'atomic-counters';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'stateful-goroutines';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="mutexes">
       <h2><a href="./">Go by Example</a>: Mutexes</h2>

@@ -1,1 +1,3 @@
 *.pyc
+.idea
+.vscode

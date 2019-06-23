@@ -5,6 +5,20 @@
     <title>Go by Example: JSON</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'regular-expressions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'time';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="json">
       <h2><a href="./">Go by Example</a>: JSON</h2>

@@ -5,6 +5,20 @@
     <title>Go by Example: Tickers</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'timers';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'worker-pools';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="tickers">
       <h2><a href="./">Go by Example</a>: Tickers</h2>

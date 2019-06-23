@@ -5,6 +5,20 @@
     <title>Go by Example: Sorting</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'stateful-goroutines';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sorting-by-functions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="sorting">
       <h2><a href="./">Go by Example</a>: Sorting</h2>

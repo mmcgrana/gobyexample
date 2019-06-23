@@ -5,6 +5,20 @@
     <title>Go by Example: String Formatting</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'string-functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'regular-expressions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="string-formatting">
       <h2><a href="./">Go by Example</a>: String Formatting</h2>

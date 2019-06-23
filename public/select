@@ -5,6 +5,20 @@
     <title>Go by Example: Select</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'channel-directions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'timeouts';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="select">
       <h2><a href="./">Go by Example</a>: Select</h2>

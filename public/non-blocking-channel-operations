@@ -5,6 +5,20 @@
     <title>Go by Example: Non-Blocking Channel Operations</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'timeouts';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'closing-channels';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="non-blocking-channel-operations">
       <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
