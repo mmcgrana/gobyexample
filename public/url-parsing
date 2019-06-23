@@ -5,6 +5,20 @@
     <title>Go by Example: URL Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'number-parsing';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sha1-hashes';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="url-parsing">
       <h2><a href="./">Go by Example</a>: URL Parsing</h2>
@@ -209,6 +223,11 @@ pieces that we extracted.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="number-parsing">Number Parsing</a>.
+      </p>
       
       
       <p class="next">

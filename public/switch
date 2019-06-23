@@ -5,6 +5,20 @@
     <title>Go by Example: Switch</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'if-else';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'arrays';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="switch">
       <h2><a href="./">Go by Example</a>: Switch</h2>
@@ -177,6 +191,11 @@ type corresponding to its clause.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="if-else">If/Else</a>.
+      </p>
       
       
       <p class="next">

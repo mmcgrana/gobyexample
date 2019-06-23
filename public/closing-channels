@@ -5,6 +5,20 @@
     <title>Go by Example: Closing Channels</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'non-blocking-channel-operations';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'range-over-channels';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="closing-channels">
       <h2><a href="./">Go by Example</a>: Closing Channels</h2>
@@ -170,6 +184,11 @@ example: <code>range</code> over channels.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
+      </p>
       
       
       <p class="next">

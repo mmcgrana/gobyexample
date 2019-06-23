@@ -5,6 +5,20 @@
     <title>Go by Example: Closures</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'variadic-functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'recursion';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="closures">
       <h2><a href="./">Go by Example</a>: Closures</h2>
@@ -166,6 +180,11 @@ recursion.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="variadic-functions">Variadic Functions</a>.
+      </p>
       
       
       <p class="next">

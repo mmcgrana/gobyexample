@@ -5,6 +5,20 @@
     <title>Go by Example: Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'range';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'multiple-return-values';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="functions">
       <h2><a href="./">Go by Example</a>: Functions</h2>
@@ -169,6 +183,11 @@ multiple return values, which we&rsquo;ll look at next.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="range">Range</a>.
+      </p>
       
       
       <p class="next">

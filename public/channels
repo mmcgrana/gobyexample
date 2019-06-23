@@ -5,6 +5,20 @@
     <title>Go by Example: Channels</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'goroutines';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'channel-buffering';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="channels">
       <h2><a href="./">Go by Example</a>: Channels</h2>
@@ -144,6 +158,11 @@ message without having to use any other synchronization.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="goroutines">Goroutines</a>.
+      </p>
       
       
       <p class="next">

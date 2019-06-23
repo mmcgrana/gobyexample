@@ -5,6 +5,20 @@
     <title>Go by Example: Line Filters</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'writing-files';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'file-paths';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="line-filters">
       <h2><a href="./">Go by Example</a>: Line Filters</h2>
@@ -180,6 +194,11 @@ lowercase lines.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="writing-files">Writing Files</a>.
+      </p>
       
       
       <p class="next">

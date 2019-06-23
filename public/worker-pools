@@ -5,6 +5,20 @@
     <title>Go by Example: Worker Pools</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'tickers';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'waitgroups';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="worker-pools">
       <h2><a href="./">Go by Example</a>: Worker Pools</h2>
@@ -197,6 +211,11 @@ there are 3 workers operating concurrently.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="tickers">Tickers</a>.
+      </p>
       
       
       <p class="next">

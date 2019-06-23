@@ -5,6 +5,20 @@
     <title>Go by Example: Variadic Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'multiple-return-values';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'closures';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="variadic-functions">
       <h2><a href="./">Go by Example</a>: Variadic Functions</h2>
@@ -148,6 +162,11 @@ to form closures, which we&rsquo;ll look at next.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="multiple-return-values">Multiple Return Values</a>.
+      </p>
       
       
       <p class="next">

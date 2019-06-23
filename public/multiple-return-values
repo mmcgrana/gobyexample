@@ -5,6 +5,20 @@
     <title>Go by Example: Multiple Return Values</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'variadic-functions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="multiple-return-values">
       <h2><a href="./">Go by Example</a>: Multiple Return Values</h2>
@@ -142,6 +156,11 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="functions">Functions</a>.
+      </p>
       
       
       <p class="next">

@@ -5,6 +5,20 @@
     <title>Go by Example: Time</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'json';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'epoch';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="time">
       <h2><a href="./">Go by Example</a>: Time</h2>
@@ -244,6 +258,11 @@ the Unix epoch.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="json">JSON</a>.
+      </p>
       
       
       <p class="next">

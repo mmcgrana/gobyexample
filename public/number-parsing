@@ -5,6 +5,20 @@
     <title>Go by Example: Number Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'random-numbers';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'url-parsing';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="number-parsing">
       <h2><a href="./">Go by Example</a>: Number Parsing</h2>
@@ -187,6 +201,11 @@ bits.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="random-numbers">Random Numbers</a>.
+      </p>
       
       
       <p class="next">

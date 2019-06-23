@@ -5,6 +5,20 @@
     <title>Go by Example: Writing Files</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'reading-files';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'line-filters';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="writing-files">
       <h2><a href="./">Go by Example</a>: Writing Files</h2>
@@ -263,6 +277,11 @@ we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="reading-files">Reading Files</a>.
+      </p>
       
       
       <p class="next">

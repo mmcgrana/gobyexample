@@ -5,6 +5,20 @@
     <title>Go by Example: Recursion</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'closures';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'pointers';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="recursion">
       <h2><a href="./">Go by Example</a>: Recursion</h2>
@@ -101,6 +115,11 @@ base case of <code>fact(0)</code>.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="closures">Closures</a>.
+      </p>
       
       
       <p class="next">

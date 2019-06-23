@@ -5,6 +5,20 @@
     <title>Go by Example: Random Numbers</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'time-formatting-parsing';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'number-parsing';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="random-numbers">
       <h2><a href="./">Go by Example</a>: Random Numbers</h2>
@@ -203,6 +217,11 @@ that Go can provide.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="time-formatting-parsing">Time Formatting / Parsing</a>.
+      </p>
       
       
       <p class="next">

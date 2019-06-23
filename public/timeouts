@@ -5,6 +5,20 @@
     <title>Go by Example: Timeouts</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'select';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'non-blocking-channel-operations';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="timeouts">
       <h2><a href="./">Go by Example</a>: Timeouts</h2>
@@ -167,6 +181,11 @@ examples of this next: timers and tickers.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="select">Select</a>.
+      </p>
       
       
       <p class="next">

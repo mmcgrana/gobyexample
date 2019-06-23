@@ -5,6 +5,20 @@
     <title>Go by Example: Signals</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'execing-processes';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'exit';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="signals">
       <h2><a href="./">Go by Example</a>: Signals</h2>
@@ -162,6 +176,11 @@ causing the program to print <code>interrupt</code> and then exit.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="execing-processes">Exec'ing Processes</a>.
+      </p>
       
       
       <p class="next">

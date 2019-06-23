@@ -5,6 +5,20 @@
     <title>Go by Example: Maps</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'slices';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'range';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="maps">
       <h2><a href="./">Go by Example</a>: Maps</h2>
@@ -208,6 +222,11 @@ printed with <code>fmt.Println</code>.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="slices">Slices</a>.
+      </p>
       
       
       <p class="next">

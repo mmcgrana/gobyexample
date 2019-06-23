@@ -5,6 +5,16 @@
     <title>Go by Example: Exit</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'signals';
+          }
+          
+          
+      }
+  </script>
   <body>
     <div class="example" id="exit">
       <h2><a href="./">Go by Example</a>: Exit</h2>
@@ -152,6 +162,11 @@ the status in the terminal.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="signals">Signals</a>.
+      </p>
       
       
       <p class="footer">

@@ -5,6 +5,20 @@
     <title>Go by Example: Panic</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'sorting-by-functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'defer';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="panic">
       <h2><a href="./">Go by Example</a>: Panic</h2>
@@ -148,6 +162,11 @@ to use error-indicating return values wherever possible.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="sorting-by-functions">Sorting by Functions</a>.
+      </p>
       
       
       <p class="next">

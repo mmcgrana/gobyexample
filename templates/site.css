@@ -75,7 +75,7 @@ div.example table {
     margin-top: 15px;
     margin-bottom: 20px;
 }
-p.next {
+p.next p.prev {
     margin-bottom: 20px;
 }
 p.footer {

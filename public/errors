@@ -5,6 +5,20 @@
     <title>Go by Example: Errors</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'interfaces';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'goroutines';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="errors">
       <h2><a href="./">Go by Example</a>: Errors</h2>
@@ -273,6 +287,11 @@ on the Go blog for more on error handling.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="interfaces">Interfaces</a>.
+      </p>
       
       
       <p class="next">

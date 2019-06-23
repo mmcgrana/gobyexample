@@ -5,6 +5,20 @@
     <title>Go by Example: String Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'collection-functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'string-formatting';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="string-functions">
       <h2><a href="./">Go by Example</a>: String Functions</h2>
@@ -183,6 +197,11 @@ for more information.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="collection-functions">Collection Functions</a>.
+      </p>
       
       
       <p class="next">

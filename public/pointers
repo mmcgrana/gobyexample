@@ -5,6 +5,20 @@
     <title>Go by Example: Pointers</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'recursion';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'structs';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="pointers">
       <h2><a href="./">Go by Example</a>: Pointers</h2>
@@ -169,6 +183,11 @@ the memory address for that variable.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="recursion">Recursion</a>.
+      </p>
       
       
       <p class="next">

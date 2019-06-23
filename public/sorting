@@ -5,6 +5,20 @@
     <title>Go by Example: Sorting</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'stateful-goroutines';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sorting-by-functions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="sorting">
       <h2><a href="./">Go by Example</a>: Sorting</h2>
@@ -134,6 +148,11 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="stateful-goroutines">Stateful Goroutines</a>.
+      </p>
       
       
       <p class="next">

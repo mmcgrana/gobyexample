@@ -5,6 +5,20 @@
     <title>Go by Example: Channel Synchronization</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'channel-buffering';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'channel-directions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="channel-synchronization">
       <h2><a href="./">Go by Example</a>: Channel Synchronization</h2>
@@ -158,6 +172,11 @@ started.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="channel-buffering">Channel Buffering</a>.
+      </p>
       
       
       <p class="next">

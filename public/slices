@@ -5,6 +5,20 @@
     <title>Go by Example: Slices</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'arrays';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'maps';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="slices">
       <h2><a href="./">Go by Example</a>: Slices</h2>
@@ -284,6 +298,11 @@ Go&rsquo;s other key builtin data structure: maps.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="arrays">Arrays</a>.
+      </p>
       
       
       <p class="next">

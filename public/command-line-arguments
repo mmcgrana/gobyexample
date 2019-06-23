@@ -5,6 +5,20 @@
     <title>Go by Example: Command-Line Arguments</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'file-paths';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'command-line-flags';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="command-line-arguments">
       <h2><a href="./">Go by Example</a>: Command-Line Arguments</h2>
@@ -144,6 +158,11 @@ with flags.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="file-paths">File Paths</a>.
+      </p>
       
       
       <p class="next">

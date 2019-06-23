@@ -5,6 +5,20 @@
     <title>Go by Example: Rate Limiting</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'waitgroups';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'atomic-counters';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="rate-limiting">
       <h2><a href="./">Go by Example</a>: Rate Limiting</h2>
@@ -235,6 +249,11 @@ then serve the remaining 2 with ~200ms delays each.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="waitgroups">WaitGroups</a>.
+      </p>
       
       
       <p class="next">

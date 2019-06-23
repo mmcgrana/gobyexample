@@ -5,6 +5,20 @@
     <title>Go by Example: Defer</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'panic';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'collection-functions';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="defer">
       <h2><a href="./">Go by Example</a>: Defer</h2>
@@ -169,6 +183,11 @@ after being written.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="panic">Panic</a>.
+      </p>
       
       
       <p class="next">

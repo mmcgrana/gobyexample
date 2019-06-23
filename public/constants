@@ -5,6 +5,20 @@
     <title>Go by Example: Constants</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'variables';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'for';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="constants">
       <h2><a href="./">Go by Example</a>: Constants</h2>
@@ -157,6 +171,11 @@ assignment or function call. For example, here
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="variables">Variables</a>.
+      </p>
       
       
       <p class="next">

@@ -5,6 +5,20 @@
     <title>Go by Example: Base64 Encoding</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'sha1-hashes';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'reading-files';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="base64-encoding">
       <h2><a href="./">Go by Example</a>: Base64 Encoding</h2>
@@ -165,6 +179,11 @@ but they both decode to the original string as desired.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="sha1-hashes">SHA1 Hashes</a>.
+      </p>
       
       
       <p class="next">

@@ -5,6 +5,20 @@
     <title>Go by Example: Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'values';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'constants';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="variables">
       <h2><a href="./">Go by Example</a>: Variables</h2>
@@ -159,6 +173,11 @@ initializing a variable, e.g. for
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="values">Values</a>.
+      </p>
       
       
       <p class="next">

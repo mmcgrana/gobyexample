@@ -5,6 +5,20 @@
     <title>Go by Example: Range over Channels</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'closing-channels';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'timers';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="range-over-channels">
       <h2><a href="./">Go by Example</a>: Range over Channels</h2>
@@ -130,6 +144,11 @@ values be received.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="closing-channels">Closing Channels</a>.
+      </p>
       
       
       <p class="next">

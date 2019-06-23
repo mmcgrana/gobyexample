@@ -134,6 +134,7 @@ type Example struct {
 	ID, Name                    string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
+	PrevExample                 *Example
 	NextExample                 *Example
 }
 
@@ -266,6 +267,9 @@ func parseExamples() []*Example {
 		examples = append(examples, &example)
 	}
 	for i, example := range examples {
+		if i > 0 {
+			example.PrevExample = examples[i-1]
+		}
 		if i < (len(examples) - 1) {
 			example.NextExample = examples[i+1]
 		}

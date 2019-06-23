@@ -5,6 +5,20 @@
     <title>Go by Example: Epoch</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'time';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'time-formatting-parsing';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="epoch">
       <h2><a href="./">Go by Example</a>: Epoch</h2>
@@ -151,6 +165,11 @@ parsing and formatting.</p>
         </tr>
         
       </table>
+      
+      
+      <p class="prev">
+        Prev example: <a href="time">Time</a>.
+      </p>
       
       
       <p class="next">

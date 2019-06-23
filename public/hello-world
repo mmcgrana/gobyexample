@@ -5,6 +5,16 @@
     <title>Go by Example: Hello World</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'values';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="hello-world">
       <h2><a href="./">Go by Example</a>: Hello World</h2>
@@ -115,6 +125,7 @@ learn more about the language.</p>
         </tr>
         
       </table>
+      
       
       
       <p class="next">
