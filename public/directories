@@ -332,7 +332,7 @@ recursively by <code>filepath.Walk</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+        Next example: <a href="temporary-files-and-directories">Temporary Files and Directories</a>.
       </p>
       
       <p class="footer">

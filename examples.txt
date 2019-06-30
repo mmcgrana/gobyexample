@@ -56,10 +56,10 @@ SHA1 Hashes
 Base64 Encoding
 Reading Files
 Writing Files
-Temporary Files and Directories
 Line Filters
 File Paths
 Directories
+Temporary Files and Directories
 Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
