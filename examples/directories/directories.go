@@ -62,7 +62,7 @@ func main() {
 	err = os.Chdir("subdir/parent/child")
 	check(err)
 
-	// Now we'll see the contents of "subdir/parent/child"
+	// Now we'll see the contents of `subdir/parent/child`
 	// when listing the *current* directory.
 	c, err = ioutil.ReadDir(".")
 	check(err)
@@ -84,7 +84,7 @@ func main() {
 	err = filepath.Walk("subdir", visit)
 }
 
-// visit is called for every file or directory found
+// `visit` is called for every file or directory found
 // recursively by `filepath.Walk`.
 func visit(p string, info os.FileInfo, err error) error {
 	if err != nil {
