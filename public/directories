@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: Directories</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="directories">
+      <h2><a href="./">Go by Example</a>: Directories</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go has several useful functions for working with
+<em>directories</em> in the file system.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/-7kWq0PmATF">
+              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
+            </a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;io/ioutil&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+    <span class="s">&quot;path/filepath&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Create a new sub-directory in the current working
+directory.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Mkdir</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>When creating temporary directories, it&rsquo;s good
+practice to <code>defer</code> their removal. <code>os.RemoveAll</code>
+will delete a whole directory tree (similarly to
+<code>rm -rf</code>).</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nx">RemoveAll</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Helper function to create a new empty file.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">createEmptyFile</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">d</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="nx">check</span><span class="p">(</span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="mo">0644</span><span class="p">))</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/file1&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can create a hierarchy of directories, including
+parents with <code>MkdirAll</code>. This is similar to the
+command-line <code>mkdir -p</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">MkdirAll</span><span class="p">(</span><span class="s">&quot;subdir/parent/child&quot;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/file2&quot;</span><span class="p">)</span>
+    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/file3&quot;</span><span class="p">)</span>
+    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/child/file4&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>ReadDir</code> lists directory contents, returning a
+slice of <code>os.FileInfo</code> objects.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadDir</span><span class="p">(</span><span class="s">&quot;subdir/parent&quot;</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Listing subdir/parent&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Chdir</code> lets us change the current working directory,
+similarly to <code>cd</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Chdir</span><span class="p">(</span><span class="s">&quot;subdir/parent/child&quot;</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Now we&rsquo;ll see the contents of <code>subdir/parent/child</code>
+when listing the <em>current</em> directory.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadDir</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Listing subdir/parent/child&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>cd</code> back to where we started.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Chdir</span><span class="p">(</span><span class="s">&quot;../../..&quot;</span><span class="p">)</span>
+    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can also visit a directory <em>recursively</em>,
+including all its sub-directories. <code>Walk</code> accepts
+a callback function to handle every file or
+directory visited.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Visiting subdir&quot;</span><span class="p">)</span>
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Walk</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">,</span> <span class="nx">visit</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>visit</code> is called for every file or directory found
+recursively by <code>filepath.Walk</code>.</p>
+
+          </td>
+          <td class="code">
+            
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">visit</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">info</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+            <div class="highlight"><pre><span class="gp">$</span> go run directories.go
+<span class="go">Listing subdir/parent</span>
+<span class="go">  child true</span>
+<span class="go">  file2 false</span>
+<span class="go">  file3 false</span>
+<span class="go">Listing subdir/parent/child</span>
+<span class="go">  file4 false</span>
+<span class="go">Visiting subdir</span>
+<span class="go">  subdir true</span>
+<span class="go">  subdir/file1 false</span>
+<span class="go">  subdir/parent true</span>
+<span class="go">  subdir/parent/child true</span>
+<span class="go">  subdir/parent/child/file4 false</span>
+<span class="go">  subdir/parent/file2 false</span>
+<span class="go">  subdir/parent/file3 false</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/directories">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

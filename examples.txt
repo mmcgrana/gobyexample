@@ -58,6 +58,7 @@ Reading Files
 Writing Files
 Line Filters
 File Paths
+Directories
 Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
