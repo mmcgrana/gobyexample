@@ -224,11 +224,6 @@ printed with <code>fmt.Println</code>.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="slices">Slices</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="range">Range</a>.
       </p>

@@ -249,11 +249,6 @@ as if we had run them directly from the command-line.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="http-servers">HTTP Servers</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="execing-processes">Exec'ing Processes</a>.
       </p>

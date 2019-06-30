@@ -150,11 +150,6 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="stateful-goroutines">Stateful Goroutines</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="sorting-by-functions">Sorting by Functions</a>.
       </p>

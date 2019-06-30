@@ -183,11 +183,6 @@ examples of this next: timers and tickers.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="select">Select</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
       </p>

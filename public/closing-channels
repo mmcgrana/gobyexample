@@ -186,11 +186,6 @@ example: <code>range</code> over channels.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="range-over-channels">Range over Channels</a>.
       </p>

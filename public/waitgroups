@@ -210,11 +210,6 @@ is likely to be different for each invocation.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="worker-pools">Worker Pools</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="rate-limiting">Rate Limiting</a>.
       </p>

@@ -289,11 +289,6 @@ on the Go blog for more on error handling.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="interfaces">Interfaces</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="goroutines">Goroutines</a>.
       </p>

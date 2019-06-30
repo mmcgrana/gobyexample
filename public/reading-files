@@ -279,11 +279,6 @@ be scheduled immediately after <code>Open</code>ing with
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="base64-encoding">Base64 Encoding</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="writing-files">Writing Files</a>.
       </p>

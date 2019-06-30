@@ -289,11 +289,6 @@ management task using only goroutines and channels.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="atomic-counters">Atomic Counters</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="stateful-goroutines">Stateful Goroutines</a>.
       </p>

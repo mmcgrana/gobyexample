@@ -211,11 +211,6 @@ state.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="rate-limiting">Rate Limiting</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="mutexes">Mutexes</a>.
       </p>

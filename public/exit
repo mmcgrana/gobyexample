@@ -164,11 +164,6 @@ the status in the terminal.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="signals">Signals</a>.
-      </p>
-      
-      
       <p class="footer">
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/exit">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>

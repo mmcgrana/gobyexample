@@ -117,11 +117,6 @@ base case of <code>fact(0)</code>.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="closures">Closures</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="pointers">Pointers</a>.
       </p>

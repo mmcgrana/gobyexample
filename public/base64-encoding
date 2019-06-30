@@ -181,11 +181,6 @@ but they both decode to the original string as desired.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="sha1-hashes">SHA1 Hashes</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="reading-files">Reading Files</a>.
       </p>

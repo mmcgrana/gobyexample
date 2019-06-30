@@ -447,11 +447,6 @@ and returns a string without printing it anywhere.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="string-functions">String Functions</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="regular-expressions">Regular Expressions</a>.
       </p>

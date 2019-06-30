@@ -251,11 +251,6 @@ then serve the remaining 2 with ~200ms delays each.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="waitgroups">WaitGroups</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="atomic-counters">Atomic Counters</a>.
       </p>

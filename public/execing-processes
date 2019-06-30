@@ -193,11 +193,6 @@ processes covers most use cases for <code>fork</code>.</p>
       </table>
       
       
-      <p class="prev">
-        Prev example: <a href="spawning-processes">Spawning Processes</a>.
-      </p>
-      
-      
       <p class="next">
         Next example: <a href="signals">Signals</a>.
       </p>
