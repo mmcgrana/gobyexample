@@ -15,8 +15,12 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var cacheDir = "/tmp/gobyexample-cache"
+// siteDir is the target directory into which the HTML gets generated. Its
+// default is set here but can be changed by an argument passed into the
+// program.
 var siteDir = "./public"
+
+var cacheDir = "/tmp/gobyexample-cache"
 var pygmentizeBin = "./vendor/pygments/pygmentize"
 
 func verbose() bool {
@@ -301,6 +305,11 @@ func renderExamples(examples []*Example) {
 }
 
 func main() {
+	if len(os.Args) > 1 {
+		siteDir = os.Args[1]
+	}
+	ensureDir(siteDir)
+
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
 	copyFile("templates/404.html", siteDir+"/404.html")

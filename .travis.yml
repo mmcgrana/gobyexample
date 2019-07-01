@@ -16,3 +16,4 @@ script:
 
 env:
   - VERBOSE=1
+  - TESTING=1
