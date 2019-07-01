@@ -12,6 +12,16 @@ type person struct {
 	age  int
 }
 
+// A de facto constructor of type `person`.
+func NewPerson(name string) *person {
+
+	// You can safely return a pointer to local variable
+	// as a local variable will survive the scope of the function.
+	p := person{name: name}
+	p.age = 42
+	return &p
+}
+
 func main() {
 
 	// This syntax creates a new struct.
@@ -38,4 +48,7 @@ func main() {
 	// Structs are mutable.
 	sp.age = 51
 	fmt.Println(sp.age)
+
+	// Call our constructor
+	fmt.Println(NewPerson("Jon"))
 }
