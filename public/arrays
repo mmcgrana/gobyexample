@@ -5,6 +5,20 @@
     <title>Go by Example: Arrays</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'switch';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'slices';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="arrays">
       <h2><a href="./">Go by Example</a>: Arrays</h2>

@@ -5,6 +5,20 @@
     <title>Go by Example: Command-Line Subcommands</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'command-line-flags';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'environment-variables';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="command-line-subcommands">
       <h2><a href="./">Go by Example</a>: Command-Line Subcommands</h2>

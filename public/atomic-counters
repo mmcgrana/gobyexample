@@ -5,6 +5,20 @@
     <title>Go by Example: Atomic Counters</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'rate-limiting';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'mutexes';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="atomic-counters">
       <h2><a href="./">Go by Example</a>: Atomic Counters</h2>

@@ -5,6 +5,20 @@
     <title>Go by Example: HTTP Servers</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'http-clients';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'spawning-processes';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="http-servers">
       <h2><a href="./">Go by Example</a>: HTTP Servers</h2>

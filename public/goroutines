@@ -5,6 +5,20 @@
     <title>Go by Example: Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'errors';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'channels';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="goroutines">
       <h2><a href="./">Go by Example</a>: Goroutines</h2>

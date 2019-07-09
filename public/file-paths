@@ -5,6 +5,20 @@
     <title>Go by Example: File Paths</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'line-filters';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'directories';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="file-paths">
       <h2><a href="./">Go by Example</a>: File Paths</h2>

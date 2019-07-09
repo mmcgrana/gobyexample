@@ -5,6 +5,20 @@
     <title>Go by Example: HTTP Clients</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'environment-variables';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'http-servers';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="http-clients">
       <h2><a href="./">Go by Example</a>: HTTP Clients</h2>

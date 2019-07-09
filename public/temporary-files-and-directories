@@ -5,6 +5,20 @@
     <title>Go by Example: Temporary Files and Directories</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'directories';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'command-line-arguments';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="temporary-files-and-directories">
       <h2><a href="./">Go by Example</a>: Temporary Files and Directories</h2>

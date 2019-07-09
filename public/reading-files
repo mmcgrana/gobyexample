@@ -5,6 +5,20 @@
     <title>Go by Example: Reading Files</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'base64-encoding';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'writing-files';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="reading-files">
       <h2><a href="./">Go by Example</a>: Reading Files</h2>

@@ -5,6 +5,20 @@
     <title>Go by Example: Sorting by Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'sorting';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'panic';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="sorting-by-functions">
       <h2><a href="./">Go by Example</a>: Sorting by Functions</h2>
