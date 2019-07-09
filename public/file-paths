@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'command-line-arguments';
+              window.location.href = 'directories';
           }
           
       }

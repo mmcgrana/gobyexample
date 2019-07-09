@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'file-paths';
+              window.location.href = 'temporary-files-and-directories';
           }
           
           

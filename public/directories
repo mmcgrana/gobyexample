@@ -5,6 +5,20 @@
     <title>Go by Example: Directories</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'file-paths';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'temporary-files-and-directories';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="directories">
       <h2><a href="./">Go by Example</a>: Directories</h2>
