@@ -6,17 +6,26 @@ import "fmt"
 
 type rect struct {
 	width, height int
+	label         string
 }
 
-// This `area` method has a _receiver type_ of `*rect`.
+// This `area` method has a _pointer receiver type_ `*rect`.
 func (r *rect) area() int {
 	return r.width * r.height
 }
 
 // Methods can be defined for either pointer or value
-// receiver types. Here's an example of a value receiver.
+// receiver types. This method `perim` of _value receiver type_
+// will pass the `rect` struct by value instead of reference for
+// each call.
 func (r rect) perim() int {
 	return 2*r.width + 2*r.height
+}
+
+// The method `setLabel` will modify the rect's (pointer receiver)
+// label value.
+func (r *rect) setLabel(label string) {
+	r.label = label
 }
 
 func main() {
@@ -34,4 +43,12 @@ func main() {
 	rp := &r
 	fmt.Println("area: ", rp.area())
 	fmt.Println("perim:", rp.perim())
+
+	// Consider what may happen if `setLabel` worked on a value
+	// receiver as opposed to a pointer receiver. Generally,
+	// pointer receivers are more efficient and more useful so
+	// are more common than value receiver methods.
+	fmt.Println("label:", r.label)
+	rp.setLabel("Rectangle")
+	fmt.Println("label:", r.label)
 }
