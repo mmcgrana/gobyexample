@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: XML</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'json';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'time';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="xml">
+      <h2><a href="./">Go by Example</a>: XML</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go offers built-in support for XML and XML-like
+formats with the <code>encoding.xml</code> package.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/qd9Ii_3AW0s">
+              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
+            </a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;encoding/xml&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>This type will be mapped to XML. Similarly to the
+JSON examples, field tags contain directives for the
+encoder and decoder. Here we use some special features
+of the XML package: the <code>XMLName</code> field name dictates
+the name of the XML element representing this struct;
+<code>id,attr</code> means that the <code>Id</code> field is an XML
+<em>attribute</em> rather than a nested element.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">Plant</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">XMLName</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Name</span> <span class="s">`xml:&quot;plant&quot;`</span>
+    <span class="nx">Id</span>      <span class="kt">int</span>      <span class="s">`xml:&quot;id,attr&quot;`</span>
+    <span class="nx">Name</span>    <span class="kt">string</span>   <span class="s">`xml:&quot;name&quot;`</span>
+    <span class="nx">Origin</span>  <span class="p">[]</span><span class="kt">string</span> <span class="s">`xml:&quot;origin&quot;`</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Plant</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Plant id=%v, name=%v, origin=%v&quot;</span><span class="p">,</span>
+        <span class="nx">p</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Origin</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">coffee</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Coffee&quot;</span><span class="p">}</span>
+    <span class="nx">coffee</span><span class="p">.</span><span class="nx">Origin</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Ethiopia&quot;</span><span class="p">,</span> <span class="s">&quot;Brazil&quot;</span><span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Emit XML representing our plant; using
+<code>MarshalIndent</code> to produce a more
+human-readable output.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">coffee</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To add a generic XML header to the output, append
+it explicitly.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xml</span><span class="p">.</span><span class="nx">Header</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Use <code>Unmarhshal</code> to parse a stream of bytes with XML
+into a data structure. If the XML is malformed or
+cannot be mapped onto Plant, a descriptive error
+will be returned.</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">p</span> <span class="nx">Plant</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">tomato</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Tomato&quot;</span><span class="p">}</span>
+    <span class="nx">tomato</span><span class="p">.</span><span class="nx">Origin</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Mexico&quot;</span><span class="p">,</span> <span class="s">&quot;California&quot;</span><span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The <code>parent&gt;child&gt;plant</code> field tag tells the encoder
+to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code></p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="kd">type</span> <span class="nx">Nesting</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">XMLName</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Name</span> <span class="s">`xml:&quot;nesting&quot;`</span>
+        <span class="nx">Plants</span>  <span class="p">[]</span><span class="o">*</span><span class="nx">Plant</span> <span class="s">`xml:&quot;parent&gt;child&gt;plant&quot;`</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre>    <span class="nx">nesting</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Nesting</span><span class="p">{}</span>
+    <span class="nx">nesting</span><span class="p">.</span><span class="nx">Plants</span> <span class="p">=</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">coffee</span><span class="p">,</span> <span class="nx">tomato</span><span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+            <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">nesting</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+            <div class="highlight"><pre><span class="gp">$</span> go run xml.go
+<span class="go"> &lt;plant id=&quot;27&quot;&gt;</span>
+<span class="go">   &lt;name&gt;Coffee&lt;/name&gt;</span>
+<span class="go">   &lt;origin&gt;Ethiopia&lt;/origin&gt;</span>
+<span class="go">   &lt;origin&gt;Brazil&lt;/origin&gt;</span>
+<span class="go"> &lt;/plant&gt;</span>
+<span class="go">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="go"> &lt;plant id=&quot;27&quot;&gt;</span>
+<span class="go">   &lt;name&gt;Coffee&lt;/name&gt;</span>
+<span class="go">   &lt;origin&gt;Ethiopia&lt;/origin&gt;</span>
+<span class="go">   &lt;origin&gt;Brazil&lt;/origin&gt;</span>
+<span class="go"> &lt;/plant&gt;</span>
+<span class="go">Plant id=27, name=Coffee, origin=[Ethiopia Brazil]</span>
+<span class="go"> &lt;nesting&gt;</span>
+<span class="go">   &lt;parent&gt;</span>
+<span class="go">     &lt;child&gt;</span>
+<span class="go">       &lt;plant id=&quot;27&quot;&gt;</span>
+<span class="go">         &lt;name&gt;Coffee&lt;/name&gt;</span>
+<span class="go">         &lt;origin&gt;Ethiopia&lt;/origin&gt;</span>
+<span class="go">         &lt;origin&gt;Brazil&lt;/origin&gt;</span>
+<span class="go">       &lt;/plant&gt;</span>
+<span class="go">       &lt;plant id=&quot;81&quot;&gt;</span>
+<span class="go">         &lt;name&gt;Tomato&lt;/name&gt;</span>
+<span class="go">         &lt;origin&gt;Mexico&lt;/origin&gt;</span>
+<span class="go">         &lt;origin&gt;California&lt;/origin&gt;</span>
+<span class="go">       &lt;/plant&gt;</span>
+<span class="go">     &lt;/child&gt;</span>
+<span class="go">   &lt;/parent&gt;</span>
+<span class="go"> &lt;/nesting&gt;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="time">Time</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/xml">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

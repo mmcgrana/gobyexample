@@ -46,6 +46,7 @@ String Functions
 String Formatting
 Regular Expressions
 JSON
+XML
 Time
 Epoch
 Time Formatting / Parsing
