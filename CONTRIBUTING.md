@@ -2,9 +2,11 @@
 
 Thanks for your interest in contributing to Go by Example!
 
-* If you see a typo or would like to suggest another small change, editing the
-  .go or .sh source file should be sufficient for the PR. I can rebuild the
-  HTML when I review the change.
+* When sending a PR that affects the displayed contents of the site, run
+  `tools/build` locally and include the generated HTML in the PR. If you
+  only want to submit a simple typo suggestion (for example, through the
+  Github website), feel free to send a PR anyway - we'll regenerate the
+  HTML and merge with your commit.
 
 * We're open to adding more examples to the site. They should be on things
   used by many programmers and only require the standard library. If you're
