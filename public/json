@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'time';
+              window.location.href = 'xml';
           }
           
       }
@@ -392,7 +392,7 @@ for more.</p>
       
       
       <p class="next">
-        Next example: <a href="time">Time</a>.
+        Next example: <a href="xml">XML</a>.
       </p>
       
       <p class="footer">
