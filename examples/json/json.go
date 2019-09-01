@@ -14,7 +14,8 @@ type response1 struct {
 	Page   int
 	Fruits []string
 }
-// Only exported fields will be encoded/decoded in JSON. 
+
+// Only exported fields will be encoded/decoded in JSON.
 // Fields must start with capital letters to be exported.
 type response2 struct {
 	Page   int      `json:"page"`
