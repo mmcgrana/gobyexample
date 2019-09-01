@@ -141,8 +141,11 @@ img.copy, img.run {
   width: 16px;
   float: right
 }
-img.copy {
+img.copy, img.run {
   cursor: pointer;
+}
+img.copy {
+    margin-right: 4px;
 }
 
 /* Syntax highlighting */

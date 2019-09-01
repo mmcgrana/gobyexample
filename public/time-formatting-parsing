@@ -33,7 +33,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code empty leading">
             
-            
+          
           </td>
         </tr>
         
@@ -42,10 +42,8 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/nHAisH6amZG">
-              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
-            </a>
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+            <a href="http://play.golang.org/p/nHAisH6amZG"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -57,7 +55,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;time&quot;</span>
 </pre></div>
 
@@ -70,7 +68,7 @@ pattern-based layouts.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
@@ -86,7 +84,7 @@ constant.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+          <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
     <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
 </pre></div>
 
@@ -100,7 +98,7 @@ constant.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
+          <div class="highlight"><pre>    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
         <span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
         <span class="s">&quot;2012-11-01T22:08:41+00:00&quot;</span><span class="p">)</span>
     <span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
@@ -122,7 +120,7 @@ The example time must be exactly as shown: the year 2006,
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
+          <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
     <span class="nx">form</span> <span class="o">:=</span> <span class="s">&quot;3 04 PM&quot;</span>
@@ -142,7 +140,7 @@ components of the time value.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
         <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span>
         <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
 </pre></div>
@@ -158,7 +156,7 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
             
-            <div class="highlight"><pre>    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
+          <div class="highlight"><pre>    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
     <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
     <span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
@@ -177,7 +175,7 @@ explaining the parsing problem.</p>
           </td>
           <td class="code">
             
-            <div class="highlight"><pre><span class="gp">$</span> go run time-formatting-parsing.go 
+          <div class="highlight"><pre><span class="gp">$</span> go run time-formatting-parsing.go 
 <span class="go">2014-04-15T18:00:15-07:00</span>
 <span class="go">2012-11-01 22:08:41 +0000 +0000</span>
 <span class="go">6:00PM</span>
@@ -202,5 +200,10 @@ explaining the parsing problem.</p>
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"time\"\u000A');codeLines.push('func main() {\u000A    p := fmt.Println\u000A');codeLines.push('    t := time.Now()\u000A    p(t.Format(time.RFC3339))\u000A');codeLines.push('    t1, e := time.Parse(\u000A        time.RFC3339,\u000A        \"2012-11-01T22:08:41+00:00\")\u000A    p(t1)\u000A');codeLines.push('    p(t.Format(\"3:04PM\"))\u000A    p(t.Format(\"Mon Jan _2 15:04:05 2006\"))\u000A    p(t.Format(\"2006-01-02T15:04:05.999999-07:00\"))\u000A    form := \"3 04 PM\"\u000A    t2, e := time.Parse(form, \"8 41 PM\")\u000A    p(t2)\u000A');codeLines.push('    fmt.Printf(\"%d-%02d-%02dT%02d:%02d:%02d-00:00\\n\",\u000A        t.Year(), t.Month(), t.Day(),\u000A        t.Hour(), t.Minute(), t.Second())\u000A');codeLines.push('    ansic := \"Mon Jan _2 15:04:05 2006\"\u000A    _, e = time.Parse(ansic, \"8:41PM\")\u000A    p(e)\u000A}\u000A');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

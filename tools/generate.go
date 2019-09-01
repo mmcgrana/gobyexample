@@ -129,8 +129,8 @@ var dashPat = regexp.MustCompile("\\-+")
 // Seg is a segment of an example
 type Seg struct {
 	Docs, DocsRendered              string
-    Code, CodeRendered, CodeForJs   string
-    CodeEmpty, CodeLeading, CodeRun bool
+	Code, CodeRendered, CodeForJs   string
+	CodeEmpty, CodeLeading, CodeRun bool
 }
 
 // Example is info extracted from an example file
@@ -224,9 +224,9 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 		if seg.Code != "" {
 			seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
 			// adding the content to the js code for copying to the clipboard
-            if strings.HasSuffix(sourcePath, ".go") {
-                seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
-            }
+			if strings.HasSuffix(sourcePath, ".go") {
+				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
+			}
 		}
 	}
 	// we are only interested in the 'go' code to pass to play.golang.org
