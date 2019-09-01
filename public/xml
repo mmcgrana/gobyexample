@@ -33,7 +33,7 @@ formats with the <code>encoding.xml</code> package.</p>
           </td>
           <td class="code empty leading">
             
-            
+          
           </td>
         </tr>
         
@@ -42,10 +42,8 @@ formats with the <code>encoding.xml</code> package.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/qd9Ii_3AW0s">
-              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
-            </a>
-            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+            <a href="http://play.golang.org/p/qd9Ii_3AW0s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
           </td>
@@ -57,7 +55,7 @@ formats with the <code>encoding.xml</code> package.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;encoding/xml&quot;</span>
     <span class="s">&quot;fmt&quot;</span>
 <span class="p">)</span>
@@ -79,7 +77,7 @@ the name of the XML element representing this struct;
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">Plant</span> <span class="kd">struct</span> <span class="p">{</span>
+          <div class="highlight"><pre><span class="kd">type</span> <span class="nx">Plant</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">XMLName</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Name</span> <span class="s">`xml:&quot;plant&quot;`</span>
     <span class="nx">Id</span>      <span class="kt">int</span>      <span class="s">`xml:&quot;id,attr&quot;`</span>
     <span class="nx">Name</span>    <span class="kt">string</span>   <span class="s">`xml:&quot;name&quot;`</span>
@@ -96,7 +94,7 @@ the name of the XML element representing this struct;
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Plant</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+          <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">Plant</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Plant id=%v, name=%v, origin=%v&quot;</span><span class="p">,</span>
         <span class="nx">p</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Origin</span><span class="p">)</span>
 <span class="p">}</span>
@@ -111,7 +109,7 @@ the name of the XML element representing this struct;
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">coffee</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Coffee&quot;</span><span class="p">}</span>
     <span class="nx">coffee</span><span class="p">.</span><span class="nx">Origin</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Ethiopia&quot;</span><span class="p">,</span> <span class="s">&quot;Brazil&quot;</span><span class="p">}</span>
 </pre></div>
@@ -128,7 +126,7 @@ human-readable output.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">coffee</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
+          <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">coffee</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
 </pre></div>
 
@@ -143,7 +141,7 @@ it explicitly.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xml</span><span class="p">.</span><span class="nx">Header</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">xml</span><span class="p">.</span><span class="nx">Header</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
 </pre></div>
 
           </td>
@@ -159,7 +157,7 @@ will be returned.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">p</span> <span class="nx">Plant</span>
+          <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">p</span> <span class="nx">Plant</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">}</span>
@@ -175,7 +173,7 @@ will be returned.</p>
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">tomato</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Tomato&quot;</span><span class="p">}</span>
+          <div class="highlight"><pre>    <span class="nx">tomato</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&quot;Tomato&quot;</span><span class="p">}</span>
     <span class="nx">tomato</span><span class="p">.</span><span class="nx">Origin</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Mexico&quot;</span><span class="p">,</span> <span class="s">&quot;California&quot;</span><span class="p">}</span>
 </pre></div>
 
@@ -190,7 +188,7 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="kd">type</span> <span class="nx">Nesting</span> <span class="kd">struct</span> <span class="p">{</span>
+          <div class="highlight"><pre>    <span class="kd">type</span> <span class="nx">Nesting</span> <span class="kd">struct</span> <span class="p">{</span>
         <span class="nx">XMLName</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">Name</span> <span class="s">`xml:&quot;nesting&quot;`</span>
         <span class="nx">Plants</span>  <span class="p">[]</span><span class="o">*</span><span class="nx">Plant</span> <span class="s">`xml:&quot;parent&gt;child&gt;plant&quot;`</span>
     <span class="p">}</span>
@@ -205,7 +203,7 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
           </td>
           <td class="code leading">
             
-            <div class="highlight"><pre>    <span class="nx">nesting</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Nesting</span><span class="p">{}</span>
+          <div class="highlight"><pre>    <span class="nx">nesting</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Nesting</span><span class="p">{}</span>
     <span class="nx">nesting</span><span class="p">.</span><span class="nx">Plants</span> <span class="p">=</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Plant</span><span class="p">{</span><span class="nx">coffee</span><span class="p">,</span> <span class="nx">tomato</span><span class="p">}</span>
 </pre></div>
 
@@ -218,7 +216,7 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
           </td>
           <td class="code">
             
-            <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">nesting</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
+          <div class="highlight"><pre>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">xml</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">nesting</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;  &quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
@@ -236,7 +234,7 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
           </td>
           <td class="code">
             
-            <div class="highlight"><pre><span class="gp">$</span> go run xml.go
+          <div class="highlight"><pre><span class="gp">$</span> go run xml.go
 <span class="go"> &lt;plant id=&quot;27&quot;&gt;</span>
 <span class="go">   &lt;name&gt;Coffee&lt;/name&gt;</span>
 <span class="go">   &lt;origin&gt;Ethiopia&lt;/origin&gt;</span>
@@ -281,5 +279,10 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/xml">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"encoding/xml\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type Plant struct {\u000A    XMLName xml.Name `xml:\"plant\"`\u000A    Id      int      `xml:\"id,attr\"`\u000A    Name    string   `xml:\"name\"`\u000A    Origin  []string `xml:\"origin\"`\u000A}\u000A');codeLines.push('func (p Plant) String() string {\u000A    return fmt.Sprintf(\"Plant id=%v, name=%v, origin=%v\",\u000A        p.Id, p.Name, p.Origin)\u000A}\u000A');codeLines.push('func main() {\u000A    coffee := &Plant{Id: 27, Name: \"Coffee\"}\u000A    coffee.Origin = []string{\"Ethiopia\", \"Brazil\"}\u000A');codeLines.push('    out, _ := xml.MarshalIndent(coffee, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A');codeLines.push('    fmt.Println(xml.Header + string(out))\u000A');codeLines.push('    var p Plant\u000A    if err := xml.Unmarshal(out, &p); err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(p)\u000A');codeLines.push('    tomato := &Plant{Id: 81, Name: \"Tomato\"}\u000A    tomato.Origin = []string{\"Mexico\", \"California\"}\u000A');codeLines.push('    type Nesting struct {\u000A        XMLName xml.Name `xml:\"nesting\"`\u000A        Plants  []*Plant `xml:\"parent\x3Echild\x3Eplant\"`\u000A    }\u000A');codeLines.push('    nesting := &Nesting{}\u000A    nesting.Plants = []*Plant{coffee, tomato}\u000A');codeLines.push('    out, _ = xml.MarshalIndent(nesting, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A}\u000A');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>
