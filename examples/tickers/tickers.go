@@ -16,9 +16,16 @@ func main() {
 	// `range` builtin on the channel to iterate over
 	// the values as they arrive every 500ms.
 	ticker := time.NewTicker(500 * time.Millisecond)
+	done := make(chan bool)
+
 	go func() {
-		for t := range ticker.C {
-			fmt.Println("Tick at", t)
+		for {
+			select {
+			case <-done:
+				return
+			case t := <-ticker.C:
+				fmt.Println("Tick at", t)
+			}
 		}
 	}()
 
@@ -27,5 +34,6 @@ func main() {
 	// channel. We'll stop ours after 1600ms.
 	time.Sleep(1600 * time.Millisecond)
 	ticker.Stop()
+	done <- true
 	fmt.Println("Ticker stopped")
 }
