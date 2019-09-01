@@ -14,8 +14,8 @@ type response1 struct {
     Page   int
     Fruits []string
 }
-// Fields must have capital letters to be exposed to other
-// programs such as the JSON Marshaller. 
+// Only exported fields will be encoded/decoded in JSON. 
+// Fields must start with capital letters to be exported.
 type response2 struct {
     Page   int      `json:"page"`
     Fruits []string `json:"fruits"`
