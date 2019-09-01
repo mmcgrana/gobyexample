@@ -32,6 +32,7 @@ Range over Channels
 Timers
 Tickers
 Worker Pools
+WaitGroups
 Rate Limiting
 Atomic Counters
 Mutexes
@@ -56,9 +57,15 @@ Base64 Encoding
 Reading Files
 Writing Files
 Line Filters
+File Paths
+Directories
+Temporary Files and Directories
 Command-Line Arguments
 Command-Line Flags
+Command-Line Subcommands
 Environment Variables
+HTTP Clients
+HTTP Servers
 Spawning Processes
 Exec'ing Processes
 Signals

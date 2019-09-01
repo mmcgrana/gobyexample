@@ -5,17 +5,19 @@
     <title>Go by Example: Number Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'random-numbers';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'url-parsing';
+          }
+          
+      }
   </script>
   <body>
     <div class="example" id="number-parsing">
@@ -30,7 +32,7 @@ in many programs; here&rsquo;s how to do it in Go.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -40,7 +42,9 @@ in many programs; here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/N90EppECFk"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/NZh4LjhguvN">
+              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
+            </a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -54,7 +58,7 @@ parsing.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;strconv&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -67,7 +71,7 @@ parsing.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -81,7 +85,7 @@ precision to parse.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="s">&quot;1.234&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </pre></div>
@@ -97,7 +101,7 @@ bits.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
 </pre></div>
@@ -111,7 +115,7 @@ bits.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;0x1c8&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </pre></div>
@@ -125,7 +129,7 @@ bits.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">u</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseUint</span><span class="p">(</span><span class="s">&quot;789&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">)</span>
 </pre></div>
@@ -140,7 +144,7 @@ bits.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;135&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 </pre></div>
@@ -154,7 +158,7 @@ bits.</p>
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;wat&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
@@ -172,7 +176,7 @@ bits.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run number-parsing.go 
 <span class="go">1.234</span>
 <span class="go">123</span>
@@ -191,7 +195,7 @@ bits.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -204,7 +208,7 @@ bits.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/number-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/number-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

@@ -1,8 +1,7 @@
-## Go by Example
+# Go by Example
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
 a site that teaches Go via annotated example programs.
-
 
 ### Overview
 
@@ -17,8 +16,9 @@ The built `public` directory can be served by any
 static content system. The production site uses S3 and
 CloudFront, for example.
 
-
 ### Building
+
+[![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
 
 To build the site you'll need Go and Python installed. Run:
 
@@ -34,6 +34,16 @@ To build continuously in a loop:
 $ tools/build-loop
 ```
 
+### Publishing
+
+To upload the site:
+
+```console
+$ gem install aws-sdk
+$ export AWS_ACCESS_KEY_ID=...
+$ export AWS_SECRET_ACCESS_KEY=...
+$ tools/upload
+```
 
 ### License
 
@@ -48,10 +58,13 @@ The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and
 
 Contributor translations of the Go by Example site are available in:
 
-* [Chinese](http://gobyexample.everyx.in/) by [everyx](https://github.com/everyx)
+* [Chinese](https://gobyexample.xgwang.me/) by [xg-wang](https://github.com/xg-wang/gobyexample)
 * [French](http://le-go-par-l-exemple.keiruaprod.fr) by [keirua](https://github.com/keirua/gobyexample)
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
+* [Japanese](http://spinute.org/go-by-example) by [spinute](https://github.com/spinute)
+* [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
+* [Ukrainian](http://gobyexample.com.ua/) by [butuzov](https://github.com/butuzov/gobyexample)
 
 ### Thanks
 

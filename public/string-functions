@@ -5,17 +5,19 @@
     <title>Go by Example: String Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'collection-functions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'string-formatting';
+          }
+          
+      }
   </script>
   <body>
     <div class="example" id="string-functions">
@@ -31,7 +33,7 @@ to give you a sense of the package.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -41,7 +43,9 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Lf5_Zbg6or"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/Vn4D3y4_711">
+              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
+            </a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -53,7 +57,7 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kn">import</span> <span class="nx">s</span> <span class="s">&quot;strings&quot;</span>
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
@@ -68,7 +72,7 @@ it a lot below.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
 </pre></div>
 
@@ -80,7 +84,7 @@ it a lot below.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -99,7 +103,7 @@ package docs.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Contains:  &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;es&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Count:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Count</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasPrefix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;te&quot;</span><span class="p">))</span>
@@ -126,7 +130,7 @@ bytes and getting a byte by index.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Len: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span>
     <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Char:&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="p">}</span>
@@ -146,7 +150,7 @@ for more information.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -160,7 +164,7 @@ for more information.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run string-functions.go
 <span class="go">Contains:   true</span>
 <span class="go">Count:      2</span>
@@ -184,7 +188,7 @@ for more information.</p>
             
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre><span class="go">Len:  5</span>
 <span class="go">Char: 101</span>
 </pre></div>
@@ -200,7 +204,7 @@ for more information.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/string-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/string-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

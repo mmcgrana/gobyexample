@@ -1,2 +1,3 @@
-.anvil
 *.pyc
+.idea
+.vscode

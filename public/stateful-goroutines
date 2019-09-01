@@ -5,17 +5,19 @@
     <title>Go by Example: Stateful Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'mutexes';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'sorting';
+          }
+          
+      }
   </script>
   <body>
     <div class="example" id="stateful-goroutines">
@@ -36,7 +38,7 @@ by exactly 1 goroutine.</p>
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -46,7 +48,9 @@ by exactly 1 goroutine.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/P4SrrlosMp"><img title="Run code" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/saQTLpdIgp2">
+              <img title="Run code" class="run" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ1SURBVCjPY/j//z8DMu7o6GAAgpQgD9tLqcmJH4KDg14aaik/MtdXe2ZjY6OCrh6Fs2jRYmZ9Pd05M9uL/u9dPfU/CLS0dfxvKIz/X5Dg/z8pKdkGqwGpqakMUdExDHJSYqt37tjxf+qUSf9rc2P+79298/+RA3v+H1zV///o6r7/DrbWFQkJiQwxMTGoBjAxMTpKiQmuqMuP/f/xw/v/J0+f/W9tbvTfxVLn/8rJVf+v757z/96hRf8TQtxuCQmLMjk4OKAawMfDVWVvrvd85eTq/7tXTP6/e/XM/22lif9LCnL+b13Q/v/Kzln/L++c/X/7/Jb/VpYWuZFRUagGAAErEBtlxvi+vn944f9L26cDNcz6v21R9/8zm6aC2SBDbu+f/78kK+4/L79AO7oBYCAqxD/57JZp/y/tmPX/wrYZ/6+CbAayD6zs/78daBjIgPayFJAGG6wGAIFAcpjH/dv7F4ANABuya/b/Od3l/ye2V/+/tnv2/7ldxSANmrgMYGBhZg7fuagD7GyYIeeBrrqwdRrQgLn/l02sBGkwwWkAEAjV5EZ/vQV0LswAGAYZsLC3DKTBAJ8BzCkRni/uHFyIYcAtoNc6ypL/ANVIohigrKwMxqqqqgxMzKzM6VHeL+6iGQAKzDtAV5XlJv3n5uFLRTHgzZs3YPzz50+GwqJiPitD9Y8Pjy4BB+CNvfP+3wUmIpAhhckhr3X19LodHZ28UQxQU1MDYw0NDQYBAQEeoBOTK7JjP2xf3Pt/bkfB/4KkoDcKMmIL5OXlFerq6hhu3rzJgC8MwMDYxGSfm5vbVn9/f0cgVxAkpqioyFBfX49iAACbTAK+xT3CzgAAAABJRU5ErkJggg==" />
+            </a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -58,7 +62,7 @@ by exactly 1 goroutine.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;fmt&quot;</span>
     <span class="s">&quot;math/rand&quot;</span>
@@ -83,7 +87,7 @@ goroutine to respond.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">readOp</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">key</span>  <span class="kt">int</span>
     <span class="nx">resp</span> <span class="kd">chan</span> <span class="kt">int</span>
@@ -103,7 +107,7 @@ goroutine to respond.</p>
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -116,9 +120,9 @@ goroutine to respond.</p>
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">readOps</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
-    <span class="kd">var</span> <span class="nx">writeOps</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+            
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">readOps</span> <span class="kt">uint64</span>
+    <span class="kd">var</span> <span class="nx">writeOps</span> <span class="kt">uint64</span>
 </pre></div>
 
           </td>
@@ -132,9 +136,9 @@ respectively.</p>
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre>    <span class="nx">reads</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">readOp</span><span class="p">)</span>
-    <span class="nx">writes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">writeOp</span><span class="p">)</span>
+            
+            <div class="highlight"><pre>    <span class="nx">reads</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">readOp</span><span class="p">)</span>
+    <span class="nx">writes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">writeOp</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -154,7 +158,7 @@ value in the case of <code>reads</code>).</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
         <span class="k">for</span> <span class="p">{</span>
@@ -182,11 +186,11 @@ result over the provided <code>resp</code> channel.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">for</span> <span class="p">{</span>
-                <span class="nx">read</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">readOp</span><span class="p">{</span>
+                <span class="nx">read</span> <span class="o">:=</span> <span class="nx">readOp</span><span class="p">{</span>
                     <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
                     <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)}</span>
                 <span class="nx">reads</span> <span class="o">&lt;-</span> <span class="nx">read</span>
@@ -208,11 +212,11 @@ approach.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">for</span> <span class="p">{</span>
-                <span class="nx">write</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">writeOp</span><span class="p">{</span>
+                <span class="nx">write</span> <span class="o">:=</span> <span class="nx">writeOp</span><span class="p">{</span>
                     <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
                     <span class="nx">val</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
                     <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)}</span>
@@ -234,7 +238,7 @@ approach.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 </pre></div>
 
@@ -247,7 +251,7 @@ approach.</p>
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">readOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">readOps</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;readOps:&quot;</span><span class="p">,</span> <span class="nx">readOpsFinal</span><span class="p">)</span>
     <span class="nx">writeOpsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">writeOps</span><span class="p">)</span>
@@ -270,7 +274,7 @@ total operations.</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run stateful-goroutines.go
 <span class="go">readOps: 71708</span>
 <span class="go">writeOps: 7177</span>
@@ -292,7 +296,7 @@ program.</p>
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -305,7 +309,7 @@ program.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/stateful-goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/stateful-goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
   </body>

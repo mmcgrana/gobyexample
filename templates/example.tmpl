@@ -5,20 +5,22 @@
     <title>Go by Example: {{.Name}}</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
+  <script>
+      onkeydown = (e) => {
+          {{if .PrevExample}}
+          if (e.key == "ArrowLeft") {
+              window.location.href = '{{.PrevExample.ID}}';
+          }
+          {{end}}
+          {{if .NextExample}}
+          if (e.key == "ArrowRight") {
+              window.location.href = '{{.NextExample.ID}}';
+          }
+          {{end}}
+      }
   </script>
   <body>
-    <div class="example" id="{{.Id}}">
+    <div class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
       {{range .Segs}}
       <table>
@@ -37,11 +39,11 @@
       {{end}}
       {{if .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.Id}}">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.Id}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.ID}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
     <script>
