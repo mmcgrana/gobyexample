@@ -42,5 +42,11 @@ func main() {
 
 	// Wait until all the goroutines are done.
 	wg.Wait()
+
+	// It's safe to access `ops` now because we know
+	// no other goroutine is writing to it. Reading
+	// atomics safely while they are being updated is
+	// also possible, using functions like
+	// `atomic.LoadUint64`.
 	fmt.Println("ops:", ops)
 }
