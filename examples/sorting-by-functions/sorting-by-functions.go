@@ -6,8 +6,10 @@
 
 package main
 
-import "sort"
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // In order to sort by a custom function in Go, we need a
 // corresponding type. Here we've created a `byLength`

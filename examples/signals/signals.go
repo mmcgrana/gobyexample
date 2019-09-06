@@ -7,10 +7,12 @@
 
 package main
 
-import "fmt"
-import "os"
-import "os/signal"
-import "syscall"
+import (
+	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
+)
 
 func main() {
 

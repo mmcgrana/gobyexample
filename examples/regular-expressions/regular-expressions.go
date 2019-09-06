@@ -4,9 +4,11 @@
 
 package main
 
-import "bytes"
-import "fmt"
-import "regexp"
+import (
+	"bytes"
+	"fmt"
+	"regexp"
+)
 
 func main() {
 

@@ -5,9 +5,11 @@
 
 package main
 
-import "os"
-import "strings"
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
 func main() {
 

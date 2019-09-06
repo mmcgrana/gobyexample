@@ -75,7 +75,7 @@ helper function.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/BJB_npWH516"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/8hI6oPNEfyh"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -88,8 +88,10 @@ helper function.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;strings&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -369,7 +371,7 @@ type.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"strings\"\u000Aimport \"fmt\"\u000A');codeLines.push('func Index(vs []string, t string) int {\u000A    for i, v := range vs {\u000A        if v == t {\u000A            return i\u000A        }\u000A    }\u000A    return -1\u000A}\u000A');codeLines.push('func Include(vs []string, t string) bool {\u000A    return Index(vs, t) \x3E= 0\u000A}\u000A');codeLines.push('func Any(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            return true\u000A        }\u000A    }\u000A    return false\u000A}\u000A');codeLines.push('func All(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if !f(v) {\u000A            return false\u000A        }\u000A    }\u000A    return true\u000A}\u000A');codeLines.push('func Filter(vs []string, f func(string) bool) []string {\u000A    vsf := make([]string, 0)\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            vsf = append(vsf, v)\u000A        }\u000A    }\u000A    return vsf\u000A}\u000A');codeLines.push('func Map(vs []string, f func(string) string) []string {\u000A    vsm := make([]string, len(vs))\u000A    for i, v := range vs {\u000A        vsm[i] = f(v)\u000A    }\u000A    return vsm\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var strs = []string{\"peach\", \"apple\", \"pear\", \"plum\"}\u000A');codeLines.push('    fmt.Println(Index(strs, \"pear\"))\u000A');codeLines.push('    fmt.Println(Include(strs, \"grape\"))\u000A');codeLines.push('    fmt.Println(Any(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(All(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Filter(strs, func(v string) bool {\u000A        return strings.Contains(v, \"e\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Map(strs, strings.ToUpper))\u000A');codeLines.push('}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func Index(vs []string, t string) int {\u000A    for i, v := range vs {\u000A        if v == t {\u000A            return i\u000A        }\u000A    }\u000A    return -1\u000A}\u000A');codeLines.push('func Include(vs []string, t string) bool {\u000A    return Index(vs, t) \x3E= 0\u000A}\u000A');codeLines.push('func Any(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            return true\u000A        }\u000A    }\u000A    return false\u000A}\u000A');codeLines.push('func All(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if !f(v) {\u000A            return false\u000A        }\u000A    }\u000A    return true\u000A}\u000A');codeLines.push('func Filter(vs []string, f func(string) bool) []string {\u000A    vsf := make([]string, 0)\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            vsf = append(vsf, v)\u000A        }\u000A    }\u000A    return vsf\u000A}\u000A');codeLines.push('func Map(vs []string, f func(string) string) []string {\u000A    vsm := make([]string, len(vs))\u000A    for i, v := range vs {\u000A        vsm[i] = f(v)\u000A    }\u000A    return vsm\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var strs = []string{\"peach\", \"apple\", \"pear\", \"plum\"}\u000A');codeLines.push('    fmt.Println(Index(strs, \"pear\"))\u000A');codeLines.push('    fmt.Println(Include(strs, \"grape\"))\u000A');codeLines.push('    fmt.Println(Any(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(All(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Filter(strs, func(v string) bool {\u000A        return strings.Contains(v, \"e\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Map(strs, strings.ToUpper))\u000A');codeLines.push('}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

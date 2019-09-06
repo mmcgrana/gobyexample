@@ -9,8 +9,10 @@
 
 package main
 
-import "errors"
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // By convention, errors are the last return value and
 // have type `error`, a built-in interface.

@@ -9,8 +9,10 @@ package main
 
 // Go implements several hash functions in various
 // `crypto/*` packages.
-import "crypto/sha1"
-import "fmt"
+import (
+	"crypto/sha1"
+	"fmt"
+)
 
 func main() {
 	s := "sha1 this string"

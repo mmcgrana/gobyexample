@@ -18,8 +18,10 @@
 
 package main
 
-import "strings"
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Index returns the first index of the target string `t`, or
 // -1 if no match is found.

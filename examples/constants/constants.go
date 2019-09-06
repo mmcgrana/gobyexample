@@ -3,8 +3,10 @@
 
 package main
 
-import "fmt"
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 // `const` declares a constant value.
 const s string = "constant"

@@ -6,8 +6,10 @@ package main
 // This syntax imports the `encoding/base64` package with
 // the `b64` name instead of the default `base64`. It'll
 // save us some space below.
-import b64 "encoding/base64"
-import "fmt"
+import (
+	b64 "encoding/base64"
+	"fmt"
+)
 
 func main() {
 
