@@ -5,8 +5,10 @@
 
 package main
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 // Suppose we wanted to create a file, write to it,
 // and then close when we're done. Here's how we could

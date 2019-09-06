@@ -8,8 +8,10 @@ package main
 // Go provides a `flag` package supporting basic
 // command-line flag parsing. We'll use this package to
 // implement our example command-line program.
-import "flag"
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
 

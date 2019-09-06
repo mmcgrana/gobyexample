@@ -43,7 +43,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/e6hp3Rn-oH6"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/tAWAkRlBJNX"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -56,8 +56,10 @@ builtins first.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;sort&quot;</span>
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;sort&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -158,7 +160,7 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000Aimport \"sort\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    strs := []string{\"c\", \"a\", \"b\"}\u000A    sort.Strings(strs)\u000A    fmt.Println(\"Strings:\", strs)\u000A');codeLines.push('    ints := []int{7, 2, 4}\u000A    sort.Ints(ints)\u000A    fmt.Println(\"Ints:   \", ints)\u000A');codeLines.push('    s := sort.IntsAreSorted(ints)\u000A    fmt.Println(\"Sorted: \", s)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    strs := []string{\"c\", \"a\", \"b\"}\u000A    sort.Strings(strs)\u000A    fmt.Println(\"Strings:\", strs)\u000A');codeLines.push('    ints := []int{7, 2, 4}\u000A    sort.Ints(ints)\u000A    fmt.Println(\"Ints:   \", ints)\u000A');codeLines.push('    s := sort.IntsAreSorted(ints)\u000A    fmt.Println(\"Sorted: \", s)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

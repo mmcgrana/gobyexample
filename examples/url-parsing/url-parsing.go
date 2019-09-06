@@ -3,9 +3,11 @@
 
 package main
 
-import "fmt"
-import "net"
-import "net/url"
+import (
+	"fmt"
+	"net"
+	"net/url"
+)
 
 func main() {
 

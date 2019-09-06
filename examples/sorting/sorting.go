@@ -4,8 +4,10 @@
 
 package main
 
-import "fmt"
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 
