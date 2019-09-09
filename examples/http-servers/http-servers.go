@@ -17,7 +17,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	// Functions serving as handlers take a
 	// `http.ResponseWriter` and a `http.Request` as
 	// arguments. The response writer is used to fill in the
-	// HTTP response. Here out simple response is just
+	// HTTP response. Here our simple response is just
 	// "hello\n".
 	fmt.Fprintf(w, "hello\n")
 }

@@ -4,8 +4,10 @@
 
 package main
 
-import s "strings"
-import "fmt"
+import (
+	"fmt"
+	s "strings"
+)
 
 // We alias `fmt.Println` to a shorter name as we'll use
 // it a lot below.

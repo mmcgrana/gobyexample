@@ -5,8 +5,10 @@ package main
 
 // The built-in package `strconv` provides the number
 // parsing.
-import "strconv"
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 

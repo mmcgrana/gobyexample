@@ -15,8 +15,12 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var cacheDir = "/tmp/gobyexample-cache"
+// siteDir is the target directory into which the HTML gets generated. Its
+// default is set here but can be changed by an argument passed into the
+// program.
 var siteDir = "./public"
+
+var cacheDir = "/tmp/gobyexample-cache"
 var pygmentizeBin = "./vendor/pygments/pygmentize"
 
 func verbose() bool {
@@ -125,7 +129,7 @@ var dashPat = regexp.MustCompile("\\-+")
 // Seg is a segment of an example
 type Seg struct {
 	Docs, DocsRendered              string
-	Code, CodeRendered              string
+	Code, CodeRendered, CodeForJs   string
 	CodeEmpty, CodeLeading, CodeRun bool
 }
 
@@ -134,6 +138,7 @@ type Example struct {
 	ID, Name                    string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
+	PrevExample                 *Example
 	NextExample                 *Example
 }
 
@@ -218,6 +223,10 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 		}
 		if seg.Code != "" {
 			seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
+			// adding the content to the js code for copying to the clipboard
+			if strings.HasSuffix(sourcePath, ".go") {
+				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
+			}
 		}
 	}
 	// we are only interested in the 'go' code to pass to play.golang.org
@@ -266,6 +275,9 @@ func parseExamples() []*Example {
 		examples = append(examples, &example)
 	}
 	for i, example := range examples {
+		if i > 0 {
+			example.PrevExample = examples[i-1]
+		}
 		if i < (len(examples) - 1) {
 			example.NextExample = examples[i+1]
 		}
@@ -301,10 +313,17 @@ func renderExamples(examples []*Example) {
 }
 
 func main() {
+	if len(os.Args) > 1 {
+		siteDir = os.Args[1]
+	}
+	ensureDir(siteDir)
+
 	copyFile("templates/site.css", siteDir+"/site.css")
+	copyFile("templates/site.js", siteDir+"/site.js")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
 	copyFile("templates/404.html", siteDir+"/404.html")
 	copyFile("templates/play.png", siteDir+"/play.png")
+	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)

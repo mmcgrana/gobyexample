@@ -12,6 +12,15 @@ type person struct {
 	age  int
 }
 
+// NewPerson constructs a new person struct with the given name
+func NewPerson(name string) *person {
+	// You can safely return a pointer to local variable
+	// as a local variable will survive the scope of the function.
+	p := person{name: name}
+	p.age = 42
+	return &p
+}
+
 func main() {
 
 	// This syntax creates a new struct.
@@ -25,6 +34,9 @@ func main() {
 
 	// An `&` prefix yields a pointer to the struct.
 	fmt.Println(&person{name: "Ann", age: 40})
+
+	// It's idiomatic to encapsulate new struct creation in constructor functions
+	fmt.Println(NewPerson("Jon"))
 
 	// Access struct fields with a dot.
 	s := person{name: "Sean", age: 50}

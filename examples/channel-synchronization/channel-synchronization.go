@@ -6,8 +6,10 @@
 
 package main
 
-import "fmt"
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 // This is the function we'll run in a goroutine. The
 // `done` channel will be used to notify another

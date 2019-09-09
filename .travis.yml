@@ -15,4 +15,4 @@ script:
   - tools/build
 
 env:
-  - VERBOSE=1
+  - VERBOSE=1 TESTING=1

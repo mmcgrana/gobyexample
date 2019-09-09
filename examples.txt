@@ -46,6 +46,7 @@ String Functions
 String Formatting
 Regular Expressions
 JSON
+XML
 Time
 Epoch
 Time Formatting / Parsing
@@ -58,6 +59,8 @@ Reading Files
 Writing Files
 Line Filters
 File Paths
+Directories
+Temporary Files and Directories
 Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands

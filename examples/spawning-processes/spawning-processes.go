@@ -7,9 +7,11 @@
 
 package main
 
-import "fmt"
-import "io/ioutil"
-import "os/exec"
+import (
+	"fmt"
+	"io/ioutil"
+	"os/exec"
+)
 
 func main() {
 

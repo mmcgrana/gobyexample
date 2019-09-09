@@ -4,9 +4,11 @@
 
 package main
 
-import "encoding/json"
-import "fmt"
-import "os"
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+)
 
 // We'll use these two structs to demonstrate encoding and
 // decoding of custom types below.
@@ -14,6 +16,9 @@ type response1 struct {
 	Page   int
 	Fruits []string
 }
+
+// Only exported fields will be encoded/decoded in JSON.
+// Fields must start with capital letters to be exported.
 type response2 struct {
 	Page   int      `json:"page"`
 	Fruits []string `json:"fruits"`
