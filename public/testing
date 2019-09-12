@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: Testing</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'temporary-files-and-directories';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'command-line-arguments';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="testing">
+      <h2><a href="./">Go by Example</a>: Testing</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Unit testing is an important part of writing
+principled Go programs. The <code>testing</code> package
+provides the tools we need to write unit tests
+and the <code>go test</code> command runs tests.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>For the sake of demonstration, this code is in package
+<code>main</code>, but it could be any package. Testing code
+typically lives in the same package as the code it tests.</p>
+
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/fyy7h1adGWr"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;testing&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We&rsquo;ll be testing this simple implementation of an
+integer minimum. Typically, the code we&rsquo;re testing
+would be in a source file named something like
+<code>intutils.go</code>, and the test file for it would then
+be named <code>intutils_test.go</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">IntMin</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">b</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>A test is created by writing a function with a name
+beginning with <code>Test</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">TestIntMinBasic</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ans</span> <span class="o">:=</span> <span class="nx">IntMin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">2</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>t.Error*</code> will report test failures but continue
+executing the test. <code>t.Fail*</code> will report test
+failures and stop the test immediately.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>        <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;IntMin(2, -2) = %d; want -2&quot;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Writing tests can be repetitive, so it&rsquo;s idiomatic to
+use a <em>table-driven style</em>, where test inputs and
+expected outputs are listed in a table and a single loop
+walks over them and performs the test logic.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">TestIntMinTableDriven</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+        <span class="nx">want</span> <span class="kt">int</span>
+    <span class="p">}{</span>
+        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span>
+        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>t.Run enables running &ldquo;subtests&rdquo;, one for each
+table entry. These are shown separately
+when executing <code>go test -v</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tt</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>        <span class="nx">testname</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d,%d&quot;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">testname</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ans</span> <span class="o">:=</span> <span class="nx">IntMin</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;got %d, want %d&quot;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Run all tests in the current project in verbose mode.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go <span class="nb">test</span> -v
+<span class="go">== RUN   TestIntMinBasic</span>
+<span class="go">--- PASS: TestIntMinBasic (0.00s)</span>
+<span class="go">=== RUN   TestIntMinTableDriven</span>
+<span class="go">=== RUN   TestIntMinTableDriven/0,1</span>
+<span class="go">=== RUN   TestIntMinTableDriven/1,0</span>
+<span class="go">=== RUN   TestIntMinTableDriven/2,-2</span>
+<span class="go">=== RUN   TestIntMinTableDriven/0,-1</span>
+<span class="go">=== RUN   TestIntMinTableDriven/-1,0</span>
+<span class="go">--- PASS: TestIntMinTableDriven (0.00s)</span>
+<span class="go">    --- PASS: TestIntMinTableDriven/0,1 (0.00s)</span>
+<span class="go">    --- PASS: TestIntMinTableDriven/1,0 (0.00s)</span>
+<span class="go">    --- PASS: TestIntMinTableDriven/2,-2 (0.00s)</span>
+<span class="go">    --- PASS: TestIntMinTableDriven/0,-1 (0.00s)</span>
+<span class="go">    --- PASS: TestIntMinTableDriven/-1,0 (0.00s)</span>
+<span class="go">PASS</span>
+<span class="go">ok      examples/testing    0.023s</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/testing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"testing\"\u000A)\u000A');codeLines.push('func IntMin(a, b int) int {\u000A    if a \x3C b {\u000A        return a\u000A    } else {\u000A        return b\u000A    }\u000A}\u000A');codeLines.push('func TestIntMinBasic(t *testing.T) {\u000A    ans := IntMin(2, -2)\u000A    if ans != -2 {\u000A');codeLines.push('        t.Errorf(\"IntMin(2, -2) = %d; want -2\", ans)\u000A    }\u000A}\u000A');codeLines.push('func TestIntMinTableDriven(t *testing.T) {\u000A    var tests = []struct {\u000A        a, b int\u000A        want int\u000A    }{\u000A        {0, 1, 0},\u000A        {1, 0, 0},\u000A        {2, -2, -2},\u000A        {0, -1, -1},\u000A        {-1, 0, -1},\u000A    }\u000A');codeLines.push('    for _, tt := range tests {\u000A');codeLines.push('        testname := fmt.Sprintf(\"%d,%d\", tt.a, tt.b)\u000A        t.Run(testname, func(t *testing.T) {\u000A            ans := IntMin(tt.a, tt.b)\u000A            if ans != tt.want {\u000A                t.Errorf(\"got %d, want %d\", ans, tt.want)\u000A            }\u000A        })\u000A    }\u000A}\u000A');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

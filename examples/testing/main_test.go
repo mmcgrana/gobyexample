@@ -3,7 +3,7 @@
 // provides the tools we need to write unit tests
 // and the `go test` command runs tests.
 
-// For the same of demonstration, this code is in package
+// For the sake of demonstration, this code is in package
 // `main`, but it could be any package. Testing code
 // typically lives in the same package as the code it tests.
 package main
@@ -29,12 +29,12 @@ func IntMin(a, b int) int {
 // A test is created by writing a function with a name
 // beginning with `Test`.
 func TestIntMinBasic(t *testing.T) {
-	result := IntMin(2, -2)
-	if result != -2 {
+	ans := IntMin(2, -2)
+	if ans != -2 {
 		// `t.Error*` will report test failures but continue
 		// executing the test. `t.Fail*` will report test
 		// failures and stop the test immediately.
-		t.Errorf("IntMin(2, -2) = %d; want -2", result)
+		t.Errorf("IntMin(2, -2) = %d; want -2", ans)
 	}
 }
 
@@ -44,8 +44,8 @@ func TestIntMinBasic(t *testing.T) {
 // walks over them and performs the test logic.
 func TestIntMinTableDriven(t *testing.T) {
 	var tests = []struct {
-		a, b     int
-		expected int
+		a, b int
+		want int
 	}{
 		{0, 1, 0},
 		{1, 0, 0},
@@ -56,12 +56,13 @@ func TestIntMinTableDriven(t *testing.T) {
 
 	for _, tt := range tests {
 		// t.Run enables running "subtests", one for each
-		// table entry. These will be reported separately
+		// table entry. These are shown separately
 		// when executing `go test -v`.
-		t.Run(fmt.Sprintf("%d,%d", tt.a, tt.b), func(t *testing.T) {
-			result := IntMin(tt.a, tt.b)
-			if result != tt.expected {
-				t.Errorf("got %d, want %d", result, tt.expected)
+		testname := fmt.Sprintf("%d,%d", tt.a, tt.b)
+		t.Run(testname, func(t *testing.T) {
+			ans := IntMin(tt.a, tt.b)
+			if ans != tt.want {
+				t.Errorf("got %d, want %d", ans, tt.want)
 			}
 		})
 	}

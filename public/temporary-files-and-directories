@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'command-line-arguments';
+              window.location.href = 'testing';
           }
           
       }
@@ -232,7 +232,7 @@ prefixing them with our temporary directory.</p>
       
       
       <p class="next">
-        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+        Next example: <a href="testing">Testing</a>.
       </p>
       
       <p class="footer">
