@@ -244,10 +244,10 @@ pointers are automatically dereferenced.</p>
 <span class="go">{Alice 30}</span>
 <span class="go">{Fred 0}</span>
 <span class="go">&amp;{Ann 40}</span>
+<span class="go">&amp;{Jon 42}</span>
 <span class="go">Sean</span>
 <span class="go">50</span>
 <span class="go">51</span>
-<span class="go">&amp;{Jon 42}</span>
 </pre></div>
 
           </td>
