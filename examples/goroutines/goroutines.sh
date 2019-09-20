@@ -10,7 +10,6 @@ goroutine : 0
 going
 goroutine : 1
 goroutine : 2
-<enter>
 done
 
 # Next we'll look at a complement to goroutines in

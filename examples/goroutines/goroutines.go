@@ -2,7 +2,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func f(from string) {
 	for i := 0; i < 3; i++ {
@@ -29,9 +32,8 @@ func main() {
 	}("going")
 
 	// Our two function calls are running asynchronously in
-	// separate goroutines now, so execution falls through
-	// to here. This `Scanln` requires we press a key
-	// before the program exits.
-	fmt.Scanln()
+	// separate goroutines now. Wait for them to finish
+	// (for a more robust approach, use a [WaitGroup](waitgroups)).
+	time.Sleep(time.Second)
 	fmt.Println("done")
 }
