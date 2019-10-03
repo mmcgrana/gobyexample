@@ -29,6 +29,8 @@ func main() {
 	} else {
 		fmt.Println(num, "has multiple digits")
 	}
+	// else has to be in same line as closing parenthesis 
+	// Moving else to the next line would cause a syntax error
 }
 
 // Note that you don't need parentheses around conditions
