@@ -1,6 +1,6 @@
-// Go has various value types including strings,
-// integers, floats, booleans, etc. Here are a few
-// basic examples.
+// В Go существуют различные типы значений: строки,
+// целые числа, числа с плавающей точкой, булевы и т.д.
+// Вот некоторые примеры
 
 package main
 
@@ -8,14 +8,14 @@ import "fmt"
 
 func main() {
 
-	// Strings, which can be added together with `+`.
+	// Строки могут быть сложены с помощью символа `+`.
 	fmt.Println("go" + "lang")
 
-	// Integers and floats.
+	// Целый числа и числа с плавающей точкой.
 	fmt.Println("1+1 =", 1+1)
 	fmt.Println("7.0/3.0 =", 7.0/3.0)
 
-	// Booleans, with boolean operators as you'd expect.
+	// Логические значения с логическими операторами
 	fmt.Println(true && false)
 	fmt.Println(true || false)
 	fmt.Println(!true)

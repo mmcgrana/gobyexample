@@ -1,5 +1,5 @@
-// _Maps_ are Go's built-in [associative data type](http://en.wikipedia.org/wiki/Associative_array)
-// (sometimes called _hashes_ or _dicts_ in other languages).
+// Карты - это встроенный [ассоциативный тип данных](http://en.wikipedia.org/wiki/Associative_array)
+// Go (иногда называемый _хешами_).
 
 package main
 
@@ -7,44 +7,44 @@ import "fmt"
 
 func main() {
 
-	// To create an empty map, use the builtin `make`:
+	// Для создания пустой карты, используйте `make`:
 	// `make(map[key-type]val-type)`.
 	m := make(map[string]int)
 
-	// Set key/value pairs using typical `name[key] = val`
-	// syntax.
+	// Вы можете установить пару ключ/значение
+	// используя привычный синтаксис `name[key] = val`
 	m["k1"] = 7
 	m["k2"] = 13
 
-	// Printing a map with e.g. `fmt.Println` will show all of
-	// its key/value pairs.
+	// Вывод карты на экран с помощью `fmt.Println`
+	// выведет все пары ключ/значение
 	fmt.Println("map:", m)
 
-	// Get a value for a key with `name[key]`.
+	// Получить значение по ключу `name[key]`.
 	v1 := m["k1"]
 	fmt.Println("v1: ", v1)
 
-	// The builtin `len` returns the number of key/value
-	// pairs when called on a map.
+	// Встроенная функция `len` возвращает количество
+	// пар ключ/значение для карты.
 	fmt.Println("len:", len(m))
 
-	// The builtin `delete` removes key/value pairs from
-	// a map.
+	// Встроенная функция `delete` удаляет пару key/value
+	// из карты.
 	delete(m, "k2")
 	fmt.Println("map:", m)
 
-	// The optional second return value when getting a
-	// value from a map indicates if the key was present
-	// in the map. This can be used to disambiguate
-	// between missing keys and keys with zero values
-	// like `0` or `""`. Here we didn't need the value
-	// itself, so we ignored it with the _blank identifier_
-	// `_`.
+	// Необязательное второе возвращаемое значение
+	// из карты сообщает о том, существовал ли ключ в карте.
+	// Это может быть использовано для устранения
+	// неоднозначности между отсутствующими ключами и
+	// ключами с нулевыми значениями, такими как 0 или
+	// "". Здесь нам не нужно само значение, поэтому
+	// мы проигнорировали его с пустым идентификатором _.
 	_, prs := m["k2"]
 	fmt.Println("prs:", prs)
 
-	// You can also declare and initialize a new map in
-	// the same line with this syntax.
+	// Вы можете объявить и наполнить карту в одной
+	// строке с помощью подобного синтаксиса.
 	n := map[string]int{"foo": 1, "bar": 2}
 	fmt.Println("map:", n)
 }

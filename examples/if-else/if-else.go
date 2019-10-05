@@ -1,5 +1,5 @@
-// Branching with `if` and `else` in Go is
-// straight-forward.
+// Условные операторы `if` и` else` в Go
+// выглядят достаточно стандартно
 
 package main
 
@@ -7,21 +7,21 @@ import "fmt"
 
 func main() {
 
-	// Here's a basic example.
+	// Стандартное использование
 	if 7%2 == 0 {
 		fmt.Println("7 is even")
 	} else {
 		fmt.Println("7 is odd")
 	}
 
-	// You can have an `if` statement without an else.
+	// Вы можете использовать блоке `if` без блока `else`.
 	if 8%4 == 0 {
 		fmt.Println("8 is divisible by 4")
 	}
 
-	// A statement can precede conditionals; any variables
-	// declared in this statement are available in all
-	// branches.
+	// Присваивание переменной может происходить до условия.
+	// Любые определенные значения будут доступны в
+	// последующих ветках
 	if num := 9; num < 0 {
 		fmt.Println(num, "is negative")
 	} else if num < 10 {
@@ -31,5 +31,5 @@ func main() {
 	}
 }
 
-// Note that you don't need parentheses around conditions
-// in Go, but that the braces are required.
+// Имейте ввиду, что в Go не надо использовать скобки в условии,
+// но блок необходимо заключать в фигурные скобки

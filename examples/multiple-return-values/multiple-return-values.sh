@@ -3,5 +3,6 @@ $ go run multiple-return-values.go
 7
 7
 
-# Accepting a variable number of arguments is another nice
-# feature of Go functions; we'll look at this next.
+# Принятие переменного количества аргументов -
+# еще одна приятная особенность функций Go;
+# Рассмотрим это дальше.

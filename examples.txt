@@ -1,19 +1,19 @@
 Hello World
-Values
-Variables
-Constants
-For
+Типы данных (Values)
+Переменные (Variables)
+Константы (Constants)
+Цикл For
 If/Else
 Switch
-Arrays
-Slices
-Maps
-Range
-Functions
-Multiple Return Values
-Variadic Functions
-Closures
-Recursion
+Массивы (Arrays)
+Срезы (Slices)
+Карты (Maps)
+Ряд (Range)
+Функции (Functions)
+Функции с множественным возвратом (Multiple Return Values)
+Функции с переменным числом аргументов (Variadic Functions)
+Замыкания (Closures)
+Рекурсия (Recursion)
 Pointers
 Structs
 Methods

@@ -1,5 +1,6 @@
-# Note that while slices are different types than arrays,
-# they are rendered similarly by `fmt.Println`.
+# Обратите внимание, несмотря на то что срезы
+# являются отдельным типом данных, отображаются
+# они так же как массивы командой `fmt.Println`.
 $ go run slices.go
 emp: [  ]
 set: [a b c]
@@ -13,9 +14,10 @@ sl3: [c d e f]
 dcl: [g h i]
 2d:  [[0] [1 2] [2 3 4]]
 
-# Check out this [great blog post](http://blog.golang.org/2011/01/go-slices-usage-and-internals.html)
-# by the Go team for more details on the design and
-# implementation of slices in Go.
+# Посмотрите этот [отличный пост](http://blog.golang.org/2011/01/go-slices-usage-and-internals.html),
+# написаный командой Go, чтобы узнать больше о разработке
+# и использовании срезов в Go.
 
-# Now that we've seen arrays and slices we'll look at
-# Go's other key builtin data structure: maps.
+# Теперь, когда мы рассмотрели массивы и срезы, мы
+# посмотрим другую ключевую встроенную структуру
+# данных Go: карты.

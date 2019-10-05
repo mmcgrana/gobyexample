@@ -1,6 +1,7 @@
-// _range_ iterates over elements in a variety of data
-// structures. Let's see how to use `range` with some
-// of the data structures we've already learned.
+// _range_ перебирает элементы в различных структурах
+// данных. Давайте посмотрим, как использовать
+// `range` с некоторыми из структур данных, которые
+// мы уже изучили.
 
 package main
 
@@ -8,8 +9,9 @@ import "fmt"
 
 func main() {
 
-	// Here we use `range` to sum the numbers in a slice.
-	// Arrays work like this too.
+	// В данном примере мы используем `range` для
+	// подсчета суммы чисел в срезе.
+	// Для массива синтаксис будет такой же.
 	nums := []int{2, 3, 4}
 	sum := 0
 	for _, num := range nums {
@@ -17,31 +19,31 @@ func main() {
 	}
 	fmt.Println("sum:", sum)
 
-	// `range` on arrays and slices provides both the
-	// index and value for each entry. Above we didn't
-	// need the index, so we ignored it with the
-	// blank identifier `_`. Sometimes we actually want
-	// the indexes though.
+	// `range` для массивов и срезов возвращает индекс
+	// и значение для каждого элемента. Если нам не
+	// требуется индекс, мы можем использовать оператор
+	// `_` для игнорирования. Иногда нам действительно
+	// необходимы индексы.
 	for i, num := range nums {
 		if num == 3 {
 			fmt.Println("index:", i)
 		}
 	}
 
-	// `range` on map iterates over key/value pairs.
+	// `range` для карт перебирает пары ключ/значение.
 	kvs := map[string]string{"a": "apple", "b": "banana"}
 	for k, v := range kvs {
 		fmt.Printf("%s -> %s\n", k, v)
 	}
 
-	// `range` can also iterate over just the keys of a map.
+	// `range` может перебирать только ключи в карте
 	for k := range kvs {
 		fmt.Println("key:", k)
 	}
 
-	// `range` on strings iterates over Unicode code
-	// points. The first value is the starting byte index
-	// of the `rune` and the second the `rune` itself.
+	// `range` для строк перебирает кодовые точки Unicode.
+	// Первое значение - это начальный байтовый индекс
+	// руны, а второе - сама руна.
 	for i, c := range "go" {
 		fmt.Println(i, c)
 	}
