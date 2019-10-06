@@ -18,7 +18,7 @@ func main() {
 	// statement can.
 	const n = 500000000
 
-	// Constant expressions perform arithmetic with
+	// Constant expressions perform arithmetic operations with
 	// arbitrary precision.
 	const d = 3e20 / n
 	fmt.Println(d)
