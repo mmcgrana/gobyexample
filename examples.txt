@@ -19,7 +19,7 @@ Switch
 Методы (Methods)
 Интерфейсы (Interfaces)
 Ошибки (Errors)
-Goroutines
+Горутины (Goroutines)
 Channels
 Channel Buffering
 Channel Synchronization
