@@ -17,7 +17,7 @@ Switch
 Указатели (Pointers)
 Структуры (Structs)
 Методы (Methods)
-Interfaces
+Интерфейсы (Interfaces)
 Errors
 Goroutines
 Channels
