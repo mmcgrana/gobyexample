@@ -1,21 +1,23 @@
-// Go's _structs_ are typed collections of fields.
-// They're useful for grouping data together to form
-// records.
+// _Структуры_ в Go - это коллекции полей определенных
+// типов. Как правило, они используются для логической
+// группировки данных.
 
 package main
 
 import "fmt"
 
-// This `person` struct type has `name` and `age` fields.
+// Структура `person` имеет два поля `name` и `age`.
 type person struct {
 	name string
 	age  int
 }
 
-// NewPerson constructs a new person struct with the given name
+// Функция NewPerson создает новую струкутуру person с
+// заданным именем.
 func NewPerson(name string) *person {
-	// You can safely return a pointer to local variable
-	// as a local variable will survive the scope of the function.
+	// Вы можете безопасно вернуть указатель на локальную
+	// переменную, так как локальная переменная переживет
+	// область действия функции.
 	p := person{name: name}
 	p.age = 42
 	return &p
@@ -23,31 +25,35 @@ func NewPerson(name string) *person {
 
 func main() {
 
-	// This syntax creates a new struct.
+	// Так создается новая структура
 	fmt.Println(person{"Bob", 20})
 
-	// You can name the fields when initializing a struct.
+	// Вы можете задавать имена для корректного
+	// присваивания значений при создании структуры
 	fmt.Println(person{name: "Alice", age: 30})
 
-	// Omitted fields will be zero-valued.
+	// Пропущенные поля будут нулевыми.
 	fmt.Println(person{name: "Fred"})
 
-	// An `&` prefix yields a pointer to the struct.
+	// Префикс `&` возвращает указатель на структуру.
 	fmt.Println(&person{name: "Ann", age: 40})
 
-	// It's idiomatic to encapsulate new struct creation in constructor functions
+	// Можно инкапсулировать создание новой структуры
+	// в функцию
 	fmt.Println(NewPerson("Jon"))
 
-	// Access struct fields with a dot.
+	// Доступ к полям структуры осуществляется через
+	// точку.
 	s := person{name: "Sean", age: 50}
 	fmt.Println(s.name)
 
-	// You can also use dots with struct pointers - the
-	// pointers are automatically dereferenced.
+	// Вы также можете использовать точки со
+	// структурными указателями - указатели автоматически
+	// разыменовываются.
 	sp := &s
 	fmt.Println(sp.age)
 
-	// Structs are mutable.
+	// Структуры мутабельны.
 	sp.age = 51
 	fmt.Println(sp.age)
 }
