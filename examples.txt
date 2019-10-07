@@ -16,7 +16,7 @@ Switch
 Рекурсия (Recursion)
 Указатели (Pointers)
 Структуры (Structs)
-Methods
+Методы (Methods)
 Interfaces
 Errors
 Goroutines
