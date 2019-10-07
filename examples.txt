@@ -22,7 +22,7 @@ Switch
 Горутины (Goroutines)
 Каналы (Channels)
 Буферизированный канал (Channel Buffering)
-Channel Synchronization
+Синхронизация канала (Channel Synchronization)
 Channel Directions
 Select
 Timeouts
