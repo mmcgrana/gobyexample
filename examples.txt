@@ -26,7 +26,7 @@ Switch
 Направления канала (Channel Directions)
 Select
 Тайм-ауты (Timeouts)
-Non-Blocking Channel Operations
+Неблокируемые операции в каналах (Non-Blocking Channel Operations)
 Closing Channels
 Range over Channels
 Timers
