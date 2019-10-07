@@ -21,7 +21,7 @@ Switch
 Ошибки (Errors)
 Горутины (Goroutines)
 Каналы (Channels)
-Channel Buffering
+Буферизированный канал (Channel Buffering)
 Channel Synchronization
 Channel Directions
 Select
