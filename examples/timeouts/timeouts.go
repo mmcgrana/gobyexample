@@ -1,7 +1,7 @@
-// _Timeouts_ are important for programs that connect to
-// external resources or that otherwise need to bound
-// execution time. Implementing timeouts in Go is easy and
-// elegant thanks to channels and `select`.
+// _Тайм-ауты_ важны для программ, которые подключаются
+// к внешним ресурсам или которым необходимо ограничить
+// время выполнения. Тайм-ауты в Go реализуются легко
+// и элегантно благодаря каналам и `select`'ам.
 
 package main
 
@@ -12,24 +12,24 @@ import (
 
 func main() {
 
-	// For our example, suppose we're executing an external
-	// call that returns its result on a channel `c1`
-	// after 2s. Note that the channel is buffered, so the
-	// send in the goroutine is nonblocking. This is a
-	// common pattern to prevent goroutine leaks in case the
-	// channel is never read.
+	// В нашем примере предположим, что мы выполняем внешний
+	// вызов, который возвращает результат на канале `c1`
+	// через 2с. Обратите внимание, что канал буферизован,
+	// поэтому отправка в goroutine неблокирующая. Это
+	// обычная схема предотвращения утечек горутин в случае,
+	// если канал никогда не читается.ё
 	c1 := make(chan string, 1)
 	go func() {
 		time.Sleep(2 * time.Second)
 		c1 <- "result 1"
 	}()
 
-	// Here's the `select` implementing a timeout.
-	// `res := <-c1` awaits the result and `<-Time.After`
-	// awaits a value to be sent after the timeout of
-	// 1s. Since `select` proceeds with the first
-	// receive that's ready, we'll take the timeout case
-	// if the operation takes more than the allowed 1s.
+	// Вот `select`, реализующий тайм-аут. `res := <-c1`
+	// ожидает результата, а `<-Time.After` ожидает
+	// значения, которое будет отправлено после истечения
+	// времени ожидания 1с. Поскольку `select` продолжает
+	// работу с первым полученным запросом, мы возьмем
+	// тайм-аут, если операция займет больше разрешенных 1с.
 	select {
 	case res := <-c1:
 		fmt.Println(res)
@@ -37,8 +37,9 @@ func main() {
 		fmt.Println("timeout 1")
 	}
 
-	// If we allow a longer timeout of 3s, then the receive
-	// from `c2` will succeed and we'll print the result.
+	// Если мы допустим время ожидания более 3с, то
+	// получение от `c2` будет успешным, и мы распечатаем
+	// результат.
 	c2 := make(chan string, 1)
 	go func() {
 		time.Sleep(2 * time.Second)
