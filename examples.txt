@@ -23,7 +23,7 @@ Switch
 Каналы (Channels)
 Буферизированный канал (Channel Buffering)
 Синхронизация канала (Channel Synchronization)
-Channel Directions
+Направления канала (Channel Directions)
 Select
 Timeouts
 Non-Blocking Channel Operations
