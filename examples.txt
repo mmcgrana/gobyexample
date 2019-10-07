@@ -20,7 +20,7 @@ Switch
 Интерфейсы (Interfaces)
 Ошибки (Errors)
 Горутины (Goroutines)
-Channels
+Каналы (Channels)
 Channel Buffering
 Channel Synchronization
 Channel Directions
