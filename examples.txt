@@ -18,7 +18,7 @@ Switch
 Структуры (Structs)
 Методы (Methods)
 Интерфейсы (Interfaces)
-Errors
+Ошибки (Errors)
 Goroutines
 Channels
 Channel Buffering
