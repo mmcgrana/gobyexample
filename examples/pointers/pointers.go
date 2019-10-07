@@ -1,26 +1,25 @@
-// Go supports <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-// allowing you to pass references to values and records
-// within your program.
+// Go поддерживает <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">указатели</a></em>,
+// позволяя вам передавать ссылки на значения и записи
+// в вашей программе.
 
 package main
 
 import "fmt"
 
-// We'll show how pointers work in contrast to values with
-// 2 functions: `zeroval` and `zeroptr`. `zeroval` has an
-// `int` parameter, so arguments will be passed to it by
-// value. `zeroval` will get a copy of `ival` distinct
-// from the one in the calling function.
+// Мы покажем, как работают указатели, на примере 2 функций:
+// `zeroval` и `zeroptr`. В `zeroval` определен только 1
+// аргумент с типом `int`, который передается по значению.
+// `zeroval` получает копию `ival` при вызове функции.
 func zeroval(ival int) {
 	ival = 0
 }
 
-// `zeroptr` in contrast has an `*int` parameter, meaning
-// that it takes an `int` pointer. The `*iptr` code in the
-// function body then _dereferences_ the pointer from its
-// memory address to the current value at that address.
-// Assigning a value to a dereferenced pointer changes the
-// value at the referenced address.
+// `zeroptr` получает в качестве аргумента параметр `*int`,
+// который является указателем на `int`. Запись `*iptr` в
+// теле функции _разыменовывает_ указатель с его адреса
+// памяти на текущее значение по этому адресу. Присвоение
+// значения разыменованному указателю изменяет значение
+// по указанному адресу.
 func zeroptr(iptr *int) {
 	*iptr = 0
 }
@@ -32,11 +31,11 @@ func main() {
 	zeroval(i)
 	fmt.Println("zeroval:", i)
 
-	// The `&i` syntax gives the memory address of `i`,
-	// i.e. a pointer to `i`.
+	// Запись `&i` получается ссылку на область памяти, в
+	// которой хранится `i`, т.е. указатель на `i`.
 	zeroptr(&i)
 	fmt.Println("zeroptr:", i)
 
-	// Pointers can be printed too.
+	// Указатели могут быть выведены на экран
 	fmt.Println("pointer:", &i)
 }

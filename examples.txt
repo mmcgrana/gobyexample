@@ -14,7 +14,7 @@ Switch
 Функции с переменным числом аргументов (Variadic Functions)
 Замыкания (Closures)
 Рекурсия (Recursion)
-Pointers
+Указатели (Pointers)
 Structs
 Methods
 Interfaces
