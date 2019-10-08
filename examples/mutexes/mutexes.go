@@ -1,7 +1,7 @@
-// In the previous example we saw how to manage simple
-// counter state using [atomic operations](atomic-counters).
-// For more complex state we can use a <em>[mutex](http://en.wikipedia.org/wiki/Mutual_exclusion)</em>
-// to safely access data across multiple goroutines.
+// В предыдущем примере мы увидели, как управлять простым
+// состоянием счетчика с помощью [атомарных операций](atomic-counters).
+// Для более сложного состояния мы можем использовать <em>мьютекс(http://en.wikipedia.org/wiki/Mutual_exclusion)</em>
+// для безопасного доступа к данным в нескольких горутинах.
 
 package main
 
@@ -15,45 +15,45 @@ import (
 
 func main() {
 
-	// For our example the `state` will be a map.
+	// Для нашего примера `state` будет картой.
 	var state = make(map[int]int)
 
-	// This `mutex` will synchronize access to `state`.
+	// Этот `mutex` будет синхронизировать доступ к `state`.
 	var mutex = &sync.Mutex{}
 
-	// We'll keep track of how many read and write
-	// operations we do.
+	// Мы будем отслеживать, сколько операций чтения и
+	// записи мы выполняем.
 	var readOps uint64
 	var writeOps uint64
 
-	// Here we start 100 goroutines to execute repeated
-	// reads against the state, once per millisecond in
-	// each goroutine.
+	// Здесь мы запускаем 100 горутин для выполнения
+	// повторных операций чтения по состоянию, один раз
+	// в миллисекунду в каждой горутине.
 	for r := 0; r < 100; r++ {
 		go func() {
 			total := 0
 			for {
 
-				// For each read we pick a key to access,
-				// `Lock()` the `mutex` to ensure
-				// exclusive access to the `state`, read
-				// the value at the chosen key,
-				// `Unlock()` the mutex, and increment
-				// the `readOps` count.
+				// Для каждого чтения мы выбираем ключ для
+				// доступа, блокируем `mutex` с помощью `Lock()` ,
+				// чтобы обеспечить исключительный доступ к
+				// `состоянию`, читаем значение в выбранном ключе,
+				// разблокируем мьютекс `Unlock()` и увеличиваем
+				// количество `readOps`.
 				key := rand.Intn(5)
 				mutex.Lock()
 				total += state[key]
 				mutex.Unlock()
 				atomic.AddUint64(&readOps, 1)
 
-				// Wait a bit between reads.
+				// Немного ждем между чтениями.
 				time.Sleep(time.Millisecond)
 			}
 		}()
 	}
 
-	// We'll also start 10 goroutines to simulate writes,
-	// using the same pattern we did for reads.
+	// Запустим так же 10 горутин для симуляции записи,
+	// так же как мы делали для чтения.
 	for w := 0; w < 10; w++ {
 		go func() {
 			for {
@@ -68,17 +68,18 @@ func main() {
 		}()
 	}
 
-	// Let the 10 goroutines work on the `state` and
-	// `mutex` for a second.
+	// Пусть 10 горутин работают над `состоянием` и
+	// `мьютексом` на секунду.
 	time.Sleep(time.Second)
 
-	// Take and report final operation counts.
+	// Смотрим финальное количество операций
 	readOpsFinal := atomic.LoadUint64(&readOps)
 	fmt.Println("readOps:", readOpsFinal)
 	writeOpsFinal := atomic.LoadUint64(&writeOps)
 	fmt.Println("writeOps:", writeOpsFinal)
 
-	// With a final lock of `state`, show how it ended up.
+	// С окончательной блокировкой `состояния` смотрим,
+	// как все закончилось.
 	mutex.Lock()
 	fmt.Println("state:", state)
 	mutex.Unlock()

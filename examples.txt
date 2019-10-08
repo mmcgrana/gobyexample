@@ -35,7 +35,7 @@ Select
 WaitGroups
 Ограничение скорости (Rate Limiting)
 Атомарные счетчики (Atomic Counters)
-Mutexes
+Мьютексы (Mutexes)
 Stateful Goroutines
 Sorting
 Sorting by Functions
