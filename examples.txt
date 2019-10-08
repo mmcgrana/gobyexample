@@ -27,7 +27,7 @@ Switch
 Select
 Тайм-ауты (Timeouts)
 Неблокируемые операции в каналах (Non-Blocking Channel Operations)
-Closing Channels
+Закрытие каналов (Closing Channels)
 Range over Channels
 Timers
 Tickers
