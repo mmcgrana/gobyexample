@@ -42,7 +42,7 @@ WaitGroups
 Panic
 Defer
 Функции коллекции (Collection Functions)
-String Functions
+Строковые функции (String Functions)
 String Formatting
 Regular Expressions
 JSON
