@@ -28,8 +28,8 @@ Select
 Тайм-ауты (Timeouts)
 Неблокируемые операции в каналах (Non-Blocking Channel Operations)
 Закрытие каналов (Closing Channels)
-Range over Channels
-Timers
+Перебор значений из каналов (Range over Channels)
+Таймеры (Timers)
 Tickers
 Worker Pools
 WaitGroups
