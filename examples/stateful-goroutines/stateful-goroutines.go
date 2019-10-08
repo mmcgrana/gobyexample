@@ -1,11 +1,11 @@
-// In the previous example we used explicit locking with
-// [mutexes](mutexes) to synchronize access to shared state
-// across multiple goroutines. Another option is to use the
-// built-in synchronization features of  goroutines and
-// channels to achieve the same result. This channel-based
-// approach aligns with Go's ideas of sharing memory by
-// communicating and having each piece of data owned
-// by exactly 1 goroutine.
+// В предыдущем примере мы использовали явную блокировку
+// с [мьютексами](mutexes) для синхронизации доступа к
+// общему состоянию между несколькими горутинами. Другой
+// вариант - использовать встроенные функции синхронизации
+// для горутин и каналов для достижения того же результата.
+// Этот подход, основанный на каналах, согласуется с идеями
+// Go о совместном использовании памяти путем обмена
+// данными и владения каждой частью данных ровно 1 горутиной.
 
 package main
 
@@ -16,6 +16,14 @@ import (
 	"time"
 )
 
+// В этом примере наше состояние будет принадлежать
+// единственной горутине. Это гарантирует, что данные
+// никогда не будут повреждены при одновременном доступе.
+// Чтобы прочитать или записать это состояние, другие
+// горутины будут отправлять сообщения горутин-владельцу
+// и получать соответствующие ответы. Эти `структуры`
+// `readOp` и `writeOp` инкапсулируют эти запросы и
+// способ, которым владеет горутина-ответчик.
 // In this example our state will be owned by a single
 // goroutine. This will guarantee that the data is never
 // corrupted with concurrent access. In order to read or
@@ -36,25 +44,26 @@ type writeOp struct {
 
 func main() {
 
-	// As before we'll count how many operations we perform.
+	// Как и прежде, мы посчитаем, сколько операций мы
+	// выполняем.
 	var readOps uint64
 	var writeOps uint64
 
-	// The `reads` and `writes` channels will be used by
-	// other goroutines to issue read and write requests,
-	// respectively.
+	// Каналы `чтения` и `записи` будут использоваться
+	// другими горутинами для выдачи запросов на чтение
+	// и запись соответственно.
 	reads := make(chan readOp)
 	writes := make(chan writeOp)
 
-	// Here is the goroutine that owns the `state`, which
-	// is a map as in the previous example but now private
-	// to the stateful goroutine. This goroutine repeatedly
-	// selects on the `reads` and `writes` channels,
-	// responding to requests as they arrive. A response
-	// is executed by first performing the requested
-	// operation and then sending a value on the response
-	// channel `resp` to indicate success (and the desired
-	// value in the case of `reads`).
+	// Эта горутина, которой принадлежит состояние, она же
+	// является картой, как в предыдущем примере, но теперь
+	// является частной для горутины с сохранением состояния.
+	// Она постоянно выбирает каналы `чтения` и `записи`,
+	// отвечая на запросы по мере их поступления. Ответ
+	// выполняется, сначала выполняя запрошенную операцию,
+	// а затем отправляя значение по каналу `resp`,
+	// соответственно, чтобы указать успешность (и
+	// ребуемое значение в случае `reads`).
 	go func() {
 		var state = make(map[int]int)
 		for {
@@ -68,11 +77,11 @@ func main() {
 		}
 	}()
 
-	// This starts 100 goroutines to issue reads to the
-	// state-owning goroutine via the `reads` channel.
-	// Each read requires constructing a `readOp`, sending
-	// it over the `reads` channel, and the receiving the
-	// result over the provided `resp` channel.
+	// Запускаем 100 горутин для выдачи операций чтения
+	// в горутину владеющую состоянием, через канал `reads`.
+	// Каждое чтение требует создания `readOp`, отправки
+	// его по каналу `reads` и получения результата по
+	// `resp` каналу.
 	for r := 0; r < 100; r++ {
 		go func() {
 			for {
@@ -87,8 +96,7 @@ func main() {
 		}()
 	}
 
-	// We start 10 writes as well, using a similar
-	// approach.
+	// Так же делаем 10 записей.
 	for w := 0; w < 10; w++ {
 		go func() {
 			for {
@@ -104,10 +112,10 @@ func main() {
 		}()
 	}
 
-	// Let the goroutines work for a second.
+	// Дадим горутинам отработать 1 секунду
 	time.Sleep(time.Second)
 
-	// Finally, capture and report the op counts.
+	// Наконец, выводим данные счетчиков
 	readOpsFinal := atomic.LoadUint64(&readOps)
 	fmt.Println("readOps:", readOpsFinal)
 	writeOpsFinal := atomic.LoadUint64(&writeOps)

@@ -36,7 +36,7 @@ WaitGroups
 Ограничение скорости (Rate Limiting)
 Атомарные счетчики (Atomic Counters)
 Мьютексы (Mutexes)
-Stateful Goroutines
+Управление состоянием горутин (Stateful Goroutines)
 Sorting
 Sorting by Functions
 Panic
