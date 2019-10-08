@@ -33,7 +33,7 @@ Select
 Тикеры (повторения) (Tickers)
 Пулы воркеров (Worker Pools)
 WaitGroups
-Rate Limiting
+Ограничение скорости (Rate Limiting)
 Atomic Counters
 Mutexes
 Stateful Goroutines
