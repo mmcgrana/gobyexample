@@ -37,7 +37,7 @@ WaitGroups
 Атомарные счетчики (Atomic Counters)
 Мьютексы (Mutexes)
 Управление состоянием горутин (Stateful Goroutines)
-Sorting
+Сортировка (Sorting)
 Sorting by Functions
 Panic
 Defer

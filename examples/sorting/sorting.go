@@ -1,6 +1,6 @@
-// Go's `sort` package implements sorting for builtins
-// and user-defined types. We'll look at sorting for
-// builtins first.
+// Пакет `sort` реализует сортировку для встроенных и
+// пользовательских типов. Сначала рассмотрим сортировку
+// встроенных типов.
 
 package main
 
@@ -11,21 +11,21 @@ import (
 
 func main() {
 
-	// Sort methods are specific to the builtin type;
-	// here's an example for strings. Note that sorting is
-	// in-place, so it changes the given slice and doesn't
-	// return a new one.
+	// Методы сортировки специфичны для встроенного типа;
+	// Вот пример для строк. Обратите внимание, что
+	// сортировка выполняется на месте, поэтому она
+	// изменяет данный фрагмент и не возвращает новый.
 	strs := []string{"c", "a", "b"}
 	sort.Strings(strs)
 	fmt.Println("Strings:", strs)
 
-	// An example of sorting `int`s.
+	// Пример сортировки `int`'ов
 	ints := []int{7, 2, 4}
 	sort.Ints(ints)
 	fmt.Println("Ints:   ", ints)
 
-	// We can also use `sort` to check if a slice is
-	// already in sorted order.
+	// Мы так же можем использовать `sort`, для
+	// проверки, что срез был уже отсортирован.
 	s := sort.IntsAreSorted(ints)
 	fmt.Println("Sorted: ", s)
 }

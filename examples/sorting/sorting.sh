@@ -1,5 +1,6 @@
-# Running our program prints the sorted string and int
-# slices and `true` as the result of our `AreSorted` test.
+# После запуска наша программа выведет отсортированные
+# строки и срез целых чисел и `true`, как результат
+# выполнения `AreSorted`.
 $ go run sorting.go
 Strings: [a b c]
 Ints:    [2 4 7]
