@@ -41,7 +41,7 @@ WaitGroups
 Сортировка через функции (Sorting by Functions)
 Panic
 Defer
-Collection Functions
+Функции коллекции (Collection Functions)
 String Functions
 String Formatting
 Regular Expressions

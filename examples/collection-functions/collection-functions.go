@@ -1,20 +1,21 @@
-// We often need our programs to perform operations on
-// collections of data, like selecting all items that
-// satisfy a given predicate or mapping all items to a new
-// collection with a custom function.
+// Нам часто нужны наши программы для выполнения операций
+// с коллекциями данных, таких как выбор всех элементов,
+// которые удовлетворяют данному предикату, или отображение
+// всех элементов в новую коллекцию с помощью
+// пользовательской функции.
 
-// In some languages it's idiomatic to use [generic](http://en.wikipedia.org/wiki/Generic_programming)
-// data structures and algorithms. Go does not support
-// generics; in Go it's common to provide collection
-// functions if and when they are specifically needed for
-// your program and data types.
+// В некоторых языках идиоматично использовать [дженерики](http://en.wikipedia.org/wiki/Generic_programming)
+// и алгоритмы. Go не поддерживает дженерики; в Go, как
+// правило, предоставляют функции коллекции если они
+// необходимы конкретно для вашей программы и ваших
+// типов данных.
 
-// Here are some example collection functions for slices
-// of `strings`. You can use these examples to build your
-// own functions. Note that in some cases it may be
-// clearest to just inline the collection-manipulating
-// code directly, instead of creating and calling a
-// helper function.
+// Вот несколько примеров функций коллекции для срезов
+// со `строковыми значениями`. Вы можете использовать эти
+// примеры, чтобы сделать собственные функции. Обратите
+// внимание, что в некоторых случаях, возможно, было бы
+// более явным встроить код, манипулирующий коллекциями,
+// вместо создания создания вспомогательных функций.
 
 package main
 
@@ -23,8 +24,8 @@ import (
 	"strings"
 )
 
-// Index returns the first index of the target string `t`, or
-// -1 if no match is found.
+// Возвращает первый индекс совпадения со строкой `t` или -1
+// если совпадение не найдено.
 func Index(vs []string, t string) int {
 	for i, v := range vs {
 		if v == t {
@@ -34,14 +35,13 @@ func Index(vs []string, t string) int {
 	return -1
 }
 
-// Include returns `true` if the target string t is in the
-// slice.
+// Возвращает `true` если строка `t` находится в срезе.
 func Include(vs []string, t string) bool {
 	return Index(vs, t) >= 0
 }
 
-// Any returns `true` if one of the strings in the slice
-// satisfies the predicate `f`.
+// Возвращает `true` если одна из строк в срезе
+// удовлетворяет условию `f`.
 func Any(vs []string, f func(string) bool) bool {
 	for _, v := range vs {
 		if f(v) {
@@ -51,8 +51,8 @@ func Any(vs []string, f func(string) bool) bool {
 	return false
 }
 
-// All returns `true` if all of the strings in the slice
-// satisfy the predicate `f`.
+// Возвращает `true` если все из строк в срезе
+// удовлетворяют условие `f`.
 func All(vs []string, f func(string) bool) bool {
 	for _, v := range vs {
 		if !f(v) {
@@ -62,8 +62,8 @@ func All(vs []string, f func(string) bool) bool {
 	return true
 }
 
-// Filter returns a new slice containing all strings in the
-// slice that satisfy the predicate `f`.
+// Возвращает новый срез, содержащий все строки в срезе,
+// которые удовлетворяют условие `f`.
 func Filter(vs []string, f func(string) bool) []string {
 	vsf := make([]string, 0)
 	for _, v := range vs {
@@ -74,8 +74,8 @@ func Filter(vs []string, f func(string) bool) []string {
 	return vsf
 }
 
-// Map returns a new slice containing the results of applying
-// the function `f` to each string in the original slice.
+// Возвращает новый срез, содержащий результаты выполнения
+// функции `f` с каждой строкой исходного слайса.
 func Map(vs []string, f func(string) string) []string {
 	vsm := make([]string, len(vs))
 	for i, v := range vs {
@@ -86,7 +86,7 @@ func Map(vs []string, f func(string) string) []string {
 
 func main() {
 
-	// Here we try out our various collection functions.
+	// Здесь мы пробуем различные функции коллекций.
 	var strs = []string{"peach", "apple", "pear", "plum"}
 
 	fmt.Println(Index(strs, "pear"))
@@ -105,9 +105,9 @@ func main() {
 		return strings.Contains(v, "e")
 	}))
 
-	// The above examples all used anonymous functions,
-	// but you can also use named functions of the correct
-	// type.
+	// Все примеры, приведенные выше, использовали
+	// анонимные функции, но вы можете использовать именные
+	// функции корректного типа.
 	fmt.Println(Map(strs, strings.ToUpper))
 
 }
