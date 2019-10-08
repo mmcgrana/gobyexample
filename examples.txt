@@ -38,7 +38,7 @@ WaitGroups
 Мьютексы (Mutexes)
 Управление состоянием горутин (Stateful Goroutines)
 Сортировка (Sorting)
-Sorting by Functions
+Сортировка через функции (Sorting by Functions)
 Panic
 Defer
 Collection Functions

@@ -1,8 +1,8 @@
-// Sometimes we'll want to sort a collection by something
-// other than its natural order. For example, suppose we
-// wanted to sort strings by their length instead of
-// alphabetically. Here's an example of custom sorts
-// in Go.
+// Иногда мы хотим отсортировать коллекцию по какому-то
+// другому признаку, кроме ее естественного порядка.
+// Например, предположим, что мы хотели бы отсортировать
+// строки по длине, а не по алфавиту. Вот пример
+// пользовательских сортировок в Go.
 
 package main
 
@@ -11,19 +11,20 @@ import (
 	"sort"
 )
 
-// In order to sort by a custom function in Go, we need a
-// corresponding type. Here we've created a `byLength`
-// type that is just an alias for the builtin `[]string`
-// type.
+// Для сортировки по пользовательской функции в Go нам
+// нужен соответствующий тип. Здесь мы создали тип
+// `byLength`, который является просто псевдонимом для
+// `[]string`.
 type byLength []string
 
-// We implement `sort.Interface` - `Len`, `Less`, and
-// `Swap` - on our type so we can use the `sort` package's
-// generic `Sort` function. `Len` and `Swap`
-// will usually be similar across types and `Less` will
-// hold the actual custom sorting logic. In our case we
-// want to sort in order of increasing string length, so
-// we use `len(s[i])` and `len(s[j])` here.
+// Мы реализуем `sort.Interface` - Len`, `Less` и `Swap`
+// - для нашего типа, чтобы мы могли использовать общую
+// функцию `Sort` пакета `sort`. `Len` и `Swap` обычно
+// одинаковы для разных типов, а `Less` будет содержать
+// реальную пользовательскую логику сортировки. В нашем
+// случае мы хотим отсортировать в порядке увеличения
+// длины строки, поэтому мы используем `len(s[i])` и
+// `len(s[j])` здесь.
 func (s byLength) Len() int {
 	return len(s)
 }
@@ -34,10 +35,10 @@ func (s byLength) Less(i, j int) bool {
 	return len(s[i]) < len(s[j])
 }
 
-// With all of this in place, we can now implement our
-// custom sort by converting the original `fruits` slice
-// to `byLength`, and then use `sort.Sort` on that typed
-// slice.
+// Реализовав интерфейс, мы можем теперь реализовать
+// нашу собственную сортировку, преобразовав исходный
+// срез `fruits` в `byLength`, а затем использовать
+// `sort.Sort` для этого типизированного среза.
 func main() {
 	fruits := []string{"peach", "banana", "kiwi"}
 	sort.Sort(byLength(fruits))
