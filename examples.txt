@@ -30,7 +30,7 @@ Select
 Закрытие каналов (Closing Channels)
 Перебор значений из каналов (Range over Channels)
 Таймеры (Timers)
-Tickers
+Тикеры (повторения) (Tickers)
 Worker Pools
 WaitGroups
 Rate Limiting
