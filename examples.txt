@@ -34,7 +34,7 @@ Select
 Пулы воркеров (Worker Pools)
 WaitGroups
 Ограничение скорости (Rate Limiting)
-Atomic Counters
+Атомарные счетчики (Atomic Counters)
 Mutexes
 Stateful Goroutines
 Sorting

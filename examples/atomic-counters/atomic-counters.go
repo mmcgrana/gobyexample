@@ -1,9 +1,8 @@
-// The primary mechanism for managing state in Go is
-// communication over channels. We saw this for example
-// with [worker pools](worker-pools). There are a few other
-// options for managing state though. Here we'll
-// look at using the `sync/atomic` package for _atomic
-// counters_ accessed by multiple goroutines.
+// Основным механизмом управления состоянием в Go является
+// связь по каналам. Мы видели это, например, с [пулами воркеров](worker-pools).
+// Есть несколько других вариантов управления состоянием.
+// Здесь мы рассмотрим использование пакета `sync/atomic`
+// для _атомарных счетчиков_, к которым обращаются горутины.
 
 package main
 
@@ -15,38 +14,37 @@ import (
 
 func main() {
 
-	// We'll use an unsigned integer to represent our
-	// (always-positive) counter.
+	// Мы будем использовать целое число без знака
+	// для представления нашего (всегда положительного)
+	// счетчика.
 	var ops uint64
 
-	// A WaitGroup will help us wait for all goroutines
-	// to finish their work.
+	// WaitGroup поможет нам подождать, пока все горутины
+	// завершат свою работу.
 	var wg sync.WaitGroup
 
-	// We'll start 50 goroutines that each increment the
-	// counter exactly 1000 times.
+	// Мы запустим 50 горутин, каждая из которых увеличивает
+	// счетчик ровно в 1000 раз.
 	for i := 0; i < 50; i++ {
 		wg.Add(1)
 
 		go func() {
 			for c := 0; c < 1000; c++ {
-				// To atomically increment the counter we
-				// use `AddUint64`, giving it the memory
-				// address of our `ops` counter with the
-				// `&` syntax.
+				// Для атомарного увеличения счетчика мы
+				// используем AddUint64, присваивая ему адрес
+				// памяти нашего счетчика `ops` с префиксом `&`.
 				atomic.AddUint64(&ops, 1)
 			}
 			wg.Done()
 		}()
 	}
 
-	// Wait until all the goroutines are done.
+	// Ждем пока завершатся горутины.
 	wg.Wait()
 
-	// It's safe to access `ops` now because we know
-	// no other goroutine is writing to it. Reading
-	// atomics safely while they are being updated is
-	// also possible, using functions like
-	// `atomic.LoadUint64`.
+	// Теперь доступ к `ops` безопасен, потому что мы знаем,
+	// что никакие другие горутины не пишут в него. Безопасное
+	// чтение атомарного счетчика во время его обновления также
+	// возможно, используя функцию `atomic.LoadUint64`.
 	fmt.Println("ops:", ops)
 }
