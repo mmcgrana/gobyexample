@@ -31,7 +31,7 @@ Select
 Перебор значений из каналов (Range over Channels)
 Таймеры (Timers)
 Тикеры (повторения) (Tickers)
-Worker Pools
+Пулы воркеров (Worker Pools)
 WaitGroups
 Rate Limiting
 Atomic Counters

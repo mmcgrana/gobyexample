@@ -1,7 +1,7 @@
-# Our running program shows the 5 jobs being executed by
-# various workers. The program only takes about 2 seconds
-# despite doing about 5 seconds of total work because
-# there are 3 workers operating concurrently.
+# Наша программа показывает 5 заданий, выполняемых
+# различными воркерами. Программа занимает всего около
+# 2 секунд, несмотря на выполнение около 5 секунд общей
+# работы, потому что одновременно работают 3 воркера.
 $ time go run worker-pools.go 
 worker 1 started  job 1
 worker 2 started  job 2
