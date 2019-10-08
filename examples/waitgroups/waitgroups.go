@@ -1,5 +1,5 @@
-// To wait for multiple goroutines to finish, we can
-// use a *wait group*.
+// Для ожидания выполнения нескольких горутин, мы можем
+// использовать встроенную конструкцию *WaitGroup*.
 
 package main
 
@@ -9,34 +9,35 @@ import (
 	"time"
 )
 
-// This is the function we'll run in every goroutine.
-// Note that a WaitGroup must be passed to functions by
-// pointer.
+// Эта функция, которую мы будем запускать в каждой
+// горутине. Обратите внимание, что WaitGroup должна
+// быть передана в функцию по указателю.
 func worker(id int, wg *sync.WaitGroup) {
 	fmt.Printf("Worker %d starting\n", id)
 
-	// Sleep to simulate an expensive task.
+	// Sleep симулирует тяжелую задачу.
 	time.Sleep(time.Second)
 	fmt.Printf("Worker %d done\n", id)
 
-	// Notify the WaitGroup that this worker is done.
+	// Оповестить WaitGroup что воркер выполнился
 	wg.Done()
 }
 
 func main() {
 
-	// This WaitGroup is used to wait for all the
-	// goroutines launched here to finish.
+	// Эта WaitGroup используется для ожидания выполнения
+	// всех горутинё запущенных здесь.
 	var wg sync.WaitGroup
 
-	// Launch several goroutines and increment the WaitGroup
-	// counter for each.
+	// Запускаем несколько горутин и инкрементируем счетчик
+	// в WaitGroup для каждой запущенной горутины.
 	for i := 1; i <= 5; i++ {
 		wg.Add(1)
 		go worker(i, &wg)
 	}
 
-	// Block until the WaitGroup counter goes back to 0;
-	// all the workers notified they're done.
+	// Блокируем звершение программы до момента, пока
+	// счетчик WaitGroup снова не станет равным 0.
+	// Это будет означать, что все горутины выполнились.
 	wg.Wait()
 }
