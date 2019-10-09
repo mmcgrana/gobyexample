@@ -27,7 +27,7 @@ func main() {
 	// get the key and value. Here we print all the keys.
 	fmt.Println()
 	for _, e := range os.Environ() {
-		pair := strings.Split(e, "=")
+		pair := strings.SplitN(e, "=", 2)
 		fmt.Println(pair[0])
 	}
 }
