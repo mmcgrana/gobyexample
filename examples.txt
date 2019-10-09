@@ -44,7 +44,7 @@ Defer
 Функции коллекции (Collection Functions)
 Строковые функции (String Functions)
 Форматирование строк (String Formatting)
-Regular Expressions
+Регулярные выражения (Regular Expressions)
 JSON
 XML
 Time
