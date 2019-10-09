@@ -43,7 +43,7 @@ Panic
 Defer
 Функции коллекции (Collection Functions)
 Строковые функции (String Functions)
-String Formatting
+Форматирование строк (String Formatting)
 Regular Expressions
 JSON
 XML
