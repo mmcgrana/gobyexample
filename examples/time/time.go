@@ -1,5 +1,5 @@
-// Go offers extensive support for times and durations;
-// here are some examples.
+// Go предлагает обширную поддержку для времени и
+// продолжительности; вот несколько примеров.
 
 package main
 
@@ -11,19 +11,18 @@ import (
 func main() {
 	p := fmt.Println
 
-	// We'll start by getting the current time.
+	// Начнем с получения текущего времени
 	now := time.Now()
 	p(now)
 
-	// You can build a `time` struct by providing the
-	// year, month, day, etc. Times are always associated
-	// with a `Location`, i.e. time zone.
+	// Вы можете построить структуру `time`, указав год,
+	// месяц, день и т.д. Время всегда связано с `местоположением`,
+	// т.е. часовым поясом.
 	then := time.Date(
 		2009, 11, 17, 20, 34, 58, 651387237, time.UTC)
 	p(then)
 
-	// You can extract the various components of the time
-	// value as expected.
+	// Вы можете извлечь различные компоненты значения времени.
 	p(then.Year())
 	p(then.Month())
 	p(then.Day())
@@ -33,31 +32,30 @@ func main() {
 	p(then.Nanosecond())
 	p(then.Location())
 
-	// The Monday-Sunday `Weekday` is also available.
+	// Получения дня недели доступно через метод  `Weekday`.
 	p(then.Weekday())
 
-	// These methods compare two times, testing if the
-	// first occurs before, after, or at the same time
-	// as the second, respectively.
+	// Эти методы сравниваются два раза, проверяя,
+	// происходит ли первый случай до, после или
+	// одновременно со вторым, соответственно.
 	p(then.Before(now))
 	p(then.After(now))
 	p(then.Equal(now))
 
-	// The `Sub` methods returns a `Duration` representing
-	// the interval between two times.
+	// Метод `Sub` возвращает `Duration`, интервал между
+	// двумя временами.
 	diff := now.Sub(then)
 	p(diff)
 
-	// We can compute the length of the duration in
-	// various units.
+	// Мы можем вычислить продолжительность.
 	p(diff.Hours())
 	p(diff.Minutes())
 	p(diff.Seconds())
 	p(diff.Nanoseconds())
 
-	// You can use `Add` to advance a time by a given
-	// duration, or with a `-` to move backwards by a
-	// duration.
+	// Вы можете использовать `Add`, чтобы продвинуть
+	// время на заданную продолжительность, или с `-`,
+	// чтобы переместиться назад.
 	p(then.Add(diff))
 	p(then.Add(-diff))
 }

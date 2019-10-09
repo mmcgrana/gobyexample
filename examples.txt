@@ -47,7 +47,7 @@ Defer
 Регулярные выражения (Regular Expressions)
 JSON
 XML
-Time
+Время (Time)
 Epoch
 Time Formatting / Parsing
 Random Numbers
