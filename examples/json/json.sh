@@ -15,7 +15,6 @@ apple
 {"apple":5,"lettuce":7}
 
 
-# We've covered the basic of JSON in Go here, but check
-# out the [JSON and Go](http://blog.golang.org/2011/01/json-and-go.html)
-# blog post and [JSON package docs](http://golang.org/pkg/encoding/json/)
-# for more.
+# Мы рассмотрели основы JSON в Go, но ознакомьтесь с
+# публикацией в блоге [JSON and Go](http://blog.golang.org/2011/01/json-and-go.html)
+# и документацией по [пакету JSON](http://golang.org/pkg/encoding/json/).
