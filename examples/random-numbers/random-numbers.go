@@ -1,6 +1,5 @@
-// Go's `math/rand` package provides
-// [pseudorandom number](http://en.wikipedia.org/wiki/Pseudorandom_number_generator)
-// generation.
+// Пакет Go `math/rand` обеспечивает генерацию
+// [псевдослучайных чисел](http://en.wikipedia.org/wiki/Pseudorandom_number_generator).
 
 package main
 
@@ -12,38 +11,42 @@ import (
 
 func main() {
 
-	// For example, `rand.Intn` returns a random `int` n,
-	// `0 <= n < 100`.
+	// Например, `rand.Intn` вернет случайное `целое число` в
+	// диапазоне `0 <= n < 100`.
 	fmt.Print(rand.Intn(100), ",")
 	fmt.Print(rand.Intn(100))
 	fmt.Println()
 
-	// `rand.Float64` returns a `float64` `f`,
-	// `0.0 <= f < 1.0`.
+	// `rand.Float64` вернет `число с плавающей точкой` в присвоит
+	// его в `f`, где `f` будет в промежутке `0.0 <= f < 1.0`.
 	fmt.Println(rand.Float64())
 
-	// This can be used to generate random floats in
-	// other ranges, for example `5.0 <= f' < 10.0`.
+	// Этот способ может быть использован для генерации других
+	// случайных чисел с плавающей точкой в разных диапазонах,
+	// например для диапазона `5.0 <= f' < 10.0`.
 	fmt.Print((rand.Float64()*5)+5, ",")
 	fmt.Print((rand.Float64() * 5) + 5)
 	fmt.Println()
 
-	// The default number generator is deterministic, so it'll
-	// produce the same sequence of numbers each time by default.
-	// To produce varying sequences, give it a seed that changes.
-	// Note that this is not safe to use for random numbers you
-	// intend to be secret, use `crypto/rand` for those.
+	// Генератор чисел по умолчанию является детерминированным,
+	// поэтому по умолчанию он будет каждый раз генерировать
+	// одну и ту же последовательность чисел. Чтобы произвести
+	// различные последовательности, дайте ему `соль`(https://ru.wikipedia.org/wiki/Соль_(криптография)),
+	// которая изменяется. Обратите внимание, что это не
+	// безопасно использовать для генерации случайных чисел,
+	// которые вы намерены хранить в секрете,  используйте
+	// `crypto/rand` для них.
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 
-	// Call the resulting `rand.Rand` just like the
-	// functions on the `rand` package.
+	// Вызвать результат `rand.Rand` можно точно так же, как и
+	// функции в пакете `rand`.
 	fmt.Print(r1.Intn(100), ",")
 	fmt.Print(r1.Intn(100))
 	fmt.Println()
 
-	// If you seed a source with the same number, it
-	// produces the same sequence of random numbers.
+	// Если вы используете одну и ту же соль для генерации
+	// чисел, то они будут совпадать.
 	s2 := rand.NewSource(42)
 	r2 := rand.New(s2)
 	fmt.Print(r2.Intn(100), ",")

@@ -50,7 +50,7 @@ XML
 Время (Time)
 Epoch
 Форматирование времени (Time Formatting / Parsing)
-Random Numbers
+Случайные числа (Random Numbers)
 Number Parsing
 URL Parsing
 SHA1 Hashes
