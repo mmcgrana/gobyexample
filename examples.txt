@@ -49,7 +49,7 @@ JSON
 XML
 Время (Time)
 Epoch
-Time Formatting / Parsing
+Форматирование времени (Time Formatting / Parsing)
 Random Numbers
 Number Parsing
 URL Parsing
