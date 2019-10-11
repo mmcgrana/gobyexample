@@ -58,7 +58,7 @@ Epoch
 Чтение файлов (Reading Files)
 Запись файлов (Writing Files)
 Строковые фильтры (Line Filters)
-File Paths
+Пути к файлам (File Paths)
 Directories
 Temporary Files and Directories
 Testing
