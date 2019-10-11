@@ -53,7 +53,7 @@ Epoch
 Случайные числа (Random Numbers)
 Парсинг чисел (Number Parsing)
 Парсинг URL (URL Parsing)
-SHA1 Hashes
+Хеш SHA1 (SHA1 Hashes)
 Base64 Encoding
 Reading Files
 Writing Files

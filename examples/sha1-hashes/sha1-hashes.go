@@ -1,14 +1,14 @@
-// [_SHA1 hashes_](http://en.wikipedia.org/wiki/SHA-1) are
-// frequently used to compute short identities for binary
-// or text blobs. For example, the [git revision control
-// system](http://git-scm.com/) uses SHA1s extensively to
-// identify versioned files and directories. Here's how to
-// compute SHA1 hashes in Go.
+// [_Хеши SHA1_](http://en.wikipedia.org/wiki/SHA-1) часто
+// используются для вычисления коротких идентификаторов
+// для двоичных или текстовых BLOB-объектов. Например,
+// [система контроля версий git](http://git-scm.com/) широко использует SHA1 для
+// идентификации версионных файлов и каталогов. Вот как
+// вычислить хэши SHA1 в Go.
 
 package main
 
-// Go implements several hash functions in various
-// `crypto/*` packages.
+// Go реализует несколько хеш-функций в пакете
+// `crypto/*`.
 import (
 	"crypto/sha1"
 	"fmt"
@@ -17,23 +17,24 @@ import (
 func main() {
 	s := "sha1 this string"
 
-	// The pattern for generating a hash is `sha1.New()`,
-	// `sha1.Write(bytes)`, then `sha1.Sum([]byte{})`.
-	// Here we start with a new hash.
+	// Для генерации хеша используется функция `sha1.New()`,
+	// `sha1.Write(bytes)`, затем `sha1.Sum([]byte{})`.
+	// Тут мы создаем новый хеш.
 	h := sha1.New()
 
-	// `Write` expects bytes. If you have a string `s`,
-	// use `[]byte(s)` to coerce it to bytes.
+	// В `Write` необходимо передать байты. Если у вас есть
+	// строка `s`, используйте `[]byte(s)`, чтобы привести
+	// ее к байтам.
 	h.Write([]byte(s))
 
-	// This gets the finalized hash result as a byte
-	// slice. The argument to `Sum` can be used to append
-	// to an existing byte slice: it usually isn't needed.
+	// Получаем окончательный результат хеш-функции в виде
+	// байтового фрагмента. Аргумент в `Sum` добавляет к
+	// существующему фрагменту байты, но обычно он не используется.
 	bs := h.Sum(nil)
 
-	// SHA1 values are often printed in hex, for example
-	// in git commits. Use the `%x` format verb to convert
-	// a hash results to a hex string.
+	// Значения SHA1 часто печатаются в шестнадцатеричном формате,
+	// например, в git commit. Используйте `%x` для преобразования
+	// результатов хеширования в шестнадцатеричную строку.
 	fmt.Println(s)
 	fmt.Printf("%x\n", bs)
 }
