@@ -61,7 +61,7 @@ Epoch
 Пути к файлам (File Paths)
 Директории (Directories)
 Временные файлы и директории (Temporary Files and Directories)
-Testing
+Тестирование (Testing)
 Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
