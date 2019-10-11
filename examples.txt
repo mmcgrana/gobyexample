@@ -55,7 +55,7 @@ Epoch
 Парсинг URL (URL Parsing)
 Хеш SHA1 (SHA1 Hashes)
 Кодирование Base64 (Base64 Encoding)
-Reading Files
+Чтение файлов (Reading Files)
 Writing Files
 Line Filters
 File Paths
