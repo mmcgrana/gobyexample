@@ -60,7 +60,7 @@ Epoch
 Строковые фильтры (Line Filters)
 Пути к файлам (File Paths)
 Директории (Directories)
-Temporary Files and Directories
+Временные файлы и директории (Temporary Files and Directories)
 Testing
 Command-Line Arguments
 Command-Line Flags
