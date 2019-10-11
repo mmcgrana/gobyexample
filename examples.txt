@@ -57,7 +57,7 @@ Epoch
 Кодирование Base64 (Base64 Encoding)
 Чтение файлов (Reading Files)
 Запись файлов (Writing Files)
-Line Filters
+Строковые фильтры (Line Filters)
 File Paths
 Directories
 Temporary Files and Directories

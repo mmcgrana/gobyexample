@@ -1,9 +1,9 @@
-# To try out our line filter, first make a file with a few
-# lowercase lines.
+# Чтобы опробовать наш фильтр строк, сначала создайте
+# файл с несколькими строчными строчками.
 $ echo 'hello'   > /tmp/lines
 $ echo 'filter' >> /tmp/lines
 
-# Then use the line filter to get uppercase lines.
+# Затем используйте фильтр строк, чтобы получить строчные буквы.
 $ cat /tmp/lines | go run line-filters.go
 HELLO
 FILTER

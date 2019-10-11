@@ -1,11 +1,13 @@
-// A _line filter_ is a common type of program that reads
-// input on stdin, processes it, and then prints some
-// derived result to stdout. `grep` and `sed` are common
-// line filters.
+// _Строковый фильтр_ - это типичный тип программы,
+// которая читает входные данные в stdin, обрабатывает
+// их и затем выводит некоторый производный результат в
+// стандартный вывод. `grep` и `sed` - это обычные строковые
+// фильтры.
 
-// Here's an example line filter in Go that writes a
-// capitalized version of all input text. You can use this
-// pattern to write your own Go line filters.
+// Вот пример строкового фильтра в Go, который записывает
+// заглавную версию всего входного текста. Вы можете
+// использовать этот шаблон для написания ваших собственных
+// фильтров Go.
 package main
 
 import (
@@ -17,23 +19,23 @@ import (
 
 func main() {
 
-	// Wrapping the unbuffered `os.Stdin` with a buffered
-	// scanner gives us a convenient `Scan` method that
-	// advances the scanner to the next token; which is
-	// the next line in the default scanner.
+	// Обертывание небуферизованного `os.Stdin` буферизованным
+	// сканером дает нам удобный метод сканирования `Scan`,
+	// который продвигает сканер к следующему токену; который
+	// является следующей строкой в сканере по умолчанию.
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() {
-		// `Text` returns the current token, here the next line,
-		// from the input.
+		// `Text` возвращает текущий токен, из ввода - на
+		// следующую строку.
 		ucl := strings.ToUpper(scanner.Text())
 
-		// Write out the uppercased line.
+		// Печатает в верхнем регистре.
 		fmt.Println(ucl)
 	}
 
-	// Check for errors during `Scan`. End of file is
-	// expected and not reported by `Scan` as an error.
+	// Проверяем ошибки для `Scan`. Ожидается конец файла,
+	// и он не сообщается методом `Scan` как ошибка.
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "error:", err)
 		os.Exit(1)
