@@ -52,7 +52,7 @@ Epoch
 Форматирование времени (Time Formatting / Parsing)
 Случайные числа (Random Numbers)
 Парсинг чисел (Number Parsing)
-URL Parsing
+Парсинг URL (URL Parsing)
 SHA1 Hashes
 Base64 Encoding
 Reading Files
