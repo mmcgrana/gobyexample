@@ -1,10 +1,10 @@
-# Try running the file-writing code.
+# Пробуем запустить запись в файл.
 $ go run writing-files.go 
 wrote 5 bytes
 wrote 7 bytes
 wrote 9 bytes
 
-# Then check the contents of the written files.
+# Потом проверим, что контент появился в файлах.
 $ cat /tmp/dat1
 hello
 go
@@ -13,5 +13,6 @@ some
 writes
 buffered
 
-# Next we'll look at applying some of the file I/O ideas
-# we've just seen to the `stdin` and `stdout` streams.
+# Далее мы рассмотрим применение некоторых идей файлового
+# ввода-вывода, которые мы только что видели, к потокам
+# `stdin` и `stdout`.
