@@ -59,7 +59,7 @@ Epoch
 Запись файлов (Writing Files)
 Строковые фильтры (Line Filters)
 Пути к файлам (File Paths)
-Directories
+Директории (Directories)
 Temporary Files and Directories
 Testing
 Command-Line Arguments

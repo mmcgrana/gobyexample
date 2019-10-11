@@ -1,5 +1,5 @@
-// Go has several useful functions for working with
-// *directories* in the file system.
+// Go имеет несколько полезных функций для работы
+// с *каталогами* в файловой системе.
 
 package main
 
@@ -18,18 +18,18 @@ func check(e error) {
 
 func main() {
 
-	// Create a new sub-directory in the current working
-	// directory.
+	// Создадим новую суб-директорию в текущей рабочей
+	// папке.
 	err := os.Mkdir("subdir", 0755)
 	check(err)
 
-	// When creating temporary directories, it's good
-	// practice to `defer` their removal. `os.RemoveAll`
-	// will delete a whole directory tree (similarly to
-	// `rm -rf`).
+	// Когда мы создаем временную директорию, хорошим
+	// тоном является удалить ее через `defer`.
+	// `os.RemoveAll` удалит директорию и все, что в ней
+	// находится (по аналогии с `rm -rf`).
 	defer os.RemoveAll("subdir")
 
-	// Helper function to create a new empty file.
+	// Функция-помощник для создания нового пустого файла.
 	createEmptyFile := func(name string) {
 		d := []byte("")
 		check(ioutil.WriteFile(name, d, 0644))
@@ -37,9 +37,9 @@ func main() {
 
 	createEmptyFile("subdir/file1")
 
-	// We can create a hierarchy of directories, including
-	// parents with `MkdirAll`. This is similar to the
-	// command-line `mkdir -p`.
+	// Мы можем создать иерархию из директорий, включая все
+	// родительские, с помощью `MkdirAll`. Это является аналогом
+	// команды `mkdir -p`.
 	err = os.MkdirAll("subdir/parent/child", 0755)
 	check(err)
 
@@ -47,8 +47,8 @@ func main() {
 	createEmptyFile("subdir/parent/file3")
 	createEmptyFile("subdir/parent/child/file4")
 
-	// `ReadDir` lists directory contents, returning a
-	// slice of `os.FileInfo` objects.
+	// `ReadDir` перечисляет содержимое каталогов,
+	// возвращая срез объектов `os.FileInfo`.
 	c, err := ioutil.ReadDir("subdir/parent")
 	check(err)
 
@@ -57,13 +57,14 @@ func main() {
 		fmt.Println(" ", entry.Name(), entry.IsDir())
 	}
 
-	// `Chdir` lets us change the current working directory,
-	// similarly to `cd`.
+	// `Chdir` позволяет изменить текущую рабочую
+	// директорию, по аналогии с `cd`.
 	err = os.Chdir("subdir/parent/child")
 	check(err)
 
-	// Now we'll see the contents of `subdir/parent/child`
-	// when listing the *current* directory.
+	// Теперь мы увидим содержимое директории
+	// `subdir/parent/child`, когда запросим листинг
+	// *текущей* директории.
 	c, err = ioutil.ReadDir(".")
 	check(err)
 
@@ -72,20 +73,19 @@ func main() {
 		fmt.Println(" ", entry.Name(), entry.IsDir())
 	}
 
-	// `cd` back to where we started.
+	// Вернемся в начало
 	err = os.Chdir("../../..")
 	check(err)
 
-	// We can also visit a directory *recursively*,
-	// including all its sub-directories. `Walk` accepts
-	// a callback function to handle every file or
-	// directory visited.
+	// Мы также можем *рекурсивно* обойти каталог, включая
+	// все его подкаталоги. `Walk` принимает функцию обратного
+	// вызова для обработки каждого файла или каталога,
+	// которые посетили.
 	fmt.Println("Visiting subdir")
 	err = filepath.Walk("subdir", visit)
 }
 
-// `visit` is called for every file or directory found
-// recursively by `filepath.Walk`.
+// `visit` вызывается для каждого найденного элемента в `filepath.Walk`.
 func visit(p string, info os.FileInfo, err error) error {
 	if err != nil {
 		return err
