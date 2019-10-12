@@ -64,7 +64,7 @@ Epoch
 Тестирование (Testing)
 Аргументы командной строки (Command-Line Arguments)
 Флаги командной строки (Command-Line Flags)
-Command-Line Subcommands
+Подкоманды командной строки (Command-Line Subcommands)
 Environment Variables
 HTTP Clients
 HTTP Servers

@@ -1,24 +1,24 @@
-$ go build command-line-subcommands.go 
+$ go build command-line-subcommands.go
 
-# First invoke the foo subcommand.
+# Первый вызов подкоманды foo.
 $ ./command-line-subcommands foo -enable -name=joe a1 a2
 subcommand 'foo'
   enable: true
   name: joe
   tail: [a1 a2]
 
-# Now try bar.
+# Теперь пробуем bar.
 $ ./command-line-subcommands bar -level 8 a1
 subcommand 'bar'
   level: 8
   tail: [a1]
 
-# But bar won't accept foo's flags.
+# Но bar не может принимать флаги определенные для foo.
 $ ./command-line-subcommands bar -enable a1
 flag provided but not defined: -enable
 Usage of bar:
   -level int
     	level
 
-# Next we'll look at environment variables, another common
-# way to parameterize programs.
+# Далее мы рассмотрим переменные окружения, еще один
+# распространенный способ параметризации программ.
