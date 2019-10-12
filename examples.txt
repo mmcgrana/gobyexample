@@ -65,7 +65,7 @@ Epoch
 Аргументы командной строки (Command-Line Arguments)
 Флаги командной строки (Command-Line Flags)
 Подкоманды командной строки (Command-Line Subcommands)
-Environment Variables
+Переменные среды (Environment Variables)
 HTTP Clients
 HTTP Servers
 Spawning Processes
