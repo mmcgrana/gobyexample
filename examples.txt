@@ -70,5 +70,5 @@ HTTP клиенты (HTTP Clients)
 HTTP серверы (HTTP Servers)
 Порождающие процессы (Spawning Processes)
 Исполняющие процессы (Exec'ing Processes)
-Signals
+Сигналы (Signals)
 Exit
