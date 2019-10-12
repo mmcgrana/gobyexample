@@ -69,6 +69,6 @@ Epoch
 HTTP клиенты (HTTP Clients)
 HTTP серверы (HTTP Servers)
 Порождающие процессы (Spawning Processes)
-Exec'ing Processes
+Исполняющие процессы (Exec'ing Processes)
 Signals
 Exit
