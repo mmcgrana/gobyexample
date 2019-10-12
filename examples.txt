@@ -67,7 +67,7 @@ Epoch
 Подкоманды командной строки (Command-Line Subcommands)
 Переменные среды (Environment Variables)
 HTTP клиенты (HTTP Clients)
-HTTP Servers
+HTTP серверы (HTTP Servers)
 Spawning Processes
 Exec'ing Processes
 Signals
