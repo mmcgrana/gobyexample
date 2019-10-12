@@ -62,7 +62,7 @@ Epoch
 Директории (Directories)
 Временные файлы и директории (Temporary Files and Directories)
 Тестирование (Testing)
-Command-Line Arguments
+Аргументы командной строки (Command-Line Arguments)
 Command-Line Flags
 Command-Line Subcommands
 Environment Variables
