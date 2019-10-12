@@ -66,7 +66,7 @@ Epoch
 Флаги командной строки (Command-Line Flags)
 Подкоманды командной строки (Command-Line Subcommands)
 Переменные среды (Environment Variables)
-HTTP Clients
+HTTP клиенты (HTTP Clients)
 HTTP Servers
 Spawning Processes
 Exec'ing Processes
