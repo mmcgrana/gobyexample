@@ -1,5 +1,6 @@
-# The spawned programs return output that is the same
-# as if we had run them directly from the command-line.
+# Порожденные программы возвращают вывод, который
+# является таким же, как если бы мы запускали их
+# непосредственно из командной строки.
 $ go run spawning-processes.go 
 > date
 Wed Oct 10 09:53:11 PDT 2012

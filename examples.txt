@@ -68,7 +68,7 @@ Epoch
 Переменные среды (Environment Variables)
 HTTP клиенты (HTTP Clients)
 HTTP серверы (HTTP Servers)
-Spawning Processes
+Порождающие процессы (Spawning Processes)
 Exec'ing Processes
 Signals
 Exit
