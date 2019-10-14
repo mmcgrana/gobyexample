@@ -238,7 +238,7 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 
 func parseExamples() []*Example {
 	var exampleNames []string
-	re := regexp.MustCompile(`(?m)[a-z0-9]{1}[a-z0-9\-]{1,}[a-z0-9]{1}`)
+
 	for _, line := range readLines("examples.txt") {
 		if line != "" && !strings.HasPrefix(line, "#") {
 			exampleNames = append(exampleNames, line)
@@ -249,18 +249,24 @@ func parseExamples() []*Example {
 		if verbose() {
 			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
 		}
-		example := Example{Name: exampleName}
-		exampleID := strings.ToLower(exampleName)
+
+		exampleID := exampleName
+
+		if strings.Contains(exampleName, "|") {
+			parts := strings.Split(exampleName, "|")
+			exampleName, exampleID = parts[0], parts[1]
+		}
+
+		exampleID = strings.ToLower(exampleID)
 		exampleID = strings.Replace(exampleID, " ", "-", -1)
 		exampleID = strings.Replace(exampleID, "/", "-", -1)
 		exampleID = strings.Replace(exampleID, "'", "", -1)
 		exampleID = dashPat.ReplaceAllString(exampleID, "-")
 
-		//str := `хеш-sha1-(sha1-hashes)`
-		//fmt.Println(re.FindString(str))
+		example := Example{Name: exampleName}
 
-		//example.ID = exampleID
-		example.ID = re.FindString(exampleID)
+		example.ID = exampleID
+
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
