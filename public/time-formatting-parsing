@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Форматирование времени (Time Formatting / Parsing)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'epoch';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'random-numbers';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="time-formatting-parsing">
+      <h2><a href="./">Go в примерах</a>: Форматирование времени (Time Formatting / Parsing)</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go supports time formatting and parsing via
+pattern-based layouts.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/G61ruGfMQZA" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вот пример форматирования времени в соответствии с
+RFC3339 с использованием соответствующей константы.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Парсинг значений использует тот же синтаксис, что и <code>Format</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
+        <span class="s">&quot;2012-11-01T22:08:41+00:00&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Форматирование</code> и <code>парсинг</code> используют аргументы на
+основе примеров. Обычно вы используете константу из пакета
+<code>time</code>, но вы также можете предоставить собственные шаблоны.
+Они должны использовать время в формате <code>Mon Jan 2
+15:04:05 MST 2006</code>, чтобы вывести на экран. Время в примере
+должно быть точно таким, как показано: 2006 год, 15 для часа,
+понедельник для дня недели и т.д.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;3:04PM&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;2006-01-02T15:04:05.999999-07:00&quot;</span><span class="p">))</span>
+    <span class="nx">form</span> <span class="o">:=</span> <span class="s">&quot;3 04 PM&quot;</span>
+    <span class="nx">t2</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="s">&quot;8 41 PM&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Для числовых представлений вы также можете использовать
+стандартное форматирование строки с методами времени.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&quot;</span><span class="p">,</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Parse</code> вернет ошибку. если не сможет распарсить данные.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&quot;Mon Jan _2 15:04:05 2006&quot;</span>
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&quot;8:41PM&quot;</span><span class="p">)</span>
+    <span class="nx">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run time-formatting-parsing.go 
+<span class="go">2014-04-15T18:00:15-07:00</span>
+<span class="go">2012-11-01 22:08:41 +0000 +0000</span>
+<span class="go">6:00PM</span>
+<span class="go">Tue Apr 15 18:00:15 2014</span>
+<span class="go">2014-04-15T18:00:15.161182-07:00</span>
+<span class="go">0000-01-01 20:41:00 +0000 UTC</span>
+<span class="go">2014-04-15T18:00:15-00:00</span>
+<span class="go">parsing time &quot;8:41PM&quot; as &quot;Mon Jan _2 15:04:05 2006&quot;: ...</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="random-numbers">Случайные числа (Random Numbers)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A    p := fmt.Println\u000A');codeLines.push('    t := time.Now()\u000A    p(t.Format(time.RFC3339))\u000A');codeLines.push('    t1, e := time.Parse(\u000A        time.RFC3339,\u000A        \"2012-11-01T22:08:41+00:00\")\u000A    p(t1)\u000A');codeLines.push('    p(t.Format(\"3:04PM\"))\u000A    p(t.Format(\"Mon Jan _2 15:04:05 2006\"))\u000A    p(t.Format(\"2006-01-02T15:04:05.999999-07:00\"))\u000A    form := \"3 04 PM\"\u000A    t2, e := time.Parse(form, \"8 41 PM\")\u000A    p(t2)\u000A');codeLines.push('    fmt.Printf(\"%d-%02d-%02dT%02d:%02d:%02d-00:00\\n\",\u000A        t.Year(), t.Month(), t.Day(),\u000A        t.Hour(), t.Minute(), t.Second())\u000A');codeLines.push('    ansic := \"Mon Jan _2 15:04:05 2006\"\u000A    _, e = time.Parse(ansic, \"8:41PM\")\u000A    p(e)\u000A}\u000A');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
