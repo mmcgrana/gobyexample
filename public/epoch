@@ -9,12 +9,12 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'time';
+              window.location.href = 'время-(time)';
           }
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'time-formatting-parsing';
+              window.location.href = 'форматирование-времени-(time-formatting-parsing)';
           }
           
       }
@@ -167,7 +167,7 @@ Unixtime в соответствующее <code>время</code>.</p>
       
       
       <p class="next">
-        Следующий пример: <a href="time-formatting-parsing">Форматирование времени (Time Formatting / Parsing)</a>.
+        Следующий пример: <a href="форматирование-времени-(time-formatting-parsing)">Форматирование времени (Time Formatting / Parsing)</a>.
       </p>
       
       <p class="footer">

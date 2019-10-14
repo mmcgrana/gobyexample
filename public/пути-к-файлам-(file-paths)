@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Пути к файлам (File Paths)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'строковые-фильтры-(line-filters)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'директории-(directories)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="пути-к-файлам-(file-paths)">
+      <h2><a href="./">Go в примерах</a>: Пути к файлам (File Paths)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="директории-(directories)">Директории (Directories)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/пути-к-файлам-(file-paths)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

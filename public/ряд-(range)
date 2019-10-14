@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Ряд (Range)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'карты-(maps)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'функции-(functions)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="ряд-(range)">
+      <h2><a href="./">Go в примерах</a>: Ряд (Range)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="функции-(functions)">Функции (Functions)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/ряд-(range)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'values';
+              window.location.href = 'типы-данных-(values)';
           }
           
       }
@@ -126,7 +126,7 @@ learn more about the language.</p>
       
       
       <p class="next">
-        Следующий пример: <a href="values">Типы данных (Values)</a>.
+        Следующий пример: <a href="типы-данных-(values)">Типы данных (Values)</a>.
       </p>
       
       <p class="footer">

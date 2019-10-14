@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Переменные среды (Environment Variables)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'подкоманды-командной-строки-(command-line-subcommands)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'http-клиенты-(http-clients)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="переменные-среды-(environment-variables)">
+      <h2><a href="./">Go в примерах</a>: Переменные среды (Environment Variables)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="http-клиенты-(http-clients)">HTTP клиенты (HTTP Clients)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/переменные-среды-(environment-variables)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

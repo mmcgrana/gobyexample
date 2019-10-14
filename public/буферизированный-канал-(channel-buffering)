@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Буферизированный канал (Channel Buffering)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'каналы-(channels)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'синхронизация-канала-(channel-synchronization)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="буферизированный-канал-(channel-buffering)">
+      <h2><a href="./">Go в примерах</a>: Буферизированный канал (Channel Buffering)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="синхронизация-канала-(channel-synchronization)">Синхронизация канала (Channel Synchronization)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/буферизированный-канал-(channel-buffering)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Кодирование Base64 (Base64 Encoding)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'хеш-sha1-(sha1-hashes)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'чтение-файлов-(reading-files)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="кодирование-base64-(base64-encoding)">
+      <h2><a href="./">Go в примерах</a>: Кодирование Base64 (Base64 Encoding)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="чтение-файлов-(reading-files)">Чтение файлов (Reading Files)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/кодирование-base64-(base64-encoding)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

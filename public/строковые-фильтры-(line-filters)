@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Строковые фильтры (Line Filters)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'запись-файлов-(writing-files)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'пути-к-файлам-(file-paths)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="строковые-фильтры-(line-filters)">
+      <h2><a href="./">Go в примерах</a>: Строковые фильтры (Line Filters)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="пути-к-файлам-(file-paths)">Пути к файлам (File Paths)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/строковые-фильтры-(line-filters)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Атомарные счетчики (Atomic Counters)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'ограничение-скорости-(rate-limiting)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'мьютексы-(mutexes)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="атомарные-счетчики-(atomic-counters)">
+      <h2><a href="./">Go в примерах</a>: Атомарные счетчики (Atomic Counters)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="мьютексы-(mutexes)">Мьютексы (Mutexes)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/атомарные-счетчики-(atomic-counters)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
