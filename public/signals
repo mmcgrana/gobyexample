@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Signals</title>
+    <title>Go в примерах: Сигналы (Signals)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,165 +21,11 @@
   </script>
   <body>
     <div class="example" id="signals">
-      <h2><a href="./">Go by Example</a>: Signals</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>Sometimes we&rsquo;d like our Go programs to intelligently
-handle <a href="http://en.wikipedia.org/wiki/Unix_signal">Unix signals</a>.
-For example, we might want a server to gracefully
-shutdown when it receives a <code>SIGTERM</code>, or a command-line
-tool to stop processing input if it receives a <code>SIGINT</code>.
-Here&rsquo;s how to handle signals in Go with channels.</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/_6oj-T3Gko2"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;os&quot;</span>
-    <span class="s">&quot;os/signal&quot;</span>
-    <span class="s">&quot;syscall&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Go signal notification works by sending <code>os.Signal</code>
-values on a channel. We&rsquo;ll create a channel to
-receive these notifications (we&rsquo;ll also make one to
-notify us when the program can exit).</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">sigs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p><code>signal.Notify</code> registers the given channel to
-receive notifications of the specified signals.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">signal</span><span class="p">.</span><span class="nx">Notify</span><span class="p">(</span><span class="nx">sigs</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>This goroutine executes a blocking receive for
-signals. When it gets one it&rsquo;ll print it out
-and then notify the program that it can finish.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">sigs</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sig</span><span class="p">)</span>
-        <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
-    <span class="p">}()</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>The program will wait here until it gets the
-expected signal (as indicated by the goroutine
-above sending a value on <code>done</code>) and then exit.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;awaiting signal&quot;</span><span class="p">)</span>
-    <span class="o">&lt;-</span><span class="nx">done</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;exiting&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>When we run this program it will block waiting for a
-signal. By typing <code>ctrl-C</code> (which the
-terminal shows as <code>^C</code>) we can send a <code>SIGINT</code> signal,
-causing the program to print <code>interrupt</code> and then exit.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run signals.go
-<span class="go">awaiting signal</span>
-<span class="go">^C</span>
-<span class="go">interrupt</span>
-<span class="go">exiting</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Сигналы (Signals)</h2>
       
       
       <p class="next">
-        Next example: <a href="exit">Exit</a>.
+        Следующий пример: <a href="exit">Выход (Exit)</a>.
       </p>
       
       <p class="footer">
@@ -188,7 +34,7 @@ causing the program to print <code>interrupt</code> and then exit.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A    \"os/signal\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sigs := make(chan os.Signal, 1)\u000A    done := make(chan bool, 1)\u000A');codeLines.push('    signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)\u000A');codeLines.push('    go func() {\u000A        sig := \x3C-sigs\u000A        fmt.Println()\u000A        fmt.Println(sig)\u000A        done \x3C- true\u000A    }()\u000A');codeLines.push('    fmt.Println(\"awaiting signal\")\u000A    \x3C-done\u000A    fmt.Println(\"exiting\")\u000A}\u000A');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>

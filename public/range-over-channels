@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Range over Channels</title>
+    <title>Go в примерах: Перебор значений из каналов (Range over Channels)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,131 +21,11 @@
   </script>
   <body>
     <div class="example" id="range-over-channels">
-      <h2><a href="./">Go by Example</a>: Range over Channels</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>In a <a href="range">previous</a> example we saw how <code>for</code> and
-<code>range</code> provide iteration over basic data structures.
-We can also use this syntax to iterate over
-values received from a channel.</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/QnARPm-ddFB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>We&rsquo;ll iterate over 2 values in the <code>queue</code> channel.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
-    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
-    <span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>This <code>range</code> iterates over each element as it&rsquo;s
-received from <code>queue</code>. Because we <code>close</code>d the
-channel above, the iteration terminates after
-receiving the 2 elements.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run range-over-channels.go
-<span class="go">one</span>
-<span class="go">two</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>This example also showed that it&rsquo;s possible to close
-a non-empty channel but still have the remaining
-values be received.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Перебор значений из каналов (Range over Channels)</h2>
       
       
       <p class="next">
-        Next example: <a href="timers">Timers</a>.
+        Следующий пример: <a href="timers">Таймеры (Timers)</a>.
       </p>
       
       <p class="footer">
@@ -154,7 +34,7 @@ values be received.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    queue := make(chan string, 2)\u000A    queue \x3C- \"one\"\u000A    queue \x3C- \"two\"\u000A    close(queue)\u000A');codeLines.push('    for elem := range queue {\u000A        fmt.Println(elem)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: File Paths</title>
+    <title>Go в примерах: Пути к файлам (File Paths)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,227 +21,11 @@
   </script>
   <body>
     <div class="example" id="file-paths">
-      <h2><a href="./">Go by Example</a>: File Paths</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>The <code>filepath</code> package provides functions to parse
-and construct <em>file paths</em> in a way that is portable
-between operating systems; <code>dir/file</code> on Linux vs.
-<code>dir\file</code> on Windows, for example.</p>
-
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/QIitbMNiFRx"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;path/filepath&quot;</span>
-    <span class="s">&quot;strings&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p><code>Join</code> should be used to construct paths in a
-portable way. It takes any number of arguments
-and constructs a hierarchical path from them.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1&quot;</span><span class="p">,</span> <span class="s">&quot;dir2&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;p:&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>You should always use <code>Join</code> instead of
-concatenating <code>/</code>s or <code>\</code>s manually. In addition
-to providing portability, <code>Join</code> will also
-normalize paths by removing superfluous separators
-and directory changes.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1//&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1/../dir1&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">))</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p><code>Dir</code> and <code>Base</code> can be used to split a path to the
-directory and the file. Alternatively, <code>Split</code> will
-return both in the same call.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Dir(p):&quot;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Base(p):&quot;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Base</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>We can check whether a path is absolute.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">IsAbs</span><span class="p">(</span><span class="s">&quot;dir/file&quot;</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">IsAbs</span><span class="p">(</span><span class="s">&quot;/dir/file&quot;</span><span class="p">))</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">filename</span> <span class="o">:=</span> <span class="s">&quot;config.json&quot;</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Some file names have extensions following a dot. We
-can split the extension out of such names with <code>Ext</code>.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">ext</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Ext</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ext</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>To find the file&rsquo;s name with the extension removed,
-use <code>strings.TrimSuffix</code>.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">TrimSuffix</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p><code>Rel</code> finds a relative path between a <em>base</em> and a
-<em>target</em>. It returns an error if the target cannot
-be made relative to base.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Rel</span><span class="p">(</span><span class="s">&quot;a/b&quot;</span><span class="p">,</span> <span class="s">&quot;a/b/t/file&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Rel</span><span class="p">(</span><span class="s">&quot;a/b&quot;</span><span class="p">,</span> <span class="s">&quot;a/c/t/file&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run file-paths.go
-<span class="go">p: dir1/dir2/filename</span>
-<span class="go">dir1/filename</span>
-<span class="go">dir1/filename</span>
-<span class="go">Dir(p): dir1/dir2</span>
-<span class="go">Base(p): filename</span>
-<span class="go">false</span>
-<span class="go">true</span>
-<span class="go">.json</span>
-<span class="go">config</span>
-<span class="go">t/file</span>
-<span class="go">../c/t/file</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Пути к файлам (File Paths)</h2>
       
       
       <p class="next">
-        Next example: <a href="directories">Directories</a>.
+        Следующий пример: <a href="directories">Директории (Directories)</a>.
       </p>
       
       <p class="footer">
@@ -250,7 +34,7 @@ be made relative to base.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"path/filepath\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p := filepath.Join(\"dir1\", \"dir2\", \"filename\")\u000A    fmt.Println(\"p:\", p)\u000A');codeLines.push('    fmt.Println(filepath.Join(\"dir1//\", \"filename\"))\u000A    fmt.Println(filepath.Join(\"dir1/../dir1\", \"filename\"))\u000A');codeLines.push('    fmt.Println(\"Dir(p):\", filepath.Dir(p))\u000A    fmt.Println(\"Base(p):\", filepath.Base(p))\u000A');codeLines.push('    fmt.Println(filepath.IsAbs(\"dir/file\"))\u000A    fmt.Println(filepath.IsAbs(\"/dir/file\"))\u000A');codeLines.push('    filename := \"config.json\"\u000A');codeLines.push('    ext := filepath.Ext(filename)\u000A    fmt.Println(ext)\u000A');codeLines.push('    fmt.Println(strings.TrimSuffix(filename, ext))\u000A');codeLines.push('    rel, err := filepath.Rel(\"a/b\", \"a/b/t/file\")\u000A    if err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(rel)\u000A');codeLines.push('    rel, err = filepath.Rel(\"a/b\", \"a/c/t/file\")\u000A    if err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(rel)\u000A}\u000A');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>

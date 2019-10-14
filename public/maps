@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Maps</title>
+    <title>Go в примерах: Карты (Maps)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,209 +21,11 @@
   </script>
   <body>
     <div class="example" id="maps">
-      <h2><a href="./">Go by Example</a>: Maps</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p><em>Maps</em> are Go&rsquo;s built-in <a href="http://en.wikipedia.org/wiki/Associative_array">associative data type</a>
-(sometimes called <em>hashes</em> or <em>dicts</em> in other languages).</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/U67R66Oab8r"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>To create an empty map, use the builtin <code>make</code>:
-<code>make(map[key-type]val-type)</code>.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Set key/value pairs using typical <code>name[key] = val</code>
-syntax.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k1&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
-    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k2&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">13</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Printing a map with e.g. <code>fmt.Println</code> will show all of
-its key/value pairs.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Get a value for a key with <code>name[key]</code>.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k1&quot;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v1: &quot;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>The builtin <code>len</code> returns the number of key/value
-pairs when called on a map.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;len:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">))</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>The builtin <code>delete</code> removes key/value pairs from
-a map.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&quot;k2&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>The optional second return value when getting a
-value from a map indicates if the key was present
-in the map. This can be used to disambiguate
-between missing keys and keys with zero values
-like <code>0</code> or <code>&quot;&quot;</code>. Here we didn&rsquo;t need the value
-itself, so we ignored it with the <em>blank identifier</em>
-<code>_</code>.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">prs</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;k2&quot;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;prs:&quot;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>You can also declare and initialize a new map in
-the same line with this syntax.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="nx">n</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;map:&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>Note that maps appear in the form <code>map[k:v k:v]</code> when
-printed with <code>fmt.Println</code>.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run maps.go 
-<span class="go">map: map[k1:7 k2:13]</span>
-<span class="go">v1:  7</span>
-<span class="go">len: 2</span>
-<span class="go">map: map[k1:7]</span>
-<span class="go">prs: false</span>
-<span class="go">map: map[bar:2 foo:1]</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Карты (Maps)</h2>
       
       
       <p class="next">
-        Next example: <a href="range">Range</a>.
+        Следующий пример: <a href="range">Ряд (Range)</a>.
       </p>
       
       <p class="footer">
@@ -232,7 +34,7 @@ printed with <code>fmt.Println</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m := make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] = 7\u000A    m[\"k2\"] = 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 := m[\"k1\"]\u000A    fmt.Println(\"v1: \", v1)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs := m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n := map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A}\u000A');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: WaitGroups</title>
+    <title>Go в примерах: WaitGroups</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,14 +21,14 @@
   </script>
   <body>
     <div class="example" id="waitgroups">
-      <h2><a href="./">Go by Example</a>: WaitGroups</h2>
+      <h2><a href="./">Go в примерах</a>: WaitGroups</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>To wait for multiple goroutines to finish, we can
-use a <em>wait group</em>.</p>
+            <p>Для ожидания выполнения нескольких горутин, мы можем
+использовать встроенную конструкцию <em>WaitGroup</em>.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +42,7 @@ use a <em>wait group</em>.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/gLLmgcR7YkP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/NiNMDeuci4O" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -67,9 +67,9 @@ use a <em>wait group</em>.</p>
         
         <tr>
           <td class="docs">
-            <p>This is the function we&rsquo;ll run in every goroutine.
-Note that a WaitGroup must be passed to functions by
-pointer.</p>
+            <p>Эта функция, которую мы будем запускать в каждой
+горутине. Обратите внимание, что WaitGroup должна
+быть передана в функцию по указателю.</p>
 
           </td>
           <td class="code leading">
@@ -83,7 +83,7 @@ pointer.</p>
         
         <tr>
           <td class="docs">
-            <p>Sleep to simulate an expensive task.</p>
+            <p>Sleep симулирует тяжелую задачу.</p>
 
           </td>
           <td class="code leading">
@@ -97,7 +97,7 @@ pointer.</p>
         
         <tr>
           <td class="docs">
-            <p>Notify the WaitGroup that this worker is done.</p>
+            <p>Оповестить WaitGroup что воркер выполнился</p>
 
           </td>
           <td class="code leading">
@@ -123,8 +123,8 @@ pointer.</p>
         
         <tr>
           <td class="docs">
-            <p>This WaitGroup is used to wait for all the
-goroutines launched here to finish.</p>
+            <p>Эта WaitGroup используется для ожидания выполнения
+всех горутинё запущенных здесь.</p>
 
           </td>
           <td class="code leading">
@@ -137,8 +137,8 @@ goroutines launched here to finish.</p>
         
         <tr>
           <td class="docs">
-            <p>Launch several goroutines and increment the WaitGroup
-counter for each.</p>
+            <p>Запускаем несколько горутин и инкрементируем счетчик
+в WaitGroup для каждой запущенной горутины.</p>
 
           </td>
           <td class="code leading">
@@ -154,8 +154,9 @@ counter for each.</p>
         
         <tr>
           <td class="docs">
-            <p>Block until the WaitGroup counter goes back to 0;
-all the workers notified they&rsquo;re done.</p>
+            <p>Блокируем звершение программы до момента, пока
+счетчик WaitGroup снова не станет равным 0.
+Это будет означать, что все горутины выполнились.</p>
 
           </td>
           <td class="code">
@@ -195,8 +196,8 @@ all the workers notified they&rsquo;re done.</p>
         
         <tr>
           <td class="docs">
-            <p>The order of workers starting up and finishing
-is likely to be different for each invocation.</p>
+            <p>Порядок воркеров начинающихся и выполненных, вероятно
+будет изменяться при каждом запуске.</p>
 
           </td>
           <td class="code empty">
@@ -209,7 +210,7 @@ is likely to be different for each invocation.</p>
       
       
       <p class="next">
-        Next example: <a href="rate-limiting">Rate Limiting</a>.
+        Следующий пример: <a href="rate-limiting">Ограничение скорости (Rate Limiting)</a>.
       </p>
       
       <p class="footer">

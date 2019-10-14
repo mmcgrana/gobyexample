@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Non-Blocking Channel Operations</title>
+    <title>Go в примерах: Неблокируемые операции в каналах (Non-Blocking Channel Operations)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,153 +21,11 @@
   </script>
   <body>
     <div class="example" id="non-blocking-channel-operations">
-      <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>Basic sends and receives on channels are blocking.
-However, we can use <code>select</code> with a <code>default</code> clause to
-implement <em>non-blocking</em> sends, receives, and even
-non-blocking multi-way <code>select</code>s.</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/n5ttmOsMrrJ"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
-    <span class="nx">signals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Here&rsquo;s a non-blocking receive. If a value is
-available on <code>messages</code> then <code>select</code> will take
-the <code>&lt;-messages</code> <code>case</code> with that value. If not
-it will immediately take the <code>default</code> case.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message received&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>A non-blocking send works similarly. Here <code>msg</code>
-cannot be sent to the <code>messages</code> channel, because
-the channel has no buffer and there is no receiver.
-Therefore the <code>default</code> case is selected.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&quot;hi&quot;</span>
-    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="nx">msg</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sent message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no message sent&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>We can use multiple <code>case</code>s above the <code>default</code>
-clause to implement a multi-way non-blocking
-select. Here we attempt non-blocking receives
-on both <code>messages</code> and <code>signals</code>.</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received message&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">signals</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received signal&quot;</span><span class="p">,</span> <span class="nx">sig</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;no activity&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run non-blocking-channel-operations.go 
-<span class="go">no message received</span>
-<span class="go">no message sent</span>
-<span class="go">no activity</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Неблокируемые операции в каналах (Non-Blocking Channel Operations)</h2>
       
       
       <p class="next">
-        Next example: <a href="closing-channels">Closing Channels</a>.
+        Следующий пример: <a href="closing-channels">Закрытие каналов (Closing Channels)</a>.
       </p>
       
       <p class="footer">
@@ -176,7 +34,7 @@ on both <code>messages</code> and <code>signals</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A    messages := make(chan string)\u000A    signals := make(chan bool)\u000A');codeLines.push('    select {\u000A    case msg := \x3C-messages:\u000A        fmt.Println(\"received message\", msg)\u000A    default:\u000A        fmt.Println(\"no message received\")\u000A    }\u000A');codeLines.push('    msg := \"hi\"\u000A    select {\u000A    case messages \x3C- msg:\u000A        fmt.Println(\"sent message\", msg)\u000A    default:\u000A        fmt.Println(\"no message sent\")\u000A    }\u000A');codeLines.push('    select {\u000A    case msg := \x3C-messages:\u000A        fmt.Println(\"received message\", msg)\u000A    case sig := \x3C-signals:\u000A        fmt.Println(\"received signal\", sig)\u000A    default:\u000A        fmt.Println(\"no activity\")\u000A    }\u000A}\u000A');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>

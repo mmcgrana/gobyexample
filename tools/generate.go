@@ -238,6 +238,7 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 
 func parseExamples() []*Example {
 	var exampleNames []string
+	re := regexp.MustCompile(`(?m)[a-z0-9]{1}[a-z0-9\-]{1,}[a-z0-9]{1}`)
 	for _, line := range readLines("examples.txt") {
 		if line != "" && !strings.HasPrefix(line, "#") {
 			exampleNames = append(exampleNames, line)
@@ -254,7 +255,12 @@ func parseExamples() []*Example {
 		exampleID = strings.Replace(exampleID, "/", "-", -1)
 		exampleID = strings.Replace(exampleID, "'", "", -1)
 		exampleID = dashPat.ReplaceAllString(exampleID, "-")
-		example.ID = exampleID
+
+		//str := `хеш-sha1-(sha1-hashes)`
+		//fmt.Println(re.FindString(str))
+
+		//example.ID = exampleID
+		example.ID = re.FindString(exampleID)
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
@@ -306,6 +312,7 @@ func renderExamples(examples []*Example) {
 	_, err := exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
 	check(err)
 	for _, example := range examples {
+		//fmt.Println(example.ID)
 		exampleF, err := os.Create(siteDir + "/" + example.ID)
 		check(err)
 		exampleTmpl.Execute(exampleF, example)

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Goroutines</title>
+    <title>Go в примерах: Горутины (Goroutines)</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -21,184 +21,11 @@
   </script>
   <body>
     <div class="example" id="goroutines">
-      <h2><a href="./">Go by Example</a>: Goroutines</h2>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>A <em>goroutine</em> is a lightweight thread of execution.</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="http://play.golang.org/p/rovAFf9-n78"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;time&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f</span><span class="p">(</span><span class="nx">from</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
-synchronously.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">f</span><span class="p">(</span><span class="s">&quot;direct&quot;</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>To invoke this function in a goroutine, use
-<code>go f(s)</code>. This new goroutine will execute
-concurrently with the calling one.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="k">go</span> <span class="nx">f</span><span class="p">(</span><span class="s">&quot;goroutine&quot;</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>You can also start a goroutine for an anonymous
-function call.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
-    <span class="p">}(</span><span class="s">&quot;going&quot;</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Our two function calls are running asynchronously in
-separate goroutines now. Wait for them to finish
-(for a more robust approach, use a <a href="waitgroups">WaitGroup</a>).</p>
-
-          </td>
-          <td class="code">
-            
-          <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-      </table>
-      
-      <table>
-        
-        <tr>
-          <td class="docs">
-            <p>When we run this program, we see the output of the
-blocking call first, then the interleaved output of the
-two goroutines. This interleaving reflects the
-goroutines being run concurrently by the Go runtime.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre><span class="gp">$</span> go run goroutines.go
-<span class="go">direct : 0</span>
-<span class="go">direct : 1</span>
-<span class="go">direct : 2</span>
-<span class="go">goroutine : 0</span>
-<span class="go">going</span>
-<span class="go">goroutine : 1</span>
-<span class="go">goroutine : 2</span>
-<span class="go">done</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
-concurrent Go programs: channels.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
-        
-      </table>
+      <h2><a href="./">Go в примерах</a>: Горутины (Goroutines)</h2>
       
       
       <p class="next">
-        Next example: <a href="channels">Channels</a>.
+        Следующий пример: <a href="channels">Каналы (Channels)</a>.
       </p>
       
       <p class="footer">
@@ -207,7 +34,7 @@ concurrent Go programs: channels.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func f(from string) {\u000A    for i := 0; i \x3C 3; i++ {\u000A        fmt.Println(from, \":\", i)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f(\"direct\")\u000A');codeLines.push('    go f(\"goroutine\")\u000A');codeLines.push('    go func(msg string) {\u000A        fmt.Println(msg)\u000A    }(\"going\")\u000A');codeLines.push('    time.Sleep(time.Second)\u000A    fmt.Println(\"done\")\u000A}\u000A');codeLines.push('');codeLines.push('');
+      
     </script>
     <script src="site.js" async></script>
   </body>
