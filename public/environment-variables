@@ -44,7 +44,7 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/MTbfmZYa4vP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/gSTxKWLOHRb"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -101,7 +101,7 @@ environment.</p>
           <td class="docs">
             <p>Use <code>os.Environ</code> to list all key/value pairs in the
 environment. This returns a slice of strings in the
-form <code>KEY=value</code>. You can <code>strings.Split</code> them to
+form <code>KEY=value</code>. You can <code>strings.SplitN</code> them to
 get the key and value. Here we print all the keys.</p>
 
           </td>
