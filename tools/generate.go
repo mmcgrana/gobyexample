@@ -238,7 +238,7 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 
 func parseExamples() []*Example {
 	var exampleNames []string
-	re := regexp.MustCompile(`(?m)[a-z0-9]{1}[a-z0-9\-]{1,}[a-z0-9]{1}`)
+	//re := regexp.MustCompile(`(?m)[a-z0-9]{1}[a-z0-9\-]{1,}[a-z0-9]{1}`)
 	for _, line := range readLines("examples.txt") {
 		if line != "" && !strings.HasPrefix(line, "#") {
 			exampleNames = append(exampleNames, line)
@@ -259,8 +259,8 @@ func parseExamples() []*Example {
 		//str := `хеш-sha1-(sha1-hashes)`
 		//fmt.Println(re.FindString(str))
 
-		//example.ID = exampleID
-		example.ID = re.FindString(exampleID)
+		example.ID = exampleID
+		//example.ID = re.FindString(exampleID)
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {

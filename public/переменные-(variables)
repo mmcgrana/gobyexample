@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Переменные (Variables)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'типы-данных-(values)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'константы-(constants)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="переменные-(variables)">
+      <h2><a href="./">Go в примерах</a>: Переменные (Variables)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="константы-(constants)">Константы (Constants)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/переменные-(variables)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

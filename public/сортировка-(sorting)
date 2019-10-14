@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Сортировка (Sorting)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'управление-состоянием-горутин-(stateful-goroutines)';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'сортировка-через-функции-(sorting-by-functions)';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="сортировка-(sorting)">
+      <h2><a href="./">Go в примерах</a>: Сортировка (Sorting)</h2>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="сортировка-через-функции-(sorting-by-functions)">Сортировка через функции (Sorting by Functions)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/сортировка-(sorting)">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

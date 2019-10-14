@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'time';
+              window.location.href = 'время-(time)';
           }
           
       }
@@ -272,7 +272,7 @@ XML-подобных форматов с пакетом <code>encoding.xml</code
       
       
       <p class="next">
-        Следующий пример: <a href="time">Время (Time)</a>.
+        Следующий пример: <a href="время-(time)">Время (Time)</a>.
       </p>
       
       <p class="footer">

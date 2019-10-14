@@ -9,12 +9,12 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'channel-directions';
+              window.location.href = 'направления-канала-(channel-directions)';
           }
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'timeouts';
+              window.location.href = 'тайм-ауты-(timeouts)';
           }
           
       }
@@ -176,7 +176,7 @@
       
       
       <p class="next">
-        Следующий пример: <a href="timeouts">Тайм-ауты (Timeouts)</a>.
+        Следующий пример: <a href="тайм-ауты-(timeouts)">Тайм-ауты (Timeouts)</a>.
       </p>
       
       <p class="footer">
