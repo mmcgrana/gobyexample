@@ -23,6 +23,141 @@
     <div class="example" id="multiple-return-values">
       <h2><a href="./">Go в примерах</a>: Функции с множественным возвратом (Multiple Return Values)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go имеет встроенную поддержку <em>нескольких возвращаемых
+значений</em>. Эта особенность часто применяется в Go,
+например, для возврата результата функции и ошибки.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/6Khmls9Dsin" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Запись <code>(int, int)</code> в описании этой функции, говорит о
+том, что функция возвращает два целых числа.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Здесь функция возвращает два разных значения и
+присваивает их переменным <code>a,b</code>. Это называется
+<em>множественное присваивание</em>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="nx">vals</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Если вы хотите получить не все значения, возвращаемые
+функцией, то можно поспользоваться пустым
+идентификатором <code>_</code>.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nx">vals</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run multiple-return-values.go
+<span class="go">3</span>
+<span class="go">7</span>
+<span class="go">7</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Принятие переменного количества аргументов -
+еще одна приятная особенность функций Go;
+Рассмотрим это дальше.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="variadic-functions">Функции с переменным числом аргументов (Variadic Functions)</a>.
@@ -34,7 +169,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func vals() (int, int) {\u000A    return 3, 7\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    a, b := vals()\u000A    fmt.Println(a)\u000A    fmt.Println(b)\u000A');codeLines.push('    _, c := vals()\u000A    fmt.Println(c)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

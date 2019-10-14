@@ -23,6 +23,157 @@
     <div class="example" id="channel-synchronization">
       <h2><a href="./">Go в примерах</a>: Синхронизация канала (Channel Synchronization)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Мы можем использовать каналы для синхронизации
+выполнения между горутинами. Вот пример
+использования блокирующего получения для ожидания
+завершения работы горутины. При ожидании завершения
+нескольких процедур вы можете использовать <a href="waitgroups">WaitGroup</a>.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/3NHqwE7Bwjz" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Эту функцию мы будем запускать в горутине. Канал
+<code>done</code> будет использован для оповещения другой
+горутины о том, что функция выполнена успешно.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">done</span> <span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;working...&quot;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Отправить значение, чтобы сказать что функция
+выполнена успешно.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Запустите воркера в горутине и передайте ему канал
+для оповещения.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Блокируйте, пока мы не получим уведомление от
+воркера из канала.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="o">&lt;-</span><span class="nx">done</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run channel-synchronization.go      
+<span class="go">working...done                  </span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Если вы удалите строку <code>&lt;- done</code> из этой программы,
+программа закроется до того, как <code>воркер</code> даже
+запустится.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="channel-directions">Направления канала (Channel Directions)</a>.
@@ -34,7 +185,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(done chan bool) {\u000A    fmt.Print(\"working...\")\u000A    time.Sleep(time.Second)\u000A    fmt.Println(\"done\")\u000A');codeLines.push('    done \x3C- true\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    done := make(chan bool, 1)\u000A    go worker(done)\u000A');codeLines.push('    \x3C-done\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

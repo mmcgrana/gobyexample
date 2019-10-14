@@ -23,6 +23,154 @@
     <div class="example" id="timeouts">
       <h2><a href="./">Go в примерах</a>: Тайм-ауты (Timeouts)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><em>Тайм-ауты</em> важны для программ, которые подключаются
+к внешним ресурсам или которым необходимо ограничить
+время выполнения. Тайм-ауты в Go реализуются легко
+и элегантно благодаря каналам и <code>select</code>&lsquo;ам.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/SCMyPsGlXtX" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>В нашем примере предположим, что мы выполняем внешний
+вызов, который возвращает результат на канале <code>c1</code>
+через 2с. Обратите внимание, что канал буферизован,
+поэтому отправка в goroutine неблокирующая. Это
+обычная схема предотвращения утечек горутин в случае,
+если канал никогда не читается.ё</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+        <span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;result 1&quot;</span>
+    <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вот <code>select</code>, реализующий тайм-аут. <code>res := &lt;-c1</code>
+ожидает результата, а <code>&lt;-Time.After</code> ожидает
+значения, которое будет отправлено после истечения
+времени ожидания 1с. Поскольку <code>select</code> продолжает
+работу с первым полученным запросом, мы возьмем
+тайм-аут, если операция займет больше разрешенных 1с.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">res</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;timeout 1&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Если мы допустим время ожидания более 3с, то
+получение от <code>c2</code> будет успешным, и мы распечатаем
+результат.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+        <span class="nx">c2</span> <span class="o">&lt;-</span> <span class="s">&quot;result 2&quot;</span>
+    <span class="p">}()</span>
+    <span class="k">select</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">res</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c2</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;timeout 2&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Запуск этой программы показывает время ожидания
+первой и второй успешной операции.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run timeouts.go 
+<span class="go">timeout 1</span>
+<span class="go">result 2</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="non-blocking-channel-operations">Неблокируемые операции в каналах (Non-Blocking Channel Operations)</a>.
@@ -34,7 +182,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    c1 := make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(2 * time.Second)\u000A        c1 \x3C- \"result 1\"\u000A    }()\u000A');codeLines.push('    select {\u000A    case res := \x3C-c1:\u000A        fmt.Println(res)\u000A    case \x3C-time.After(1 * time.Second):\u000A        fmt.Println(\"timeout 1\")\u000A    }\u000A');codeLines.push('    c2 := make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(2 * time.Second)\u000A        c2 \x3C- \"result 2\"\u000A    }()\u000A    select {\u000A    case res := \x3C-c2:\u000A        fmt.Println(res)\u000A    case \x3C-time.After(3 * time.Second):\u000A        fmt.Println(\"timeout 2\")\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

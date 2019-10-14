@@ -23,6 +23,317 @@
     <div class="example" id="regular-expressions">
       <h2><a href="./">Go в примерах</a>: Регулярные выражения (Regular Expressions)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go предлагает встроенную поддержку <a href="http://en.wikipedia.org/wiki/Regular_expression">регулярных выражений</a>.
+Вот несколько примеров, связанных с регулярными
+выражениями в Go.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/GB_bgVcRKg2" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;bytes&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;regexp&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Проверяем, соответствует ли шаблон строке</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="s">&quot;p([a-z]+)ch&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Выше мы использовали строковый шаблон напрямую,
+но для других задач с регулярными выражениями,
+необходимо <code>скомпилировать</code> оптимизированную
+структуру <code>Regexp</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">Compile</span><span class="p">(</span><span class="s">&quot;p([a-z]+)ch&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Множество методов доступны для этой структуры.
+Вот тест на совпадение, который мы видели ранее.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="s">&quot;peach&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Этот метод находит соответствие для регулярного
+выражения.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindString</span><span class="p">(</span><span class="s">&quot;peach punch&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Этот метод также находит первое совпадение, но
+возвращает начальный и конечный индексы совпадения
+вместо текста.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindStringIndex</span><span class="p">(</span><span class="s">&quot;peach punch&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Варианты <code>Submatch</code> включают в себя информацию
+как о совпадениях с полным шаблоном, так и о
+совпадениях с частями шаблона. Например, эта
+конструкция вернет информацию как
+для <code>p([a-z]+)ch</code>, так и для <code>([a-z]+)</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindStringSubmatch</span><span class="p">(</span><span class="s">&quot;peach punch&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Точно так же это возвратит информацию об индексах
+совпадений и подсовпадений.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindStringSubmatchIndex</span><span class="p">(</span><span class="s">&quot;peach punch&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Метод <code>All</code> применяется ко всем совпадениям на входе,
+а не только к первому. Например, чтобы найти все
+совпадения для регулярного выражения.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindAllString</span><span class="p">(</span><span class="s">&quot;peach punch pinch&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Этот метод <code>All</code> доступен и для других функций,
+которые мы видели выше.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindAllStringSubmatchIndex</span><span class="p">(</span>
+        <span class="s">&quot;peach punch pinch&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Указание неотрицательного целого числа в качестве
+второго аргумента для этих функций ограничит
+количество совпадений.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">FindAllString</span><span class="p">(</span><span class="s">&quot;peach punch pinch&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>В наших примерах выше были строковые аргументы и
+использовались такие имена, как <code>MatchString</code>. Мы
+также можем предоставить <code>[]byte</code> аргументы и удалить
+<code>String</code> из имени функции.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Match</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;peach&quot;</span><span class="p">)))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>При создании констант с регулярными выражениями
+вы можете использовать <code>MustCompile</code>, как аналог
+<code>Compile</code>. Обычный <code>Compile</code> не будет работать
+для констант, потому что он возвращает 2 значения.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">r</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">&quot;p([a-z]+)ch&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Пакет <code>regexp</code> также можно использовать для
+замены подмножеств строк другими значениями.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">ReplaceAllString</span><span class="p">(</span><span class="s">&quot;a peach&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;fruit&gt;&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вариант с <code>Func</code> позволяет вам преобразовывать
+сопоставленный текст с заданной функцией.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">in</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;a peach&quot;</span><span class="p">)</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">ReplaceAllFunc</span><span class="p">(</span><span class="nx">in</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run regular-expressions.go 
+<span class="go">true</span>
+<span class="go">true</span>
+<span class="go">peach</span>
+<span class="go">[0 5]</span>
+<span class="go">[peach ea]</span>
+<span class="go">[0 5 1 3]</span>
+<span class="go">[peach punch pinch]</span>
+<span class="go">[[0 5 1 3] [6 11 7 9] [12 17 13 15]]</span>
+<span class="go">[peach punch]</span>
+<span class="go">true</span>
+<span class="go">p([a-z]+)ch</span>
+<span class="go">a &lt;fruit&gt;</span>
+<span class="go">a PEACH</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Для получения полной ссылки на регулярные выражения Go
+проверьте документацию пакета <a href="http://golang.org/pkg/regexp/"><code>regexp</code></a>.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="json">JSON</a>.
@@ -34,7 +345,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bytes\"\u000A    \"fmt\"\u000A    \"regexp\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    match, _ := regexp.MatchString(\"p([a-z]+)ch\", \"peach\")\u000A    fmt.Println(match)\u000A');codeLines.push('    r, _ := regexp.Compile(\"p([a-z]+)ch\")\u000A');codeLines.push('    fmt.Println(r.MatchString(\"peach\"))\u000A');codeLines.push('    fmt.Println(r.FindString(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindStringIndex(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindStringSubmatch(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindStringSubmatchIndex(\"peach punch\"))\u000A');codeLines.push('    fmt.Println(r.FindAllString(\"peach punch pinch\", -1))\u000A');codeLines.push('    fmt.Println(r.FindAllStringSubmatchIndex(\u000A        \"peach punch pinch\", -1))\u000A');codeLines.push('    fmt.Println(r.FindAllString(\"peach punch pinch\", 2))\u000A');codeLines.push('    fmt.Println(r.Match([]byte(\"peach\")))\u000A');codeLines.push('    r = regexp.MustCompile(\"p([a-z]+)ch\")\u000A    fmt.Println(r)\u000A');codeLines.push('    fmt.Println(r.ReplaceAllString(\"a peach\", \"\x3Cfruit\x3E\"))\u000A');codeLines.push('    in := []byte(\"a peach\")\u000A    out := r.ReplaceAllFunc(in, bytes.ToUpper)\u000A    fmt.Println(string(out))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -23,6 +23,222 @@
     <div class="example" id="file-paths">
       <h2><a href="./">Go в примерах</a>: Пути к файлам (File Paths)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Пакет <code>filepath</code> предоставляет функции для разбора и
+создания <em>путей к файлам</em> способом, который переносим
+между операционными системами; например, <code>dir/file</code> в
+Linux против <code>dir\file</code> в Windows.</p>
+
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/6VDVplbM_Sk" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;path/filepath&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Join</code> должен использоваться для создания путей в
+переносимом виде. Он принимает любое количество
+аргументов и строит из них иерархический путь.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1&quot;</span><span class="p">,</span> <span class="s">&quot;dir2&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;p:&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вы должны всегда использовать <code>Join</code> вместо ручного
+объединения с помощью слешей <code>/</code> или <code>\</code>. В дополнение
+к обеспечению переносимости, <code>Join</code> также нормализует
+пути, удаляя лишние разделители.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1//&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="s">&quot;dir1/../dir1&quot;</span><span class="p">,</span> <span class="s">&quot;filename&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Dir</code> и <code>Base</code> могут использоваться для разделения
+пути к каталогу и файлу. В качестве альтернативы,
+<code>Split</code> вернет оба в одном вызове.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Dir(p):&quot;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Base(p):&quot;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Base</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Можно проверить является ли путь абсолютным.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">IsAbs</span><span class="p">(</span><span class="s">&quot;dir/file&quot;</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">IsAbs</span><span class="p">(</span><span class="s">&quot;/dir/file&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">filename</span> <span class="o">:=</span> <span class="s">&quot;config.json&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Некоторые имена файлов имеют расширения, следующие
+за точкой. Мы можем получить расширение из таких
+имен с помощью <code>Ext</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">ext</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Ext</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ext</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Чтобы найти имя файла с удаленным расширением,
+используйте <code>strings.TrimSuffix</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">TrimSuffix</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Rel</code> находит относительный путь между двумя путями
+<em>base</em> и <em>target</em>. Возвращает ошибку, если <em>target</em>
+не может быть получен из <em>base</em>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Rel</span><span class="p">(</span><span class="s">&quot;a/b&quot;</span><span class="p">,</span> <span class="s">&quot;a/b/t/file&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Rel</span><span class="p">(</span><span class="s">&quot;a/b&quot;</span><span class="p">,</span> <span class="s">&quot;a/c/t/file&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run file-paths.go
+<span class="go">p: dir1/dir2/filename</span>
+<span class="go">dir1/filename</span>
+<span class="go">dir1/filename</span>
+<span class="go">Dir(p): dir1/dir2</span>
+<span class="go">Base(p): filename</span>
+<span class="go">false</span>
+<span class="go">true</span>
+<span class="go">.json</span>
+<span class="go">config</span>
+<span class="go">t/file</span>
+<span class="go">../c/t/file</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="directories">Директории (Directories)</a>.
@@ -34,7 +250,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"path/filepath\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p := filepath.Join(\"dir1\", \"dir2\", \"filename\")\u000A    fmt.Println(\"p:\", p)\u000A');codeLines.push('    fmt.Println(filepath.Join(\"dir1//\", \"filename\"))\u000A    fmt.Println(filepath.Join(\"dir1/../dir1\", \"filename\"))\u000A');codeLines.push('    fmt.Println(\"Dir(p):\", filepath.Dir(p))\u000A    fmt.Println(\"Base(p):\", filepath.Base(p))\u000A');codeLines.push('    fmt.Println(filepath.IsAbs(\"dir/file\"))\u000A    fmt.Println(filepath.IsAbs(\"/dir/file\"))\u000A');codeLines.push('    filename := \"config.json\"\u000A');codeLines.push('    ext := filepath.Ext(filename)\u000A    fmt.Println(ext)\u000A');codeLines.push('    fmt.Println(strings.TrimSuffix(filename, ext))\u000A');codeLines.push('    rel, err := filepath.Rel(\"a/b\", \"a/b/t/file\")\u000A    if err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(rel)\u000A');codeLines.push('    rel, err = filepath.Rel(\"a/b\", \"a/c/t/file\")\u000A    if err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(rel)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

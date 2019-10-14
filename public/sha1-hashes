@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go в примерах: Хеш SHA1 (SHA1 Hashes)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'url-parsing';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'base64-encoding';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="sha1-hashes">
+      <h2><a href="./">Go в примерах</a>: Хеш SHA1 (SHA1 Hashes)</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><a href="http://en.wikipedia.org/wiki/SHA-1"><em>Хеши SHA1</em></a> часто
+используются для вычисления коротких идентификаторов
+для двоичных или текстовых BLOB-объектов. Например,
+<a href="http://git-scm.com/">система контроля версий git</a> широко использует SHA1 для
+идентификации версионных файлов и каталогов. Вот как
+вычислить хэши SHA1 в Go.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/zhhfA6LqgFI" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go реализует несколько хеш-функций в пакете
+<code>crypto/*</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;crypto/sha1&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;sha1 this string&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Для генерации хеша используется функция <code>sha1.New()</code>,
+<code>sha1.Write(bytes)</code>, затем <code>sha1.Sum([]byte{})</code>.
+Тут мы создаем новый хеш.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha1</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>В <code>Write</code> необходимо передать байты. Если у вас есть
+строка <code>s</code>, используйте <code>[]byte(s)</code>, чтобы привести
+ее к байтам.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">h</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Получаем окончательный результат хеш-функции в виде
+байтового фрагмента. Аргумент в <code>Sum</code> добавляет к
+существующему фрагменту байты, но обычно он не используется.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nx">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Значения SHA1 часто печатаются в шестнадцатеричном формате,
+например, в git commit. Используйте <code>%x</code> для преобразования
+результатов хеширования в шестнадцатеричную строку.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Запущенная программа вычисляет хеш и печатает его в
+удобочитаемом шестнадцатеричном формате.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run sha1-hashes.go
+<span class="go">sha1 this string</span>
+<span class="go">cf23df2207d99a74fbe169e3eba035e633b65d94</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вы можете вычислить другие хэши, используя шаблон,
+аналогичный показанному выше. Например, для вычисления
+хэшей MD5 импортируйте <code>crypto/md5</code> и используйте
+<code>md5.New()</code>.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Обратите внимание, что если вам нужны криптографически
+защищенные хэши, вы должны тщательно исследовать
+<a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">стойкость хэша</a>!</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Следующий пример: <a href="base64-encoding">Кодирование Base64 (Base64 Encoding)</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sha1-hashes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"crypto/sha1\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A    s := \"sha1 this string\"\u000A');codeLines.push('    h := sha1.New()\u000A');codeLines.push('    h.Write([]byte(s))\u000A');codeLines.push('    bs := h.Sum(nil)\u000A');codeLines.push('    fmt.Println(s)\u000A    fmt.Printf(\"%x\\n\", bs)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

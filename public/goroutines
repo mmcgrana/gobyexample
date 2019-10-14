@@ -23,6 +23,179 @@
     <div class="example" id="goroutines">
       <h2><a href="./">Go в примерах</a>: Горутины (Goroutines)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p><em>Горутины</em> - это легковесный тред.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/79i2V9dLU15" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f</span><span class="p">(</span><span class="nx">from</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Предположим, у нас есть вызов функции <code>f(s)</code>. Вот
+как мы бы вызвали её обычным способом, запустив
+синхронно.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">f</span><span class="p">(</span><span class="s">&quot;direct&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Чтобы вызвать эту функцию в горутине, используйте
+<code>go f(s)</code>. Эта новая горутина будет выполняться
+одновременно с вызывающей фукнцией.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">go</span> <span class="nx">f</span><span class="p">(</span><span class="s">&quot;goroutine&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вы так же можете вызывать анонимные функции в
+горутнах.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+    <span class="p">}(</span><span class="s">&quot;going&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Наши две функции теперь выполняются асинхронно в
+отдельных горутинах. Дождитесь их окончания (для
+более надежного подхода используйте <a href="waitgroups">WaitGroup</a>).</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Когда мы запускаем эту программу, мы видим сначала
+вывод блокирующего вызова, а затем чередующийся вывод
+двух горутин. Это чередование отражает выполнение
+горутин, одновременно выполняемых средой выполнения Go.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run goroutines.go
+<span class="go">direct : 0</span>
+<span class="go">direct : 1</span>
+<span class="go">direct : 2</span>
+<span class="go">goroutine : 0</span>
+<span class="go">going</span>
+<span class="go">goroutine : 1</span>
+<span class="go">goroutine : 2</span>
+<span class="go">done</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Далее мы рассмотрим дополнение к горутинам в
+параллельных программах Go: каналы.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="channels">Каналы (Channels)</a>.
@@ -34,7 +207,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func f(from string) {\u000A    for i := 0; i \x3C 3; i++ {\u000A        fmt.Println(from, \":\", i)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f(\"direct\")\u000A');codeLines.push('    go f(\"goroutine\")\u000A');codeLines.push('    go func(msg string) {\u000A        fmt.Println(msg)\u000A    }(\"going\")\u000A');codeLines.push('    time.Sleep(time.Second)\u000A    fmt.Println(\"done\")\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

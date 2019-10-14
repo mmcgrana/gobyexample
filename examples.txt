@@ -1,74 +1,74 @@
-Hello World
-Типы данных (Values)
-Переменные (Variables)
-Константы (Constants)
-Цикл For
-If/Else
-Switch
-Массивы (Arrays)
-Срезы (Slices)
-Карты (Maps)
-Ряд (Range)
-Функции (Functions)
-Функции с множественным возвратом (Multiple Return Values)
-Функции с переменным числом аргументов (Variadic Functions)
-Замыкания (Closures)
-Рекурсия (Recursion)
-Указатели (Pointers)
-Структуры (Structs)
-Методы (Methods)
-Интерфейсы (Interfaces)
-Ошибки (Errors)
-Горутины (Goroutines)
-Каналы (Channels)
-Буферизированный канал (Channel Buffering)
-Синхронизация канала (Channel Synchronization)
-Направления канала (Channel Directions)
-Select
-Тайм-ауты (Timeouts)
-Неблокируемые операции в каналах (Non-Blocking Channel Operations)
-Закрытие каналов (Closing Channels)
-Перебор значений из каналов (Range over Channels)
-Таймеры (Timers)
-Тикеры (повторения) (Tickers)
-Пулы воркеров (Worker Pools)
-WaitGroups
-Ограничение скорости (Rate Limiting)
-Атомарные счетчики (Atomic Counters)
-Мьютексы (Mutexes)
-Управление состоянием горутин (Stateful Goroutines)
-Сортировка (Sorting)
-Сортировка через функции (Sorting by Functions)
-Panic
-Defer
-Функции коллекции (Collection Functions)
-Строковые функции (String Functions)
-Форматирование строк (String Formatting)
-Регулярные выражения (Regular Expressions)
-JSON
-XML
-Время (Time)
-Epoch
-Форматирование времени (Time Formatting / Parsing)
-Случайные числа (Random Numbers)
-Парсинг чисел (Number Parsing)
-Парсинг URL (URL Parsing)
-Хеш SHA1 (SHA1 Hashes)
-Кодирование Base64 (Base64 Encoding)
-Чтение файлов (Reading Files)
-Запись файлов (Writing Files)
-Строковые фильтры (Line Filters)
-Пути к файлам (File Paths)
-Директории (Directories)
-Временные файлы и директории (Temporary Files and Directories)
-Тестирование (Testing)
-Аргументы командной строки (Command-Line Arguments)
-Флаги командной строки (Command-Line Flags)
-Подкоманды командной строки (Command-Line Subcommands)
-Переменные среды (Environment Variables)
-HTTP клиенты (HTTP Clients)
-HTTP серверы (HTTP Servers)
-Порождающие процессы (Spawning Processes)
-Исполняющие процессы (Exec'ing Processes)
-Сигналы (Signals)
-Выход (Exit)
+Hello World|Hello World
+Типы данных (Values)|Values
+Переменные (Variables)|Variables
+Константы (Constants)|Constants
+Цикл For|For
+If/Else|If/Else
+Switch|Switch
+Массивы (Arrays)|Arrays
+Срезы (Slices)|Slices
+Карты (Maps)|Maps
+Ряд (Range)|Range
+Функции (Functions)|Functions
+Функции с множественным возвратом (Multiple Return Values)|Multiple Return Values
+Функции с переменным числом аргументов (Variadic Functions)|Variadic Functions
+Замыкания (Closures)|Closures
+Рекурсия (Recursion)|Recursion
+Указатели (Pointers)|Pointers
+Структуры (Structs)|Structs
+Методы (Methods)|Methods
+Интерфейсы (Interfaces)|Interfaces
+Ошибки (Errors)|Errors
+Горутины (Goroutines)|Goroutines
+Каналы (Channels)|Channels
+Буферизированный канал (Channel Buffering)|Channel Buffering
+Синхронизация канала (Channel Synchronization)|Channel Synchronization
+Направления канала (Channel Directions)|Channel Directions
+Select|Select
+Тайм-ауты (Timeouts)|Timeouts
+Неблокируемые операции в каналах (Non-Blocking Channel Operations)|Non-Blocking Channel Operations
+Закрытие каналов (Closing Channels)|Closing Channels
+Перебор значений из каналов (Range over Channels)|Range over Channels
+Таймеры (Timers)|Timers
+Тикеры (повторения) (Tickers)|Tickers
+Пулы воркеров (Worker Pools)|Worker Pools
+WaitGroups|WaitGroups
+Ограничение скорости (Rate Limiting)|Rate Limiting
+Атомарные счетчики (Atomic Counters)|Atomic Counters
+Мьютексы (Mutexes)|Mutexes
+Управление состоянием горутин (Stateful Goroutines)|Stateful Goroutines
+Сортировка (Sorting)|Sorting
+Сортировка через функции (Sorting by Functions)|Sorting by Functions
+Panic|Panic
+Defer|Defer
+Функции коллекции (Collection Functions)|Collection Functions
+Строковые функции (String Functions)|String Functions
+Форматирование строк (String Formatting)|String Formatting
+Регулярные выражения (Regular Expressions)|Regular Expressions
+JSON|JSON
+XML|XML
+Время (Time)|Time
+Epoch|Epoch
+Форматирование времени (Time Formatting / Parsing)|Time Formatting / Parsing
+Случайные числа (Random Numbers)|Random Numbers
+Парсинг чисел (Number Parsing)|Number Parsing
+Парсинг URL (URL Parsing)|URL Parsing
+Хеш SHA1 (SHA1 Hashes)|SHA1 Hashes
+Кодирование Base64 (Base64 Encoding)|Base64 Encoding
+Чтение файлов (Reading Files)|Reading Files
+Запись файлов (Writing Files)|Writing Files
+Строковые фильтры (Line Filters)|Line Filters
+Пути к файлам (File Paths)|File Paths
+Директории (Directories)|Directories
+Временные файлы и директории (Temporary Files and Directories)|Temporary Files and Directories
+Тестирование (Testing)|Testing
+Аргументы командной строки (Command-Line Arguments)|Command-Line Arguments
+Флаги командной строки (Command-Line Flags)|Command-Line Flags
+Подкоманды командной строки (Command-Line Subcommands)|Command-Line Subcommands
+Переменные среды (Environment Variables)|Environment Variables
+HTTP клиенты (HTTP Clients)|HTTP Clients
+HTTP серверы (HTTP Servers)|HTTP Servers
+Порождающие процессы (Spawning Processes)|Spawning Processes
+Исполняющие процессы (Exec'ing Processes)|Exec'ing Processes
+Сигналы (Signals)|Signals
+Выход (Exit)|Exit

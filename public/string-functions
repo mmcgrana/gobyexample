@@ -23,6 +23,181 @@
     <div class="example" id="string-functions">
       <h2><a href="./">Go в примерах</a>: Строковые функции (String Functions)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Стандартная библиотека пакета <code>strings</code> предоставляет
+множество удобных функций для работы со строками. Вот
+некоторые из них.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/UeDwSoYepQt" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="nx">s</span> <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Создаем алиас для функции <code>fmt.Println</code>, т.к. далее мы будем
+часто вызывать эту функцию.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Данные функции доступны в пакете <code>strings</code>. Обратите внимание,
+что все эти функции из пакета, а не методы строковых объектов.
+Это означает, что нам необходимо передать первым аргументом
+функции, строку, над которой мы производим операцию. Вы можете
+найти больше строковых функций в <a href="http://golang.org/pkg/strings/"><code>официальной документации
+к пакету</code></a>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Contains:  &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;es&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Count:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Count</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasPrefix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;te&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;HasSuffix: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;st&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Index:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Index</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Join:      &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">},</span> <span class="s">&quot;-&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Repeat:    &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Repeat</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Replace:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Replace:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Split:     &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="s">&quot;a-b-c-d-e&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;ToLower:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="s">&quot;TEST&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;ToUpper:   &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Примеры ниже не относятся к пакету <code>strings</code>, но о них
+стоит упомянуть - это механизмы для получения длины
+строки и получение символа по индексу.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Len: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span>
+    <span class="nx">p</span><span class="p">(</span><span class="s">&quot;Char:&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Обратите внимание, что <code>len</code> и индексация выше работают на
+уровне байтов. Go использует строки в кодировке UTF-8, так
+что это часто полезно как есть. Если вы работаете с
+потенциально многобайтовыми символами, вам нужно использовать
+операции с кодировкой. Смотрите <a href="https://blog.golang.org/strings">строки, байты, руны и символы
+в Go</a> для получения дополнительной
+информации.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run string-functions.go
+<span class="go">Contains:   true</span>
+<span class="go">Count:      2</span>
+<span class="go">HasPrefix:  true</span>
+<span class="go">HasSuffix:  true</span>
+<span class="go">Index:      1</span>
+<span class="go">Join:       a-b</span>
+<span class="go">Repeat:     aaaaa</span>
+<span class="go">Replace:    f00</span>
+<span class="go">Replace:    f0o</span>
+<span class="go">Split:      [a b c d e]</span>
+<span class="go">ToLower:    test</span>
+<span class="go">ToUpper:    TEST</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="go">Len:  5</span>
+<span class="go">Char: 101</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="string-formatting">Форматирование строк (String Formatting)</a>.
@@ -34,7 +209,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    s \"strings\"\u000A)\u000A');codeLines.push('var p = fmt.Println\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p(\"Contains:  \", s.Contains(\"test\", \"es\"))\u000A    p(\"Count:     \", s.Count(\"test\", \"t\"))\u000A    p(\"HasPrefix: \", s.HasPrefix(\"test\", \"te\"))\u000A    p(\"HasSuffix: \", s.HasSuffix(\"test\", \"st\"))\u000A    p(\"Index:     \", s.Index(\"test\", \"e\"))\u000A    p(\"Join:      \", s.Join([]string{\"a\", \"b\"}, \"-\"))\u000A    p(\"Repeat:    \", s.Repeat(\"a\", 5))\u000A    p(\"Replace:   \", s.Replace(\"foo\", \"o\", \"0\", -1))\u000A    p(\"Replace:   \", s.Replace(\"foo\", \"o\", \"0\", 1))\u000A    p(\"Split:     \", s.Split(\"a-b-c-d-e\", \"-\"))\u000A    p(\"ToLower:   \", s.ToLower(\"TEST\"))\u000A    p(\"ToUpper:   \", s.ToUpper(\"test\"))\u000A    p()\u000A');codeLines.push('    p(\"Len: \", len(\"hello\"))\u000A    p(\"Char:\", \"hello\"[1])\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -23,6 +23,343 @@
     <div class="example" id="collection-functions">
       <h2><a href="./">Go в примерах</a>: Функции коллекции (Collection Functions)</h2>
       
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Нам часто нужны наши программы для выполнения операций
+с коллекциями данных, таких как выбор всех элементов,
+которые удовлетворяют данному предикату, или отображение
+всех элементов в новую коллекцию с помощью
+пользовательской функции.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>В некоторых языках идиоматично использовать <a href="http://en.wikipedia.org/wiki/Generic_programming">дженерики</a>
+и алгоритмы. Go не поддерживает дженерики; в Go, как
+правило, предоставляют функции коллекции если они
+необходимы конкретно для вашей программы и ваших
+типов данных.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Вот несколько примеров функций коллекции для срезов
+со <code>строковыми значениями</code>. Вы можете использовать эти
+примеры, чтобы сделать собственные функции. Обратите
+внимание, что в некоторых случаях, возможно, было бы
+более явным встроить код, манипулирующий коллекциями,
+вместо создания создания вспомогательных функций.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/urAoHQtRHro" target="_blank"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает первый индекс совпадения со строкой <code>t</code> или -1
+если совпадение не найдено.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vs</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">v</span> <span class="o">==</span> <span class="nx">t</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">i</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает <code>true</code> если строка <code>t</code> находится в срезе.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">Include</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">vs</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает <code>true</code> если одна из строк в срезе
+удовлетворяет условию <code>f</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">Any</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vs</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает <code>true</code> если все из строк в срезе
+удовлетворяют условие <code>f</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">All</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vs</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает новый срез, содержащий все строки в срезе,
+которые удовлетворяют условие <code>f</code>.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">Filter</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">vsf</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vs</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">vsf</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">vsf</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">vsf</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Возвращает новый срез, содержащий результаты выполнения
+функции <code>f</code> с каждой строкой исходного слайса.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">Map</span><span class="p">(</span><span class="nx">vs</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">vsm</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">vs</span><span class="p">))</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">vs</span> <span class="p">{</span>
+        <span class="nx">vsm</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">vsm</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Здесь мы пробуем различные функции коллекций.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">strs</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">,</span> <span class="s">&quot;plum&quot;</span><span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Index</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Include</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="s">&quot;grape&quot;</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Any</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">)</span>
+    <span class="p">}))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">All</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">)</span>
+    <span class="p">}))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Filter</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">)</span>
+    <span class="p">}))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Все примеры, приведенные выше, использовали
+анонимные функции, но вы можете использовать именные
+функции корректного типа.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Map</span><span class="p">(</span><span class="nx">strs</span><span class="p">,</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">))</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run collection-functions.go 
+<span class="go">2</span>
+<span class="go">false</span>
+<span class="go">true</span>
+<span class="go">false</span>
+<span class="go">[peach apple pear]</span>
+<span class="go">[PEACH APPLE PEAR PLUM]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
       
       <p class="next">
         Следующий пример: <a href="string-functions">Строковые функции (String Functions)</a>.
@@ -34,7 +371,7 @@
     </div>
     <script>
       var codeLines = [];
-      
+      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func Index(vs []string, t string) int {\u000A    for i, v := range vs {\u000A        if v == t {\u000A            return i\u000A        }\u000A    }\u000A    return -1\u000A}\u000A');codeLines.push('func Include(vs []string, t string) bool {\u000A    return Index(vs, t) \x3E= 0\u000A}\u000A');codeLines.push('func Any(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            return true\u000A        }\u000A    }\u000A    return false\u000A}\u000A');codeLines.push('func All(vs []string, f func(string) bool) bool {\u000A    for _, v := range vs {\u000A        if !f(v) {\u000A            return false\u000A        }\u000A    }\u000A    return true\u000A}\u000A');codeLines.push('func Filter(vs []string, f func(string) bool) []string {\u000A    vsf := make([]string, 0)\u000A    for _, v := range vs {\u000A        if f(v) {\u000A            vsf = append(vsf, v)\u000A        }\u000A    }\u000A    return vsf\u000A}\u000A');codeLines.push('func Map(vs []string, f func(string) string) []string {\u000A    vsm := make([]string, len(vs))\u000A    for i, v := range vs {\u000A        vsm[i] = f(v)\u000A    }\u000A    return vsm\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var strs = []string{\"peach\", \"apple\", \"pear\", \"plum\"}\u000A');codeLines.push('    fmt.Println(Index(strs, \"pear\"))\u000A');codeLines.push('    fmt.Println(Include(strs, \"grape\"))\u000A');codeLines.push('    fmt.Println(Any(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(All(strs, func(v string) bool {\u000A        return strings.HasPrefix(v, \"p\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Filter(strs, func(v string) bool {\u000A        return strings.Contains(v, \"e\")\u000A    }))\u000A');codeLines.push('    fmt.Println(Map(strs, strings.ToUpper))\u000A');codeLines.push('}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
