@@ -1,17 +1,18 @@
-# To run the program, put the code in `hello-world.go` and
-# use `go run`.
+# Для запуска программы, добавьте код в файл `hello-world.go`
+# и выполните `go run`.
 $ go run hello-world.go
 hello world
 
-# Sometimes we'll want to build our programs into
-# binaries. We can do this using `go build`.
+# Иногда необходимо собрать программу в бинарный
+# файл. Мы можем сделать это с помощью команды
+# `go build`.
 $ go build hello-world.go
 $ ls
 hello-world	hello-world.go
 
-# We can then execute the built binary directly.
+# Мы можем выполнить бинарный файл напрямую.
 $ ./hello-world
 hello world
 
-# Now that we can run and build basic Go programs, let's
-# learn more about the language.
+# Теперь когда мы можем запускать и собирать Go-программы,
+# давайте узнаем больше об этом языке.
