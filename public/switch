@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'массивы-(arrays)';
+              window.location.href = 'arrays';
           }
           
       }
@@ -193,7 +193,7 @@
       
       
       <p class="next">
-        Следующий пример: <a href="массивы-(arrays)">Массивы (Arrays)</a>.
+        Следующий пример: <a href="arrays">Массивы (Arrays)</a>.
       </p>
       
       <p class="footer">

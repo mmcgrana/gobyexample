@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'функции-коллекции-(collection-functions)';
+              window.location.href = 'collection-functions';
           }
           
       }
@@ -204,7 +204,7 @@
       
       
       <p class="next">
-        Следующий пример: <a href="функции-коллекции-(collection-functions)">Функции коллекции (Collection Functions)</a>.
+        Следующий пример: <a href="collection-functions">Функции коллекции (Collection Functions)</a>.
       </p>
       
       <p class="footer">

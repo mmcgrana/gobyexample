@@ -10,7 +10,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'типы-данных-(values)';
+              window.location.href = 'values';
           }
           
       }
@@ -67,8 +67,8 @@
         
         <tr>
           <td class="docs">
-            <p>To run the program, put the code in <code>hello-world.go</code> and
-use <code>go run</code>.</p>
+            <p>Для запуска программы, добавьте код в файл
+<code>hello-world.go</code> и выполните <code>go run</code>.</p>
 
           </td>
           <td class="code leading">
@@ -82,8 +82,9 @@ use <code>go run</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to build our programs into
-binaries. We can do this using <code>go build</code>.</p>
+            <p>Иногда необходимо собрать программу в бинарный
+файл. Мы можем сделать это с помощью команды
+<code>go build</code>.</p>
 
           </td>
           <td class="code leading">
@@ -98,7 +99,7 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can then execute the built binary directly.</p>
+            <p>Мы можем выполнить бинарный файл напрямую.</p>
 
           </td>
           <td class="code leading">
@@ -112,8 +113,8 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we can run and build basic Go programs, let&rsquo;s
-learn more about the language.</p>
+            <p>Теперь когда мы можем запускать и собирать Go-программы,
+давайте узнаем больше об этом языке.</p>
 
           </td>
           <td class="code empty">
@@ -126,7 +127,7 @@ learn more about the language.</p>
       
       
       <p class="next">
-        Следующий пример: <a href="типы-данных-(values)">Типы данных (Values)</a>.
+        Следующий пример: <a href="values">Типы данных (Values)</a>.
       </p>
       
       <p class="footer">

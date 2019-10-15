@@ -9,12 +9,12 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'пулы-воркеров-(worker-pools)';
+              window.location.href = 'worker-pools';
           }
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'ограничение-скорости-(rate-limiting)';
+              window.location.href = 'rate-limiting';
           }
           
       }
@@ -210,7 +210,7 @@
       
       
       <p class="next">
-        Следующий пример: <a href="ограничение-скорости-(rate-limiting)">Ограничение скорости (Rate Limiting)</a>.
+        Следующий пример: <a href="rate-limiting">Ограничение скорости (Rate Limiting)</a>.
       </p>
       
       <p class="footer">

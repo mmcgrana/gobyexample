@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'регулярные-выражения-(regular-expressions)';
+              window.location.href = 'regular-expressions';
           }
           
           

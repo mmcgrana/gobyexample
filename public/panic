@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'сортировка-через-функции-(sorting-by-functions)';
+              window.location.href = 'sorting-by-functions';
           }
           
           
