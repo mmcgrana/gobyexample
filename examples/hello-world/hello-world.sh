@@ -1,5 +1,5 @@
-# Для запуска программы, добавьте код в файл `hello-world.go`
-# и выполните `go run`.
+# Для запуска программы, добавьте код в файл
+# `hello-world.go` и выполните `go run`.
 $ go run hello-world.go
 hello world
 
