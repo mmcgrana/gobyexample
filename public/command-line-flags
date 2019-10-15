@@ -311,6 +311,8 @@
       
       <p class="footer">
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-flags">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <br/>
+        переведено Nick S. | <a href="https://github.com/badkaktus/gobyexample">исходники</a>
       </p>
     </div>
     <script>

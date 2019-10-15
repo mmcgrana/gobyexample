@@ -246,6 +246,8 @@ Linux против <code>dir\file</code> в Windows.</p>
       
       <p class="footer">
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/file-paths">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        <br/>
+        переведено Nick S. | <a href="https://github.com/badkaktus/gobyexample">исходники</a>
       </p>
     </div>
     <script>
