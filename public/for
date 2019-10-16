@@ -171,9 +171,9 @@
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll see some other <code>for</code> forms later when we look at
-<code>range</code> statements, channels, and other data
-structures.</p>
+            <p>Мы увидим некоторые другие записи <code>for</code> позже,
+когда рассмотрим оператор <code>range</code>, каналы и другие
+структуры данных.</p>
 
           </td>
           <td class="code empty">
