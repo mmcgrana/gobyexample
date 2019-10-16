@@ -10,6 +10,6 @@ loop
 3
 5
 
-# We'll see some other `for` forms later when we look at
-# `range` statements, channels, and other data
-# structures.
+# Мы увидим некоторые другие записи `for` позже,
+# когда рассмотрим оператор `range`, каналы и другие
+# структуры данных.
