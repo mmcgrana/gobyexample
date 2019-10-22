@@ -43,7 +43,7 @@ of the data structures we&rsquo;ve already learned.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/JTY1VAUjfBw"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/pdZOtv4g-7J"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 

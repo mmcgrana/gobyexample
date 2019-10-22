@@ -34,7 +34,7 @@ between operating systems; <code>dir/file</code> on Linux vs.
 
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/QIitbMNiFRx"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/5h3lUytvmyO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 

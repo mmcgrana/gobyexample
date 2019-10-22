@@ -42,7 +42,7 @@ ones we saw earlier for reading.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/gyJn9PcndtP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/8kx-qYUXBpA"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
