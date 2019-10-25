@@ -26,9 +26,13 @@ func main() {
 
 	// In order to use our pool of workers we need to send
 	// them work and collect their results. We make 2
-	// channels for this.
-	jobs := make(chan int, 100)
-	results := make(chan int, 100)
+	// channels for this.  We use buffered channels
+	// because we want the workers to block until they
+	// receive on the `jobs` channel, but want to be able
+	// to send to either channel without blocking.
+	const numJobs = 5
+	jobs := make(chan int, numJobs)
+	results := make(chan int, numJobs)
 
 	// This starts up 3 workers, initially blocked
 	// because there are no jobs yet.
@@ -38,7 +42,7 @@ func main() {
 
 	// Here we send 5 `jobs` and then `close` that
 	// channel to indicate that's all the work we have.
-	for j := 1; j <= 5; j++ {
+	for j := 1; j <= numJobs; j++ {
 		jobs <- j
 	}
 	close(jobs)
@@ -47,7 +51,7 @@ func main() {
 	// This also ensures that the worker goroutines have
 	// finished. An alternative way to wait for multiple
 	// goroutines is to use a [WaitGroup](waitgroups).
-	for a := 1; a <= 5; a++ {
+	for a := 1; a <= numJobs; a++ {
 		<-results
 	}
 }
