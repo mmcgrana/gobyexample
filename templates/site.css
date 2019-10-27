@@ -49,12 +49,27 @@ body {
     line-height: 20px;
     color: #252519;
 }
+    @media (prefers-color-scheme: dark) {
+        body {
+            color: gray;
+            background: #000;
+        }
+    }
 em {
     font-style: italic;
 }
 a, a:visited {
     color: #261a3b;
 }
+    @media (prefers-color-scheme: dark) {
+        a {
+            color: lightblue;
+        }
+        a:visited {
+            color: #99b;
+        }
+    }
+
 h2 {
     font-size: 32px;
     line-height: 40px;
@@ -115,6 +130,12 @@ td.docs p {
     padding-top: 5px;
     padding-bottom: 15px;
 }
+    @media (prefers-color-scheme: dark) {
+        td.docs p {
+            color: gray;
+            background: #000;
+        }
+    }
 td.code {
     width: 480px;
     max-width: 480px;
@@ -126,12 +147,22 @@ td.code {
     vertical-align: top;
     background: #f0f0f0;
 }
+@media (prefers-color-scheme: dark) {
+    td.code {
+        background: #000;
+    }
+}
 td.code.leading {
     padding-bottom: 11px;
 }
 td.code.empty {
-    background: #ffffff;
+    background: #fff;
 }
+    @media (prefers-color-scheme: dark) {
+        td.code.empty {
+            background: #000;
+        }
+    }
 pre, code {
     font-size: 14px; line-height: 18px;
     font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
