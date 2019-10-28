@@ -60,4 +60,21 @@ func main() {
 	whatAmI(true)
 	whatAmI(1)
 	whatAmI("hey")
+
+	// Every case includes a break by default.
+	// You can use the keyword 'fallthrough' to override this
+	// behaviour. In this example, we print 'FooBar' if num
+	// is even and 'Bar'  if num is odd.
+	evenOdd := func(num int) {
+		switch {
+		case num%2 == 0:
+			fmt.Printf("Foo")
+			fallthrough
+		case num%2 == 1:
+			fmt.Printf("Bar")
+		}
+		fmt.Printf("\n")
+	}
+	evenOdd(2)
+	evenOdd(5)
 }
