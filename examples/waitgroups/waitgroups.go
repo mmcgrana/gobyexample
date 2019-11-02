@@ -32,6 +32,8 @@ func main() {
 	// Launch several goroutines and increment the WaitGroup
 	// counter for each.
 	for i := 1; i <= 5; i++ {
+		// https://golang.org/doc/faq#closures_and_goroutines
+		i := i 
 		wg.Add(1)
 		go worker(i, &wg)
 	}
