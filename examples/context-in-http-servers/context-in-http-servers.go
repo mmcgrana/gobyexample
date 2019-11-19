@@ -11,6 +11,7 @@ import (
 )
 
 func hello(w http.ResponseWriter, req *http.Request) {
+
 	// A `context.Context` is created for each request by
 	// the `net/http` machinery, and is available with
 	// the `Context()` method.
@@ -35,6 +36,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+
 	// As before, we register our handler on the "/hello"
 	// route, and start serving.
 	http.HandleFunc("/hello", hello)
