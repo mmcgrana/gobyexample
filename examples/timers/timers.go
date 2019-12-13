@@ -38,4 +38,7 @@ func main() {
 	if stop2 {
 		fmt.Println("Timer 2 stopped")
 	}
+
+	// Give timer2 enough time if it has to expire.
+	time.Sleep(2)
 }
