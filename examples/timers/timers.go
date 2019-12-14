@@ -39,6 +39,10 @@ func main() {
 		fmt.Println("Timer 2 stopped")
 	}
 
-	// Give timer2 enough time if it has to expire.
-	time.Sleep(2)
+	// Main routine might finish well before the above
+	// go-routine, in such case timer2 may not get a
+	// chance to expire. So, lets put the main routine
+	// to sleep for 2 seconds giving timer2 enough time
+	// to expire or stop properly.
+	time.Sleep(2 * time.Second)
 }

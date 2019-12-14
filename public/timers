@@ -45,7 +45,7 @@ at <a href="tickers">tickers</a>.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/zUBjU4lkedA"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/RGYyK5ULk-t"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -137,12 +137,16 @@ Here&rsquo;s an example of that.</p>
         
         <tr>
           <td class="docs">
-            <p>Give timer2 enough time if it has to expire.</p>
+            <p>Main routine might finish well before the above
+go-routine, in such case timer2 may not get a
+chance to expire. So, lets put the main routine
+to sleep for 2 seconds giving timer2 enough time
+to expire or stop properly.</p>
 
           </td>
           <td class="code">
             
-          <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+          <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -183,7 +187,7 @@ a chance to expire.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    timer1 := time.NewTimer(2 * time.Second)\u000A');codeLines.push('    \x3C-timer1.C\u000A    fmt.Println(\"Timer 1 expired\")\u000A');codeLines.push('    timer2 := time.NewTimer(time.Second)\u000A    go func() {\u000A        \x3C-timer2.C\u000A        fmt.Println(\"Timer 2 expired\")\u000A    }()\u000A    stop2 := timer2.Stop()\u000A    if stop2 {\u000A        fmt.Println(\"Timer 2 stopped\")\u000A    }\u000A');codeLines.push('    time.Sleep(2)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    timer1 := time.NewTimer(2 * time.Second)\u000A');codeLines.push('    \x3C-timer1.C\u000A    fmt.Println(\"Timer 1 expired\")\u000A');codeLines.push('    timer2 := time.NewTimer(time.Second)\u000A    go func() {\u000A        \x3C-timer2.C\u000A        fmt.Println(\"Timer 2 expired\")\u000A    }()\u000A    stop2 := timer2.Stop()\u000A    if stop2 {\u000A        fmt.Println(\"Timer 2 stopped\")\u000A    }\u000A');codeLines.push('    time.Sleep(2 * time.Second)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
