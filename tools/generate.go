@@ -7,15 +7,16 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strings"
 	"text/template"
 
-	"github.com/russross/blackfriday"
 	"github.com/alecthomas/chroma"
+	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/alecthomas/chroma/lexers"
+	"github.com/alecthomas/chroma/styles"
+	"github.com/russross/blackfriday"
 )
 
 // siteDir is the target directory into which the HTML gets generated. Its
@@ -48,25 +49,6 @@ func copyFile(src, dst string) {
 	check(err)
 }
 
-func pipe(bin string, arg []string, src string) []byte {
-	cmd := exec.Command(bin, arg...)
-	in, err := cmd.StdinPipe()
-	check(err)
-	out, err := cmd.StdoutPipe()
-	check(err)
-	err = cmd.Start()
-	check(err)
-	_, err = in.Write([]byte(src))
-	check(err)
-	err = in.Close()
-	check(err)
-	bytes, err := ioutil.ReadAll(out)
-	check(err)
-	err = cmd.Wait()
-	check(err)
-	return bytes
-}
-
 func sha1Sum(s string) string {
 	h := sha1.New()
 	h.Write([]byte(s))
@@ -80,24 +62,20 @@ func mustReadFile(path string) string {
 	return string(bytes)
 }
 
-func cachedPygmentize(lex string, src string) string {
+func cachedPygmentize(sourcePath string, src string) string {
 	ensureDir(cacheDir)
-	arg := []string{"-l", lex, "-f", "html"}
-	cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
+	cachePath := cacheDir + "/pygmentize-" + sha1Sum(src)
 	cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
 	if cacheErr == nil {
 		return string(cacheBytes)
 	}
-	renderBytes := pipe(pygmentizeBin, arg, src)
+	renderBytes := chromaFormat(src, sourcePath)
 	// Newer versions of Pygments add silly empty spans.
-	renderCleanString := strings.Replace(string(renderBytes), "<span></span>", "", -1)
-	writeErr := ioutil.WriteFile(cachePath, []byte(renderCleanString), 0600)
-	check(writeErr)
-	return renderCleanString
+	return renderBytes
 }
 
 func markdown(src string) string {
-	return string(blackfriday.MarkdownCommon([]byte(src)))
+	return string(blackfriday.Run([]byte(src)))
 }
 
 func readLines(path string) []string {
@@ -109,15 +87,6 @@ func mustGlob(glob string) []string {
 	paths, err := filepath.Glob(glob)
 	check(err)
 	return paths
-}
-
-func whichLexer(path string) string {
-	if strings.HasSuffix(path, ".go") {
-		return "go"
-	} else if strings.HasSuffix(path, ".sh") {
-		return "console"
-	}
-	panic("No lexer for " + path)
 }
 
 func debug(msg string) {
@@ -219,30 +188,30 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	segs, filecontent := parseSegs(sourcePath)
-	lexer := whichLexer(sourcePath)
+	var goFile bool
 	for _, seg := range segs {
 		if seg.Docs != "" {
 			seg.DocsRendered = markdown(seg.Docs)
 		}
 		if seg.Code != "" {
-			seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
+			seg.CodeRendered = cachedPygmentize(sourcePath, seg.Code)
 			// adding the content to the js code for copying to the clipboard
 			if strings.HasSuffix(sourcePath, ".go") {
+				goFile = true
 				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
 			}
 		}
 	}
 	// we are only interested in the 'go' code to pass to play.golang.org
-	if lexer != "go" {
+	if !goFile {
 		filecontent = ""
 	}
 	return segs, filecontent
 }
 
-func chromaFormat(code string) string {
-	lexer := chroma.Go
+func chromaFormat(code, fileExtension string) string {
+	lexer := lexers.Get(fileExtension)
 	if lexer == nil {
-		panic("")
 		lexer = lexers.Fallback
 	}
 	lexer = chroma.Coalesce(lexer)
