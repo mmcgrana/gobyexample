@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"crypto/sha1"
 	"fmt"
 	"io/ioutil"
@@ -13,6 +14,8 @@ import (
 	"text/template"
 
 	"github.com/russross/blackfriday"
+	"github.com/alecthomas/chroma"
+	"github.com/alecthomas/chroma/lexers"
 )
 
 // siteDir is the target directory into which the HTML gets generated. Its
@@ -234,6 +237,28 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 		filecontent = ""
 	}
 	return segs, filecontent
+}
+
+func chromaFormat(code string) string {
+	lexer := chroma.Go
+	if lexer == nil {
+		panic("")
+		lexer = lexers.Fallback
+	}
+	lexer = chroma.Coalesce(lexer)
+
+	style := styles.Get("swapoff")
+	if style == nil {
+		style = styles.Fallback
+	}
+	formatter := html.New(html.WithClasses(true))
+	iterator, err := lexer.Tokenise(nil, string(code))
+	check(err)
+	buf := new(bytes.Buffer)
+	err = formatter.Format(buf, style, iterator)
+	check(err)
+	return buf.String()
+
 }
 
 func parseExamples() []*Example {

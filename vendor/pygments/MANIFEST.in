@@ -1,6 +1,0 @@
-include pygmentize
-include external/*
-include Makefile CHANGES LICENSE AUTHORS TODO ez_setup.py
-recursive-include tests *
-recursive-include doc *
-recursive-include scripts *
