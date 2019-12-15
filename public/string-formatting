@@ -44,9 +44,7 @@ common string formatting tasks.</p>
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/vmYSdxfUcRh"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span></pre>
           </td>
         </tr>
         
@@ -56,12 +54,10 @@ common string formatting tasks.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;os&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;os&#34;</span>
+<span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -71,11 +67,9 @@ common string formatting tasks.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">type</span> <span class="nx">point</span> <span class="kd">struct</span> <span class="p">{</span>
+          <pre class="chroma"><span class="kd">type</span> <span class="nx">point</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -85,9 +79,7 @@ common string formatting tasks.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -100,10 +92,9 @@ an instance of our <code>point</code> struct.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -115,9 +106,8 @@ include the struct&rsquo;s field names.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%+v\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%+v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -130,9 +120,8 @@ would produce that value.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -143,9 +132,8 @@ would produce that value.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%T\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -156,9 +144,8 @@ would produce that value.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%t\n&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%t\n&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -170,9 +157,8 @@ Use <code>%d</code> for standard, base-10 formatting.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -183,9 +169,8 @@ Use <code>%d</code> for standard, base-10 formatting.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%b\n&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%b\n&#34;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -197,9 +182,8 @@ given integer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%c\n&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%c\n&#34;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -210,9 +194,8 @@ given integer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -224,9 +207,8 @@ floats. For basic decimal formatting use <code>%f</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%f\n&quot;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%f\n&#34;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -238,10 +220,9 @@ different versions of) scientific notation.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%e\n&quot;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%E\n&quot;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%e\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%E\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -252,9 +233,8 @@ different versions of) scientific notation.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\n&quot;</span><span class="p">,</span> <span class="s">&quot;\&quot;string\&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -265,9 +245,8 @@ different versions of) scientific notation.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%q\n&quot;</span><span class="p">,</span> <span class="s">&quot;\&quot;string\&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%q\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -280,9 +259,8 @@ per byte of input.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="s">&quot;hex this&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="s">&#34;hex this&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -293,9 +271,8 @@ per byte of input.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%p\n&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -311,9 +288,8 @@ spaces.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;|%6d|%6d|\n&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6d|%6d|\n&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -327,9 +303,8 @@ width.precision syntax.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;|%6.2f|%6.2f|\n&quot;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6.2f|%6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -340,9 +315,8 @@ width.precision syntax.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;|%-6.2f|%-6.2f|\n&quot;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%-6.2f|%-6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -355,9 +329,8 @@ table-like output. For basic right-justified width.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;|%6s|%6s|\n&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6s|%6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -368,9 +341,8 @@ table-like output. For basic right-justified width.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;|%-6s|%-6s|\n&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%-6s|%-6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -383,10 +355,9 @@ and returns a string without printing it anywhere.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;a %s&quot;</span><span class="p">,</span> <span class="s">&quot;string&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;a %s&#34;</span><span class="p">,</span> <span class="s">&#34;string&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -398,10 +369,9 @@ and returns a string without printing it anywhere.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;an %s\n&quot;</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;an %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;error&#34;</span><span class="p">)</span>
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -415,32 +385,30 @@ and returns a string without printing it anywhere.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run string-formatting.go
-<span class="go">{1 2}</span>
-<span class="go">{x:1 y:2}</span>
-<span class="go">main.point{x:1, y:2}</span>
-<span class="go">main.point</span>
-<span class="go">true</span>
-<span class="go">123</span>
-<span class="go">1110</span>
-<span class="go">!</span>
-<span class="go">1c8</span>
-<span class="go">78.900000</span>
-<span class="go">1.234000e+08</span>
-<span class="go">1.234000E+08</span>
-<span class="go">&quot;string&quot;</span>
-<span class="go">&quot;\&quot;string\&quot;&quot;</span>
-<span class="go">6865782074686973</span>
-<span class="go">0x42135100</span>
-<span class="go">|    12|   345|</span>
-<span class="go">|  1.20|  3.45|</span>
-<span class="go">|1.20  |3.45  |</span>
-<span class="go">|   foo|     b|</span>
-<span class="go">|foo   |b     |</span>
-<span class="go">a string</span>
-<span class="go">an error</span>
-</pre></div>
-
+          <pre class="chroma">$ go run string-formatting.go
+<span class="o">{</span><span class="m">1</span> 2<span class="o">}</span>
+<span class="o">{</span>x:1 y:2<span class="o">}</span>
+main.point<span class="o">{</span>x:1, y:2<span class="o">}</span>
+main.point
+<span class="nb">true</span>
+<span class="m">123</span>
+<span class="m">1110</span>
+!
+1c8
+78.900000
+1.234000e+08
+1.234000E+08
+<span class="s2">&#34;string&#34;</span>
+<span class="s2">&#34;\&#34;string\&#34;&#34;</span>
+<span class="m">6865782074686973</span>
+0x42135100
+<span class="p">|</span>    12<span class="p">|</span>   345<span class="p">|</span>
+<span class="p">|</span>  1.20<span class="p">|</span>  3.45<span class="p">|</span>
+<span class="p">|</span>1.20  <span class="p">|</span>3.45  <span class="p">|</span>
+<span class="p">|</span>   foo<span class="p">|</span>     b<span class="p">|</span>
+<span class="p">|</span>foo   <span class="p">|</span>b     <span class="p">|</span>
+a string
+an error</pre>
           </td>
         </tr>
         

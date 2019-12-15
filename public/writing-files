@@ -43,9 +43,7 @@ ones we saw earlier for reading.</p>
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/gyJn9PcndtP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span></pre>
           </td>
         </tr>
         
@@ -55,14 +53,12 @@ ones we saw earlier for reading.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;bufio&quot;</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;io/ioutil&quot;</span>
-    <span class="s">&quot;os&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;bufio&#34;</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;io/ioutil&#34;</span>
+    <span class="s">&#34;os&#34;</span>
+<span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -72,13 +68,11 @@ ones we saw earlier for reading.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -88,9 +82,7 @@ ones we saw earlier for reading.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -102,11 +94,10 @@ bytes) into a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">d1</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
-    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat1&quot;</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">d1</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello\ngo\n&#34;</span><span class="p">)</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="s">&#34;/tmp/dat1&#34;</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -117,10 +108,9 @@ bytes) into a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;/tmp/dat2&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">&#34;/tmp/dat2&#34;</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -132,9 +122,8 @@ after opening a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span></pre>
           </td>
         </tr>
         
@@ -145,12 +134,11 @@ after opening a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">d2</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">115</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
-    <span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">d2</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;wrote %d bytes\n&quot;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">d2</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">115</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
+    <span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">d2</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;wrote %d bytes\n&#34;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -161,10 +149,9 @@ after opening a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;writes\n&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;wrote %d bytes\n&quot;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;writes\n&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;wrote %d bytes\n&#34;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -175,9 +162,8 @@ after opening a file.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">f</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">f</span><span class="p">.</span><span class="nf">Sync</span><span class="p">()</span></pre>
           </td>
         </tr>
         
@@ -189,11 +175,10 @@ to the buffered readers we saw earlier.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="nx">n4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">w</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;buffered\n&quot;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;wrote %d bytes\n&quot;</span><span class="p">,</span> <span class="nx">n4</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewWriter</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+    <span class="nx">n4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">w</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;buffered\n&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;wrote %d bytes\n&#34;</span><span class="p">,</span> <span class="nx">n4</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -205,9 +190,8 @@ been applied to the underlying writer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">w</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">w</span><span class="p">.</span><span class="nf">Flush</span><span class="p">()</span></pre>
           </td>
         </tr>
         
@@ -217,9 +201,7 @@ been applied to the underlying writer.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre><span class="p">}</span>
-</pre></div>
-
+          <pre class="chroma"><span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -234,12 +216,11 @@ been applied to the underlying writer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run writing-files.go 
-<span class="go">wrote 5 bytes</span>
-<span class="go">wrote 7 bytes</span>
-<span class="go">wrote 9 bytes</span>
-</pre></div>
-
+          <pre class="chroma">
+$ go run writing-files.go 
+wrote <span class="m">5</span> bytes
+wrote <span class="m">7</span> bytes
+wrote <span class="m">9</span> bytes</pre>
           </td>
         </tr>
         
@@ -250,15 +231,14 @@ been applied to the underlying writer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="gp">$</span> cat /tmp/dat1
-<span class="go">hello</span>
-<span class="go">go</span>
-<span class="gp">$</span> cat /tmp/dat2
-<span class="go">some</span>
-<span class="go">writes</span>
-<span class="go">buffered</span>
-</pre></div>
-
+          <pre class="chroma">
+$ cat /tmp/dat1
+hello
+go
+$ cat /tmp/dat2
+some
+writes
+buffered</pre>
           </td>
         </tr>
         

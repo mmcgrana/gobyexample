@@ -49,9 +49,7 @@ non-error tasks.</p>
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/vrwN32gxaYx"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span></pre>
           </td>
         </tr>
         
@@ -61,12 +59,10 @@ non-error tasks.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;errors&quot;</span>
-    <span class="s">&quot;fmt&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;errors&#34;</span>
+    <span class="s">&#34;fmt&#34;</span>
+<span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -78,10 +74,9 @@ have type <code>error</code>, a built-in interface.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f1</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma">
+<span class="kd">func</span> <span class="nf">f1</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -93,9 +88,8 @@ with the given error message.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;can&#39;t work with 42&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t work with 42&#34;</span><span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -105,9 +99,7 @@ with the given error message.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="p">}</span>
-</pre></div>
-
+          <pre class="chroma">    <span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -119,10 +111,9 @@ there was no error.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
-<span class="p">}</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -136,12 +127,11 @@ to explicitly represent an argument error.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">type</span> <span class="nx">argError</span> <span class="kd">struct</span> <span class="p">{</span>
+          <pre class="chroma">
+<span class="kd">type</span> <span class="nx">argError</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">arg</span>  <span class="kt">int</span>
     <span class="nx">prob</span> <span class="kt">string</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -151,11 +141,9 @@ to explicitly represent an argument error.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">argError</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d - %s&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">prob</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">argError</span><span class="p">)</span> <span class="nf">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d - %s&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">prob</span><span class="p">)</span>
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -165,10 +153,8 @@ to explicitly represent an argument error.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f2</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">f2</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -181,12 +167,11 @@ fields <code>arg</code> and <code>prob</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">argError</span><span class="p">{</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&quot;can&#39;t work with it&quot;</span><span class="p">}</span>
+          <pre class="chroma">
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">argError</span><span class="p">{</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&#34;can&#39;t work with it&#34;</span><span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -196,9 +181,7 @@ fields <code>arg</code> and <code>prob</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -212,22 +195,21 @@ idiom in Go code.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">f1</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f1 failed:&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f1</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f1 failed:&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f1 worked:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f1 worked:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">f2</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f2 failed:&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f2</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f2 failed:&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f2 worked:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;f2 worked:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-</pre></div>
-
+    <span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -241,14 +223,13 @@ assertion.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">f2</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">f2</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
     <span class="k">if</span> <span class="nx">ae</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="nx">argError</span><span class="p">);</span> <span class="nx">ok</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">arg</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">prob</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">arg</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">prob</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -262,15 +243,13 @@ assertion.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run errors.go
-<span class="go">f1 worked: 10</span>
-<span class="go">f1 failed: can&#39;t work with 42</span>
-<span class="go">f2 worked: 10</span>
-<span class="go">f2 failed: 42 - can&#39;t work with it</span>
-<span class="go">42</span>
-<span class="go">can&#39;t work with it</span>
-</pre></div>
-
+          <pre class="chroma">$ go run errors.go
+f1 worked: <span class="m">10</span>
+f1 failed: can<span class="s1">&#39;t work with 42
+</span><span class="s1">f2 worked: 10
+</span><span class="s1">f2 failed: 42 - can&#39;</span>t work with it
+<span class="m">42</span>
+can<span class="err">&#39;</span>t work with it</pre>
           </td>
         </tr>
         

@@ -43,9 +43,7 @@ branches.</p>
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/ZcDzdx3nYQn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span></pre>
           </td>
         </tr>
         
@@ -55,12 +53,10 @@ branches.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;time&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;time&#34;</span>
+<span class="p">)</span></pre>
           </td>
         </tr>
         
@@ -70,9 +66,7 @@ branches.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></pre>
           </td>
         </tr>
         
@@ -83,18 +77,17 @@ branches.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Write &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; as &quot;</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;Write &#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&#34; as &#34;</span><span class="p">)</span>
     <span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
     <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;one&#34;</span><span class="p">)</span>
     <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;two&#34;</span><span class="p">)</span>
     <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre></div>
-
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;three&#34;</span><span class="p">)</span>
+    <span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -107,14 +100,13 @@ in the same <code>case</code> statement. We use the optional
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
+          <pre class="chroma">
+    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Weekday</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;It&#39;s the weekend&quot;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;It&#39;s the weekend&#34;</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;It&#39;s a weekday&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre></div>
-
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;It&#39;s a weekday&#34;</span><span class="p">)</span>
+    <span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -127,15 +119,14 @@ to express if/else logic. Here we also show how the
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+          <pre class="chroma">
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
     <span class="k">switch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;It&#39;s before noon&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;It&#39;s before noon&#34;</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;It&#39;s after noon&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre></div>
-
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;It&#39;s after noon&#34;</span><span class="p">)</span>
+    <span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -149,22 +140,21 @@ type corresponding to its clause.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre>    <span class="nx">whatAmI</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+          <pre class="chroma">
+    <span class="nx">whatAmI</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">switch</span> <span class="nx">t</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;I&#39;m a bool&quot;</span><span class="p">)</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;I&#39;m a bool&#34;</span><span class="p">)</span>
         <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;I&#39;m an int&quot;</span><span class="p">)</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;I&#39;m an int&#34;</span><span class="p">)</span>
         <span class="k">default</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Don&#39;t know type %T\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Don&#39;t know type %T\n&#34;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">whatAmI</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-    <span class="nx">whatAmI</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nx">whatAmI</span><span class="p">(</span><span class="s">&quot;hey&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
+    <span class="nf">whatAmI</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="nf">whatAmI</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nf">whatAmI</span><span class="p">(</span><span class="s">&#34;hey&#34;</span><span class="p">)</span>
+<span class="p">}</span></pre>
           </td>
         </tr>
         
@@ -178,15 +168,13 @@ type corresponding to its clause.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run switch.go 
-<span class="go">Write 2 as two</span>
-<span class="go">It&#39;s a weekday</span>
-<span class="go">It&#39;s after noon</span>
-<span class="go">I&#39;m a bool</span>
-<span class="go">I&#39;m an int</span>
-<span class="go">Don&#39;t know type string</span>
-</pre></div>
-
+          <pre class="chroma">$ go run switch.go 
+Write <span class="m">2</span> as two
+It<span class="s1">&#39;s a weekday
+</span><span class="s1">It&#39;</span>s after noon
+I<span class="s1">&#39;m a bool
+</span><span class="s1">I&#39;</span>m an int
+Don<span class="err">&#39;</span>t know <span class="nb">type</span> string</pre>
           </td>
         </tr>
         
