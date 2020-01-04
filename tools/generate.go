@@ -165,12 +165,16 @@ func resetURLHashFile(codehash, code, sourcePath string) string {
 }
 
 func parseSegs(sourcePath string) ([]*Seg, string) {
-	var lines []string
+	var (
+		lines  []string
+		source []string
+	)
 	// Convert tabs to spaces for uniform rendering.
 	for _, line := range readLines(sourcePath) {
 		lines = append(lines, strings.Replace(line, "\t", "    ", -1))
+		source = append(source, line)
 	}
-	filecontent := strings.Join(lines, "\n")
+	filecontent := strings.Join(source, "\n")
 	segs := []*Seg{}
 	lastSeen := ""
 	for _, line := range lines {
