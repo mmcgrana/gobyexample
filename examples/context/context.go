@@ -1,7 +1,9 @@
 // In the previous example we looked at setting up a simple
 // [HTTP server](http-servers). HTTP servers are useful for
 // demonstrating the usage of `context.Context` for
-// controlling cancellation.
+// controlling cancellation. A `Context` carries deadlines,
+// cancellation signals, and other request-scoped values
+// across API boundaries and goroutines.
 package main
 
 import (
@@ -28,6 +30,9 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	case <-time.After(10 * time.Second):
 		fmt.Fprintf(w, "hello\n")
 	case <-ctx.Done():
+		// The context's `Err()` method returns an error
+		// that explains why the `Done()` channel was
+		// closed.
 		err := ctx.Err()
 		fmt.Println("server:", err)
 		internalError := http.StatusInternalServerError
