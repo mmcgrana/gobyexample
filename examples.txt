@@ -68,7 +68,7 @@ Command-Line Subcommands
 Environment Variables
 HTTP Clients
 HTTP Servers
-Context in HTTP Servers
+Context
 Spawning Processes
 Exec'ing Processes
 Signals

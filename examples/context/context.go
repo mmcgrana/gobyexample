@@ -25,7 +25,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	// `Done()` channel for a signal that we should cancel
 	// the work and return as soon as possible.
 	select {
-	case <-time.After(3 * time.Second):
+	case <-time.After(10 * time.Second):
 		fmt.Fprintf(w, "hello\n")
 	case <-ctx.Done():
 		err := ctx.Err()
