@@ -25,7 +25,6 @@ To build the site you'll need Go and Python installed. Run:
 ```console
 $ go get github.com/russross/blackfriday
 $ tools/build
-$ open public/index.html
 ```
 
 To build continuously in a loop:
@@ -33,6 +32,12 @@ To build continuously in a loop:
 ```console
 $ tools/build-loop
 ```
+
+To see the site locally:
+
+```
+$ tools/serve
+$ open http://127.0.0.1:8000/
 
 ### Publishing
 
