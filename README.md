@@ -39,7 +39,7 @@ To see the site locally:
 $ tools/serve
 ```
 
-and open http://127.0.0.1:8000/ in your browser.
+and open `http://127.0.0.1:8000/` in your browser.
 
 ### Publishing
 
