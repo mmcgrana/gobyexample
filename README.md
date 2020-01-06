@@ -38,6 +38,7 @@ To see the site locally:
 ```
 $ tools/serve
 $ open http://127.0.0.1:8000/
+```
 
 ### Publishing
 
