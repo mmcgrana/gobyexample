@@ -42,7 +42,7 @@ use a <em>wait group</em>.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/oBOGrV0n2Y2"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/7mWXl0yVe6I"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,7 +75,31 @@ pointer.</p>
           <td class="code leading">
             
           <div class="highlight"><pre><span class="kd">func</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Worker %d starting\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On return, notify the WaitGroup that we&rsquo;re done.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Worker %d starting\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -90,19 +114,6 @@ pointer.</p>
             
           <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Worker %d done\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-</pre></div>
-
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Notify the WaitGroup that this worker is done.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <div class="highlight"><pre>    <span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -218,7 +229,7 @@ is likely to be different for each invocation.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(id int, wg *sync.WaitGroup) {\u000A    fmt.Printf(\"Worker %d starting\\n\", id)\u000A');codeLines.push('    time.Sleep(time.Second)\u000A    fmt.Printf(\"Worker %d done\\n\", id)\u000A');codeLines.push('    wg.Done()\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i := 1; i \x3C= 5; i++ {\u000A        wg.Add(1)\u000A        go worker(i, &wg)\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(id int, wg *sync.WaitGroup) {\u000A');codeLines.push('    defer wg.Done()\u000A');codeLines.push('    fmt.Printf(\"Worker %d starting\\n\", id)\u000A');codeLines.push('    time.Sleep(time.Second)\u000A    fmt.Printf(\"Worker %d done\\n\", id)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i := 1; i \x3C= 5; i++ {\u000A        wg.Add(1)\u000A        go worker(i, &wg)\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
