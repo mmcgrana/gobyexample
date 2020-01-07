@@ -13,14 +13,14 @@ import (
 // Note that a WaitGroup must be passed to functions by
 // pointer.
 func worker(id int, wg *sync.WaitGroup) {
+	// On return, notify the WaitGroup that we're done.
+	defer wg.Done()
+
 	fmt.Printf("Worker %d starting\n", id)
 
 	// Sleep to simulate an expensive task.
 	time.Sleep(time.Second)
 	fmt.Printf("Worker %d done\n", id)
-
-	// Notify the WaitGroup that this worker is done.
-	wg.Done()
 }
 
 func main() {
