@@ -1,22 +1,26 @@
 # Go by Example
 
-Набор инструментов для генерации [Go в примерах](https://gobyexample.su),
-сайта который помогает изучать язык Go на примерах.
+Content and build toolchain for [Go by Example](https://gobyexample.com),
+a site that teaches Go via annotated example programs.
 
-### Обзор
+### Overview
 
-Сайт **Go в Примерах** генерируется на основании кода и комментариев
-в файлах в папке `examples` и рендерится на основании шаблонов в папке
-`templates`. Готовый сайт находится в `public`.
-Программы, реализующие процесс сборки находятся в `tools`, 
-вместе с некоторыми вендорными зависимостями в `vendor`.
+The Go by Example site is built by extracting code and
+comments from source files in `examples` and rendering
+them via the `templates` into a static `public`
+directory. The programs implementing this build process
+are in `tools`, along with some vendor'd dependencies
+in `vendor`.
 
+The built `public` directory can be served by any
+static content system. The production site uses S3 and
+CloudFront, for example.
 
 ### Building
 
 [![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
 
-Для создания сайта вам понадобятся Go и Python. Выполните:
+To build the site you'll need Go and Python installed. Run:
 
 ```console
 $ go get github.com/russross/blackfriday
@@ -24,15 +28,15 @@ $ tools/build
 $ open public/index.html
 ```
 
-Непрерывное построение в цикле:
+To build continuously in a loop:
 
 ```console
 $ tools/build-loop
 ```
 
-### Публикация
+### Publishing
 
-Загрузка сайта (AWS):
+To upload the site:
 
 ```console
 $ gem install aws-sdk
@@ -41,18 +45,18 @@ $ export AWS_SECRET_ACCESS_KEY=...
 $ tools/upload
 ```
 
-### Лицензии
+### License
 
-Это работа защищена копирайтом Mark McGranaghan и соответствует лицензии
+This work is copyright Mark McGranaghan and licensed under a
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
-Go Gopher защищен [Renée French](http://reneefrench.blogspot.com/) и соответствует лицензии
+The Go Gopher is copyright [Renée French](http://reneefrench.blogspot.com/) and licensed under a
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
 
-### Переводы
+### Translations
 
-Авторские переводы сайта Go by Example доступны в:
+Contributor translations of the Go by Example site are available in:
 
 * [Chinese](https://gobyexample.xgwang.me/) by [xg-wang](https://github.com/xg-wang/gobyexample)
 * [Czech](http://gobyexamples.sweb.cz/) by [martinkunc](https://github.com/martinkunc/gobyexample-cz)
@@ -60,9 +64,9 @@ Go Gopher защищен [Renée French](http://reneefrench.blogspot.com/) и с
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
 * [Japanese](http://spinute.org/go-by-example) by [spinute](https://github.com/spinute)
 * [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
-* [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
 * [Ukrainian](http://gobyexample.com.ua/) by [butuzov](https://github.com/butuzov/gobyexample)
+* [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 
 ### Thanks
 
