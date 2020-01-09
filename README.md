@@ -72,6 +72,7 @@ Contributor translations of the Go by Example site are available in:
 * [Japanese](http://spinute.org/go-by-example) by [spinute](https://github.com/spinute)
 * [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
+* [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 * [Ukrainian](http://butuzov.github.io/gobyexample/) by [butuzov](https://github.com/butuzov/gobyexample)
 
 ### Thanks
