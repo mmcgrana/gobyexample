@@ -21,7 +21,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("server: hello handler started")
 	defer fmt.Println("server: hello handler ended")
 
-	// Wait for 3 seconds before sending a reply to the
+	// Wait for a few seconds before sending a reply to the
 	// client. This could simulate some work the server is
 	// doing. While working, keep an eye on the context's
 	// `Done()` channel for a signal that we should cancel
