@@ -1,5 +1,5 @@
 // `for` is Go's only looping construct. Here are
-// three basic types of `for` loops.
+// four basic types of `for` loops.
 
 package main
 
