@@ -49,6 +49,6 @@ func main() {
 	// finished. An alternative way to wait for multiple
 	// goroutines is to use a [WaitGroup](waitgroups).
 	for a := 1; a <= numJobs; a++ {
-		fmt.Println( <- results )
+		fmt.Println( "results", <- results )
 	}
 }
