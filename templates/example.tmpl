@@ -18,6 +18,14 @@
           }
           {{end}}
       }
+
+      function onChange(e) {
+        window.location.href = event.target.value
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("examples").value = window.location.pathname.replace('/', '')
+      })
   </script>
   <body>
     <div class="example" id="{{.ID}}">
@@ -42,6 +50,14 @@
         Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
+      <p class="next">
+        Jump to:
+        <select id="examples" onchange="onChange(event)">
+        {{range .Examples}}
+          <option value="{{.ID}}">{{.Name}}</option>  
+        {{end}}
+        </select>
+      </p>
       <p class="footer">
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/{{.ID}}">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>

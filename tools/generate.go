@@ -140,6 +140,7 @@ type Example struct {
 	Segs                        [][]*Seg
 	PrevExample                 *Example
 	NextExample                 *Example
+	Examples                    []*Example
 }
 
 func parseHashFile(sourcePath string) (string, string) {
@@ -285,6 +286,7 @@ func parseExamples() []*Example {
 		if i < (len(examples) - 1) {
 			example.NextExample = examples[i+1]
 		}
+		example.Examples = examples
 	}
 	return examples
 }

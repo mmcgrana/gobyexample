@@ -18,6 +18,14 @@
           }
           
       }
+
+      function onChange(e) {
+        window.location.href = event.target.value
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("examples").value = window.location.pathname.replace('/', '')
+      })
   </script>
   <body>
     <div class="example" id="maps">
@@ -226,6 +234,162 @@ printed with <code>fmt.Println</code>.</p>
         Next example: <a href="range">Range</a>.
       </p>
       
+      <p class="next">
+        Jump to:
+        <select id="examples" onchange="onChange(event)">
+        
+          <option value="hello-world">Hello World</option>  
+        
+          <option value="values">Values</option>  
+        
+          <option value="variables">Variables</option>  
+        
+          <option value="constants">Constants</option>  
+        
+          <option value="for">For</option>  
+        
+          <option value="if-else">If/Else</option>  
+        
+          <option value="switch">Switch</option>  
+        
+          <option value="arrays">Arrays</option>  
+        
+          <option value="slices">Slices</option>  
+        
+          <option value="maps">Maps</option>  
+        
+          <option value="range">Range</option>  
+        
+          <option value="functions">Functions</option>  
+        
+          <option value="multiple-return-values">Multiple Return Values</option>  
+        
+          <option value="variadic-functions">Variadic Functions</option>  
+        
+          <option value="closures">Closures</option>  
+        
+          <option value="recursion">Recursion</option>  
+        
+          <option value="pointers">Pointers</option>  
+        
+          <option value="structs">Structs</option>  
+        
+          <option value="methods">Methods</option>  
+        
+          <option value="interfaces">Interfaces</option>  
+        
+          <option value="errors">Errors</option>  
+        
+          <option value="goroutines">Goroutines</option>  
+        
+          <option value="channels">Channels</option>  
+        
+          <option value="channel-buffering">Channel Buffering</option>  
+        
+          <option value="channel-synchronization">Channel Synchronization</option>  
+        
+          <option value="channel-directions">Channel Directions</option>  
+        
+          <option value="select">Select</option>  
+        
+          <option value="timeouts">Timeouts</option>  
+        
+          <option value="non-blocking-channel-operations">Non-Blocking Channel Operations</option>  
+        
+          <option value="closing-channels">Closing Channels</option>  
+        
+          <option value="range-over-channels">Range over Channels</option>  
+        
+          <option value="timers">Timers</option>  
+        
+          <option value="tickers">Tickers</option>  
+        
+          <option value="worker-pools">Worker Pools</option>  
+        
+          <option value="waitgroups">WaitGroups</option>  
+        
+          <option value="rate-limiting">Rate Limiting</option>  
+        
+          <option value="atomic-counters">Atomic Counters</option>  
+        
+          <option value="mutexes">Mutexes</option>  
+        
+          <option value="stateful-goroutines">Stateful Goroutines</option>  
+        
+          <option value="sorting">Sorting</option>  
+        
+          <option value="sorting-by-functions">Sorting by Functions</option>  
+        
+          <option value="panic">Panic</option>  
+        
+          <option value="defer">Defer</option>  
+        
+          <option value="collection-functions">Collection Functions</option>  
+        
+          <option value="string-functions">String Functions</option>  
+        
+          <option value="string-formatting">String Formatting</option>  
+        
+          <option value="regular-expressions">Regular Expressions</option>  
+        
+          <option value="json">JSON</option>  
+        
+          <option value="xml">XML</option>  
+        
+          <option value="time">Time</option>  
+        
+          <option value="epoch">Epoch</option>  
+        
+          <option value="time-formatting-parsing">Time Formatting / Parsing</option>  
+        
+          <option value="random-numbers">Random Numbers</option>  
+        
+          <option value="number-parsing">Number Parsing</option>  
+        
+          <option value="url-parsing">URL Parsing</option>  
+        
+          <option value="sha1-hashes">SHA1 Hashes</option>  
+        
+          <option value="base64-encoding">Base64 Encoding</option>  
+        
+          <option value="reading-files">Reading Files</option>  
+        
+          <option value="writing-files">Writing Files</option>  
+        
+          <option value="line-filters">Line Filters</option>  
+        
+          <option value="file-paths">File Paths</option>  
+        
+          <option value="directories">Directories</option>  
+        
+          <option value="temporary-files-and-directories">Temporary Files and Directories</option>  
+        
+          <option value="testing">Testing</option>  
+        
+          <option value="command-line-arguments">Command-Line Arguments</option>  
+        
+          <option value="command-line-flags">Command-Line Flags</option>  
+        
+          <option value="command-line-subcommands">Command-Line Subcommands</option>  
+        
+          <option value="environment-variables">Environment Variables</option>  
+        
+          <option value="http-clients">HTTP Clients</option>  
+        
+          <option value="http-servers">HTTP Servers</option>  
+        
+          <option value="context">Context</option>  
+        
+          <option value="spawning-processes">Spawning Processes</option>  
+        
+          <option value="execing-processes">Exec'ing Processes</option>  
+        
+          <option value="signals">Signals</option>  
+        
+          <option value="exit">Exit</option>  
+        
+        </select>
+      </p>
       <p class="footer">
         by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/maps">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
