@@ -21,9 +21,8 @@ import (
 func IntMin(a, b int) int {
 	if a < b {
 		return a
-	} else {
-		return b
 	}
+	return b
 }
 
 // A test is created by writing a function with a name
