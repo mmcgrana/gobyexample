@@ -49,7 +49,7 @@ func main() {
 	grepBytes, _ := ioutil.ReadAll(grepOut)
 	grepCmd.Wait()
 
-	// We ommited error checks in the above example, but
+	// We omitted error checks in the above example, but
 	// you could use the usual `if err != nil` pattern for
 	// all of them. We also only collect the `StdoutPipe`
 	// results, but you could collect the `StderrPipe` in
