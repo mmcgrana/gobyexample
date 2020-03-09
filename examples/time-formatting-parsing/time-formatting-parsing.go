@@ -18,9 +18,12 @@ func main() {
 	p(t.Format(time.RFC3339))
 
 	// Time parsing uses the same layout values as `Format`.
-	t1, e := time.Parse(
+	t1, err := time.Parse(
 		time.RFC3339,
 		"2012-11-01T22:08:41+00:00")
+	if err != nil {
+		panic(err)
+	}
 	p(t1)
 
 	// `Format` and `Parse` use example-based layouts. Usually
@@ -34,7 +37,10 @@ func main() {
 	p(t.Format("Mon Jan _2 15:04:05 2006"))
 	p(t.Format("2006-01-02T15:04:05.999999-07:00"))
 	form := "3 04 PM"
-	t2, e := time.Parse(form, "8 41 PM")
+	t2, err := time.Parse(form, "8 41 PM")
+	if err != nil {
+		panic(err)
+	}
 	p(t2)
 
 	// For purely numeric representations you can also
@@ -47,6 +53,6 @@ func main() {
 	// `Parse` will return an error on malformed input
 	// explaining the parsing problem.
 	ansic := "Mon Jan _2 15:04:05 2006"
-	_, e = time.Parse(ansic, "8:41PM")
+	_, e := time.Parse(ansic, "8:41PM")
 	p(e)
 }
