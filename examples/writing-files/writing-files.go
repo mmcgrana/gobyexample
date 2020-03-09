@@ -40,6 +40,7 @@ func main() {
 
 	// A `WriteString` is also available.
 	n3, err := f.WriteString("writes\n")
+	check(err)
 	fmt.Printf("wrote %d bytes\n", n3)
 
 	// Issue a `Sync` to flush writes to stable storage.
@@ -49,6 +50,7 @@ func main() {
 	// to the buffered readers we saw earlier.
 	w := bufio.NewWriter(f)
 	n4, err := w.WriteString("buffered\n")
+	check(err)
 	fmt.Printf("wrote %d bytes\n", n4)
 
 	// Use `Flush` to ensure all buffered operations have
