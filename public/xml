@@ -66,7 +66,7 @@ formats with the <code>encoding.xml</code> package.</p>
         
         <tr>
           <td class="docs">
-            <p>This type will be mapped to XML. Similarly to the
+            <p>Plant will be mapped to XML. Similarly to the
 JSON examples, field tags contain directives for the
 encoder and decoder. Here we use some special features
 of the XML package: the <code>XMLName</code> field name dictates
