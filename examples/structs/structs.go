@@ -12,8 +12,8 @@ type person struct {
 	age  int
 }
 
-// NewPerson constructs a new person struct with the given name
-func NewPerson(name string) *person {
+// newPerson constructs a new person struct with the given name
+func newPerson(name string) *person {
 	// You can safely return a pointer to local variable
 	// as a local variable will survive the scope of the function.
 	p := person{name: name}
