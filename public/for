@@ -28,7 +28,7 @@
         <tr>
           <td class="docs">
             <p><code>for</code> is Go&rsquo;s only looping construct. Here are
-three basic types of <code>for</code> loops.</p>
+some basic types of <code>for</code> loops.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +42,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/jPI-IwqVC1c"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/2-4H-ArwHHS"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
