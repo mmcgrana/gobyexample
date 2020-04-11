@@ -8,7 +8,7 @@ import (
 	"fmt"
 )
 
-// This type will be mapped to XML. Similarly to the
+// Plant will be mapped to XML. Similarly to the
 // JSON examples, field tags contain directives for the
 // encoder and decoder. Here we use some special features
 // of the XML package: the `XMLName` field name dictates
