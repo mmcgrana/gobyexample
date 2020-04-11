@@ -53,6 +53,7 @@ func main() {
 	// `TempFile`'s, but it returns a directory *name*
 	// rather than an open file.
 	dname, err := ioutil.TempDir("", "sampledir")
+	check(err)
 	fmt.Println("Temp dir name:", dname)
 
 	defer os.RemoveAll(dname)

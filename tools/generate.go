@@ -153,11 +153,10 @@ func resetURLHashFile(codehash, code, sourcePath string) string {
 	}
 	payload := strings.NewReader(code)
 	resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
-	if err != nil {
-		panic(err)
-	}
+	check(err)
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
+	check(err)
 	urlkey := string(body)
 	data := fmt.Sprintf("%s\n%s\n", codehash, urlkey)
 	ioutil.WriteFile(sourcePath, []byte(data), 0644)
