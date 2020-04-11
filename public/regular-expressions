@@ -43,7 +43,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/944r7pT2YIl"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/LEKGY_d3Nu_P"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -242,10 +242,11 @@ function name.</p>
         
         <tr>
           <td class="docs">
-            <p>When creating constants with regular expressions
-you can use the <code>MustCompile</code> variation of
-<code>Compile</code>. A plain <code>Compile</code> won&rsquo;t work for
-constants because it has 2 return values.</p>
+            <p>When creating global variables with regular
+expressions you can use the <code>MustCompile</code> variation
+of <code>Compile</code>. <code>MustCompile</code> panics instead of
+returning an error, which makes it safer to use for
+global variables.</p>
 
           </td>
           <td class="code leading">

@@ -64,10 +64,11 @@ func main() {
 	// function name.
 	fmt.Println(r.Match([]byte("peach")))
 
-	// When creating constants with regular expressions
-	// you can use the `MustCompile` variation of
-	// `Compile`. A plain `Compile` won't work for
-	// constants because it has 2 return values.
+	// When creating global variables with regular
+	// expressions you can use the `MustCompile` variation
+	// of `Compile`. `MustCompile` panics instead of
+	// returning an error, which makes it safer to use for
+	// global variables.
 	r = regexp.MustCompile("p([a-z]+)ch")
 	fmt.Println(r)
 
