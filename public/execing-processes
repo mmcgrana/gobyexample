@@ -203,7 +203,7 @@ processes covers most use cases for <code>fork</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"os\"\u000A    \"os/exec\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr := exec.LookPath(\"ls\")\u000A    if lookErr != nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args := []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env := os.Environ()\u000A');codeLines.push('    execErr := syscall.Exec(binary, args, env)\u000A    if execErr != nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"os\"\u000A    \"os/exec\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    binary, lookErr :\x3D exec.LookPath(\"ls\")\u000A    if lookErr !\x3D nil {\u000A        panic(lookErr)\u000A    }\u000A');codeLines.push('    args :\x3D []string{\"ls\", \"-a\", \"-l\", \"-h\"}\u000A');codeLines.push('    env :\x3D os.Environ()\u000A');codeLines.push('    execErr :\x3D syscall.Exec(binary, args, env)\u000A    if execErr !\x3D nil {\u000A        panic(execErr)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
