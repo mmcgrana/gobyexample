@@ -7,24 +7,26 @@ package main
 
 import "fmt"
 
-// This `ping` function only accepts a channel for sending
+// This `send` function only accepts a channel for sending
 // values. It would be a compile-time error to try to
 // receive on this channel.
-func ping(pings chan<- string, msg string) {
-	pings <- msg
+func send(sendCh chan<- string, msg string) {
+	fmt.Println("send message:", msg)
+	sendCh <- msg
 }
 
-// The `pong` function accepts one channel for receives
-// (`pings`) and a second for sends (`pongs`).
-func pong(pings <-chan string, pongs chan<- string) {
-	msg := <-pings
-	pongs <- msg
+// The `fwd` function accepts one channel for receives
+// (`sendCh`) and a second for sends (`forwardCh`).
+func fwd(sendCh <-chan string, forwardCh chan<- string) {
+	msg := <-sendCh
+	fmt.Println("forwarding:", msg)
+	forwardCh <- msg
 }
 
 func main() {
-	pings := make(chan string, 1)
-	pongs := make(chan string, 1)
-	ping(pings, "passed message")
-	pong(pings, pongs)
-	fmt.Println(<-pongs)
+	sendCh := make(chan string, 1)
+	forwardCh := make(chan string, 1)
+	send(sendCh, "Hello, World!")
+	fwd(sendCh, forwardCh)
+	fmt.Println("reading messages: ", <-forwardCh)
 }

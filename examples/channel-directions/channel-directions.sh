@@ -1,2 +1,4 @@
 $ go run channel-directions.go
-passed message
+send message: Hello, World!
+forwarding: Hello, World!
+reading messages:  Hello, World!
