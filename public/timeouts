@@ -44,7 +44,7 @@ elegant thanks to channels and <code>select</code>.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/4oOz0j29MJ6"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/gyr0NbVKBVf"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -103,7 +103,7 @@ channel is never read.</p>
         <tr>
           <td class="docs">
             <p>Here&rsquo;s the <code>select</code> implementing a timeout.
-<code>res := &lt;-c1</code> awaits the result and <code>&lt;-Time.After</code>
+<code>res := &lt;-c1</code> awaits the result and <code>&lt;-time.After</code>
 awaits a value to be sent after the timeout of
 1s. Since <code>select</code> proceeds with the first
 receive that&rsquo;s ready, we&rsquo;ll take the timeout case
