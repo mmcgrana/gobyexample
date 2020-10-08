@@ -6,7 +6,13 @@ package main
 import "fmt"
 
 func main() {
-
+	
+	/*
+	slice is built on arrays (internally), its syntax is:
+	
+	slice  := make([]T, l, c) T is type, l is length and c is capacity
+	*/
+	
 	// Unlike arrays, slices are typed only by the
 	// elements they contain (not the number of elements).
 	// To create an empty slice with non-zero length, use
