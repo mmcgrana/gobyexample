@@ -10,7 +10,7 @@ comments from source files in `examples` and rendering
 them via the `templates` into a static `public`
 directory. The programs implementing this build process
 are in `tools`, along with some vendor'd dependencies
-in `vendor`.
+in `vendor` and `third_party`.
 
 The built `public` directory can be served by any
 static content system. The production site uses S3 and

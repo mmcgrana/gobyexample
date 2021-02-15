@@ -169,7 +169,7 @@ settings.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    resp, err :\x3D http.Get(\"http://gobyexample.com\")\u000A    if err !\x3D nil {\u000A        panic(err)\u000A    }\u000A    defer resp.Body.Close()\u000A');codeLines.push('    fmt.Println(\"Response status:\", resp.Status)\u000A');codeLines.push('    scanner :\x3D bufio.NewScanner(resp.Body)\u000A    for i :\x3D 0; scanner.Scan() \x26\x26 i \x3C 5; i++ {\u000A        fmt.Println(scanner.Text())\u000A    }\u000A');codeLines.push('    if err :\x3D scanner.Err(); err !\x3D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    resp, err :\u003D http.Get(\"http://gobyexample.com\")\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    defer resp.Body.Close()\u000A');codeLines.push('    fmt.Println(\"Response status:\", resp.Status)\u000A');codeLines.push('    scanner :\u003D bufio.NewScanner(resp.Body)\u000A    for i :\u003D 0; scanner.Scan() \u0026\u0026 i \u003C 5; i++ {\u000A        fmt.Println(scanner.Text())\u000A    }\u000A');codeLines.push('    if err :\u003D scanner.Err(); err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

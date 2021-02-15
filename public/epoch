@@ -177,7 +177,7 @@ parsing and formatting.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\x3D time.Now()\u000A    secs :\x3D now.Unix()\u000A    nanos :\x3D now.UnixNano()\u000A    fmt.Println(now)\u000A');codeLines.push('    millis :\x3D nanos / 1000000\u000A    fmt.Println(secs)\u000A    fmt.Println(millis)\u000A    fmt.Println(nanos)\u000A');codeLines.push('    fmt.Println(time.Unix(secs, 0))\u000A    fmt.Println(time.Unix(0, nanos))\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\u003D time.Now()\u000A    secs :\u003D now.Unix()\u000A    nanos :\u003D now.UnixNano()\u000A    fmt.Println(now)\u000A');codeLines.push('    millis :\u003D nanos / 1000000\u000A    fmt.Println(secs)\u000A    fmt.Println(millis)\u000A    fmt.Println(nanos)\u000A');codeLines.push('    fmt.Println(time.Unix(secs, 0))\u000A    fmt.Println(time.Unix(0, nanos))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

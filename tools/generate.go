@@ -21,7 +21,7 @@ import (
 var siteDir = "./public"
 
 var cacheDir = "/tmp/gobyexample-cache"
-var pygmentizeBin = "./vendor/pygments/pygmentize"
+var pygmentizeBin = "./third_party/pygments/pygmentize"
 
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0

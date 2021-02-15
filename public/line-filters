@@ -204,7 +204,7 @@ lowercase lines.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"os\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    scanner :\x3D bufio.NewScanner(os.Stdin)\u000A');codeLines.push('    for scanner.Scan() {\u000A');codeLines.push('        ucl :\x3D strings.ToUpper(scanner.Text())\u000A');codeLines.push('        fmt.Println(ucl)\u000A    }\u000A');codeLines.push('    if err :\x3D scanner.Err(); err !\x3D nil {\u000A        fmt.Fprintln(os.Stderr, \"error:\", err)\u000A        os.Exit(1)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"os\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    scanner :\u003D bufio.NewScanner(os.Stdin)\u000A');codeLines.push('    for scanner.Scan() {\u000A');codeLines.push('        ucl :\u003D strings.ToUpper(scanner.Text())\u000A');codeLines.push('        fmt.Println(ucl)\u000A    }\u000A');codeLines.push('    if err :\u003D scanner.Err(); err !\u003D nil {\u000A        fmt.Fprintln(os.Stderr, \"error:\", err)\u000A        os.Exit(1)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -153,7 +153,7 @@ concurrent receive.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    messages :\x3D make(chan string, 2)\u000A');codeLines.push('    messages \x3C- \"buffered\"\u000A    messages \x3C- \"channel\"\u000A');codeLines.push('    fmt.Println(\x3C-messages)\u000A    fmt.Println(\x3C-messages)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    messages :\u003D make(chan string, 2)\u000A');codeLines.push('    messages \u003C- \"buffered\"\u000A    messages \u003C- \"channel\"\u000A');codeLines.push('    fmt.Println(\u003C-messages)\u000A    fmt.Println(\u003C-messages)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

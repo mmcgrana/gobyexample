@@ -154,7 +154,7 @@ values be received.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    queue :\x3D make(chan string, 2)\u000A    queue \x3C- \"one\"\u000A    queue \x3C- \"two\"\u000A    close(queue)\u000A');codeLines.push('    for elem :\x3D range queue {\u000A        fmt.Println(elem)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    queue :\u003D make(chan string, 2)\u000A    queue \u003C- \"one\"\u000A    queue \u003C- \"two\"\u000A    close(queue)\u000A');codeLines.push('    for elem :\u003D range queue {\u000A        fmt.Println(elem)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

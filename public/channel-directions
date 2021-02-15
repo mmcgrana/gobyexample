@@ -145,7 +145,7 @@ receive on this channel.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func ping(pings chan\x3C- string, msg string) {\u000A    pings \x3C- msg\u000A}\u000A');codeLines.push('func pong(pings \x3C-chan string, pongs chan\x3C- string) {\u000A    msg :\x3D \x3C-pings\u000A    pongs \x3C- msg\u000A}\u000A');codeLines.push('func main() {\u000A    pings :\x3D make(chan string, 1)\u000A    pongs :\x3D make(chan string, 1)\u000A    ping(pings, \"passed message\")\u000A    pong(pings, pongs)\u000A    fmt.Println(\x3C-pongs)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func ping(pings chan\u003C- string, msg string) {\u000A    pings \u003C- msg\u000A}\u000A');codeLines.push('func pong(pings \u003C-chan string, pongs chan\u003C- string) {\u000A    msg :\u003D \u003C-pings\u000A    pongs \u003C- msg\u000A}\u000A');codeLines.push('func main() {\u000A    pings :\u003D make(chan string, 1)\u000A    pongs :\u003D make(chan string, 1)\u000A    ping(pings, \"passed message\")\u000A    pong(pings, pongs)\u000A    fmt.Println(\u003C-pongs)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
