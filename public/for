@@ -195,7 +195,7 @@ structures.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    i :\x3D 1\u000A    for i \x3C\x3D 3 {\u000A        fmt.Println(i)\u000A        i \x3D i + 1\u000A    }\u000A');codeLines.push('    for j :\x3D 7; j \x3C\x3D 9; j++ {\u000A        fmt.Println(j)\u000A    }\u000A');codeLines.push('    for {\u000A        fmt.Println(\"loop\")\u000A        break\u000A    }\u000A');codeLines.push('    for n :\x3D 0; n \x3C\x3D 5; n++ {\u000A        if n%2 \x3D\x3D 0 {\u000A            continue\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    i :\u003D 1\u000A    for i \u003C\u003D 3 {\u000A        fmt.Println(i)\u000A        i \u003D i + 1\u000A    }\u000A');codeLines.push('    for j :\u003D 7; j \u003C\u003D 9; j++ {\u000A        fmt.Println(j)\u000A    }\u000A');codeLines.push('    for {\u000A        fmt.Println(\"loop\")\u000A        break\u000A    }\u000A');codeLines.push('    for n :\u003D 0; n \u003C\u003D 5; n++ {\u000A        if n%2 \u003D\u003D 0 {\u000A            continue\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

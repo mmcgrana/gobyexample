@@ -191,7 +191,7 @@ but they both decode to the original string as desired.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    b64 \"encoding/base64\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    data :\x3D \"abc123!?$*\x26()\'-\x3D@~\"\u000A');codeLines.push('    sEnc :\x3D b64.StdEncoding.EncodeToString([]byte(data))\u000A    fmt.Println(sEnc)\u000A');codeLines.push('    sDec, _ :\x3D b64.StdEncoding.DecodeString(sEnc)\u000A    fmt.Println(string(sDec))\u000A    fmt.Println()\u000A');codeLines.push('    uEnc :\x3D b64.URLEncoding.EncodeToString([]byte(data))\u000A    fmt.Println(uEnc)\u000A    uDec, _ :\x3D b64.URLEncoding.DecodeString(uEnc)\u000A    fmt.Println(string(uDec))\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    b64 \"encoding/base64\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    data :\u003D \"abc123!?$*\u0026()\'-\u003D@~\"\u000A');codeLines.push('    sEnc :\u003D b64.StdEncoding.EncodeToString([]byte(data))\u000A    fmt.Println(sEnc)\u000A');codeLines.push('    sDec, _ :\u003D b64.StdEncoding.DecodeString(sEnc)\u000A    fmt.Println(string(sDec))\u000A    fmt.Println()\u000A');codeLines.push('    uEnc :\u003D b64.URLEncoding.EncodeToString([]byte(data))\u000A    fmt.Println(uEnc)\u000A    uDec, _ :\u003D b64.URLEncoding.DecodeString(uEnc)\u000A    fmt.Println(string(uDec))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

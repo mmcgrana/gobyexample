@@ -213,7 +213,7 @@ bits.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"strconv\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f, _ :\x3D strconv.ParseFloat(\"1.234\", 64)\u000A    fmt.Println(f)\u000A');codeLines.push('    i, _ :\x3D strconv.ParseInt(\"123\", 0, 64)\u000A    fmt.Println(i)\u000A');codeLines.push('    d, _ :\x3D strconv.ParseInt(\"0x1c8\", 0, 64)\u000A    fmt.Println(d)\u000A');codeLines.push('    u, _ :\x3D strconv.ParseUint(\"789\", 0, 64)\u000A    fmt.Println(u)\u000A');codeLines.push('    k, _ :\x3D strconv.Atoi(\"135\")\u000A    fmt.Println(k)\u000A');codeLines.push('    _, e :\x3D strconv.Atoi(\"wat\")\u000A    fmt.Println(e)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"strconv\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f, _ :\u003D strconv.ParseFloat(\"1.234\", 64)\u000A    fmt.Println(f)\u000A');codeLines.push('    i, _ :\u003D strconv.ParseInt(\"123\", 0, 64)\u000A    fmt.Println(i)\u000A');codeLines.push('    d, _ :\u003D strconv.ParseInt(\"0x1c8\", 0, 64)\u000A    fmt.Println(d)\u000A');codeLines.push('    u, _ :\u003D strconv.ParseUint(\"789\", 0, 64)\u000A    fmt.Println(u)\u000A');codeLines.push('    k, _ :\u003D strconv.Atoi(\"135\")\u000A    fmt.Println(k)\u000A');codeLines.push('    _, e :\u003D strconv.Atoi(\"wat\")\u000A    fmt.Println(e)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -184,7 +184,7 @@ for basic conditions.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    if 7%2 \x3D\x3D 0 {\u000A        fmt.Println(\"7 is even\")\u000A    } else {\u000A        fmt.Println(\"7 is odd\")\u000A    }\u000A');codeLines.push('    if 8%4 \x3D\x3D 0 {\u000A        fmt.Println(\"8 is divisible by 4\")\u000A    }\u000A');codeLines.push('    if num :\x3D 9; num \x3C 0 {\u000A        fmt.Println(num, \"is negative\")\u000A    } else if num \x3C 10 {\u000A        fmt.Println(num, \"has 1 digit\")\u000A    } else {\u000A        fmt.Println(num, \"has multiple digits\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    if 7%2 \u003D\u003D 0 {\u000A        fmt.Println(\"7 is even\")\u000A    } else {\u000A        fmt.Println(\"7 is odd\")\u000A    }\u000A');codeLines.push('    if 8%4 \u003D\u003D 0 {\u000A        fmt.Println(\"8 is divisible by 4\")\u000A    }\u000A');codeLines.push('    if num :\u003D 9; num \u003C 0 {\u000A        fmt.Println(num, \"is negative\")\u000A    } else if num \u003C 10 {\u000A        fmt.Println(num, \"has 1 digit\")\u000A    } else {\u000A        fmt.Println(num, \"has multiple digits\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

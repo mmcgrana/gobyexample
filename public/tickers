@@ -171,7 +171,7 @@ before we stop it.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ticker :\x3D time.NewTicker(500 * time.Millisecond)\u000A    done :\x3D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            select {\u000A            case \x3C-done:\u000A                return\u000A            case t :\x3D \x3C-ticker.C:\u000A                fmt.Println(\"Tick at\", t)\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    time.Sleep(1600 * time.Millisecond)\u000A    ticker.Stop()\u000A    done \x3C- true\u000A    fmt.Println(\"Ticker stopped\")\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ticker :\u003D time.NewTicker(500 * time.Millisecond)\u000A    done :\u003D make(chan bool)\u000A');codeLines.push('    go func() {\u000A        for {\u000A            select {\u000A            case \u003C-done:\u000A                return\u000A            case t :\u003D \u003C-ticker.C:\u000A                fmt.Println(\"Tick at\", t)\u000A            }\u000A        }\u000A    }()\u000A');codeLines.push('    time.Sleep(1600 * time.Millisecond)\u000A    ticker.Stop()\u000A    done \u003C- true\u000A    fmt.Println(\"Ticker stopped\")\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

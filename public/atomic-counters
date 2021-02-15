@@ -236,7 +236,7 @@ state.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"sync/atomic\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops uint64\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i :\x3D 0; i \x3C 50; i++ {\u000A        wg.Add(1)\u000A');codeLines.push('        go func() {\u000A            for c :\x3D 0; c \x3C 1000; c++ {\u000A');codeLines.push('                atomic.AddUint64(\x26ops, 1)\u000A            }\u000A            wg.Done()\u000A        }()\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A');codeLines.push('    fmt.Println(\"ops:\", ops)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A    \"sync/atomic\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var ops uint64\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    for i :\u003D 0; i \u003C 50; i++ {\u000A        wg.Add(1)\u000A');codeLines.push('        go func() {\u000A            for c :\u003D 0; c \u003C 1000; c++ {\u000A');codeLines.push('                atomic.AddUint64(\u0026ops, 1)\u000A            }\u000A            wg.Done()\u000A        }()\u000A    }\u000A');codeLines.push('    wg.Wait()\u000A');codeLines.push('    fmt.Println(\"ops:\", ops)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

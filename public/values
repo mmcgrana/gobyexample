@@ -152,7 +152,7 @@ basic examples.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(\"go\" + \"lang\")\u000A');codeLines.push('    fmt.Println(\"1+1 \x3D\", 1+1)\u000A    fmt.Println(\"7.0/3.0 \x3D\", 7.0/3.0)\u000A');codeLines.push('    fmt.Println(true \x26\x26 false)\u000A    fmt.Println(true || false)\u000A    fmt.Println(!true)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(\"go\" + \"lang\")\u000A');codeLines.push('    fmt.Println(\"1+1 \u003D\", 1+1)\u000A    fmt.Println(\"7.0/3.0 \u003D\", 7.0/3.0)\u000A');codeLines.push('    fmt.Println(true \u0026\u0026 false)\u000A    fmt.Println(true || false)\u000A    fmt.Println(!true)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

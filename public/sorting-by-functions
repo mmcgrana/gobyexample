@@ -177,7 +177,7 @@ functions.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('type byLength []string\u000A');codeLines.push('func (s byLength) Len() int {\u000A    return len(s)\u000A}\u000Afunc (s byLength) Swap(i, j int) {\u000A    s[i], s[j] \x3D s[j], s[i]\u000A}\u000Afunc (s byLength) Less(i, j int) bool {\u000A    return len(s[i]) \x3C len(s[j])\u000A}\u000A');codeLines.push('func main() {\u000A    fruits :\x3D []string{\"peach\", \"banana\", \"kiwi\"}\u000A    sort.Sort(byLength(fruits))\u000A    fmt.Println(fruits)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('type byLength []string\u000A');codeLines.push('func (s byLength) Len() int {\u000A    return len(s)\u000A}\u000Afunc (s byLength) Swap(i, j int) {\u000A    s[i], s[j] \u003D s[j], s[i]\u000A}\u000Afunc (s byLength) Less(i, j int) bool {\u000A    return len(s[i]) \u003C len(s[j])\u000A}\u000A');codeLines.push('func main() {\u000A    fruits :\u003D []string{\"peach\", \"banana\", \"kiwi\"}\u000A    sort.Sort(byLength(fruits))\u000A    fmt.Println(fruits)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

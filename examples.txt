@@ -41,6 +41,7 @@ Sorting
 Sorting by Functions
 Panic
 Defer
+Recover
 Collection Functions
 String Functions
 String Formatting

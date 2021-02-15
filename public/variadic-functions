@@ -172,7 +172,7 @@ to form closures, which we&rsquo;ll look at next.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func sum(nums ...int) {\u000A    fmt.Print(nums, \" \")\u000A    total :\x3D 0\u000A    for _, num :\x3D range nums {\u000A        total +\x3D num\u000A    }\u000A    fmt.Println(total)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sum(1, 2)\u000A    sum(1, 2, 3)\u000A');codeLines.push('    nums :\x3D []int{1, 2, 3, 4}\u000A    sum(nums...)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func sum(nums ...int) {\u000A    fmt.Print(nums, \" \")\u000A    total :\u003D 0\u000A    for _, num :\u003D range nums {\u000A        total +\u003D num\u000A    }\u000A    fmt.Println(total)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sum(1, 2)\u000A    sum(1, 2, 3)\u000A');codeLines.push('    nums :\u003D []int{1, 2, 3, 4}\u000A    sum(nums...)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

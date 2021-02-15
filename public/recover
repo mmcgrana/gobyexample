@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: Recover</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'defer';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'collection-functions';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="recover">
+      <h2><a href="./">Go by Example</a>: Recover</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>A <code>recover</code> means recovering from a <code>panic</code>, either from a &ldquo;business&rdquo; or &ldquo;built-in&rdquo; panic.\n
+We want to recover if we want to handle a panic, stopping it from propagating upwards.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/uVo4c0IE97q"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">recoverFromBuiltInPanic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">recoverFromCustomPanic</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>defer is defined.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">recoverFromBuiltInPanic</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Recovered. Error:\n&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Getting index %d&quot;</span><span class="o">+</span>
+        <span class="s">&quot; of array of len %d...\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Item in index %d: %d&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>defer is defined.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">recoverFromCustomPanic</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Recovered. Error:\n&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;About to process i=%d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Accepting only&quot;</span><span class="o">+</span>
+            <span class="s">&quot; non-negative numbers but received %d&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Doing something with %d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Running this program will exit correctly,
+even though panic was invoked in two methods.
+The recover is responsible for recovering from panics.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <div class="highlight"><pre><span class="gp">$</span> go run recover.go
+<span class="go">Getting index 10 of array of len 5...</span>
+<span class="go">Recovered. Error:</span>
+<span class="go"> runtime error: index out of range [10] with length 5</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that, in Go it is idiomatic
+to use error-indicating return values wherever possible.</p>
+
+          </td>
+          <td class="code">
+            
+          <div class="highlight"><pre><span class="go">About to process i=-1</span>
+<span class="go">Recovered. Error:</span>
+<span class="go"> Accepting only non-negative numbers but received -1</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="collection-functions">Collection Functions</a>.
+      </p>
+      
+      <p class="footer">
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/recover">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      </p>
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    recoverFromBuiltInPanic(10)\u000A');codeLines.push('    fmt.Println()\u000A');codeLines.push('    recoverFromCustomPanic(-1)\u000A}\u000A');codeLines.push('func recoverFromBuiltInPanic(i int) {\u000A');codeLines.push('    defer func() {\u000A        if r :\u003D recover(); r !\u003D nil {\u000A            fmt.Println(\"Recovered. Error:\\n\", r)\u000A        }\u000A    }()\u000A');codeLines.push('    var a [5]int\u000A    fmt.Printf(\"Getting index %d\"+\u000A        \" of array of len %d...\\n\", i, len(a))\u000A    fmt.Printf(\"Item in index %d: %d\", i, a[i])\u000A}\u000A');codeLines.push('func recoverFromCustomPanic(i int) {\u000A');codeLines.push('    defer func() {\u000A        if r :\u003D recover(); r !\u003D nil {\u000A            fmt.Println(\"Recovered. Error:\\n\", r)\u000A        }\u000A    }()\u000A');codeLines.push('    fmt.Printf(\"About to process i\u003D%d\\n\", i)\u000A');codeLines.push('    if i \u003C 0 {\u000A        panic(fmt.Errorf(\"Accepting only\"+\u000A            \" non-negative numbers but received %d\", i))\u000A    }\u000A');codeLines.push('    fmt.Printf(\"Doing something with %d\\n\", i)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
