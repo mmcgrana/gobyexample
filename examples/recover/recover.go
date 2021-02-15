@@ -1,5 +1,5 @@
-// A `recover` means recovering from a `panic`, either from a "business" or "built-in" panic.
-// We want to recover if we want to handle a panic, stopping it from propagating upwards.
+// A `recover` means recovering from a `panic`,
+// stopping the panic from propagating upwards.
 
 package main
 
@@ -8,31 +8,15 @@ import (
 )
 
 func main() {
+	recoverFromPanic(-1)
 
-	recoverFromBuiltInPanic(10)
-
-	fmt.Println()
-
-	recoverFromCustomPanic(-1)
+	// We see it because we recovered from a panic.
+	fmt.Printf("Finished without panicing.")
 }
 
-func recoverFromBuiltInPanic(i int) {
-	// defer is defined.
+func recoverFromPanic(i int) {
 	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Recovered. Error:\n", r)
-		}
-	}()
-
-	var a [5]int
-	fmt.Printf("Getting index %d"+
-		" of array of len %d...\n", i, len(a))
-	fmt.Printf("Item in index %d: %d", i, a[i])
-}
-
-func recoverFromCustomPanic(i int) {
-	// defer is defined.
-	defer func() {
+		// recover is always defined in a defer.
 		if r := recover(); r != nil {
 			fmt.Println("Recovered. Error:\n", r)
 		}
@@ -45,5 +29,6 @@ func recoverFromCustomPanic(i int) {
 			" non-negative numbers but received %d", i))
 	}
 
+	// We won't see this because we paniced.
 	fmt.Printf("Doing something with %d\n", i)
 }
