@@ -205,7 +205,6 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 
 func chromaFormat(code, filePath string) string {
 
-
 	lexer := lexers.Get(filePath)
 	if lexer == nil {
 		lexer = lexers.Fallback
@@ -216,8 +215,6 @@ func chromaFormat(code, filePath string) string {
 	}
 
 	lexer = chroma.Coalesce(lexer)
-
-	fmt.Printf("%s - %s\n", filePath, lexer.Config().Name)
 
 	style := styles.Get("swapoff")
 	if style == nil {
@@ -230,7 +227,6 @@ func chromaFormat(code, filePath string) string {
 	err = formatter.Format(buf, style, iterator)
 	check(err)
 	return buf.String()
-
 }
 
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
