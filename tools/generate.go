@@ -25,8 +25,6 @@ import (
 // program.
 var siteDir = "./public"
 
-var cacheDir = "/tmp/gobyexample-cache"
-
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
@@ -214,7 +212,7 @@ func chromaFormat(code, filePath string) string {
 	}
 
 	if strings.HasSuffix(filePath, ".sh") {
-		lexer = MyLexer
+		lexer = SimpleShellOutputLexer
 	}
 
 	lexer = chroma.Coalesce(lexer)
@@ -243,14 +241,8 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 			seg.DocsRendered = markdown(seg.Docs)
 		}
 		if seg.Code != "" {
-
-			//buff := bytes.Buffer{}
-
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
-			//err := quick.Highlight(&buff, seg.Code, "go", "html", "monokai")
-			//check(err)
 
-			//seg.CodeRendered = buff.String() //cachedPygmentize(lexer, seg.Code)
 			// adding the content to the js code for copying to the clipboard
 			if strings.HasSuffix(sourcePath, ".go") {
 				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
@@ -357,11 +349,7 @@ func main() {
 	renderExamples(examples)
 }
 
-///------------
-
-
-// Simple shell output lexer
-var MyLexer = chroma.MustNewLexer(
+var SimpleShellOutputLexer = chroma.MustNewLexer(
 	&chroma.Config{
 		Name:      "Shell Output",
 		Aliases:   []string{"console"},
