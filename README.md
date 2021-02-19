@@ -23,7 +23,6 @@ CloudFront, for example.
 To build the site you'll need Go and Python installed. Run:
 
 ```console
-$ go get github.com/russross/blackfriday
 $ tools/build
 ```
 
