@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// `Exec` requires arguments in slice form (as
-	// apposed to one big string). We'll give `ls` a few
+	// opposed to one big string). We'll give `ls` a few
 	// common arguments. Note that the first argument should
 	// be the program name.
 	args := []string{"ls", "-a", "-l", "-h"}
