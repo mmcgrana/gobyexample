@@ -1,4 +1,4 @@
-// <em>[Rate limiting](http://en.wikipedia.org/wiki/Rate_limiting)</em>
+// [_Rate limiting_](http://en.wikipedia.org/wiki/Rate_limiting)
 // is an important mechanism for controlling resource
 // utilization and maintaining quality of service. Go
 // elegantly supports rate limiting with goroutines,
