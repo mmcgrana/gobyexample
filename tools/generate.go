@@ -12,7 +12,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/russross/blackfriday"
+	"github.com/russross/blackfriday/v2"
 )
 
 // siteDir is the target directory into which the HTML gets generated. Its
@@ -94,7 +94,7 @@ func cachedPygmentize(lex string, src string) string {
 }
 
 func markdown(src string) string {
-	return string(blackfriday.MarkdownCommon([]byte(src)))
+	return string(blackfriday.Run([]byte(src)))
 }
 
 func readLines(path string) []string {
