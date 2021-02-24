@@ -1,5 +1,0 @@
-coverage
-nose
-pyflakes
-pylint
-tox
