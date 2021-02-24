@@ -43,9 +43,8 @@
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/UaeLMS5VQVR"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
+</pre>
           </td>
         </tr>
         
@@ -55,14 +54,13 @@
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;io/ioutil&quot;</span>
-    <span class="s">&quot;os&quot;</span>
-    <span class="s">&quot;path/filepath&quot;</span>
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;io/ioutil&#34;</span>
+    <span class="s">&#34;os&#34;</span>
+    <span class="s">&#34;path/filepath&#34;</span>
 <span class="p">)</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -72,13 +70,12 @@
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -88,9 +85,8 @@
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</pre>
           </td>
         </tr>
         
@@ -102,10 +98,10 @@ directory.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Mkdir</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Mkdir</span><span class="p">(</span><span class="s">&#34;subdir&#34;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -119,9 +115,9 @@ will delete a whole directory tree (similarly to
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nx">RemoveAll</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">RemoveAll</span><span class="p">(</span><span class="s">&#34;subdir&#34;</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -132,12 +128,12 @@ will delete a whole directory tree (similarly to
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">createEmptyFile</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">d</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-        <span class="nx">check</span><span class="p">(</span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="mo">0644</span><span class="p">))</span>
+          <pre class="chroma">
+    <span class="nx">createEmptyFile</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">d</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+        <span class="nf">check</span><span class="p">(</span><span class="nx">ioutil</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="mo">0644</span><span class="p">))</span>
     <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -147,9 +143,8 @@ will delete a whole directory tree (similarly to
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/file1&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">    <span class="nf">createEmptyFile</span><span class="p">(</span><span class="s">&#34;subdir/file1&#34;</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -162,10 +157,10 @@ command-line <code>mkdir -p</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">MkdirAll</span><span class="p">(</span><span class="s">&quot;subdir/parent/child&quot;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">MkdirAll</span><span class="p">(</span><span class="s">&#34;subdir/parent/child&#34;</span><span class="p">,</span> <span class="mo">0755</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -175,11 +170,10 @@ command-line <code>mkdir -p</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/file2&quot;</span><span class="p">)</span>
-    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/file3&quot;</span><span class="p">)</span>
-    <span class="nx">createEmptyFile</span><span class="p">(</span><span class="s">&quot;subdir/parent/child/file4&quot;</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">    <span class="nf">createEmptyFile</span><span class="p">(</span><span class="s">&#34;subdir/parent/file2&#34;</span><span class="p">)</span>
+    <span class="nf">createEmptyFile</span><span class="p">(</span><span class="s">&#34;subdir/parent/file3&#34;</span><span class="p">)</span>
+    <span class="nf">createEmptyFile</span><span class="p">(</span><span class="s">&#34;subdir/parent/child/file4&#34;</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -191,10 +185,10 @@ slice of <code>os.FileInfo</code> objects.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadDir</span><span class="p">(</span><span class="s">&quot;subdir/parent&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="s">&#34;subdir/parent&#34;</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -204,12 +198,11 @@ slice of <code>os.FileInfo</code> objects.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Listing subdir/parent&quot;</span><span class="p">)</span>
+          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Listing subdir/parent&#34;</span><span class="p">)</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">())</span>
     <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -221,10 +214,10 @@ similarly to <code>cd</code>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Chdir</span><span class="p">(</span><span class="s">&quot;subdir/parent/child&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Chdir</span><span class="p">(</span><span class="s">&#34;subdir/parent/child&#34;</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -236,10 +229,10 @@ when listing the <em>current</em> directory.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadDir</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -249,12 +242,11 @@ when listing the <em>current</em> directory.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Listing subdir/parent/child&quot;</span><span class="p">)</span>
+          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Listing subdir/parent/child&#34;</span><span class="p">)</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">c</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">(),</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">())</span>
     <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -265,10 +257,10 @@ when listing the <em>current</em> directory.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Chdir</span><span class="p">(</span><span class="s">&quot;../../..&quot;</span><span class="p">)</span>
-    <span class="nx">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Chdir</span><span class="p">(</span><span class="s">&#34;../../..&#34;</span><span class="p">)</span>
+    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -282,11 +274,11 @@ directory visited.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Visiting subdir&quot;</span><span class="p">)</span>
-    <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Walk</span><span class="p">(</span><span class="s">&quot;subdir&quot;</span><span class="p">,</span> <span class="nx">visit</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Visiting subdir&#34;</span><span class="p">)</span>
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Walk</span><span class="p">(</span><span class="s">&#34;subdir&#34;</span><span class="p">,</span> <span class="nx">visit</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -298,15 +290,15 @@ recursively by <code>filepath.Walk</code>.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">visit</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">info</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+          <pre class="chroma">
+<span class="kd">func</span> <span class="nf">visit</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">info</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">err</span>
     <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nx">IsDir</span><span class="p">())</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">())</span>
     <span class="k">return</span> <span class="kc">nil</span>
 <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -320,23 +312,21 @@ recursively by <code>filepath.Walk</code>.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run directories.go
-<span class="go">Listing subdir/parent</span>
-<span class="go">  child true</span>
-<span class="go">  file2 false</span>
-<span class="go">  file3 false</span>
-<span class="go">Listing subdir/parent/child</span>
-<span class="go">  file4 false</span>
-<span class="go">Visiting subdir</span>
-<span class="go">  subdir true</span>
-<span class="go">  subdir/file1 false</span>
-<span class="go">  subdir/parent true</span>
-<span class="go">  subdir/parent/child true</span>
-<span class="go">  subdir/parent/child/file4 false</span>
-<span class="go">  subdir/parent/file2 false</span>
-<span class="go">  subdir/parent/file3 false</span>
-</pre></div>
-
+          <pre class="chroma"><span class="gp">$</span> go run directories.go
+<span class="go">Listing subdir/parent
+</span><span class="go">  child true
+</span><span class="go">  file2 false
+</span><span class="go">  file3 false
+</span><span class="go">Listing subdir/parent/child
+</span><span class="go">  file4 false
+</span><span class="go">Visiting subdir
+</span><span class="go">  subdir true
+</span><span class="go">  subdir/file1 false
+</span><span class="go">  subdir/parent true
+</span><span class="go">  subdir/parent/child true
+</span><span class="go">  subdir/parent/child/file4 false
+</span><span class="go">  subdir/parent/file2 false
+</span><span class="go">  subdir/parent/file3 false</span></pre>
           </td>
         </tr>
         
