@@ -178,7 +178,7 @@ binary directly.</p>
           <td class="code leading">
             
           <pre class="chroma">
-<span class="err">$ </span>go<span class="err"> </span>build<span class="err"> </span>command<span class="err">-</span>line<span class="err">-</span>flags<span class="err">.</span>go</pre>
+<span class="gp">$</span> go build command-line-flags.go</pre>
           </td>
         </tr>
         

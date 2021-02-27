@@ -184,8 +184,8 @@ for more information.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">Len<span class="err">:  </span>5
-Char<span class="err">: </span>101</pre>
+          <pre class="chroma"><span class="go">Len:  5
+</span><span class="go">Char: 101</span></pre>
           </td>
         </tr>
         

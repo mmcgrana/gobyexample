@@ -132,11 +132,11 @@ a non-zero status.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">goroutine<span class="err"> </span>1<span class="err"> [</span>running<span class="err">]:</span>
-main<span class="err">.</span>main<span class="err">()</span>
-<span class="err">    /.../</span>panic<span class="err">.</span>go<span class="err">:</span>12<span class="err"> +</span>0x47
-<span class="err">...</span>
-exit<span class="err"> </span>status<span class="err"> </span>2</pre>
+          <pre class="chroma"><span class="go">goroutine 1 [running]:
+</span><span class="go">main.main()
+</span><span class="go">    /.../panic.go:12 +0x47
+</span><span class="go">...
+</span><span class="go">exit status 2</span></pre>
           </td>
         </tr>
         

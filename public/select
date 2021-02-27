@@ -161,7 +161,7 @@ concurrently.</p>
           <td class="code">
             
           <pre class="chroma">
-real<span class="err">    </span>0m2<span class="err">.</span>245s</pre>
+<span class="go">real    0m2.245s</span></pre>
           </td>
         </tr>
         

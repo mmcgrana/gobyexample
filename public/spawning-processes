@@ -209,8 +209,8 @@ as if we had run them directly from the command-line.</p>
             
           <pre class="chroma">
 <span class="gp">$</span> go run spawning-processes.go 
-<span class="go">&gt; date
-</span><span class="go">Wed Oct 10 09:53:11 PDT 2012</span></pre>
+<span class="gp">&gt;</span> date
+<span class="go">Wed Oct 10 09:53:11 PDT 2012</span></pre>
           </td>
         </tr>
         
@@ -220,8 +220,8 @@ as if we had run them directly from the command-line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="err">&gt; </span>grep<span class="err"> </span>hello
-hello<span class="err"> </span>grep</pre>
+          <pre class="chroma"><span class="gp">&gt;</span> grep hello
+<span class="go">hello grep</span></pre>
           </td>
         </tr>
         
@@ -231,10 +231,10 @@ hello<span class="err"> </span>grep</pre>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="err">&gt; </span>ls<span class="err"> -</span>a<span class="err"> -</span>l<span class="err"> -</span>h
-drwxr<span class="err">-</span>xr<span class="err">-</span>x<span class="err">  </span>4<span class="err"> </span>mark<span class="err"> </span>136B<span class="err"> </span>Oct<span class="err"> </span>3<span class="err"> </span>16<span class="err">:</span>29<span class="err"> .</span>
-drwxr<span class="err">-</span>xr<span class="err">-</span>x<span class="err"> </span>91<span class="err"> </span>mark<span class="err"> </span>3<span class="err">.</span>0K<span class="err"> </span>Oct<span class="err"> </span>3<span class="err"> </span>12<span class="err">:</span>50<span class="err"> ..</span>
-<span class="err">-</span>rw<span class="err">-</span>r<span class="err">--</span>r<span class="err">--  </span>1<span class="err"> </span>mark<span class="err"> </span>1<span class="err">.</span>3K<span class="err"> </span>Oct<span class="err"> </span>3<span class="err"> </span>16<span class="err">:</span>28<span class="err"> </span>spawning<span class="err">-</span>processes<span class="err">.</span>go</pre>
+          <pre class="chroma"><span class="gp">&gt;</span> ls -a -l -h
+<span class="go">drwxr-xr-x  4 mark 136B Oct 3 16:29 .
+</span><span class="go">drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..
+</span><span class="go">-rw-r--r--  1 mark 1.3K Oct 3 16:28 spawning-processes.go</span></pre>
           </td>
         </tr>
         

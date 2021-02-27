@@ -167,7 +167,7 @@ lowercase lines.</p>
             
           <pre class="chroma">
 <span class="gp">$</span> echo &#39;hello&#39;   &gt; /tmp/lines
-<span class="err">$ </span>echo<span class="err"> &#39;</span>filter<span class="err">&#39; &gt;&gt; /</span>tmp<span class="err">/</span>lines</pre>
+<span class="gp">$</span> echo &#39;filter&#39; &gt;&gt; /tmp/lines</pre>
           </td>
         </tr>
         

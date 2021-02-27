@@ -201,7 +201,7 @@ there are 3 workers operating concurrently.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">real<span class="err">    </span>0m2<span class="err">.</span>358s</pre>
+          <pre class="chroma"><span class="go">real    0m2.358s</span></pre>
           </td>
         </tr>
         

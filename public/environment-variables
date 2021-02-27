@@ -144,10 +144,10 @@ particular machine.</p>
           <td class="code leading">
             
           <pre class="chroma">
-TERM_PROGRAM
-PATH
-SHELL
-<span class="err">...</span></pre>
+<span class="go">TERM_PROGRAM
+</span><span class="go">PATH
+</span><span class="go">SHELL
+</span><span class="go">...</span></pre>
           </td>
         </tr>
         

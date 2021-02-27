@@ -175,7 +175,7 @@ router we&rsquo;ve just set up.</p>
           <td class="code leading">
             
           <pre class="chroma">
-<span class="err">$ </span>go<span class="err"> </span>run<span class="err"> </span>http<span class="err">-</span>servers<span class="err">.</span>go<span class="err"> &amp;</span></pre>
+<span class="gp">$</span> go run http-servers.go &amp;</pre>
           </td>
         </tr>
         

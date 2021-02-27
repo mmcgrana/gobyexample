@@ -158,7 +158,7 @@ but they both decode to the original string as desired.</p>
           <pre class="chroma">
 <span class="gp">$</span> go run base64-encoding.go
 <span class="go">YWJjMTIzIT8kKiYoKSctPUB+
-</span><span class="go">abc123!?</span><span class="err">$*&amp;()&#39;-=@~</span></pre>
+</span><span class="go">abc123!?$*&amp;()&#39;-=@~</span></pre>
           </td>
         </tr>
         
@@ -168,8 +168,8 @@ but they both decode to the original string as desired.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">YWJjMTIzIT8kKiYoKSctPUB<span class="err">-</span>
-abc123<span class="err">!?$*&amp;()&#39;-=@~</span></pre>
+          <pre class="chroma"><span class="go">YWJjMTIzIT8kKiYoKSctPUB-
+</span><span class="go">abc123!?$*&amp;()&#39;-=@~</span></pre>
           </td>
         </tr>
         
