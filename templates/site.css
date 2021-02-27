@@ -183,7 +183,7 @@ body .no { color: #880000 }                     /* Name.Constant */
 body .nd { color: #AA22FF }                     /* Name.Decorator */
 body .ni { color: #999999; font-weight: bold }  /* Name.Entity */
 body .ne { color: #D2413A; font-weight: bold }  /* Name.Exception */
-body .nf { color: #0000FF }                     /* Name.Function */
+body .nf {  }                     /* Name.Function */
 body .nl { color: #A0A000 }                     /* Name.Label */
 body .nn { color: #0000FF; font-weight: bold }  /* Name.Namespace */
 body .nt { color: #954121; font-weight: bold }  /* Name.Tag */

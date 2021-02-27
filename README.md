@@ -9,8 +9,8 @@ The Go by Example site is built by extracting code and
 comments from source files in `examples` and rendering
 them via the `templates` into a static `public`
 directory. The programs implementing this build process
-are in `tools`, along with some vendor'd dependencies
-in `vendor` and `third_party`.
+are in `tools`, along with dependencies specified in
+the `go.mod`file.
 
 The built `public` directory can be served by any
 static content system. The production site uses S3 and
@@ -20,7 +20,7 @@ CloudFront, for example.
 
 [![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
 
-To build the site you'll need Go and Python installed. Run:
+To build the site you'll need Go installed. Run:
 
 ```console
 $ tools/build

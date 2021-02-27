@@ -1,8 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"crypto/sha1"
 	"fmt"
+	"github.com/alecthomas/chroma"
+	"github.com/alecthomas/chroma/formatters/html"
+	"github.com/alecthomas/chroma/lexers"
+	"github.com/alecthomas/chroma/styles"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -19,9 +24,6 @@ import (
 // default is set here but can be changed by an argument passed into the
 // program.
 var siteDir = "./public"
-
-var cacheDir = "/tmp/gobyexample-cache"
-var pygmentizeBin = "./third_party/pygments/pygmentize"
 
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
@@ -75,22 +77,6 @@ func mustReadFile(path string) string {
 	bytes, err := ioutil.ReadFile(path)
 	check(err)
 	return string(bytes)
-}
-
-func cachedPygmentize(lex string, src string) string {
-	ensureDir(cacheDir)
-	arg := []string{"-l", lex, "-f", "html"}
-	cachePath := cacheDir + "/pygmentize-" + strings.Join(arg, "-") + "-" + sha1Sum(src)
-	cacheBytes, cacheErr := ioutil.ReadFile(cachePath)
-	if cacheErr == nil {
-		return string(cacheBytes)
-	}
-	renderBytes := pipe(pygmentizeBin, arg, src)
-	// Newer versions of Pygments add silly empty spans.
-	renderCleanString := strings.Replace(string(renderBytes), "<span></span>", "", -1)
-	writeErr := ioutil.WriteFile(cachePath, []byte(renderCleanString), 0600)
-	check(writeErr)
-	return renderCleanString
 }
 
 func markdown(src string) string {
@@ -217,6 +203,32 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 	return segs, filecontent
 }
 
+func chromaFormat(code, filePath string) string {
+
+	lexer := lexers.Get(filePath)
+	if lexer == nil {
+		lexer = lexers.Fallback
+	}
+
+	if strings.HasSuffix(filePath, ".sh") {
+		lexer = SimpleShellOutputLexer
+	}
+
+	lexer = chroma.Coalesce(lexer)
+
+	style := styles.Get("swapoff")
+	if style == nil {
+		style = styles.Fallback
+	}
+	formatter := html.New(html.WithClasses(true))
+	iterator, err := lexer.Tokenise(nil, string(code))
+	check(err)
+	buf := new(bytes.Buffer)
+	err = formatter.Format(buf, style, iterator)
+	check(err)
+	return buf.String()
+}
+
 func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 	segs, filecontent := parseSegs(sourcePath)
 	lexer := whichLexer(sourcePath)
@@ -225,7 +237,8 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 			seg.DocsRendered = markdown(seg.Docs)
 		}
 		if seg.Code != "" {
-			seg.CodeRendered = cachedPygmentize(lexer, seg.Code)
+			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
+
 			// adding the content to the js code for copying to the clipboard
 			if strings.HasSuffix(sourcePath, ".go") {
 				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
@@ -331,3 +344,38 @@ func main() {
 	renderIndex(examples)
 	renderExamples(examples)
 }
+
+var SimpleShellOutputLexer = chroma.MustNewLexer(
+	&chroma.Config{
+		Name:      "Shell Output",
+		Aliases:   []string{"console"},
+		Filenames: []string{"*.sh"},
+		MimeTypes: []string{},
+	},
+	chroma.Rules{
+		"root": {
+			// $ or > triggers the start of prompt formatting
+			{`^\$`, chroma.GenericPrompt, chroma.Push("prompt")},
+			{`^>`, chroma.GenericPrompt, chroma.Push("prompt")},
+
+			// empty lines are just text
+			{`^$\n`, chroma.Text, nil},
+
+			// otherwise its all output
+			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+		},
+		"prompt": {
+			// when we find newline, do output formatting rules
+			{`\n`, chroma.Text, chroma.Push("output")},
+			// otherwise its all text
+			{`[^\n]+$`, chroma.Text, nil},
+		},
+		"output": {
+			// sometimes there isn't output so we go right back to prompt
+			{`^\$`, chroma.GenericPrompt, chroma.Pop(1)},
+			{`^>`, chroma.GenericPrompt, chroma.Pop(1)},
+			// otherwise its all output
+			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+		},
+	},
+)

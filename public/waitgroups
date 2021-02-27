@@ -43,9 +43,8 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             <a href="http://play.golang.org/p/7mWXl0yVe6I"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
+</pre>
           </td>
         </tr>
         
@@ -55,13 +54,12 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&quot;fmt&quot;</span>
-    <span class="s">&quot;sync&quot;</span>
-    <span class="s">&quot;time&quot;</span>
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;sync&#34;</span>
+    <span class="s">&#34;time&#34;</span>
 <span class="p">)</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -74,9 +72,9 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma">
+<span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
+</pre>
           </td>
         </tr>
         
@@ -87,9 +85,9 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</pre>
           </td>
         </tr>
         
@@ -99,9 +97,8 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Worker %d starting\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-</pre></div>
-
+          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d starting\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+</pre>
           </td>
         </tr>
         
@@ -112,11 +109,11 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Worker %d done\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d done\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -126,9 +123,8 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-</pre></div>
-
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</pre>
           </td>
         </tr>
         
@@ -140,9 +136,9 @@ goroutines launched here to finish.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-</pre></div>
-
+          <pre class="chroma">
+    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+</pre>
           </td>
         </tr>
         
@@ -154,12 +150,12 @@ counter for each.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">go</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+          <pre class="chroma">
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">go</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
     <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -171,10 +167,10 @@ all the workers notified they&rsquo;re done.</p>
           </td>
           <td class="code">
             
-          <div class="highlight"><pre>    <span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+          <pre class="chroma">
+    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
 <span class="p">}</span>
-</pre></div>
-
+</pre>
           </td>
         </tr>
         
@@ -188,19 +184,17 @@ all the workers notified they&rsquo;re done.</p>
           </td>
           <td class="code leading">
             
-          <div class="highlight"><pre><span class="gp">$</span> go run waitgroups.go
-<span class="go">Worker 5 starting</span>
-<span class="go">Worker 3 starting</span>
-<span class="go">Worker 4 starting</span>
-<span class="go">Worker 1 starting</span>
-<span class="go">Worker 2 starting</span>
-<span class="go">Worker 4 done</span>
-<span class="go">Worker 1 done</span>
-<span class="go">Worker 2 done</span>
-<span class="go">Worker 5 done</span>
-<span class="go">Worker 3 done</span>
-</pre></div>
-
+          <pre class="chroma"><span class="gp">$</span> go run waitgroups.go
+<span class="go">Worker 5 starting
+</span><span class="go">Worker 3 starting
+</span><span class="go">Worker 4 starting
+</span><span class="go">Worker 1 starting
+</span><span class="go">Worker 2 starting
+</span><span class="go">Worker 4 done
+</span><span class="go">Worker 1 done
+</span><span class="go">Worker 2 done
+</span><span class="go">Worker 5 done
+</span><span class="go">Worker 3 done</span></pre>
           </td>
         </tr>
         

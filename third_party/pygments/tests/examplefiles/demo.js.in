@@ -1,6 +1,0 @@
-window.foo = {
-#if defined(__foo__)
-  'key': 'value'
-#endif
-}
-#literal #foo
