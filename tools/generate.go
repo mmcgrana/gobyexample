@@ -354,12 +354,28 @@ var SimpleShellOutputLexer = chroma.MustNewLexer(
 	},
 	chroma.Rules{
 		"root": {
-			// first capture group is generic prompt [capture $]
-			// second capture group is text [capture command and newline]
-			// third capture group is output [capture everything else until next $]
-			{`(\$)(.*$\n)([^\$]*)`, chroma.ByGroups(chroma.GenericPrompt, chroma.Text, chroma.GenericOutput), nil}, //BB-gp
-			// everything else is just regular text
-			{`\n|\w`, chroma.Text, nil},
+			// $ or > triggers the start of prompt formatting
+			{`^\$`, chroma.GenericPrompt, chroma.Push("prompt")},
+			{`^>`, chroma.GenericPrompt, chroma.Push("prompt")},
+
+			// empty lines are just text
+			{`^$\n`, chroma.Text, nil},
+
+			// otherwise its all output
+			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+		},
+		"prompt": {
+			// when we find newline, do output formatting rules
+			{`\n`, chroma.Text, chroma.Push("output")},
+			// otherwise its all text
+			{`[^\n]+$`, chroma.Text, nil},
+		},
+		"output": {
+			// sometimes there isn't output so we go right back to prompt
+			{`^\$`, chroma.GenericPrompt, chroma.Pop(1)},
+			{`^>`, chroma.GenericPrompt, chroma.Pop(1)},
+			// otherwise its all output
+			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
 		},
 	},
 )
