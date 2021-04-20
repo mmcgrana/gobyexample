@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Go by Example: XML</title>
     <link rel=stylesheet href="site.css">
   </head>
@@ -272,7 +273,7 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"encoding/xml\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type Plant struct {\u000A    XMLName xml.Name `xml:\"plant\"`\u000A    Id      int      `xml:\"id,attr\"`\u000A    Name    string   `xml:\"name\"`\u000A    Origin  []string `xml:\"origin\"`\u000A}\u000A');codeLines.push('func (p Plant) String() string {\u000A    return fmt.Sprintf(\"Plant id\u003D%v, name\u003D%v, origin\u003D%v\",\u000A        p.Id, p.Name, p.Origin)\u000A}\u000A');codeLines.push('func main() {\u000A    coffee :\u003D \u0026Plant{Id: 27, Name: \"Coffee\"}\u000A    coffee.Origin \u003D []string{\"Ethiopia\", \"Brazil\"}\u000A');codeLines.push('    out, _ :\u003D xml.MarshalIndent(coffee, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A');codeLines.push('    fmt.Println(xml.Header + string(out))\u000A');codeLines.push('    var p Plant\u000A    if err :\u003D xml.Unmarshal(out, \u0026p); err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(p)\u000A');codeLines.push('    tomato :\u003D \u0026Plant{Id: 81, Name: \"Tomato\"}\u000A    tomato.Origin \u003D []string{\"Mexico\", \"California\"}\u000A');codeLines.push('    type Nesting struct {\u000A        XMLName xml.Name `xml:\"nesting\"`\u000A        Plants  []*Plant `xml:\"parent\u003Echild\u003Eplant\"`\u000A    }\u000A');codeLines.push('    nesting :\u003D \u0026Nesting{}\u000A    nesting.Plants \u003D []*Plant{coffee, tomato}\u000A');codeLines.push('    out, _ \u003D xml.MarshalIndent(nesting, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"encoding/xml\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type Plant struct {\u000A    XMLName xml.Name `xml:\"plant\"`\u000A    Id      int      `xml:\"id,attr\"`\u000A    Name    string   `xml:\"name\"`\u000A    Origin  []string `xml:\"origin\"`\u000A}\u000A');codeLines.push('func (p Plant) String() string {\u000A    return fmt.Sprintf(\"Plant id=%v, name=%v, origin=%v\",\u000A        p.Id, p.Name, p.Origin)\u000A}\u000A');codeLines.push('func main() {\u000A    coffee := &Plant{Id: 27, Name: \"Coffee\"}\u000A    coffee.Origin = []string{\"Ethiopia\", \"Brazil\"}\u000A');codeLines.push('    out, _ := xml.MarshalIndent(coffee, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A');codeLines.push('    fmt.Println(xml.Header + string(out))\u000A');codeLines.push('    var p Plant\u000A    if err := xml.Unmarshal(out, &p); err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(p)\u000A');codeLines.push('    tomato := &Plant{Id: 81, Name: \"Tomato\"}\u000A    tomato.Origin = []string{\"Mexico\", \"California\"}\u000A');codeLines.push('    type Nesting struct {\u000A        XMLName xml.Name `xml:\"nesting\"`\u000A        Plants  []*Plant `xml:\"parent\x3Echild\x3Eplant\"`\u000A    }\u000A');codeLines.push('    nesting := &Nesting{}\u000A    nesting.Plants = []*Plant{coffee, tomato}\u000A');codeLines.push('    out, _ = xml.MarshalIndent(nesting, \" \", \"  \")\u000A    fmt.Println(string(out))\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

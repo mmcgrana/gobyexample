@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Go by Example: Structs</title>
     <link rel=stylesheet href="site.css">
   </head>
@@ -261,7 +262,7 @@ pointers are automatically dereferenced.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type person struct {\u000A    name string\u000A    age  int\u000A}\u000A');codeLines.push('func newPerson(name string) *person {\u000A');codeLines.push('    p :\u003D person{name: name}\u000A    p.age \u003D 42\u000A    return \u0026p\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(person{\"Bob\", 20})\u000A');codeLines.push('    fmt.Println(person{name: \"Alice\", age: 30})\u000A');codeLines.push('    fmt.Println(person{name: \"Fred\"})\u000A');codeLines.push('    fmt.Println(\u0026person{name: \"Ann\", age: 40})\u000A');codeLines.push('    fmt.Println(newPerson(\"Jon\"))\u000A');codeLines.push('    s :\u003D person{name: \"Sean\", age: 50}\u000A    fmt.Println(s.name)\u000A');codeLines.push('    sp :\u003D \u0026s\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    sp.age \u003D 51\u000A    fmt.Println(sp.age)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type person struct {\u000A    name string\u000A    age  int\u000A}\u000A');codeLines.push('func newPerson(name string) *person {\u000A');codeLines.push('    p := person{name: name}\u000A    p.age = 42\u000A    return &p\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(person{\"Bob\", 20})\u000A');codeLines.push('    fmt.Println(person{name: \"Alice\", age: 30})\u000A');codeLines.push('    fmt.Println(person{name: \"Fred\"})\u000A');codeLines.push('    fmt.Println(&person{name: \"Ann\", age: 40})\u000A');codeLines.push('    fmt.Println(newPerson(\"Jon\"))\u000A');codeLines.push('    s := person{name: \"Sean\", age: 50}\u000A    fmt.Println(s.name)\u000A');codeLines.push('    sp := &s\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    sp.age = 51\u000A    fmt.Println(sp.age)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
