@@ -148,6 +148,64 @@ img.copy {
     margin-right: 4px;
 }
 
+/* Mobile layout */
+@media only screen and (max-width: 40em) {
+    html {
+        box-sizing: border-box;
+    }
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+    div#intro {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 120px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    div.example {
+        width: 100%;
+        max-width: none;
+        min-width: auto;
+        padding: 1rem;
+    }
+    table, tbody, tr {
+        display: block;
+    }
+    td {
+        display: block;
+    }
+    td.docs {
+        width: 100%;
+        max-width: none;
+        min-width: auto;
+        min-height: auto;
+        vertical-align: top;
+        text-align: left;
+    }
+    td.code {
+        width: 100%;
+        max-width: none;
+        min-width: auto;
+        padding-top: 5px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 5px;
+        vertical-align: top;
+        background: #f0f0f0;
+    }
+    td.docs p:first-child {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+    pre {
+        overflow-x: auto;
+    }
+}
+
 /* Syntax highlighting */
 body .hll { background-color: #ffffcc }
 body .err { border: 1px solid #FF0000 }         /* Error */
