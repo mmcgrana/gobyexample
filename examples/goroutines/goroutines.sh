@@ -1,7 +1,8 @@
 # When we run this program, we see the output of the
-# blocking call first, then the interleaved output of the
-# two goroutines. This interleaving reflects the
-# goroutines being run concurrently by the Go runtime.
+# blocking call first, then the output of the two
+# goroutines. The goroutines' output may be interleaved,
+# because goroutines are being run concurrently by the
+# Go runtime.
 $ go run goroutines.go
 direct : 0
 direct : 1

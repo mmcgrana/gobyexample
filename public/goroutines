@@ -157,9 +157,10 @@ separate goroutines now. Wait for them to finish
         <tr>
           <td class="docs">
             <p>When we run this program, we see the output of the
-blocking call first, then the interleaved output of the
-two goroutines. This interleaving reflects the
-goroutines being run concurrently by the Go runtime.</p>
+blocking call first, then the output of the two
+goroutines. The goroutines&rsquo; output may be interleaved,
+because goroutines are being run concurrently by the
+Go runtime.</p>
 
           </td>
           <td class="code leading">
