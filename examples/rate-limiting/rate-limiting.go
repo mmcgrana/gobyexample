@@ -4,7 +4,7 @@
 // elegantly supports rate limiting with goroutines,
 // channels, and [tickers](tickers).
 
-package main
+package examples
 
 import (
 	"fmt"
@@ -26,13 +26,13 @@ func main() {
 	// This `limiter` channel will receive a value
 	// every 200 milliseconds. This is the regulator in
 	// our rate limiting scheme.
-	limiter := time.Tick(200 * time.Millisecond)
+	limiter := time.NewTicker(200 * time.Millisecond)
 
 	// By blocking on a receive from the `limiter` channel
 	// before serving each request, we limit ourselves to
 	// 1 request every 200 milliseconds.
 	for req := range requests {
-		<-limiter
+		<-limiter.C
 		fmt.Println("request", req, time.Now())
 	}
 
