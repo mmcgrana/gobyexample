@@ -42,7 +42,7 @@ func TestIntMinBasic(t *testing.T) {
 // expected outputs are listed in a table and a single loop
 // walks over them and performs the test logic.
 func TestIntMinTableDriven(t *testing.T) {
-	var tests = []struct {
+	var tests := []struct {
 		a, b int
 		want int
 	}{
