@@ -1,4 +1,4 @@
-// Go supports _methods_ defined on struct types.
+// Go supports _methods_ defined on any coustom defined types.
 
 package main
 
