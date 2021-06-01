@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -17,7 +16,7 @@ func check(err error) {
 }
 
 func readLines(path string) []string {
-	srcBytes, err := ioutil.ReadFile(path)
+	srcBytes, err := os.ReadFile(path)
 	check(err)
 	return strings.Split(string(srcBytes), "\n")
 }
