@@ -4,11 +4,7 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"fmt"
-	"github.com/alecthomas/chroma"
-	"github.com/alecthomas/chroma/formatters/html"
-	"github.com/alecthomas/chroma/lexers"
-	"github.com/alecthomas/chroma/styles"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"os/exec"
@@ -16,6 +12,11 @@ import (
 	"regexp"
 	"strings"
 	"text/template"
+
+	"github.com/alecthomas/chroma"
+	"github.com/alecthomas/chroma/formatters/html"
+	"github.com/alecthomas/chroma/lexers"
+	"github.com/alecthomas/chroma/styles"
 
 	"github.com/russross/blackfriday/v2"
 )
@@ -41,9 +42,9 @@ func ensureDir(dir string) {
 }
 
 func copyFile(src, dst string) {
-	dat, err := ioutil.ReadFile(src)
+	dat, err := os.ReadFile(src)
 	check(err)
-	err = ioutil.WriteFile(dst, dat, 0644)
+	err = os.WriteFile(dst, dat, 0644)
 	check(err)
 }
 
@@ -59,7 +60,7 @@ func pipe(bin string, arg []string, src string) []byte {
 	check(err)
 	err = in.Close()
 	check(err)
-	bytes, err := ioutil.ReadAll(out)
+	bytes, err := io.ReadAll(out)
 	check(err)
 	err = cmd.Wait()
 	check(err)
@@ -74,7 +75,7 @@ func sha1Sum(s string) string {
 }
 
 func mustReadFile(path string) string {
-	bytes, err := ioutil.ReadFile(path)
+	bytes, err := os.ReadFile(path)
 	check(err)
 	return string(bytes)
 }
@@ -141,11 +142,11 @@ func resetURLHashFile(codehash, code, sourcePath string) string {
 	resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
 	check(err)
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	check(err)
 	urlkey := string(body)
 	data := fmt.Sprintf("%s\n%s\n", codehash, urlkey)
-	ioutil.WriteFile(sourcePath, []byte(data), 0644)
+	os.WriteFile(sourcePath, []byte(data), 0644)
 	return urlkey
 }
 

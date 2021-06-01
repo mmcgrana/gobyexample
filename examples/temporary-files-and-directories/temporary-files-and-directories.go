@@ -8,7 +8,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
@@ -22,17 +21,17 @@ func check(e error) {
 func main() {
 
 	// The easiest way to create a temporary file is by
-	// calling `ioutil.TempFile`. It creates a file *and*
+	// calling `os.CreateTemp`. It creates a file *and*
 	// opens it for reading and writing. We provide `""`
-	// as the first argument, so `ioutil.TempFile` will
+	// as the first argument, so `os.CreateTemp` will
 	// create the file in the default location for our OS.
-	f, err := ioutil.TempFile("", "sample")
+	f, err := os.CreateTemp("", "sample")
 	check(err)
 
 	// Display the name of the temporary file. On
 	// Unix-based OSes the directory will likely be `/tmp`.
 	// The file name starts with the prefix given as the
-	// second argument to `ioutil.TempFile` and the rest
+	// second argument to `os.CreateTemp` and the rest
 	// is chosen automatically to ensure that concurrent
 	// calls will always create different file names.
 	fmt.Println("Temp file name:", f.Name())
@@ -49,10 +48,10 @@ func main() {
 
 	// If we intend to write many temporary files, we may
 	// prefer to create a temporary *directory*.
-	// `ioutil.TempDir`'s arguments are the same as
-	// `TempFile`'s, but it returns a directory *name*
+	// `os.MkdirTemp`'s arguments are the same as
+	// `CreateTemp`'s, but it returns a directory *name*
 	// rather than an open file.
-	dname, err := ioutil.TempDir("", "sampledir")
+	dname, err := os.MkdirTemp("", "sampledir")
 	check(err)
 	fmt.Println("Temp dir name:", dname)
 
@@ -61,6 +60,6 @@ func main() {
 	// Now we can synthesize temporary file names by
 	// prefixing them with our temporary directory.
 	fname := filepath.Join(dname, "file1")
-	err = ioutil.WriteFile(fname, []byte{1, 2}, 0666)
+	err = os.WriteFile(fname, []byte{1, 2}, 0666)
 	check(err)
 }
