@@ -5,7 +5,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
@@ -32,7 +31,7 @@ func main() {
 	// Helper function to create a new empty file.
 	createEmptyFile := func(name string) {
 		d := []byte("")
-		check(ioutil.WriteFile(name, d, 0644))
+		check(os.WriteFile(name, d, 0644))
 	}
 
 	createEmptyFile("subdir/file1")
@@ -48,8 +47,8 @@ func main() {
 	createEmptyFile("subdir/parent/child/file4")
 
 	// `ReadDir` lists directory contents, returning a
-	// slice of `os.FileInfo` objects.
-	c, err := ioutil.ReadDir("subdir/parent")
+	// slice of `os.DirEntry` objects.
+	c, err := os.ReadDir("subdir/parent")
 	check(err)
 
 	fmt.Println("Listing subdir/parent")
@@ -64,7 +63,7 @@ func main() {
 
 	// Now we'll see the contents of `subdir/parent/child`
 	// when listing the *current* directory.
-	c, err = ioutil.ReadDir(".")
+	c, err = os.ReadDir(".")
 	check(err)
 
 	fmt.Println("Listing subdir/parent/child")

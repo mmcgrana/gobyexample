@@ -6,7 +6,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -21,7 +20,7 @@ func main() {
 	// To start, here's how to dump a string (or just
 	// bytes) into a file.
 	d1 := []byte("hello\ngo\n")
-	err := ioutil.WriteFile("/tmp/dat1", d1, 0644)
+	err := os.WriteFile("/tmp/dat1", d1, 0644)
 	check(err)
 
 	// For more granular writes, open a file for writing.

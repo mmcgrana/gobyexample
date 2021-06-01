@@ -8,7 +8,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 )
 
@@ -24,7 +23,7 @@ func main() {
 
 	// Perhaps the most basic file reading task is
 	// slurping a file's entire contents into memory.
-	dat, err := ioutil.ReadFile("/tmp/dat")
+	dat, err := os.ReadFile("/tmp/dat")
 	check(err)
 	fmt.Print(string(dat))
 
