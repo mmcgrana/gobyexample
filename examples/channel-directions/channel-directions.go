@@ -19,6 +19,10 @@ func ping(pings chan<- string, msg string) {
 func pong(pings <-chan string, pongs chan<- string) {
 	msg := <-pings
 	pongs <- msg
+	
+	// it is a compile-time error to close
+	// the receive-only channel `pings`.
+	// close(pings)
 }
 
 func main() {
