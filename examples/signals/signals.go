@@ -8,8 +8,8 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"os"
 	"os/signal"
 	"syscall"
 )
@@ -17,30 +17,21 @@ import (
 func main() {
 
 	// Go signal notification works by sending `os.Signal`
-	// values on a channel. We'll create a channel to
-	// receive these notifications (we'll also make one to
-	// notify us when the program can exit).
-	sigs := make(chan os.Signal, 1)
-	done := make(chan bool, 1)
+	// values on a channel.
 
-	// `signal.Notify` registers the given channel to
-	// receive notifications of the specified signals.
-	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+	// `signal.NotifyContext` registers a channel under the hood to receive
+	// notifications of the specified signals.
+	// When a specified signal is received, it returns a context with a closed Done channel.
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stop()
 
-	// This goroutine executes a blocking receive for
-	// signals. When it gets one it'll print it out
-	// and then notify the program that it can finish.
-	go func() {
-		sig := <-sigs
-		fmt.Println()
-		fmt.Println(sig)
-		done <- true
-	}()
-
-	// The program will wait here until it gets the
-	// expected signal (as indicated by the goroutine
-	// above sending a value on `done`) and then exit.
+	// The program will wait here until the returned context's Done channel is closed.
+	// A graceful exit can then be handled before the deferred stop is executed.
+	// `stop` restores the default behavior of the signal (e.g., exiting on SIGINT)
 	fmt.Println("awaiting signal")
-	<-done
-	fmt.Println("exiting")
+	<-ctx.Done()
+	fmt.Println("exiting gracefully")
+
+	// Note: For cases where decisions based on which signal was received are needed,
+	// `signal.Notify` and `context.WithCancel` can be used together instead.
 }
