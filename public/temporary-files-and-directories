@@ -230,7 +230,7 @@ prefixing them with our temporary directory.</p>
       </p>
       
       <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/temporary-files-and-directories">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/temporary-files-and-directories">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
       </p>
     </div>
     <script>
