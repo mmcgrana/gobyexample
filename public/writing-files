@@ -42,7 +42,7 @@ ones we saw earlier for reading.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/fQ7sd4gXv0F"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/Y12O-L_zFS1"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -57,7 +57,6 @@ ones we saw earlier for reading.</p>
           <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
     <span class="s">&#34;bufio&#34;</span>
     <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;io/ioutil&#34;</span>
     <span class="s">&#34;os&#34;</span>
 <span class="p">)</span>
 </pre>
@@ -100,7 +99,7 @@ bytes) into a file.</p>
             
           <pre class="chroma">
     <span class="nx">d1</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello\ngo\n&#34;</span><span class="p">)</span>
-    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="s">&#34;/tmp/dat1&#34;</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="s">&#34;/tmp/dat1&#34;</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
     <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </pre>
           </td>
@@ -282,7 +281,7 @@ we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"io/ioutil\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    d1 :\u003D []byte(\"hello\\ngo\\n\")\u000A    err :\u003D ioutil.WriteFile(\"/tmp/dat1\", d1, 0644)\u000A    check(err)\u000A');codeLines.push('    f, err :\u003D os.Create(\"/tmp/dat2\")\u000A    check(err)\u000A');codeLines.push('    defer f.Close()\u000A');codeLines.push('    d2 :\u003D []byte{115, 111, 109, 101, 10}\u000A    n2, err :\u003D f.Write(d2)\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n2)\u000A');codeLines.push('    n3, err :\u003D f.WriteString(\"writes\\n\")\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n3)\u000A');codeLines.push('    f.Sync()\u000A');codeLines.push('    w :\u003D bufio.NewWriter(f)\u000A    n4, err :\u003D w.WriteString(\"buffered\\n\")\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n4)\u000A');codeLines.push('    w.Flush()\u000A');codeLines.push('}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    d1 :\u003D []byte(\"hello\\ngo\\n\")\u000A    err :\u003D os.WriteFile(\"/tmp/dat1\", d1, 0644)\u000A    check(err)\u000A');codeLines.push('    f, err :\u003D os.Create(\"/tmp/dat2\")\u000A    check(err)\u000A');codeLines.push('    defer f.Close()\u000A');codeLines.push('    d2 :\u003D []byte{115, 111, 109, 101, 10}\u000A    n2, err :\u003D f.Write(d2)\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n2)\u000A');codeLines.push('    n3, err :\u003D f.WriteString(\"writes\\n\")\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n3)\u000A');codeLines.push('    f.Sync()\u000A');codeLines.push('    w :\u003D bufio.NewWriter(f)\u000A    n4, err :\u003D w.WriteString(\"buffered\\n\")\u000A    check(err)\u000A    fmt.Printf(\"wrote %d bytes\\n\", n4)\u000A');codeLines.push('    w.Flush()\u000A');codeLines.push('}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

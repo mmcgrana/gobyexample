@@ -9,7 +9,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os/exec"
 )
 
@@ -46,7 +46,7 @@ func main() {
 	grepCmd.Start()
 	grepIn.Write([]byte("hello grep\ngoodbye grep"))
 	grepIn.Close()
-	grepBytes, _ := ioutil.ReadAll(grepOut)
+	grepBytes, _ := io.ReadAll(grepOut)
 	grepCmd.Wait()
 
 	// We omitted error checks in the above example, but
