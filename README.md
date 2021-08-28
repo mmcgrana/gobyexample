@@ -18,7 +18,7 @@ CloudFront, for example.
 
 ### Building
 
-[![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
+[![Build Status](https://app.travis-ci.com/mmcgrana/gobyexample.svg?branch=master)](https://app.travis-ci.com/mmcgrana/gobyexample)
 
 To build the site you'll need Go installed. Run:
 
