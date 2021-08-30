@@ -39,4 +39,9 @@ func main() {
 	// Block until the WaitGroup counter goes back to 0;
 	// all the workers notified they're done.
 	wg.Wait()
+
+	// Note that this approach has no straightforward way
+	// to propagate errors from workers. For more
+	// advanced use cases, consider using the
+	// [errgroup package](https://pkg.go.dev/golang.org/x/sync/errgroup).
 }
