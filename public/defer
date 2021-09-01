@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'collection-functions';
+              window.location.href = 'recover';
           }
           
       }
@@ -195,7 +195,7 @@ after being written.</p>
       
       
       <p class="next">
-        Next example: <a href="collection-functions">Collection Functions</a>.
+        Next example: <a href="recover">Recover</a>.
       </p>
       
       <p class="footer">
