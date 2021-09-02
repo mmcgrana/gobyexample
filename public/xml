@@ -266,9 +266,11 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
         Next example: <a href="time">Time</a>.
       </p>
       
-      <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/xml">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-      </p>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
     </div>
     <script>
       var codeLines = [];

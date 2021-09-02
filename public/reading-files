@@ -275,9 +275,11 @@ be scheduled immediately after <code>Open</code>ing with
         Next example: <a href="writing-files">Writing Files</a>.
       </p>
       
-      <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/reading-files">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-      </p>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
     </div>
     <script>
       var codeLines = [];

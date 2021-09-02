@@ -445,9 +445,11 @@ and returns a string without printing it anywhere.</p>
         Next example: <a href="regular-expressions">Regular Expressions</a>.
       </p>
       
-      <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/string-formatting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-      </p>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
     </div>
     <script>
       var codeLines = [];

@@ -189,9 +189,11 @@ of the <code>rune</code> and the second the <code>rune</code> itself.</p>
         Next example: <a href="functions">Functions</a>.
       </p>
       
-      <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/range">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-      </p>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
     </div>
     <script>
       var codeLines = [];

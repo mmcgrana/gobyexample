@@ -250,9 +250,11 @@ then serve the remaining 2 with ~200ms delays each.</p>
         Next example: <a href="atomic-counters">Atomic Counters</a>.
       </p>
       
-      <p class="footer">
-        by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/rate-limiting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
-      </p>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
     </div>
     <script>
       var codeLines = [];
