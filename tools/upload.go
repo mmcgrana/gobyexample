@@ -46,9 +46,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Create an Amazon S3 service client
 	client := s3.NewFromConfig(cfg)
 
+	// The whole contents of the public/ directory are uploaded. This code assumes
+	// the directory structure is flat - there are no subdirectories.
 	publicDir := "./public/"
 	c, err := os.ReadDir(publicDir)
 	if err != nil {
@@ -66,14 +67,14 @@ func main() {
 			contentType := guessContentType(entry.Name())
 			log.Printf("Uploading %s (%s)", entry.Name(), contentType)
 
-			input := &s3.PutObjectInput{
+			cfg := &s3.PutObjectInput{
 				Bucket:      bucket,
 				Key:         aws.String(entry.Name()),
 				Body:        file,
 				ContentType: aws.String(contentType),
 			}
 
-			_, err = client.PutObject(context.TODO(), input)
+			_, err = client.PutObject(context.TODO(), cfg)
 			if err != nil {
 				log.Fatal(err)
 			}
