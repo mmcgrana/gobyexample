@@ -43,7 +43,7 @@ common string formatting tasks.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/L6BkGeaN_p4"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/g3kBgRjpFu0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -98,7 +98,7 @@ an instance of our <code>point</code> struct.</p>
             
           <pre class="chroma">
     <span class="nx">p</span> <span class="o">:=</span> <span class="nx">point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct1: %v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -112,7 +112,7 @@ include the struct&rsquo;s field names.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%+v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct2: %+v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -127,7 +127,7 @@ would produce that value.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct3: %#v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -140,7 +140,7 @@ would produce that value.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%T\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;type: %T\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -153,7 +153,7 @@ would produce that value.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%t\n&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;bool: %t\n&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -167,7 +167,7 @@ Use <code>%d</code> for standard, base-10 formatting.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d\n&#34;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;int: %d\n&#34;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -180,7 +180,7 @@ Use <code>%d</code> for standard, base-10 formatting.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%b\n&#34;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;bin: %b\n&#34;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -194,7 +194,7 @@ given integer.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%c\n&#34;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;char: %c\n&#34;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -207,7 +207,7 @@ given integer.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;hex: %x\n&#34;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -221,7 +221,7 @@ floats. For basic decimal formatting use <code>%f</code>.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%f\n&#34;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float1: %f\n&#34;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -235,8 +235,8 @@ different versions of) scientific notation.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%e\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%E\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float2: %e\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float3: %E\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -249,7 +249,7 @@ different versions of) scientific notation.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str1: %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -262,7 +262,7 @@ different versions of) scientific notation.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%q\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str2: %q\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -277,7 +277,7 @@ per byte of input.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="s">&#34;hex this&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str3: %x\n&#34;</span><span class="p">,</span> <span class="s">&#34;hex this&#34;</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -290,7 +290,7 @@ per byte of input.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;pointer: %p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -308,7 +308,7 @@ spaces.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6d|%6d|\n&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width1: |%6d|%6d|\n&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -324,7 +324,7 @@ width.precision syntax.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6.2f|%6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width2: |%6.2f|%6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -337,7 +337,7 @@ width.precision syntax.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%-6.2f|%-6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float4: |%-6.2f|%-6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -352,7 +352,7 @@ table-like output. For basic right-justified width.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%6s|%6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width3: |%6s|%6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -365,7 +365,7 @@ table-like output. For basic right-justified width.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;|%-6s|%-6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str4: |%-6s|%-6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -380,7 +380,7 @@ and returns a string without printing it anywhere.</p>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;a %s&#34;</span><span class="p">,</span> <span class="s">&#34;string&#34;</span><span class="p">)</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;sprintf: a %s&#34;</span><span class="p">,</span> <span class="s">&#34;string&#34;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 </pre>
           </td>
@@ -395,7 +395,7 @@ and returns a string without printing it anywhere.</p>
           <td class="code">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;an %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;error&#34;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;io: an %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;error&#34;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -412,29 +412,29 @@ and returns a string without printing it anywhere.</p>
           <td class="code">
             
           <pre class="chroma"><span class="gp">$</span> go run string-formatting.go
-<span class="go">{1 2}
-</span><span class="go">{x:1 y:2}
-</span><span class="go">main.point{x:1, y:2}
-</span><span class="go">main.point
-</span><span class="go">true
-</span><span class="go">123
-</span><span class="go">1110
-</span><span class="go">!
-</span><span class="go">1c8
-</span><span class="go">78.900000
-</span><span class="go">1.234000e+08
-</span><span class="go">1.234000E+08
-</span><span class="go">&#34;string&#34;
-</span><span class="go">&#34;\&#34;string\&#34;&#34;
-</span><span class="go">6865782074686973
-</span><span class="go">0x42135100
-</span><span class="go">|    12|   345|
-</span><span class="go">|  1.20|  3.45|
-</span><span class="go">|1.20  |3.45  |
-</span><span class="go">|   foo|     b|
-</span><span class="go">|foo   |b     |
-</span><span class="go">a string
-</span><span class="go">an error</span></pre>
+<span class="go">struct1: {1 2}
+</span><span class="go">struct2: {x:1 y:2}
+</span><span class="go">struct3: main.point{x:1, y:2}
+</span><span class="go">type: main.point
+</span><span class="go">bool: true
+</span><span class="go">int: 123
+</span><span class="go">bin: 1110
+</span><span class="go">char: !
+</span><span class="go">hex: 1c8
+</span><span class="go">float1: 78.900000
+</span><span class="go">float2: 1.234000e+08
+</span><span class="go">float3: 1.234000E+08
+</span><span class="go">str1: &#34;string&#34;
+</span><span class="go">str2: &#34;\&#34;string\&#34;&#34;
+</span><span class="go">str3: 6865782074686973
+</span><span class="go">pointer: 0xc420014090
+</span><span class="go">width1: |    12|   345|
+</span><span class="go">width2: |  1.20|  3.45|
+</span><span class="go">float4: |1.20  |3.45  |
+</span><span class="go">width3: |   foo|     b|
+</span><span class="go">str4: |foo   |b     |
+</span><span class="go">sprintf: a string
+</span><span class="go">io: an error</span></pre>
           </td>
         </tr>
         
@@ -453,7 +453,7 @@ and returns a string without printing it anywhere.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type point struct {\u000A    x, y int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p :\u003D point{1, 2}\u000A    fmt.Printf(\"%v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"%+v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"%#v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"%T\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"%t\\n\", true)\u000A');codeLines.push('    fmt.Printf(\"%d\\n\", 123)\u000A');codeLines.push('    fmt.Printf(\"%b\\n\", 14)\u000A');codeLines.push('    fmt.Printf(\"%c\\n\", 33)\u000A');codeLines.push('    fmt.Printf(\"%x\\n\", 456)\u000A');codeLines.push('    fmt.Printf(\"%f\\n\", 78.9)\u000A');codeLines.push('    fmt.Printf(\"%e\\n\", 123400000.0)\u000A    fmt.Printf(\"%E\\n\", 123400000.0)\u000A');codeLines.push('    fmt.Printf(\"%s\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"%q\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"%x\\n\", \"hex this\")\u000A');codeLines.push('    fmt.Printf(\"%p\\n\", \u0026p)\u000A');codeLines.push('    fmt.Printf(\"|%6d|%6d|\\n\", 12, 345)\u000A');codeLines.push('    fmt.Printf(\"|%6.2f|%6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"|%-6.2f|%-6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"|%6s|%6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    fmt.Printf(\"|%-6s|%-6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    s :\u003D fmt.Sprintf(\"a %s\", \"string\")\u000A    fmt.Println(s)\u000A');codeLines.push('    fmt.Fprintf(os.Stderr, \"an %s\\n\", \"error\")\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type point struct {\u000A    x, y int\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    p :\u003D point{1, 2}\u000A    fmt.Printf(\"struct1: %v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct2: %+v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"struct3: %#v\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"type: %T\\n\", p)\u000A');codeLines.push('    fmt.Printf(\"bool: %t\\n\", true)\u000A');codeLines.push('    fmt.Printf(\"int: %d\\n\", 123)\u000A');codeLines.push('    fmt.Printf(\"bin: %b\\n\", 14)\u000A');codeLines.push('    fmt.Printf(\"char: %c\\n\", 33)\u000A');codeLines.push('    fmt.Printf(\"hex: %x\\n\", 456)\u000A');codeLines.push('    fmt.Printf(\"float1: %f\\n\", 78.9)\u000A');codeLines.push('    fmt.Printf(\"float2: %e\\n\", 123400000.0)\u000A    fmt.Printf(\"float3: %E\\n\", 123400000.0)\u000A');codeLines.push('    fmt.Printf(\"str1: %s\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str2: %q\\n\", \"\\\"string\\\"\")\u000A');codeLines.push('    fmt.Printf(\"str3: %x\\n\", \"hex this\")\u000A');codeLines.push('    fmt.Printf(\"pointer: %p\\n\", \u0026p)\u000A');codeLines.push('    fmt.Printf(\"width1: |%6d|%6d|\\n\", 12, 345)\u000A');codeLines.push('    fmt.Printf(\"width2: |%6.2f|%6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"float4: |%-6.2f|%-6.2f|\\n\", 1.2, 3.45)\u000A');codeLines.push('    fmt.Printf(\"width3: |%6s|%6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    fmt.Printf(\"str4: |%-6s|%-6s|\\n\", \"foo\", \"b\")\u000A');codeLines.push('    s :\u003D fmt.Sprintf(\"sprintf: a %s\", \"string\")\u000A    fmt.Println(s)\u000A');codeLines.push('    fmt.Fprintf(os.Stderr, \"io: an %s\\n\", \"error\")\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
