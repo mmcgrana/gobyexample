@@ -45,7 +45,6 @@ and open `http://127.0.0.1:8000/` in your browser.
 To upload the site:
 
 ```console
-$ gem install aws-sdk
 $ export AWS_ACCESS_KEY_ID=...
 $ export AWS_SECRET_ACCESS_KEY=...
 $ tools/upload
