@@ -38,14 +38,14 @@ func main() {
 
 	// There are many options for formatting integers.
 	// Use `%d` for standard, base-10 formatting.
-	fmt.Printf("int1: %d\n", 123)
+	fmt.Printf("int: %d\n", 123)
 
 	// This prints a binary representation.
 	fmt.Printf("bin: %b\n", 14)
 
 	// This prints the character corresponding to the
 	// given integer.
-	fmt.Printf("int2: %c\n", 33)
+	fmt.Printf("char: %c\n", 33)
 
 	// `%x` provides hex encoding.
 	fmt.Printf("hex: %x\n", 456)
@@ -79,29 +79,29 @@ func main() {
 	// number after the `%` in the verb. By default the
 	// result will be right-justified and padded with
 	// spaces.
-	fmt.Printf("Int3: |%6d|%6d|\n", 12, 345)
+	fmt.Printf("width1: |%6d|%6d|\n", 12, 345)
 
 	// You can also specify the width of printed floats,
 	// though usually you'll also want to restrict the
 	// decimal precision at the same time with the
 	// width.precision syntax.
-	fmt.Printf("float4: |%6.2f|%6.2f|\n", 1.2, 3.45)
+	fmt.Printf("width2: |%6.2f|%6.2f|\n", 1.2, 3.45)
 
 	// To left-justify, use the `-` flag.
-	fmt.Printf("float5: |%-6.2f|%-6.2f|\n", 1.2, 3.45)
+	fmt.Printf("float4: |%-6.2f|%-6.2f|\n", 1.2, 3.45)
 
 	// You may also want to control width when formatting
 	// strings, especially to ensure that they align in
 	// table-like output. For basic right-justified width.
-	fmt.Printf("str4: |%6s|%6s|\n", "foo", "b")
+	fmt.Printf("width3: |%6s|%6s|\n", "foo", "b")
 
 	// To left-justify use the `-` flag as with numbers.
-	fmt.Printf("str5: |%-6s|%-6s|\n", "foo", "b")
+	fmt.Printf("str4: |%-6s|%-6s|\n", "foo", "b")
 
 	// So far we've seen `Printf`, which prints the
 	// formatted string to `os.Stdout`. `Sprintf` formats
 	// and returns a string without printing it anywhere.
-	s := fmt.Sprintf("str6: a %s", "string")
+	s := fmt.Sprintf("sprintf: a %s", "string")
 	fmt.Println(s)
 
 	// You can format+print to `io.Writers` other than
