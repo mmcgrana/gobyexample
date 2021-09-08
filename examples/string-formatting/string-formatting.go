@@ -88,15 +88,15 @@ func main() {
 	fmt.Printf("width2: |%6.2f|%6.2f|\n", 1.2, 3.45)
 
 	// To left-justify, use the `-` flag.
-	fmt.Printf("float4: |%-6.2f|%-6.2f|\n", 1.2, 3.45)
+	fmt.Printf("width3: |%-6.2f|%-6.2f|\n", 1.2, 3.45)
 
 	// You may also want to control width when formatting
 	// strings, especially to ensure that they align in
 	// table-like output. For basic right-justified width.
-	fmt.Printf("width3: |%6s|%6s|\n", "foo", "b")
+	fmt.Printf("width4: |%6s|%6s|\n", "foo", "b")
 
 	// To left-justify use the `-` flag as with numbers.
-	fmt.Printf("str4: |%-6s|%-6s|\n", "foo", "b")
+	fmt.Printf("width5: |%-6s|%-6s|\n", "foo", "b")
 
 	// So far we've seen `Printf`, which prints the
 	// formatted string to `os.Stdout`. `Sprintf` formats
