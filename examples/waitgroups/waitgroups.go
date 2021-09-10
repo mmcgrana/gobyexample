@@ -10,12 +10,7 @@ import (
 )
 
 // This is the function we'll run in every goroutine.
-// Note that a WaitGroup must be passed to functions by
-// pointer.
-func worker(id int, wg *sync.WaitGroup) {
-	// On return, notify the WaitGroup that we're done.
-	defer wg.Done()
-
+func worker(id int) {
 	fmt.Printf("Worker %d starting\n", id)
 
 	// Sleep to simulate an expensive task.
@@ -26,14 +21,29 @@ func worker(id int, wg *sync.WaitGroup) {
 func main() {
 
 	// This WaitGroup is used to wait for all the
-	// goroutines launched here to finish.
+	// goroutines launched here to finish. Note: if a WaitGroup is
+	// explicitly passed into functions, it should be done *by pointer*.
+	// This would be important if, for example, our worker had to launch
+	// additional goroutines.
 	var wg sync.WaitGroup
 
 	// Launch several goroutines and increment the WaitGroup
 	// counter for each.
 	for i := 1; i <= 5; i++ {
 		wg.Add(1)
-		go worker(i, &wg)
+		// Avoid re-use of the same `i` value in each goroutine closure.
+		// See [the FAQ](https://golang.org/doc/faq#closures_and_goroutines)
+		// for more details.
+		i := i
+
+		// Wrap the worker call in a closure that makes sure to tell
+		// the WaitGroup that this worker is done. This way the worker
+		// itself does not have to be aware of the concurrency primitives
+		// involved in its execution.
+		go func() {
+			defer wg.Done()
+			worker(i)
+		}()
 	}
 
 	// Block until the WaitGroup counter goes back to 0;
