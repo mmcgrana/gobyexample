@@ -31,7 +31,7 @@ func main() {
 	// This also finds the first match but returns the
 	// start and end indexes for the match instead of the
 	// matching text.
-	fmt.Println(r.FindStringIndex("peach punch"))
+	fmt.Println("idx:", r.FindStringIndex("peach punch"))
 
 	// The `Submatch` variants include information about
 	// both the whole-pattern matches and the submatches
@@ -50,7 +50,7 @@ func main() {
 
 	// These `All` variants are available for the other
 	// functions we saw above as well.
-	fmt.Println(r.FindAllStringSubmatchIndex(
+	fmt.Println("all:", r.FindAllStringSubmatchIndex(
 		"peach punch pinch", -1))
 
 	// Providing a non-negative integer as the second
@@ -70,7 +70,7 @@ func main() {
 	// returning an error, which makes it safer to use for
 	// global variables.
 	r = regexp.MustCompile("p([a-z]+)ch")
-	fmt.Println(r)
+	fmt.Println("regexp:", r)
 
 	// The `regexp` package can also be used to replace
 	// subsets of strings with other values.
