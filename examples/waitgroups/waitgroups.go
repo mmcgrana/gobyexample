@@ -23,8 +23,6 @@ func main() {
 	// This WaitGroup is used to wait for all the
 	// goroutines launched here to finish. Note: if a WaitGroup is
 	// explicitly passed into functions, it should be done *by pointer*.
-	// This would be important if, for example, our worker had to launch
-	// additional goroutines.
 	var wg sync.WaitGroup
 
 	// Launch several goroutines and increment the WaitGroup
