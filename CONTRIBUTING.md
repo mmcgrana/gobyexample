@@ -14,5 +14,5 @@ Thanks for your interest in contributing to Go by Example!
   first_.
 
 * We're not going to change the navigation of the site, in particular adding
-  a "previous section" link or an "index" link other than the on the title
+  a "previous section" link or an "index" link other than the one on the title
   text.
