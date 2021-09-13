@@ -26,7 +26,7 @@ func main() {
 	// This declares `numb` and `fork` flags, using a
 	// similar approach to the `word` flag.
 	numbPtr := flag.Int("numb", 42, "an int")
-	boolPtr := flag.Bool("fork", false, "a bool")
+	forkPtr := flag.Bool("fork", false, "a bool")
 
 	// It's also possible to declare an option that uses an
 	// existing var declared elsewhere in the program.
@@ -45,7 +45,7 @@ func main() {
 	// to get the actual option values.
 	fmt.Println("word:", *wordPtr)
 	fmt.Println("numb:", *numbPtr)
-	fmt.Println("fork:", *boolPtr)
+	fmt.Println("fork:", *forkPtr)
 	fmt.Println("svar:", svar)
 	fmt.Println("tail:", flag.Args())
 }
