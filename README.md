@@ -18,7 +18,7 @@ CloudFront, for example.
 
 ### Building
 
-[![Build Status](https://travis-ci.com/mmcgrana/gobyexample.svg "Travis CI status")](https://travis-ci.com/mmcgrana/gobyexample)
+[![Build Status](https://github.com/mmcgrana/gobyexample/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/mmcgrana/gobyexample/actions)
 
 To build the site you'll need Go installed. Run:
 
@@ -45,7 +45,6 @@ and open `http://127.0.0.1:8000/` in your browser.
 To upload the site:
 
 ```console
-$ gem install aws-sdk
 $ export AWS_ACCESS_KEY_ID=...
 $ export AWS_SECRET_ACCESS_KEY=...
 $ tools/upload
@@ -70,6 +69,7 @@ Contributor translations of the Go by Example site are available in:
 * [Italian](http://gobyexample.it) by the [Go Italian community](https://github.com/golangit/gobyexample-it)
 * [Japanese](http://spinute.org/go-by-example) by [spinute](https://github.com/spinute)
 * [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
+* [Polish](https://gowprzykladach.pl) by [baduker](https://github.com/baduker/gobyexample)
 * [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 * [Spanish](http://goconejemplos.com) by the [Go Mexico community](https://github.com/dabit/gobyexample)
 * [Ukrainian](http://butuzov.github.io/gobyexample/) by [butuzov](https://github.com/butuzov/gobyexample)
