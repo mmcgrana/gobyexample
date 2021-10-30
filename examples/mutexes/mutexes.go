@@ -7,79 +7,57 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"sync"
-	"sync/atomic"
-	"time"
 )
 
+// Container holds a map of counters; since we want to
+// update it concurrently from multiple goroutines, we
+// add a `Mutex` to synchronize access. The mutex is
+// _embedded_ in this `struct`; this is idiomatic in Go.
+// Note that mutexes must not be copied, so if this
+// `struct` is passed around, it should be done by
+// pointer.
+type Container struct {
+	sync.Mutex
+	counters map[string]int
+}
+
+func (c *Container) inc(name string) {
+	// Lock the mutex before accessing `counters`; unlock
+	// it at the end of the function using a [defer](defer)
+	// statement. Since the mutex is embedded into
+	// `Container`, we can call the mutex's methods like
+	// `Lock` directly on `c`.
+	c.Lock()
+	defer c.Unlock()
+	c.counters[name]++
+}
+
 func main() {
-
-	// For our example the `state` will be a map.
-	var state = make(map[int]int)
-
-	// This `mutex` will synchronize access to `state`.
-	var mutex = &sync.Mutex{}
-
-	// We'll keep track of how many read and write
-	// operations we do.
-	var readOps uint64
-	var writeOps uint64
-
-	// Here we start 100 goroutines to execute repeated
-	// reads against the state, once per millisecond in
-	// each goroutine.
-	for r := 0; r < 100; r++ {
-		go func() {
-			total := 0
-			for {
-
-				// For each read we pick a key to access,
-				// `Lock()` the `mutex` to ensure
-				// exclusive access to the `state`, read
-				// the value at the chosen key,
-				// `Unlock()` the mutex, and increment
-				// the `readOps` count.
-				key := rand.Intn(5)
-				mutex.Lock()
-				total += state[key]
-				mutex.Unlock()
-				atomic.AddUint64(&readOps, 1)
-
-				// Wait a bit between reads.
-				time.Sleep(time.Millisecond)
-			}
-		}()
+	c := Container{
+		counters: map[string]int{"a": 0, "b": 0},
 	}
 
-	// We'll also start 10 goroutines to simulate writes,
-	// using the same pattern we did for reads.
-	for w := 0; w < 10; w++ {
-		go func() {
-			for {
-				key := rand.Intn(5)
-				val := rand.Intn(100)
-				mutex.Lock()
-				state[key] = val
-				mutex.Unlock()
-				atomic.AddUint64(&writeOps, 1)
-				time.Sleep(time.Millisecond)
-			}
-		}()
+	var wg sync.WaitGroup
+
+	// This function increments a named counter
+	// in a loop.
+	doIncrement := func(name string, n int) {
+		for i := 0; i < n; i++ {
+			c.inc(name)
+		}
+		wg.Done()
 	}
 
-	// Let the 10 goroutines work on the `state` and
-	// `mutex` for a second.
-	time.Sleep(time.Second)
+	// Run several goroutines concurrently; note
+	// that they all access the same `Container`,
+	// and two of them access the same counter.
+	wg.Add(3)
+	go doIncrement("a", 10000)
+	go doIncrement("a", 10000)
+	go doIncrement("b", 10000)
 
-	// Take and report final operation counts.
-	readOpsFinal := atomic.LoadUint64(&readOps)
-	fmt.Println("readOps:", readOpsFinal)
-	writeOpsFinal := atomic.LoadUint64(&writeOps)
-	fmt.Println("writeOps:", writeOpsFinal)
-
-	// With a final lock of `state`, show how it ended up.
-	mutex.Lock()
-	fmt.Println("state:", state)
-	mutex.Unlock()
+	// Wait a for the goroutines to finish
+	wg.Wait()
+	fmt.Println(c.counters)
 }
