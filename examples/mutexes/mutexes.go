@@ -12,29 +12,28 @@ import (
 
 // Container holds a map of counters; since we want to
 // update it concurrently from multiple goroutines, we
-// add a `Mutex` to synchronize access. The mutex is
-// _embedded_ in this `struct`; this is idiomatic in Go.
+// add a `Mutex` to synchronize access.
 // Note that mutexes must not be copied, so if this
 // `struct` is passed around, it should be done by
 // pointer.
 type Container struct {
-	sync.Mutex
+	mu sync.Mutex
 	counters map[string]int
 }
 
 func (c *Container) inc(name string) {
 	// Lock the mutex before accessing `counters`; unlock
 	// it at the end of the function using a [defer](defer)
-	// statement. Since the mutex is embedded into
-	// `Container`, we can call the mutex's methods like
-	// `Lock` directly on `c`.
-	c.Lock()
-	defer c.Unlock()
+	// statement.
+	c.mu.Lock()
+	defer c.mu.Unlock()
 	c.counters[name]++
 }
 
 func main() {
 	c := Container{
+		// Note that the zero value of a mutex is usable as-is, so no
+		// initialization is required here.
 		counters: map[string]int{"a": 0, "b": 0},
 	}
 
