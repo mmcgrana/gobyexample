@@ -18,6 +18,7 @@ Pointers
 Structs
 Methods
 Interfaces
+Embedding
 Errors
 Goroutines
 Channels
