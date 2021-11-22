@@ -17,7 +17,7 @@ import (
 // `struct` is passed around, it should be done by
 // pointer.
 type Container struct {
-	mu sync.Mutex
+	mu       sync.Mutex
 	counters map[string]int
 }
 

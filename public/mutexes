@@ -44,7 +44,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/i50fhu4l-n0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/tDqeib2-yZA"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -68,8 +68,7 @@ to safely access data across multiple goroutines.</p>
           <td class="docs">
             <p>Container holds a map of counters; since we want to
 update it concurrently from multiple goroutines, we
-add a <code>Mutex</code> to synchronize access. The mutex is
-<em>embedded</em> in this <code>struct</code>; this is idiomatic in Go.
+add a <code>Mutex</code> to synchronize access.
 Note that mutexes must not be copied, so if this
 <code>struct</code> is passed around, it should be done by
 pointer.</p>
@@ -79,7 +78,7 @@ pointer.</p>
             
           <pre class="chroma">
 <span class="kd">type</span> <span class="nx">Container</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+    <span class="nx">mu</span>       <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
     <span class="nx">counters</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
 <span class="p">}</span>
 </pre>
@@ -90,9 +89,7 @@ pointer.</p>
           <td class="docs">
             <p>Lock the mutex before accessing <code>counters</code>; unlock
 it at the end of the function using a <a href="defer">defer</a>
-statement. Since the mutex is embedded into
-<code>Container</code>, we can call the mutex&rsquo;s methods like
-<code>Lock</code> directly on <code>c</code>.</p>
+statement.</p>
 
           </td>
           <td class="code leading">
@@ -108,10 +105,24 @@ statement. Since the mutex is embedded into
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="nx">c</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
-    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+          <pre class="chroma">    <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
     <span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">++</span>
 <span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that the zero value of a mutex is usable as-is, so no
+initialization is required here.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span>
 </pre>
           </td>
         </tr>
@@ -122,9 +133,7 @@ statement. Since the mutex is embedded into
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span>
-        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+          <pre class="chroma">        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
     <span class="p">}</span>
 </pre>
           </td>
@@ -238,7 +247,7 @@ management task using only goroutines and channels.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A)\u000A');codeLines.push('type Container struct {\u000A    sync.Mutex\u000A    counters map[string]int\u000A}\u000A');codeLines.push('func (c *Container) inc(name string) {\u000A');codeLines.push('    c.Lock()\u000A    defer c.Unlock()\u000A    c.counters[name]++\u000A}\u000A');codeLines.push('func main() {\u000A    c :\u003D Container{\u000A        counters: map[string]int{\"a\": 0, \"b\": 0},\u000A    }\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    doIncrement :\u003D func(name string, n int) {\u000A        for i :\u003D 0; i \u003C n; i++ {\u000A            c.inc(name)\u000A        }\u000A        wg.Done()\u000A    }\u000A');codeLines.push('    wg.Add(3)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"b\", 10000)\u000A');codeLines.push('    wg.Wait()\u000A    fmt.Println(c.counters)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A)\u000A');codeLines.push('type Container struct {\u000A    mu       sync.Mutex\u000A    counters map[string]int\u000A}\u000A');codeLines.push('func (c *Container) inc(name string) {\u000A');codeLines.push('    c.mu.Lock()\u000A    defer c.mu.Unlock()\u000A    c.counters[name]++\u000A}\u000A');codeLines.push('func main() {\u000A    c :\u003D Container{\u000A');codeLines.push('        counters: map[string]int{\"a\": 0, \"b\": 0},\u000A    }\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    doIncrement :\u003D func(name string, n int) {\u000A        for i :\u003D 0; i \u003C n; i++ {\u000A            c.inc(name)\u000A        }\u000A        wg.Done()\u000A    }\u000A');codeLines.push('    wg.Add(3)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"b\", 10000)\u000A');codeLines.push('    wg.Wait()\u000A    fmt.Println(c.counters)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
