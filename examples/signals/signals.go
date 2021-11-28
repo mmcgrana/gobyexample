@@ -19,7 +19,7 @@ func main() {
 	// Go signal notification works by sending `os.Signal`
 	// values on a channel. We'll create a channel to
 	// receive these notifications.
-	// **Note** that this channel is "buffered".
+	// **Note:**  this channel is "buffered".
 	sigs := make(chan os.Signal, 1)
 
 	// `signal.Notify` registers the given channel to
@@ -28,7 +28,7 @@ func main() {
 
 	fmt.Println("awaiting signal")
 
-	// Because the `sigs` channel is buffered, the program
+	// The `sigs` channel being buffered, the program
 	// will wait here until it gets the expected signal and
 	// then exit.
 	sig := <-sigs
