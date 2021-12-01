@@ -76,5 +76,5 @@ Contributor translations of the Go by Example site are available in:
 ### Thanks
 
 Thanks to [Jeremy Ashkenas](https://github.com/jashkenas)
-for [Docco](http://jashkenas.github.com/docco/), which
+for [Docco](http://jashkenas.github.io/docco/), which
 inspired this project.
