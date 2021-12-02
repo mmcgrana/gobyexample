@@ -249,9 +249,9 @@ benchmarking in a loop <code>b.N</code> times.</p>
         
         <tr>
           <td class="docs">
-            <p>Run all benchmarks in the current project in verbose
-mode. All tests are run prior to benchmarks. The <code>bench</code>
-flag receives a regex for benchmark function names.</p>
+            <p>Run all benchmarks in the current project. All tests
+are run prior to benchmarks. The <code>bench</code> flag filters
+benchmark function names with a regexp.</p>
 
           </td>
           <td class="code">

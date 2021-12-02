@@ -17,9 +17,9 @@ $ go test -v
 PASS
 ok  	examples/testing	0.023s
 
-# Run all benchmarks in the current project in verbose
-# mode. All tests are run prior to benchmarks. The `bench`
-# flag receives a regex for benchmark function names.
+# Run all benchmarks in the current project. All tests
+# are run prior to benchmarks. The `bench` flag filters
+# benchmark function names with a regexp.
 $ go test -bench=.
 goos: darwin
 goarch: arm64
