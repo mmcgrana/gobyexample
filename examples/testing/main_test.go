@@ -67,10 +67,13 @@ func TestIntMinTableDriven(t *testing.T) {
 	}
 }
 
-// Benchmark tests typically go in `_test.go` files and begin with `Benchmark`.
-// Each benchmark function is run several times, with `b.N` increasing on each
-// run until the `testing` runner deems the benchmark to be accurate.
+// Benchmark tests typically go in `_test.go` files and are
+// named beginning with `Benchmark`. The `testing` runner
+// executes each benchmark function several times, increasing
+// `b.N` on each run until it collects a precise measurement.
 func BenchmarkIntMin(b *testing.B) {
+	// To measure a benchmark, the `testing` runner calls the
+	// function in a loop `b.N` times.
 	for i := 0; i < b.N; i++ {
 		IntMin(1, 2)
 	}
