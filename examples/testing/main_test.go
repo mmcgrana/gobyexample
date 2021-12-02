@@ -72,8 +72,8 @@ func TestIntMinTableDriven(t *testing.T) {
 // executes each benchmark function several times, increasing
 // `b.N` on each run until it collects a precise measurement.
 func BenchmarkIntMin(b *testing.B) {
-	// To measure a benchmark, the `testing` runner calls the
-	// function in a loop `b.N` times.
+	// Typically the benchmark runs a function we're
+	// benchmarking in a loop `b.N` times
 	for i := 0; i < b.N; i++ {
 		IntMin(1, 2)
 	}
