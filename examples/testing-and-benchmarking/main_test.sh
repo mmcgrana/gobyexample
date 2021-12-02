@@ -15,7 +15,7 @@ $ go test -v
     --- PASS: TestIntMinTableDriven/0,-1 (0.00s)
     --- PASS: TestIntMinTableDriven/-1,0 (0.00s)
 PASS
-ok  	examples/testing	0.023s
+ok  	examples/testing-and-benchmarking	0.023s
 
 # Run all benchmarks in the current project. All tests
 # are run prior to benchmarks. The `bench` flag filters
@@ -26,4 +26,4 @@ goarch: arm64
 pkg: examples/testing
 BenchmarkIntMin-8 1000000000 0.3136 ns/op
 PASS
-ok  	examples/testing	0.351s
+ok  	examples/testing-and-benchmarking	0.351s
