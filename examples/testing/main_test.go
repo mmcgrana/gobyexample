@@ -66,3 +66,9 @@ func TestIntMinTableDriven(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkIntMin(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		IntMin(1, 2)
+	}
+}
