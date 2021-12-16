@@ -155,12 +155,12 @@ we saw earlier.</p>
             
           <pre class="chroma"><span class="gp">$</span> go run closing-channels.go 
 <span class="go">sent job 1
-</span><span class="go">received job 1
 </span><span class="go">sent job 2
-</span><span class="go">received job 2
 </span><span class="go">sent job 3
-</span><span class="go">received job 3
 </span><span class="go">sent all jobs
+</span><span class="go">received job 1
+</span><span class="go">received job 2
+</span><span class="go">received job 3
 </span><span class="go">received all jobs</span></pre>
           </td>
         </tr>
