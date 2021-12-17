@@ -78,3 +78,19 @@ Contributor translations of the Go by Example site are available in:
 Thanks to [Jeremy Ashkenas](https://github.com/jashkenas)
 for [Docco](http://jashkenas.github.io/docco/), which
 inspired this project.
+
+### FAQ
+
+#### I'm getting output in a different order from the example. Is the example wrong?
+
+Some of the examples demonstrate concurrent code which has a non-deterministic
+execution order. It depends on how the Go runtime schedules its goroutines and
+may vary by operating system, CPU architecture, or even Go version.
+
+It doesn't mean anything is wrong with the example. Typically the code in these
+examples will be insensitive to the actual order of the output; if the code is
+sensitive to the order - that's probably a bug - so feel free to report it.
+
+
+
+
