@@ -15,7 +15,7 @@ func main() {
 	fmt.Println(s)
 
 	// A `const` statement can appear anywhere a `var`
-	// statement can.
+	// statement can, for types that support `const`.
 	const n = 500000000
 
 	// Constant expressions perform arithmetic with
