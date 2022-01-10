@@ -81,6 +81,16 @@ inspired this project.
 
 ### FAQ
 
+#### What version of Go is required to run these examples?
+
+Given Go's strong [backwards compatibility guarantees](https://go.dev/doc/go1compat),
+we expect the vast majority of examples to work on the latest released version of Go
+as well as many older releases going back years.
+
+That said, some examples show off new features added in the latest release; therefore,
+it's recommended to try running examples with the latest officially released Go version
+(see Go's [release history](https://go.dev/doc/devel/release) for details).
+
 #### I'm getting output in a different order from the example. Is the example wrong?
 
 Some of the examples demonstrate concurrent code which has a non-deterministic
