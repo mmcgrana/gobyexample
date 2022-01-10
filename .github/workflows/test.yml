@@ -13,9 +13,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         go-version: [1.17.x]
-        include:
-          - go-version: 1.16.x
-            os: ubuntu-latest
 
     runs-on: ${{ matrix.os }}
     steps:
