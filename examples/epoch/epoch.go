@@ -12,8 +12,8 @@ import (
 
 func main() {
 
-	// Use `time.Now` with `Unix` or `UnixMilli` or `UnixNano`
-	// to get elapsed time since the Unix epoch in seconds or
+	// Use `time.Now` with `Unix`, `UnixMilli` or `UnixNano`
+	// to get elapsed time since the Unix epoch in seconds,
 	// milliseconds or nanoseconds, respectively.
 	now := time.Now()
 	fmt.Println(now)
