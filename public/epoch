@@ -44,7 +44,7 @@ Here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/0ooeler0RfR"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/LSdohP_slOu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -77,17 +77,15 @@ Here&rsquo;s how to do it in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>time.Now</code> with <code>Unix</code> or <code>UnixNano</code> to get
-elapsed time since the Unix epoch in seconds or
-nanoseconds, respectively.</p>
+            <p>Use <code>time.Now</code> with <code>Unix</code> or <code>UnixMilli</code> or <code>UnixNano</code>
+to get elapsed time since the Unix epoch in seconds or
+milliseconds or nanoseconds, respectively.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-    <span class="nx">secs</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">()</span>
-    <span class="nx">nanos</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
 </pre>
           </td>
@@ -95,18 +93,13 @@ nanoseconds, respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that there is no <code>UnixMillis</code>, so to get the
-milliseconds since epoch you&rsquo;ll need to manually
-divide from nanoseconds.</p>
-
+            
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">secs</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">millis</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">)</span>
+          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">())</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">UnixMilli</span><span class="p">())</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">())</span>
 </pre>
           </td>
         </tr>
@@ -120,8 +113,8 @@ since the epoch into the corresponding <code>time</code>.</p>
           <td class="code">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">nanos</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(),</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">now</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()))</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -174,7 +167,7 @@ parsing and formatting.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\u003D time.Now()\u000A    secs :\u003D now.Unix()\u000A    nanos :\u003D now.UnixNano()\u000A    fmt.Println(now)\u000A');codeLines.push('    millis :\u003D nanos / 1000000\u000A    fmt.Println(secs)\u000A    fmt.Println(millis)\u000A    fmt.Println(nanos)\u000A');codeLines.push('    fmt.Println(time.Unix(secs, 0))\u000A    fmt.Println(time.Unix(0, nanos))\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    now :\u003D time.Now()\u000A    fmt.Println(now)\u000A');codeLines.push('    fmt.Println(now.Unix())\u000A    fmt.Println(now.UnixMilli())\u000A    fmt.Println(now.UnixNano())\u000A');codeLines.push('    fmt.Println(time.Unix(now.Unix(), 0))\u000A    fmt.Println(time.Unix(0, now.UnixNano()))\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
