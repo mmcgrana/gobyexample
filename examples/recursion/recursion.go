@@ -27,10 +27,10 @@ func main() {
 		if n < 2 {
 			return n
 		}
-		return fib(n-1) + fib(n-2)
 
 		// Since `fib` was previously declared in `main`, Go
 		// knows which function to call with `fib` here.
+		return fib(n-1) + fib(n-2)
 	}
 
 	fmt.Println(fib(7))
