@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'pointers';
+              window.location.href = 'strings-and-runes';
           }
           
           

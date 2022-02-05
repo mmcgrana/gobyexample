@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'structs';
+              window.location.href = 'strings-and-runes';
           }
           
       }
@@ -179,7 +179,7 @@ the memory address for that variable.</p>
       
       
       <p class="next">
-        Next example: <a href="structs">Structs</a>.
+        Next example: <a href="strings-and-runes">Strings and Runes</a>.
       </p>
       
 

@@ -15,6 +15,7 @@ Variadic Functions
 Closures
 Recursion
 Pointers
+Strings and Runes
 Structs
 Methods
 Interfaces
