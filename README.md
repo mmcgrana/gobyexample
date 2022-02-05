@@ -81,6 +81,12 @@ inspired this project.
 
 ### FAQ
 
+#### I found a problem with the examples; what do I do?
+
+We're very happy to fix problem reports and accept contributions! Please submit
+[an issue](https://github.com/mmcgrana/gobyexample/issues) or send a Pull Request.
+See `CONTRIBUTING.md` for more details.
+
 #### What version of Go is required to run these examples?
 
 Given Go's strong [backwards compatibility guarantees](https://go.dev/doc/go1compat),
