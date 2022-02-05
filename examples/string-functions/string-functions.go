@@ -34,5 +34,4 @@ func main() {
 	p("Split:     ", s.Split("a-b-c-d-e", "-"))
 	p("ToLower:   ", s.ToLower("TEST"))
 	p("ToUpper:   ", s.ToUpper("test"))
-	p()
 }
