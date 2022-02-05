@@ -35,17 +35,4 @@ func main() {
 	p("ToLower:   ", s.ToLower("TEST"))
 	p("ToUpper:   ", s.ToUpper("test"))
 	p()
-
-	// Not part of `strings`, but worth mentioning here, are
-	// the mechanisms for getting the length of a string in
-	// bytes and getting a byte by index.
-	p("Len: ", len("hello"))
-	p("Char:", "hello"[1])
 }
-
-// Note that `len` and indexing above work at the byte level.
-// Go uses UTF-8 encoded strings, so this is often useful
-// as-is. If you're working with potentially multi-byte
-// characters you'll want to use encoding-aware operations.
-// See [strings, bytes, runes and characters in Go](https://blog.golang.org/strings)
-// for more information.

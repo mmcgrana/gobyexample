@@ -11,6 +11,3 @@ Replace:    f0o
 Split:      [a b c d e]
 ToLower:    test
 ToUpper:    TEST
-
-Len:  5
-Char: 101
