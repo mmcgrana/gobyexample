@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: Templates</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'regular-expressions';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'json';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="templates">
+      <h2><a href="./">Go by Example</a>: Templates</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Go offers built-in support for creating
+dynamic content or showing customized output to the user called Template.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            <a href="http://play.golang.org/p/NfWmk0KSkgy"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go has two template packages. one is &ldquo;text/template&rdquo; for
+regular text manipulation, and another one is &ldquo;html/template&rdquo;
+mostly used in web applications.
+Here we show some of &ldquo;text/template&rdquo; features.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;os&#34;</span>
+    <span class="s">&#34;text/template&#34;</span>
+<span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>New creates a template with a specific name and returns a pointer to it.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;my-template&#34;</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Parse parses its parameter as template body.
+We use {{.}} to access the value passed to the template when it&rsquo;s getting executed.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value is {{.}}\n&#34;</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If we want to ignore the errors we can use Must function.
+It will panic if an error occurs when parsing the template.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value is {{.}}\n&#34;</span><span class="p">))</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Execute applies parsed template to the data we pass to it and writes the output to the io.Writer.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;some text&#34;</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&#34;Go&#34;</span><span class="p">,</span>
+        <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
+        <span class="s">&#34;C++&#34;</span><span class="p">,</span>
+        <span class="s">&#34;C#&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">name</span> <span class="kt">string</span> <span class="p">}{</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Arash&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If the data is a struct we can use the {{.FieldName}} action to access its fields.
+The fields should be exported to be accessible when template is executing.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Firstname: {{.Firstname}}&#34;</span> <span class="o">+</span>
+        <span class="s">&#34;, Lastname: {{.Lastname}}\n&#34;</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">Firstname</span><span class="p">,</span> <span class="nx">Lastname</span> <span class="kt">string</span>
+    <span class="p">}{</span>
+        <span class="nx">Firstname</span><span class="p">:</span> <span class="s">&#34;Arash&#34;</span><span class="p">,</span>
+        <span class="nx">Lastname</span><span class="p">:</span>  <span class="s">&#34;Sameni&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Samething applies for maps. But it&rsquo;s not necessary to have uppercase fields.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&#34;Firstname&#34;</span><span class="p">:</span> <span class="s">&#34;Robert&#34;</span><span class="p">,</span>
+        <span class="s">&#34;Lastname&#34;</span><span class="p">:</span>  <span class="s">&#34;Griesemer&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can use if control structure to show data conditionally.
+The data between if block will be shown if the field is truthy.
+Means it is not false  boolean, empty string, nil or zero length slice, nil map/pointer.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">`</span><span class="cp">{{</span><span class="k">if</span><span class="w"> </span><span class="na">.Field1</span><span class="cp">}}</span><span class="s">
+</span><span class="s">                        If block =&gt; </span><span class="cp">{{</span><span class="na">.Field1</span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="na">.Field2</span><span class="cp">}}</span><span class="s">
+</span><span class="s">                        Else if block =&gt; </span><span class="cp">{{</span><span class="na">.Field2</span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="cp">}}</span><span class="s">
+</span><span class="s">                        Else block
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span><span class="s">`</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">    <span class="nx">s</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">Field1</span><span class="p">,</span> <span class="nx">Field2</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="p">}{}</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">    <span class="nx">s</span><span class="p">.</span><span class="nx">Field1</span> <span class="p">=</span> <span class="s">&#34;&#34;</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">Field2</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">    <span class="nx">s</span><span class="p">.</span><span class="nx">Field1</span> <span class="p">=</span> <span class="kc">nil</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">Field2</span> <span class="p">=</span> <span class="s">&#34;Some text&#34;</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Using a range action you can loop through a slice.
+Each time the range block is getting executed dot will be set
+to current item of slice.
+You can use $ in blocks to access outside data.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">`Range: </span><span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="cp">}}</span><span class="s">
+</span><span class="s">                        </span><span class="cp">{{</span><span class="na">.</span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span><span class="s">`</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&#34;Go&#34;</span><span class="p">,</span>
+        <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
+        <span class="s">&#34;C++&#34;</span><span class="p">,</span>
+        <span class="s">&#34;C#&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>You can assign and reassign a value to a variable in templates.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma">
+    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">`Variables: </span><span class="cp">{{</span><span class="w"> </span><span class="nx">$language</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;go&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="nx">$language</span><span class="w"> </span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="nx">$language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;C&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s">
+</span><span class="s">                    </span><span class="cp">{{</span><span class="w"> </span><span class="nx">$language</span><span class="w"> </span><span class="cp">}}</span><span class="s">`</span><span class="p">)</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="gp">$</span> go run templates.go 
+<span class="go">Value is my-template
+</span><span class="go">Value is some text
+</span><span class="go">Value is true
+</span><span class="go">Value is 5
+</span><span class="go">Value is [Go Rust C++ C#]
+</span><span class="go">Value is {Arash}
+</span><span class="go">Firstname: Arash, Lastname: Sameni
+</span><span class="go">Firstname: Robert, Lastname: Griesemer</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="go">        Else block</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="go">        Else if block =&gt; Some text
+</span><span class="go">Range: 
+</span><span class="go">        Go</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="go">        Rust</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="go">        C++</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><span class="go">        C#
+</span><span class="go">Variables: 
+</span><span class="go">go
+</span><span class="go">C</span></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="json">JSON</a>.
+      </p>
+      
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"os\"\u000A    \"text/template\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    t :\u003D template.New(\"my-template\")\u000A');codeLines.push('    t, _ \u003D t.Parse(\"Value is {{.}}\\n\")\u000A');codeLines.push('    t \u003D template.Must(t.Parse(\"Value is {{.}}\\n\"))\u000A');codeLines.push('    t.Execute(os.Stdout, t.Name())\u000A    t.Execute(os.Stdout, \"some text\")\u000A    t.Execute(os.Stdout, true)\u000A    t.Execute(os.Stdout, 5)\u000A    t.Execute(os.Stdout, []string{\u000A        \"Go\",\u000A        \"Rust\",\u000A        \"C++\",\u000A        \"C#\",\u000A    })\u000A    t.Execute(os.Stdout, struct{ name string }{\u000A        name: \"Arash\",\u000A    })\u000A');codeLines.push('    t, _ \u003D t.Parse(\"Firstname: {{.Firstname}}\" +\u000A        \", Lastname: {{.Lastname}}\\n\")\u000A');codeLines.push('    t.Execute(os.Stdout, struct {\u000A        Firstname, Lastname string\u000A    }{\u000A        Firstname: \"Arash\",\u000A        Lastname:  \"Sameni\",\u000A    })\u000A');codeLines.push('    t.Execute(os.Stdout, map[string]string{\u000A        \"Firstname\": \"Robert\",\u000A        \"Lastname\":  \"Griesemer\",\u000A    })\u000A');codeLines.push('    t, _ \u003D t.Parse(`{{if .Field1}}\u000A                        If block \u003D\u003E {{.Field1}}\u000A                    {{ else if .Field2}}\u000A                        Else if block \u003D\u003E {{.Field2}}\u000A                    {{ else }}\u000A                        Else block\u000A                    {{ end }}`)\u000A');codeLines.push('    s :\u003D struct {\u000A        Field1, Field2 interface{}\u000A    }{}\u000A');codeLines.push('    s.Field1 \u003D \"\"\u000A    s.Field2 \u003D []string{}\u000A    t.Execute(os.Stdout, s)\u000A');codeLines.push('    s.Field1 \u003D nil\u000A    s.Field2 \u003D \"Some text\"\u000A    t.Execute(os.Stdout, s)\u000A');codeLines.push('    t, _ \u003D t.Parse(`Range: {{ range . }}\u000A                        {{.}}\u000A                    {{ end }}`)\u000A    t.Execute(os.Stdout, []string{\u000A        \"Go\",\u000A        \"Rust\",\u000A        \"C++\",\u000A        \"C#\",\u000A    })\u000A');codeLines.push('    t, _ \u003D t.Parse(`Variables: {{ $language :\u003D \"go\" }}\u000A                    {{ $language }}\u000A                    {{ $language \u003D \"C\" }}\u000A                    {{ $language }}`)\u000A    t.Execute(os.Stdout, nil)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
