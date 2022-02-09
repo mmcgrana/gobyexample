@@ -48,7 +48,7 @@ Collection Functions
 String Functions
 String Formatting
 Regular Expressions
-Templates
+Text Templates
 JSON
 XML
 Time

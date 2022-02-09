@@ -42,7 +42,7 @@ dynamic content or showing customized output to the user called Template.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/NfWmk0KSkgy"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/6tbag7ghomI"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -51,8 +51,9 @@ dynamic content or showing customized output to the user called Template.</p>
         <tr>
           <td class="docs">
             <p>Go has two template packages. one is &ldquo;text/template&rdquo; for
-regular text manipulation, and another one is &ldquo;html/template&rdquo;
-mostly used in web applications.
+regular text manipulation, and another one is &ldquo;html/template&rdquo;.
+&ldquo;html/template&rdquo; has the same API as text/template which has additional security features.
+It should be used when generating HTML
 Here we show some of &ldquo;text/template&rdquo; features.</p>
 
           </td>

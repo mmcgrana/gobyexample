@@ -1,12 +1,12 @@
 $ go run templates.go 
-Value is my-template
+Value is t1
 Value is some text
 Value is true
 Value is 5
 Value is [Go Rust C++ C#]
-Value is {Arash}
-Firstname: Arash, Lastname: Sameni
-Firstname: Robert, Lastname: Griesemer
+Value is {Jane Doe}
+Fullname: Jane Doe
+Fullname: Mickey Mouse
 
         Else block
 

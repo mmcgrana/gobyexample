@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'templates';
+              window.location.href = 'text-templates';
           }
           
       }
@@ -329,7 +329,7 @@ the <a href="http://golang.org/pkg/regexp/"><code>regexp</code></a> package docs
       
       
       <p class="next">
-        Next example: <a href="templates">Templates</a>.
+        Next example: <a href="text-templates">Text Templates</a>.
       </p>
       
 
