@@ -82,7 +82,7 @@ introduction to the topic.</p>
         <tr>
           <td class="docs">
             <p><code>s</code> is a <code>string</code> assigned a literal value
-representing the world &ldquo;hello&rdquo; in the Thai
+representing the word &ldquo;hello&rdquo; in the Thai
 language. Go string literals are UTF-8
 encoded text.</p>
 

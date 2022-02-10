@@ -17,7 +17,7 @@ import (
 func main() {
 
 	// `s` is a `string` assigned a literal value
-	// representing the world "hello" in the Thai
+	// representing the word "hello" in the Thai
 	// language. Go string literals are UTF-8
 	// encoded text.
 	const s = "สวัสดี"
