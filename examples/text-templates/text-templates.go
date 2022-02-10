@@ -1,38 +1,36 @@
-// Go offers built-in support for creating
-// dynamic content or showing customized output to the user called Template.
+// Go offers built-in support for creating dynamic content or showing customized
+// output to the user with the `text/template` package. A sibling package
+// named `html/template` provides the same API but has additional security
+// features and should be used for generating HTML.
 
 package main
 
-// Go has two template packages. one is "text/template" for
-// regular text manipulation, and another one is "html/template"
-// which has the same API as "text/template" but has additional security features.
-// It should be used when generating HTML.
 import (
-	"log"
 	"os"
 	"text/template"
 )
 
 func main() {
 
-	// New creates a template with a specific name and returns a pointer to it.
+	// We can create a new template and parse its body from
+	// a string.
+	// Templates are a mix of static text and "actions" enclosed in
+	// `{{...}}` that are used to dynamically insert content.
 	t1 := template.New("t1")
-
-	// Parse parses its parameter as template body.
-	// We use {{.}} to access the value passed to the template when it's getting executed.
 	t1, err := t1.Parse("Value is {{.}}\n")
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
-	// If we want to ignore the errors we can use Must function.
-	// It will panic if an error occurs when parsing the template.
-	t1 = template.Must(t1.Parse("Value is {{.}}\n"))
+	// Alternatively, we can use the `template.Must` function to
+	// panic in case `Parse` returns an error. This is especially
+	// useful for templates initialized in the global scope.
+	t1 = template.Must(t1.Parse("Value: {{.}}\n"))
 
-	// Execute applies parsed template to the data we pass to it and writes the output to the io.Writer.
-	t1.Execute(os.Stdout, t1.Name())
+	// By "executing" the template we generate its text with
+	// specific values for its actions. The `{{.}}` action is
+	// replaced by the value passed as a parameter to `Execute`.
 	t1.Execute(os.Stdout, "some text")
-	t1.Execute(os.Stdout, true)
 	t1.Execute(os.Stdout, 5)
 	t1.Execute(os.Stdout, []string{
 		"Go",
@@ -40,61 +38,41 @@ func main() {
 		"C++",
 		"C#",
 	})
-	t1.Execute(os.Stdout, struct{ name string }{
-		name: "Jane Doe",
-	})
 
-	// If the data is a struct we can use the {{.FieldName}} action to access its fields.
-	// The fields should be exported to be accessible when template is executing.
-	t2, _ := template.
-		New("t2").
-		Parse("Fullname: {{.Fullname}}\n")
+	// Helper function we'll use below.
+	Create := func(name, t string) *template.Template {
+		return template.Must(template.New(name).Parse(t))
+	}
+
+	// If the data is a struct we can use the `{{.FieldName}}` action to access
+	// its fields. The fields should be exported to be accessible when a
+	// template is executing.
+	t2 := Create("t2", "Name: {{.Name}}\n")
 
 	t2.Execute(os.Stdout, struct {
-		Fullname string
-	}{
-		Fullname: "Jane Doe",
-	})
+		Name string
+	}{"Jane Doe"})
 
-	// The same applies to maps; with maps there is no restriction on the case of key names.
+	// The same applies to maps; with maps there is no restriction on the
+	// case of key names.
 	t2.Execute(os.Stdout, map[string]string{
-		"Fullname": "Mickey Mouse",
+		"Name": "Mickey Mouse",
 	})
 
-	// You can use if control structure to show data conditionally.
-	// The data between if block will be shown if the field is truthy.
-	// Means it is not false  boolean, empty string, nil or zero length slice, nil map/pointer.
-	t3, _ := template.
-		New("t3").
-		Parse(`{{if .Field1}}
-					If block => {{.Field1}}
-				{{ else if .Field2}}
-					Else if block => {{.Field2}}
-				{{ else }}
-					Else block
-				{{ end }}`)
+	// if/else provide conditional execution for templates. A value is considered
+	// false if it's the default value of a type, such as 0, an empty string,
+	// nil pointer, etc.
+	// This sample demonstrates another
+	// feature of templates: using `-` in actions to trim whitespace.
+	t3 := Create("t3",
+		"{{if . -}} yes {{else -}} no {{end}}\n")
+	t3.Execute(os.Stdout, "not empty")
+	t3.Execute(os.Stdout, "")
 
-	s := struct {
-		Field1 string
-		Field2 []string
-	}{}
-
-	s.Field1 = ""
-	s.Field2 = []string{}
-	t3.Execute(os.Stdout, s)
-
-	s.Field1 = "Some text"
-	s.Field2 = nil
-	t3.Execute(os.Stdout, s)
-
-	// Using a range action you can loop through a slice.
-	// Each time the range block is getting executed dot will be set
-	// to current item of slice.
-	t4, _ := template.
-		New("t4").
-		Parse(`Range: {{ range . }}
-						{{.}}
-					  {{ end }}`)
+	// range blocks let us loop through slices, arrays, maps or channels. Inside
+	// the range block `{{.}}` is set to the current item of the iteration.
+	t4 := Create("t4",
+		"Range: {{range .}}{{.}} {{end}}\n")
 	t4.Execute(os.Stdout,
 		[]string{
 			"Go",
@@ -102,14 +80,4 @@ func main() {
 			"C++",
 			"C#",
 		})
-
-	// You can assign and reassign a value to a variable in templates.
-	t5, _ := template.
-		New("t5").
-		Parse(`Variables: 
-					{{ $language := "go" }}
-						{{ $language }}
-					{{ $language = "C" }}
-						{{ $language }}`)
-	t5.Execute(os.Stdout, nil)
 }
