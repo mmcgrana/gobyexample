@@ -47,8 +47,8 @@ Recover
 Collection Functions
 String Functions
 String Formatting
-Regular Expressions
 Text Templates
+Regular Expressions
 JSON
 XML
 Time

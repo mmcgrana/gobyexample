@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'regular-expressions';
+              window.location.href = 'text-templates';
           }
           
       }
@@ -442,7 +442,7 @@ and returns a string without printing it anywhere.</p>
       
       
       <p class="next">
-        Next example: <a href="regular-expressions">Regular Expressions</a>.
+        Next example: <a href="text-templates">Text Templates</a>.
       </p>
       
 

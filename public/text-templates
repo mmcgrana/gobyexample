@@ -9,12 +9,12 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'regular-expressions';
+              window.location.href = 'string-formatting';
           }
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'json';
+              window.location.href = 'regular-expressions';
           }
           
       }
@@ -260,7 +260,7 @@ the range block <code>{{.}}</code> is set to the current item of the iteration.<
       
       
       <p class="next">
-        Next example: <a href="json">JSON</a>.
+        Next example: <a href="regular-expressions">Regular Expressions</a>.
       </p>
       
 
