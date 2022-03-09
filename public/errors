@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'embedding';
+              window.location.href = 'generics';
           }
           
           
