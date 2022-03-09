@@ -1,6 +1,5 @@
 // Starting with version 1.18, Go has added support for
 // _generics_, also known as _type parameters_.
-// TODO: spec link?
 
 package main
 
