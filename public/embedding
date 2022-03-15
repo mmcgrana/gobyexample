@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'errors';
+              window.location.href = 'generics';
           }
           
       }
@@ -230,7 +230,7 @@ we see that a <code>container</code> now implements the
       
       
       <p class="next">
-        Next example: <a href="errors">Errors</a>.
+        Next example: <a href="generics">Generics</a>.
       </p>
       
 

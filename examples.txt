@@ -20,6 +20,7 @@ Structs
 Methods
 Interfaces
 Embedding
+Generics
 Errors
 Goroutines
 Channels
