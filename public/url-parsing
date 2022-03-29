@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'sha1-hashes';
+              window.location.href = 'sha256-hashes';
           }
           
       }
@@ -222,7 +222,7 @@ pieces that we extracted.</p>
       
       
       <p class="next">
-        Next example: <a href="sha1-hashes">SHA1 Hashes</a>.
+        Next example: <a href="sha256-hashes">SHA256 Hashes</a>.
       </p>
       
 

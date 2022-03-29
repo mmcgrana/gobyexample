@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: SHA1 Hashes</title>
+    <title>Go by Example: SHA256 Hashes</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -20,19 +20,18 @@
       }
   </script>
   <body>
-    <div class="example" id="sha1-hashes">
-      <h2><a href="./">Go by Example</a>: SHA1 Hashes</h2>
+    <div class="example" id="sha256-hashes">
+      <h2><a href="./">Go by Example</a>: SHA256 Hashes</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="http://en.wikipedia.org/wiki/SHA-1"><em>SHA1 hashes</em></a> are
+            <p><a href="https://en.wikipedia.org/wiki/SHA-2"><em>SHA256 hashes</em></a> are
 frequently used to compute short identities for binary
-or text blobs. For example, the <a href="http://git-scm.com/">git revision control
-system</a> uses SHA1s extensively to
-identify versioned files and directories. Here&rsquo;s how to
-compute SHA1 hashes in Go.</p>
+or text blobs. For example, TLS/SSL certificates use SHA256
+to compute a certificate&rsquo;s signature. Here&rsquo;s how to compute
+SHA256 hashes in Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -46,7 +45,7 @@ compute SHA1 hashes in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/XLftf8Gvj4y"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/jIQtrUxWLvq"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -62,7 +61,7 @@ compute SHA1 hashes in Go.</p>
             
           <pre class="chroma">
 <span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;crypto/sha1&#34;</span>
+    <span class="s">&#34;crypto/sha256&#34;</span>
     <span class="s">&#34;fmt&#34;</span>
 <span class="p">)</span>
 </pre>
@@ -76,22 +75,20 @@ compute SHA1 hashes in Go.</p>
           <td class="code leading">
             
           <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha1 this string&#34;</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>The pattern for generating a hash is <code>sha1.New()</code>,
-<code>sha1.Write(bytes)</code>, then <code>sha1.Sum([]byte{})</code>.
-Here we start with a new hash.</p>
+            <p>Here we start with a new hash.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha1</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
 </pre>
           </td>
         </tr>
@@ -127,7 +124,7 @@ to an existing byte slice: it usually isn&rsquo;t needed.</p>
         
         <tr>
           <td class="docs">
-            <p>SHA1 values are often printed in hex, for example
+            <p>SHA256 values are often printed in hex, for example
 in git commits. Use the <code>%x</code> format verb to convert
 a hash results to a hex string.</p>
 
@@ -155,17 +152,18 @@ a human-readable hex format.</p>
           <td class="code leading">
             
           <pre class="chroma">
-<span class="gp">$</span> go run sha1-hashes.go
-<span class="go">sha1 this string
-</span><span class="go">cf23df2207d99a74fbe169e3eba035e633b65d94</span></pre>
+<span class="gp">$</span> go run sha256-hashes.go
+<span class="go">sha256 this string
+</span><span class="go">1af1dfa857bf1d8814fe1af8983c18080019922e557f15a8a...</span></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
             <p>You can compute other hashes using a similar pattern to
-the one shown above. For example, to compute MD5 hashes
-import <code>crypto/md5</code> and use <code>md5.New()</code>.</p>
+the one shown above. For example, to compute
+SHA512 hashes import <code>crypto/sha512</code> and use
+<code>sha512.New()</code>.</p>
 
           </td>
           <td class="code empty leading">
@@ -178,7 +176,7 @@ import <code>crypto/md5</code> and use <code>md5.New()</code>.</p>
           <td class="docs">
             <p>Note that if you need cryptographically secure hashes,
 you should carefully research
-<a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">hash strength</a>!</p>
+<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">hash strength</a>!</p>
 
           </td>
           <td class="code empty">
@@ -202,7 +200,7 @@ you should carefully research
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"crypto/sha1\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A    s :\u003D \"sha1 this string\"\u000A');codeLines.push('    h :\u003D sha1.New()\u000A');codeLines.push('    h.Write([]byte(s))\u000A');codeLines.push('    bs :\u003D h.Sum(nil)\u000A');codeLines.push('    fmt.Println(s)\u000A    fmt.Printf(\"%x\\n\", bs)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"crypto/sha256\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A    s :\u003D \"sha256 this string\"\u000A');codeLines.push('    h :\u003D sha256.New()\u000A');codeLines.push('    h.Write([]byte(s))\u000A');codeLines.push('    bs :\u003D h.Sum(nil)\u000A');codeLines.push('    fmt.Println(s)\u000A    fmt.Printf(\"%x\\n\", bs)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'sha1-hashes';
+              window.location.href = 'sha256-hashes';
           }
           
           
