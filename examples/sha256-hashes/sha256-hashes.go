@@ -28,9 +28,6 @@ func main() {
 	// to an existing byte slice: it usually isn't needed.
 	bs := h.Sum(nil)
 
-	// SHA256 values are often printed in hex, for example
-	// in git commits. Use the `%x` format verb to convert
-	// a hash results to a hex string.
 	fmt.Println(s)
 	fmt.Printf("%x\n", bs)
 }
