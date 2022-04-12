@@ -27,7 +27,7 @@
         
         <tr>
           <td class="docs">
-            <p>Go support <em>embedding</em> of structs and interfaces
+            <p>Go supports <em>embedding</em> of structs and interfaces
 to express a more seamless <em>composition</em> of types.</p>
 
           </td>
