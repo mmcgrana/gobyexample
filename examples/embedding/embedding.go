@@ -1,4 +1,4 @@
-// Go support _embedding_ of structs and interfaces
+// Go supports _embedding_ of structs and interfaces
 // to express a more seamless _composition_ of types.
 
 package main
