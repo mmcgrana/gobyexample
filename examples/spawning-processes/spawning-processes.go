@@ -17,16 +17,33 @@ func main() {
 	// to represent this external process.
 	dateCmd := exec.Command("date")
 
-	// `.Output` is another helper that handles the common
-	// case of running a command, waiting for it to finish,
-	// and collecting its output. If there were no errors,
-	// `dateOut` will hold bytes with the date info.
+	// The `Output` method runs the command, waits for it
+	// to finish and collects its standard output.
+	//  If there were no errors, `dateOut` will hold bytes
+	// with the date info.
 	dateOut, err := dateCmd.Output()
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println("> date")
 	fmt.Println(string(dateOut))
+
+	// `Output` and other methods of `Command` will return
+	// `*exec.Error` if there was a problem executing the
+	// command (e.g. wrong path), and `*exec.ExitError`
+	// if the command ran but exited with a non-zero return
+	// code.
+	_, err = exec.Command("date", "-x").Output()
+	if err != nil {
+		switch e := err.(type) {
+		case *exec.Error:
+			fmt.Println("failed executing:", err)
+		case *exec.ExitError:
+			fmt.Println("command exit rc =", e.ExitCode())
+		default:
+			panic(err)
+		}
+	}
 
 	// Next we'll look at a slightly more involved case
 	// where we pipe data to the external process on its
