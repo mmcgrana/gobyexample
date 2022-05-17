@@ -19,7 +19,7 @@ Strings and Runes
 Structs
 Methods
 Interfaces
-Embedding
+Struct Embedding
 Generics
 Errors
 Goroutines
