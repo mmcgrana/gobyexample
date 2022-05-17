@@ -1,6 +1,6 @@
 // A common requirement in programs is getting the number
 // of seconds, milliseconds, or nanoseconds since the
-// [Unix epoch](http://en.wikipedia.org/wiki/Unix_time).
+// [Unix epoch](https://en.wikipedia.org/wiki/Unix_time).
 // Here's how to do it in Go.
 
 package main

@@ -34,7 +34,7 @@ a running Go process. Sometimes we just want to
 completely replace the current Go process with another
 (perhaps non-Go) one. To do this we&rsquo;ll use Go&rsquo;s
 implementation of the classic
-<a href="http://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
+<a href="https://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
 function.</p>
 
           </td>
@@ -49,7 +49,7 @@ function.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/nI-HMuCI2lG"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/s9qg7olf1dM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>

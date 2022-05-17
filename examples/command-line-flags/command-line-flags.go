@@ -1,4 +1,4 @@
-// [_Command-line flags_](http://en.wikipedia.org/wiki/Command-line_interface#Command-line_option)
+// [_Command-line flags_](https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option)
 // are a common way to specify options for command-line
 // programs. For example, in `wc -l` the `-l` is a
 // command-line flag.

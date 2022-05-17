@@ -13,7 +13,7 @@ sl3: [c d e f]
 dcl: [g h i]
 2d:  [[0] [1 2] [2 3 4]]
 
-# Check out this [great blog post](http://blog.golang.org/2011/01/go-slices-usage-and-internals.html)
+# Check out this [great blog post](https://go.dev/blog/slices-intro)
 # by the Go team for more details on the design and
 # implementation of slices in Go.
 

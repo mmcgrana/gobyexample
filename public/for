@@ -42,7 +42,7 @@ some basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/2-4H-ArwHHS"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/2-4H-ArwHHS"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>

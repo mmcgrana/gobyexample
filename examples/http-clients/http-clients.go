@@ -17,7 +17,7 @@ func main() {
 	// object and calling its `Get` method; it uses the
 	// `http.DefaultClient` object which has useful default
 	// settings.
-	resp, err := http.Get("http://gobyexample.com")
+	resp, err := http.Get("https://gobyexample.com")
 	if err != nil {
 		panic(err)
 	}

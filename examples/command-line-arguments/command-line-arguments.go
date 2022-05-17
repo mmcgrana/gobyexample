@@ -1,4 +1,4 @@
-// [_Command-line arguments_](http://en.wikipedia.org/wiki/Command-line_interface#Arguments)
+// [_Command-line arguments_](https://en.wikipedia.org/wiki/Command-line_interface#Arguments)
 // are a common way to parameterize execution of programs.
 // For example, `go run hello.go` uses `run` and
 // `hello.go` arguments to the `go` program.

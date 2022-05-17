@@ -16,6 +16,6 @@ apple
 
 
 # We've covered the basic of JSON in Go here, but check
-# out the [JSON and Go](http://blog.golang.org/2011/01/json-and-go.html)
-# blog post and [JSON package docs](http://golang.org/pkg/encoding/json/)
+# out the [JSON and Go](https://go.dev/blog/json)
+# blog post and [JSON package docs](https://pkg.go.dev/encoding/json)
 # for more.
