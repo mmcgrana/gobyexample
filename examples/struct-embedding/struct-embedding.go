@@ -1,5 +1,8 @@
 // Go supports _embedding_ of structs and interfaces
 // to express a more seamless _composition_ of types.
+// This is not to be confused with _go:embed_ which is
+// a go directive introduced in go version 1.16 to embed
+// files and folders into the application binary.
 
 package main
 

@@ -19,7 +19,8 @@ Strings and Runes
 Structs
 Methods
 Interfaces
-Embedding
+Struct Embedding
+Embed Directive
 Generics
 Errors
 Goroutines

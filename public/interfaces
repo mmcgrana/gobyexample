@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'embedding';
+              window.location.href = 'struct-embedding';
           }
           
       }
@@ -222,7 +222,7 @@ these structs as arguments to <code>measure</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="embedding">Embedding</a>.
+        Next example: <a href="struct-embedding">Struct Embedding</a>.
       </p>
       
 
