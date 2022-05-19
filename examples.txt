@@ -20,7 +20,6 @@ Structs
 Methods
 Interfaces
 Struct Embedding
-Embed Directive
 Generics
 Errors
 Goroutines
@@ -66,6 +65,7 @@ Line Filters
 File Paths
 Directories
 Temporary Files and Directories
+Embed Directive
 Testing and Benchmarking
 Command-Line Arguments
 Command-Line Flags
