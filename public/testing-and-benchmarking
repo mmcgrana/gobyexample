@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'temporary-files-and-directories';
+              window.location.href = 'embed-directive';
           }
           
           
