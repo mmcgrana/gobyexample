@@ -1,7 +1,8 @@
-// `//go:embed` is a compiler directive that allows programs to include
-// arbitrary files/folders in the binary at build time. Read more about go
-// directives [here](https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives)
-// and about the embed directive [here](https://pkg.go.dev/embed).
+// `//go:embed` is a [compiler
+// directive](https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives) that
+// allows programs to include arbitrary files and folders in the Go binary at
+// build time. Read more about the embed directive
+// [here](https://pkg.go.dev/embed).
 package main
 
 // Import the `embed` package; if you don't use any exported
@@ -10,9 +11,9 @@ import (
 	"embed"
 )
 
-// embed directives accept paths relative to the directory containing the
-// Go source file. This directive embeds the contents of the file into a
-// `string` variable.
+// `embed` directives accept paths relative to the directory containing the
+// Go source file. This directive embeds the contents of the file into the
+// `string` variable immediately following it.
 //go:embed folder/single_file.txt
 var fileString string
 
