@@ -37,8 +37,8 @@ func check(err error) {
 }
 
 func isDir(path string) bool {
-        fileStat, _ := os.Stat(path)
-        return fileStat.IsDir()
+	fileStat, _ := os.Stat(path)
+	return fileStat.IsDir()
 }
 
 func ensureDir(dir string) {
@@ -280,7 +280,7 @@ func parseExamples() []*Example {
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
-			if ! isDir(sourcePath) {
+			if !isDir(sourcePath) {
 				if strings.HasSuffix(sourcePath, ".hash") {
 					example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
 				} else {

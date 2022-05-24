@@ -34,7 +34,7 @@ func main() {
 	foundLongFile := false
 	for _, sourcePath := range sourcePaths {
 		foundLongLine := false
-                if ! isDir(sourcePath) {
+		if !isDir(sourcePath) {
 			lines := readLines(sourcePath)
 			for i, line := range lines {
 				// Convert tabs to spaces before measuring, so we get an accurate measure
