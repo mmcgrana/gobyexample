@@ -9,12 +9,12 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'struct-embedding';
+              window.location.href = 'temporary-files-and-directories';
           }
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'generics';
+              window.location.href = 'testing-and-benchmarking';
           }
           
       }
@@ -27,26 +27,13 @@
         
         <tr>
           <td class="docs">
-            <p>Starting in Go version 1.16+, Go supports use of <code>//go:embed</code>
-which is a directive to embed files and folders into
-the application binary by the compiler.</p>
-
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Since Go does not have preprocessor or macros like C type of languages,
-<code>pragmas/directives</code> are implemented by the compiler as comments <code>//</code>.
-Using <code>//go:embed</code> tells the compiler to include arbitrary files/folders in binary.</p>
+            <p><code>//go:embed</code> is a compiler directive that allows programs to include arbitrary
+files/folders in the binary. Read more about go directive
+<a href="https://dave.cheney.net/2018/01/08/gos-hidden-pragmas">here</a>.</p>
 
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/gk3Zh5Sx8rV"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/-EXJc75EbN-"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma">
 <span class="kn">package</span> <span class="nx">main</span>
 </pre>
@@ -55,17 +42,17 @@ Using <code>//go:embed</code> tells the compiler to include arbitrary files/fold
         
         <tr>
           <td class="docs">
-            <p>If you are not using any exported identifiers from <code>embed</code> package directly,
-you can add an underscore <code>_</code> before the package name, ask Go to import <code>embed</code>
-without directly using it, like this: <code>_ &quot;embed&quot;</code>. In this example, we remove the
-underscore as we need to use the <code>embed.FS</code> type from the package.</p>
+            <p>If no exported identifiers is directly used from <code>embed</code> package,
+you can add an underscore <code>_</code> before the package name. In this example, we simply
+import it as we need to use the <code>embed.FS</code> type from the package.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
 <span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;embed&#34;</span>
+    <span class="c1">//_ &#34;embed&#34;
+</span><span class="c1"></span>    <span class="s">&#34;embed&#34;</span>
 <span class="p">)</span>
 </pre>
           </td>
@@ -80,7 +67,7 @@ this single file, followed by variable <code>single_file_string</code> to access
           <td class="code leading">
             
           <pre class="chroma">
-<span class="c1">//go:embed embed-directive.sh
+<span class="c1">//go:embed example_folder/single_file.txt
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">single_file_string</span> <span class="kt">string</span>
 </pre>
           </td>
@@ -88,15 +75,13 @@ this single file, followed by variable <code>single_file_string</code> to access
         
         <tr>
           <td class="docs">
-            <p>Here is a similar example but include single file as <code>[]byte</code>.
-Note that <code>//go:embed</code> can only be used in package level,
-define it in any function will result in error.</p>
+            <p>Here is a similar example but include single file as <code>[]byte</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-<span class="c1">//go:embed embed-directive.sh
+<span class="c1">//go:embed example_folder/single_file.txt
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">single_file_byte</span> <span class="p">[]</span><span class="kt">byte</span>
 </pre>
           </td>
@@ -104,17 +89,14 @@ define it in any function will result in error.</p>
         
         <tr>
           <td class="docs">
-            <p>We can also embed multiple files or even folders with wildcard.
-Since Go resolves these files and folders during compile time, we have to use the files in
-current working directory as examples. In practice, you can embed files with <code>&quot;//go:embed /path/to/folder&quot;</code>
-or with another example <code>&quot;//go:embed /path/to/folder/*&quot;</code>. You can add multiple <code>//go:embed</code> before defining a variable.</p>
+            <p>We can also embed multiple files or even folders with wildcard.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-<span class="c1">//go:embed *.hash
-</span><span class="c1">//go:embed embed-directive.sh
+<span class="c1">//go:embed example_folder/single_file.txt
+</span><span class="c1">//go:embed example_folder/*.hash
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">folder_FS</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span>
 </pre>
           </td>
@@ -133,42 +115,45 @@ or with another example <code>&quot;//go:embed /path/to/folder/*&quot;</code>. Y
         
         <tr>
           <td class="docs">
-            <p>Print out the content of <code>embed-directive.sh</code> as <code>string</code>.</p>
+            <p>Print out content of <code>example_single_file.txt</code> as <code>string</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nb">println</span><span class="p">(</span><span class="nx">single_file_string</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nx">single_file_string</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>Print out the content of <code>embed-directive.sh</code> as <code>[]byte</code>.</p>
+            <p>Now handle <code>[]byte</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nb">println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">single_file_byte</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">single_file_byte</span><span class="p">))</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>Print out the content of <code>embed-directive.hash</code> by reading the file from <code>folder_FS</code> first,
-then print out the content.</p>
+            <p>Retrieve file(s) matching <code>*.hash</code> pattern by reading from variable <code>folder_FS</code> first,
+then print out.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">hash_file</span> <span class="o">:=</span> <span class="s">&#34;embed-directive.hash&#34;</span>
-    <span class="nx">hash_content</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder_FS</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">hash_file</span><span class="p">)</span>
-    <span class="nb">println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">hash_content</span><span class="p">))</span>
+    <span class="nx">hash_file1</span> <span class="o">:=</span> <span class="s">&#34;example_folder/multi_file1.hash&#34;</span>
+    <span class="nx">hash_file2</span> <span class="o">:=</span> <span class="s">&#34;example_folder/multi_file2.hash&#34;</span>
+    <span class="nx">hash_content1</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder_FS</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">hash_file1</span><span class="p">)</span>
+    <span class="nx">hash_content2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder_FS</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">hash_file2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">hash_content1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">hash_content2</span><span class="p">))</span>
 </pre>
           </td>
         </tr>
@@ -190,13 +175,32 @@ then print out the content.</p>
         
         <tr>
           <td class="docs">
-            <p>Use these commands to run the example</p>
+            <p>Use these commands to run the example.
+(Note: due to limitation on go playground,
+this example can only be run on your local machine.)</p>
 
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+<span class="gp">$</span> mkdir -p example_folder
+<span class="gp">$</span> echo &#34;hello go&#34; &gt; example_folder/single_file.txt
+<span class="gp">$</span> echo &#34;123&#34; &gt; example_folder/multi_file1.hash
+<span class="gp">$</span> echo &#34;456&#34; &gt; example_folder/multi_file2.hash</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run embed-directive.go</pre>
+          <pre class="chroma"><span class="gp">$</span> go run embed-directive.go
+<span class="go">hello go
+</span><span class="go">hello go
+</span><span class="go">123
+</span><span class="go">456</span></pre>
           </td>
         </tr>
         
@@ -204,7 +208,7 @@ then print out the content.</p>
       
       
       <p class="next">
-        Next example: <a href="generics">Generics</a>.
+        Next example: <a href="testing-and-benchmarking">Testing and Benchmarking</a>.
       </p>
       
 
@@ -215,7 +219,7 @@ then print out the content.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"embed\"\u000A)\u000A');codeLines.push('//go:embed embed-directive.sh\u000Avar single_file_string string\u000A');codeLines.push('//go:embed embed-directive.sh\u000Avar single_file_byte []byte\u000A');codeLines.push('//go:embed *.hash\u000A//go:embed embed-directive.sh\u000Avar folder_FS embed.FS\u000A');codeLines.push('func main() {\u000A');codeLines.push('    println(single_file_string)\u000A');codeLines.push('    println(string(single_file_byte))\u000A');codeLines.push('    hash_file :\u003D \"embed-directive.hash\"\u000A    hash_content, _ :\u003D folder_FS.ReadFile(hash_file)\u000A    println(string(hash_content))\u000A');codeLines.push('}\u000A');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    //_ \"embed\"\u000A    \"embed\"\u000A)\u000A');codeLines.push('//go:embed example_folder/single_file.txt\u000Avar single_file_string string\u000A');codeLines.push('//go:embed example_folder/single_file.txt\u000Avar single_file_byte []byte\u000A');codeLines.push('//go:embed example_folder/single_file.txt\u000A//go:embed example_folder/*.hash\u000Avar folder_FS embed.FS\u000A');codeLines.push('func main() {\u000A');codeLines.push('    print(single_file_string)\u000A');codeLines.push('    print(string(single_file_byte))\u000A');codeLines.push('    hash_file1 :\u003D \"example_folder/multi_file1.hash\"\u000A    hash_file2 :\u003D \"example_folder/multi_file2.hash\"\u000A    hash_content1, _ :\u003D folder_FS.ReadFile(hash_file1)\u000A    hash_content2, _ :\u003D folder_FS.ReadFile(hash_file2)\u000A    print(string(hash_content1))\u000A    print(string(hash_content2))\u000A');codeLines.push('}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

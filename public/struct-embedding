@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'embed-directive';
+              window.location.href = 'generics';
           }
           
       }
@@ -233,7 +233,7 @@ we see that a <code>container</code> now implements the
       
       
       <p class="next">
-        Next example: <a href="embed-directive">Embed Directive</a>.
+        Next example: <a href="generics">Generics</a>.
       </p>
       
 

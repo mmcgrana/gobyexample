@@ -27,13 +27,13 @@ var folder_FS embed.FS
 
 func main() {
 
-	// Print out the content of `example_single_file.txt` as `string`.
+	// Print out content of `example_single_file.txt` as `string`.
 	print(single_file_string)
 
-	// Now handle `[]byte`.`
+	// Now handle `[]byte`.
 	print(string(single_file_byte))
 
-	// Retrieve the file(s) matching `*.hash` pattern by reading from `folder_FS` first,
+	// Retrieve file(s) matching `*.hash` pattern by reading from variable `folder_FS` first,
 	// then print out.
 	hash_file1 := "example_folder/multi_file1.hash"
 	hash_file2 := "example_folder/multi_file2.hash"

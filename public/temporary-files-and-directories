@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'testing-and-benchmarking';
+              window.location.href = 'embed-directive';
           }
           
       }
@@ -225,7 +225,7 @@ prefixing them with our temporary directory.</p>
       
       
       <p class="next">
-        Next example: <a href="testing-and-benchmarking">Testing and Benchmarking</a>.
+        Next example: <a href="embed-directive">Embed Directive</a>.
       </p>
       
 

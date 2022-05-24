@@ -36,6 +36,11 @@ func check(err error) {
 	}
 }
 
+func isDir(path string) bool {
+        fileStat, _ := os.Stat(path)
+        return fileStat.IsDir()
+}
+
 func ensureDir(dir string) {
 	err := os.MkdirAll(dir, 0755)
 	check(err)
@@ -275,14 +280,16 @@ func parseExamples() []*Example {
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
-			if strings.HasSuffix(sourcePath, ".hash") {
-				example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
-			} else {
-				sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
-				if filecontents != "" {
-					example.GoCode = filecontents
+			if ! isDir(sourcePath) {
+				if strings.HasSuffix(sourcePath, ".hash") {
+					example.GoCodeHash, example.URLHash = parseHashFile(sourcePath)
+				} else {
+					sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+					if filecontents != "" {
+						example.GoCode = filecontents
+					}
+					example.Segs = append(example.Segs, sourceSegs)
 				}
-				example.Segs = append(example.Segs, sourceSegs)
 			}
 		}
 		newCodeHash := sha1Sum(example.GoCode)
