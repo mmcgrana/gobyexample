@@ -210,7 +210,6 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 }
 
 func chromaFormat(code, filePath string) string {
-
 	lexer := lexers.Get(filePath)
 	if lexer == nil {
 		lexer = lexers.Fallback
@@ -340,6 +339,21 @@ func renderExamples(examples []*Example) {
 	}
 }
 
+func render404() {
+	if verbose() {
+		fmt.Println("Rendering 404")
+	}
+	tmpl := template.New("404")
+	_, err := tmpl.Parse(mustReadFile("templates/footer.tmpl"))
+	check(err)
+	_, err = tmpl.Parse(mustReadFile("templates/404.tmpl"))
+	check(err)
+	file, err := os.Create(siteDir + "/404.html")
+	check(err)
+	err = tmpl.Execute(file, "")
+	check(err)
+}
+
 func main() {
 	if len(os.Args) > 1 {
 		siteDir = os.Args[1]
@@ -349,12 +363,12 @@ func main() {
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/site.js", siteDir+"/site.js")
 	copyFile("templates/favicon.ico", siteDir+"/favicon.ico")
-	copyFile("templates/404.html", siteDir+"/404.html")
 	copyFile("templates/play.png", siteDir+"/play.png")
 	copyFile("templates/clipboard.png", siteDir+"/clipboard.png")
 	examples := parseExamples()
 	renderIndex(examples)
 	renderExamples(examples)
+	render404()
 }
 
 var SimpleShellOutputLexer = chroma.MustNewLexer(
