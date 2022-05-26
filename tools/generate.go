@@ -313,14 +313,12 @@ func renderIndex(examples []*Example) {
 		fmt.Println("Rendering index")
 	}
 	indexTmpl := template.New("index")
-	_, err := indexTmpl.Parse(mustReadFile("templates/footer.tmpl"))
-	check(err)
-	_, err = indexTmpl.Parse(mustReadFile("templates/index.tmpl"))
-	check(err)
+	template.Must(indexTmpl.Parse(mustReadFile("templates/footer.tmpl")))
+	template.Must(indexTmpl.Parse(mustReadFile("templates/index.tmpl")))
 	indexF, err := os.Create(siteDir + "/index.html")
 	check(err)
-	err = indexTmpl.Execute(indexF, examples)
-	check(err)
+	defer indexF.Close()
+	check(indexTmpl.Execute(indexF, examples))
 }
 
 func renderExamples(examples []*Example) {
@@ -328,14 +326,13 @@ func renderExamples(examples []*Example) {
 		fmt.Println("Rendering examples")
 	}
 	exampleTmpl := template.New("example")
-	_, err := exampleTmpl.Parse(mustReadFile("templates/footer.tmpl"))
-	check(err)
-	_, err = exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
-	check(err)
+	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
+	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
 	for _, example := range examples {
 		exampleF, err := os.Create(siteDir + "/" + example.ID)
 		check(err)
-		exampleTmpl.Execute(exampleF, example)
+		defer exampleF.Close()
+		check(exampleTmpl.Execute(exampleF, example))
 	}
 }
 
@@ -344,14 +341,12 @@ func render404() {
 		fmt.Println("Rendering 404")
 	}
 	tmpl := template.New("404")
-	_, err := tmpl.Parse(mustReadFile("templates/footer.tmpl"))
-	check(err)
-	_, err = tmpl.Parse(mustReadFile("templates/404.tmpl"))
-	check(err)
+	template.Must(tmpl.Parse(mustReadFile("templates/footer.tmpl")))
+	template.Must(tmpl.Parse(mustReadFile("templates/404.tmpl")))
 	file, err := os.Create(siteDir + "/404.html")
 	check(err)
-	err = tmpl.Execute(file, "")
-	check(err)
+	defer file.Close()
+	check(tmpl.Execute(file, ""))
 }
 
 func main() {
