@@ -97,6 +97,7 @@ div#intro p {
 }
 div#intro ul {
     padding-top: 20px;
+    list-style: decimal;
 }
 table td {
     border: 0;
