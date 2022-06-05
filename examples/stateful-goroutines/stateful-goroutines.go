@@ -71,7 +71,7 @@ func main() {
 	// This starts 100 goroutines to issue reads to the
 	// state-owning goroutine via the `reads` channel.
 	// Each read requires constructing a `readOp`, sending
-	// it over the `reads` channel, and the receiving the
+	// it over the `reads` channel, and then receiving the
 	// result over the provided `resp` channel.
 	for r := 0; r < 100; r++ {
 		go func() {
