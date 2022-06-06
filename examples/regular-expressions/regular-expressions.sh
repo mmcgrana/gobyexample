@@ -14,4 +14,4 @@ a <fruit>
 a PEACH
 
 # For a complete reference on Go regular expressions check
-# the [`regexp`](http://golang.org/pkg/regexp/) package docs.
+# the [`regexp`](https://pkg.go.dev/regexp) package docs.

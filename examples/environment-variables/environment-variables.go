@@ -1,6 +1,6 @@
-// [Environment variables](http://en.wikipedia.org/wiki/Environment_variable)
+// [Environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 // are a universal mechanism for [conveying configuration
-// information to Unix programs](http://www.12factor.net/config).
+// information to Unix programs](https://www.12factor.net/config).
 // Let's look at how to set, get, and list environment variables.
 
 package main

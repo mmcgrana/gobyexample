@@ -20,7 +20,7 @@ func main() {
 	// package, not methods on the string object itself,
 	// we need pass the string in question as the first
 	// argument to the function. You can find more
-	// functions in the [`strings`](http://golang.org/pkg/strings/)
+	// functions in the [`strings`](https://pkg.go.dev/strings)
 	// package docs.
 	p("Contains:  ", s.Contains("test", "es"))
 	p("Count:     ", s.Count("test", "t"))

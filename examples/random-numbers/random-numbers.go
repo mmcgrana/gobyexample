@@ -1,5 +1,5 @@
 // Go's `math/rand` package provides
-// [pseudorandom number](http://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+// [pseudorandom number](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
 // generation.
 
 package main
