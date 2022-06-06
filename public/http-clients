@@ -35,9 +35,8 @@ HTTP requests.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/vFW_el7oHMk"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
-<span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -47,12 +46,11 @@ HTTP requests.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bufio&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;net/http&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -62,8 +60,7 @@ HTTP requests.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -78,13 +75,12 @@ settings.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;https://gobyexample.com&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;https://gobyexample.com&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -95,9 +91,8 @@ settings.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Response status:&#34;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Status</span><span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Response status:&#34;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Status</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -108,12 +103,11 @@ settings.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">scanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">())</span>
-    <span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">scanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -123,11 +117,10 @@ settings.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Err</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Err</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -141,13 +134,13 @@ settings.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run http-clients.go
-<span class="go">Response status: 200 OK
-</span><span class="go">&lt;!DOCTYPE html&gt;
-</span><span class="go">&lt;html&gt;
-</span><span class="go">  &lt;head&gt;
-</span><span class="go">    &lt;meta charset=&#34;utf-8&#34;&gt;
-</span><span class="go">    &lt;title&gt;Go by Example&lt;/title&gt;</span></pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-clients.go
+</span></span><span class="line"><span class="cl"><span class="go">Response status: 200 OK
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;!DOCTYPE html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">  &lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;meta charset=&#34;utf-8&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;title&gt;Go by Example&lt;/title&gt;</span></span></span></code></pre>
           </td>
         </tr>
         

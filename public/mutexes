@@ -45,8 +45,7 @@ to safely access data across multiple goroutines.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/Kr_cdza5vyz"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -56,11 +55,10 @@ to safely access data across multiple goroutines.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -76,12 +74,11 @@ pointer.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">type</span> <span class="nx">Container</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">mu</span>       <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
-    <span class="nx">counters</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Container</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mu</span>       <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">counters</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -94,8 +91,7 @@ statement.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Container</span><span class="p">)</span> <span class="nf">inc</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Container</span><span class="p">)</span> <span class="nf">inc</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -105,11 +101,10 @@ statement.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
-    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
-    <span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">++</span>
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -121,9 +116,8 @@ initialization is required here.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -133,9 +127,8 @@ initialization is required here.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
-    <span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -145,8 +138,7 @@ initialization is required here.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -158,14 +150,13 @@ in a loop.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">doIncrement</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-            <span class="nx">c</span><span class="p">.</span><span class="nf">inc</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-    <span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">doIncrement</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">c</span><span class="p">.</span><span class="nf">inc</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -178,12 +169,11 @@ and two of them access the same counter.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -194,11 +184,10 @@ and two of them access the same counter.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -214,9 +203,9 @@ updated as expected.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run mutexes.go
-<span class="go">map[a:20000 b:10000]</span></pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> go run mutexes.go
+</span></span><span class="line"><span class="cl"><span class="go">map[a:20000 b:10000]</span></span></span></code></pre>
           </td>
         </tr>
         

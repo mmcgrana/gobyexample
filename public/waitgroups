@@ -43,8 +43,7 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/S98GjeaGBX0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,12 +53,11 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -70,10 +68,9 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d starting\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d starting\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -84,11 +81,10 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d done\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Worker %d done\n&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -98,8 +94,7 @@ use a <em>wait group</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -112,9 +107,8 @@ explicitly passed into functions, it should be done <em>by pointer</em>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -126,10 +120,9 @@ counter for each.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -142,9 +135,8 @@ for more details.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-        <span class="nx">i</span> <span class="o">:=</span> <span class="nx">i</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">i</span> <span class="o">:=</span> <span class="nx">i</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -158,13 +150,12 @@ involved in its execution.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-            <span class="nf">worker</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">worker</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -176,9 +167,8 @@ all the workers notified they&rsquo;re done.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -192,9 +182,8 @@ advanced use cases, consider using the
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="p">}</span>
-</pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -208,17 +197,17 @@ advanced use cases, consider using the
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="gp">$</span> go run waitgroups.go
-<span class="go">Worker 5 starting
-</span><span class="go">Worker 3 starting
-</span><span class="go">Worker 4 starting
-</span><span class="go">Worker 1 starting
-</span><span class="go">Worker 2 starting
-</span><span class="go">Worker 4 done
-</span><span class="go">Worker 1 done
-</span><span class="go">Worker 2 done
-</span><span class="go">Worker 5 done
-</span><span class="go">Worker 3 done</span></pre>
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run waitgroups.go
+</span></span><span class="line"><span class="cl"><span class="go">Worker 5 starting
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 3 starting
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 4 starting
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 1 starting
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 2 starting
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 4 done
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 1 done
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 2 done
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 5 done
+</span></span></span><span class="line"><span class="cl"><span class="go">Worker 3 done</span></span></span></code></pre>
           </td>
         </tr>
         
