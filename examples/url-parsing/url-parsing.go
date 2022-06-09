@@ -34,9 +34,12 @@ func main() {
 	fmt.Println(p)
 
 	// The `Host` contains both the hostname and the port,
-	// if present. Use `SplitHostPort` to extract them.
+	// if present. Use `Hostname()` to get just the hostname. 
+	// Use `SplitHostPort` to extract host and port (fails 
+	// if port is missing).
 	fmt.Println(u.Host)
-	host, port, _ := net.SplitHostPort(u.Host)
+	fmt.Println(u.Hostname()
+	host, port, err := net.SplitHostPort(u.Host)
 	fmt.Println(host)
 	fmt.Println(port)
 
