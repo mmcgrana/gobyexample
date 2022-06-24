@@ -44,7 +44,7 @@ function.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/7_-i75JEsmM"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/glNdE8aKPNq"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -73,6 +73,20 @@ of <code>int</code>s as arguments.</p>
 <span class="kd">func</span> <span class="nf">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
     <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Within the function, the type of <code>nums</code> is
+equivalent to <code>[]int</code>. We can call <code>len(nums)</code>,
+iterate over it with <code>range</code>, etc.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">nums</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="o">+=</span> <span class="nx">num</span>
     <span class="p">}</span>
@@ -169,7 +183,7 @@ to form closures, which we&rsquo;ll look at next.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func sum(nums ...int) {\u000A    fmt.Print(nums, \" \")\u000A    total :\u003D 0\u000A    for _, num :\u003D range nums {\u000A        total +\u003D num\u000A    }\u000A    fmt.Println(total)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sum(1, 2)\u000A    sum(1, 2, 3)\u000A');codeLines.push('    nums :\u003D []int{1, 2, 3, 4}\u000A    sum(nums...)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func sum(nums ...int) {\u000A    fmt.Print(nums, \" \")\u000A    total :\u003D 0\u000A');codeLines.push('    for _, num :\u003D range nums {\u000A        total +\u003D num\u000A    }\u000A    fmt.Println(total)\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    sum(1, 2)\u000A    sum(1, 2, 3)\u000A');codeLines.push('    nums :\u003D []int{1, 2, 3, 4}\u000A    sum(nums...)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
