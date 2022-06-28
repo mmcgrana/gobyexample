@@ -41,7 +41,7 @@ func main() {
 	// it explicitly.
 	fmt.Println(xml.Header + string(out))
 
-	// Use `Unmarhshal` to parse a stream of bytes with XML
+	// Use `Unmarshal` to parse a stream of bytes with XML
 	// into a data structure. If the XML is malformed or
 	// cannot be mapped onto Plant, a descriptive error
 	// will be returned.
