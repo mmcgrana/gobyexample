@@ -61,7 +61,7 @@ func main() {
 	// specify the types for `K` and `V` when
 	// calling `MapKeys` - the compiler infers them
 	// automatically.
-	fmt.Println("keys m:", MapKeys(m))
+	fmt.Println("keys:", MapKeys(m))
 
 	// ... though we could also specify them explicitly.
 	_ = MapKeys[int, string](m)
