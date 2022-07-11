@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: String Formatting</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'string-functions';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'text-templates';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'string-functions';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'text-templates';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="string-formatting">
       <h2><a href="./">Go by Example</a>: String Formatting</h2>

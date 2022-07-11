@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Worker Pools</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'tickers';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'waitgroups';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'tickers';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'waitgroups';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="worker-pools">
       <h2><a href="./">Go by Example</a>: Worker Pools</h2>

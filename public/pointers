@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Pointers</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'recursion';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'strings-and-runes';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'recursion';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'strings-and-runes';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="pointers">
       <h2><a href="./">Go by Example</a>: Pointers</h2>

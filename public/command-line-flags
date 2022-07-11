@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Command-Line Flags</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'command-line-arguments';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'command-line-subcommands';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'command-line-arguments';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'command-line-subcommands';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="command-line-flags">
       <h2><a href="./">Go by Example</a>: Command-Line Flags</h2>

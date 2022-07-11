@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: If/Else</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'for';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'switch';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'for';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'switch';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="if-else">
       <h2><a href="./">Go by Example</a>: If/Else</h2>

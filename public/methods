@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Methods</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'structs';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'interfaces';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'structs';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'interfaces';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="methods">
       <h2><a href="./">Go by Example</a>: Methods</h2>

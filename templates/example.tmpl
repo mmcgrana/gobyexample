@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: {{.Name}}</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            {{if .PrevExample}}
+            if (e.key == "ArrowLeft") {
+                window.location.href = '{{.PrevExample.ID}}';
+            }
+            {{end}}
+            {{if .NextExample}}
+            if (e.key == "ArrowRight") {
+                window.location.href = '{{.NextExample.ID}}';
+            }
+            {{end}}
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          {{if .PrevExample}}
-          if (e.key == "ArrowLeft") {
-              window.location.href = '{{.PrevExample.ID}}';
-          }
-          {{end}}
-          {{if .NextExample}}
-          if (e.key == "ArrowRight") {
-              window.location.href = '{{.NextExample.ID}}';
-          }
-          {{end}}
-      }
-  </script>
   <body>
     <div class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>

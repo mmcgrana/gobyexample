@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Struct Embedding</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'interfaces';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'generics';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'interfaces';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'generics';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="struct-embedding">
       <h2><a href="./">Go by Example</a>: Struct Embedding</h2>

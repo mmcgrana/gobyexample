@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: SHA256 Hashes</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'url-parsing';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'base64-encoding';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'url-parsing';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'base64-encoding';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="sha256-hashes">
       <h2><a href="./">Go by Example</a>: SHA256 Hashes</h2>

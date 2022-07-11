@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Environment Variables</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'command-line-subcommands';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'http-clients';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'command-line-subcommands';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'http-clients';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="environment-variables">
       <h2><a href="./">Go by Example</a>: Environment Variables</h2>

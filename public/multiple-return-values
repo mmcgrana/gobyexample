@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Multiple Return Values</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'functions';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'variadic-functions';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'functions';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'variadic-functions';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="multiple-return-values">
       <h2><a href="./">Go by Example</a>: Multiple Return Values</h2>

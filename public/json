@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: JSON</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'regular-expressions';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'xml';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'regular-expressions';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'xml';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="json">
       <h2><a href="./">Go by Example</a>: JSON</h2>

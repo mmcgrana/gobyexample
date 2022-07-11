@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Hello World</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'values';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'values';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="hello-world">
       <h2><a href="./">Go by Example</a>: Hello World</h2>

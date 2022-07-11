@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Time Formatting / Parsing</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'epoch';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'random-numbers';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'epoch';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'random-numbers';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="time-formatting-parsing">
       <h2><a href="./">Go by Example</a>: Time Formatting / Parsing</h2>

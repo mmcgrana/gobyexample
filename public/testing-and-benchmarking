@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Testing and Benchmarking</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'embed-directive';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'command-line-arguments';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'embed-directive';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'command-line-arguments';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="testing-and-benchmarking">
       <h2><a href="./">Go by Example</a>: Testing and Benchmarking</h2>

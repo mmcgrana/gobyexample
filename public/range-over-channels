@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Range over Channels</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'closing-channels';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'timers';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'closing-channels';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'timers';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="range-over-channels">
       <h2><a href="./">Go by Example</a>: Range over Channels</h2>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Text Templates</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'string-formatting';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'regular-expressions';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'string-formatting';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'regular-expressions';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="text-templates">
       <h2><a href="./">Go by Example</a>: Text Templates</h2>

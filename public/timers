@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Timers</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'range-over-channels';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'tickers';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'range-over-channels';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'tickers';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="timers">
       <h2><a href="./">Go by Example</a>: Timers</h2>

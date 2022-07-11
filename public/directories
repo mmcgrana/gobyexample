@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Directories</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'file-paths';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'temporary-files-and-directories';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'file-paths';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'temporary-files-and-directories';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="directories">
       <h2><a href="./">Go by Example</a>: Directories</h2>

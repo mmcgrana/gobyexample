@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Embed Directive</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'temporary-files-and-directories';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'testing-and-benchmarking';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'temporary-files-and-directories';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'testing-and-benchmarking';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="embed-directive">
       <h2><a href="./">Go by Example</a>: Embed Directive</h2>

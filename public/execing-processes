@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Exec'ing Processes</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'spawning-processes';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'signals';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'spawning-processes';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'signals';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="execing-processes">
       <h2><a href="./">Go by Example</a>: Exec'ing Processes</h2>

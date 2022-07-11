@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Go by Example: Channel Synchronization</title>
     <link rel=stylesheet href="site.css">
+    <script>
+        onkeydown = (e) => {
+            
+            if (e.key == "ArrowLeft") {
+                window.location.href = 'channel-buffering';
+            }
+            
+            
+            if (e.key == "ArrowRight") {
+                window.location.href = 'channel-directions';
+            }
+            
+        }
+    </script>
   </head>
-  <script>
-      onkeydown = (e) => {
-          
-          if (e.key == "ArrowLeft") {
-              window.location.href = 'channel-buffering';
-          }
-          
-          
-          if (e.key == "ArrowRight") {
-              window.location.href = 'channel-directions';
-          }
-          
-      }
-  </script>
   <body>
     <div class="example" id="channel-synchronization">
       <h2><a href="./">Go by Example</a>: Channel Synchronization</h2>
