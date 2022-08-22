@@ -106,7 +106,7 @@ may vary by operating system, CPU architecture, or even Go version.
 Similarly, examples that iterate over maps may produce items in a different order
 from what you're getting on your machine. This is because the order of iteration
 over maps in Go is [not specified and is not guaranteed to be the same from one
-iteration to the next.](https://go.dev/ref/spec#RangeClause).
+iteration to the next](https://go.dev/ref/spec#RangeClause).
 
 It doesn't mean anything is wrong with the example. Typically the code in these
 examples will be insensitive to the actual order of the output; if the code is
