@@ -147,7 +147,8 @@ particular machine.</p>
 <span class="go">TERM_PROGRAM
 </span><span class="go">PATH
 </span><span class="go">SHELL
-</span><span class="go">...</span></pre>
+</span><span class="go">...
+</span><span class="go">FOO</span></pre>
           </td>
         </tr>
         

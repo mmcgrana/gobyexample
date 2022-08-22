@@ -11,6 +11,7 @@ TERM_PROGRAM
 PATH
 SHELL
 ...
+FOO
 
 # If we set `BAR` in the environment first, the running
 # program picks that value up.
