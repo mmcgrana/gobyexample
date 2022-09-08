@@ -35,7 +35,7 @@ build time. Read more about the embed directive
 
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/p6JB_5z1IBJ"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/6m2ll-D52BB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma">
 <span class="kn">package</span> <span class="nx">main</span>
 </pre>

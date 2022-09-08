@@ -14,16 +14,19 @@ import (
 // `embed` directives accept paths relative to the directory containing the
 // Go source file. This directive embeds the contents of the file into the
 // `string` variable immediately following it.
+//
 //go:embed folder/single_file.txt
 var fileString string
 
 // Or embed the contents of the file into a `[]byte`.
+//
 //go:embed folder/single_file.txt
 var fileByte []byte
 
 // We can also embed multiple files or even folders with wildcards. This uses
 // a variable of the [embed.FS type](https://pkg.go.dev/embed#FS), which
 // implements a simple virtual file system.
+//
 //go:embed folder/single_file.txt
 //go:embed folder/*.hash
 var folder embed.FS

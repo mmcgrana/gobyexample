@@ -95,8 +95,8 @@ func debug(msg string) {
 	}
 }
 
-var docsPat = regexp.MustCompile("^\\s*(\\/\\/|#)\\s")
-var dashPat = regexp.MustCompile("\\-+")
+var docsPat = regexp.MustCompile(`^(\s*(\/\/|#)\s|\s*\/\/$)`)
+var dashPat = regexp.MustCompile(`\-+`)
 
 // Seg is a segment of an example
 type Seg struct {
