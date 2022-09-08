@@ -1,5 +1,5 @@
-// _Slices_ are a key data type in Go, giving a more
-// powerful interface to sequences than arrays.
+// _Slices_ are an important data type in Go, giving
+// a more powerful interface to sequences than arrays.
 
 package main
 

@@ -27,8 +27,8 @@
         
         <tr>
           <td class="docs">
-            <p><em>Slices</em> are a key data type in Go, giving a more
-powerful interface to sequences than arrays.</p>
+            <p><em>Slices</em> are an important data type in Go, giving
+a more powerful interface to sequences than arrays.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +42,7 @@ powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/iLnoIEIxeQ1"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/76f4Jif5Z8o"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>

@@ -7,6 +7,3 @@ get: 100
 len: 5
 dcl: [1 2 3 4 5]
 2d:  [[0 1 2] [1 2 3]]
-
-# You'll see _slices_ much more often than arrays in
-# typical Go. We'll look at slices next.
