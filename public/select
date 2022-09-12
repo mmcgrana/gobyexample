@@ -27,9 +27,9 @@
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>select</em> lets you wait on multiple channel
-operations. Combining goroutines and channels with
-select is a powerful feature of Go.</p>
+          <p>Go&rsquo;s <em>select</em> lets you wait on multiple channel
+            operations. Combining goroutines and channels with select, 
+            which is a powerful feature of Go.</p>
 
           </td>
           <td class="code empty leading">
