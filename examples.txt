@@ -71,8 +71,8 @@ Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
 Environment Variables
-HTTP Clients
-HTTP Servers
+HTTP Client
+HTTP Server
 Context
 Spawning Processes
 Exec'ing Processes

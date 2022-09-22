@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: HTTP Server</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'http-client';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'context';
+          }
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="http-server">
+      <h2><a href="./">Go by Example</a>: HTTP Server</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Writing a basic HTTP server is easy using the
+<code>net/http</code> package.</p>
+
+          </td>
+          <td class="code leading">
+            <a href="https://go.dev/play/p/s3xMMt9Ytry"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+          <pre class="chroma">
+<span class="kn">package</span> <span class="nx">main</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;net/http&#34;</span>
+<span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>A fundamental concept in <code>net/http</code> servers is
+<em>handlers</em>. A handler is an object implementing the
+<code>http.Handler</code> interface. A common way to write
+a handler is by using the <code>http.HandlerFunc</code> adapter
+on functions with the appropriate signature.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+<span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Functions serving as handlers take a
+<code>http.ResponseWriter</code> and a <code>http.Request</code> as
+arguments. The response writer is used to fill in the
+HTTP response. Here our simple response is just
+&ldquo;hello\n&rdquo;.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;hello\n&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">headers</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>This handler does something a little more
+sophisticated by reading all the HTTP request
+headers and echoing them into the response body.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">headers</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">req</span><span class="p">.</span><span class="nx">Header</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">h</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">headers</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;%v: %v\n&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We register our handlers on server routes using the
+<code>http.HandleFunc</code> convenience function. It sets up
+the <em>default router</em> in the <code>net/http</code> package and
+takes a function as an argument.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/hello&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/headers&#34;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Finally, we call the <code>ListenAndServe</code> with the port
+and a handler. <code>nil</code> tells it to use the default
+router we&rsquo;ve just set up.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma">
+    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8090&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Run the server in the background.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+<span class="gp">$</span> go run http-servers.go &amp;</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Access the <code>/hello</code> route.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma">
+<span class="gp">$</span> curl localhost:8090/hello
+<span class="go">hello</span></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Next example: <a href="context">Context</a>.
+      </p>
+      
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"net/http\"\u000A)\u000A');codeLines.push('func hello(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    fmt.Fprintf(w, \"hello\\n\")\u000A}\u000A');codeLines.push('func headers(w http.ResponseWriter, req *http.Request) {\u000A');codeLines.push('    for name, headers :\u003D range req.Header {\u000A        for _, h :\u003D range headers {\u000A            fmt.Fprintf(w, \"%v: %v\\n\", name, h)\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    http.HandleFunc(\"/hello\", hello)\u000A    http.HandleFunc(\"/headers\", headers)\u000A');codeLines.push('    http.ListenAndServe(\":8090\", nil)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
