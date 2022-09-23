@@ -171,7 +171,8 @@ panic and resumes in the deferred closure.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="go">Recovered. Error:
+          <pre class="chroma"><span class="gp">$</span> go run recover.go
+<span class="go">Recovered. Error:
 </span><span class="go"> a problem</span></pre>
           </td>
         </tr>
