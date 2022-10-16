@@ -105,7 +105,7 @@ straight-forward.</p>
         <tr>
           <td class="docs">
             <p>A statement can precede conditionals; any variables
-declared in this statement are available in all
+declared in this statement are available in the current and all the succeeding
 branches.</p>
 
           </td>
