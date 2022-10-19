@@ -13,6 +13,7 @@ func main() {
 	queue := make(chan string, 2)
 	queue <- "one"
 	queue <- "two"
+	// queue <- "three" // would deadlock, since the channel buffer is full
 	close(queue)
 
 	// This `range` iterates over each element as it's
