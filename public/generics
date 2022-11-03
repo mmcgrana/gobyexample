@@ -223,7 +223,8 @@ automatically.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="go">keys: [4 1 2]
+          <pre class="chroma"><span class="gp">$</span> go run generics.go
+<span class="go">keys: [4 1 2]
 </span><span class="go">list: [10 13 23]</span></pre>
           </td>
         </tr>
