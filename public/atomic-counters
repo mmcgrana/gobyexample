@@ -46,7 +46,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/j-14agntvEO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/pWwgacr1iKb"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -139,11 +139,15 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            
+            <p>Also try by replacing <code>atomic.AddUint64(&amp;ops, 1)</code>
+with <code>ops++</code> and see the difference in output each
+time we run the example</p>
+
           </td>
           <td class="code leading">
             
-          <pre class="chroma">                <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+          <pre class="chroma">
+                <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="p">}</span>
             <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
         <span class="p">}()</span>

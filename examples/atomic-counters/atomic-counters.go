@@ -34,6 +34,10 @@ func main() {
 				// use `AddUint64`, giving it the memory
 				// address of our `ops` counter with the
 				// `&` syntax.
+
+				// Also try by replacing `atomic.AddUint64(&ops, 1)`
+				// with `ops++` and see the difference in output each
+				// time we run the example
 				atomic.AddUint64(&ops, 1)
 			}
 			wg.Done()
