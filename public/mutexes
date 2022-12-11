@@ -189,7 +189,7 @@ and two of them access the same counter.</p>
         
         <tr>
           <td class="docs">
-            <p>Wait a for the goroutines to finish</p>
+            <p>Wait for the goroutines to finish</p>
 
           </td>
           <td class="code">
