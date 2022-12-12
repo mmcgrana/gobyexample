@@ -44,7 +44,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/Kr_cdza5vyz"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/JU735qy2UmB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -189,7 +189,7 @@ and two of them access the same counter.</p>
         
         <tr>
           <td class="docs">
-            <p>Wait a for the goroutines to finish</p>
+            <p>Wait for the goroutines to finish</p>
 
           </td>
           <td class="code">

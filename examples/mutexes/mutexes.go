@@ -56,7 +56,7 @@ func main() {
 	go doIncrement("a", 10000)
 	go doIncrement("b", 10000)
 
-	// Wait a for the goroutines to finish
+	// Wait for the goroutines to finish
 	wg.Wait()
 	fmt.Println(c.counters)
 }
