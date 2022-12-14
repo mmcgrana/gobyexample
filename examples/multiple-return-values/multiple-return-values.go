@@ -12,6 +12,16 @@ func vals() (int, int) {
 	return 3, 7
 }
 
+// Go's return values may be named. If so, they are treated
+// as variables defined at the top of the function.
+// A `return“ statement without arguments returns the
+// named return values. This is known as a "naked" return.
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
 func main() {
 
 	// Here we use the 2 different return values from the
@@ -24,4 +34,8 @@ func main() {
 	// use the blank identifier `_`.
 	_, c := vals()
 	fmt.Println(c)
+
+	// The split function will return the values of x & y
+	d, e := split(17)
+	fmt.Println(d, e)
 }
