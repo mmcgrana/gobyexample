@@ -154,7 +154,7 @@ initializing a variable, e.g. for
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td class="code leading">
             
           <pre class="chroma"><span class="gp">$</span> go run variables.go
 <span class="go">initial
@@ -162,6 +162,21 @@ initializing a variable, e.g. for
 </span><span class="go">true
 </span><span class="go">0
 </span><span class="go">apple</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The shorthand <code>:=</code> initialization of variable can
+only be used inside any function.
+If used outside any function, it would generate
+<code>syntax error: non-declaration statement outside 
+function body</code>.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
           </td>
         </tr>
         
@@ -180,7 +195,7 @@ initializing a variable, e.g. for
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a \u003D \"initial\"\u000A    fmt.Println(a)\u000A');codeLines.push('    var b, c int \u003D 1, 2\u000A    fmt.Println(b, c)\u000A');codeLines.push('    var d \u003D true\u000A    fmt.Println(d)\u000A');codeLines.push('    var e int\u000A    fmt.Println(e)\u000A');codeLines.push('    f :\u003D \"apple\"\u000A    fmt.Println(f)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a \u003D \"initial\"\u000A    fmt.Println(a)\u000A');codeLines.push('    var b, c int \u003D 1, 2\u000A    fmt.Println(b, c)\u000A');codeLines.push('    var d \u003D true\u000A    fmt.Println(d)\u000A');codeLines.push('    var e int\u000A    fmt.Println(e)\u000A');codeLines.push('    f :\u003D \"apple\"\u000A    fmt.Println(f)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
