@@ -43,7 +43,7 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/vZdUvLB1WbK"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/U87Tk2E0TIt"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -71,6 +71,26 @@ the function returns 2 <code>int</code>s.</p>
           <pre class="chroma">
 <span class="kd">func</span> <span class="nf">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
+<span class="p">}</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go&rsquo;s return values may be named. If so, they are treated
+as variables defined at the top of the function.
+A `return“ statement without arguments returns the
+named return values. This is known as a &ldquo;naked&rdquo; return.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+<span class="kd">func</span> <span class="nf">split</span><span class="p">(</span><span class="nx">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">9</span>
+    <span class="nx">y</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">-</span> <span class="nx">x</span>
+    <span class="k">return</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -109,11 +129,25 @@ call with <em>multiple assignment</em>.</p>
 use the blank identifier <code>_</code>.</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
             
           <pre class="chroma">
     <span class="nx">_</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nf">vals</span><span class="p">()</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>The split function will return the values of x &amp; y</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma">
+    <span class="nx">d</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nf">split</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -132,7 +166,21 @@ use the blank identifier <code>_</code>.</p>
           <pre class="chroma"><span class="gp">$</span> go run multiple-return-values.go
 <span class="go">3
 </span><span class="go">7
-</span><span class="go">7</span></pre>
+</span><span class="go">7
+</span><span class="go">7 10</span></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Naked return statements should be used only in short
+functions.
+They can harm readability in longer functions.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
           </td>
         </tr>
         
@@ -163,7 +211,7 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func vals() (int, int) {\u000A    return 3, 7\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    a, b :\u003D vals()\u000A    fmt.Println(a)\u000A    fmt.Println(b)\u000A');codeLines.push('    _, c :\u003D vals()\u000A    fmt.Println(c)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func vals() (int, int) {\u000A    return 3, 7\u000A}\u000A');codeLines.push('func split(sum int) (x, y int) {\u000A    x \u003D sum * 4 / 9\u000A    y \u003D sum - x\u000A    return\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    a, b :\u003D vals()\u000A    fmt.Println(a)\u000A    fmt.Println(b)\u000A');codeLines.push('    _, c :\u003D vals()\u000A    fmt.Println(c)\u000A');codeLines.push('    d, e :\u003D split(17)\u000A    fmt.Println(d, e)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
