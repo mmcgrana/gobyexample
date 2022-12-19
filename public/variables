@@ -43,7 +43,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/iYyAIilyBRf"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/N5rWndIliJW"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -133,7 +133,8 @@ zero value for an <code>int</code> is <code>0</code>.</p>
           <td class="docs">
             <p>The <code>:=</code> syntax is shorthand for declaring and
 initializing a variable, e.g. for
-<code>var f string = &quot;apple&quot;</code> in this case.</p>
+<code>var f string = &quot;apple&quot;</code> in this case.
+This syntax is only available inside functions.</p>
 
           </td>
           <td class="code">
@@ -154,7 +155,7 @@ initializing a variable, e.g. for
           <td class="docs">
             
           </td>
-          <td class="code leading">
+          <td class="code">
             
           <pre class="chroma"><span class="gp">$</span> go run variables.go
 <span class="go">initial
@@ -162,21 +163,6 @@ initializing a variable, e.g. for
 </span><span class="go">true
 </span><span class="go">0
 </span><span class="go">apple</span></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>The shorthand <code>:=</code> initialization of variable can
-only be used inside any function.
-If used outside any function, it would generate
-<code>syntax error: non-declaration statement outside 
-function body</code>.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
           </td>
         </tr>
         
@@ -195,7 +181,7 @@ function body</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a \u003D \"initial\"\u000A    fmt.Println(a)\u000A');codeLines.push('    var b, c int \u003D 1, 2\u000A    fmt.Println(b, c)\u000A');codeLines.push('    var d \u003D true\u000A    fmt.Println(d)\u000A');codeLines.push('    var e int\u000A    fmt.Println(e)\u000A');codeLines.push('    f :\u003D \"apple\"\u000A    fmt.Println(f)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var a \u003D \"initial\"\u000A    fmt.Println(a)\u000A');codeLines.push('    var b, c int \u003D 1, 2\u000A    fmt.Println(b, c)\u000A');codeLines.push('    var d \u003D true\u000A    fmt.Println(d)\u000A');codeLines.push('    var e int\u000A    fmt.Println(e)\u000A');codeLines.push('    f :\u003D \"apple\"\u000A    fmt.Println(f)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
