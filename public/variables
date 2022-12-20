@@ -43,7 +43,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/iYyAIilyBRf"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/N5rWndIliJW"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -133,7 +133,8 @@ zero value for an <code>int</code> is <code>0</code>.</p>
           <td class="docs">
             <p>The <code>:=</code> syntax is shorthand for declaring and
 initializing a variable, e.g. for
-<code>var f string = &quot;apple&quot;</code> in this case.</p>
+<code>var f string = &quot;apple&quot;</code> in this case.
+This syntax is only available inside functions.</p>
 
           </td>
           <td class="code">
