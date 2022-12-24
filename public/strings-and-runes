@@ -274,7 +274,48 @@ can compare a <code>rune</code> value to a rune literal directly.</p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      <script>
+        window.onload = function() {
+          function styleAllTags(tag, style, value){
+            document.querySelectorAll(tag).forEach((tag) => {
+              tag.style[style] = value
+            })
+          }
+
+          var themeButton = document.getElementById('theme-button');
+          var body = document.getElementsByTagName('body')[0];
+
+          function activateTheme(theme) {
+            if (theme === 'dark') {
+              body.style.color = "#ffffffeb";
+              body.style.backgroundColor = "#1a202c";
+              styleAllTags('a', 'color', '#ffffffeb')
+              styleAllTags('td.code', 'background', '#333333')
+              styleAllTags('td.code.empty', 'background', '#1a202c')
+            } else {
+              body.style.color = "#252519";
+              body.style.backgroundColor = "white";
+              styleAllTags('a', 'color', '#252519')
+              styleAllTags('td.code', 'background', '#f0f0f0')
+              styleAllTags('td.code.empty', 'background', 'white')
+            }
+            localStorage.setItem('theme', theme);
+          }
+
+          var currentTheme = localStorage.getItem('theme');
+          if (currentTheme === 'light' || currentTheme === 'dark') {
+            activateTheme(currentTheme);
+          } else {
+            activateTheme('light');
+          }
+
+          themeButton.onclick = function() {
+            var newTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            activateTheme(newTheme);
+          }
+        }
+      </script>
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a> | <button id="theme-button">Toggle theme</button>
     </p>
 
     </div>
