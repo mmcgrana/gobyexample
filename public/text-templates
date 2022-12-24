@@ -276,19 +276,27 @@ the range block <code>{{.}}</code> is set to the current item of the iteration.<
           var themeButton = document.getElementById('theme-button');
           var body = document.getElementsByTagName('body')[0];
 
+          var lightText = "#ffffffeb";
+          var darkText = "#252519";
+          var lightBackground = "white";
+          var darkBackground = "#1a202c";
+          var lightCodeBackground = "#f0f0f0";
+          var darkCodeBackground = "#333333";
+
+
           function activateTheme(theme) {
             if (theme === 'dark') {
-              body.style.color = "#ffffffeb";
-              body.style.backgroundColor = "#1a202c";
-              styleAllTags('a', 'color', '#ffffffeb')
-              styleAllTags('td.code', 'background', '#333333')
-              styleAllTags('td.code.empty', 'background', '#1a202c')
+              body.style.color = lightText;
+              body.style.backgroundColor = darkBackground;
+              styleAllTags('a', 'color', lightText)
+              styleAllTags('td.code', 'background', darkCodeBackground);
+              styleAllTags('td.code.empty', 'background', darkBackground)
             } else {
-              body.style.color = "#252519";
-              body.style.backgroundColor = "white";
-              styleAllTags('a', 'color', '#252519')
-              styleAllTags('td.code', 'background', '#f0f0f0')
-              styleAllTags('td.code.empty', 'background', 'white')
+              body.style.color = darkText;
+              body.style.backgroundColor = lightBackground;
+              styleAllTags('a', 'color', darkText)
+              styleAllTags('td.code', 'background', lightCodeBackground)
+              styleAllTags('td.code.empty', 'background', lightBackground)
             }
             localStorage.setItem('theme', theme);
           }
