@@ -7,7 +7,7 @@ a site that teaches Go via annotated example programs.
 
 The Go by Example site is built by extracting code and
 comments from source files in `examples` and rendering
-them via the `templates` into a static `public`
+them using `templates` into a static `public`
 directory. The programs implementing this build process
 are in `tools`, along with dependencies specified in
 the `go.mod`file.
@@ -93,7 +93,7 @@ Given Go's strong [backwards compatibility guarantees](https://go.dev/doc/go1com
 we expect the vast majority of examples to work on the latest released version of Go
 as well as many older releases going back years.
 
-That said, some examples show off new features added in the latest release; therefore,
+That said, some examples show off new features added in recent releases; therefore,
 it's recommended to try running examples with the latest officially released Go version
 (see Go's [release history](https://go.dev/doc/devel/release) for details).
 
