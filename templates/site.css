@@ -80,6 +80,7 @@ p.next {
 }
 p.footer {
     color: grey;
+    font-size: 75%;
 }
 p.footer a, p.footer a:visited {
     color: grey;
