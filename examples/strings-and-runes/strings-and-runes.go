@@ -36,7 +36,7 @@ func main() {
 
 	// To count how many _runes_ are in a string, we can use
 	// the `utf8` package. Note that the run-time of
-	// `RuneCountInString` dependes on the size of the string,
+	// `RuneCountInString` depends on the size of the string,
 	// because it has to decode each UTF-8 rune sequentially.
 	// Some Thai characters are represented by multiple UTF-8
 	// code points, so the result of this count may be surprising.
