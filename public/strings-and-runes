@@ -48,7 +48,7 @@ introduction to the topic.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/y9AcFzz3UJn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/39BpTLf6BAz"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -131,7 +131,7 @@ the bytes that constitute the code points in <code>s</code>.</p>
           <td class="docs">
             <p>To count how many <em>runes</em> are in a string, we can use
 the <code>utf8</code> package. Note that the run-time of
-<code>RuneCountInString</code> dependes on the size of the string,
+<code>RuneCountInString</code> depends on the size of the string,
 because it has to decode each UTF-8 rune sequentially.
 Some Thai characters are represented by multiple UTF-8
 code points, so the result of this count may be surprising.</p>
