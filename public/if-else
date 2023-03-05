@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: If/Else</title>
+    <title>Go Em Exemplos: If/Else</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,8 +27,7 @@
         
         <tr>
           <td class="docs">
-            <p>Branching with <code>if</code> and <code>else</code> in Go is
-straight-forward.</p>
+            <p>A condicional <code>if</code> e <code>else</code> em Go é bem direta.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +41,7 @@ straight-forward.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/U7xcpdutgCJ"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/1I2JHAXgr-3"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -72,16 +71,16 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic example.</p>
+            <p>Aqui está um exemplo básico.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="k">if</span> <span class="mi">7</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 is even&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 é par&#34;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 is odd&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;7 é ímpar&#34;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre>
           </td>
@@ -89,14 +88,14 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>You can have an <code>if</code> statement without an else.</p>
+            <p>Também é possível utilizar o <code>if</code> sem <code>else</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="k">if</span> <span class="mi">8</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;8 is divisible by 4&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;8 é divisível por 4&#34;</span><span class="p">)</span>
     <span class="p">}</span>
 </pre>
           </td>
@@ -104,20 +103,20 @@ straight-forward.</p>
         
         <tr>
           <td class="docs">
-            <p>A statement can precede conditionals; any variables
-declared in this statement are available in the current
-and all subsequent branches.</p>
+            <p>Declarações podem preceder as condições; qualquer
+variável declarada na estrutura condicional ficará
+disponível em todas as suas ramificações.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="k">if</span> <span class="nx">num</span> <span class="o">:=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;is negative&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;é negativo&#34;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">num</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;has 1 digit&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;possui 1 dígito&#34;</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;has multiple digits&#34;</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="s">&#34;possui múltiplos dígitos&#34;</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre>
@@ -126,8 +125,9 @@ and all subsequent branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that you don&rsquo;t need parentheses around conditions
-in Go, but that the braces are required.</p>
+            <p>É importante lembrar que não é necessário envelopar
+condicionais com parenteses em Go, no entanto,
+as chaves {} são necessárias.</p>
 
           </td>
           <td class="code empty">
@@ -147,17 +147,17 @@ in Go, but that the braces are required.</p>
           <td class="code leading">
             
           <pre class="chroma"><span class="gp">$</span> go run if-else.go 
-<span class="go">7 is odd
-</span><span class="go">8 is divisible by 4
-</span><span class="go">9 has 1 digit</span></pre>
+<span class="go">7 é ímpar
+</span><span class="go">8 é divisível por 4
+</span><span class="go">9 possui 1 dígito</span></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>There is no <a href="https://en.wikipedia.org/wiki/%3F:">ternary if</a>
-in Go, so you&rsquo;ll need to use a full <code>if</code> statement even
-for basic conditions.</p>
+            <p>Não há <a href="https://en.wikipedia.org/wiki/%3F:">operador ternário</a>
+em Go, então é necessário utilizar <code>if</code>
+mesmo para condições básicas.</p>
 
           </td>
           <td class="code empty">
@@ -170,18 +170,18 @@ for basic conditions.</p>
       
       
       <p class="next">
-        Next example: <a href="switch">Switch</a>.
+        Próximo exemplo: <a href="switch">Switch</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    if 7%2 \u003D\u003D 0 {\u000A        fmt.Println(\"7 is even\")\u000A    } else {\u000A        fmt.Println(\"7 is odd\")\u000A    }\u000A');codeLines.push('    if 8%4 \u003D\u003D 0 {\u000A        fmt.Println(\"8 is divisible by 4\")\u000A    }\u000A');codeLines.push('    if num :\u003D 9; num \u003C 0 {\u000A        fmt.Println(num, \"is negative\")\u000A    } else if num \u003C 10 {\u000A        fmt.Println(num, \"has 1 digit\")\u000A    } else {\u000A        fmt.Println(num, \"has multiple digits\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    if 7%2 \u003D\u003D 0 {\u000A        fmt.Println(\"7 é par\")\u000A    } else {\u000A        fmt.Println(\"7 é ímpar\")\u000A    }\u000A');codeLines.push('    if 8%4 \u003D\u003D 0 {\u000A        fmt.Println(\"8 é divisível por 4\")\u000A    }\u000A');codeLines.push('    if num :\u003D 9; num \u003C 0 {\u000A        fmt.Println(num, \"é negativo\")\u000A    } else if num \u003C 10 {\u000A        fmt.Println(num, \"possui 1 dígito\")\u000A    } else {\u000A        fmt.Println(num, \"possui múltiplos dígitos\")\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

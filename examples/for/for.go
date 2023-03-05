@@ -1,5 +1,5 @@
-// `for` is Go's only looping construct. Here are
-// some basic types of `for` loops.
+// `for` é a única ferramenta de repetição em Go.
+// Aqui estão algumas formas básicas de utilização.
 
 package main
 
@@ -7,28 +7,28 @@ import "fmt"
 
 func main() {
 
-	// The most basic type, with a single condition.
+	// O tipo mais simples com apenas uma condição.
 	i := 1
 	for i <= 3 {
 		fmt.Println(i)
 		i = i + 1
 	}
 
-	// A classic initial/condition/after `for` loop.
+	// O tipo clássico com inicial, condição
+	// de continuação e pós iteração.
 	for j := 7; j <= 9; j++ {
 		fmt.Println(j)
 	}
 
-	// `for` without a condition will loop repeatedly
-	// until you `break` out of the loop or `return` from
-	// the enclosing function.
+	// `for` sem nenhuma condição será repetido indefinidamente,
+	// até que `break` ou `return` sejam usados para interromper.
 	for {
 		fmt.Println("loop")
 		break
 	}
 
-	// You can also `continue` to the next iteration of
-	// the loop.
+	// Também é possível utilizar o comando `continue`
+	// para prosseguir para a próxima iteração do loop.
 	for n := 0; n <= 5; n++ {
 		if n%2 == 0 {
 			continue

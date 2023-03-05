@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'spawning-processes';
+              window.location.href = 'spawning-processes-(invocando-processos)';
           }
           
           
@@ -195,7 +195,7 @@ processes covers most use cases for <code>fork</code>.</p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | translated by <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
     </p>
 
     </div>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Constants</title>
+    <title>Go Em Exemplos: Constants</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,8 +27,8 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports <em>constants</em> of character, string, boolean,
-and numeric values.</p>
+            <p>Go suporta <em>constantes</em> de tipos strings, booleanos,
+e numericos.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +42,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/Vw-pXSfo9_b"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/NA0z_34sqzx"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -64,7 +64,7 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p><code>const</code> declares a constant value.</p>
+            <p><code>const</code> é a palavra reservada para declarar uma constante.</p>
 
           </td>
           <td class="code leading">
@@ -89,8 +89,8 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>const</code> statement can appear anywhere a <code>var</code>
-statement can.</p>
+            <p>A declaração <code>const</code> pode aparecer em qualquer
+lugar que a declaração <code>var</code> também possa.</p>
 
           </td>
           <td class="code leading">
@@ -103,8 +103,8 @@ statement can.</p>
         
         <tr>
           <td class="docs">
-            <p>Constant expressions perform arithmetic with
-arbitrary precision.</p>
+            <p>Expressões com constantes são performadas
+aritmeticamente com precisão arbitrária.</p>
 
           </td>
           <td class="code leading">
@@ -118,8 +118,8 @@ arbitrary precision.</p>
         
         <tr>
           <td class="docs">
-            <p>A numeric constant has no type until it&rsquo;s given
-one, such as by an explicit conversion.</p>
+            <p>Uma constante numérica não possui um tipo
+até que seja atribuído um, como uma conversão explícita.</p>
 
           </td>
           <td class="code leading">
@@ -132,10 +132,11 @@ one, such as by an explicit conversion.</p>
         
         <tr>
           <td class="docs">
-            <p>A number can be given a type by using it in a
-context that requires one, such as a variable
-assignment or function call. For example, here
-<code>math.Sin</code> expects a <code>float64</code>.</p>
+            <p>Um tipo pode ser implicitamente atribuído a uma constante
+numérica ao usá-la num contexto que requer um tipo,
+como atribuição a uma variável ou uma chamada de função.
+Por exemplo, a função <code>math.Sin</code> espera um valor de tipo
+<code>float64</code>.</p>
 
           </td>
           <td class="code">
@@ -169,12 +170,12 @@ assignment or function call. For example, here
       
       
       <p class="next">
-        Next example: <a href="for">For</a>.
+        Próximo exemplo: <a href="for">For</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>

@@ -1,5 +1,6 @@
-// _Slices_ are an important data type in Go, giving
-// a more powerful interface to sequences than arrays.
+// _Slices_ é um importante tipo de dado em Go,
+// oferecendo uma interface mais completa do que
+// arrays para lidar com sequências.
 
 package main
 
@@ -7,63 +8,69 @@ import "fmt"
 
 func main() {
 
-	// Unlike arrays, slices are typed only by the
-	// elements they contain (not the number of elements).
-	// To create an empty slice with non-zero length, use
-	// the builtin `make`. Here we make a slice of
-	// `string`s of length `3` (initially zero-valued).
+	// Diferente de arrays, slices são tipados apenas com
+	// tipo dos elementos que armazenará (sem um tamanho).
+	// Para criar um slice vazio, com tamanho não zero,
+	// deve-se usar o comando nativo `make`. Aqui é feito
+	// um slice de `string`, com tamanho 3
+	// (inicialmente com valor padrão zero).
 	s := make([]string, 3)
-	fmt.Println("emp:", s)
+	fmt.Println("vazio:", s)
 
-	// We can set and get just like with arrays.
+	// Para alterar os valores de um slice e seleciná-los,
+	// faz-se da mesma forma que com array.
 	s[0] = "a"
 	s[1] = "b"
 	s[2] = "c"
-	fmt.Println("set:", s)
-	fmt.Println("get:", s[2])
+	fmt.Println("exibe slice:", s)
+	fmt.Println("valor índice 2:", s[2])
 
-	// `len` returns the length of the slice as expected.
+	// `len` retorna o tamanho de slices, da mesma forma
+	// que com arrays.
 	fmt.Println("len:", len(s))
 
-	// In addition to these basic operations, slices
-	// support several more that make them richer than
-	// arrays. One is the builtin `append`, which
-	// returns a slice containing one or more new values.
-	// Note that we need to accept a return value from
-	// `append` as we may get a new slice value.
+	// Em adição a estas operações básicas, slices
+	// suportam muitas outras que as fazem mais úteis do que
+	// arrays. Uma delas é a função nativa `append`, que
+	// retorna a slice contendo um ou mais novos valores.
+	// Note que é preciso aceitar o valor retornado da função
+	// `append` para ter a slice atualizada.
 	s = append(s, "d")
 	s = append(s, "e", "f")
-	fmt.Println("apd:", s)
+	fmt.Println("slice com acréscimo:", s)
 
-	// Slices can also be `copy`'d. Here we create an
-	// empty slice `c` of the same length as `s` and copy
-	// into `c` from `s`.
+	// Slices também podem ser copiadas com `copy`. Aqui
+	// é criado uma slice vazia `c` do mesmo tamanho da
+	// slice `s`. Então, a slice `s` é copiada para `c`.
 	c := make([]string, len(s))
 	copy(c, s)
-	fmt.Println("cpy:", c)
+	fmt.Println("slice copiada:", c)
 
-	// Slices support a "slice" operator with the syntax
-	// `slice[low:high]`. For example, this gets a slice
-	// of the elements `s[2]`, `s[3]`, and `s[4]`.
+	// Slices suportam um operador "slice" com a sintaxe
+	// `slice[índiceBaixo:índiceAlto]`. Por exemplo, o
+	// comando a seguir seleciona os elementos da slice
+	// de índices 2, 3 e 4; ou `s[2]`, `s[3]`, e `s[4]`.
 	l := s[2:5]
-	fmt.Println("sl1:", l)
+	fmt.Println("slice 1:", l)
 
-	// This slices up to (but excluding) `s[5]`.
+	// Já este, "fatia" o slice `s` até o
+	// índice 5 (não incluso) ou `s[5]`.
 	l = s[:5]
-	fmt.Println("sl2:", l)
+	fmt.Println("slice 2:", l)
 
-	// And this slices up from (and including) `s[2]`.
+	// E este, "fatia" o slices `s` a partir do
+	// índice 2 (incluso) ou `s[2]`.
 	l = s[2:]
-	fmt.Println("sl3:", l)
+	fmt.Println("slice 3:", l)
 
-	// We can declare and initialize a variable for slice
-	// in a single line as well.
+	// Também é possível declarar e inicializar um
+	// slice em apenas uma linha.
 	t := []string{"g", "h", "i"}
-	fmt.Println("dcl:", t)
+	fmt.Println("slice inicializada:", t)
 
-	// Slices can be composed into multi-dimensional data
-	// structures. The length of the inner slices can
-	// vary, unlike with multi-dimensional arrays.
+	// Slices podem ser compsotas em estruturas
+	// multi-dimensionais. O tamanho das slices internas
+	// pode variar, diferente de arrays multi-dimensionais.
 	twoD := make([][]int, 3)
 	for i := 0; i < 3; i++ {
 		innerLen := i + 1
@@ -72,5 +79,5 @@ func main() {
 			twoD[i][j] = i + j
 		}
 	}
-	fmt.Println("2d: ", twoD)
+	fmt.Println("bi-dimensional: ", twoD)
 }

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Regular Expressions</title>
+    <title>Go Em Exemplos: Regular Expressions</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -43,7 +43,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/fI2YIfYsCaL"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/fI2YIfYsCaL"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -329,12 +329,12 @@ the <a href="https://pkg.go.dev/regexp"><code>regexp</code></a> package docs.</p
       
       
       <p class="next">
-        Next example: <a href="json">JSON</a>.
+        Próximo exemplo: <a href="json">JSON</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>

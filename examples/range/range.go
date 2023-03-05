@@ -1,6 +1,7 @@
-// _range_ iterates over elements in a variety of data
-// structures. Let's see how to use `range` with some
-// of the data structures we've already learned.
+// _range_ itera sobre elementos de uma variedade
+// de estrutura de dados. Aqui será demonstrado como
+// utilizá-lo com algumas das estruturas de dados já
+// apresentadas.
 
 package main
 
@@ -8,43 +9,43 @@ import "fmt"
 
 func main() {
 
-	// Here we use `range` to sum the numbers in a slice.
-	// Arrays work like this too.
+	// Aqui é utilizado o `range` para somar os números
+	// de um slice. Funciona da mesma forma em arrays.
 	nums := []int{2, 3, 4}
 	sum := 0
 	for _, num := range nums {
 		sum += num
 	}
-	fmt.Println("sum:", sum)
+	fmt.Println("soma:", sum)
 
-	// `range` on arrays and slices provides both the
-	// index and value for each entry. Above we didn't
-	// need the index, so we ignored it with the
-	// blank identifier `_`. Sometimes we actually want
-	// the indexes though.
+	// `range` tanto em arrays quanto em slices fornece
+	// chave e valor; ou índice e valor para cada entrada.
+	// No exemplo acima não foi necessário o índice, então
+	// foi ignorado com identificador vazio `_`.
+	// Algumas vezes, entretanto, os índices serão necessários.
 	for i, num := range nums {
 		if num == 3 {
-			fmt.Println("index:", i)
+			fmt.Println("índice:", i)
 		}
 	}
 
-	// `range` on map iterates over key/value pairs.
+	// `range` em mapas itera sobre os pares de chave/valor.
 	kvs := map[string]string{"a": "apple", "b": "banana"}
 	for k, v := range kvs {
 		fmt.Printf("%s -> %s\n", k, v)
 	}
 
-	// `range` can also iterate over just the keys of a map.
+	// `range` pode iterar apenas sobre as chaves de um mapa.
 	for k := range kvs {
 		fmt.Println("key:", k)
 	}
 
-	// `range` on strings iterates over Unicode code
-	// points. The first value is the starting byte index
-	// of the `rune` and the second the `rune` itself.
-	// See [Strings and Runes](strings-and-runes) for more
-	// details.
-	for i, c := range "go" {
-		fmt.Println(i, c)
+	// `range` em strings itera sobre pontos de código Unicode.
+	// O primeiro valor é o byte de índice de início da `rune`,
+	// e o segundo, da própria `rune`.
+	// Veja a seção [Strings and Runes](strings-and-runes)
+	// para mais detalhes.
+	for i, rune := range "go" {
+		fmt.Println(i, rune)
 	}
 }

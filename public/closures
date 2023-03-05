@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Closures</title>
+    <title>Go Em Exemplos: Closures</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,10 +27,11 @@
         
         <tr>
           <td class="docs">
-            <p>Go supports <a href="https://en.wikipedia.org/wiki/Anonymous_function"><em>anonymous functions</em></a>,
-which can form <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
-Anonymous functions are useful when you want to define
-a function inline without having to name it.</p>
+            <p>Go suporta <a href="https://en.wikipedia.org/wiki/Anonymous_function"><em>funções anônimas</em></a>,
+as quais podem formar
+<a href="https://pt.wikipedia.org/wiki/Clausura_(ci%C3%AAncia_da_computa%C3%A7%C3%A3o)"><em>closures</em></a>.
+Funções anônimas são úteis quando se pretende
+definir a função em linha sem ser necessário nomeá-la.</p>
 
           </td>
           <td class="code empty leading">
@@ -44,7 +45,7 @@ a function inline without having to name it.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/NpgpzS8ZG8y"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/i-JqAhb-yJ1"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -63,10 +64,10 @@ a function inline without having to name it.</p>
         
         <tr>
           <td class="docs">
-            <p>This function <code>intSeq</code> returns another function, which
-we define anonymously in the body of <code>intSeq</code>. The
-returned function <em>closes over</em> the variable <code>i</code> to
-form a closure.</p>
+            <p>Esta função <code>intSeq</code> retorna outra função, que é
+definida anonimamente no corpo de <code>intSeq</code>. A função
+retornada <em>fecha sobre</em> (<em>closes over</em>) a variavel
+<code>i</code> para formar um fechamento (closure).</p>
 
           </td>
           <td class="code leading">
@@ -96,10 +97,10 @@ form a closure.</p>
         
         <tr>
           <td class="docs">
-            <p>We call <code>intSeq</code>, assigning the result (a function)
-to <code>nextInt</code>. This function value captures its
-own <code>i</code> value, which will be updated each time
-we call <code>nextInt</code>.</p>
+            <p>Aqui, a execução da função <code>intSeq</code> (que retorna outra
+função) é atribuída à variável <code>nextInt</code>.
+Esta função captura o próprio valor de <code>i</code>, que
+será atualizado a cada vez que é chamada <code>nextInt</code>.</p>
 
           </td>
           <td class="code leading">
@@ -112,8 +113,8 @@ we call <code>nextInt</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>See the effect of the closure by calling <code>nextInt</code>
-a few times.</p>
+            <p>Veja o efeito do closure chamando <code>nextInt</code>
+algumas vezes.</p>
 
           </td>
           <td class="code leading">
@@ -128,8 +129,8 @@ a few times.</p>
         
         <tr>
           <td class="docs">
-            <p>To confirm that the state is unique to that
-particular function, create and test a new one.</p>
+            <p>Para confirmar que o estado é único àquela variável
+específica, ao criar outra e testar, o resultado é diverso.</p>
 
           </td>
           <td class="code">
@@ -162,8 +163,8 @@ particular function, create and test a new one.</p>
         
         <tr>
           <td class="docs">
-            <p>The last feature of functions we&rsquo;ll look at for now is
-recursion.</p>
+            <p>O último recurso de funções a ser apresentado
+é a recursão.</p>
 
           </td>
           <td class="code empty">
@@ -176,12 +177,12 @@ recursion.</p>
       
       
       <p class="next">
-        Next example: <a href="recursion">Recursion</a>.
+        Próximo exemplo: <a href="recursion">Recursion</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>

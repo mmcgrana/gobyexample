@@ -1,6 +1,6 @@
 $ go run range.go
-sum: 9
-index: 1
+soma: 9
+índice: 1
 a -> apple
 b -> banana
 key: a

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Variables</title>
+    <title>Go Em Exemplos: Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,9 +27,9 @@
         
         <tr>
           <td class="docs">
-            <p>In Go, <em>variables</em> are explicitly declared and used by
-the compiler to e.g. check type-correctness of function
-calls.</p>
+            <p>Em Go, <em>variáveis</em> são explicitamente declaradas
+e usadas pelo compilador para, por exemplo,
+verificar validade de tipos em chamadas a funções.</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +43,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/N5rWndIliJW"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/2mFIGGGSjvo"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -73,7 +73,8 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p><code>var</code> declares 1 or more variables.</p>
+            <p><code>var</code> é uma palavra reservada que é utilizada
+para declarar variáveis.</p>
 
           </td>
           <td class="code leading">
@@ -87,7 +88,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>You can declare multiple variables at once.</p>
+            <p>Você pode declarar mais de uma variável.</p>
 
           </td>
           <td class="code leading">
@@ -101,7 +102,8 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Go will infer the type of initialized variables.</p>
+            <p>Go, na ausência de declaração de um tipo, irá inferir
+o tipo da variável inicializada.</p>
 
           </td>
           <td class="code leading">
@@ -115,9 +117,10 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Variables declared without a corresponding
-initialization are <em>zero-valued</em>. For example, the
-zero value for an <code>int</code> is <code>0</code>.</p>
+            <p>Variáveis declaradas sem um tipo correspondente são
+inicializadas com valores padrões, ou zero (zero-value).
+Por exemplo, o valor padrão para uma variável do tipo
+<code>int</code> é <code>0</code>.</p>
 
           </td>
           <td class="code leading">
@@ -131,10 +134,10 @@ zero value for an <code>int</code> is <code>0</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>:=</code> syntax is shorthand for declaring and
-initializing a variable, e.g. for
-<code>var f string = &quot;apple&quot;</code> in this case.
-This syntax is only available inside functions.</p>
+            <p>A sintaxe <code>:=</code> é uma abreviação para declarar e
+inicializar uma variavel. Por exemplo,
+<code>var f string = &quot;apple&quot;</code>.
+Esta sintaxe é permitida somente dentro de funções.</p>
 
           </td>
           <td class="code">
@@ -170,12 +173,12 @@ This syntax is only available inside functions.</p>
       
       
       <p class="next">
-        Next example: <a href="constants">Constants</a>.
+        Próximo exemplo: <a href="constants">Constants</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>

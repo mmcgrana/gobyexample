@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Multiple Return Values</title>
+    <title>Go Em Exemplos: Multiple Return Values</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,9 +27,10 @@
         
         <tr>
           <td class="docs">
-            <p>Go has built-in support for <em>multiple return values</em>.
-This feature is used often in idiomatic Go, for example
-to return both result and error values from a function.</p>
+            <p>Go tem suporte nativo para <em>múltiplos valores de retorno</em>.
+Esse recurso é utilizado frequentemente
+em Go idiomático, por exemplo, para retornar
+valores de resultado e de erro de uma função.</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +44,7 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/vZdUvLB1WbK"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/7kvvjKA16K7"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -62,8 +63,8 @@ to return both result and error values from a function.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>(int, int)</code> in this function signature shows that
-the function returns 2 <code>int</code>s.</p>
+            <p>A expressão <code>(int, int)</code> na assinatura desta função
+demonstra que a função retorna dois inteiros <code>int</code>.</p>
 
           </td>
           <td class="code leading">
@@ -89,8 +90,8 @@ the function returns 2 <code>int</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we use the 2 different return values from the
-call with <em>multiple assignment</em>.</p>
+            <p>Aqui são utilizados ambos valores retornados
+da função com <em>atribuição múltipla</em>.</p>
 
           </td>
           <td class="code leading">
@@ -105,8 +106,8 @@ call with <em>multiple assignment</em>.</p>
         
         <tr>
           <td class="docs">
-            <p>If you only want a subset of the returned values,
-use the blank identifier <code>_</code>.</p>
+            <p>Para utilizar apenas um dos valores retornados,
+utiliza-se o identificador vazio <code>_</code>.</p>
 
           </td>
           <td class="code">
@@ -138,8 +139,9 @@ use the blank identifier <code>_</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Accepting a variable number of arguments is another nice
-feature of Go functions; we&rsquo;ll look at this next.</p>
+            <p>Aceitar um número variável de argumentos é outro
+ótimo recurso de Go functions; será apresentado
+no próximo exemplo.</p>
 
           </td>
           <td class="code empty">
@@ -152,12 +154,12 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
       
       
       <p class="next">
-        Next example: <a href="variadic-functions">Variadic Functions</a>.
+        Próximo exemplo: <a href="variadic-functions">Variadic Functions</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>

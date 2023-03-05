@@ -1,20 +1,22 @@
-// [_Variadic functions_](https://en.wikipedia.org/wiki/Variadic_function)
-// can be called with any number of trailing arguments.
-// For example, `fmt.Println` is a common variadic
-// function.
+// [_Funções variádicas_](https://en.wikipedia.org/wiki/Variadic_function)
+// podem ser chamads com qualquer número de argumentos.
+// Por exemplo, `fmt.Println` é uma função variádica
+// comumente utilizada.
 
 package main
 
 import "fmt"
 
-// Here's a function that will take an arbitrary number
-// of `int`s as arguments.
+// Aqui está uma função que aceitará um número arbitrário de
+// inteiros `int`s como argumento(s).
+// Atenção para o operador de espalhamento (spread operator)
+// que deve preceder a declaração do tipo.
 func sum(nums ...int) {
 	fmt.Print(nums, " ")
 	total := 0
-	// Within the function, the type of `nums` is
-	// equivalent to `[]int`. We can call `len(nums)`,
-	// iterate over it with `range`, etc.
+	// Dentro da função, o tipo `nums` é
+	// equivalente a `[]int`. É possível usar `len(nums)`,
+	// iterar utilizando `range`, etc.
 	for _, num := range nums {
 		total += num
 	}
@@ -23,14 +25,16 @@ func sum(nums ...int) {
 
 func main() {
 
-	// Variadic functions can be called in the usual way
-	// with individual arguments.
+	// Funções variádicas pode ser chamada de
+	// forma usual com argumentos individuais.
 	sum(1, 2)
 	sum(1, 2, 3)
 
-	// If you already have multiple args in a slice,
-	// apply them to a variadic function using
-	// `func(slice...)` like this.
+	// Se uma slice com multiplos argumentos estiver
+	// disponível, é possível passá-la como parâmetro
+	// para uma função variádica usando `func(slice...)`.
+	// Atenção que agora o operador de espalhamento deve
+	// suceder o nome do parâmetro.
 	nums := []int{1, 2, 3, 4}
 	sum(nums...)
 }

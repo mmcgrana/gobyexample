@@ -1,7 +1,7 @@
-// In Go, an _array_ is a numbered sequence of elements of a
-// specific length. In typical Go code, [slices](slices) are
-// much more common; arrays are useful in some special
-// scenarios.
+// Em Go, um _array_ é uma sequência numerada de elementos
+// de um tamanho específico. Tipicamente, [slices](slices) são
+// muito mais comuns; arrays são úteis em alguns cenários
+// específicos.
 
 package main
 
@@ -9,36 +9,35 @@ import "fmt"
 
 func main() {
 
-	// Here we create an array `a` that will hold exactly
-	// 5 `int`s. The type of elements and length are both
-	// part of the array's type. By default an array is
-	// zero-valued, which for `int`s means `0`s.
+	// Aqui é criado um array `a` com capacidade de armazenar
+	// exatamente 5 inteiros. O tipo de elemento que ele irá
+	// armazenar (int) e seu tamanho (5) são partes do tipo do array.
+	// Neste caso, o array tem valores padrão zero.
 	var a [5]int
-	fmt.Println("emp:", a)
+	fmt.Println("vazio:", a)
 
-	// We can set a value at an index using the
-	// `array[index] = value` syntax, and get a value with
-	// `array[index]`.
+	// É possível alterar o valor de um índice do array
+	// utilizando a sintaxe `array[índice] = valor`,
+	// bem como selecionar um valor com `array[índice]`.
 	a[4] = 100
-	fmt.Println("set:", a)
-	fmt.Println("get:", a[4])
+	fmt.Println("índice 4 alterado:", a)
+	fmt.Println("valor índice 4:", a[4])
 
-	// The builtin `len` returns the length of an array.
+	// A função nativa `len` retorna o tamanho de um array.
 	fmt.Println("len:", len(a))
 
-	// Use this syntax to declare and initialize an array
-	// in one line.
+	// Para declarar a inicializar um array em uma linha,
+	// é possível usar esta sintaxe.
 	b := [5]int{1, 2, 3, 4, 5}
-	fmt.Println("dcl:", b)
+	fmt.Println("array inicializado:", b)
 
-	// Array types are one-dimensional, but you can
-	// compose types to build multi-dimensional data
-	// structures.
+	// Arrays, via de regra são unidimensionais, mas é possível
+	// compor tipos para formar arrays multidimensionais.
 	var twoD [2][3]int
 	for i := 0; i < 2; i++ {
 		for j := 0; j < 3; j++ {
 			twoD[i][j] = i + j
 		}
 	}
-	fmt.Println("2d: ", twoD)
+	fmt.Println("bi-dimensional: ", twoD)
 }

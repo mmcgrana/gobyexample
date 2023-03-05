@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Maps</title>
+    <title>Go Em Exemplos: Maps</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -27,8 +27,9 @@
         
         <tr>
           <td class="docs">
-            <p><em>Maps</em> are Go&rsquo;s built-in <a href="https://en.wikipedia.org/wiki/Associative_array">associative data type</a>
-(sometimes called <em>hashes</em> or <em>dicts</em> in other languages).</p>
+            <p><em>Maps</em> é o <a href="https://pt.wikipedia.org/wiki/Vetor_associativo">vetor associativo</a>
+nativo de Go.
+(também chamado de <em>hashes</em> ou <em>dicts</em> em outras linguagens).</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +43,7 @@
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/ulCzODwCde_0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a target="_blank" href="https://go.dev/play/p/Z1XbrBn9vsr"><img title="Executar código em nova aba" src="play.png" class="run" /></a><img title="Copiar código" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -72,8 +73,8 @@
         
         <tr>
           <td class="docs">
-            <p>To create an empty map, use the builtin <code>make</code>:
-<code>make(map[key-type]val-type)</code>.</p>
+            <p>Para criar um map vazio, utilize o comando nativo <code>make</code>:
+<code>make(map[tipoDaChave]tipoDoValor)</code>.</p>
 
           </td>
           <td class="code leading">
@@ -86,8 +87,8 @@
         
         <tr>
           <td class="docs">
-            <p>Set key/value pairs using typical <code>name[key] = val</code>
-syntax.</p>
+            <p>É possível alterar ou criar pares de chave/valor
+usando a sintaxe <code>nomeDoMap[chave] = valor</code>.</p>
 
           </td>
           <td class="code leading">
@@ -101,36 +102,37 @@ syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Printing a map with e.g. <code>fmt.Println</code> will show all of
-its key/value pairs.</p>
+            <p>Ao imprimir um map com <code>fmt.Println</code>, por exemplo,
+serão exibidos todos os pares chave/valor.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;mapa:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>Get a value for a key with <code>name[key]</code>.</p>
+            <p>Para selecionar o valor de determinada chave,
+usa-se o comando <code>nomeDoMap[chave]</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v1: &#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;valor 1: &#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>len</code> returns the number of key/value
-pairs when called on a map.</p>
+            <p>O comando nativo <code>len</code>, recebendo um mapa como
+ argumento, retorna o número de pares chave/valor.</p>
 
           </td>
           <td class="code leading">
@@ -143,50 +145,51 @@ pairs when called on a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>delete</code> removes key/value pairs from
-a map.</p>
+            <p>O comando nativo <code>delete</code> remove um determinado
+par de chave/valor do mapa.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&#34;k2&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;mapa:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>The optional second return value when getting a
-value from a map indicates if the key was present
-in the map. This can be used to disambiguate
-between missing keys and keys with zero values
-like <code>0</code> or <code>&quot;&quot;</code>. Here we didn&rsquo;t need the value
-itself, so we ignored it with the <em>blank identifier</em>
-<code>_</code>.</p>
+            <p>Ao selecionar um determinado valor em um mapa,
+existe um segundo retorno opcional, do tipo booleano,
+que indica a presença ou ausência de um determinado
+par no map. Isto pode ser utilizado para desambiguação
+entre chaves ausentes e chaves com valor zero, como
+<code>0</code> or <code>&quot;&quot;</code>. Onde o valor correspondente à chave não
+for necessário, é possível ignorar com um identificador
+vazio <code>_</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="nx">_</span><span class="p">,</span> <span class="nx">prs</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k2&#34;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;prs:&#34;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;presença da chave:&#34;</span><span class="p">,</span> <span class="nx">prs</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>You can also declare and initialize a new map in
-the same line with this syntax.</p>
+            <p>Também é possível declarar e inicializar um
+novo mapa na mesma linha com a sintaxe a seguir.</p>
 
           </td>
           <td class="code">
             
           <pre class="chroma">
     <span class="nx">n</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;mapa:&#34;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -198,20 +201,20 @@ the same line with this syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that maps appear in the form <code>map[k:v k:v]</code> when
-printed with <code>fmt.Println</code>.</p>
+            <p>Note que os mapas são exibidos na forma <code>map[k:v k:v]</code>
+quando impressos com <code>fmt.Println</code>.</p>
 
           </td>
           <td class="code">
             
           <pre class="chroma">
 <span class="gp">$</span> go run maps.go 
-<span class="go">map: map[k1:7 k2:13]
-</span><span class="go">v1:  7
+<span class="go">mapa: map[k1:7 k2:13]
+</span><span class="go">valor 1:  7
 </span><span class="go">len: 2
-</span><span class="go">map: map[k1:7]
-</span><span class="go">prs: false
-</span><span class="go">map: map[bar:2 foo:1]</span></pre>
+</span><span class="go">mapa: map[k1:7]
+</span><span class="go">presença da chave: false
+</span><span class="go">mapa: map[bar:2 foo:1]</span></pre>
           </td>
         </tr>
         
@@ -219,18 +222,18 @@ printed with <code>fmt.Println</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="range">Range</a>.
+        Próximo exemplo: <a href="range">Range</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      Por <a href="https://markmcgranaghan.com">Mark McGranaghan</a> e <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | traduzido por <a href="https://github.com/lucassauro">Lucassauro</a> | <a href="https://github.com/lucassauro/gobyexample">contribua</a> | <a href="https://github.com/mmcgrana/gobyexample#license">licença</a>
     </p>
 
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"v1: \", v1)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"mapa:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"valor 1: \", v1)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"mapa:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"presença da chave:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"mapa:\", n)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -74,7 +74,7 @@ Environment Variables
 HTTP Client
 HTTP Server
 Context
-Spawning Processes
-Exec'ing Processes
+Spawning Processes (Invocando processos)
+Executing Processes
 Signals
 Exit
