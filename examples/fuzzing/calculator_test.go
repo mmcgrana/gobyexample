@@ -1,5 +1,11 @@
 package main
 
+/* Fuzz testing or fuzzing is an automated software testing method
+that injects invalid, malformed, or unexpected inputs into a system
+to reveal software defects and vulnerabilities.
+A fuzzing tool injects these inputs into the system and then monitors for exceptions such as crashes or information leakage
+*/
+
 import (
 	"bytes"
 	"errors"
