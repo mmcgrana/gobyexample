@@ -42,7 +42,7 @@
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/ulCzODwCde_0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/xl_teZEVqbo"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -122,7 +122,23 @@ its key/value pairs.</p>
             
           <pre class="chroma">
     <span class="nx">v1</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k1&#34;</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v1: &#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v1:&#34;</span><span class="p">,</span> <span class="nx">v1</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>If the key doesn&rsquo;t exist, the
+<a href="https://go.dev/ref/spec#The_zero_value">zero value</a> of the
+value type is returned.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma">
+    <span class="nx">v3</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&#34;k3&#34;</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;v3:&#34;</span><span class="p">,</span> <span class="nx">v3</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -207,7 +223,8 @@ printed with <code>fmt.Println</code>.</p>
           <pre class="chroma">
 <span class="gp">$</span> go run maps.go 
 <span class="go">map: map[k1:7 k2:13]
-</span><span class="go">v1:  7
+</span><span class="go">v1: 7
+</span><span class="go">v3: 0
 </span><span class="go">len: 2
 </span><span class="go">map: map[k1:7]
 </span><span class="go">prs: false
@@ -230,7 +247,7 @@ printed with <code>fmt.Println</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"v1: \", v1)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    m :\u003D make(map[string]int)\u000A');codeLines.push('    m[\"k1\"] \u003D 7\u000A    m[\"k2\"] \u003D 13\u000A');codeLines.push('    fmt.Println(\"map:\", m)\u000A');codeLines.push('    v1 :\u003D m[\"k1\"]\u000A    fmt.Println(\"v1:\", v1)\u000A');codeLines.push('    v3 :\u003D m[\"k3\"]\u000A    fmt.Println(\"v3:\", v3)\u000A');codeLines.push('    fmt.Println(\"len:\", len(m))\u000A');codeLines.push('    delete(m, \"k2\")\u000A    fmt.Println(\"map:\", m)\u000A');codeLines.push('    _, prs :\u003D m[\"k2\"]\u000A    fmt.Println(\"prs:\", prs)\u000A');codeLines.push('    n :\u003D map[string]int{\"foo\": 1, \"bar\": 2}\u000A    fmt.Println(\"map:\", n)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

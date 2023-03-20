@@ -22,7 +22,13 @@ func main() {
 
 	// Get a value for a key with `name[key]`.
 	v1 := m["k1"]
-	fmt.Println("v1: ", v1)
+	fmt.Println("v1:", v1)
+
+	// If the key doesn't exist, the
+	// [zero value](https://go.dev/ref/spec#The_zero_value) of the
+	// value type is returned.
+	v3 := m["k3"]
+	fmt.Println("v3:", v3)
 
 	// The builtin `len` returns the number of key/value
 	// pairs when called on a map.
