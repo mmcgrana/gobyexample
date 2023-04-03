@@ -70,6 +70,7 @@ Contributor translations of the Go by Example site are available in:
 * [Korean](https://mingrammer.com/gobyexample/) by [mingrammer](https://github.com/mingrammer)
 * [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 * [Ukrainian](https://butuzov.github.io/gobyexample/) by [butuzov](https://github.com/butuzov/gobyexample)
+* [Brazilian Portuguese](https://lcslitx.github.io/GoEmExemplos/) by [lcslitx](https://github.com/LCSLITX)
 
 ### Thanks
 
