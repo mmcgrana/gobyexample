@@ -29,7 +29,7 @@
           <td class="docs">
             <p>Go supports <em>embedding</em> of structs and interfaces
 to express a more seamless <em>composition</em> of types.
-This is not to be confused with <a href="/embed-directive"><code>//go:embed</code></a> which is
+This is not to be confused with <code>//go:embed</code> which is
 a go directive introduced in Go version 1.16+ to embed
 files and folders into the application binary.</p>
 
