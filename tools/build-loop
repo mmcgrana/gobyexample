@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 TRAPPING=0
 trap "{ echo finishing; TRAPPING=1; }" SIGINT

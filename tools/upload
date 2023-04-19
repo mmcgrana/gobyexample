@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 exec go run tools/upload.go -region us-east-1 -bucket gobyexample.com
