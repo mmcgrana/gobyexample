@@ -71,6 +71,7 @@ Contributor translations of the Go by Example site are available in:
 * [Russian](https://gobyexample.com.ru/) by [badkaktus](https://github.com/badkaktus)
 * [Ukrainian](https://butuzov.github.io/gobyexample/) by [butuzov](https://github.com/butuzov/gobyexample)
 * [Brazilian Portuguese](https://lcslitx.github.io/GoEmExemplos/) by [lcslitx](https://github.com/LCSLITX)
+* [Vietnamese](https://gobyexample.vn/) by [s6k Gopher](https://github.com/s6k-gopher/gobyexample-vn)
 
 ### Thanks
 
