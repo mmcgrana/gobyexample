@@ -50,4 +50,15 @@ func main() {
 	// Structs are mutable.
 	sp.age = 51
 	fmt.Println(sp.age)
+
+	// Structs don't always have to be defined as instances of types,
+	// you can define a struct anonymously.
+	dog := struct {
+		name   string
+		isGood bool
+	}{
+		"Rex",
+		true,
+	}
+	fmt.Println(dog)
 }
