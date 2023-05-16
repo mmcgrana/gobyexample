@@ -42,7 +42,7 @@ a more powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/ryiklDqjbId"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/bqMChdRGpcl"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -74,14 +74,15 @@ a more powerful interface to sequences than arrays.</p>
           <td class="docs">
             <p>Unlike arrays, slices are typed only by the
 elements they contain (not the number of elements).
-unassigned slice equal to nil and has a length of <code>0</code></p>
+An uninitialized slice equals to nil and has
+length 0.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
     <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">string</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unassigned:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;uninit:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </pre>
           </td>
         </tr>
@@ -91,13 +92,16 @@ unassigned slice equal to nil and has a length of <code>0</code></p>
             <p>To create an empty slice with non-zero length, use
 the builtin <code>make</code>. Here we make a slice of
 <code>string</code>s of length <code>3</code> (initially zero-valued).
-<code>string</code>s of capacity <code>5</code>.</p>
+By default a new slice&rsquo;s capacity is equal to its
+length; if we know the slice is going to grow ahead
+of time, it&rsquo;s possible to pass a capacity explicitly
+as an additional parameter ot <code>make</code>.</p>
 
           </td>
           <td class="code leading">
             
           <pre class="chroma">
-    <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;emp:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="s">&#34;cap:&#34;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
 </pre>
           </td>
@@ -267,8 +271,8 @@ they are rendered similarly by <code>fmt.Println</code>.</p>
             
           <pre class="chroma">
 <span class="gp">$</span> go run slices.go
-<span class="go">unassigned: [] true true
-</span><span class="go">emp: [  ] len: 3 cap: 5
+<span class="go">uninit: [] true true
+</span><span class="go">emp: [  ] len: 3 cap: 3
 </span><span class="go">set: [a b c]
 </span><span class="go">get: c
 </span><span class="go">len: 3
@@ -322,7 +326,7 @@ Go&rsquo;s other key builtin data structure: maps.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var s []string\u000A    fmt.Println(\"unassigned:\", s, s \u003D\u003D nil, len(s) \u003D\u003D 0)\u000A');codeLines.push('    s \u003D make([]string, 3, 5)\u000A    fmt.Println(\"emp:\", s, \"len:\", len(s), \"cap:\", cap(s))\u000A');codeLines.push('    s[0] \u003D \"a\"\u000A    s[1] \u003D \"b\"\u000A    s[2] \u003D \"c\"\u000A    fmt.Println(\"set:\", s)\u000A    fmt.Println(\"get:\", s[2])\u000A');codeLines.push('    fmt.Println(\"len:\", len(s))\u000A');codeLines.push('    s \u003D append(s, \"d\")\u000A    s \u003D append(s, \"e\", \"f\")\u000A    fmt.Println(\"apd:\", s)\u000A');codeLines.push('    c :\u003D make([]string, len(s))\u000A    copy(c, s)\u000A    fmt.Println(\"cpy:\", c)\u000A');codeLines.push('    l :\u003D s[2:5]\u000A    fmt.Println(\"sl1:\", l)\u000A');codeLines.push('    l \u003D s[:5]\u000A    fmt.Println(\"sl2:\", l)\u000A');codeLines.push('    l \u003D s[2:]\u000A    fmt.Println(\"sl3:\", l)\u000A');codeLines.push('    t :\u003D []string{\"g\", \"h\", \"i\"}\u000A    fmt.Println(\"dcl:\", t)\u000A');codeLines.push('    twoD :\u003D make([][]int, 3)\u000A    for i :\u003D 0; i \u003C 3; i++ {\u000A        innerLen :\u003D i + 1\u000A        twoD[i] \u003D make([]int, innerLen)\u000A        for j :\u003D 0; j \u003C innerLen; j++ {\u000A            twoD[i][j] \u003D i + j\u000A        }\u000A    }\u000A    fmt.Println(\"2d: \", twoD)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func main() {\u000A');codeLines.push('    var s []string\u000A    fmt.Println(\"uninit:\", s, s \u003D\u003D nil, len(s) \u003D\u003D 0)\u000A');codeLines.push('    s \u003D make([]string, 3)\u000A    fmt.Println(\"emp:\", s, \"len:\", len(s), \"cap:\", cap(s))\u000A');codeLines.push('    s[0] \u003D \"a\"\u000A    s[1] \u003D \"b\"\u000A    s[2] \u003D \"c\"\u000A    fmt.Println(\"set:\", s)\u000A    fmt.Println(\"get:\", s[2])\u000A');codeLines.push('    fmt.Println(\"len:\", len(s))\u000A');codeLines.push('    s \u003D append(s, \"d\")\u000A    s \u003D append(s, \"e\", \"f\")\u000A    fmt.Println(\"apd:\", s)\u000A');codeLines.push('    c :\u003D make([]string, len(s))\u000A    copy(c, s)\u000A    fmt.Println(\"cpy:\", c)\u000A');codeLines.push('    l :\u003D s[2:5]\u000A    fmt.Println(\"sl1:\", l)\u000A');codeLines.push('    l \u003D s[:5]\u000A    fmt.Println(\"sl2:\", l)\u000A');codeLines.push('    l \u003D s[2:]\u000A    fmt.Println(\"sl3:\", l)\u000A');codeLines.push('    t :\u003D []string{\"g\", \"h\", \"i\"}\u000A    fmt.Println(\"dcl:\", t)\u000A');codeLines.push('    twoD :\u003D make([][]int, 3)\u000A    for i :\u003D 0; i \u003C 3; i++ {\u000A        innerLen :\u003D i + 1\u000A        twoD[i] \u003D make([]int, innerLen)\u000A        for j :\u003D 0; j \u003C innerLen; j++ {\u000A            twoD[i][j] \u003D i + j\u000A        }\u000A    }\u000A    fmt.Println(\"2d: \", twoD)\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

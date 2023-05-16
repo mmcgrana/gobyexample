@@ -9,15 +9,19 @@ func main() {
 
 	// Unlike arrays, slices are typed only by the
 	// elements they contain (not the number of elements).
-	// unassigned slice equal to nil and has a length of `0`
+	// An uninitialized slice equals to nil and has
+	// length 0.
 	var s []string
-	fmt.Println("unassigned:", s, s == nil, len(s) == 0)
+	fmt.Println("uninit:", s, s == nil, len(s) == 0)
 
 	// To create an empty slice with non-zero length, use
 	// the builtin `make`. Here we make a slice of
 	// `string`s of length `3` (initially zero-valued).
-	// `string`s of capacity `5`.
-	s = make([]string, 3, 5)
+	// By default a new slice's capacity is equal to its
+	// length; if we know the slice is going to grow ahead
+	// of time, it's possible to pass a capacity explicitly
+	// as an additional parameter ot `make`.
+	s = make([]string, 3)
 	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
 
 	// We can set and get just like with arrays.
