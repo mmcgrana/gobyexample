@@ -1,7 +1,8 @@
 # Note that while slices are different types than arrays,
 # they are rendered similarly by `fmt.Println`.
 $ go run slices.go
-emp: [  ]
+unassigned: [] true true
+emp: [  ] len: 3 cap: 5
 set: [a b c]
 get: c
 len: 3
