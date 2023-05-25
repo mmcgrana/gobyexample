@@ -95,7 +95,7 @@ the builtin <code>make</code>. Here we make a slice of
 By default a new slice&rsquo;s capacity is equal to its
 length; if we know the slice is going to grow ahead
 of time, it&rsquo;s possible to pass a capacity explicitly
-as an additional parameter ot <code>make</code>.</p>
+as an additional parameter to <code>make</code>.</p>
 
           </td>
           <td class="code leading">
