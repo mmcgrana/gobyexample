@@ -23,8 +23,8 @@
         
         <tr>
           <td class="docs">
-            <p>Our first program will print the classic &ldquo;hello world&rdquo;
-message. Here&rsquo;s the full source code.</p>
+            <p>ჩვენი პირველი პროგრამა დაბეჭდავს კლასიკურ &ldquo;hello world&rdquo;
+მესიჯს. მარჯვნივ მოცემულია სრული სორს კოდი.</p>
 
           </td>
           <td class="code leading">
@@ -65,8 +65,7 @@ message. Here&rsquo;s the full source code.</p>
         
         <tr>
           <td class="docs">
-            <p>To run the program, put the code in <code>hello-world.go</code> and
-use <code>go run</code>.</p>
+            <p>პროგრამის გასაშვებად, დააკოპირე კოდი <code>hello-world.go</code> ფაილში და ამავე ფაილის დირექტორიაში ტერმინალიდან გაუშვი ბრძანება <code>go run</code>.</p>
 
           </td>
           <td class="code leading">
@@ -79,8 +78,7 @@ use <code>go run</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to build our programs into
-binaries. We can do this using <code>go build</code>.</p>
+            <p>ზოგჯერ გვჭირდება, რომ ჩვენი პროგრამისგან ბინარული ფაილი შევქმნათ, ანუ დავბილდოთ. ამას შევძლებთ ბრძანებით <code>go build</code>.</p>
 
           </td>
           <td class="code leading">
@@ -94,7 +92,7 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can then execute the built binary directly.</p>
+            <p>შედეგად, შევძლებთ ჩვენი პროგრამის ბინარული ფაილით გაშვებას.</p>
 
           </td>
           <td class="code leading">
@@ -107,8 +105,7 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we can run and build basic Go programs, let&rsquo;s
-learn more about the language.</p>
+            <p>ახლა კი, რახან, უკვე ვიცით თუ როგორ დავბილდოთ და გავუშვათ, მარტივი, Go-ს პროგრამა, შეგვიძლია გავაგრძელოთ ჩვენი მოგზაურობა ამ ენის შესაძლებლებლობების აღმოსაჩენად.</p>
 
           </td>
           <td class="code empty">
@@ -121,12 +118,12 @@ learn more about the language.</p>
       
       
       <p class="next">
-        Next example: <a href="values">Values</a>.
+        შემდეგი მაგალითი: <a href="values">Values</a>.
       </p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      by <a href="https://www.linkedin.com/in/dsha256/">David Shainidze</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
     </p>
 
     </div>
