@@ -43,7 +43,7 @@ records.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/EzGgwrfM-yD"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/ex1J3oieEeo"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -229,7 +229,8 @@ pointers are automatically dereferenced.</p>
           <td class="docs">
             <p>If a struct type is only used for a single value, we don&rsquo;t
 have to give it a name. The value can have an anonymous
-struct type.</p>
+struct type. This technique is commonly used for
+<a href="testing-and-benchmarking">table-driven tests</a>.</p>
 
           </td>
           <td class="code">

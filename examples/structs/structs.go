@@ -53,7 +53,8 @@ func main() {
 
 	// If a struct type is only used for a single value, we don't
 	// have to give it a name. The value can have an anonymous
-	// struct type.
+	// struct type. This technique is commonly used for
+	// [table-driven tests](testing-and-benchmarking).
 	dog := struct {
 		name   string
 		isGood bool
