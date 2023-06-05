@@ -43,7 +43,7 @@ records.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/n7jt1x3iw4Z"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/D9lW-Dd6XQP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -216,11 +216,32 @@ pointers are automatically dereferenced.</p>
             <p>Structs are mutable.</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
             
           <pre class="chroma">
     <span class="nx">sp</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">51</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sp</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
+</pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Structs don&rsquo;t always have to be defined as instances of types,
+you can define a struct anonymously.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma">
+    <span class="nx">dog</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">name</span>   <span class="kt">string</span>
+        <span class="nx">isGood</span> <span class="kt">bool</span>
+    <span class="p">}{</span>
+        <span class="s">&#34;Rex&#34;</span><span class="p">,</span>
+        <span class="kc">true</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">dog</span><span class="p">)</span>
 <span class="p">}</span>
 </pre>
           </td>
@@ -244,7 +265,8 @@ pointers are automatically dereferenced.</p>
 </span><span class="go">&amp;{Jon 42}
 </span><span class="go">Sean
 </span><span class="go">50
-</span><span class="go">51</span></pre>
+</span><span class="go">51
+</span><span class="go">{Rex true}</span></pre>
           </td>
         </tr>
         
@@ -263,7 +285,7 @@ pointers are automatically dereferenced.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type person struct {\u000A    name string\u000A    age  int\u000A}\u000A');codeLines.push('func newPerson(name string) *person {\u000A');codeLines.push('    p :\u003D person{name: name}\u000A    p.age \u003D 42\u000A    return \u0026p\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(person{\"Bob\", 20})\u000A');codeLines.push('    fmt.Println(person{name: \"Alice\", age: 30})\u000A');codeLines.push('    fmt.Println(person{name: \"Fred\"})\u000A');codeLines.push('    fmt.Println(\u0026person{name: \"Ann\", age: 40})\u000A');codeLines.push('    fmt.Println(newPerson(\"Jon\"))\u000A');codeLines.push('    s :\u003D person{name: \"Sean\", age: 50}\u000A    fmt.Println(s.name)\u000A');codeLines.push('    sp :\u003D \u0026s\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    sp.age \u003D 51\u000A    fmt.Println(sp.age)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type person struct {\u000A    name string\u000A    age  int\u000A}\u000A');codeLines.push('func newPerson(name string) *person {\u000A');codeLines.push('    p :\u003D person{name: name}\u000A    p.age \u003D 42\u000A    return \u0026p\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    fmt.Println(person{\"Bob\", 20})\u000A');codeLines.push('    fmt.Println(person{name: \"Alice\", age: 30})\u000A');codeLines.push('    fmt.Println(person{name: \"Fred\"})\u000A');codeLines.push('    fmt.Println(\u0026person{name: \"Ann\", age: 40})\u000A');codeLines.push('    fmt.Println(newPerson(\"Jon\"))\u000A');codeLines.push('    s :\u003D person{name: \"Sean\", age: 50}\u000A    fmt.Println(s.name)\u000A');codeLines.push('    sp :\u003D \u0026s\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    sp.age \u003D 51\u000A    fmt.Println(sp.age)\u000A');codeLines.push('    dog :\u003D struct {\u000A        name   string\u000A        isGood bool\u000A    }{\u000A        \"Rex\",\u000A        true,\u000A    }\u000A    fmt.Println(dog)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
