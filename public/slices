@@ -42,7 +42,7 @@ a more powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/bqMChdRGpcl"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/553_cYPVlPH"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -95,7 +95,7 @@ the builtin <code>make</code>. Here we make a slice of
 By default a new slice&rsquo;s capacity is equal to its
 length; if we know the slice is going to grow ahead
 of time, it&rsquo;s possible to pass a capacity explicitly
-as an additional parameter ot <code>make</code>.</p>
+as an additional parameter to <code>make</code>.</p>
 
           </td>
           <td class="code leading">

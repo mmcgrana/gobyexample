@@ -20,7 +20,7 @@ func main() {
 	// By default a new slice's capacity is equal to its
 	// length; if we know the slice is going to grow ahead
 	// of time, it's possible to pass a capacity explicitly
-	// as an additional parameter ot `make`.
+	// as an additional parameter to `make`.
 	s = make([]string, 3)
 	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
 
