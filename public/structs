@@ -43,7 +43,7 @@ records.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/D9lW-Dd6XQP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/EzGgwrfM-yD"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
 </pre>
           </td>
@@ -227,8 +227,9 @@ pointers are automatically dereferenced.</p>
         
         <tr>
           <td class="docs">
-            <p>Structs don&rsquo;t always have to be defined as instances of types,
-you can define a struct anonymously.</p>
+            <p>If a struct type is only used for a single value, we don&rsquo;t
+have to give it a name. The value can have an anonymous
+struct type.</p>
 
           </td>
           <td class="code">

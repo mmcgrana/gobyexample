@@ -51,8 +51,9 @@ func main() {
 	sp.age = 51
 	fmt.Println(sp.age)
 
-	// Structs don't always have to be defined as instances of types,
-	// you can define a struct anonymously.
+	// If a struct type is only used for a single value, we don't
+	// have to give it a name. The value can have an anonymous
+	// struct type.
 	dog := struct {
 		name   string
 		isGood bool
