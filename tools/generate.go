@@ -145,7 +145,6 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 		lines = append(lines, strings.Replace(line, "\t", "    ", -1))
 		source = append(source, line)
 	}
-	filecontent := strings.Join(source, "\n")
 	segs := []*Seg{}
 	lastSeen := ""
 	for _, line := range lines {
@@ -175,7 +174,12 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 				newSeg := Seg{Docs: "", Code: line}
 				segs = append(segs, &newSeg)
 			} else {
-				segs[len(segs)-1].Code = segs[len(segs)-1].Code + "\n" + line
+				lastSeg := segs[len(segs)-1]
+				if len(lastSeg.Code) == 0 {
+					lastSeg.Code = line
+				} else {
+					lastSeg.Code = lastSeg.Code + "\n" + line
+				}
 			}
 			debug("CODE: " + line)
 			lastSeen = "code"
@@ -186,7 +190,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 		seg.CodeLeading = (i < (len(segs) - 1))
 		seg.CodeRun = strings.Contains(seg.Code, "package main")
 	}
-	return segs, filecontent
+	return segs, strings.Join(source, "\n")
 }
 
 func chromaFormat(code, filePath string) string {
@@ -222,12 +226,6 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 			seg.DocsRendered = markdown(seg.Docs)
 		}
 		if seg.Code != "" {
-			// TODO: with the update to Chroma 2.8.0 I had to change this, because the
-			// new chromoa would render this leading newline for all code segments,
-			// which would then be shifted down compared to the doc segments. Maybe
-			// the parsing should be modified to not produce this \n in the first
-			// place?
-			seg.Code = strings.TrimLeft(seg.Code, "\n")
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
 
 			// adding the content to the js code for copying to the clipboard
