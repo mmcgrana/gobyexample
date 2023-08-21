@@ -43,8 +43,7 @@ and numeric values.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/Vw-pXSfo9_b"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,11 +53,10 @@ and numeric values.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;math&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,9 +67,7 @@ and numeric values.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">const</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;constant&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;constant&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -81,9 +77,8 @@ and numeric values.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -95,9 +90,7 @@ statement can.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">500000000</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">500000000</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -109,10 +102,8 @@ arbitrary precision.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="kd">const</span> <span class="nx">d</span> <span class="p">=</span> <span class="mf">3e20</span> <span class="o">/</span> <span class="nx">n</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">d</span> <span class="p">=</span> <span class="mf">3e20</span> <span class="o">/</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -124,9 +115,7 @@ one, such as by an explicit conversion.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -140,10 +129,8 @@ assignment or function call. For example, here
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nf">Sin</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nf">Sin</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -157,11 +144,11 @@ assignment or function call. For example, here
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run constant.go 
-<span class="go">constant
-</span><span class="go">6e+11
-</span><span class="go">600000000000
-</span><span class="go">-0.28470407323754404</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run constant.go 
+</span></span><span class="line"><span class="cl"><span class="go">constant
+</span></span></span><span class="line"><span class="cl"><span class="go">6e+11
+</span></span></span><span class="line"><span class="cl"><span class="go">600000000000
+</span></span></span><span class="line"><span class="cl"><span class="go">-0.28470407323754404</span></span></span></code></pre>
           </td>
         </tr>
         

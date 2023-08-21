@@ -36,9 +36,7 @@ build time. Read more about the embed directive
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/6m2ll-D52BB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
-<span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -50,11 +48,9 @@ identifiers from this package, you can do a blank import with <code>_ &quot;embe
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;embed&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;embed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -67,10 +63,8 @@ Go source file. This directive embeds the contents of the file into the
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="c1">//go:embed folder/single_file.txt
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">fileString</span> <span class="kt">string</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileString</span> <span class="kt">string</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -81,10 +75,8 @@ Go source file. This directive embeds the contents of the file into the
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="c1">//go:embed folder/single_file.txt
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">fileByte</span> <span class="p">[]</span><span class="kt">byte</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileByte</span> <span class="p">[]</span><span class="kt">byte</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -97,11 +89,9 @@ implements a simple virtual file system.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="c1">//go:embed folder/single_file.txt
-</span><span class="c1">//go:embed folder/*.hash
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">folder</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1">//go:embed folder/*.hash
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">folder</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -111,8 +101,7 @@ implements a simple virtual file system.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -123,10 +112,8 @@ implements a simple virtual file system.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nb">print</span><span class="p">(</span><span class="nx">fileString</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fileByte</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nx">fileString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fileByte</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -137,10 +124,8 @@ implements a simple virtual file system.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">content1</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file1.hash&#34;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content1</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content1</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file1.hash&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content1</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -150,10 +135,9 @@ implements a simple virtual file system.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="nx">content2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file2.hash&#34;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content2</span><span class="p">))</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file2.hash&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -170,11 +154,10 @@ this example can only be run on your local machine.)</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> mkdir -p folder
-<span class="gp">$</span> echo &#34;hello go&#34; &gt; folder/single_file.txt
-<span class="gp">$</span> echo &#34;123&#34; &gt; folder/file1.hash
-<span class="gp">$</span> echo &#34;456&#34; &gt; folder/file2.hash</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> mkdir -p folder
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;hello go&#34; &gt; folder/single_file.txt
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;123&#34; &gt; folder/file1.hash
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;456&#34; &gt; folder/file2.hash</span></span></code></pre>
           </td>
         </tr>
         
@@ -184,11 +167,11 @@ this example can only be run on your local machine.)</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run embed-directive.go
-<span class="go">hello go
-</span><span class="go">hello go
-</span><span class="go">123
-</span><span class="go">456</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run embed-directive.go
+</span></span><span class="line"><span class="cl"><span class="go">hello go
+</span></span></span><span class="line"><span class="cl"><span class="go">hello go
+</span></span></span><span class="line"><span class="cl"><span class="go">123
+</span></span></span><span class="line"><span class="cl"><span class="go">456</span></span></span></code></pre>
           </td>
         </tr>
         

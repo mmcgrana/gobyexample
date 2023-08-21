@@ -43,8 +43,7 @@ Here&rsquo;s how to parse URLs in Go.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/fHTQn9X7l1B"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,12 +53,11 @@ Here&rsquo;s how to parse URLs in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;net&#34;</span>
-    <span class="s">&#34;net/url&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/url&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,8 +67,7 @@ Here&rsquo;s how to parse URLs in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -83,9 +80,7 @@ query params, and query fragment.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;postgres://user:pass@host.com:5432/path?k=v#f&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;postgres://user:pass@host.com:5432/path?k=v#f&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -96,12 +91,10 @@ query params, and query fragment.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -112,9 +105,7 @@ query params, and query fragment.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -127,12 +118,10 @@ values.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Username</span><span class="p">())</span>
-    <span class="nx">p</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Password</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Username</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">p</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Password</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -144,12 +133,10 @@ if present. Use <code>SplitHostPort</code> to extract them.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
-    <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">SplitHostPort</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">host</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">port</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">SplitHostPort</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">port</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -161,10 +148,8 @@ the <code>#</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -179,13 +164,11 @@ if you only want the first value.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&#34;k&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&#34;k&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -201,20 +184,19 @@ pieces that we extracted.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run url-parsing.go 
-<span class="go">postgres
-</span><span class="go">user:pass
-</span><span class="go">user
-</span><span class="go">pass
-</span><span class="go">host.com:5432
-</span><span class="go">host.com
-</span><span class="go">5432
-</span><span class="go">/path
-</span><span class="go">f
-</span><span class="go">k=v
-</span><span class="go">map[k:[v]]
-</span><span class="go">v</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run url-parsing.go 
+</span></span><span class="line"><span class="cl"><span class="go">postgres
+</span></span></span><span class="line"><span class="cl"><span class="go">user:pass
+</span></span></span><span class="line"><span class="cl"><span class="go">user
+</span></span></span><span class="line"><span class="cl"><span class="go">pass
+</span></span></span><span class="line"><span class="cl"><span class="go">host.com:5432
+</span></span></span><span class="line"><span class="cl"><span class="go">host.com
+</span></span></span><span class="line"><span class="cl"><span class="go">5432
+</span></span></span><span class="line"><span class="cl"><span class="go">/path
+</span></span></span><span class="line"><span class="cl"><span class="go">f
+</span></span></span><span class="line"><span class="cl"><span class="go">k=v
+</span></span></span><span class="line"><span class="cl"><span class="go">map[k:[v]]
+</span></span></span><span class="line"><span class="cl"><span class="go">v</span></span></span></code></pre>
           </td>
         </tr>
         

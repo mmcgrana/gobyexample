@@ -44,8 +44,7 @@ in Go.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/fI2YIfYsCaL"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -55,12 +54,11 @@ in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bytes&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;regexp&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;regexp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -70,8 +68,7 @@ in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -82,10 +79,8 @@ in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MatchString</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">,</span> <span class="s">&#34;peach&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MatchString</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">,</span> <span class="s">&#34;peach&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -98,9 +93,7 @@ optimized <code>Regexp</code> struct.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -112,9 +105,7 @@ a match test like we saw earlier.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">MatchString</span><span class="p">(</span><span class="s">&#34;peach&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">MatchString</span><span class="p">(</span><span class="s">&#34;peach&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -125,9 +116,7 @@ a match test like we saw earlier.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindString</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindString</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -140,9 +129,7 @@ matching text.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;idx:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindStringIndex</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;idx:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindStringIndex</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -156,9 +143,7 @@ information for both <code>p([a-z]+)ch</code> and <code>([a-z]+)</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindStringSubmatch</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindStringSubmatch</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -170,9 +155,7 @@ indexes of matches and submatches.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindStringSubmatchIndex</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindStringSubmatchIndex</span><span class="p">(</span><span class="s">&#34;peach punch&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -185,9 +168,7 @@ example to find all matches for a regexp.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -199,10 +180,8 @@ functions we saw above as well.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;all:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindAllStringSubmatchIndex</span><span class="p">(</span>
-        <span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;all:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindAllStringSubmatchIndex</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -215,9 +194,7 @@ of matches.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="s">&#34;peach punch pinch&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -231,9 +208,7 @@ function name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">Match</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;peach&#34;</span><span class="p">)))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">Match</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;peach&#34;</span><span class="p">)))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -248,10 +223,8 @@ global variables.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">r</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;regexp:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">r</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">&#34;p([a-z]+)ch&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;regexp:&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -263,9 +236,7 @@ subsets of strings with other values.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="s">&#34;a peach&#34;</span><span class="p">,</span> <span class="s">&#34;&lt;fruit&gt;&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="s">&#34;a peach&#34;</span><span class="p">,</span> <span class="s">&#34;&lt;fruit&gt;&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -277,12 +248,10 @@ text with a given function.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">in</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;a peach&#34;</span><span class="p">)</span>
-    <span class="nx">out</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">ReplaceAllFunc</span><span class="p">(</span><span class="nx">in</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">in</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;a peach&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">out</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">ReplaceAllFunc</span><span class="p">(</span><span class="nx">in</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -296,20 +265,20 @@ text with a given function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="gp">$</span> go run regular-expressions.go
-<span class="go">true
-</span><span class="go">true
-</span><span class="go">peach
-</span><span class="go">idx: [0 5]
-</span><span class="go">[peach ea]
-</span><span class="go">[0 5 1 3]
-</span><span class="go">[peach punch pinch]
-</span><span class="go">all: [[0 5 1 3] [6 11 7 9] [12 17 13 15]]
-</span><span class="go">[peach punch]
-</span><span class="go">true
-</span><span class="go">regexp: p([a-z]+)ch
-</span><span class="go">a &lt;fruit&gt;
-</span><span class="go">a PEACH</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run regular-expressions.go
+</span></span><span class="line"><span class="cl"><span class="go">true
+</span></span></span><span class="line"><span class="cl"><span class="go">true
+</span></span></span><span class="line"><span class="cl"><span class="go">peach
+</span></span></span><span class="line"><span class="cl"><span class="go">idx: [0 5]
+</span></span></span><span class="line"><span class="cl"><span class="go">[peach ea]
+</span></span></span><span class="line"><span class="cl"><span class="go">[0 5 1 3]
+</span></span></span><span class="line"><span class="cl"><span class="go">[peach punch pinch]
+</span></span></span><span class="line"><span class="cl"><span class="go">all: [[0 5 1 3] [6 11 7 9] [12 17 13 15]]
+</span></span></span><span class="line"><span class="cl"><span class="go">[peach punch]
+</span></span></span><span class="line"><span class="cl"><span class="go">true
+</span></span></span><span class="line"><span class="cl"><span class="go">regexp: p([a-z]+)ch
+</span></span></span><span class="line"><span class="cl"><span class="go">a &lt;fruit&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">a PEACH</span></span></span></code></pre>
           </td>
         </tr>
         

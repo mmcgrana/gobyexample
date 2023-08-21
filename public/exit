@@ -39,8 +39,7 @@ status.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/b9aYzlENkb__R"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -50,11 +49,10 @@ status.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -64,8 +62,7 @@ status.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -77,9 +74,7 @@ this <code>fmt.Println</code> will never be called.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;!&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;!&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -90,10 +85,8 @@ this <code>fmt.Println</code> will never be called.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -123,9 +116,8 @@ will be picked up by <code>go</code> and printed.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run exit.go
-<span class="go">exit status 3</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run exit.go
+</span></span><span class="line"><span class="cl"><span class="go">exit status 3</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -137,11 +129,10 @@ the status in the terminal.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go build exit.go
-<span class="gp">$</span> ./exit
-<span class="gp">$</span> echo $?
-<span class="go">3</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build exit.go
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ./exit
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo $?
+</span></span><span class="line"><span class="cl"><span class="go">3</span></span></span></code></pre>
           </td>
         </tr>
         

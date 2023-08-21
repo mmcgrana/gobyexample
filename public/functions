@@ -43,8 +43,7 @@ functions with a few different examples.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/-o49-dQfGbK"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,8 +53,7 @@ functions with a few different examples.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -67,9 +65,7 @@ their sum as an <code>int</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">plus</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">plus</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -82,10 +78,8 @@ expression.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -99,11 +93,9 @@ declares the type.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">plusPlus</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">plusPlus</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -113,8 +105,7 @@ declares the type.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -126,10 +117,8 @@ declares the type.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">res</span> <span class="o">:=</span> <span class="nf">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1+2 =&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">res</span> <span class="o">:=</span> <span class="nf">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1+2 =&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -139,10 +128,9 @@ declares the type.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="nx">res</span> <span class="p">=</span> <span class="nf">plusPlus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1+2+3 =&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">res</span> <span class="p">=</span> <span class="nf">plusPlus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1+2+3 =&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -156,9 +144,9 @@ declares the type.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="gp">$</span> go run functions.go 
-<span class="go">1+2 = 3
-</span><span class="go">1+2+3 = 6</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run functions.go 
+</span></span><span class="line"><span class="cl"><span class="go">1+2 = 3
+</span></span></span><span class="line"><span class="cl"><span class="go">1+2+3 = 6</span></span></span></code></pre>
           </td>
         </tr>
         

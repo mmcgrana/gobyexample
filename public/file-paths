@@ -35,9 +35,7 @@ between operating systems; <code>dir/file</code> on Linux vs.
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/5h3lUytvmyO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
-<span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -47,12 +45,11 @@ between operating systems; <code>dir/file</code> on Linux vs.
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;path/filepath&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;path/filepath&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -62,8 +59,7 @@ between operating systems; <code>dir/file</code> on Linux vs.
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -76,10 +72,8 @@ and constructs a hierarchical path from them.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1&#34;</span><span class="p">,</span> <span class="s">&#34;dir2&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;p:&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1&#34;</span><span class="p">,</span> <span class="s">&#34;dir2&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;p:&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -94,10 +88,8 @@ and directory changes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1//&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1/../dir1&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1//&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;dir1/../dir1&#34;</span><span class="p">,</span> <span class="s">&#34;filename&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -110,10 +102,8 @@ return both in the same call.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Dir(p):&#34;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Dir</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Base(p):&#34;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Base</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Dir(p):&#34;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Dir</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Base(p):&#34;</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Base</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -124,10 +114,8 @@ return both in the same call.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">IsAbs</span><span class="p">(</span><span class="s">&#34;dir/file&#34;</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">IsAbs</span><span class="p">(</span><span class="s">&#34;/dir/file&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">IsAbs</span><span class="p">(</span><span class="s">&#34;dir/file&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nf">IsAbs</span><span class="p">(</span><span class="s">&#34;/dir/file&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -137,8 +125,7 @@ return both in the same call.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="nx">filename</span> <span class="o">:=</span> <span class="s">&#34;config.json&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">filename</span> <span class="o">:=</span> <span class="s">&#34;config.json&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -150,10 +137,8 @@ can split the extension out of such names with <code>Ext</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">ext</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Ext</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ext</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ext</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Ext</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ext</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -165,9 +150,7 @@ use <code>strings.TrimSuffix</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -180,13 +163,11 @@ be made relative to base.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Rel</span><span class="p">(</span><span class="s">&#34;a/b&#34;</span><span class="p">,</span> <span class="s">&#34;a/b/t/file&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Rel</span><span class="p">(</span><span class="s">&#34;a/b&#34;</span><span class="p">,</span> <span class="s">&#34;a/b/t/file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -196,13 +177,12 @@ be made relative to base.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Rel</span><span class="p">(</span><span class="s">&#34;a/b&#34;</span><span class="p">,</span> <span class="s">&#34;a/c/t/file&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Rel</span><span class="p">(</span><span class="s">&#34;a/b&#34;</span><span class="p">,</span> <span class="s">&#34;a/c/t/file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -216,18 +196,18 @@ be made relative to base.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run file-paths.go
-<span class="go">p: dir1/dir2/filename
-</span><span class="go">dir1/filename
-</span><span class="go">dir1/filename
-</span><span class="go">Dir(p): dir1/dir2
-</span><span class="go">Base(p): filename
-</span><span class="go">false
-</span><span class="go">true
-</span><span class="go">.json
-</span><span class="go">config
-</span><span class="go">t/file
-</span><span class="go">../c/t/file</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run file-paths.go
+</span></span><span class="line"><span class="cl"><span class="go">p: dir1/dir2/filename
+</span></span></span><span class="line"><span class="cl"><span class="go">dir1/filename
+</span></span></span><span class="line"><span class="cl"><span class="go">dir1/filename
+</span></span></span><span class="line"><span class="cl"><span class="go">Dir(p): dir1/dir2
+</span></span></span><span class="line"><span class="cl"><span class="go">Base(p): filename
+</span></span></span><span class="line"><span class="cl"><span class="go">false
+</span></span></span><span class="line"><span class="cl"><span class="go">true
+</span></span></span><span class="line"><span class="cl"><span class="go">.json
+</span></span></span><span class="line"><span class="cl"><span class="go">config
+</span></span></span><span class="line"><span class="cl"><span class="go">t/file
+</span></span></span><span class="line"><span class="cl"><span class="go">../c/t/file</span></span></span></code></pre>
           </td>
         </tr>
         

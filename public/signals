@@ -47,8 +47,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/RKLAbvblJMQ"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -58,13 +57,12 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;os/signal&#34;</span>
-    <span class="s">&#34;syscall&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os/signal&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;syscall&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -74,8 +72,7 @@ Here&rsquo;s how to handle signals in Go with channels.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -89,9 +86,7 @@ should be buffered.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">sigs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">sigs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -103,9 +98,7 @@ receive notifications of the specified signals.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">signal</span><span class="p">.</span><span class="nf">Notify</span><span class="p">(</span><span class="nx">sigs</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">signal</span><span class="p">.</span><span class="nf">Notify</span><span class="p">(</span><span class="nx">sigs</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -119,9 +112,7 @@ a more realistic scenario of graceful shutdown.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -134,8 +125,7 @@ and then notify the program that it can finish.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -145,12 +135,11 @@ and then notify the program that it can finish.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">        <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">sigs</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sig</span><span class="p">)</span>
-        <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
-    <span class="p">}()</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">sigs</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sig</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -163,12 +152,10 @@ above sending a value on <code>done</code>) and then exit.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;awaiting signal&#34;</span><span class="p">)</span>
-    <span class="o">&lt;-</span><span class="nx">done</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exiting&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;awaiting signal&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exiting&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -186,12 +173,11 @@ causing the program to print <code>interrupt</code> and then exit.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run signals.go
-<span class="go">awaiting signal
-</span><span class="go">^C
-</span><span class="go">interrupt
-</span><span class="go">exiting</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run signals.go
+</span></span><span class="line"><span class="cl"><span class="go">awaiting signal
+</span></span></span><span class="line"><span class="cl"><span class="go">^C
+</span></span></span><span class="line"><span class="cl"><span class="go">interrupt
+</span></span></span><span class="line"><span class="cl"><span class="go">exiting</span></span></span></code></pre>
           </td>
         </tr>
         

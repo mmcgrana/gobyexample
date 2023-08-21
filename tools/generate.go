@@ -12,10 +12,10 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/alecthomas/chroma"
-	"github.com/alecthomas/chroma/formatters/html"
-	"github.com/alecthomas/chroma/lexers"
-	"github.com/alecthomas/chroma/styles"
+	"github.com/alecthomas/chroma/v2"
+	"github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/alecthomas/chroma/v2/lexers"
+	"github.com/alecthomas/chroma/v2/styles"
 
 	"github.com/russross/blackfriday/v2"
 )
@@ -222,6 +222,12 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 			seg.DocsRendered = markdown(seg.Docs)
 		}
 		if seg.Code != "" {
+			// TODO: with the update to Chroma 2.8.0 I had to change this, because the
+			// new chromoa would render this leading newline for all code segments,
+			// which would then be shifted down compared to the doc segments. Maybe
+			// the parsing should be modified to not produce this \n in the first
+			// place?
+			seg.Code = strings.TrimLeft(seg.Code, "\n")
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
 
 			// adding the content to the js code for copying to the clipboard
@@ -353,30 +359,32 @@ var SimpleShellOutputLexer = chroma.MustNewLexer(
 		Filenames: []string{"*.sh"},
 		MimeTypes: []string{},
 	},
-	chroma.Rules{
-		"root": {
-			// $ or > triggers the start of prompt formatting
-			{`^\$`, chroma.GenericPrompt, chroma.Push("prompt")},
-			{`^>`, chroma.GenericPrompt, chroma.Push("prompt")},
+	func() chroma.Rules {
+		return chroma.Rules{
+			"root": {
+				// $ or > triggers the start of prompt formatting
+				{`^\$`, chroma.GenericPrompt, chroma.Push("prompt")},
+				{`^>`, chroma.GenericPrompt, chroma.Push("prompt")},
 
-			// empty lines are just text
-			{`^$\n`, chroma.Text, nil},
+				// empty lines are just text
+				{`^$\n`, chroma.Text, nil},
 
-			// otherwise its all output
-			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
-		},
-		"prompt": {
-			// when we find newline, do output formatting rules
-			{`\n`, chroma.Text, chroma.Push("output")},
-			// otherwise its all text
-			{`[^\n]+$`, chroma.Text, nil},
-		},
-		"output": {
-			// sometimes there isn't output so we go right back to prompt
-			{`^\$`, chroma.GenericPrompt, chroma.Pop(1)},
-			{`^>`, chroma.GenericPrompt, chroma.Pop(1)},
-			// otherwise its all output
-			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
-		},
+				// otherwise its all output
+				{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+			},
+			"prompt": {
+				// when we find newline, do output formatting rules
+				{`\n`, chroma.Text, chroma.Push("output")},
+				// otherwise its all text
+				{`[^\n]+$`, chroma.Text, nil},
+			},
+			"output": {
+				// sometimes there isn't output so we go right back to prompt
+				{`^\$`, chroma.GenericPrompt, chroma.Pop(1)},
+				{`^>`, chroma.GenericPrompt, chroma.Pop(1)},
+				// otherwise its all output
+				{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+			},
+		}
 	},
 )

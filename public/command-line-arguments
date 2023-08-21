@@ -45,8 +45,7 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/UYCEvh9d2Zb"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -56,11 +55,10 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -70,8 +68,7 @@ For example, <code>go run hello.go</code> uses <code>run</code> and
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -85,10 +82,8 @@ holds the arguments to the program.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">argsWithProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span>
-    <span class="nx">argsWithoutProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">argsWithProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">argsWithoutProg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -99,9 +94,7 @@ holds the arguments to the program.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">arg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">arg</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -111,11 +104,10 @@ holds the arguments to the program.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">argsWithProg</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">argsWithoutProg</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">argsWithProg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">argsWithoutProg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -131,12 +123,11 @@ build a binary with <code>go build</code> first.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go build command-line-arguments.go
-<span class="gp">$</span> ./command-line-arguments a b c d
-<span class="go">[./command-line-arguments a b c d]       
-</span><span class="go">[a b c d]
-</span><span class="go">c</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-arguments.go
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-arguments a b c d
+</span></span><span class="line"><span class="cl"><span class="go">[./command-line-arguments a b c d]       
+</span></span></span><span class="line"><span class="cl"><span class="go">[a b c d]
+</span></span></span><span class="line"><span class="cl"><span class="go">c</span></span></span></code></pre>
           </td>
         </tr>
         

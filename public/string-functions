@@ -44,8 +44,7 @@ to give you a sense of the package.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/DSKkoyx9Rcy"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -55,11 +54,10 @@ to give you a sense of the package.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="nx">s</span> <span class="s">&#34;strings&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -71,9 +69,7 @@ it a lot below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -83,8 +79,7 @@ it a lot below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -101,21 +96,19 @@ package docs.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Count:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Count</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasPrefix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;te&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasSuffix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;st&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Index:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;e&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Join:      &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">},</span> <span class="s">&#34;-&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Repeat:    &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Repeat</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Replace:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;o&#34;</span><span class="p">,</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Replace:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;o&#34;</span><span class="p">,</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Split:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="s">&#34;a-b-c-d-e&#34;</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToLower:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;TEST&#34;</span><span class="p">))</span>
-    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToUpper:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">))</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Count:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Count</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasPrefix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;te&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasSuffix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;st&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Index:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;e&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Join:      &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">},</span> <span class="s">&#34;-&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Repeat:    &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Repeat</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Replace:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;o&#34;</span><span class="p">,</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Replace:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;o&#34;</span><span class="p">,</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Split:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="s">&#34;a-b-c-d-e&#34;</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToLower:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;TEST&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToUpper:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -129,19 +122,19 @@ package docs.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run string-functions.go
-<span class="go">Contains:   true
-</span><span class="go">Count:      2
-</span><span class="go">HasPrefix:  true
-</span><span class="go">HasSuffix:  true
-</span><span class="go">Index:      1
-</span><span class="go">Join:       a-b
-</span><span class="go">Repeat:     aaaaa
-</span><span class="go">Replace:    f00
-</span><span class="go">Replace:    f0o
-</span><span class="go">Split:      [a b c d e]
-</span><span class="go">ToLower:    test
-</span><span class="go">ToUpper:    TEST</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
+</span></span><span class="line"><span class="cl"><span class="go">Contains:   true
+</span></span></span><span class="line"><span class="cl"><span class="go">Count:      2
+</span></span></span><span class="line"><span class="cl"><span class="go">HasPrefix:  true
+</span></span></span><span class="line"><span class="cl"><span class="go">HasSuffix:  true
+</span></span></span><span class="line"><span class="cl"><span class="go">Index:      1
+</span></span></span><span class="line"><span class="cl"><span class="go">Join:       a-b
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat:     aaaaa
+</span></span></span><span class="line"><span class="cl"><span class="go">Replace:    f00
+</span></span></span><span class="line"><span class="cl"><span class="go">Replace:    f0o
+</span></span></span><span class="line"><span class="cl"><span class="go">Split:      [a b c d e]
+</span></span></span><span class="line"><span class="cl"><span class="go">ToLower:    test
+</span></span></span><span class="line"><span class="cl"><span class="go">ToUpper:    TEST</span></span></span></code></pre>
           </td>
         </tr>
         

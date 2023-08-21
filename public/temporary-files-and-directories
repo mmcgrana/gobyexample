@@ -46,8 +46,7 @@ time.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/hVcPg9RH3_V"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -57,12 +56,11 @@ time.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;path/filepath&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;path/filepath&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -72,12 +70,11 @@ time.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -87,8 +84,7 @@ time.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -103,10 +99,8 @@ create the file in the default location for our OS.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">CreateTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sample&#34;</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">CreateTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sample&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -122,9 +116,7 @@ calls will always create different file names.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Temp file name:&#34;</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Temp file name:&#34;</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -138,9 +130,7 @@ explicitly.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nf">Name</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -151,10 +141,8 @@ explicitly.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">})</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -169,11 +157,9 @@ rather than an open file.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">dname</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">MkdirTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sampledir&#34;</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Temp dir name:&#34;</span><span class="p">,</span> <span class="nx">dname</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dname</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">MkdirTemp</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;sampledir&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Temp dir name:&#34;</span><span class="p">,</span> <span class="nx">dname</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -183,8 +169,7 @@ rather than an open file.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">RemoveAll</span><span class="p">(</span><span class="nx">dname</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">os</span><span class="p">.</span><span class="nf">RemoveAll</span><span class="p">(</span><span class="nx">dname</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -196,12 +181,10 @@ prefixing them with our temporary directory.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">fname</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">dname</span><span class="p">,</span> <span class="s">&#34;file1&#34;</span><span class="p">)</span>
-    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mo">0666</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fname</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">dname</span><span class="p">,</span> <span class="s">&#34;file1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">WriteFile</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mo">0666</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -215,9 +198,9 @@ prefixing them with our temporary directory.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run temporary-files-and-directories.go
-<span class="go">Temp file name: /tmp/sample610887201
-</span><span class="go">Temp dir name: /tmp/sampledir898854668</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run temporary-files-and-directories.go
+</span></span><span class="line"><span class="cl"><span class="go">Temp file name: /tmp/sample610887201
+</span></span></span><span class="line"><span class="cl"><span class="go">Temp dir name: /tmp/sampledir898854668</span></span></span></code></pre>
           </td>
         </tr>
         

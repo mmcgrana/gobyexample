@@ -45,8 +45,7 @@ features and should be used for generating HTML.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/pDwkw1iMACF"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -56,11 +55,10 @@ features and should be used for generating HTML.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;text/template&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;text/template&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -70,8 +68,7 @@ features and should be used for generating HTML.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -85,13 +82,11 @@ Templates are a mix of static text and &ldquo;actions&rdquo; enclosed in
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t1</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;t1&#34;</span><span class="p">)</span>
-    <span class="nx">t1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">t1</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value is {{.}}\n&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;t1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">t1</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value is {{.}}\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -104,9 +99,7 @@ useful for templates initialized in the global scope.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t1</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">t1</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value: {{.}}\n&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">t1</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;Value: {{.}}\n&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -119,16 +112,14 @@ replaced by the value passed as a parameter to <code>Execute</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;some text&#34;</span><span class="p">)</span>
-    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="s">&#34;Go&#34;</span><span class="p">,</span>
-        <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
-        <span class="s">&#34;C++&#34;</span><span class="p">,</span>
-        <span class="s">&#34;C#&#34;</span><span class="p">,</span>
-    <span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;some text&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;Go&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;C++&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;C#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -139,11 +130,9 @@ replaced by the value passed as a parameter to <code>Execute</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">Create</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">template</span><span class="p">.</span><span class="nx">Template</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">name</span><span class="p">).</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">Create</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">template</span><span class="p">.</span><span class="nx">Template</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">name</span><span class="p">).</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -156,9 +145,7 @@ template is executing.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t2</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t2&#34;</span><span class="p">,</span> <span class="s">&#34;Name: {{.Name}}\n&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t2</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t2&#34;</span><span class="p">,</span> <span class="s">&#34;Name: {{.Name}}\n&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -168,10 +155,9 @@ template is executing.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="nx">t2</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">struct</span> <span class="p">{</span>
-        <span class="nx">Name</span> <span class="kt">string</span>
-    <span class="p">}{</span><span class="s">&#34;Jane Doe&#34;</span><span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t2</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}{</span><span class="s">&#34;Jane Doe&#34;</span><span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -183,11 +169,9 @@ case of key names.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t2</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="s">&#34;Name&#34;</span><span class="p">:</span> <span class="s">&#34;Mickey Mouse&#34;</span><span class="p">,</span>
-    <span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t2</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;Name&#34;</span><span class="p">:</span> <span class="s">&#34;Mickey Mouse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -202,12 +186,10 @@ feature of templates: using <code>-</code> in actions to trim whitespace.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">t3</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t3&#34;</span><span class="p">,</span>
-        <span class="s">&#34;{{if . -}} yes {{else -}} no {{end}}\n&#34;</span><span class="p">)</span>
-    <span class="nx">t3</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;not empty&#34;</span><span class="p">)</span>
-    <span class="nx">t3</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t3</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;{{if . -}} yes {{else -}} no {{end}}\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t3</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;not empty&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t3</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -219,18 +201,16 @@ the range block <code>{{.}}</code> is set to the current item of the iteration.<
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">t4</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t4&#34;</span><span class="p">,</span>
-        <span class="s">&#34;Range: {{range .}}{{.}} {{end}}\n&#34;</span><span class="p">)</span>
-    <span class="nx">t4</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span>
-        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
-            <span class="s">&#34;Go&#34;</span><span class="p">,</span>
-            <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
-            <span class="s">&#34;C++&#34;</span><span class="p">,</span>
-            <span class="s">&#34;C#&#34;</span><span class="p">,</span>
-        <span class="p">})</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t4</span> <span class="o">:=</span> <span class="nf">Create</span><span class="p">(</span><span class="s">&#34;t4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;Range: {{range .}}{{.}} {{end}}\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t4</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Go&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;Rust&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;C++&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;C#&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -244,15 +224,15 @@ the range block <code>{{.}}</code> is set to the current item of the iteration.<
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run templates.go 
-<span class="go">Value: some text
-</span><span class="go">Value: 5
-</span><span class="go">Value: [Go Rust C++ C#]
-</span><span class="go">Name: Jane Doe
-</span><span class="go">Name: Mickey Mouse
-</span><span class="go">yes 
-</span><span class="go">no 
-</span><span class="go">Range: Go Rust C++ C# </span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run templates.go 
+</span></span><span class="line"><span class="cl"><span class="go">Value: some text
+</span></span></span><span class="line"><span class="cl"><span class="go">Value: 5
+</span></span></span><span class="line"><span class="cl"><span class="go">Value: [Go Rust C++ C#]
+</span></span></span><span class="line"><span class="cl"><span class="go">Name: Jane Doe
+</span></span></span><span class="line"><span class="cl"><span class="go">Name: Mickey Mouse
+</span></span></span><span class="line"><span class="cl"><span class="go">yes 
+</span></span></span><span class="line"><span class="cl"><span class="go">no 
+</span></span></span><span class="line"><span class="cl"><span class="go">Range: Go Rust C++ C# </span></span></span></code></pre>
           </td>
         </tr>
         

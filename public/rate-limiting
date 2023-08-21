@@ -46,8 +46,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/lqf7pC2FUeT"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -57,11 +56,10 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -71,8 +69,7 @@ channels, and <a href="tickers">tickers</a>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -86,13 +83,11 @@ same name.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">requests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">requests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
-    <span class="p">}</span>
-    <span class="nb">close</span><span class="p">(</span><span class="nx">requests</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">requests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">requests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">close</span><span class="p">(</span><span class="nx">requests</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -105,9 +100,7 @@ our rate limiting scheme.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">limiter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">limiter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -120,12 +113,10 @@ before serving each request, we limit ourselves to
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">requests</span> <span class="p">{</span>
-        <span class="o">&lt;-</span><span class="nx">limiter</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;request&#34;</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">requests</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">limiter</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;request&#34;</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -140,9 +131,7 @@ channel will allow bursts of up to 3 events.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">burstyLimiter</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyLimiter</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -153,11 +142,9 @@ channel will allow bursts of up to 3 events.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -169,13 +156,11 @@ value to <code>burstyLimiter</code>, up to its limit of 3.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">t</span>
-        <span class="p">}</span>
-    <span class="p">}()</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Tick</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">burstyLimiter</span> <span class="o">&lt;-</span> <span class="nx">t</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -188,18 +173,16 @@ of <code>burstyLimiter</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">burstyRequests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">burstyRequests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
-    <span class="p">}</span>
-    <span class="nb">close</span><span class="p">(</span><span class="nx">burstyRequests</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">burstyRequests</span> <span class="p">{</span>
-        <span class="o">&lt;-</span><span class="nx">burstyLimiter</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;request&#34;</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">burstyRequests</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">burstyRequests</span> <span class="o">&lt;-</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">close</span><span class="p">(</span><span class="nx">burstyRequests</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">burstyRequests</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">burstyLimiter</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;request&#34;</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -215,13 +198,12 @@ handled once every ~200 milliseconds as desired.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run rate-limiting.go
-<span class="go">request 1 2012-10-19 00:38:18.687438 +0000 UTC
-</span><span class="go">request 2 2012-10-19 00:38:18.887471 +0000 UTC
-</span><span class="go">request 3 2012-10-19 00:38:19.087238 +0000 UTC
-</span><span class="go">request 4 2012-10-19 00:38:19.287338 +0000 UTC
-</span><span class="go">request 5 2012-10-19 00:38:19.487331 +0000 UTC</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run rate-limiting.go
+</span></span><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:18.687438 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 2 2012-10-19 00:38:18.887471 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 3 2012-10-19 00:38:19.087238 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 4 2012-10-19 00:38:19.287338 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 5 2012-10-19 00:38:19.487331 +0000 UTC</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -234,12 +216,11 @@ then serve the remaining 2 with ~200ms delays each.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="go">request 1 2012-10-19 00:38:20.487578 +0000 UTC
-</span><span class="go">request 2 2012-10-19 00:38:20.487645 +0000 UTC
-</span><span class="go">request 3 2012-10-19 00:38:20.487676 +0000 UTC
-</span><span class="go">request 4 2012-10-19 00:38:20.687483 +0000 UTC
-</span><span class="go">request 5 2012-10-19 00:38:20.887542 +0000 UTC</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">request 1 2012-10-19 00:38:20.487578 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 2 2012-10-19 00:38:20.487645 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 3 2012-10-19 00:38:20.487676 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 4 2012-10-19 00:38:20.687483 +0000 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">request 5 2012-10-19 00:38:20.887542 +0000 UTC</span></span></span></code></pre>
           </td>
         </tr>
         

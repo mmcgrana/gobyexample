@@ -43,8 +43,7 @@ signatures.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/XJASG4MxBQr"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,11 +53,10 @@ signatures.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;math&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,12 +67,10 @@ signatures.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">type</span> <span class="nx">geometry</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span>
-    <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">geometry</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -86,14 +82,12 @@ signatures.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
-<span class="p">}</span>
-<span class="kd">type</span> <span class="nx">circle</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">radius</span> <span class="kt">float64</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">circle</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">radius</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -106,14 +100,12 @@ implement <code>geometry</code> on <code>rect</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -124,14 +116,12 @@ implement <code>geometry</code> on <code>rect</code>s.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nf">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nf">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -145,13 +135,11 @@ to work on any <code>geometry</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">measure</span><span class="p">(</span><span class="nx">g</span> <span class="nx">geometry</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nf">area</span><span class="p">())</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nf">perim</span><span class="p">())</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">measure</span><span class="p">(</span><span class="nx">g</span> <span class="nx">geometry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nf">area</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nf">perim</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -161,10 +149,9 @@ to work on any <code>geometry</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -178,11 +165,9 @@ these structs as arguments to <code>measure</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nf">measure</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-    <span class="nf">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">measure</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -196,13 +181,13 @@ these structs as arguments to <code>measure</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="gp">$</span> go run interfaces.go
-<span class="go">{3 4}
-</span><span class="go">12
-</span><span class="go">14
-</span><span class="go">{5}
-</span><span class="go">78.53981633974483
-</span><span class="go">31.41592653589793</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run interfaces.go
+</span></span><span class="line"><span class="cl"><span class="go">{3 4}
+</span></span></span><span class="line"><span class="cl"><span class="go">12
+</span></span></span><span class="line"><span class="cl"><span class="go">14
+</span></span></span><span class="line"><span class="cl"><span class="go">{5}
+</span></span></span><span class="line"><span class="cl"><span class="go">78.53981633974483
+</span></span></span><span class="line"><span class="cl"><span class="go">31.41592653589793</span></span></span></code></pre>
           </td>
         </tr>
         

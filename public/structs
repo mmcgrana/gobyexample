@@ -44,8 +44,7 @@ records.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/ex1J3oieEeo"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -55,8 +54,7 @@ records.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -67,12 +65,10 @@ records.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">type</span> <span class="nx">person</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">name</span> <span class="kt">string</span>
-    <span class="nx">age</span>  <span class="kt">int</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">person</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">age</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -83,9 +79,7 @@ records.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">newPerson</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">person</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">newPerson</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">person</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -97,12 +91,10 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">}</span>
-    <span class="nx">p</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">42</span>
-    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">p</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">p</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">42</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">p</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -112,8 +104,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -124,9 +115,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="mi">20</span><span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="mi">20</span><span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -137,9 +126,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -150,9 +137,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Fred&#34;</span><span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Fred&#34;</span><span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -163,9 +148,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Ann&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">})</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Ann&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">})</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -176,9 +159,7 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">newPerson</span><span class="p">(</span><span class="s">&#34;Jon&#34;</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">newPerson</span><span class="p">(</span><span class="s">&#34;Jon&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -189,10 +170,8 @@ as a local variable will survive the scope of the function.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Sean&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Sean&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -204,10 +183,8 @@ pointers are automatically dereferenced.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">sp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">s</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sp</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">sp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">s</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sp</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -218,10 +195,8 @@ pointers are automatically dereferenced.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">sp</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">51</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sp</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">sp</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">51</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sp</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -235,17 +210,15 @@ struct type. This technique is commonly used for
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">dog</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
-        <span class="nx">name</span>   <span class="kt">string</span>
-        <span class="nx">isGood</span> <span class="kt">bool</span>
-    <span class="p">}{</span>
-        <span class="s">&#34;Rex&#34;</span><span class="p">,</span>
-        <span class="kc">true</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">dog</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dog</span> <span class="o">:=</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span>   <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">isGood</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;Rex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">dog</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -259,16 +232,16 @@ struct type. This technique is commonly used for
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">$</span> go run structs.go
-<span class="go">{Bob 20}
-</span><span class="go">{Alice 30}
-</span><span class="go">{Fred 0}
-</span><span class="go">&amp;{Ann 40}
-</span><span class="go">&amp;{Jon 42}
-</span><span class="go">Sean
-</span><span class="go">50
-</span><span class="go">51
-</span><span class="go">{Rex true}</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run structs.go
+</span></span><span class="line"><span class="cl"><span class="go">{Bob 20}
+</span></span></span><span class="line"><span class="cl"><span class="go">{Alice 30}
+</span></span></span><span class="line"><span class="cl"><span class="go">{Fred 0}
+</span></span></span><span class="line"><span class="cl"><span class="go">&amp;{Ann 40}
+</span></span></span><span class="line"><span class="cl"><span class="go">&amp;{Jon 42}
+</span></span></span><span class="line"><span class="cl"><span class="go">Sean
+</span></span></span><span class="line"><span class="cl"><span class="go">50
+</span></span></span><span class="line"><span class="cl"><span class="go">51
+</span></span></span><span class="line"><span class="cl"><span class="go">{Rex true}</span></span></span></code></pre>
           </td>
         </tr>
         

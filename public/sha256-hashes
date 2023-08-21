@@ -46,8 +46,7 @@ SHA256 hashes in Go.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/IHM1lZVm_Jm"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -59,12 +58,10 @@ SHA256 hashes in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;crypto/sha256&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;crypto/sha256&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -74,9 +71,8 @@ SHA256 hashes in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -87,9 +83,7 @@ SHA256 hashes in Go.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -101,9 +95,7 @@ use <code>[]byte(s)</code> to coerce it to bytes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -116,9 +108,7 @@ to an existing byte slice: it usually isn&rsquo;t needed.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -128,10 +118,9 @@ to an existing byte slice: it usually isn&rsquo;t needed.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -147,10 +136,9 @@ a human-readable hex format.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run sha256-hashes.go
-<span class="go">sha256 this string
-</span><span class="go">1af1dfa857bf1d8814fe1af8983c18080019922e557f15a8a...</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sha256-hashes.go
+</span></span><span class="line"><span class="cl"><span class="go">sha256 this string
+</span></span></span><span class="line"><span class="cl"><span class="go">1af1dfa857bf1d8814fe1af8983c18080019922e557f15a8a...</span></span></span></code></pre>
           </td>
         </tr>
         

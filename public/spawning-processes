@@ -43,8 +43,7 @@ processes.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/rmnQdR-dMWU"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -54,12 +53,11 @@ processes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;io&#34;</span>
-    <span class="s">&#34;os/exec&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;io&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os/exec&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,8 +67,7 @@ processes.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -84,9 +81,7 @@ to represent this external process.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">dateCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -100,14 +95,12 @@ with the date info.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">dateOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dateCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; date&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dateOut</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dateOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dateCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; date&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dateOut</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -122,19 +115,17 @@ code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;-x&#34;</span><span class="p">).</span><span class="nf">Output</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="k">switch</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">err</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="o">*</span><span class="nx">exec</span><span class="p">.</span><span class="nx">Error</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;failed executing:&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-        <span class="k">case</span> <span class="o">*</span><span class="nx">exec</span><span class="p">.</span><span class="nx">ExitError</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;command exit rc =&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nf">ExitCode</span><span class="p">())</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;-x&#34;</span><span class="p">).</span><span class="nf">Output</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">err</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="o">*</span><span class="nx">exec</span><span class="p">.</span><span class="nx">Error</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;failed executing:&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="o">*</span><span class="nx">exec</span><span class="p">.</span><span class="nx">ExitError</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;command exit rc =&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nf">ExitCode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -147,9 +138,7 @@ where we pipe data to the external process on its
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">grepCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;grep&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;grep&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -163,15 +152,13 @@ to exit.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">grepIn</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdinPipe</span><span class="p">()</span>
-    <span class="nx">grepOut</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdoutPipe</span><span class="p">()</span>
-    <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">Start</span><span class="p">()</span>
-    <span class="nx">grepIn</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello grep\ngoodbye grep&#34;</span><span class="p">))</span>
-    <span class="nx">grepIn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-    <span class="nx">grepBytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">grepOut</span><span class="p">)</span>
-    <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdinPipe</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepOut</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">StdoutPipe</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">Start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello grep\ngoodbye grep&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepIn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepBytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">grepOut</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">grepCmd</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -186,10 +173,8 @@ exactly the same way.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; grep hello&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">grepBytes</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; grep hello&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">grepBytes</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -205,16 +190,14 @@ option:</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">lsCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;bash&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;ls -a -l -h&#34;</span><span class="p">)</span>
-    <span class="nx">lsOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">lsCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; ls -a -l -h&#34;</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">lsOut</span><span class="p">))</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lsCmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;bash&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;ls -a -l -h&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lsOut</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">lsCmd</span><span class="p">.</span><span class="nf">Output</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&gt; ls -a -l -h&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">lsOut</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -230,10 +213,9 @@ as if we had run them directly from the command-line.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run spawning-processes.go 
-<span class="gp">&gt;</span> date
-<span class="go">Thu 05 May 2022 10:10:12 PM PDT</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run spawning-processes.go 
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> date
+</span></span><span class="line"><span class="cl"><span class="go">Thu 05 May 2022 10:10:12 PM PDT</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -245,10 +227,9 @@ an error message and non-zero return code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="go">command exited with rc = 1
-</span><span class="go"></span><span class="gp">&gt;</span> grep hello
-<span class="go">hello grep</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">command exited with rc = 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">&gt;</span> grep hello
+</span></span><span class="line"><span class="cl"><span class="go">hello grep</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -258,10 +239,10 @@ an error message and non-zero return code.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="gp">&gt;</span> ls -a -l -h
-<span class="go">drwxr-xr-x  4 mark 136B Oct 3 16:29 .
-</span><span class="go">drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..
-</span><span class="go">-rw-r--r--  1 mark 1.3K Oct 3 16:28 spawning-processes.go</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">&gt;</span> ls -a -l -h
+</span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x  4 mark 136B Oct 3 16:29 .
+</span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x 91 mark 3.0K Oct 3 12:50 ..
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--  1 mark 1.3K Oct 3 16:28 spawning-processes.go</span></span></span></code></pre>
           </td>
         </tr>
         

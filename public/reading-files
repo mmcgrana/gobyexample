@@ -44,8 +44,7 @@ reading files.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/DF2Wo8nDKaF"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -55,13 +54,12 @@ reading files.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bufio&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;io&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;io&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -73,13 +71,11 @@ This helper will streamline our error checks below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">check</span><span class="p">(</span><span class="nx">e</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -89,8 +85,7 @@ This helper will streamline our error checks below.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -102,11 +97,9 @@ slurping a file&rsquo;s entire contents into memory.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;/tmp/dat&#34;</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;/tmp/dat&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -119,10 +112,8 @@ by <code>Open</code>ing a file to obtain an <code>os.File</code> value.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;/tmp/dat&#34;</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;/tmp/dat&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -135,12 +126,10 @@ actually were read.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes: %s\n&#34;</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b1</span><span class="p">[:</span><span class="nx">n1</span><span class="p">]))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">b1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">n1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes: %s\n&#34;</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b1</span><span class="p">[:</span><span class="nx">n1</span><span class="p">]))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -152,15 +141,13 @@ and <code>Read</code> from there.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">b2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="nx">b2</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes @ %d: &#34;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b2</span><span class="p">[:</span><span class="nx">n2</span><span class="p">]))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">o2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">n2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="nx">b2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes @ %d: &#34;</span><span class="p">,</span> <span class="nx">n2</span><span class="p">,</span> <span class="nx">o2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b2</span><span class="p">[:</span><span class="nx">n2</span><span class="p">]))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -174,14 +161,12 @@ implemented with <code>ReadAtLeast</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">b3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAtLeast</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">b3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes @ %d: %s\n&#34;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">,</span> <span class="nx">o3</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b3</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">o3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">n3</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">ReadAtLeast</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">b3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d bytes @ %d: %s\n&#34;</span><span class="p">,</span> <span class="nx">n3</span><span class="p">,</span> <span class="nx">o3</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b3</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -193,10 +178,8 @@ accomplishes this.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -210,12 +193,10 @@ reading methods it provides.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nf">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;5 bytes: %s\n&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b4</span><span class="p">))</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">r4</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b4</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">r4</span><span class="p">.</span><span class="nf">Peek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">check</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;5 bytes: %s\n&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b4</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -228,10 +209,8 @@ be scheduled immediately after <code>Open</code>ing with
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -245,15 +224,15 @@ be scheduled immediately after <code>Open</code>ing with
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="gp">$</span> echo &#34;hello&#34; &gt; /tmp/dat
-<span class="gp">$</span> echo &#34;go&#34; &gt;&gt;   /tmp/dat
-<span class="gp">$</span> go run reading-files.go
-<span class="go">hello
-</span><span class="go">go
-</span><span class="go">5 bytes: hello
-</span><span class="go">2 bytes @ 6: go
-</span><span class="go">2 bytes @ 6: go
-</span><span class="go">5 bytes: hello</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;hello&#34; &gt; /tmp/dat
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;go&#34; &gt;&gt;   /tmp/dat
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> go run reading-files.go
+</span></span><span class="line"><span class="cl"><span class="go">hello
+</span></span></span><span class="line"><span class="cl"><span class="go">go
+</span></span></span><span class="line"><span class="cl"><span class="go">5 bytes: hello
+</span></span></span><span class="line"><span class="cl"><span class="go">2 bytes @ 6: go
+</span></span></span><span class="line"><span class="cl"><span class="go">2 bytes @ 6: go
+</span></span></span><span class="line"><span class="cl"><span class="go">5 bytes: hello</span></span></span></code></pre>
           </td>
         </tr>
         

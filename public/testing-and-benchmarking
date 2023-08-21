@@ -48,9 +48,7 @@ typically lives in the same package as the code it tests.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/PlzU16wwEWE"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
-<span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -60,11 +58,10 @@ typically lives in the same package as the code it tests.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;testing&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;testing&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -79,14 +76,12 @@ be named <code>intutils_test.go</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">IntMin</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">a</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">b</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">IntMin</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">a</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">b</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -98,11 +93,9 @@ beginning with <code>Test</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">TestIntMinBasic</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">ans</span> <span class="o">:=</span> <span class="nf">IntMin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">2</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestIntMinBasic</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ans</span> <span class="o">:=</span> <span class="nf">IntMin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">2</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -115,11 +108,9 @@ failures and stop the test immediately.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;IntMin(2, -2) = %d; want -2&#34;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;IntMin(2, -2) = %d; want -2&#34;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -133,19 +124,17 @@ walks over them and performs the test logic.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">TestIntMinTableDriven</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
-        <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
-        <span class="nx">want</span> <span class="kt">int</span>
-    <span class="p">}{</span>
-        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-        <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span>
-        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
-        <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
-    <span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestIntMinTableDriven</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">want</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -158,8 +147,7 @@ when executing <code>go test -v</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tt</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tt</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -169,16 +157,15 @@ when executing <code>go test -v</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">        <span class="nx">testname</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d,%d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="nx">testname</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ans</span> <span class="o">:=</span> <span class="nf">IntMin</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
-                <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;got %d, want %d&#34;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">})</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">testname</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d,%d&#34;</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="nx">testname</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ans</span> <span class="o">:=</span> <span class="nf">IntMin</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">a</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">ans</span> <span class="o">!=</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;got %d, want %d&#34;</span><span class="p">,</span> <span class="nx">ans</span><span class="p">,</span> <span class="nx">tt</span><span class="p">.</span><span class="nx">want</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -192,9 +179,7 @@ executes each benchmark function several times, increasing
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="kd">func</span> <span class="nf">BenchmarkIntMin</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">BenchmarkIntMin</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -206,12 +191,10 @@ benchmarking in a loop <code>b.N</code> times.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nf">IntMin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">IntMin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -226,24 +209,23 @@ benchmarking in a loop <code>b.N</code> times.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go test -v
-<span class="go">== RUN   TestIntMinBasic
-</span><span class="go">--- PASS: TestIntMinBasic (0.00s)
-</span><span class="go">=== RUN   TestIntMinTableDriven
-</span><span class="go">=== RUN   TestIntMinTableDriven/0,1
-</span><span class="go">=== RUN   TestIntMinTableDriven/1,0
-</span><span class="go">=== RUN   TestIntMinTableDriven/2,-2
-</span><span class="go">=== RUN   TestIntMinTableDriven/0,-1
-</span><span class="go">=== RUN   TestIntMinTableDriven/-1,0
-</span><span class="go">--- PASS: TestIntMinTableDriven (0.00s)
-</span><span class="go">    --- PASS: TestIntMinTableDriven/0,1 (0.00s)
-</span><span class="go">    --- PASS: TestIntMinTableDriven/1,0 (0.00s)
-</span><span class="go">    --- PASS: TestIntMinTableDriven/2,-2 (0.00s)
-</span><span class="go">    --- PASS: TestIntMinTableDriven/0,-1 (0.00s)
-</span><span class="go">    --- PASS: TestIntMinTableDriven/-1,0 (0.00s)
-</span><span class="go">PASS
-</span><span class="go">ok      examples/testing-and-benchmarking    0.023s</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go test -v
+</span></span><span class="line"><span class="cl"><span class="go">== RUN   TestIntMinBasic
+</span></span></span><span class="line"><span class="cl"><span class="go">--- PASS: TestIntMinBasic (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven/0,1
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven/1,0
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven/2,-2
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven/0,-1
+</span></span></span><span class="line"><span class="cl"><span class="go">=== RUN   TestIntMinTableDriven/-1,0
+</span></span></span><span class="line"><span class="cl"><span class="go">--- PASS: TestIntMinTableDriven (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">    --- PASS: TestIntMinTableDriven/0,1 (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">    --- PASS: TestIntMinTableDriven/1,0 (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">    --- PASS: TestIntMinTableDriven/2,-2 (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">    --- PASS: TestIntMinTableDriven/0,-1 (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">    --- PASS: TestIntMinTableDriven/-1,0 (0.00s)
+</span></span></span><span class="line"><span class="cl"><span class="go">PASS
+</span></span></span><span class="line"><span class="cl"><span class="go">ok      examples/testing-and-benchmarking    0.023s</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -256,14 +238,13 @@ benchmark function names with a regexp.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go test -bench=.
-<span class="go">goos: darwin
-</span><span class="go">goarch: arm64
-</span><span class="go">pkg: examples/testing
-</span><span class="go">BenchmarkIntMin-8 1000000000 0.3136 ns/op
-</span><span class="go">PASS
-</span><span class="go">ok      examples/testing-and-benchmarking    0.351s</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go test -bench=.
+</span></span><span class="line"><span class="cl"><span class="go">goos: darwin
+</span></span></span><span class="line"><span class="cl"><span class="go">goarch: arm64
+</span></span></span><span class="line"><span class="cl"><span class="go">pkg: examples/testing
+</span></span></span><span class="line"><span class="cl"><span class="go">BenchmarkIntMin-8 1000000000 0.3136 ns/op
+</span></span></span><span class="line"><span class="cl"><span class="go">PASS
+</span></span></span><span class="line"><span class="cl"><span class="go">ok      examples/testing-and-benchmarking    0.351s</span></span></span></code></pre>
           </td>
         </tr>
         

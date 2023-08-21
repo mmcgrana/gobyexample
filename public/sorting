@@ -44,8 +44,7 @@ builtins first.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/_gY0tANzJ4l"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -55,11 +54,10 @@ builtins first.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;sort&#34;</span>
-<span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sort&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -69,8 +67,7 @@ builtins first.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -84,11 +81,9 @@ return a new one.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nf">Strings</span><span class="p">(</span><span class="nx">strs</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Strings:&#34;</span><span class="p">,</span> <span class="nx">strs</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">strs</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="p">.</span><span class="nf">Strings</span><span class="p">(</span><span class="nx">strs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Strings:&#34;</span><span class="p">,</span> <span class="nx">strs</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -99,11 +94,9 @@ return a new one.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-    <span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-    <span class="nx">sort</span><span class="p">.</span><span class="nf">Ints</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Ints:   &#34;</span><span class="p">,</span> <span class="nx">ints</span><span class="p">)</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="p">.</span><span class="nf">Ints</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Ints:   &#34;</span><span class="p">,</span> <span class="nx">ints</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -115,11 +108,9 @@ already in sorted order.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma">
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nf">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Sorted: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">sort</span><span class="p">.</span><span class="nf">IntsAreSorted</span><span class="p">(</span><span class="nx">ints</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Sorted: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -135,11 +126,10 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
           </td>
           <td class="code">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run sorting.go
-<span class="go">Strings: [a b c]
-</span><span class="go">Ints:    [2 4 7]
-</span><span class="go">Sorted:  true</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sorting.go
+</span></span><span class="line"><span class="cl"><span class="go">Strings: [a b c]
+</span></span></span><span class="line"><span class="cl"><span class="go">Ints:    [2 4 7]
+</span></span></span><span class="line"><span class="cl"><span class="go">Sorted:  true</span></span></span></code></pre>
           </td>
         </tr>
         

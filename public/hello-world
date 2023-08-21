@@ -29,9 +29,7 @@ message. Here&rsquo;s the full source code.</p>
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/NeviD0awXjt"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma">
-<span class="kn">package</span> <span class="nx">main</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -41,8 +39,7 @@ message. Here&rsquo;s the full source code.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -52,10 +49,9 @@ message. Here&rsquo;s the full source code.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -71,9 +67,8 @@ use <code>go run</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go run hello-world.go
-<span class="go">hello world</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run hello-world.go
+</span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -85,10 +80,9 @@ binaries. We can do this using <code>go build</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> go build hello-world.go
-<span class="gp">$</span> ls
-<span class="go">hello-world    hello-world.go</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build hello-world.go
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ls
+</span></span><span class="line"><span class="cl"><span class="go">hello-world    hello-world.go</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -99,9 +93,8 @@ binaries. We can do this using <code>go build</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma">
-<span class="gp">$</span> ./hello-world
-<span class="go">hello world</span></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./hello-world
+</span></span><span class="line"><span class="cl"><span class="go">hello world</span></span></span></code></pre>
           </td>
         </tr>
         
