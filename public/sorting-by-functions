@@ -45,7 +45,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/h4g4vaLBtkw"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/3EaTknAZHMu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -57,65 +57,97 @@ in Go.</p>
           <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;cmp&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;sort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;slices&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>In order to sort by a custom function in Go, we need a
-corresponding type. Here we&rsquo;ve created a <code>byLength</code>
-type that is just an alias for the builtin <code>[]string</code>
-type.</p>
-
+            
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">byLength</span> <span class="p">[]</span><span class="kt">string</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;peach&#34;</span><span class="p">,</span> <span class="s">&#34;banana&#34;</span><span class="p">,</span> <span class="s">&#34;kiwi&#34;</span><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>We implement <code>sort.Interface</code> - <code>Len</code>, <code>Less</code>, and
-<code>Swap</code> - on our type so we can use the <code>sort</code> package&rsquo;s
-generic <code>Sort</code> function. <code>Len</code> and <code>Swap</code>
-will usually be similar across types and <code>Less</code> will
-hold the actual custom sorting logic. In our case we
-want to sort in order of increasing string length, so
-we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
+            <p>We implement a comparison function for string
+lengths. <code>cmp.Compare</code> is helpful for this.</p>
 
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nf">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nf">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">byLength</span><span class="p">)</span> <span class="nf">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lenCmp</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">cmp</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>With all of this in place, we can now implement our
-custom sort by converting the original <code>fruits</code> slice
-to <code>byLength</code>, and then use <code>sort.Sort</code> on that typed
-slice.</p>
+            <p>Now we can call <code>slices.SortFunc</code> with this custom
+comparison function to sort <code>fruits</code> by name length.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">slices</span><span class="p">.</span><span class="nf">SortFunc</span><span class="p">(</span><span class="nx">fruits</span><span class="p">,</span> <span class="nx">lenCmp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can use the same technique to sort a slice of
+values that aren&rsquo;t built-in types.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">Person</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">age</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">people</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">Person</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Jax&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">37</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;TJ&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Person</span><span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&#34;Alex&#34;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">72</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Sort <code>people</code> by age using <code>slices.SortFunc</code>.</p>
+
+<p>Note: if the <code>Person</code> struct is large,
+you may want the slice to contain <code>*Person</code> instead
+and adjust the sorting function accordingly. If in
+doubt, <a href="testing-and-benchmarking">benchmark</a>!</p>
 
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fruits</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;peach&#34;</span><span class="p">,</span> <span class="s">&#34;banana&#34;</span><span class="p">,</span> <span class="s">&#34;kiwi&#34;</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span><span class="nf">byLength</span><span class="p">(</span><span class="nx">fruits</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">slices</span><span class="p">.</span><span class="nf">SortFunc</span><span class="p">(</span><span class="nx">people</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">func</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="nx">Person</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">cmp</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">people</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -126,29 +158,13 @@ slice.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our program shows a list sorted by string
-length, as desired.</p>
-
+            
           </td>
-          <td class="code leading">
+          <td class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sorting-by-functions.go 
-</span></span><span class="line"><span class="cl"><span class="go">[kiwi peach banana]</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>By following this same pattern of creating a custom
-type, implementing the three <code>Interface</code> methods on that
-type, and then calling sort.Sort on a collection of that
-custom type, we can sort Go slices by arbitrary
-functions.</p>
-
-          </td>
-          <td class="code empty">
-            
-          
+</span></span><span class="line"><span class="cl"><span class="go">[kiwi peach banana]
+</span></span></span><span class="line"><span class="cl"><span class="go">[{TJ 25} {Jax 37} {Alex 72}]</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -167,7 +183,7 @@ functions.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sort\"\u000A)\u000A');codeLines.push('type byLength []string\u000A');codeLines.push('func (s byLength) Len() int {\u000A    return len(s)\u000A}\u000Afunc (s byLength) Swap(i, j int) {\u000A    s[i], s[j] \u003D s[j], s[i]\u000A}\u000Afunc (s byLength) Less(i, j int) bool {\u000A    return len(s[i]) \u003C len(s[j])\u000A}\u000A');codeLines.push('func main() {\u000A    fruits :\u003D []string{\"peach\", \"banana\", \"kiwi\"}\u000A    sort.Sort(byLength(fruits))\u000A    fmt.Println(fruits)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"cmp\"\u000A    \"fmt\"\u000A    \"slices\"\u000A)\u000A');codeLines.push('func main() {\u000A    fruits :\u003D []string{\"peach\", \"banana\", \"kiwi\"}\u000A');codeLines.push('    lenCmp :\u003D func(a, b string) int {\u000A        return cmp.Compare(len(a), len(b))\u000A    }\u000A');codeLines.push('    slices.SortFunc(fruits, lenCmp)\u000A    fmt.Println(fruits)\u000A');codeLines.push('    type Person struct {\u000A        name string\u000A        age  int\u000A    }\u000A');codeLines.push('    people :\u003D []Person{\u000A        Person{name: \"Jax\", age: 37},\u000A        Person{name: \"TJ\", age: 25},\u000A        Person{name: \"Alex\", age: 72},\u000A    }\u000A');codeLines.push('    slices.SortFunc(people,\u000A        func(a, b Person) int {\u000A            return cmp.Compare(a.age, b.age)\u000A        })\u000A    fmt.Println(people)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
