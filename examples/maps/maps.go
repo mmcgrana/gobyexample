@@ -39,6 +39,11 @@ func main() {
 	delete(m, "k2")
 	fmt.Println("map:", m)
 
+	// To remove *all* key/value pairs from a map, use
+	// the `clear` builtin.
+	clear(m)
+	fmt.Println("map:", m)
+
 	// The optional second return value when getting a
 	// value from a map indicates if the key was present
 	// in the map. This can be used to disambiguate
