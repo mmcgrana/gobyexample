@@ -12,6 +12,7 @@ sl1: [c d e]
 sl2: [a b c d e]
 sl3: [c d e f]
 dcl: [g h i]
+t == t2
 2d:  [[0] [1 2] [2 3 4]]
 
 # Check out this [great blog post](https://go.dev/blog/slices-intro)

@@ -9,3 +9,4 @@ map: map[k1:7]
 map: map[]
 prs: false
 map: map[bar:2 foo:1]
+n == n2

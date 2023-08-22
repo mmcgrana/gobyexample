@@ -3,7 +3,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main() {
 
@@ -69,6 +72,13 @@ func main() {
 	// in a single line as well.
 	t := []string{"g", "h", "i"}
 	fmt.Println("dcl:", t)
+
+	// The `slices` package contains a number of useful
+	// utility functions for slices.
+	t2 := []string{"g", "h", "i"}
+	if slices.Equal(t, t2) {
+		fmt.Println("t == t2")
+	}
 
 	// Slices can be composed into multi-dimensional data
 	// structures. The length of the inner slices can
