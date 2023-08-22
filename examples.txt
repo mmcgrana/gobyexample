@@ -71,6 +71,7 @@ Command-Line Arguments
 Command-Line Flags
 Command-Line Subcommands
 Environment Variables
+Logging
 HTTP Client
 HTTP Server
 Context

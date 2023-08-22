@@ -14,7 +14,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'http-client';
+              window.location.href = 'logging';
           }
           
       }
@@ -162,7 +162,7 @@ program picks that value up.</p>
       
       
       <p class="next">
-        Next example: <a href="http-client">HTTP Client</a>.
+        Next example: <a href="logging">Logging</a>.
       </p>
       
 

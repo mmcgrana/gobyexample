@@ -9,7 +9,7 @@
       onkeydown = (e) => {
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'environment-variables';
+              window.location.href = 'logging';
           }
           
           
