@@ -5,7 +5,8 @@ package main
 
 import (
 	"fmt"
-	"slices"
+
+	"golang.org/x/exp/slices"
 )
 
 func main() {
@@ -26,6 +27,7 @@ func main() {
 	// as an additional parameter to `make`.
 	s = make([]string, 3)
 	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
+	fmt.Printf("Slice Address: %p\n", s)
 
 	// We can set and get just like with arrays.
 	s[0] = "a"
@@ -36,6 +38,7 @@ func main() {
 
 	// `len` returns the length of the slice as expected.
 	fmt.Println("len:", len(s))
+	fmt.Printf("Slice s Address: %p\n", s)
 
 	// In addition to these basic operations, slices
 	// support several more that make them richer than
@@ -46,6 +49,7 @@ func main() {
 	s = append(s, "d")
 	s = append(s, "e", "f")
 	fmt.Println("apd:", s)
+	fmt.Printf("Slice s Address: %p\n", s)
 
 	// Slices can also be `copy`'d. Here we create an
 	// empty slice `c` of the same length as `s` and copy
@@ -53,20 +57,24 @@ func main() {
 	c := make([]string, len(s))
 	copy(c, s)
 	fmt.Println("cpy:", c)
+	fmt.Printf("Slice c Address: %p\n", c)
 
 	// Slices support a "slice" operator with the syntax
 	// `slice[low:high]`. For example, this gets a slice
 	// of the elements `s[2]`, `s[3]`, and `s[4]`.
 	l := s[2:5]
 	fmt.Println("sl1:", l)
+	fmt.Printf("Slice l Address: %p\n", l)
 
 	// This slices up to (but excluding) `s[5]`.
 	l = s[:5]
 	fmt.Println("sl2:", l)
+	fmt.Printf("Slice l Address: %p\n", l)
 
 	// And this slices up from (and including) `s[2]`.
 	l = s[2:]
 	fmt.Println("sl3:", l)
+	fmt.Printf("Slice l Address: %p\n", l)
 
 	// We can declare and initialize a variable for slice
 	// in a single line as well.
