@@ -122,7 +122,7 @@ zero value for an <code>int</code> is <code>0</code>.</p>
           <td class="docs">
             <p>The <code>:=</code> syntax is shorthand for declaring and
 initializing a variable, e.g. for
-<code>var f string = &quot;apple&quot;</code> in this case.
+<code>var f string := &quot;apple&quot;</code> in this case.
 This syntax is only available inside functions.</p>
 
           </td>
