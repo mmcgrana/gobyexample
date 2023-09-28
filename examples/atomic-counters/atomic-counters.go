@@ -15,9 +15,9 @@ import (
 
 func main() {
 
-	// We'll use an unsigned integer to represent our
+	// We'll use an atomic integer type to represent our
 	// (always-positive) counter.
-	var ops uint64
+	var ops atomic.Uint64
 
 	// A WaitGroup will help us wait for all goroutines
 	// to finish their work.
@@ -30,12 +30,13 @@ func main() {
 
 		go func() {
 			for c := 0; c < 1000; c++ {
-				// To atomically increment the counter we
-				// use `AddUint64`, giving it the memory
-				// address of our `ops` counter with the
-				// `&` syntax.
-				atomic.AddUint64(&ops, 1)
+
+				// To atomically increment the counter we use `Add`,
+				// giving it the memory address of our `ops` counter
+				// with the `&` syntax.
+				ops.Add(1)
 			}
+
 			wg.Done()
 		}()
 	}
@@ -48,5 +49,5 @@ func main() {
 	// atomics safely while they are being updated is
 	// also possible, using functions like
 	// `atomic.LoadUint64`.
-	fmt.Println("ops:", ops)
+	fmt.Println("ops:", ops.Load())
 }
