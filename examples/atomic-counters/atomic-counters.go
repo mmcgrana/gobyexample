@@ -31,9 +31,7 @@ func main() {
 		go func() {
 			for c := 0; c < 1000; c++ {
 
-				// To atomically increment the counter we use `Add`,
-				// giving it the memory address of our `ops` counter
-				// with the `&` syntax.
+				// To atomically increment the counter we use `Add`.
 				ops.Add(1)
 			}
 
@@ -44,10 +42,8 @@ func main() {
 	// Wait until all the goroutines are done.
 	wg.Wait()
 
-	// It's safe to access `ops` now because we know
-	// no other goroutine is writing to it. Reading
-	// atomics safely while they are being updated is
-	// also possible, using functions like
-	// `atomic.LoadUint64`.
+	// Reading atomics safely while they are being updated is
+	// possible using functions like `Load`, although here it's
+	// safe anyway, because no goroutines are writing to 'ops'.
 	fmt.Println("ops:", ops.Load())
 }

@@ -46,7 +46,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/5vAUgPMebQw"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/LfAMxMppwL-"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -125,9 +125,7 @@ counter exactly 1000 times.</p>
         
         <tr>
           <td class="docs">
-            <p>To atomically increment the counter we use <code>Add</code>,
-giving it the memory address of our <code>ops</code> counter
-with the <code>&amp;</code> syntax.</p>
+            <p>To atomically increment the counter we use <code>Add</code>.</p>
 
           </td>
           <td class="code leading">
@@ -162,11 +160,9 @@ with the <code>&amp;</code> syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s safe to access <code>ops</code> now because we know
-no other goroutine is writing to it. Reading
-atomics safely while they are being updated is
-also possible, using functions like
-<code>atomic.LoadUint64</code>.</p>
+            <p>Reading atomics safely while they are being updated is
+possible using functions like <code>Load</code>, although here it&rsquo;s
+safe anyway, because no goroutines are writing to &lsquo;ops&rsquo;.</p>
 
           </td>
           <td class="code">
