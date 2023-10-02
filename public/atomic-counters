@@ -46,7 +46,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/LfAMxMppwL-"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/HWE6h4-y-Fw"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -160,9 +160,9 @@ counter exactly 1000 times.</p>
         
         <tr>
           <td class="docs">
-            <p>Reading atomics safely while they are being updated is
-possible using functions like <code>Load</code>, although here it&rsquo;s
-safe anyway, because no goroutines are writing to &lsquo;ops&rsquo;.</p>
+            <p>Here no goroutines are writing to &lsquo;ops&rsquo;, but using
+<code>Load</code> it&rsquo;s safe to atomically read a value even while
+other goroutines are (atomically) updating it.</p>
 
           </td>
           <td class="code">
@@ -179,11 +179,12 @@ safe anyway, because no goroutines are writing to &lsquo;ops&rsquo;.</p>
         <tr>
           <td class="docs">
             <p>We expect to get exactly 50,000 operations. Had we
-used the non-atomic <code>ops++</code> to increment the counter,
-we&rsquo;d likely get a different number, changing between
-runs, because the goroutines would interfere with
-each other. Moreover, we&rsquo;d get data race failures
-when running with the <code>-race</code> flag.</p>
+used a non-atomic integer and incremented it with
+<code>ops++</code>, we&rsquo;d likely get a different number,
+changing between runs, because the goroutines
+would interfere with each other. Moreover, we&rsquo;d
+get data race failures when running with the
+<code>-race</code> flag.</p>
 
           </td>
           <td class="code leading">

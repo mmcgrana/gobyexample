@@ -42,8 +42,8 @@ func main() {
 	// Wait until all the goroutines are done.
 	wg.Wait()
 
-	// Reading atomics safely while they are being updated is
-	// possible using functions like `Load`, although here it's
-	// safe anyway, because no goroutines are writing to 'ops'.
+	// Here no goroutines are writing to 'ops', but using
+	// `Load` it's safe to atomically read a value even while
+	// other goroutines are (atomically) updating it.
 	fmt.Println("ops:", ops.Load())
 }
