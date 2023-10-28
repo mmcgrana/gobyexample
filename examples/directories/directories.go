@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
 )
@@ -76,19 +77,19 @@ func main() {
 	check(err)
 
 	// We can also visit a directory *recursively*,
-	// including all its sub-directories. `Walk` accepts
+	// including all its sub-directories. `WalkDir` accepts
 	// a callback function to handle every file or
 	// directory visited.
 	fmt.Println("Visiting subdir")
-	err = filepath.Walk("subdir", visit)
+	err = filepath.WalkDir("subdir", visit)
 }
 
 // `visit` is called for every file or directory found
-// recursively by `filepath.Walk`.
-func visit(p string, info os.FileInfo, err error) error {
+// recursively by `filepath.WalkDir`.
+func visit(path string, d fs.DirEntry, err error) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(" ", p, info.IsDir())
+	fmt.Println(" ", path, d.IsDir())
 	return nil
 }

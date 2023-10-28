@@ -42,7 +42,7 @@
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/cICbVSX51zI"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/ORNj2BPrLQr"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -55,6 +55,7 @@
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;io/fs&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;path/filepath&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
@@ -242,7 +243,7 @@ when listing the <em>current</em> directory.</p>
         <tr>
           <td class="docs">
             <p>We can also visit a directory <em>recursively</em>,
-including all its sub-directories. <code>Walk</code> accepts
+including all its sub-directories. <code>WalkDir</code> accepts
 a callback function to handle every file or
 directory visited.</p>
 
@@ -250,7 +251,7 @@ directory visited.</p>
           <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Visiting subdir&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Walk</span><span class="p">(</span><span class="s">&#34;subdir&#34;</span><span class="p">,</span> <span class="nx">visit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="p">=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">WalkDir</span><span class="p">(</span><span class="s">&#34;subdir&#34;</span><span class="p">,</span> <span class="nx">visit</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -258,16 +259,16 @@ directory visited.</p>
         <tr>
           <td class="docs">
             <p><code>visit</code> is called for every file or directory found
-recursively by <code>filepath.Walk</code>.</p>
+recursively by <code>filepath.WalkDir</code>.</p>
 
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">visit</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">info</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">visit</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">d</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">DirEntry</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">err</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">info</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">d</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -316,7 +317,7 @@ recursively by <code>filepath.Walk</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A    \"path/filepath\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    err :\u003D os.Mkdir(\"subdir\", 0755)\u000A    check(err)\u000A');codeLines.push('    defer os.RemoveAll(\"subdir\")\u000A');codeLines.push('    createEmptyFile :\u003D func(name string) {\u000A        d :\u003D []byte(\"\")\u000A        check(os.WriteFile(name, d, 0644))\u000A    }\u000A');codeLines.push('    createEmptyFile(\"subdir/file1\")\u000A');codeLines.push('    err \u003D os.MkdirAll(\"subdir/parent/child\", 0755)\u000A    check(err)\u000A');codeLines.push('    createEmptyFile(\"subdir/parent/file2\")\u000A    createEmptyFile(\"subdir/parent/file3\")\u000A    createEmptyFile(\"subdir/parent/child/file4\")\u000A');codeLines.push('    c, err :\u003D os.ReadDir(\"subdir/parent\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"subdir/parent/child\")\u000A    check(err)\u000A');codeLines.push('    c, err \u003D os.ReadDir(\".\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent/child\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"../../..\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Visiting subdir\")\u000A    err \u003D filepath.Walk(\"subdir\", visit)\u000A}\u000A');codeLines.push('func visit(p string, info os.FileInfo, err error) error {\u000A    if err !\u003D nil {\u000A        return err\u000A    }\u000A    fmt.Println(\" \", p, info.IsDir())\u000A    return nil\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"io/fs\"\u000A    \"os\"\u000A    \"path/filepath\"\u000A)\u000A');codeLines.push('func check(e error) {\u000A    if e !\u003D nil {\u000A        panic(e)\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    err :\u003D os.Mkdir(\"subdir\", 0755)\u000A    check(err)\u000A');codeLines.push('    defer os.RemoveAll(\"subdir\")\u000A');codeLines.push('    createEmptyFile :\u003D func(name string) {\u000A        d :\u003D []byte(\"\")\u000A        check(os.WriteFile(name, d, 0644))\u000A    }\u000A');codeLines.push('    createEmptyFile(\"subdir/file1\")\u000A');codeLines.push('    err \u003D os.MkdirAll(\"subdir/parent/child\", 0755)\u000A    check(err)\u000A');codeLines.push('    createEmptyFile(\"subdir/parent/file2\")\u000A    createEmptyFile(\"subdir/parent/file3\")\u000A    createEmptyFile(\"subdir/parent/child/file4\")\u000A');codeLines.push('    c, err :\u003D os.ReadDir(\"subdir/parent\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"subdir/parent/child\")\u000A    check(err)\u000A');codeLines.push('    c, err \u003D os.ReadDir(\".\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Listing subdir/parent/child\")\u000A    for _, entry :\u003D range c {\u000A        fmt.Println(\" \", entry.Name(), entry.IsDir())\u000A    }\u000A');codeLines.push('    err \u003D os.Chdir(\"../../..\")\u000A    check(err)\u000A');codeLines.push('    fmt.Println(\"Visiting subdir\")\u000A    err \u003D filepath.WalkDir(\"subdir\", visit)\u000A}\u000A');codeLines.push('func visit(path string, d fs.DirEntry, err error) error {\u000A    if err !\u003D nil {\u000A        return err\u000A    }\u000A    fmt.Println(\" \", path, d.IsDir())\u000A    return nil\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
