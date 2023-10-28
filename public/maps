@@ -166,7 +166,7 @@ the <code>clear</code> builtin.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">clear</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">clear</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map:&#34;</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
