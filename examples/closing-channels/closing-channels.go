@@ -47,4 +47,10 @@ func main() {
 	// [synchronization](channel-synchronization) approach
 	// we saw earlier.
 	<-done
+
+	// It is possible to read from an empty closed channel,
+	// but instead of waiting for a message, we will
+	// immediately receive a zero value of the channel's type.
+	j := <-jobs
+	fmt.Println("no jobs to receive", j)
 }
