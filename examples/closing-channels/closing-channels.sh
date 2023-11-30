@@ -7,8 +7,7 @@ sent job 3
 received job 3
 sent all jobs
 received all jobs
-no jobs to receive 0
-awaiting more jobs: false
+received more jobs: false
 
 # The idea of closed channels leads naturally to our next
 # example: `range` over channels.

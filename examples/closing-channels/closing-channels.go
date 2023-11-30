@@ -48,11 +48,13 @@ func main() {
 	// we saw earlier.
 	<-done
 
-	// It is possible to read more from an empty closed channel.
-	// However, instead of waiting for a message, we will always
-	// immediately receive a zero value of the channel's type and
-	// a false bool flag indicating that we should stop reading from it.
-	j, isOpened := <-jobs
-	fmt.Println("no jobs to receive", j)
-	fmt.Println("awaiting more jobs:", isOpened)
+	// Reading from a closed channel succeeds immediately,
+	// returning the zero value of the underlying type.
+	// The optional second return value is `true` if the
+	// value received was delivered by a successful send
+	// operation to the channel, or `false` if it was a
+	// zero value generated because the channel is closed
+	// and empty.
+	_, ok := <-jobs
+	fmt.Println("received more jobs:", ok)
 }
