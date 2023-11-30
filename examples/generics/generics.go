@@ -5,6 +5,36 @@ package main
 
 import "fmt"
 
+type MyInt16 int16
+type MyInt int
+
+func (m MyInt16) String() string {
+	return fmt.Sprintf("{MyInt16: %d}", m)
+}
+
+func (m MyInt) String() string {
+	return fmt.Sprintf("{MyInt: %d}", m)
+}
+
+// `~` the underlying type of T must be itself, and T cannot be an interface.
+type Number interface {
+	int | ~int16
+}
+
+// An interface representing all types with underlying type int that implement the String method.
+type IntString interface {
+	~int16
+	String() string
+}
+
+func SumNumber[T Number](a, b T) T {
+	return a + b
+}
+
+func SumIntString[T IntString](a, b T) (T, string) {
+	return a + b, a.String() + ", " + b.String()
+}
+
 // As an example of a generic function, `MapKeys` takes
 // a map of any type and returns a slice of its keys.
 // This function has two type parameters - `K` and `V`;
@@ -71,4 +101,13 @@ func main() {
 	lst.Push(13)
 	lst.Push(23)
 	fmt.Println("list:", lst.GetAll())
+
+	// We can use `MyInt16` as the parameter of the function `SumNumber`, because its underlying type is int16.
+	fmt.Println(SumNumber(MyInt16(1), MyInt16(2)))
+	fmt.Println(SumNumber(1, 2))
+
+	// We can't use `MyInt` as the parameter of the function `SumInString`, because underlying type of `MyInt` is int not int16.
+	// also int16 does not implement `IntString` (missing method String).
+	result, str := SumIntString(MyInt16(1), MyInt16(2))
+	fmt.Printf("result: %d, output: %s\n", result, str)
 }
