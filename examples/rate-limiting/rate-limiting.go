@@ -50,9 +50,14 @@ func main() {
 
 	// Every 200 milliseconds we'll try to add a new
 	// value to `burstyLimiter`, up to its limit of 3.
+	// If there is no space left then we continue.
 	go func() {
 		for t := range time.Tick(200 * time.Millisecond) {
-			burstyLimiter <- t
+			select {
+			case burstyLimiter <- t:
+			default:
+				continue
+			}
 		}
 	}()
 
