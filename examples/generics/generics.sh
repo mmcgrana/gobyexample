@@ -1,3 +1,3 @@
 $ go run generics.go
-keys: [4 1 2]
+keys: [1 2 4]
 list: [10 13 23]
