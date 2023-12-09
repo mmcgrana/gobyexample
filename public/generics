@@ -205,11 +205,24 @@ automatically.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run generics.go
 </span></span><span class="line"><span class="cl"><span class="go">keys: [4 1 2]
 </span></span></span><span class="line"><span class="cl"><span class="go">list: [10 13 23]</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note: The order of iteration over map keys is not
+defined in Go, so different invocations may
+result in different orders.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
           </td>
         </tr>
         
@@ -228,7 +241,7 @@ automatically.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func MapKeys[K comparable, V any](m map[K]V) []K {\u000A    r :\u003D make([]K, 0, len(m))\u000A    for k :\u003D range m {\u000A        r \u003D append(r, k)\u000A    }\u000A    return r\u000A}\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) GetAll() []T {\u000A    var elems []T\u000A    for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A        elems \u003D append(elems, e.val)\u000A    }\u000A    return elems\u000A}\u000A');codeLines.push('func main() {\u000A    var m \u003D map[int]string{1: \"2\", 2: \"4\", 4: \"8\"}\u000A');codeLines.push('    fmt.Println(\"keys:\", MapKeys(m))\u000A');codeLines.push('    _ \u003D MapKeys[int, string](m)\u000A');codeLines.push('    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A    fmt.Println(\"list:\", lst.GetAll())\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func MapKeys[K comparable, V any](m map[K]V) []K {\u000A    r :\u003D make([]K, 0, len(m))\u000A    for k :\u003D range m {\u000A        r \u003D append(r, k)\u000A    }\u000A    return r\u000A}\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) GetAll() []T {\u000A    var elems []T\u000A    for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A        elems \u003D append(elems, e.val)\u000A    }\u000A    return elems\u000A}\u000A');codeLines.push('func main() {\u000A    var m \u003D map[int]string{1: \"2\", 2: \"4\", 4: \"8\"}\u000A');codeLines.push('    fmt.Println(\"keys:\", MapKeys(m))\u000A');codeLines.push('    _ \u003D MapKeys[int, string](m)\u000A');codeLines.push('    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A    fmt.Println(\"list:\", lst.GetAll())\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
