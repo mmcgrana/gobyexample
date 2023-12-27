@@ -1,200 +1,210 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Go by Example</title>
-    <link rel=stylesheet href="site.css">
-  </head>
-  <body>
-    <div id="intro">
-      <h2><a href="./">Go by Example</a></h2>
-      <p>
-        <a href="https://go.dev">Go</a> is an
-        open source programming language designed for
-        building simple, fast, and reliable software.
-        Please read the official
-        <a href="https://go.dev/doc/tutorial/getting-started">documentation</a>
-        to learn a bit about Go code, tools packages,
-        and modules.
-      </p>
 
-      <p>
-        <em>Go by Example</em> is a hands-on introduction
-        to Go using annotated example programs. Check out
-        the <a href="hello-world">first example</a> or
-        browse the full list below.
-      </p>
+<head>
+  <meta charset="utf-8">
+  <title>Go by Example</title>
+  <link rel=stylesheet href="site.css">
+</head>
 
-      <ul>
-      
-        <li><a href="hello-world">Hello World</a></li>
-      
-        <li><a href="values">Values</a></li>
-      
-        <li><a href="variables">Variables</a></li>
-      
-        <li><a href="constants">Constants</a></li>
-      
-        <li><a href="for">For</a></li>
-      
-        <li><a href="if-else">If/Else</a></li>
-      
-        <li><a href="switch">Switch</a></li>
-      
-        <li><a href="arrays">Arrays</a></li>
-      
-        <li><a href="slices">Slices</a></li>
-      
-        <li><a href="maps">Maps</a></li>
-      
-        <li><a href="range">Range</a></li>
-      
-        <li><a href="functions">Functions</a></li>
-      
-        <li><a href="multiple-return-values">Multiple Return Values</a></li>
-      
-        <li><a href="variadic-functions">Variadic Functions</a></li>
-      
-        <li><a href="closures">Closures</a></li>
-      
-        <li><a href="recursion">Recursion</a></li>
-      
-        <li><a href="pointers">Pointers</a></li>
-      
-        <li><a href="strings-and-runes">Strings and Runes</a></li>
-      
-        <li><a href="structs">Structs</a></li>
-      
-        <li><a href="methods">Methods</a></li>
-      
-        <li><a href="interfaces">Interfaces</a></li>
-      
-        <li><a href="struct-embedding">Struct Embedding</a></li>
-      
-        <li><a href="generics">Generics</a></li>
-      
-        <li><a href="errors">Errors</a></li>
-      
-        <li><a href="goroutines">Goroutines</a></li>
-      
-        <li><a href="channels">Channels</a></li>
-      
-        <li><a href="channel-buffering">Channel Buffering</a></li>
-      
-        <li><a href="channel-synchronization">Channel Synchronization</a></li>
-      
-        <li><a href="channel-directions">Channel Directions</a></li>
-      
-        <li><a href="select">Select</a></li>
-      
-        <li><a href="timeouts">Timeouts</a></li>
-      
-        <li><a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a></li>
-      
-        <li><a href="closing-channels">Closing Channels</a></li>
-      
-        <li><a href="range-over-channels">Range over Channels</a></li>
-      
-        <li><a href="timers">Timers</a></li>
-      
-        <li><a href="tickers">Tickers</a></li>
-      
-        <li><a href="worker-pools">Worker Pools</a></li>
-      
-        <li><a href="waitgroups">WaitGroups</a></li>
-      
-        <li><a href="rate-limiting">Rate Limiting</a></li>
-      
-        <li><a href="atomic-counters">Atomic Counters</a></li>
-      
-        <li><a href="mutexes">Mutexes</a></li>
-      
-        <li><a href="stateful-goroutines">Stateful Goroutines</a></li>
-      
-        <li><a href="sorting">Sorting</a></li>
-      
-        <li><a href="sorting-by-functions">Sorting by Functions</a></li>
-      
-        <li><a href="panic">Panic</a></li>
-      
-        <li><a href="defer">Defer</a></li>
-      
-        <li><a href="recover">Recover</a></li>
-      
-        <li><a href="string-functions">String Functions</a></li>
-      
-        <li><a href="string-formatting">String Formatting</a></li>
-      
-        <li><a href="text-templates">Text Templates</a></li>
-      
-        <li><a href="regular-expressions">Regular Expressions</a></li>
-      
-        <li><a href="json">JSON</a></li>
-      
-        <li><a href="xml">XML</a></li>
-      
-        <li><a href="time">Time</a></li>
-      
-        <li><a href="epoch">Epoch</a></li>
-      
-        <li><a href="time-formatting-parsing">Time Formatting / Parsing</a></li>
-      
-        <li><a href="random-numbers">Random Numbers</a></li>
-      
-        <li><a href="number-parsing">Number Parsing</a></li>
-      
-        <li><a href="url-parsing">URL Parsing</a></li>
-      
-        <li><a href="sha256-hashes">SHA256 Hashes</a></li>
-      
-        <li><a href="base64-encoding">Base64 Encoding</a></li>
-      
-        <li><a href="reading-files">Reading Files</a></li>
-      
-        <li><a href="writing-files">Writing Files</a></li>
-      
-        <li><a href="line-filters">Line Filters</a></li>
-      
-        <li><a href="file-paths">File Paths</a></li>
-      
-        <li><a href="directories">Directories</a></li>
-      
-        <li><a href="temporary-files-and-directories">Temporary Files and Directories</a></li>
-      
-        <li><a href="embed-directive">Embed Directive</a></li>
-      
-        <li><a href="testing-and-benchmarking">Testing and Benchmarking</a></li>
-      
-        <li><a href="command-line-arguments">Command-Line Arguments</a></li>
-      
-        <li><a href="command-line-flags">Command-Line Flags</a></li>
-      
-        <li><a href="command-line-subcommands">Command-Line Subcommands</a></li>
-      
-        <li><a href="environment-variables">Environment Variables</a></li>
-      
-        <li><a href="logging">Logging</a></li>
-      
-        <li><a href="http-client">HTTP Client</a></li>
-      
-        <li><a href="http-server">HTTP Server</a></li>
-      
-        <li><a href="context">Context</a></li>
-      
-        <li><a href="spawning-processes">Spawning Processes</a></li>
-      
-        <li><a href="execing-processes">Exec'ing Processes</a></li>
-      
-        <li><a href="signals">Signals</a></li>
-      
-        <li><a href="exit">Exit</a></li>
-      
-      </ul>
-
-    <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+<body>
+  <div id="intro">
+    <h2><a href="./">Go by Example - ES</a></h2>
+    <p>
+      <a href="https://go.dev" target="_blank">Go</a> es un lenguaje de programación de código abierto diseñado para
+      construir software
+      simple, rápido y confiable. Por
+      favor, lee la <a href="https://go.dev/doc/tutorial/getting-started" target="_blank">documentación</a> oficial para
+      aprender un
+      poco sobre el código de Go, herramientas, paquetes y módulos.
     </p>
 
-    </div>
-  </body>
+    <p>
+      <em>Go by Example</em> es una introducción práctica a Go utilizando programas de ejemplo anotados.
+      Revisa el <a href="hello-world">primer ejemplo</a> o
+      navega por la lista completa a continuación.
+    </p>
+    <p>
+      Esta es la traducción a español del proyecto <a href="hello-world">Go by Example</a>, creado por
+      <a href="https://www.youtube.com/c/dominicode" target="_blank">dominicode</a>, comunidad enfocada a enseñar
+      programación en
+      castellano.
+    </p>
+    <ul>
+
+      <li><a href="hello-world">Hello World</a></li>
+
+      <li><a href="values">Values</a></li>
+
+      <li><a href="variables">Variables</a></li>
+
+      <li><a href="constants">Constants</a></li>
+
+      <li><a href="for">For</a></li>
+
+      <li><a href="if-else">If/Else</a></li>
+
+      <li><a href="switch">Switch</a></li>
+
+      <li><a href="arrays">Arrays</a></li>
+
+      <li><a href="slices">Slices</a></li>
+
+      <li><a href="maps">Maps</a></li>
+
+      <li><a href="range">Range</a></li>
+
+      <li><a href="functions">Functions</a></li>
+
+      <li><a href="multiple-return-values">Multiple Return Values</a></li>
+
+      <li><a href="variadic-functions">Variadic Functions</a></li>
+
+      <li><a href="closures">Closures</a></li>
+
+      <li><a href="recursion">Recursion</a></li>
+
+      <li><a href="pointers">Pointers</a></li>
+
+      <li><a href="strings-and-runes">Strings and Runes</a></li>
+
+      <li><a href="structs">Structs</a></li>
+
+      <li><a href="methods">Methods</a></li>
+
+      <li><a href="interfaces">Interfaces</a></li>
+
+      <li><a href="struct-embedding">Struct Embedding</a></li>
+
+      <li><a href="generics">Generics</a></li>
+
+      <li><a href="errors">Errors</a></li>
+
+      <li><a href="goroutines">Goroutines</a></li>
+
+      <li><a href="channels">Channels</a></li>
+
+      <li><a href="channel-buffering">Channel Buffering</a></li>
+
+      <li><a href="channel-synchronization">Channel Synchronization</a></li>
+
+      <li><a href="channel-directions">Channel Directions</a></li>
+
+      <li><a href="select">Select</a></li>
+
+      <li><a href="timeouts">Timeouts</a></li>
+
+      <li><a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a></li>
+
+      <li><a href="closing-channels">Closing Channels</a></li>
+
+      <li><a href="range-over-channels">Range over Channels</a></li>
+
+      <li><a href="timers">Timers</a></li>
+
+      <li><a href="tickers">Tickers</a></li>
+
+      <li><a href="worker-pools">Worker Pools</a></li>
+
+      <li><a href="waitgroups">WaitGroups</a></li>
+
+      <li><a href="rate-limiting">Rate Limiting</a></li>
+
+      <li><a href="atomic-counters">Atomic Counters</a></li>
+
+      <li><a href="mutexes">Mutexes</a></li>
+
+      <li><a href="stateful-goroutines">Stateful Goroutines</a></li>
+
+      <li><a href="sorting">Sorting</a></li>
+
+      <li><a href="sorting-by-functions">Sorting by Functions</a></li>
+
+      <li><a href="panic">Panic</a></li>
+
+      <li><a href="defer">Defer</a></li>
+
+      <li><a href="recover">Recover</a></li>
+
+      <li><a href="string-functions">String Functions</a></li>
+
+      <li><a href="string-formatting">String Formatting</a></li>
+
+      <li><a href="text-templates">Text Templates</a></li>
+
+      <li><a href="regular-expressions">Regular Expressions</a></li>
+
+      <li><a href="json">JSON</a></li>
+
+      <li><a href="xml">XML</a></li>
+
+      <li><a href="time">Time</a></li>
+
+      <li><a href="epoch">Epoch</a></li>
+
+      <li><a href="time-formatting-parsing">Time Formatting / Parsing</a></li>
+
+      <li><a href="random-numbers">Random Numbers</a></li>
+
+      <li><a href="number-parsing">Number Parsing</a></li>
+
+      <li><a href="url-parsing">URL Parsing</a></li>
+
+      <li><a href="sha256-hashes">SHA256 Hashes</a></li>
+
+      <li><a href="base64-encoding">Base64 Encoding</a></li>
+
+      <li><a href="reading-files">Reading Files</a></li>
+
+      <li><a href="writing-files">Writing Files</a></li>
+
+      <li><a href="line-filters">Line Filters</a></li>
+
+      <li><a href="file-paths">File Paths</a></li>
+
+      <li><a href="directories">Directories</a></li>
+
+      <li><a href="temporary-files-and-directories">Temporary Files and Directories</a></li>
+
+      <li><a href="embed-directive">Embed Directive</a></li>
+
+      <li><a href="testing-and-benchmarking">Testing and Benchmarking</a></li>
+
+      <li><a href="command-line-arguments">Command-Line Arguments</a></li>
+
+      <li><a href="command-line-flags">Command-Line Flags</a></li>
+
+      <li><a href="command-line-subcommands">Command-Line Subcommands</a></li>
+
+      <li><a href="environment-variables">Environment Variables</a></li>
+
+      <li><a href="logging">Logging</a></li>
+
+      <li><a href="http-client">HTTP Client</a></li>
+
+      <li><a href="http-server">HTTP Server</a></li>
+
+      <li><a href="context">Context</a></li>
+
+      <li><a href="spawning-processes">Spawning Processes</a></li>
+
+      <li><a href="execing-processes">Exec'ing Processes</a></li>
+
+      <li><a href="signals">Signals</a></li>
+
+      <li><a href="exit">Exit</a></li>
+
+    </ul>
+
+    <p class="footer">
+      by <a href="https://markmcgranaghan.com" target="_blank">Mark McGranaghan</a> and <a
+        href="https://eli.thegreenplace.net" target="_blank">Eli
+        Bendersky</a> | <a href="https://github.com/domini-code/gobyexample" target="_blank">source</a> | <a
+        href="https://github.com/domini-code/gobyexample#license" target="_blank">licencia</a>
+      | <a href="https://twitter.com/bezael_perez" target="_blank">traducido por Bezael</a>
+    </p>
+
+  </div>
+</body>
+
 </html>
