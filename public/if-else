@@ -151,10 +151,10 @@ in Go, but that the braces are required.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run if-else.go 
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run if-else.go
 </span></span><span class="line"><span class="cl"><span class="go">7 is odd
 </span></span></span><span class="line"><span class="cl"><span class="go">8 is divisible by 4
-</span></span></span><span class="line"><span class="cl"><span class="go">either 7 or 8 are even
+</span></span></span><span class="line"><span class="cl"><span class="go">either 8 or 7 are even
 </span></span></span><span class="line"><span class="cl"><span class="go">9 has 1 digit</span></span></span></code></pre>
           </td>
         </tr>
