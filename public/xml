@@ -244,7 +244,9 @@ to nest all <code>plant</code>s under <code>&lt;parent&gt;&lt;child&gt;...</code
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="json">JSON</a>
+      </p>
       <p class="next">
         Next example: <a href="time">Time</a>.
       </p>

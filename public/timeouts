@@ -156,7 +156,9 @@ out and the second succeeding.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="select">Select</a>
+      </p>
       <p class="next">
         Next example: <a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
       </p>

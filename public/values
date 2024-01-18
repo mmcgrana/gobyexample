@@ -127,7 +127,9 @@ basic examples.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="hello-world">Hello World</a>
+      </p>
       <p class="next">
         Next example: <a href="variables">Variables</a>.
       </p>

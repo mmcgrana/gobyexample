@@ -228,7 +228,9 @@ way to parameterize programs.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="command-line-subcommands">Command-Line Subcommands</a>
+      </p>
       <p class="next">
         Next example: <a href="environment-variables">Environment Variables</a>.
       </p>

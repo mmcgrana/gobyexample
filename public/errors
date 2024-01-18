@@ -260,7 +260,9 @@ on the Go blog for more on error handling.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="generics">Generics</a>
+      </p>
       <p class="next">
         Next example: <a href="goroutines">Goroutines</a>.
       </p>

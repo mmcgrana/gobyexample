@@ -182,7 +182,9 @@ bits.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="random-numbers">Random Numbers</a>
+      </p>
       <p class="next">
         Next example: <a href="url-parsing">URL Parsing</a>.
       </p>

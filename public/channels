@@ -143,7 +143,9 @@ message without having to use any other synchronization.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="goroutines">Goroutines</a>
+     </p>
       <p class="next">
         Next example: <a href="channel-buffering">Channel Buffering</a>.
       </p>

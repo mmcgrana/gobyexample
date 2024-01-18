@@ -213,7 +213,9 @@ be made relative to base.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="line-filters">Line Filters</a>
+      </p>
       <p class="next">
         Next example: <a href="directories">Directories</a>.
       </p>

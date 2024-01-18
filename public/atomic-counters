@@ -208,7 +208,9 @@ state.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="rate-limiting">Rate Limiting</a>
+      </p>
       <p class="next">
         Next example: <a href="mutexes">Mutexes</a>.
       </p>

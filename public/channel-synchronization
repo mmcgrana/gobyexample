@@ -157,7 +157,9 @@ started.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="channel-buffering">Channel Buffering</a>
+     </p>
       <p class="next">
         Next example: <a href="channel-directions">Channel Directions</a>.
       </p>

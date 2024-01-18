@@ -173,7 +173,9 @@ lowercase lines.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="writing-files">Writing Files</a>
+      </p>
       <p class="next">
         Next example: <a href="file-paths">File Paths</a>.
       </p>

@@ -146,7 +146,9 @@ parsing and formatting.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="time">Time</a>
+      </p>
       <p class="next">
         Next example: <a href="time-formatting-parsing">Time Formatting / Parsing</a>.
       </p>

@@ -177,7 +177,9 @@ router we&rsquo;ve just set up.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="http-client">HTTP Client</a>
+      </p>
       <p class="next">
         Next example: <a href="context">Context</a>.
       </p>

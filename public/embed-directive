@@ -177,7 +177,9 @@ this example can only be run on your local machine.)</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="temporary-files-and-directories">Temporary Files and Directories</a>
+      </p>
       <p class="next">
         Next example: <a href="testing-and-benchmarking">Testing and Benchmarking</a>.
       </p>

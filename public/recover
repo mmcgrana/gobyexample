@@ -169,7 +169,9 @@ panic and resumes in the deferred closure.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="defer">Defer</a>
+      </p>
       <p class="next">
         Next example: <a href="string-functions">String Functions</a>.
       </p>

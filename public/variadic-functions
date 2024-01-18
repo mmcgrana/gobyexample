@@ -159,7 +159,9 @@ to form closures, which we&rsquo;ll look at next.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="multiple-return-values">Multiple Return Values</a>
+      </p>
       <p class="next">
         Next example: <a href="closures">Closures</a>.
       </p>

@@ -122,6 +122,9 @@ receive on this channel.</p>
         
       </table>
       
+      <p class="prev">
+        Previous example: <a href="channel-synchronization">Channel Synchronization</a>
+     </p>
       
       <p class="next">
         Next example: <a href="select">Select</a>.

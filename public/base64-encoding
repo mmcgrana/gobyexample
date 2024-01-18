@@ -161,7 +161,9 @@ but they both decode to the original string as desired.</p>
         </tr>
         
       </table>
-      
+       <p class="prev">
+          Previous example: <a href="sha256-hashes">SHA256 Hashes</a>
+       </p>
       
       <p class="next">
         Next example: <a href="reading-files">Reading Files</a>.

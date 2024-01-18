@@ -277,7 +277,9 @@ program.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="mutexes">Mutexes</a>
+      </p>
       <p class="next">
         Next example: <a href="sorting">Sorting</a>.
       </p>

@@ -154,7 +154,9 @@ assignment or function call. For example, here
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="constants">Constants</a>
+      </p>
       <p class="next">
         Next example: <a href="for">For</a>.
       </p>

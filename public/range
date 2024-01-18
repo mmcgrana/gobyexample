@@ -173,7 +173,9 @@ details.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="maps">Maps</a>
+      </p>
       <p class="next">
         Next example: <a href="functions">Functions</a>.
       </p>

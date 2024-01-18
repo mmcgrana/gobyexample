@@ -247,7 +247,9 @@ struct type. This technique is commonly used for
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="strings-and-runes">Strings and Runes</a>
+      </p>
       <p class="next">
         Next example: <a href="methods">Methods</a>.
       </p>

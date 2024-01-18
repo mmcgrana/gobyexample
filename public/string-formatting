@@ -392,7 +392,9 @@ and returns a string without printing it anywhere.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="string-functions">String Functions</a>
+      </p>
       <p class="next">
         Next example: <a href="text-templates">Text Templates</a>.
       </p>

@@ -161,7 +161,9 @@ to use error-indicating return values wherever possible.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="sorting-by-functions">Sorting by Functions</a>
+      </p>
       <p class="next">
         Next example: <a href="defer">Defer</a>.
       </p>

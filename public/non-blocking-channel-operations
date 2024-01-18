@@ -151,7 +151,9 @@ on both <code>messages</code> and <code>signals</code>.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="timeouts">Timeouts</a>
+      </p>
       <p class="next">
         Next example: <a href="closing-channels">Closing Channels</a>.
       </p>

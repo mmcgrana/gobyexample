@@ -269,7 +269,9 @@ and show the help text again.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="command-line-arguments">Command-Line Arguments</a>
+      </p>
       <p class="next">
         Next example: <a href="command-line-subcommands">Command-Line Subcommands</a>.
       </p>

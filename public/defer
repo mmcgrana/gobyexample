@@ -181,7 +181,9 @@ after being written.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="panic">Panic</a>
+      </p>
       <p class="next">
         Next example: <a href="recover">Recover</a>.
       </p>

@@ -131,7 +131,9 @@ values be received.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="closing-channels">Closing Channels</a>
+      </p>
       <p class="next">
         Next example: <a href="timers">Timers</a>.
       </p>

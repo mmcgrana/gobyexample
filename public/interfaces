@@ -205,7 +205,9 @@ these structs as arguments to <code>measure</code>.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="methods">Methods</a>
+      </p>
       <p class="next">
         Next example: <a href="struct-embedding">Struct Embedding</a>.
       </p>

@@ -164,7 +164,9 @@ the memory address for that variable.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="recursion">Recursion</a>
+      </p>
       <p class="next">
         Next example: <a href="strings-and-runes">Strings and Runes</a>.
       </p>

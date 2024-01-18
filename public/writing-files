@@ -247,7 +247,9 @@ we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="reading-files">Reading Files</a>
+      </p>
       <p class="next">
         Next example: <a href="line-filters">Line Filters</a>.
       </p>

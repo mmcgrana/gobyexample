@@ -183,7 +183,9 @@ causing the program to print <code>interrupt</code> and then exit.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="execing-processes">Exec'ing Processes</a>
+      </p>
       <p class="next">
         Next example: <a href="exit">Exit</a>.
       </p>

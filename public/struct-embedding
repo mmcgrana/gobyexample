@@ -213,7 +213,9 @@ we see that a <code>container</code> now implements the
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="interfaces">Interfaces</a>
+      </p>
       <p class="next">
         Next example: <a href="generics">Generics</a>.
       </p>

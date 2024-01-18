@@ -179,7 +179,9 @@ concurrent Go programs: channels.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="errors">Errors</a>
+      </p>
       <p class="next">
         Next example: <a href="channels">Channels</a>.
       </p>

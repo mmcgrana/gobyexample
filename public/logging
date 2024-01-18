@@ -256,7 +256,9 @@ on a single line.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="environment-variables">Environment Variables</a>
+      </p>
       <p class="next">
         Next example: <a href="http-client">HTTP Client</a>.
       </p>

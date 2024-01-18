@@ -228,7 +228,9 @@ result in different orders.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="struct-embedding">Struct Embedding</a>
+      </p>
       <p class="next">
         Next example: <a href="errors">Errors</a>.
       </p>

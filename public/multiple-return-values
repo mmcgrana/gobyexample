@@ -141,7 +141,9 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="functions">Functions</a>
+      </p>
       <p class="next">
         Next example: <a href="variadic-functions">Variadic Functions</a>.
       </p>

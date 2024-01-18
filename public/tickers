@@ -146,7 +146,9 @@ before we stop it.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="timers">Timers</a>
+      </p>
       <p class="next">
         Next example: <a href="worker-pools">Worker Pools</a>.
       </p>

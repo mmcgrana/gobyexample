@@ -206,7 +206,9 @@ prefixing them with our temporary directory.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="directories">Directories</a>
+      </p>
       <p class="next">
         Next example: <a href="embed-directive">Embed Directive</a>.
       </p>

@@ -142,7 +142,9 @@ settings.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="logging">Logging</a>
+      </p>
       <p class="next">
         Next example: <a href="http-server">HTTP Server</a>.
       </p>

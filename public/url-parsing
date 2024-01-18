@@ -202,7 +202,9 @@ pieces that we extracted.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="number-parsing">Number Parsing</a>
+      </p>
       <p class="next">
         Next example: <a href="sha256-hashes">SHA256 Hashes</a>.
       </p>

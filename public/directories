@@ -304,7 +304,9 @@ recursively by <code>filepath.WalkDir</code>.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="file-paths">File Paths</a>
+      </p>
       <p class="next">
         Next example: <a href="temporary-files-and-directories">Temporary Files and Directories</a>.
       </p>

@@ -160,7 +160,9 @@ program picks that value up.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="command-line-subcommands">Command-Line Subcommands</a>
+      </p>
       <p class="next">
         Next example: <a href="logging">Logging</a>.
       </p>

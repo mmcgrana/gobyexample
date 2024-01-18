@@ -170,7 +170,9 @@ doubt, <a href="testing-and-benchmarking">benchmark</a>!</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="sorting">Sorting</a>
+      </p>
       <p class="next">
         Next example: <a href="panic">Panic</a>.
       </p>

@@ -363,7 +363,9 @@ for more.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="regular-expressions">Regular Expressions</a>
+      </p>
       <p class="next">
         Next example: <a href="xml">XML</a>.
       </p>

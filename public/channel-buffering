@@ -128,7 +128,9 @@ concurrent receive.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="channels">Channels</a>
+     </p>
       <p class="next">
         Next example: <a href="channel-synchronization">Channel Synchronization</a>.
       </p>

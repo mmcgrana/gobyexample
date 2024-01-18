@@ -250,7 +250,9 @@ benchmark function names with a regexp.</p>
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="embed-directive">Embed Directive</a>
+      </p>
       <p class="next">
         Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
       </p>

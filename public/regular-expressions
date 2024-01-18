@@ -296,7 +296,9 @@ the <a href="https://pkg.go.dev/regexp"><code>regexp</code></a> package docs.</p
         
       </table>
       
-      
+      <p class="prev">
+        Previous example: <a href="text-templates">Text Templates</a>
+      </p>
       <p class="next">
         Next example: <a href="json">JSON</a>.
       </p>
