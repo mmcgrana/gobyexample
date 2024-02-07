@@ -1,6 +1,6 @@
 module github.com/mmcgrana/gobyexample
 
-go 1.21
+go 1.22.0
 
 require (
 	github.com/alecthomas/chroma/v2 v2.10.0
