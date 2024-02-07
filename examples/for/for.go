@@ -15,8 +15,14 @@ func main() {
 	}
 
 	// A classic initial/condition/after `for` loop.
-	for j := 7; j <= 9; j++ {
+	for j := 0; j < 3; j++ {
 		fmt.Println(j)
+	}
+
+	// Another way of accomplishing the basic "do this
+	// N times" iteration is `range` over an integer.
+	for i := range 3 {
+		fmt.Println("range", i)
 	}
 
 	// `for` without a condition will loop repeatedly
@@ -29,7 +35,7 @@ func main() {
 
 	// You can also `continue` to the next iteration of
 	// the loop.
-	for n := 0; n <= 5; n++ {
+	for n := range 6 {
 		if n%2 == 0 {
 			continue
 		}
