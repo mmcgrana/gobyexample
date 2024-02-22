@@ -38,8 +38,9 @@ func main() {
 	// the `utf8` package. Note that the run-time of
 	// `RuneCountInString` depends on the size of the string,
 	// because it has to decode each UTF-8 rune sequentially.
-	// Some Thai characters are represented by multiple UTF-8
-	// code points, so the result of this count may be surprising.
+	// Some Thai characters are represented by UTF-8 code points
+	// that can span multiple bytes, so the result of this count
+	// may be surprising.
 	fmt.Println("Rune count:", utf8.RuneCountInString(s))
 
 	// A `range` loop handles strings specially and decodes
