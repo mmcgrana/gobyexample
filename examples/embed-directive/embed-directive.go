@@ -8,7 +8,7 @@ package main
 // Import the `embed` package; if you don't use any exported
 // identifiers from this package, you can do a blank import with `_ "embed"`.
 import (
-	"embed"
+	_ "embed"
 )
 
 // `embed` directives accept paths relative to the directory containing the
