@@ -34,10 +34,10 @@ func main() {
 		// the WaitGroup that this worker is done. This way the worker
 		// itself does not have to be aware of the concurrency primitives
 		// involved in its execution.
-		go func() {
+		go func(i int) {
 			defer wg.Done()
 			worker(i)
-		}()
+		}(i)
 	}
 
 	// Block until the WaitGroup counter goes back to 0;
