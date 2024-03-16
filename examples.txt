@@ -22,6 +22,8 @@ Interfaces
 Struct Embedding
 Generics
 Errors
+Wrapping and Sentinel Errors
+Custom Errors
 Goroutines
 Channels
 Channel Buffering
