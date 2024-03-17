@@ -144,6 +144,9 @@ body {
   background-color: #ffffff;
   color: #252519;
 }
+td.code.empty {
+  background: #ffffff;
+}
 a, a:visited {
   color: #261a3b;
 }
@@ -155,9 +158,6 @@ p.footer a, p.footer a:visited {
 }
 td.code {
   background: #f0f0f0;
-}
-td.code.empty {
-  background: #ffffff;
 }
 
 /* Syntax highlighting: light mode */
@@ -186,8 +186,11 @@ body .c1 { color: #808080 }  /* Comment.Single */
 @media (prefers-color-scheme: dark) {
   /* Colors: dark mode */
   body {
-    background-color: #191919;
+    background-color: #1f1f1f;
     color: #d4d4d4;
+  }
+  td.code.empty {
+    background: #1f1f1f;
   }
   a, a:visited {
     color: #e4e4e4;
@@ -199,11 +202,9 @@ body .c1 { color: #808080 }  /* Comment.Single */
     color: #898e98;
   }
   td.code {
-    background: #222222;
+    background: #282828;
   }
-  td.code.empty {
-    background: #191919;
-  }
+
  
   /* Syntax highlighting: dark mode */
   body .nx { }                 /* Name.Other */
