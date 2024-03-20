@@ -45,7 +45,7 @@ complex applications with multiple layers of function calls.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/W9gasLW-MJp"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/tJa1tRV1swx"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -66,6 +66,9 @@ complex applications with multiple layers of function calls.</p>
         
         <tr>
           <td class="docs">
+            <p>A sentinel error is a predeclared error variable that is used to
+signify a specific error condition. It allows error values to be compared
+directly via errors.Is() specific types of errors.</p>
             <p>A &ldquo;sentinel error&rdquo; is usualy exported (starting with
 a capital letter) so that user the package can check
 for particular errors.</p>
@@ -73,7 +76,7 @@ for particular errors.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">OutOfTeaErr</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;no more tea available.&#34;</span><span class="p">)</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrOutOfTea</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;no more tea available&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -83,13 +86,13 @@ for particular errors.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">PowerErr</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;can&#39;t boil water.&#34;</span><span class="p">)</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ErrPower</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;can&#39;t boil water&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
         <tr>
           <td class="docs">
-            <p>You can wrap a sentinel error with %w</p>
+            <p>You can wrap an error with %w</p>
 
           </td>
           <td class="code leading">
@@ -108,7 +111,7 @@ for particular errors.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Add custom text: %w&#34;</span><span class="p">,</span> <span class="nx">PowerErr</span><span class="p">)</span>
+          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;add custom text: %w&#34;</span><span class="p">,</span> <span class="nx">ErrPower</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -117,17 +120,40 @@ for particular errors.</p>
         
         <tr>
           <td class="docs">
-            <p>By using several if-statements we can handle
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="o">:=</span> <span class="nf">makeTeaSeveralTimes</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;One or serveral errors occured&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>errors.Is is a function in Go that checks if a given error
+matches a specific error value. It&rsquo;s used to determine whether
+an error (or any error in its chain) is equivalent to a particular
+target error. This is especially useful with wrapped or nested errors,
+allowing you to identify specific error types or sentinel errors in
+a chain of errors.
+By using several if-statements we can handle
 different sentinel errors.
 A switch statement is not applicable here.</p>
 
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">makeTeaSeveralTimes</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">allErrs</span> <span class="p">[]</span><span class="kt">error</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">range</span> <span class="mi">14</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">err</span> <span class="o">:=</span> <span class="nf">MakeTea</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">allErrs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">allErrs</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -135,7 +161,7 @@ A switch statement is not applicable here.</p>
           <td class="docs">
             
           </td>
-          <td class="code">
+          <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">OutOfTeaErr</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;We should buy new tea!&#34;</span><span class="p">)</span>
@@ -149,7 +175,18 @@ A switch statement is not applicable here.</p>
 </span></span><span class="line"><span class="cl">            <span class="k">continue</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;The tea is warm and inviting.&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>several errors can be joined to one error.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">allErrs</span><span class="o">...</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -197,7 +234,7 @@ A switch statement is not applicable here.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A    \"math/rand/v2\"\u000A)\u000A');codeLines.push('var OutOfTeaErr \u003D errors.New(\"no more tea available.\")\u000A');codeLines.push('var PowerErr \u003D errors.New(\"can\'t boil water.\")\u000A');codeLines.push('func MakeTea() error {\u000A    if rand.Int32N(4) \u003D\u003D 0 {\u000A        return OutOfTeaErr\u000A    }\u000A    if rand.Int32N(7) \u003D\u003D 0 {\u000A');codeLines.push('        return fmt.Errorf(\"Add custom text: %w\", PowerErr)\u000A    }\u000A    return nil\u000A}\u000A');codeLines.push('func main() {\u000A    for range 14 {\u000A        err :\u003D MakeTea()\u000A        if err !\u003D nil {\u000A');codeLines.push('            if errors.Is(err, OutOfTeaErr) {\u000A                fmt.Println(\"We should buy new tea!\")\u000A                continue\u000A            }\u000A            if errors.Is(err, PowerErr) {\u000A                fmt.Println(\"Now it is dark.\")\u000A                continue\u000A            }\u000A            fmt.Printf(\"Some unknown error: %s\", err)\u000A            continue\u000A        }\u000A        fmt.Println(\"The tea is warm and inviting.\")\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A    \"math/rand/v2\"\u000A)\u000A');codeLines.push('var ErrOutOfTea \u003D fmt.Errorf(\"no more tea available\")\u000A');codeLines.push('var ErrPower \u003D fmt.Errorf(\"can\'t boil water\")\u000A');codeLines.push('func MakeTea() error {\u000A    if rand.Int32N(4) \u003D\u003D 0 {\u000A        return ErrOutOfTea\u000A    }\u000A    if rand.Int32N(7) \u003D\u003D 0 {\u000A');codeLines.push('        return fmt.Errorf(\"add custom text: %w\", ErrPower)\u000A    }\u000A    return nil\u000A}\u000A');codeLines.push('func main() {\u000A    err :\u003D makeTeaSeveralTimes()\u000A    if err !\u003D nil {\u000A        fmt.Println(\"One or serveral errors occured\")\u000A    }\u000A}\u000A');codeLines.push('func makeTeaSeveralTimes() error {\u000A    var allErrs []error\u000A    for range 14 {\u000A        err :\u003D MakeTea()\u000A        if err !\u003D nil {\u000A            allErrs \u003D append(allErrs, err)\u000A');codeLines.push('            if errors.Is(err, ErrOutOfTea) {\u000A                fmt.Println(\"We should buy new tea!\")\u000A                continue\u000A            }\u000A            if errors.Is(err, ErrPower) {\u000A                fmt.Println(\"Now it is dark.\")\u000A                continue\u000A            }\u000A            fmt.Printf(\"Some unknown error: %s\", err)\u000A            continue\u000A        }\u000A        fmt.Println(\"The tea is warm and inviting.\")\u000A    }\u000A');codeLines.push('    return errors.Join(allErrs...)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
