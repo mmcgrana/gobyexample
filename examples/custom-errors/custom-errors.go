@@ -35,8 +35,8 @@ func main() {
 
 	// `errors.As` is a more advanced version of `errors.Is`.
 	// It checks that a given error (or any error in its chain)
-	// matches a specific error value and converts to that
-	// value if so, returning `true`. If there's no match, it
+	// matches a specific error type and converts to a value
+	// of that type, returning `true`. If there's no match, it
 	// returns `false`.
 	_, err := f(42)
 	var ae *argError

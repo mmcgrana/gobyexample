@@ -44,7 +44,7 @@ to explicitly represent an argument error.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/qd4Y1z0D6By"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/uhdXdp_OCct"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -129,8 +129,8 @@ the <code>error</code> interface.</p>
           <td class="docs">
             <p><code>errors.As</code> is a more advanced version of <code>errors.Is</code>.
 It checks that a given error (or any error in its chain)
-matches a specific error value and converts to that
-value if so, returning <code>true</code>. If there&rsquo;s no match, it
+matches a specific error type and converts to a value
+of that type, returning <code>true</code>. If there&rsquo;s no match, it
 returns <code>false</code>.</p>
 
           </td>

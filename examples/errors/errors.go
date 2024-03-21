@@ -32,7 +32,7 @@ func f(arg int) (int, error) {
 	return arg + 3, nil
 }
 
-// A sentinel error is a predeclared error variable that is used to
+// A sentinel error is a predeclared variable that is used to
 // signify a specific error condition.
 var ErrOutOfTea = fmt.Errorf("no more tea available")
 var ErrPower = fmt.Errorf("can't boil water")
