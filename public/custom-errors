@@ -44,7 +44,7 @@ to explicitly represent an argument error.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/9pZvObLbmb8"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/qd4Y1z0D6By"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -64,11 +64,7 @@ to explicitly represent an argument error.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s possible to use custom types as <code>error</code>s by
-implementing the <code>Error()</code> method on them. Here&rsquo;s a
-variant on the example above that uses a custom type
-to explicitly represent an argument error.
-A custom error type has usualy the suffix &ldquo;Error&rdquo;.</p>
+            <p>A custom error type usualy has the suffix &ldquo;Error&rdquo;.</p>
 
           </td>
           <td class="code leading">
@@ -82,7 +78,9 @@ A custom error type has usualy the suffix &ldquo;Error&rdquo;.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>Adding this <code>Error</code> method makes <code>argError</code> implement
+the <code>error</code> interface.</p>
+
           </td>
           <td class="code leading">
             
@@ -94,10 +92,7 @@ A custom error type has usualy the suffix &ldquo;Error&rdquo;.</p>
         
         <tr>
           <td class="docs">
-            <p>In this case we use <code>&amp;argError</code> syntax to build
-a new struct, supplying values for the two
-fields <code>arg</code> and <code>message</code>.</p>
-
+            
           </td>
           <td class="code leading">
             
@@ -108,7 +103,8 @@ fields <code>arg</code> and <code>message</code>.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>Return our custom error.</p>
+
           </td>
           <td class="code leading">
             
@@ -121,10 +117,7 @@ fields <code>arg</code> and <code>message</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>If you want to programmatically use the data in
-a custom error, you&rsquo;ll need to get the error as an
-instance of the custom error with errors.As()</p>
-
+            
           </td>
           <td class="code leading">
             
@@ -134,7 +127,12 @@ instance of the custom error with errors.As()</p>
         
         <tr>
           <td class="docs">
-            
+            <p><code>errors.As</code> is a more advanced version of <code>errors.Is</code>.
+It checks that a given error (or any error in its chain)
+matches a specific error value and converts to that
+value if so, returning <code>true</code>. If there&rsquo;s no match, it
+returns <code>false</code>.</p>
+
           </td>
           <td class="code">
             
@@ -143,6 +141,8 @@ instance of the custom error with errors.As()</p>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">ae</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">arg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;err doesn&#39;t match argError&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
@@ -178,7 +178,7 @@ instance of the custom error with errors.As()</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type argError struct {\u000A    arg     int\u000A    message string\u000A}\u000A');codeLines.push('func (e *argError) Error() string {\u000A    return fmt.Sprintf(\"%d - %s\", e.arg, e.message)\u000A}\u000A');codeLines.push('func f(arg int) (int, error) {\u000A    if arg \u003D\u003D 42 {\u000A');codeLines.push('        return -1, \u0026argError{arg, \"can\'t work with it\"}\u000A    }\u000A    return arg + 3, nil\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    _, err :\u003D f(42)\u000A    var ae *argError\u000A    if errors.As(err, \u0026ae) {\u000A        fmt.Println(ae.arg)\u000A        fmt.Println(ae.message)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('type argError struct {\u000A    arg     int\u000A    message string\u000A}\u000A');codeLines.push('func (e *argError) Error() string {\u000A    return fmt.Sprintf(\"%d - %s\", e.arg, e.message)\u000A}\u000A');codeLines.push('func f(arg int) (int, error) {\u000A    if arg \u003D\u003D 42 {\u000A');codeLines.push('        return -1, \u0026argError{arg, \"can\'t work with it\"}\u000A    }\u000A    return arg + 3, nil\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    _, err :\u003D f(42)\u000A    var ae *argError\u000A    if errors.As(err, \u0026ae) {\u000A        fmt.Println(ae.arg)\u000A        fmt.Println(ae.message)\u000A    } else {\u000A        fmt.Println(\"err doesn\'t match argError\")\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
