@@ -158,7 +158,8 @@ returns <code>false</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">42
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run custom-errors.sh
+</span></span><span class="line"><span class="cl"><span class="go">42
 </span></span></span><span class="line"><span class="cl"><span class="go">can&#39;t work with it</span></span></span></code></pre>
           </td>
         </tr>
