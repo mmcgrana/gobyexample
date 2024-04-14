@@ -31,6 +31,11 @@ func main() {
 	b := [5]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 
+	// You can also have the compiler count the number of
+	// elements for you with `...`
+	b = [...]int{1, 2, 3, 4, 5}
+	fmt.Println("dcl:", b)
+
 	// Array types are one-dimensional, but you can
 	// compose types to build multi-dimensional data
 	// structures.
