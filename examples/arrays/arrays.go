@@ -38,8 +38,8 @@ func main() {
 
 	// If you specify the index with `:`, the elements in
 	// between will be zeroed.
-	b := [...]int{100, 3: 400, 500}
-	fmt.Println(b)
+	b = [...]int{100, 3: 400, 500}
+	fmt.Println("idx:", b)
 
 	// Array types are one-dimensional, but you can
 	// compose types to build multi-dimensional data
@@ -49,6 +49,17 @@ func main() {
 		for j := 0; j < 3; j++ {
 			twoD[i][j] = i + j
 		}
+	}
+	fmt.Println("2d: ", twoD)
+
+	// You can create and initialize multi-dimensional
+	// arrays at once too.
+	twoD = [2][3]int{
+		{1, 2, 3},
+		{1, 2, 3},	// Notice this comma here. It's necessary
+		// because you will get this error otherwise:
+		// syntax error: unexpected newline in composite
+		// literal; possibly missing comma or }
 	}
 	fmt.Println("2d: ", twoD)
 }
