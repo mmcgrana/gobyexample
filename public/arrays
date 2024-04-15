@@ -206,7 +206,7 @@ when printed with <code>fmt.Println</code>.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">dcl: [1 2 3 4 5]
 </span></span></span><span class="line"><span class="cl"><span class="go">idx: [100 0 0 400 500]
 </span></span></span><span class="line"><span class="cl"><span class="go">2d:  [[0 1 2] [1 2 3]]
-</span></span></span><span class="line"><span class="cl"><span class="go">2d:  [[1 2 3] [4 5 6]]</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="go">2d:  [[1 2 3] [1 2 3]]</span></span></span></code></pre>
           </td>
         </tr>
         
