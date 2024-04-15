@@ -56,10 +56,7 @@ func main() {
 	// arrays at once too.
 	twoD = [2][3]int{
 		{1, 2, 3},
-		{1, 2, 3},	// Notice this comma here. It's necessary
-		// because you will get this error otherwise:
-		// syntax error: unexpected newline in composite
-		// literal; possibly missing comma or }
+		{1, 2, 3},
 	}
 	fmt.Println("2d: ", twoD)
 }
