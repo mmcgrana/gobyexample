@@ -31,6 +31,16 @@ func main() {
 	b := [5]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 
+	// You can also have the compiler count the number of
+	// elements for you with `...`
+	b = [...]int{1, 2, 3, 4, 5}
+	fmt.Println("dcl:", b)
+
+	// If you specify the index with `:`, the elements in
+	// between will be zeroed.
+	b = [...]int{100, 3: 400, 500}
+	fmt.Println("idx:", b)
+
 	// Array types are one-dimensional, but you can
 	// compose types to build multi-dimensional data
 	// structures.
@@ -39,6 +49,14 @@ func main() {
 		for j := 0; j < 3; j++ {
 			twoD[i][j] = i + j
 		}
+	}
+	fmt.Println("2d: ", twoD)
+
+	// You can create and initialize multi-dimensional
+	// arrays at once too.
+	twoD = [2][3]int{
+		{1, 2, 3},
+		{1, 2, 3},
 	}
 	fmt.Println("2d: ", twoD)
 }
