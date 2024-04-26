@@ -51,6 +51,15 @@ func main() {
 	fmt.Printf("%d bytes @ %d: ", n2, o2)
 	fmt.Printf("%v\n", string(b2[:n2]))
 
+	// Other methods of seeking are relative to the
+	// current cursor position,
+	_, err = f.Seek(4, io.SeekCurrent)
+	check(err)
+
+	// and relative to the end of the file.
+	_, err = f.Seek(-10, io.SeekEnd)
+	check(err)
+
 	// The `io` package provides some functions that may
 	// be helpful for file reading. For example, reads
 	// like the ones above can be more robustly
