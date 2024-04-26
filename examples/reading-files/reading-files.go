@@ -43,7 +43,7 @@ func main() {
 
 	// You can also `Seek` to a known location in the file
 	// and `Read` from there.
-	o2, err := f.Seek(6, 0)
+	o2, err := f.Seek(6, io.SeekStart)
 	check(err)
 	b2 := make([]byte, 2)
 	n2, err := f.Read(b2)
@@ -55,16 +55,16 @@ func main() {
 	// be helpful for file reading. For example, reads
 	// like the ones above can be more robustly
 	// implemented with `ReadAtLeast`.
-	o3, err := f.Seek(6, 0)
+	o3, err := f.Seek(6, io.SeekStart)
 	check(err)
 	b3 := make([]byte, 2)
 	n3, err := io.ReadAtLeast(f, b3, 2)
 	check(err)
 	fmt.Printf("%d bytes @ %d: %s\n", n3, o3, string(b3))
 
-	// There is no built-in rewind, but `Seek(0, 0)`
-	// accomplishes this.
-	_, err = f.Seek(0, 0)
+	// There is no built-in rewind, but
+	// `Seek(0, io.SeekStart)` accomplishes this.
+	_, err = f.Seek(0, io.SeekStart)
 	check(err)
 
 	// The `bufio` package implements a buffered
