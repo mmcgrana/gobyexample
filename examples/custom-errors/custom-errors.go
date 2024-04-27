@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-// A custom error type usualy has the suffix "Error".
+// A custom error type usually has the suffix "Error".
 type argError struct {
 	arg     int
 	message string
