@@ -1,3 +1,3 @@
-$ go run custom-errors.sh
+$ go run custom-errors.go
 42
 can't work with it
