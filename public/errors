@@ -237,7 +237,7 @@ errors in a chain of errors.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run errors.sh
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run errors.go
 </span></span><span class="line"><span class="cl"><span class="go">f worked: 10
 </span></span></span><span class="line"><span class="cl"><span class="go">f failed: can&#39;t work with 42
 </span></span></span><span class="line"><span class="cl"><span class="go">Tea is ready!

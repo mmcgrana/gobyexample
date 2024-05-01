@@ -1,4 +1,4 @@
-$ go run errors.sh
+$ go run errors.go
 f worked: 10
 f failed: can't work with 42
 Tea is ready!
