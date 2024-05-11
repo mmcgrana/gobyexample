@@ -7,6 +7,9 @@
   </head>
   <script>
       onkeydown = (e) => {
+          if (e.ctrlKey || e.altKey || e.shiftKey) {
+              return;
+          }
           
           if (e.key == "ArrowLeft") {
               window.location.href = 'execing-processes';
