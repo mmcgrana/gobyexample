@@ -21,7 +21,7 @@ func main() {
 
 	// Another way of accomplishing the basic "do this
 	// N times" iteration is `range` over an integer.
-	for i := range 3 {
+	for i := range make([]int, 3) {
 		fmt.Println("range", i)
 	}
 
@@ -35,7 +35,7 @@ func main() {
 
 	// You can also `continue` to the next iteration of
 	// the loop.
-	for n := range 6 {
+	for n := range make([]int, 6) {
 		if n%2 == 0 {
 			continue
 		}
