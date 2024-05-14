@@ -24,7 +24,7 @@ const (
 )
 
 // By implementing the [fmt.Stringer](https://pkg.go.dev/fmt#Stringer)
-// interface, values of `StateType` can be printed out or converted
+// interface, values of `ServerState` can be printed out or converted
 // to strings.
 //
 // This can get cumbersome if there are many possible values. In such
