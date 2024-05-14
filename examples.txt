@@ -19,6 +19,7 @@ Strings and Runes
 Structs
 Methods
 Interfaces
+Enums
 Struct Embedding
 Generics
 Errors

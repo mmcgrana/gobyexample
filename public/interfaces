@@ -17,7 +17,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'struct-embedding';
+              window.location.href = 'enums';
           }
           
       }
@@ -210,7 +210,7 @@ these structs as arguments to <code>measure</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="struct-embedding">Struct Embedding</a>.
+        Next example: <a href="enums">Enums</a>.
       </p>
       
 

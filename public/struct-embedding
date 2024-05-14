@@ -12,7 +12,7 @@
           }
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'interfaces';
+              window.location.href = 'enums';
           }
           
           
