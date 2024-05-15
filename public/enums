@@ -49,7 +49,7 @@ are simple to implement using existing language idioms.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/-6dSwyy83xj"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/NyVXnLsm3cu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -97,7 +97,7 @@ case 0, 1, 2 and so on.</p>
         <tr>
           <td class="docs">
             <p>By implementing the <a href="https://pkg.go.dev/fmt#Stringer">fmt.Stringer</a>
-interface, values of <code>StateType</code> can be printed out or converted
+interface, values of <code>ServerState</code> can be printed out or converted
 to strings.</p>
 
 <p>This can get cumbersome if there are many possible values. In such
