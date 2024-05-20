@@ -66,7 +66,7 @@ func main() {
 	// The `slog` package provides
 	// _structured_ log output. For example, logging
 	// in JSON format is straightforward.
-	jsonHandler := slog.NewJSONHandler(os.Stderr, nil)
+	jsonHandler := slog.NewJSONHandler(os.Stdout, nil)
 	myslog := slog.New(jsonHandler)
 	myslog.Info("hi there")
 
