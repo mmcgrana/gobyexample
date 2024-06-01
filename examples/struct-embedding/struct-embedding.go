@@ -53,10 +53,11 @@ func main() {
 		describe() string
 	}
 
-	// Embedding structs with methods may be used to bestow
-	// interface implementations onto other structs. Here
-	// we see that a `container` now implements the
-	// `describer` interface because it embeds `base`.
-	var d describer = co
-	fmt.Println("describer:", d.describe())
+	// Embedding a struct that implements an interface
+	// lets us use the parent struct anywhere we can
+	// use the interface.
+	f := func(d describer) {
+		fmt.Println("describer:", d.describe())
+	}
+	f(co)
 }
