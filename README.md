@@ -34,7 +34,7 @@ $ tools/build-loop
 
 To see the site locally:
 
-```
+```console
 $ tools/serve
 ```
 
