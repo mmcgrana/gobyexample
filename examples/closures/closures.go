@@ -7,10 +7,10 @@ package main
 
 import "fmt"
 
-// This function `intSeq` returns another function, which
-// we define anonymously in the body of `intSeq`. The
-// returned function _closes over_ the variable `i` to
-// form a closure.
+// This function `intSeq` returns another function with
+// equal return type(s), which we define anonymously in
+// the body of `intSeq`. The returned function
+// _closes over_ the variable `i` to form a closure.
 func intSeq() func() int {
 	i := 0
 	return func() int {
