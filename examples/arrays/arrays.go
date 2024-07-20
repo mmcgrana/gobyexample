@@ -59,4 +59,36 @@ func main() {
 		{1, 2, 3},
 	}
 	fmt.Println("2d: ", twoD)
+
+	// Create a jagged array (slice of slices)
+	jaggedArray := [][]int{
+		{1, 2, 3},
+		{4, 5},
+		{6, 7, 8, 9},
+	}
+
+	// Print the jagged array
+	fmt.Println("Jagged Array:")
+	for i, subArray := range jaggedArray {
+		fmt.Printf("Row %d: %v\n", i, subArray)
+	}
+
+	// Accessing elements in the jagged array
+	fmt.Println("\nAccessing Elements:")
+	fmt.Printf("Element at jaggedArray[0][2]: %d\n", jaggedArray[0][2])
+	fmt.Printf("Element at jaggedArray[2][3]: %d\n", jaggedArray[2][3])
+
+	// Modifying elements in the jagged array
+	jaggedArray[1][1] = 50
+	fmt.Println("\nModified Jagged Array:")
+	for i, subArray := range jaggedArray {
+		fmt.Printf("Row %d: %v\n", i, subArray)
+	}
+
+	// Adding a new sub-array
+	jaggedArray = append(jaggedArray, []int{10, 11, 12})
+	fmt.Println("\nJagged Array after adding a new sub-array:")
+	for i, subArray := range jaggedArray {
+		fmt.Printf("Row %d: %v\n", i, subArray)
+	}
 }
