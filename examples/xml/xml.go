@@ -1,5 +1,5 @@
 // Go offers built-in support for XML and XML-like
-// formats with the `encoding.xml` package.
+// formats with the `encoding/xml` package.
 
 package main
 
