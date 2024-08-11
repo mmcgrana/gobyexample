@@ -1,4 +1,4 @@
-$ go run http-clients.go
+$ go run http-client.go
 Response status: 200 OK
 <!DOCTYPE html>
 <html>
