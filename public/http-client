@@ -133,7 +133,7 @@ settings.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-client.go
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run http-clients.go
 </span></span><span class="line"><span class="cl"><span class="go">Response status: 200 OK
 </span></span></span><span class="line"><span class="cl"><span class="go">&lt;!DOCTYPE html&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">&lt;html&gt;
