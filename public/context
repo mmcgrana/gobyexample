@@ -154,7 +154,7 @@ route, and start serving.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run context-in-http-servers.go &amp;</span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run context.go &amp;</span></span></code></pre>
           </td>
         </tr>
         

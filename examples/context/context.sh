@@ -1,5 +1,5 @@
 # Run the server in the background.
-$ go run context-in-http-servers.go &
+$ go run context.go &
 
 # Simulate a client request to `/hello`, hitting
 # Ctrl+C shortly after starting to signal
