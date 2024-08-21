@@ -12,7 +12,7 @@
           }
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'range-over-custom-types';
+              window.location.href = 'range-over-iterators';
           }
           
           

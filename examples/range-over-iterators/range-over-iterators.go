@@ -1,6 +1,6 @@
 // Starting with version 1.23, Go has added support for
 // [iterators](https://go.dev/blog/range-functions),
-// which lets us range over custom types.
+// which lets us range over pretty much anything!
 
 package main
 
@@ -51,6 +51,23 @@ func (lst *List[T]) All() iter.Seq[T] {
 	}
 }
 
+// Iteration doesn't require an underlying data structure,
+// and doesn't even have to be finite! Here's a function
+// returning an iterator over Fibonacci numbers: it keeps
+// running as long as `yield` keeps returning `true`.
+func genFib() iter.Seq[int] {
+	return func(yield func(int) bool) {
+		a, b := 1, 1
+
+		for {
+			if !yield(a) {
+				return
+			}
+			a, b = b, a+b
+		}
+	}
+}
+
 func main() {
 	lst := List[int]{}
 	lst.Push(10)
@@ -69,4 +86,14 @@ func main() {
 	// all its values into a slice.
 	all := slices.Collect(lst.All())
 	fmt.Println("all:", all)
+
+	for n := range genFib() {
+
+		// Once the loop hits `break` or an early return, the `yield` function
+		// passed to the iterator will return `false`.
+		if n >= 10 {
+			break
+		}
+		fmt.Println(n)
+	}
 }

@@ -17,7 +17,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'range-over-custom-types';
+              window.location.href = 'range-over-iterators';
           }
           
       }
@@ -225,7 +225,7 @@ automatically.</p>
       
       
       <p class="next">
-        Next example: <a href="range-over-custom-types">Range over Custom Types</a>.
+        Next example: <a href="range-over-iterators">Range over Iterators</a>.
       </p>
       
 
