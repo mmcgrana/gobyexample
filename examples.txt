@@ -22,6 +22,7 @@ Interfaces
 Enums
 Struct Embedding
 Generics
+Range over Custom Types
 Errors
 Custom Errors
 Goroutines

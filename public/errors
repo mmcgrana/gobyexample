@@ -12,7 +12,7 @@
           }
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'generics';
+              window.location.href = 'range-over-custom-types';
           }
           
           
