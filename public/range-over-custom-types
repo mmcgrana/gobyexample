@@ -46,7 +46,7 @@ which lets us range over custom types.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/Dc3AddmC8Jc"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/q2H-p_moUTy"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -116,7 +116,7 @@ can do it better - as shown below.</p>
         <tr>
           <td class="docs">
             <p>All returns an <em>iterator</em>, which in Go is a function
-with a special signature.</p>
+with a <a href="https://pkg.go.dev/iter#Seq">special signature</a>.</p>
 
           </td>
           <td class="code leading">

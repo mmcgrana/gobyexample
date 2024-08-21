@@ -35,7 +35,7 @@ func (lst *List[T]) Push(v T) {
 }
 
 // All returns an _iterator_, which in Go is a function
-// with a special signature.
+// with a [special signature](https://pkg.go.dev/iter#Seq).
 func (lst *List[T]) All() iter.Seq[T] {
 	return func(yield func(T) bool) {
 		// The iterator function takes another function as
@@ -57,8 +57,8 @@ func main() {
 	lst.Push(13)
 	lst.Push(23)
 
-	// Since `List.All` returns an interator, it can be used
-	// in a regular `range` loop!
+	// Since `List.All` returns an iterator, we can use it
+	// in a regular `range` loop.
 	for e := range lst.All() {
 		fmt.Println(e)
 	}
