@@ -1,4 +1,4 @@
-$ go run range.go
+$ go run range-over-built-in-types.go
 sum: 9
 index: 1
 a -> apple

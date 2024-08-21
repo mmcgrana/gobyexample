@@ -17,7 +17,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'pointers';
+              window.location.href = 'range-over-built-in-types';
           }
           
       }
@@ -159,7 +159,7 @@ knows which function to call with <code>fib</code> here.</p>
       
       
       <p class="next">
-        Next example: <a href="pointers">Pointers</a>.
+        Next example: <a href="range-over-built-in-types">Range over Built-in Types</a>.
       </p>
       
 

@@ -17,7 +17,7 @@
           
           
           if (e.key == "ArrowRight") {
-              window.location.href = 'range';
+              window.location.href = 'functions';
           }
           
       }
@@ -250,7 +250,7 @@ printed with <code>fmt.Println</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="range">Range</a>.
+        Next example: <a href="functions">Functions</a>.
       </p>
       
 

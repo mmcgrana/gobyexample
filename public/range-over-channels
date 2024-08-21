@@ -30,7 +30,7 @@
         
         <tr>
           <td class="docs">
-            <p>In a <a href="range">previous</a> example we saw how <code>for</code> and
+            <p>In a <a href="range-over-built-in-types">previous</a> example we saw how <code>for</code> and
 <code>range</code> provide iteration over basic data structures.
 We can also use this syntax to iterate over
 values received from a channel.</p>
@@ -47,7 +47,7 @@ values received from a channel.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/yQMclmwOYs9"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/8vAhX6eX1wy"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
