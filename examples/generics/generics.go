@@ -5,20 +5,22 @@ package main
 
 import "fmt"
 
-// As an example of a generic function, `MapKeys` takes
-// a map of any type and returns a slice of its keys.
-// This function has two type parameters - `K` and `V`;
-// `K` has the `comparable` _constraint_, meaning that
-// we can compare values of this type with the `==` and
-// `!=` operators. This is required for map keys in Go.
-// `V` has the `any` constraint, meaning that it's not
-// restricted in any way (`any` is an alias for `interface{}`).
-func MapKeys[K comparable, V any](m map[K]V) []K {
-	r := make([]K, 0, len(m))
-	for k := range m {
-		r = append(r, k)
+// As an example of a generic function, `SlicesIndex` takes
+// a slice of any `comparable` type and an element of that
+// type and returns the index of the first occurrence of
+// v in s, or -1 if not present. The `comparable` constraint
+// means that we can compare values of this type with the
+// `==` and `!=` operators. For a more thorough explanation
+// of this type signature, see [this blog post](https://go.dev/blog/deconstructing-type-parameters).
+// Note that this function exists in the standard library
+// as [slices.Index](https://pkg.go.dev/slices#Index).
+func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
+	for i := range s {
+		if v == s[i] {
+			return i
+		}
 	}
-	return r
+	return -1
 }
 
 // As an example of a generic type, `List` is a
@@ -45,7 +47,10 @@ func (lst *List[T]) Push(v T) {
 	}
 }
 
-func (lst *List[T]) GetAll() []T {
+// AllElements returns all the List elements as a slice.
+// In the next example we'll see a more idiomatic way
+// of iterating over all elements of custom types.
+func (lst *List[T]) AllElements() []T {
 	var elems []T
 	for e := lst.head; e != nil; e = e.next {
 		elems = append(elems, e.val)
@@ -54,21 +59,21 @@ func (lst *List[T]) GetAll() []T {
 }
 
 func main() {
-	var m = map[int]string{1: "2", 2: "4", 4: "8"}
+	var s = []string{"foo", "bar", "zoo"}
 
 	// When invoking generic functions, we can often rely
 	// on _type inference_. Note that we don't have to
-	// specify the types for `K` and `V` when
-	// calling `MapKeys` - the compiler infers them
+	// specify the types for `S` and `E` when
+	// calling `SlicesIndex` - the compiler infers them
 	// automatically.
-	fmt.Println("keys:", MapKeys(m))
+	fmt.Println("index of zoo:", SlicesIndex(s, "zoo"))
 
 	// ... though we could also specify them explicitly.
-	_ = MapKeys[int, string](m)
+	_ = SlicesIndex[[]string, string](s, "zoo")
 
 	lst := List[int]{}
 	lst.Push(10)
 	lst.Push(13)
 	lst.Push(23)
-	fmt.Println("list:", lst.GetAll())
+	fmt.Println("list:", lst.AllElements())
 }
