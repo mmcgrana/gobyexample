@@ -17,7 +17,7 @@ type ServerState int
 // generates successive constant values automatically; in this
 // case 0, 1, 2 and so on.
 const (
-	StateIdle = iota
+	StateIdle ServerState = iota
 	StateConnected
 	StateError
 	StateRetrying

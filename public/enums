@@ -49,7 +49,7 @@ are simple to implement using existing language idioms.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/3zjUiM66KZe"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/prQMptP_p1s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -86,7 +86,7 @@ case 0, 1, 2 and so on.</p>
           <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span> <span class="p">=</span> <span class="kc">iota</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span> <span class="nx">ServerState</span> <span class="p">=</span> <span class="kc">iota</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">StateConnected</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">StateError</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">StateRetrying</span>
@@ -223,7 +223,7 @@ determine the next state&hellip;</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type ServerState int\u000A');codeLines.push('const (\u000A    StateIdle \u003D iota\u000A    StateConnected\u000A    StateError\u000A    StateRetrying\u000A)\u000A');codeLines.push('var stateName \u003D map[ServerState]string{\u000A    StateIdle:      \"idle\",\u000A    StateConnected: \"connected\",\u000A    StateError:     \"error\",\u000A    StateRetrying:  \"retrying\",\u000A}\u000A');codeLines.push('func (ss ServerState) String() string {\u000A    return stateName[ss]\u000A}\u000A');codeLines.push('func main() {\u000A    ns :\u003D transition(StateIdle)\u000A    fmt.Println(ns)\u000A');codeLines.push('    ns2 :\u003D transition(ns)\u000A    fmt.Println(ns2)\u000A}\u000A');codeLines.push('func transition(s ServerState) ServerState {\u000A    switch s {\u000A    case StateIdle:\u000A        return StateConnected\u000A    case StateConnected, StateRetrying:\u000A');codeLines.push('        return StateIdle\u000A    case StateError:\u000A        return StateError\u000A    default:\u000A        panic(fmt.Errorf(\"unknown state: %s\", s))\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type ServerState int\u000A');codeLines.push('const (\u000A    StateIdle ServerState \u003D iota\u000A    StateConnected\u000A    StateError\u000A    StateRetrying\u000A)\u000A');codeLines.push('var stateName \u003D map[ServerState]string{\u000A    StateIdle:      \"idle\",\u000A    StateConnected: \"connected\",\u000A    StateError:     \"error\",\u000A    StateRetrying:  \"retrying\",\u000A}\u000A');codeLines.push('func (ss ServerState) String() string {\u000A    return stateName[ss]\u000A}\u000A');codeLines.push('func main() {\u000A    ns :\u003D transition(StateIdle)\u000A    fmt.Println(ns)\u000A');codeLines.push('    ns2 :\u003D transition(ns)\u000A    fmt.Println(ns2)\u000A}\u000A');codeLines.push('func transition(s ServerState) ServerState {\u000A    switch s {\u000A    case StateIdle:\u000A        return StateConnected\u000A    case StateConnected, StateRetrying:\u000A');codeLines.push('        return StateIdle\u000A    case StateError:\u000A        return StateError\u000A    default:\u000A        panic(fmt.Errorf(\"unknown state: %s\", s))\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
