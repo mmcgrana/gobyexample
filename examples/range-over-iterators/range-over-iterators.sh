@@ -1,3 +1,4 @@
+$ go run range-over-iterators.go
 10
 13
 23
