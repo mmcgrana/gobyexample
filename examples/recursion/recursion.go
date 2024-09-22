@@ -18,9 +18,9 @@ func fact(n int) int {
 func main() {
 	fmt.Println(fact(7))
 
-	// Closures can also be recursive, but this requires the
-	// closure to be declared with a typed `var` explicitly
-	// before it's defined.
+	// Anonymous functions can also be recursive, but this requires
+	// explicitly declaring a variable with `var` to store
+	// the function before it's defined.
 	var fib func(n int) int
 
 	fib = func(n int) int {
