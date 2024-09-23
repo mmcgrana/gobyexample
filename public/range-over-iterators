@@ -260,7 +260,8 @@ passed to the iterator will return <code>false</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">10
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run range-over-iterators.go
+</span></span><span class="line"><span class="cl"><span class="go">10
 </span></span></span><span class="line"><span class="cl"><span class="go">13
 </span></span></span><span class="line"><span class="cl"><span class="go">23
 </span></span></span><span class="line"><span class="cl"><span class="go">all: [10 13 23]
