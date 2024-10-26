@@ -45,7 +45,7 @@ signatures.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/XJASG4MxBQr"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/UhfFjC980YX"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -96,9 +96,11 @@ signatures.</p>
         
         <tr>
           <td class="docs">
-            <p>To implement an interface in Go, we just need to
-implement all the methods in the interface. Here we
-implement <code>geometry</code> on <code>rect</code>s.</p>
+            <p>There is no <em>implements</em> keyword in Go. Instead,
+A type automatically implements an interface
+if we <em>implement all the methods</em> of the interface.
+Here we implement <code>geometry</code> on <code>rect</code>s by implementing
+the <code>area</code> and <code>perim</code> methods.</p>
 
           </td>
           <td class="code leading">

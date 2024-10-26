@@ -23,9 +23,11 @@ type circle struct {
 	radius float64
 }
 
-// To implement an interface in Go, we just need to
-// implement all the methods in the interface. Here we
-// implement `geometry` on `rect`s.
+// There is no _implements_ keyword in Go. Instead,
+// A type automatically implements an interface
+// if we _implement all the methods_ of the interface.
+// Here we implement `geometry` on `rect`s by implementing
+// the `area` and `perim` methods.
 func (r rect) area() float64 {
 	return r.width * r.height
 }
