@@ -123,10 +123,10 @@ func main() {
 	d := map[string]int{"apple": 5, "lettuce": 7}
 	enc.Encode(d)
 
-	// We can also decode JSON directly from `os.Reader`
+	// Streaming reads from `os.Reader`s like `os.Stdin`
+	// or HTTP request bodies is done with `json.Decoder`.
 	dec := json.NewDecoder(strings.NewReader(str))
 	res1 := response2{}
 	dec.Decode(&res1)
 	fmt.Println(res1)
-	fmt.Println(res1.Fruits[1])
 }

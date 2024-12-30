@@ -13,6 +13,7 @@ a
 {1 [apple peach]}
 apple
 {"apple":5,"lettuce":7}
+{1 [apple peach]}
 
 
 # We've covered the basic of JSON in Go here, but check
