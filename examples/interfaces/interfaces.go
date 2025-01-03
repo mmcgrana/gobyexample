@@ -41,6 +41,12 @@ func (c circle) perim() float64 {
 	return 2 * math.Pi * c.radius
 }
 
+// `circle` has a method called `circum` not part of `geometry` interface.
+// `circum` is an alias for `perim`
+func (c circle) circum() float64 {
+	return c.perim()
+}
+
 // If a variable has an interface type, then we can call
 // methods that are in the named interface. Here's a
 // generic `measure` function taking advantage of this
@@ -61,4 +67,12 @@ func main() {
 	// these structs as arguments to `measure`.
 	measure(r)
 	measure(c)
+
+	// Type assertion can be performed
+	// to access methods not part of the `geometry` interface
+	var shape geometry
+	shape = circle{radius: 6}
+	if c, ok := shape.(circle); ok {
+		fmt.Println(c.circum())
+	}
 }
