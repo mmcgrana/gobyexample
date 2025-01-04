@@ -41,12 +41,6 @@ func (c circle) perim() float64 {
 	return 2 * math.Pi * c.radius
 }
 
-// `circle` has a method called `circum` not part of `geometry` interface.
-// `circum` is an alias for `perim`
-func (c circle) circum() float64 {
-	return c.perim()
-}
-
 // If a variable has an interface type, then we can call
 // methods that are in the named interface. Here's a
 // generic `measure` function taking advantage of this
@@ -55,6 +49,15 @@ func measure(g geometry) {
 	fmt.Println(g)
 	fmt.Println(g.area())
 	fmt.Println(g.perim())
+}
+
+// Type assertion can be performed to explicitly check the runtime type of the value.
+// It allows the access of fields and methods belonging to the specific type.
+// See [`switch` example](switch) for an alternative approach to handle type assertion.
+func detectCircle(g geometry) {
+	if c, ok := g.(circle); ok {
+		fmt.Println(c.radius)
+	}
 }
 
 func main() {
@@ -68,11 +71,9 @@ func main() {
 	measure(r)
 	measure(c)
 
-	// Type assertion can be performed
-	// to access methods not part of the `geometry` interface
-	var shape geometry
-	shape = circle{radius: 6}
-	if c, ok := shape.(circle); ok {
-		fmt.Println(c.circum())
-	}
+	// `detectCircle` takes structs that satisfy the `geometry` interface
+	// if the struct is of type `circle`, it prints out the radius.
+	detectCircle(r) // doesn't print anything.
+	detectCircle(c)
+
 }

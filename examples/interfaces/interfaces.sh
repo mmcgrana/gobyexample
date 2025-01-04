@@ -5,7 +5,7 @@ $ go run interfaces.go
 {5}
 78.53981633974483
 31.41592653589793
-37.69911184307752
+5
 
 # To learn more about Go's interfaces, check out this
 # [great blog post](https://jordanorelli.tumblr.com/post/32665860244/how-to-use-interfaces-in-go).
