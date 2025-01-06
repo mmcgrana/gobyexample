@@ -51,6 +51,15 @@ func measure(g geometry) {
 	fmt.Println(g.perim())
 }
 
+// Type assertion can be performed to explicitly check the runtime type of the value.
+// It allows the access of fields and methods belonging to the specific type.
+// See [`switch` example](switch) for an alternative approach to handle type assertion.
+func detectCircle(g geometry) {
+	if c, ok := g.(circle); ok {
+		fmt.Println(c.radius)
+	}
+}
+
 func main() {
 	r := rect{width: 3, height: 4}
 	c := circle{radius: 5}
@@ -61,4 +70,10 @@ func main() {
 	// these structs as arguments to `measure`.
 	measure(r)
 	measure(c)
+
+	// `detectCircle` takes structs that satisfy the `geometry` interface
+	// if the struct is of type `circle`, it prints out the radius.
+	detectCircle(r) // doesn't print anything.
+	detectCircle(c)
+
 }
