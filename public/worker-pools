@@ -198,7 +198,7 @@ there are 3 workers operating concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="waitgroups">WaitGroups</a>.
+        Next example: <a href="waitgroups" rel="next">WaitGroups</a>.
       </p>
       
 
