@@ -190,7 +190,7 @@ structures.</p>
       
       
       <p class="next">
-        Next example: <a href="if-else">If/Else</a>.
+        Next example: <a href="if-else" rel="next">If/Else</a>.
       </p>
       
 

@@ -385,7 +385,7 @@ for more.</p>
       
       
       <p class="next">
-        Next example: <a href="xml">XML</a>.
+        Next example: <a href="xml" rel="next">XML</a>.
       </p>
       
 

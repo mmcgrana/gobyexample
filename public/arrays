@@ -217,7 +217,7 @@ when printed with <code>fmt.Println</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="slices">Slices</a>.
+        Next example: <a href="slices" rel="next">Slices</a>.
       </p>
       
 

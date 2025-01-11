@@ -301,7 +301,7 @@ the <a href="https://pkg.go.dev/regexp"><code>regexp</code></a> package docs.</p
       
       
       <p class="next">
-        Next example: <a href="json">JSON</a>.
+        Next example: <a href="json" rel="next">JSON</a>.
       </p>
       
 

@@ -181,7 +181,7 @@ processes covers most use cases for <code>fork</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="signals">Signals</a>.
+        Next example: <a href="signals" rel="next">Signals</a>.
       </p>
       
 

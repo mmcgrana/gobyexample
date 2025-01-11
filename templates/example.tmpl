@@ -42,7 +42,7 @@
       {{end}}
       {{if .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{.NextExample.ID}}" rel="next">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
 {{ template "footer" }}
