@@ -53,11 +53,11 @@ func main() {
 
 	// Other methods of seeking are relative to the
 	// current cursor position,
-	_, err = f.Seek(4, io.SeekCurrent)
+	_, err = f.Seek(2, io.SeekCurrent)
 	check(err)
 
 	// and relative to the end of the file.
-	_, err = f.Seek(-10, io.SeekEnd)
+	_, err = f.Seek(-4, io.SeekEnd)
 	check(err)
 
 	// The `io` package provides some functions that may
