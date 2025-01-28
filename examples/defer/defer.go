@@ -2,6 +2,8 @@
 // performed later in a program's execution, usually for
 // purposes of cleanup. `defer` is often used where e.g.
 // `ensure` and `finally` would be used in other languages.
+// `defer` enables execution to be run in
+// Last-In-First-Out (LIFO) order.
 
 package main
 
@@ -15,11 +17,20 @@ import (
 // do that with `defer`.
 func main() {
 
+	// This enclosing anonymous function will be executed at the end
+	// of the enclosing function (`main`), after
+	// the `writeFile` has finished.
+	defer func() {
+		defer fmt.Print("before final log.")
+		fmt.Print("Hello ")
+		fmt.Print("world!!! ")
+		defer fmt.Print("break ")
+		fmt.Print("this is a ")
+	}()
+
 	// Immediately after getting a file object with
 	// `createFile`, we defer the closing of that file
-	// with `closeFile`. This will be executed at the end
-	// of the enclosing function (`main`), after
-	// `writeFile` has finished.
+	// with `closeFile`.
 	f := createFile("/tmp/defer.txt")
 	defer closeFile(f)
 	writeFile(f)
