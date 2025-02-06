@@ -19,7 +19,7 @@ func main() {
 
 	// To create a slice with non-zero length, use
 	// the builtin `make`. Here we make a slice of
-	// `string`s of length `3` (initially zero-valued, ie "").
+	// `string`s of length `3` (initially zero-valued).
 	// By default a new slice's capacity is equal to its
 	// length; if we know the slice is going to grow ahead
 	// of time, it's possible to pass a capacity explicitly

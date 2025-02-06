@@ -24,7 +24,7 @@ func pong(pings <-chan string, pongs chan<- string) {
 func main() {
 	pings := make(chan string, 1)
 	pongs := make(chan string, 1)
-	go ping(pings, "passed message")
-	go pong(pings, pongs)
+	ping(pings, "passed message")
+	pong(pings, pongs)
 	fmt.Println(<-pongs)
 }
