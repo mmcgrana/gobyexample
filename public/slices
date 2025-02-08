@@ -45,7 +45,7 @@ a more powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/kiy1StxorBF"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/L9rtMOCQOVn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -90,7 +90,7 @@ length 0.</p>
         
         <tr>
           <td class="docs">
-            <p>To create an empty slice with non-zero length, use
+            <p>To create a slice with non-zero length, use
 the builtin <code>make</code>. Here we make a slice of
 <code>string</code>s of length <code>3</code> (initially zero-valued).
 By default a new slice&rsquo;s capacity is equal to its
