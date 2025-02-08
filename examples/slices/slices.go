@@ -17,7 +17,7 @@ func main() {
 	var s []string
 	fmt.Println("uninit:", s, s == nil, len(s) == 0)
 
-	// To create an empty slice with non-zero length, use
+	// To create a slice with non-zero length, use
 	// the builtin `make`. Here we make a slice of
 	// `string`s of length `3` (initially zero-valued).
 	// By default a new slice's capacity is equal to its
