@@ -17,7 +17,7 @@ func main() {
 	// Here's the worker goroutine. It repeatedly receives
 	// from `jobs` with `j, more := <-jobs`. In this
 	// special 2-value form of receive, the `more` value
-	// will be `false` if `jobs` has been `close`d and all
+	// will be `false` if all
 	// values in the channel have already been received.
 	// We use this to notify on `done` when we've worked
 	// all our jobs.
@@ -49,12 +49,12 @@ func main() {
 	<-done
 
 	// Reading from a closed channel succeeds immediately,
-	// returning the zero value of the underlying type.
+	// returning the zero value of the underlying type if
+	// the channel is empty or first unread buffered value.
 	// The optional second return value is `true` if the
 	// value received was delivered by a successful send
 	// operation to the channel, or `false` if it was a
-	// zero value generated because the channel is closed
-	// and empty.
+	// zero value generated because the channel is empty.
 	_, ok := <-jobs
 	fmt.Println("received more jobs:", ok)
 }
