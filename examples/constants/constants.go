@@ -11,9 +11,16 @@ import (
 // `const` declares a constant value.
 const s string = "constant"
 
+// Declare multiple constants
+const (
+	name     = "gopher"
+	age  int = 24
+)
+
 func main() {
 	fmt.Println(s)
 
+	fmt.Println(name, age)
 	// A `const` statement can appear anywhere a `var`
 	// statement can.
 	const n = 500000000
