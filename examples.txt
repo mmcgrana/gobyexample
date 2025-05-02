@@ -19,6 +19,7 @@ Strings and Runes
 Structs
 Methods
 Interfaces
+Type assertion
 Enums
 Struct Embedding
 Generics
