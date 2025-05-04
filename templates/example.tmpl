@@ -12,12 +12,12 @@
           }
           {{if .PrevExample}}
           if (e.key == "ArrowLeft") {
-              window.location.href = '{{.PrevExample.ID}}';
+              window.location.href = '{{.PrevExample.FileName}}';
           }
           {{end}}
           {{if .NextExample}}
           if (e.key == "ArrowRight") {
-              window.location.href = '{{.NextExample.ID}}';
+              window.location.href = '{{.NextExample.FileName}}';
           }
           {{end}}
       }
@@ -42,7 +42,7 @@
       {{end}}
       {{if .NextExample}}
       <p class="next">
-        Next example: <a href="{{.NextExample.ID}}" rel="next">{{.NextExample.Name}}</a>.
+        Next example: <a href="{{.NextExample.FileName}}" rel="next">{{.NextExample.Name}}</a>.
       </p>
       {{end}}
 {{ template "footer" }}
