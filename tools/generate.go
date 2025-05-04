@@ -25,6 +25,11 @@ import (
 // program.
 var siteDir = "./public"
 
+// outputExt specifies the file extension for generated HTML output.
+// If the "-html" flag is passed to generate.go, ".html" is appended;
+// otherwise, no extension is used.
+var outputExt = ""
+
 func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
@@ -107,7 +112,7 @@ type Seg struct {
 
 // Example is info extracted from an example file
 type Example struct {
-	ID, Name                    string
+	ID, Name, FileName          string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
 	PrevExample                 *Example
@@ -260,6 +265,7 @@ func parseExamples() []*Example {
 		exampleID = strings.Replace(exampleID, "'", "", -1)
 		exampleID = dashPat.ReplaceAllString(exampleID, "-")
 		example.ID = exampleID
+		example.FileName = exampleID + outputExt
 		example.Segs = make([][]*Seg, 0)
 		sourcePaths := mustGlob("examples/" + exampleID + "/*")
 		for _, sourcePath := range sourcePaths {
@@ -313,7 +319,7 @@ func renderExamples(examples []*Example) {
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
 	for _, example := range examples {
-		exampleF, err := os.Create(siteDir + "/" + example.ID)
+		exampleF, err := os.Create(siteDir + "/" + example.FileName)
 		check(err)
 		defer exampleF.Close()
 		check(exampleTmpl.Execute(exampleF, example))
@@ -333,11 +339,41 @@ func render404() {
 	check(tmpl.Execute(file, ""))
 }
 
-func main() {
-	if len(os.Args) > 1 {
-		siteDir = os.Args[1]
+func parseArguments(args *[]string) {
+	if len(*args) == 0 {
+		return
 	}
-	ensureDir(siteDir)
+	i := 0
+	expectedArg := 2
+	for ; expectedArg > 0 && i < len(*args); i++ {
+		arg := (*args)[i]
+		switch arg {
+		case "-html":
+			outputExt = ".html"
+			expectedArg--
+			if verbose() {
+				fmt.Println("Output format HTML")
+			}
+		default:
+			err := os.MkdirAll(arg, 0755)
+			if err != nil {
+				fmt.Printf("Unknown argument: `%s`\n", arg)
+			} else {
+				siteDir = arg
+				expectedArg--
+				if verbose() {
+					fmt.Printf("Output directory %s\n", siteDir)
+				}
+			}
+		}
+	}
+	if expectedArg == 0 && i < len(*args) && verbose() {
+		fmt.Println("WARN: Too many arguments")
+	}
+}
+
+func main() {
+	parseArguments(&os.Args)
 
 	copyFile("templates/site.css", siteDir+"/site.css")
 	copyFile("templates/site.js", siteDir+"/site.js")
