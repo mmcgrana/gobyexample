@@ -14,7 +14,7 @@ import "fmt"
 // of this type signature, see [this blog post](https://go.dev/blog/deconstructing-type-parameters).
 // Note that this function exists in the standard library
 // as [slices.Index](https://pkg.go.dev/slices#Index).
-func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
+func SlicesIndex[E comparable, S ~[]E](s S, v E) int {
 	for i := range s {
 		if v == s[i] {
 			return i
