@@ -5,7 +5,7 @@
 // completely replace the current Go process with another
 // (perhaps non-Go) one. To do this we'll use Go's
 // implementation of the classic
-// <a href="https://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a>
+// [`exec`](https://en.wikipedia.org/wiki/Exec_%system_call%29)
 // function.
 
 package main

@@ -1,5 +1,5 @@
 // Go supports [_anonymous functions_](https://en.wikipedia.org/wiki/Anonymous_function),
-// which can form <a href="https://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
+// which can form [*closures*](https://en.wikipedia.org/wiki/Closure_%28computer_science%29).
 // Anonymous functions are useful when you want to define
 // a function inline without having to name it.
 

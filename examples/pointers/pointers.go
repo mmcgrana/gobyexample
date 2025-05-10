@@ -1,4 +1,4 @@
-// Go supports <em><a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
+// Go supports [*pointers*](https://en.wikipedia.org/wiki/Pointer_%28computer_programming%29)
 // allowing you to pass references to values and records
 // within your program.
 
