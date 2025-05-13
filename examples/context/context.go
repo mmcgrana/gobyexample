@@ -1,5 +1,5 @@
 // In the previous example we looked at setting up a simple
-// [HTTP server](http-servers). HTTP servers are useful for
+// [HTTP server](http-server). HTTP servers are useful for
 // demonstrating the usage of `context.Context` for
 // controlling cancellation. A `Context` carries deadlines,
 // cancellation signals, and other request-scoped values
