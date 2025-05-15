@@ -8,6 +8,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 // Suppose we wanted to create a file, write to it,
@@ -20,7 +21,7 @@ func main() {
 	// with `closeFile`. This will be executed at the end
 	// of the enclosing function (`main`), after
 	// `writeFile` has finished.
-	f := createFile("/tmp/defer.txt")
+	f := createFile(filepath.Join(os.TempDir(), "defer.txt"))
 	defer closeFile(f)
 	writeFile(f)
 }

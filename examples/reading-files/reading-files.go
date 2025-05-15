@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 )
 
 // Reading files requires checking most calls for errors.
@@ -21,16 +22,18 @@ func check(e error) {
 
 func main() {
 
+	path := filepath.Join(os.TempDir(), "dat")
+
 	// Perhaps the most basic file reading task is
 	// slurping a file's entire contents into memory.
-	dat, err := os.ReadFile("/tmp/dat")
+	dat, err := os.ReadFile(path)
 	check(err)
 	fmt.Print(string(dat))
 
 	// You'll often want more control over how and what
 	// parts of a file are read. For these tasks, start
 	// by `Open`ing a file to obtain an `os.File` value.
-	f, err := os.Open("/tmp/dat")
+	f, err := os.Open(path)
 	check(err)
 
 	// Read some bytes from the beginning of the file.
