@@ -33,12 +33,12 @@ func main() {
 
 	// You can also have the compiler count the number of
 	// elements for you with `...`
-	b = [...]int{1, 2, 3, 4, 5}
+	b := [...]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 
 	// If you specify the index with `:`, the elements in
 	// between will be zeroed.
-	b = [...]int{100, 3: 400, 500}
+	b := [...]int{100, 3: 400, 500}
 	fmt.Println("idx:", b)
 
 	// Array types are one-dimensional, but you can
