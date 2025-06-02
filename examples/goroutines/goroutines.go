@@ -8,7 +8,7 @@ import (
 )
 
 func f(from string) {
-	for i := 0; i < 3; i++ {
+	for i := range 3 {
 		fmt.Println(from, ":", i)
 	}
 }

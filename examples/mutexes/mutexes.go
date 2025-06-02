@@ -42,7 +42,7 @@ func main() {
 	// This function increments a named counter
 	// in a loop.
 	doIncrement := func(name string, n int) {
-		for i := 0; i < n; i++ {
+		for range n {
 			c.inc(name)
 		}
 		wg.Done()

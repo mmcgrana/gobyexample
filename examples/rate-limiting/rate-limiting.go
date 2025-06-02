@@ -44,7 +44,7 @@ func main() {
 	burstyLimiter := make(chan time.Time, 3)
 
 	// Fill up the channel to represent allowed bursting.
-	for i := 0; i < 3; i++ {
+	for range 3 {
 		burstyLimiter <- time.Now()
 	}
 

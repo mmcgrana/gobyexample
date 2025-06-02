@@ -73,7 +73,7 @@ func main() {
 	// Each read requires constructing a `readOp`, sending
 	// it over the `reads` channel, and then receiving the
 	// result over the provided `resp` channel.
-	for r := 0; r < 100; r++ {
+	for range 100 {
 		go func() {
 			for {
 				read := readOp{
@@ -89,7 +89,7 @@ func main() {
 
 	// We start 10 writes as well, using a similar
 	// approach.
-	for w := 0; w < 10; w++ {
+	for range 10 {
 		go func() {
 			for {
 				write := writeOp{

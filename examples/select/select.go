@@ -29,7 +29,7 @@ func main() {
 
 	// We'll use `select` to await both of these values
 	// simultaneously, printing each one as it arrives.
-	for i := 0; i < 2; i++ {
+	for range 2 {
 		select {
 		case msg1 := <-c1:
 			fmt.Println("received", msg1)
