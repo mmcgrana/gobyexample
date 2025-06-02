@@ -47,7 +47,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/JU735qy2UmB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/CawzyQnvH6W"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -153,7 +153,7 @@ in a loop.</p>
           <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">doIncrement</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="k">range</span> <span class="nx">n</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">c</span><span class="p">.</span><span class="nf">inc</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
@@ -234,7 +234,7 @@ management task using only goroutines and channels.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A)\u000A');codeLines.push('type Container struct {\u000A    mu       sync.Mutex\u000A    counters map[string]int\u000A}\u000A');codeLines.push('func (c *Container) inc(name string) {\u000A');codeLines.push('    c.mu.Lock()\u000A    defer c.mu.Unlock()\u000A    c.counters[name]++\u000A}\u000A');codeLines.push('func main() {\u000A    c :\u003D Container{\u000A');codeLines.push('        counters: map[string]int{\"a\": 0, \"b\": 0},\u000A    }\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    doIncrement :\u003D func(name string, n int) {\u000A        for i :\u003D 0; i \u003C n; i++ {\u000A            c.inc(name)\u000A        }\u000A        wg.Done()\u000A    }\u000A');codeLines.push('    wg.Add(3)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"b\", 10000)\u000A');codeLines.push('    wg.Wait()\u000A    fmt.Println(c.counters)\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"sync\"\u000A)\u000A');codeLines.push('type Container struct {\u000A    mu       sync.Mutex\u000A    counters map[string]int\u000A}\u000A');codeLines.push('func (c *Container) inc(name string) {\u000A');codeLines.push('    c.mu.Lock()\u000A    defer c.mu.Unlock()\u000A    c.counters[name]++\u000A}\u000A');codeLines.push('func main() {\u000A    c :\u003D Container{\u000A');codeLines.push('        counters: map[string]int{\"a\": 0, \"b\": 0},\u000A    }\u000A');codeLines.push('    var wg sync.WaitGroup\u000A');codeLines.push('    doIncrement :\u003D func(name string, n int) {\u000A        for range n {\u000A            c.inc(name)\u000A        }\u000A        wg.Done()\u000A    }\u000A');codeLines.push('    wg.Add(3)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"a\", 10000)\u000A    go doIncrement(\"b\", 10000)\u000A');codeLines.push('    wg.Wait()\u000A    fmt.Println(c.counters)\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
