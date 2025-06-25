@@ -46,7 +46,7 @@ within your program.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/OlWCLpxAyBz"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/bRNXT2sJ81G"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -67,13 +67,17 @@ within your program.</p>
 2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an
 <code>int</code> parameter, so arguments will be passed to it by
 value. <code>zeroval</code> will get a copy of <code>ival</code> distinct
-from the one in the calling function.</p>
+from the one in the calling function.
+The second parameter is a <code>slice</code> and may seem to be an
+exception to the rule, but it is not. Read this blog <em><a href="https://go.dev/blog/slices-intro">post</a></em>
+if you want to know why.</p>
 
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">zeroval</span><span class="p">(</span><span class="nx">ival</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">zeroval</span><span class="p">(</span><span class="nx">ival</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">sval</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">ival</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">4</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -85,13 +89,16 @@ that it takes an <code>int</code> pointer. The <code>*iptr</code> code in the
 function body then <em>dereferences</em> the pointer from its
 memory address to the current value at that address.
 Assigning a value to a dereferenced pointer changes the
-value at the referenced address.</p>
+value at the referenced address.
+When indexing a pointer to a value, we have to use
+parenthesis because of <em><a href="https://go.dev/ref/spec#Operator_precedence">precedence</a></em></p>
 
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">zeroptr</span><span class="p">(</span><span class="nx">iptr</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">zeroptr</span><span class="p">(</span><span class="nx">iptr</span> <span class="o">*</span><span class="kt">int</span><span class="p">,</span> <span class="nx">sval</span> <span class="o">*</span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="nx">iptr</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">*</span><span class="nx">sval</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">5</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -104,7 +111,7 @@ value at the referenced address.</p>
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;initial:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span></span></span></code></pre>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -114,8 +121,21 @@ value at the referenced address.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">zeroval</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;zeroval:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;initial i:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;initial s:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">zeroval</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;After zeroval(i, s)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;i:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;s:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -127,8 +147,10 @@ i.e. a pointer to <code>i</code>.</p>
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">zeroptr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;zeroptr:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span></span></span></code></pre>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">zeroptr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;After zeroptr(&amp;i, &amp;s)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;i:&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;s:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -139,7 +161,8 @@ i.e. a pointer to <code>i</code>.</p>
           </td>
           <td class="code">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;pointer:&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;pointer i:&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;pointer s:&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">s</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
@@ -158,10 +181,16 @@ the memory address for that variable.</p>
           <td class="code">
             
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run pointers.go
-</span></span><span class="line"><span class="cl"><span class="go">initial: 1
-</span></span></span><span class="line"><span class="cl"><span class="go">zeroval: 1
-</span></span></span><span class="line"><span class="cl"><span class="go">zeroptr: 0
-</span></span></span><span class="line"><span class="cl"><span class="go">pointer: 0x42131100</span></span></span></code></pre>
+</span></span><span class="line"><span class="cl"><span class="go">initial i: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">initial s: [1 2 3]
+</span></span></span><span class="line"><span class="cl"><span class="go">After zeroval(i, s)
+</span></span></span><span class="line"><span class="cl"><span class="go">i: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">s: [4 2 3]
+</span></span></span><span class="line"><span class="cl"><span class="go">After zeroptr(&amp;i, &amp;s)
+</span></span></span><span class="line"><span class="cl"><span class="go">i: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">s: [4 5 3]
+</span></span></span><span class="line"><span class="cl"><span class="go">pointer i: 0xc000098040
+</span></span></span><span class="line"><span class="cl"><span class="go">pointer s: &amp;[4 5 3]</span></span></span></code></pre>
           </td>
         </tr>
         
@@ -180,7 +209,7 @@ the memory address for that variable.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func zeroval(ival int) {\u000A    ival \u003D 0\u000A}\u000A');codeLines.push('func zeroptr(iptr *int) {\u000A    *iptr \u003D 0\u000A}\u000A');codeLines.push('func main() {\u000A    i :\u003D 1\u000A    fmt.Println(\"initial:\", i)\u000A');codeLines.push('    zeroval(i)\u000A    fmt.Println(\"zeroval:\", i)\u000A');codeLines.push('    zeroptr(\u0026i)\u000A    fmt.Println(\"zeroptr:\", i)\u000A');codeLines.push('    fmt.Println(\"pointer:\", \u0026i)\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('func zeroval(ival int, sval []int) {\u000A    ival \u003D 0\u000A    sval[0] \u003D 4\u000A}\u000A');codeLines.push('func zeroptr(iptr *int, sval *[]int) {\u000A    *iptr \u003D 0\u000A    (*sval)[1] \u003D 5\u000A}\u000A');codeLines.push('func main() {\u000A    i :\u003D 1\u000A    s :\u003D []int{1, 2, 3}\u000A');codeLines.push('    fmt.Println(\"initial i:\", i)\u000A    fmt.Println(\"initial s:\", s)\u000A');codeLines.push('    zeroval(i, s)\u000A    fmt.Println(\"After zeroval(i, s)\")\u000A    fmt.Println(\"i:\", i)\u000A    fmt.Println(\"s:\", s)\u000A');codeLines.push('    zeroptr(\u0026i, \u0026s)\u000A    fmt.Println(\"After zeroptr(\u0026i, \u0026s)\")\u000A    fmt.Println(\"i:\", i)\u000A    fmt.Println(\"s:\", s)\u000A');codeLines.push('    fmt.Println(\"pointer i:\", \u0026i)\u000A    fmt.Println(\"pointer s:\", \u0026s)\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>
