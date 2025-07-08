@@ -1,4 +1,4 @@
-# Go by Example
+# Go by Example (Moh)
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
 a site that teaches Go via annotated example programs.
@@ -110,7 +110,5 @@ iteration to the next](https://go.dev/ref/spec#RangeClause).
 It doesn't mean anything is wrong with the example. Typically the code in these
 examples will be insensitive to the actual order of the output; if the code is
 sensitive to the order - that's probably a bug - so feel free to report it.
-
-
 
 
