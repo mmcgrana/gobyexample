@@ -112,5 +112,3 @@ examples will be insensitive to the actual order of the output; if the code is
 sensitive to the order - that's probably a bug - so feel free to report it.
 
 
-
-
