@@ -26,8 +26,8 @@ func (c *Container) inc(name string) {
 	// it at the end of the function using a [defer](defer)
 	// statement.
 	c.mu.Lock()
-	defer c.mu.Unlock()
 	c.counters[name]++
+	defer c.mu.Unlock()
 }
 
 func main() {
