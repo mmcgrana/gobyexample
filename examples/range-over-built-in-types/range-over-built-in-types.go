@@ -48,4 +48,15 @@ func main() {
 	for i, c := range "go" {
 		fmt.Println(i, c)
 	}
+
+	// Starting with version 1.22, Go has added support for range over integers,
+	// which lets us omit the full `i := 0; i < N; i++` clause.
+	for i := range 3 {
+		fmt.Println(i)
+	}
+
+	// Sometimes we just want to loop N times, so we can omit the assignment.
+	for range 3 {
+		fmt.Println("Knock!")
+	}
 }
