@@ -7,7 +7,7 @@
   </head>
   <script>
       window.onkeydown = (e) => {
-          if (e.ctrlKey || e.altKey || e.shiftKey) {
+          if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) {
               return;
           }
           
