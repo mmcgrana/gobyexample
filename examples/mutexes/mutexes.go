@@ -45,16 +45,22 @@ func main() {
 		for range n {
 			c.inc(name)
 		}
-		wg.Done()
 	}
 
 	// Run several goroutines concurrently; note
 	// that they all access the same `Container`,
 	// and two of them access the same counter.
-	wg.Add(3)
-	go doIncrement("a", 10000)
-	go doIncrement("a", 10000)
-	go doIncrement("b", 10000)
+	wg.Go(func() {
+		doIncrement("a", 10000)
+	})
+
+	wg.Go(func() {
+		doIncrement("a", 10000)
+	})
+
+	wg.Go(func() {
+		doIncrement("b", 10000)
+	})
 
 	// Wait for the goroutines to finish
 	wg.Wait()
