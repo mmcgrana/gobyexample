@@ -26,17 +26,12 @@ func main() {
 	// We'll start 50 goroutines that each increment the
 	// counter exactly 1000 times.
 	for range 50 {
-		wg.Add(1)
-
-		go func() {
+		wg.Go(func() {
 			for range 1000 {
-
 				// To atomically increment the counter we use `Add`.
 				ops.Add(1)
 			}
-
-			wg.Done()
-		}()
+		})
 	}
 
 	// Wait until all the goroutines are done.
