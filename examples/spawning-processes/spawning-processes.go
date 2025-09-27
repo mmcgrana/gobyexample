@@ -4,6 +4,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os/exec"
@@ -35,11 +36,14 @@ func main() {
 	// code.
 	_, err = exec.Command("date", "-x").Output()
 	if err != nil {
-		switch e := err.(type) {
-		case *exec.Error:
+		var execErr *exec.Error
+		var exitErr *exec.ExitError
+		switch {
+		case errors.As(err, &execErr):
 			fmt.Println("failed executing:", err)
-		case *exec.ExitError:
-			fmt.Println("command exit rc =", e.ExitCode())
+		case errors.As(err, &exitErr):
+			exitCode := exitErr.ExitCode()
+			fmt.Println("command exit rc =", exitCode)
 		default:
 			panic(err)
 		}
