@@ -4,6 +4,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os/exec"
@@ -30,16 +31,22 @@ func main() {
 
 	// `Output` and other methods of `Command` will return
 	// `*exec.Error` if there was a problem executing the
-	// command (e.g. wrong path), and `*exec.ExitError`
-	// if the command ran but exited with a non-zero return
-	// code.
+	// command (e.g. executable file not found in $PATH),
+	// and `*exec.ExitError` if the command ran but
+	// exited with a non-zero return code.
 	_, err = exec.Command("date", "-x").Output()
 	if err != nil {
-		switch e := err.(type) {
-		case *exec.Error:
+		var (
+			execErr *exec.Error
+			exitErr *exec.ExitError
+		)
+
+		switch {
+		case errors.As(err, &execErr):
 			fmt.Println("failed executing:", err)
-		case *exec.ExitError:
-			fmt.Println("command exit rc =", e.ExitCode())
+		case errors.As(err, &exitErr):
+			exitCode := exitErr.ExitCode()
+			fmt.Println("command exit rc =", exitCode)
 		default:
 			panic(err)
 		}
