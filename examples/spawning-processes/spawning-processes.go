@@ -1,4 +1,4 @@
-// Sometimes our Go programs need to spawn other, non-Go
+// Sometimes our Go programs need to spawn other
 // processes.
 
 package main

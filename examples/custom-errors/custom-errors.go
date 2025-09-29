@@ -1,4 +1,4 @@
-// It's possible to use custom types as `error`s by
+// It's possible to define custom error types by
 // implementing the `Error()` method on them. Here's a
 // variant on the example above that uses a custom type
 // to explicitly represent an argument error.

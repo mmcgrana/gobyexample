@@ -32,11 +32,11 @@
           <td class="docs">
             <p>In Go it&rsquo;s idiomatic to communicate errors via an
 explicit, separate return value. This contrasts with
-the exceptions used in languages like Java and Ruby and
-the overloaded single result / error value sometimes
-used in C. Go&rsquo;s approach makes it easy to see which
-functions return errors and to handle them using the
-same language constructs employed for other,
+the exceptions used in languages like Java, Python and
+Ruby and the overloaded single result / error value
+sometimes used in C. Go&rsquo;s approach makes it easy to
+see which functions return errors and to handle them
+using the same language constructs employed for other,
 non-error tasks.</p>
 
 <p>See the documentation of the <a href="https://pkg.go.dev/errors">errors package</a>
@@ -55,7 +55,7 @@ details.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/j6odYuFpOeb"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/ycKDxFlusrP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -170,7 +170,7 @@ and <code>errors.As</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s common to use an inline error check in the <code>if</code>
+            <p>It&rsquo;s idiomatic to use an inline error check in the <code>if</code>
 line.</p>
 
           </td>
