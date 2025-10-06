@@ -147,9 +147,9 @@ worker on the channel.</p>
         
         <tr>
           <td class="docs">
-            <p>If you removed the <code>&lt;- done</code> line from this program, the
-program would exit before the <code>worker</code> even
-started.</p>
+            <p>If you removed the <code>&lt;- done</code> line from this program,
+the program could exit before the <code>worker</code> finished
+its work, or in some cases even before it started.</p>
 
           </td>
           <td class="code empty">
