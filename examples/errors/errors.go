@@ -34,8 +34,8 @@ func f(arg int) (int, error) {
 
 // A sentinel error is a predeclared variable that is used to
 // signify a specific error condition.
-var ErrOutOfTea = fmt.Errorf("no more tea available")
-var ErrPower = fmt.Errorf("can't boil water")
+var ErrOutOfTea = errors.New("no more tea available")
+var ErrPower = errors.New("can't boil water")
 
 func makeTea(arg int) error {
 	if arg == 2 {
