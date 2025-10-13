@@ -87,40 +87,39 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>const</code> statement can appear anywhere a <code>var</code>
-statement can.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">500000000</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
             <p>Constant expressions perform arithmetic with
-arbitrary precision.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">d</span> <span class="p">=</span> <span class="mf">3e20</span> <span class="o">/</span> <span class="nx">n</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>A numeric constant has no type until it&rsquo;s given
-one, such as by an explicit conversion.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span></span></span></code></pre>
-          </td>
-        </tr>
+              arbitrary precision.</p>
+              
+            </td>
+            <td class="code leading">
+              
+              <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">d</span> <span class="p">=</span> <span class="mf">3e20</span> <span class="o">/</span> <span class="nx">n</span>
+              </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span></span></span></code></pre>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="docs">
+              <p>A numeric constant has no type until it&rsquo;s given
+                one, such as by an explicit conversion.</p>
+                
+              </td>
+              <td class="code leading">
+                
+                <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span></span></span></code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td class="docs">
+                <p>A <code>const</code> statement can also appear inside a function
+    body.</p>
+    
+              </td>
+              <td class="code leading">
+                
+              <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">500000000</span></span></span></code></pre>
+              </td>
+            </tr>
         
         <tr>
           <td class="docs">
