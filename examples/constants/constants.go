@@ -13,7 +13,9 @@ const s string = "constant"
 
 func main() {
 	fmt.Println(s)
-	//A const statement can also appear inside a function body
+
+	// A `const` statement can also appear inside a 
+	// function body.
 	const n = 500000000
 
 	// Constant expressions perform arithmetic with
