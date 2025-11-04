@@ -4,7 +4,7 @@
 // `ensure` and `finally` would be used in other languages.
 
 package main
-
+import "path/filepath"
 import (
 	"fmt"
 	"os"
