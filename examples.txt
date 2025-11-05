@@ -77,6 +77,8 @@ Environment Variables
 Logging
 HTTP Client
 HTTP Server
+TCP Sockets
+UDP Sockets
 Context
 Spawning Processes
 Exec'ing Processes
