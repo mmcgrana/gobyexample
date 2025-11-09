@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 )
 
 // Reading files requires checking most calls for errors.
@@ -23,7 +24,8 @@ func main() {
 
 	// Perhaps the most basic file reading task is
 	// slurping a file's entire contents into memory.
-	dat, err := os.ReadFile("/tmp/dat")
+	path := filepath.Join(os.TempDir(), "dat")
+	dat, err := os.ReadFile(path)
 	check(err)
 	fmt.Print(string(dat))
 
