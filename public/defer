@@ -47,7 +47,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/nhAzhDn_jga"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/9_sJ5XnikSw"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -61,6 +61,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;path/filepath&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -89,7 +90,8 @@ of the enclosing function (<code>main</code>), after
           </td>
           <td class="code leading">
             
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">f</span> <span class="o">:=</span> <span class="nf">createFile</span><span class="p">(</span><span class="s">&#34;/tmp/defer.txt&#34;</span><span class="p">)</span>
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">path</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nf">TempDir</span><span class="p">(),</span> <span class="s">&#34;defer.txt&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span> <span class="o">:=</span> <span class="nf">createFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nf">closeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">writeFile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -187,7 +189,7 @@ after being written.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f :\u003D createFile(\"/tmp/defer.txt\")\u000A    defer closeFile(f)\u000A    writeFile(f)\u000A}\u000A');codeLines.push('func createFile(p string) *os.File {\u000A    fmt.Println(\"creating\")\u000A    f, err :\u003D os.Create(p)\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    return f\u000A}\u000A');codeLines.push('func writeFile(f *os.File) {\u000A    fmt.Println(\"writing\")\u000A    fmt.Fprintln(f, \"data\")\u000A}\u000A');codeLines.push('func closeFile(f *os.File) {\u000A    fmt.Println(\"closing\")\u000A    err :\u003D f.Close()\u000A');codeLines.push('    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"os\"\u000A    \"path/filepath\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    path :\u003D filepath.Join(os.TempDir(), \"defer.txt\")\u000A    f :\u003D createFile(path)\u000A    defer closeFile(f)\u000A    writeFile(f)\u000A}\u000A');codeLines.push('func createFile(p string) *os.File {\u000A    fmt.Println(\"creating\")\u000A    f, err :\u003D os.Create(p)\u000A    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A    return f\u000A}\u000A');codeLines.push('func writeFile(f *os.File) {\u000A    fmt.Println(\"writing\")\u000A    fmt.Fprintln(f, \"data\")\u000A}\u000A');codeLines.push('func closeFile(f *os.File) {\u000A    fmt.Println(\"closing\")\u000A    err :\u003D f.Close()\u000A');codeLines.push('    if err !\u003D nil {\u000A        panic(err)\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

@@ -7,6 +7,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 func check(e error) {
@@ -20,11 +21,13 @@ func main() {
 	// To start, here's how to dump a string (or just
 	// bytes) into a file.
 	d1 := []byte("hello\ngo\n")
-	err := os.WriteFile("/tmp/dat1", d1, 0644)
+	path1 := filepath.Join(os.TempDir(), "dat1")
+	err := os.WriteFile(path1, d1, 0644)
 	check(err)
 
 	// For more granular writes, open a file for writing.
-	f, err := os.Create("/tmp/dat2")
+	path2 := filepath.Join(os.TempDir(), "dat2")
+	f, err := os.Create(path2)
 	check(err)
 
 	// It's idiomatic to defer a `Close` immediately
