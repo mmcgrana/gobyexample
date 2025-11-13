@@ -75,6 +75,10 @@ div.example table {
 p.next {
   margin-bottom: 20px;
 }
+p.prev {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 p.footer {
   font-size: 75%;
 }

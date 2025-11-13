@@ -25,6 +25,11 @@
   <body>
     <div class="example" id="{{.ID}}">
       <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
+    {{if .PrevExample}}
+      <p class="prev">
+        Previous example: <a href="{{.PrevExample.ID}}" rel="prev">{{.PrevExample.Name}}</a>.
+      </p>
+      {{end}}
       {{range .Segs}}
       <table>
         {{range .}}
@@ -40,6 +45,7 @@
         {{end}}
       </table>
       {{end}}
+  
       {{if .NextExample}}
       <p class="next">
         Next example: <a href="{{.NextExample.ID}}" rel="next">{{.NextExample.Name}}</a>.
