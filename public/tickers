@@ -26,78 +26,40 @@
     <div class="example" id="tickers">
       <h2><a href="./">Go by Example</a>: Tickers</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><a href="timers">Timers</a> are for when you want to do
-something once in the future - <em>tickers</em> are for when
-you want to do something repeatedly at regular
-intervals. Here&rsquo;s an example of a ticker that ticks
-periodically until we stop it.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/gs6zoJP-Pl9"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/gs6zoJP-Pl9"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Tickers use a similar mechanism to timers: a
-channel that is sent values. Here we&rsquo;ll use the
-<code>select</code> builtin on the channel to await the
-values as they arrive every 500ms.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">done</span><span class="p">:</span>
@@ -107,47 +69,79 @@ values as they arrive every 500ms.</p>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Tickers can be stopped like timers. Once a ticker
-is stopped it won&rsquo;t receive any more values on its
-channel. We&rsquo;ll stop ours after 1600ms.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1600</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+        <div class="code" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1600</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">ticker</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">&lt;-</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Ticker stopped&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
-      
-      <table>
         
-        <tr>
-          <td class="docs">
-            <p>When we run this program the ticker should tick 3 times
-before we stop it.</p>
+        <div class="docs" style="grid-row: 1;">
+          <p><a href="timers">Timers</a> are for when you want to do
+something once in the future - <em>tickers</em> are for when
+you want to do something repeatedly at regular
+intervals. Here&rsquo;s an example of a ticker that ticks
+periodically until we stop it.</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run tickers.go
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>Tickers use a similar mechanism to timers: a
+channel that is sent values. Here we&rsquo;ll use the
+<code>select</code> builtin on the channel to await the
+values as they arrive every 500ms.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>Tickers can be stopped like timers. Once a ticker
+is stopped it won&rsquo;t receive any more values on its
+channel. We&rsquo;ll stop ours after 1600ms.</p>
+
+        </div>
+        
+      </div>
+      
+      <div class="seg-grid" role="presentation">
+        
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run tickers.go
 </span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:56.487625 -0700 PDT
 </span></span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:56.988063 -0700 PDT
 </span></span></span><span class="line"><span class="cl"><span class="go">Tick at 2012-09-23 11:29:57.488076 -0700 PDT
 </span></span></span><span class="line"><span class="cl"><span class="go">Ticker stopped</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>When we run this program the ticker should tick 3 times
+before we stop it.</p>
+
+        </div>
+        
+      </div>
       
       
       <p class="next">

@@ -26,153 +26,144 @@
     <div class="example" id="sha256-hashes">
       <h2><a href="./">Go by Example</a>: SHA256 Hashes</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/SHA-2"><em>SHA256 hashes</em></a> are
+        <div class="code empty leading" style="grid-row: 1;">
+          
+        
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/IHM1lZVm_Jm"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;crypto/sha256&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p><a href="https://en.wikipedia.org/wiki/SHA-2"><em>SHA256 hashes</em></a> are
 frequently used to compute short identities for binary
 or text blobs. For example, TLS/SSL certificates use SHA256
 to compute a certificate&rsquo;s signature. Here&rsquo;s how to compute
 SHA256 hashes in Go.</p>
 
-          </td>
-          <td class="code empty leading">
-            
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
           
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/IHM1lZVm_Jm"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Go implements several hash functions in various
+        <div class="docs" style="grid-row: 3;">
+          <p>Go implements several hash functions in various
 <code>crypto/*</code> packages.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;crypto/sha256&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;sha256 this string&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here we start with a new hash.</p>
+        <div class="docs" style="grid-row: 5;">
+          <p>Here we start with a new hash.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p><code>Write</code> expects bytes. If you have a string <code>s</code>,
+        <div class="docs" style="grid-row: 6;">
+          <p><code>Write</code> expects bytes. If you have a string <code>s</code>,
 use <code>[]byte(s)</code> to coerce it to bytes.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>This gets the finalized hash result as a byte
+        <div class="docs" style="grid-row: 7;">
+          <p>This gets the finalized hash result as a byte
 slice. The argument to <code>Sum</code> can be used to append
 to an existing byte slice: it usually isn&rsquo;t needed.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">bs</span> <span class="o">:=</span> <span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x\n&#34;</span><span class="p">,</span> <span class="nx">bs</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 8;">
+          
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Running the program computes the hash and prints it in
-a human-readable hex format.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sha256-hashes.go
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run sha256-hashes.go
 </span></span><span class="line"><span class="cl"><span class="go">sha256 this string
 </span></span></span><span class="line"><span class="cl"><span class="go">1af1dfa857bf1d8814fe1af8983c18080019922e557f15a8a...</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>You can compute other hashes using a similar pattern to
+        <div class="code empty leading" style="grid-row: 2;">
+          
+        
+        </div>
+        
+        <div class="code empty" style="grid-row: 3;">
+          
+        
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Running the program computes the hash and prints it in
+a human-readable hex format.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          <p>You can compute other hashes using a similar pattern to
 the one shown above. For example, to compute
 SHA512 hashes import <code>crypto/sha512</code> and use
 <code>sha512.New()</code>.</p>
 
-          </td>
-          <td class="code empty leading">
-            
-          
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Note that if you need cryptographically secure hashes,
+        <div class="docs" style="grid-row: 3;">
+          <p>Note that if you need cryptographically secure hashes,
 you should carefully research
 <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">hash strength</a>!</p>
 
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
       
       <p class="next">

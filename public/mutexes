@@ -26,222 +26,208 @@
     <div class="example" id="mutexes">
       <h2><a href="./">Go by Example</a>: Mutexes</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>In the previous example we saw how to manage simple
+        <div class="code empty leading" style="grid-row: 1;">
+          
+        
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/u0VAVSWRlU0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Container</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mu</span>       <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">counters</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Container</span><span class="p">)</span> <span class="nf">inc</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 10;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">doIncrement</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="k">range</span> <span class="nx">n</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">c</span><span class="p">.</span><span class="nf">inc</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 11;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 12;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 13;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 14;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>In the previous example we saw how to manage simple
 counter state using <a href="atomic-counters">atomic operations</a>.
 For more complex state we can use a <a href="https://en.wikipedia.org/wiki/Mutual_exclusion"><em>mutex</em></a>
 to safely access data across multiple goroutines.</p>
 
-          </td>
-          <td class="code empty leading">
-            
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
           
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/u0VAVSWRlU0"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Container holds a map of counters; since we want to
+        <div class="docs" style="grid-row: 4;">
+          <p>Container holds a map of counters; since we want to
 update it concurrently from multiple goroutines, we
 add a <code>Mutex</code> to synchronize access.
 Note that mutexes must not be copied, so if this
 <code>struct</code> is passed around, it should be done by
 pointer.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Container</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">mu</span>       <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">counters</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Lock the mutex before accessing <code>counters</code>; unlock
+        <div class="docs" style="grid-row: 5;">
+          <p>Lock the mutex before accessing <code>counters</code>; unlock
 it at the end of the function using a <a href="defer">defer</a>
 statement.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Container</span><span class="p">)</span> <span class="nf">inc</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">++</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 6;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Note that the zero value of a mutex is usable as-is, so no
+        <div class="docs" style="grid-row: 7;">
+          <p>Note that the zero value of a mutex is usable as-is, so no
 initialization is required here.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">Container</span><span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">counters</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 8;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 9;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>This function increments a named counter
+        <div class="docs" style="grid-row: 10;">
+          <p>This function increments a named counter
 in a loop.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">doIncrement</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="k">range</span> <span class="nx">n</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nx">c</span><span class="p">.</span><span class="nf">inc</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Run several goroutines concurrently; note
+        <div class="docs" style="grid-row: 11;">
+          <p>Run several goroutines concurrently; note
 that they all access the same <code>Container</code>,
 and two of them access the same counter.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 12;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">doIncrement</span><span class="p">(</span><span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">})</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 13;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Wait for the goroutines to finish</p>
+        <div class="docs" style="grid-row: 14;">
+          <p>Wait for the goroutines to finish</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">counters</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Running the program shows that the counters
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run mutexes.go
+</span></span><span class="line"><span class="cl"><span class="go">map[a:20000 b:10000]</span></span></span></code></pre>
+        </div>
+        
+        <div class="code empty" style="grid-row: 2;">
+          
+        
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Running the program shows that the counters
 updated as expected.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run mutexes.go
-</span></span><span class="line"><span class="cl"><span class="go">map[a:20000 b:10000]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at implementing this same state
+        <div class="docs" style="grid-row: 2;">
+          <p>Next we&rsquo;ll look at implementing this same state
 management task using only goroutines and channels.</p>
 
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
       
       <p class="next">

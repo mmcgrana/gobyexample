@@ -26,159 +26,150 @@
     <div class="example" id="embed-directive">
       <h2><a href="./">Go by Example</a>: Embed Directive</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><code>//go:embed</code> is a <a href="https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives">compiler
+        <div class="code leading" style="grid-row: 1;">
+          <a href="https://go.dev/play/p/6m2ll-D52BB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;embed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileString</span> <span class="kt">string</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileByte</span> <span class="p">[]</span><span class="kt">byte</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1">//go:embed folder/*.hash
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">folder</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nx">fileString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fileByte</span><span class="p">))</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content1</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file1.hash&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content1</span><span class="p">))</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file2.hash&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p><code>//go:embed</code> is a <a href="https://pkg.go.dev/cmd/compile#hdr-Compiler_Directives">compiler
 directive</a> that
 allows programs to include arbitrary files and folders in the Go binary at
 build time. Read more about the embed directive
 <a href="https://pkg.go.dev/embed">here</a>.</p>
 
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/6m2ll-D52BB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Import the <code>embed</code> package; if you don&rsquo;t use any exported
+        <div class="docs" style="grid-row: 2;">
+          <p>Import the <code>embed</code> package; if you don&rsquo;t use any exported
 identifiers from this package, you can do a blank import with <code>_ &quot;embed&quot;</code>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;embed&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p><code>embed</code> directives accept paths relative to the directory containing the
+        <div class="docs" style="grid-row: 3;">
+          <p><code>embed</code> directives accept paths relative to the directory containing the
 Go source file. This directive embeds the contents of the file into the
 <code>string</code> variable immediately following it.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileString</span> <span class="kt">string</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Or embed the contents of the file into a <code>[]byte</code>.</p>
+        <div class="docs" style="grid-row: 4;">
+          <p>Or embed the contents of the file into a <code>[]byte</code>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">fileByte</span> <span class="p">[]</span><span class="kt">byte</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We can also embed multiple files or even folders with wildcards. This uses
+        <div class="docs" style="grid-row: 5;">
+          <p>We can also embed multiple files or even folders with wildcards. This uses
 a variable of the <a href="https://pkg.go.dev/embed#FS">embed.FS type</a>, which
 implements a simple virtual file system.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="c1">//go:embed folder/single_file.txt
-</span></span></span><span class="line"><span class="cl"><span class="c1">//go:embed folder/*.hash
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">folder</span> <span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 6;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Print out the contents of <code>single_file.txt</code>.</p>
+        <div class="docs" style="grid-row: 7;">
+          <p>Print out the contents of <code>single_file.txt</code>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nx">fileString</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fileByte</span><span class="p">))</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Retrieve some files from the embedded folder.</p>
+        <div class="docs" style="grid-row: 8;">
+          <p>Retrieve some files from the embedded folder.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content1</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file1.hash&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content1</span><span class="p">))</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">content2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">folder</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;folder/file2.hash&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content2</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 9;">
+          
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Use these commands to run the example.
-(Note: due to limitation on go playground,
-this example can only be run on your local machine.)</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> mkdir -p folder
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> mkdir -p folder
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;hello go&#34; &gt; folder/single_file.txt
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;123&#34; &gt; folder/file1.hash
 </span></span><span class="line"><span class="cl"><span class="gp">$</span> echo &#34;456&#34; &gt; folder/file2.hash</span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run embed-directive.go
+        <div class="code" style="grid-row: 2;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run embed-directive.go
 </span></span><span class="line"><span class="cl"><span class="go">hello go
 </span></span></span><span class="line"><span class="cl"><span class="go">hello go
 </span></span></span><span class="line"><span class="cl"><span class="go">123
 </span></span></span><span class="line"><span class="cl"><span class="go">456</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Use these commands to run the example.
+(Note: due to limitation on go playground,
+this example can only be run on your local machine.)</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+      </div>
       
       
       <p class="next">

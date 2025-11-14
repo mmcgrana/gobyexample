@@ -26,168 +26,152 @@
     <div class="example" id="url-parsing">
       <h2><a href="./">Go by Example</a>: URL Parsing</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>URLs provide a <a href="https://adam.herokuapp.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/">uniform way to locate resources</a>.
-Here&rsquo;s how to parse URLs in Go.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/fHTQn9X7l1B"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/fHTQn9X7l1B"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;net&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;net/url&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We&rsquo;ll parse this example URL, which includes a
-scheme, authentication info, host, port, path,
-query params, and query fragment.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;postgres://user:pass@host.com:5432/path?k=v#f&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;postgres://user:pass@host.com:5432/path?k=v#f&#34;</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Parse the URL and ensure there are no errors.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">u</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Accessing the scheme is straightforward.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">)</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p><code>User</code> contains all authentication info; call
-<code>Username</code> and <code>Password</code> on this for individual
-values.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Username</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">p</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nf">Password</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>The <code>Host</code> contains both the hostname and the port,
-if present. Use <code>SplitHostPort</code> to extract them.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">SplitHostPort</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">host</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">port</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here we extract the <code>path</code> and the fragment after
+        <div class="code leading" style="grid-row: 10;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 11;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&#34;k&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>URLs provide a <a href="https://adam.herokuapp.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/">uniform way to locate resources</a>.
+Here&rsquo;s how to parse URLs in Go.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>We&rsquo;ll parse this example URL, which includes a
+scheme, authentication info, host, port, path,
+query params, and query fragment.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>Parse the URL and ensure there are no errors.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>Accessing the scheme is straightforward.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 8;">
+          <p><code>User</code> contains all authentication info; call
+<code>Username</code> and <code>Password</code> on this for individual
+values.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 9;">
+          <p>The <code>Host</code> contains both the hostname and the port,
+if present. Use <code>SplitHostPort</code> to extract them.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 10;">
+          <p>Here we extract the <code>path</code> and the fragment after
 the <code>#</code>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>To get query params in a string of <code>k=v</code> format,
+        <div class="docs" style="grid-row: 11;">
+          <p>To get query params in a string of <code>k=v</code> format,
 use <code>RawQuery</code>. You can also parse query params
 into a map. The parsed query param maps are from
 strings to slices of strings, so index into <code>[0]</code>
 if you only want the first value.</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">ParseQuery</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">RawQuery</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&#34;k&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Running our URL parsing program shows all the different
-pieces that we extracted.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run url-parsing.go 
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run url-parsing.go 
 </span></span><span class="line"><span class="cl"><span class="go">postgres
 </span></span></span><span class="line"><span class="cl"><span class="go">user:pass
 </span></span></span><span class="line"><span class="cl"><span class="go">user
@@ -200,10 +184,16 @@ pieces that we extracted.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">k=v
 </span></span></span><span class="line"><span class="cl"><span class="go">map[k:[v]]
 </span></span></span><span class="line"><span class="cl"><span class="go">v</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Running our URL parsing program shows all the different
+pieces that we extracted.</p>
+
+        </div>
+        
+      </div>
       
       
       <p class="next">

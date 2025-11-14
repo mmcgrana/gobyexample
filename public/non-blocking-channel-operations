@@ -26,104 +26,54 @@
     <div class="example" id="non-blocking-channel-operations">
       <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Basic sends and receives on channels are blocking.
-However, we can use <code>select</code> with a <code>default</code> clause to
-implement <em>non-blocking</em> sends, receives, and even
-non-blocking multi-way <code>select</code>s.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/TFv6-7OVNVq"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/TFv6-7OVNVq"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">signals</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here&rsquo;s a non-blocking receive. If a value is
-available on <code>messages</code> then <code>select</code> will take
-the <code>&lt;-messages</code> <code>case</code> with that value. If not
-it will immediately take the <code>default</code> case.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;no message received&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>A non-blocking send works similarly. Here <code>msg</code>
-cannot be sent to the <code>messages</code> channel, because
-the channel has no buffer and there is no receiver.
-Therefore the <code>default</code> case is selected.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&#34;hi&#34;</span>
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">msg</span> <span class="o">:=</span> <span class="s">&#34;hi&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="nx">msg</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;no message sent&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We can use multiple <code>case</code>s above the <code>default</code>
-clause to implement a multi-way non-blocking
-select. Here we attempt non-blocking receives
-on both <code>messages</code> and <code>signals</code>.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+        <div class="code" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received message&#34;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">sig</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">signals</span><span class="p">:</span>
@@ -132,27 +82,71 @@ on both <code>messages</code> and <code>signals</code>.</p>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;no activity&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Basic sends and receives on channels are blocking.
+However, we can use <code>select</code> with a <code>default</code> clause to
+implement <em>non-blocking</em> sends, receives, and even
+non-blocking multi-way <code>select</code>s.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>Here&rsquo;s a non-blocking receive. If a value is
+available on <code>messages</code> then <code>select</code> will take
+the <code>&lt;-messages</code> <code>case</code> with that value. If not
+it will immediately take the <code>default</code> case.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>A non-blocking send works similarly. Here <code>msg</code>
+cannot be sent to the <code>messages</code> channel, because
+the channel has no buffer and there is no receiver.
+Therefore the <code>default</code> case is selected.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>We can use multiple <code>case</code>s above the <code>default</code>
+clause to implement a multi-way non-blocking
+select. Here we attempt non-blocking receives
+on both <code>messages</code> and <code>signals</code>.</p>
+
+        </div>
+        
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run non-blocking-channel-operations.go 
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run non-blocking-channel-operations.go 
 </span></span><span class="line"><span class="cl"><span class="go">no message received
 </span></span></span><span class="line"><span class="cl"><span class="go">no message sent
 </span></span></span><span class="line"><span class="cl"><span class="go">no activity</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+      </div>
       
       
       <p class="next">

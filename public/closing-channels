@@ -26,71 +26,33 @@
     <div class="example" id="closing-channels">
       <h2><a href="./">Go by Example</a>: Closing Channels</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><em>Closing</em> a channel indicates that no more values
-will be sent on it. This can be useful to communicate
-completion to the channel&rsquo;s receivers.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/yZijZHYe22y"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/yZijZHYe22y"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>In this example we&rsquo;ll use a <code>jobs</code> channel to
-communicate work to be done from the <code>main()</code> goroutine
-to a worker goroutine. When we have no more jobs for
-the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here&rsquo;s the worker goroutine. It repeatedly receives
-from <code>jobs</code> with <code>j, more := &lt;-jobs</code>. In this
-special 2-value form of receive, the <code>more</code> value
-will be <code>false</code> if <code>jobs</code> has been <code>close</code>d and all
-values in the channel have already been received.
-We use this to notify on <code>done</code> when we&rsquo;ve worked
-all our jobs.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">j</span><span class="p">,</span> <span class="nx">more</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">more</span> <span class="p">{</span>
@@ -102,42 +64,80 @@ all our jobs.</p>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}()</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>This sends 3 jobs to the worker over the <code>jobs</code>
-channel, then closes it.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent job&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">close</span><span class="p">(</span><span class="nx">jobs</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sent all jobs&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We await the worker using the
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received more jobs:&#34;</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p><em>Closing</em> a channel indicates that no more values
+will be sent on it. This can be useful to communicate
+completion to the channel&rsquo;s receivers.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          <p>In this example we&rsquo;ll use a <code>jobs</code> channel to
+communicate work to be done from the <code>main()</code> goroutine
+to a worker goroutine. When we have no more jobs for
+the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>Here&rsquo;s the worker goroutine. It repeatedly receives
+from <code>jobs</code> with <code>j, more := &lt;-jobs</code>. In this
+special 2-value form of receive, the <code>more</code> value
+will be <code>false</code> if <code>jobs</code> has been <code>close</code>d and all
+values in the channel have already been received.
+We use this to notify on <code>done</code> when we&rsquo;ve worked
+all our jobs.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>This sends 3 jobs to the worker over the <code>jobs</code>
+channel, then closes it.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>We await the worker using the
 <a href="channel-synchronization">synchronization</a> approach
 we saw earlier.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="o">&lt;-</span><span class="nx">done</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Reading from a closed channel succeeds immediately,
+        <div class="docs" style="grid-row: 8;">
+          <p>Reading from a closed channel succeeds immediately,
 returning the zero value of the underlying type.
 The optional second return value is <code>true</code> if the
 value received was delivered by a successful send
@@ -145,26 +145,15 @@ operation to the channel, or <code>false</code> if it was a
 zero value generated because the channel is closed
 and empty.</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">jobs</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;received more jobs:&#34;</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run closing-channels.go 
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run closing-channels.go 
 </span></span><span class="line"><span class="cl"><span class="go">sent job 1
 </span></span></span><span class="line"><span class="cl"><span class="go">received job 1
 </span></span></span><span class="line"><span class="cl"><span class="go">sent job 2
@@ -174,22 +163,25 @@ and empty.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">sent all jobs
 </span></span></span><span class="line"><span class="cl"><span class="go">received all jobs
 </span></span></span><span class="line"><span class="cl"><span class="go">received more jobs: false</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>The idea of closed channels leads naturally to our next
+        <div class="code empty" style="grid-row: 2;">
+          
+        
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          <p>The idea of closed channels leads naturally to our next
 example: <code>range</code> over channels.</p>
 
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
       
       <p class="next">

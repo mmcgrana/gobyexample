@@ -26,251 +26,237 @@
     <div class="example" id="command-line-flags">
       <h2><a href="./">Go by Example</a>: Command-Line Flags</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>Command-line flags</em></a>
+        <div class="code empty leading" style="grid-row: 1;">
+          
+        
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/IUPZlYSigc3"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;a string&#34;</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;numb&#34;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#34;an int&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">forkPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;fork&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;a bool&#34;</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&#34;svar&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;a string var&#34;</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">Parse</span><span class="p">()</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;word:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numb:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;fork:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">forkPtr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;svar:&#34;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;tail:&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Args</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p><a href="https://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>Command-line flags</em></a>
 are a common way to specify options for command-line
 programs. For example, in <code>wc -l</code> the <code>-l</code> is a
 command-line flag.</p>
 
-          </td>
-          <td class="code empty leading">
-            
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
           
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/IUPZlYSigc3"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Go provides a <code>flag</code> package supporting basic
+        <div class="docs" style="grid-row: 3;">
+          <p>Go provides a <code>flag</code> package supporting basic
 command-line flag parsing. We&rsquo;ll use this package to
 implement our example command-line program.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Basic flag declarations are available for string,
+        <div class="docs" style="grid-row: 5;">
+          <p>Basic flag declarations are available for string,
 integer, and boolean options. Here we declare a
 string flag <code>word</code> with a default value <code>&quot;foo&quot;</code>
 and a short description. This <code>flag.String</code> function
 returns a string pointer (not a string value);
 we&rsquo;ll see how to use this pointer below.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;a string&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>This declares <code>numb</code> and <code>fork</code> flags, using a
+        <div class="docs" style="grid-row: 6;">
+          <p>This declares <code>numb</code> and <code>fork</code> flags, using a
 similar approach to the <code>word</code> flag.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;numb&#34;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#34;an int&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">forkPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;fork&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;a bool&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>It&rsquo;s also possible to declare an option that uses an
+        <div class="docs" style="grid-row: 7;">
+          <p>It&rsquo;s also possible to declare an option that uses an
 existing var declared elsewhere in the program.
 Note that we need to pass in a pointer to the flag
 declaration function.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&#34;svar&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;a string var&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Once all flags are declared, call <code>flag.Parse()</code>
+        <div class="docs" style="grid-row: 8;">
+          <p>Once all flags are declared, call <code>flag.Parse()</code>
 to execute the command-line parsing.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">flag</span><span class="p">.</span><span class="nf">Parse</span><span class="p">()</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here we&rsquo;ll just dump out the parsed options and
+        <div class="docs" style="grid-row: 9;">
+          <p>Here we&rsquo;ll just dump out the parsed options and
 any trailing positional arguments. Note that we
 need to dereference the pointers with e.g. <code>*wordPtr</code>
 to get the actual option values.</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;word:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numb:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;fork:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">forkPtr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;svar:&#34;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;tail:&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">Args</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>To experiment with the command-line flags program it&rsquo;s
-best to first compile it and then run the resulting
-binary directly.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-flags.go</span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-flags.go</span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Try out the built program by first giving it values for
-all flags.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt -numb=7 -fork -svar=flag
+        <div class="code leading" style="grid-row: 2;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt -numb=7 -fork -svar=flag
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
 </span></span></span><span class="line"><span class="cl"><span class="go">numb: 7
 </span></span></span><span class="line"><span class="cl"><span class="go">fork: true
 </span></span></span><span class="line"><span class="cl"><span class="go">svar: flag
 </span></span></span><span class="line"><span class="cl"><span class="go">tail: []</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Note that if you omit flags they automatically take
-their default values.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
 </span></span></span><span class="line"><span class="cl"><span class="go">numb: 42
 </span></span></span><span class="line"><span class="cl"><span class="go">fork: false
 </span></span></span><span class="line"><span class="cl"><span class="go">svar: bar
 </span></span></span><span class="line"><span class="cl"><span class="go">tail: []</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Trailing positional arguments can be provided after
-any flags.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
 </span></span></span><span class="line"><span class="cl"><span class="go">...
 </span></span></span><span class="line"><span class="cl"><span class="go">tail: [a1 a2 a3]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Note that the <code>flag</code> package requires all flags to
-appear before positional arguments (otherwise the flags
-will be interpreted as positional arguments).</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3 -numb=7
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -word=opt a1 a2 a3 -numb=7
 </span></span><span class="line"><span class="cl"><span class="go">word: opt
 </span></span></span><span class="line"><span class="cl"><span class="go">numb: 42
 </span></span></span><span class="line"><span class="cl"><span class="go">fork: false
 </span></span></span><span class="line"><span class="cl"><span class="go">svar: bar
 </span></span></span><span class="line"><span class="cl"><span class="go">tail: [a1 a2 a3 -numb=7]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
-generated help text for the command-line program.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -h
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -h
 </span></span><span class="line"><span class="cl"><span class="go">Usage of ./command-line-flags:
 </span></span></span><span class="line"><span class="cl"><span class="go">  -fork=false: a bool
 </span></span></span><span class="line"><span class="cl"><span class="go">  -numb=42: an int
 </span></span></span><span class="line"><span class="cl"><span class="go">  -svar=&#34;bar&#34;: a string var
 </span></span></span><span class="line"><span class="cl"><span class="go">  -word=&#34;foo&#34;: a string</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>If you provide a flag that wasn&rsquo;t specified to the
-<code>flag</code> package, the program will print an error message
-and show the help text again.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -wat
+        <div class="code" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-flags -wat
 </span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -wat
 </span></span></span><span class="line"><span class="cl"><span class="go">Usage of ./command-line-flags:
 </span></span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>To experiment with the command-line flags program it&rsquo;s
+best to first compile it and then run the resulting
+binary directly.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          <p>Try out the built program by first giving it values for
+all flags.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          <p>Note that if you omit flags they automatically take
+their default values.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          <p>Trailing positional arguments can be provided after
+any flags.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>Note that the <code>flag</code> package requires all flags to
+appear before positional arguments (otherwise the flags
+will be interpreted as positional arguments).</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
+generated help text for the command-line program.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>If you provide a flag that wasn&rsquo;t specified to the
+<code>flag</code> package, the program will print an error message
+and show the help text again.</p>
+
+        </div>
+        
+      </div>
       
       
       <p class="next">

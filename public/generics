@@ -26,43 +26,117 @@
     <div class="example" id="generics">
       <h2><a href="./">Go by Example</a>: Generics</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Starting with version 1.18, Go has added support for
+        <div class="code empty leading" style="grid-row: 1;">
+          
+        
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/7v7vElzhAeO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nx">SlicesIndex</span><span class="p">[</span><span class="nx">S</span> <span class="err">~</span><span class="p">[]</span><span class="nx">E</span><span class="p">,</span> <span class="nx">E</span> <span class="nx">comparable</span><span class="p">](</span><span class="nx">s</span> <span class="nx">S</span><span class="p">,</span> <span class="nx">v</span> <span class="nx">E</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">v</span> <span class="o">==</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">head</span><span class="p">,</span> <span class="nx">tail</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">element</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">next</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">val</span>  <span class="nx">T</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">Push</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]{</span><span class="nx">val</span><span class="p">:</span> <span class="nx">v</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="p">=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span><span class="p">.</span><span class="nx">next</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]{</span><span class="nx">val</span><span class="p">:</span> <span class="nx">v</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="p">=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span><span class="p">.</span><span class="nx">next</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">AllElements</span><span class="p">()</span> <span class="p">[]</span><span class="nx">T</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">elems</span> <span class="p">[]</span><span class="nx">T</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">next</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">elems</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">elems</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">elems</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 10;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;index of zoo:&#34;</span><span class="p">,</span> <span class="nf">SlicesIndex</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">))</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 11;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span> <span class="p">=</span> <span class="nx">SlicesIndex</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">](</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 12;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lst</span> <span class="o">:=</span> <span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]{}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;list:&#34;</span><span class="p">,</span> <span class="nx">lst</span><span class="p">.</span><span class="nf">AllElements</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>Starting with version 1.18, Go has added support for
 <em>generics</em>, also known as <em>type parameters</em>.</p>
 
-          </td>
-          <td class="code empty leading">
-            
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
           
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/7v7vElzhAeO"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>As an example of a generic function, <code>SlicesIndex</code> takes
+        <div class="docs" style="grid-row: 4;">
+          <p>As an example of a generic function, <code>SlicesIndex</code> takes
 a slice of any <code>comparable</code> type and an element of that
 type and returns the index of the first occurrence of
 v in s, or -1 if not present. The <code>comparable</code> constraint
@@ -72,156 +146,71 @@ of this type signature, see <a href="https://go.dev/blog/deconstructing-type-par
 Note that this function exists in the standard library
 as <a href="https://pkg.go.dev/slices#Index">slices.Index</a>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nx">SlicesIndex</span><span class="p">[</span><span class="nx">S</span> <span class="err">~</span><span class="p">[]</span><span class="nx">E</span><span class="p">,</span> <span class="nx">E</span> <span class="nx">comparable</span><span class="p">](</span><span class="nx">s</span> <span class="nx">S</span><span class="p">,</span> <span class="nx">v</span> <span class="nx">E</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">v</span> <span class="o">==</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">i</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>As an example of a generic type, <code>List</code> is a
+        <div class="docs" style="grid-row: 5;">
+          <p>As an example of a generic type, <code>List</code> is a
 singly-linked list with values of any type.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">List</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">head</span><span class="p">,</span> <span class="nx">tail</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">element</span><span class="p">[</span><span class="nx">T</span> <span class="nx">any</span><span class="p">]</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">next</span> <span class="o">*</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">val</span>  <span class="nx">T</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 6;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We can define methods on generic types just like we
+        <div class="docs" style="grid-row: 7;">
+          <p>We can define methods on generic types just like we
 do on regular types, but we have to keep the type
 parameters in place. The type is <code>List[T]</code>, not <code>List</code>.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">Push</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]{</span><span class="nx">val</span><span class="p">:</span> <span class="nx">v</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="p">=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span><span class="p">.</span><span class="nx">next</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">element</span><span class="p">[</span><span class="nx">T</span><span class="p">]{</span><span class="nx">val</span><span class="p">:</span> <span class="nx">v</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span> <span class="p">=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">tail</span><span class="p">.</span><span class="nx">next</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>AllElements returns all the List elements as a slice.
+        <div class="docs" style="grid-row: 8;">
+          <p>AllElements returns all the List elements as a slice.
 In the next example we&rsquo;ll see a more idiomatic way
 of iterating over all elements of custom types.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">lst</span> <span class="o">*</span><span class="nx">List</span><span class="p">[</span><span class="nx">T</span><span class="p">])</span> <span class="nf">AllElements</span><span class="p">()</span> <span class="p">[]</span><span class="nx">T</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">elems</span> <span class="p">[]</span><span class="nx">T</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">lst</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">next</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">elems</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">elems</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">elems</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 9;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>When invoking generic functions, we can often rely
+        <div class="docs" style="grid-row: 10;">
+          <p>When invoking generic functions, we can often rely
 on <em>type inference</em>. Note that we don&rsquo;t have to
 specify the types for <code>S</code> and <code>E</code> when
 calling <code>SlicesIndex</code> - the compiler infers them
 automatically.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;index of zoo:&#34;</span><span class="p">,</span> <span class="nf">SlicesIndex</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">))</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>&hellip; though we could also specify them explicitly.</p>
+        <div class="docs" style="grid-row: 11;">
+          <p>&hellip; though we could also specify them explicitly.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">_</span> <span class="p">=</span> <span class="nx">SlicesIndex</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">](</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;zoo&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">lst</span> <span class="o">:=</span> <span class="nx">List</span><span class="p">[</span><span class="kt">int</span><span class="p">]{}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">lst</span><span class="p">.</span><span class="nf">Push</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;list:&#34;</span><span class="p">,</span> <span class="nx">lst</span><span class="p">.</span><span class="nf">AllElements</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 12;">
+          
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run generics.go
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run generics.go
 </span></span><span class="line"><span class="cl"><span class="go">index of zoo: 2
 </span></span></span><span class="line"><span class="cl"><span class="go">list: [10 13 23]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+      </div>
       
       
       <p class="next">

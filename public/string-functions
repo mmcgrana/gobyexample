@@ -26,80 +26,39 @@
     <div class="example" id="string-functions">
       <h2><a href="./">Go by Example</a>: String Functions</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>The standard library&rsquo;s <code>strings</code> package provides many
-useful string-related functions. Here are some examples
-to give you a sense of the package.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/wKSAzxfs96O"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/wKSAzxfs96O"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="s">&#34;strings&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We alias <code>fmt.Println</code> to a shorter name as we&rsquo;ll use
-it a lot below.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Here&rsquo;s a sample of the functions available in
-<code>strings</code>. Since these are functions from the
-package, not methods on the string object itself,
-we need to pass the string in question as the first
-argument to the function. You can find more
-functions in the <a href="https://pkg.go.dev/strings"><code>strings</code></a>
-package docs.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
+        <div class="code" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Contains:  &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;es&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;Count:     &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Count</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasPrefix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;te&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;HasSuffix: &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="s">&#34;st&#34;</span><span class="p">))</span>
@@ -112,20 +71,52 @@ package docs.</p>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToLower:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="s">&#34;TEST&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="s">&#34;ToUpper:   &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nf">ToUpper</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          <p>The standard library&rsquo;s <code>strings</code> package provides many
+useful string-related functions. Here are some examples
+to give you a sense of the package.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          <p>We alias <code>fmt.Println</code> to a shorter name as we&rsquo;ll use
+it a lot below.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>Here&rsquo;s a sample of the functions available in
+<code>strings</code>. Since these are functions from the
+package, not methods on the string object itself,
+we need to pass the string in question as the first
+argument to the function. You can find more
+functions in the <a href="https://pkg.go.dev/strings"><code>strings</code></a>
+package docs.</p>
+
+        </div>
+        
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-functions.go
 </span></span><span class="line"><span class="cl"><span class="go">Contains:   true
 </span></span></span><span class="line"><span class="cl"><span class="go">Count:      2
 </span></span></span><span class="line"><span class="cl"><span class="go">HasPrefix:  true
@@ -138,10 +129,14 @@ package docs.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">Split:      [a b c d e]
 </span></span></span><span class="line"><span class="cl"><span class="go">ToLower:    test
 </span></span></span><span class="line"><span class="cl"><span class="go">ToUpper:    TEST</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+      </div>
       
       
       <p class="next">

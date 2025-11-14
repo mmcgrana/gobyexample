@@ -26,121 +26,61 @@
     <div class="example" id="command-line-subcommands">
       <h2><a href="./">Go by Example</a>: Command-Line Subcommands</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p>Some command-line tools, like the <code>go</code> tool or <code>git</code>
-have many <em>subcommands</em>, each with its own set of
-flags. For example, <code>go build</code> and <code>go get</code> are two
-different subcommands of the <code>go</code> tool.
-The <code>flag</code> package lets us easily define simple
-subcommands that have their own flags.</p>
-
-          </td>
-          <td class="code empty leading">
-            
+        <div class="code empty leading" style="grid-row: 1;">
           
-          </td>
-        </tr>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/DkvdHKK-XCv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/DkvdHKK-XCv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>We declare a subcommand using the <code>NewFlagSet</code>
-function, and proceed to define new flags specific
-for this subcommand.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fooCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fooCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fooEnable</span> <span class="o">:=</span> <span class="nx">fooCmd</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;enable&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;enable&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fooName</span> <span class="o">:=</span> <span class="nx">fooCmd</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>For a different subcommand we can define different
-supported flags.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">barCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">barCmd</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nf">NewFlagSet</span><span class="p">(</span><span class="s">&#34;bar&#34;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">ExitOnError</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">barLevel</span> <span class="o">:=</span> <span class="nx">barCmd</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;level&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;level&#34;</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>The subcommand is expected as the first argument
-to the program.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;expected &#39;foo&#39; or &#39;bar&#39; subcommands&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Check which subcommand is invoked.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span></span></span></code></pre>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>For every subcommand, we parse its own flags and
-have access to trailing positional arguments.</p>
-
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">case</span> <span class="s">&#34;foo&#34;</span><span class="p">:</span>
+        <div class="code" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">case</span> <span class="s">&#34;foo&#34;</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fooCmd</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;subcommand &#39;foo&#39;&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;  enable:&#34;</span><span class="p">,</span> <span class="o">*</span><span class="nx">fooEnable</span><span class="p">)</span>
@@ -156,80 +96,128 @@ have access to trailing positional arguments.</p>
 </span></span><span class="line"><span class="cl">        <span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
-      
-      <table>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-subcommands.go </span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>First invoke the foo subcommand.</p>
+        <div class="docs" style="grid-row: 1;">
+          <p>Some command-line tools, like the <code>go</code> tool or <code>git</code>
+have many <em>subcommands</em>, each with its own set of
+flags. For example, <code>go build</code> and <code>go get</code> are two
+different subcommands of the <code>go</code> tool.
+The <code>flag</code> package lets us easily define simple
+subcommands that have their own flags.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands foo -enable -name=joe a1 a2
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>We declare a subcommand using the <code>NewFlagSet</code>
+function, and proceed to define new flags specific
+for this subcommand.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 6;">
+          <p>For a different subcommand we can define different
+supported flags.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 7;">
+          <p>The subcommand is expected as the first argument
+to the program.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 8;">
+          <p>Check which subcommand is invoked.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 9;">
+          <p>For every subcommand, we parse its own flags and
+have access to trailing positional arguments.</p>
+
+        </div>
+        
+      </div>
+      
+      <div class="seg-grid" role="presentation">
+        
+        <div class="code leading" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go build command-line-subcommands.go </span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands foo -enable -name=joe a1 a2
 </span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;foo&#39;
 </span></span></span><span class="line"><span class="cl"><span class="go">  enable: true
 </span></span></span><span class="line"><span class="cl"><span class="go">  name: joe
 </span></span></span><span class="line"><span class="cl"><span class="go">  tail: [a1 a2]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Now try bar.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -level 8 a1
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -level 8 a1
 </span></span><span class="line"><span class="cl"><span class="go">subcommand &#39;bar&#39;
 </span></span></span><span class="line"><span class="cl"><span class="go">  level: 8
 </span></span></span><span class="line"><span class="cl"><span class="go">  tail: [a1]</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>But bar won&rsquo;t accept foo&rsquo;s flags.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -enable a1
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> ./command-line-subcommands bar -enable a1
 </span></span><span class="line"><span class="cl"><span class="go">flag provided but not defined: -enable
 </span></span></span><span class="line"><span class="cl"><span class="go">Usage of bar:
 </span></span></span><span class="line"><span class="cl"><span class="go">  -level int
 </span></span></span><span class="line"><span class="cl"><span class="go">        level</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
+        <div class="code empty" style="grid-row: 5;">
+          
+        
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
+          <p>First invoke the foo subcommand.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 3;">
+          <p>Now try bar.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 4;">
+          <p>But bar won&rsquo;t accept foo&rsquo;s flags.</p>
+
+        </div>
+        
+        <div class="docs" style="grid-row: 5;">
+          <p>Next we&rsquo;ll look at environment variables, another common
 way to parameterize programs.</p>
 
-          </td>
-          <td class="code empty">
-            
-          
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
       
       <p class="next">

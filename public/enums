@@ -26,77 +26,123 @@
     <div class="example" id="enums">
       <h2><a href="./">Go by Example</a>: Enums</h2>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            <p><em>Enumerated types</em> (enums) are a special case of
+        <div class="code empty leading" style="grid-row: 1;">
+          
+        
+        </div>
+        
+        <div class="code leading" style="grid-row: 2;">
+          <a href="https://go.dev/play/p/prQMptP_p1s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 3;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 4;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">ServerState</span> <span class="kt">int</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 5;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span> <span class="nx">ServerState</span> <span class="p">=</span> <span class="kc">iota</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateConnected</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateError</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateRetrying</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 6;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">stateName</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="nx">ServerState</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span><span class="p">:</span>      <span class="s">&#34;idle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateConnected</span><span class="p">:</span> <span class="s">&#34;connected&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateError</span><span class="p">:</span>     <span class="s">&#34;error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">StateRetrying</span><span class="p">:</span>  <span class="s">&#34;retrying&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 7;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">ss</span> <span class="nx">ServerState</span><span class="p">)</span> <span class="nf">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">stateName</span><span class="p">[</span><span class="nx">ss</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 8;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ns</span> <span class="o">:=</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">StateIdle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ns</span><span class="p">)</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 9;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ns2</span> <span class="o">:=</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">ns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ns2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        <div class="code leading" style="grid-row: 10;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">s</span> <span class="nx">ServerState</span><span class="p">)</span> <span class="nx">ServerState</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">s</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateIdle</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateConnected</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateConnected</span><span class="p">,</span> <span class="nx">StateRetrying</span><span class="p">:</span></span></span></code></pre>
+        </div>
+        
+        <div class="code" style="grid-row: 11;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateIdle</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateError</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateError</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;unknown state: %s&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+        </div>
+        
+        
+        <div class="docs" style="grid-row: 1;">
+          <p><em>Enumerated types</em> (enums) are a special case of
 <a href="https://en.wikipedia.org/wiki/Algebraic_data_type">sum types</a>.
 An enum is a type that has a fixed number of possible
 values, each with a distinct name. Go doesn&rsquo;t have an
 enum type as a distinct language feature, but enums
 are simple to implement using existing language idioms.</p>
 
-          </td>
-          <td class="code empty leading">
-            
+        </div>
+        
+        <div class="docs" style="grid-row: 2;">
           
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            <a href="https://go.dev/play/p/prQMptP_p1s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 3;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Our enum type <code>ServerState</code> has an underlying <code>int</code> type.</p>
+        <div class="docs" style="grid-row: 4;">
+          <p>Our enum type <code>ServerState</code> has an underlying <code>int</code> type.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">ServerState</span> <span class="kt">int</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>The possible values for <code>ServerState</code> are defined as
+        <div class="docs" style="grid-row: 5;">
+          <p>The possible values for <code>ServerState</code> are defined as
 constants. The special keyword <a href="https://go.dev/ref/spec#Iota">iota</a>
 generates successive constant values automatically; in this
 case 0, 1, 2 and so on.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span> <span class="nx">ServerState</span> <span class="p">=</span> <span class="kc">iota</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateConnected</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateError</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateRetrying</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>By implementing the <a href="https://pkg.go.dev/fmt#Stringer">fmt.Stringer</a>
+        <div class="docs" style="grid-row: 6;">
+          <p>By implementing the <a href="https://pkg.go.dev/fmt#Stringer">fmt.Stringer</a>
 interface, values of <code>ServerState</code> can be printed out or converted
 to strings.</p>
 
@@ -106,109 +152,53 @@ can be used in conjunction with <code>go:generate</code> to automate the
 process. See <a href="https://eli.thegreenplace.net/2021/a-comprehensive-guide-to-go-generate">this post</a>
 for a longer explanation.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">stateName</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="nx">ServerState</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateIdle</span><span class="p">:</span>      <span class="s">&#34;idle&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateConnected</span><span class="p">:</span> <span class="s">&#34;connected&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateError</span><span class="p">:</span>     <span class="s">&#34;error&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">StateRetrying</span><span class="p">:</span>  <span class="s">&#34;retrying&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">ss</span> <span class="nx">ServerState</span><span class="p">)</span> <span class="nf">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">stateName</span><span class="p">[</span><span class="nx">ss</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 7;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>If we have a value of type <code>int</code>, we cannot pass it to <code>transition</code> - the
+        <div class="docs" style="grid-row: 8;">
+          <p>If we have a value of type <code>int</code>, we cannot pass it to <code>transition</code> - the
 compiler will complain about type mismatch. This provides some degree of
 compile-time type safety for enums.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">ns</span> <span class="o">:=</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">StateIdle</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ns</span><span class="p">)</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ns2</span> <span class="o">:=</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">ns</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ns2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        <div class="docs" style="grid-row: 9;">
+          
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>transition emulates a state transition for a
+        <div class="docs" style="grid-row: 10;">
+          <p>transition emulates a state transition for a
 server; it takes the existing state and returns
 a new state.</p>
 
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">transition</span><span class="p">(</span><span class="nx">s</span> <span class="nx">ServerState</span><span class="p">)</span> <span class="nx">ServerState</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="nx">s</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateIdle</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateConnected</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateConnected</span><span class="p">,</span> <span class="nx">StateRetrying</span><span class="p">:</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-        <tr>
-          <td class="docs">
-            <p>Suppose we check some predicates here to
+        <div class="docs" style="grid-row: 11;">
+          <p>Suppose we check some predicates here to
 determine the next state&hellip;</p>
 
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateIdle</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">StateError</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">StateError</span>
-</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;unknown state: %s&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+      </div>
       
-      <table>
+      <div class="seg-grid" role="presentation">
         
-        <tr>
-          <td class="docs">
-            
-          </td>
-          <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run enums.go
+        <div class="code" style="grid-row: 1;">
+          
+        <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run enums.go
 </span></span><span class="line"><span class="cl"><span class="go">connected
 </span></span></span><span class="line"><span class="cl"><span class="go">idle</span></span></span></code></pre>
-          </td>
-        </tr>
+        </div>
         
-      </table>
+        
+        <div class="docs" style="grid-row: 1;">
+          
+        </div>
+        
+      </div>
       
       
       <p class="next">

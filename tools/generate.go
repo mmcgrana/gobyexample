@@ -103,6 +103,7 @@ type Seg struct {
 	Docs, DocsRendered              string
 	Code, CodeRendered, CodeForJs   string
 	CodeEmpty, CodeLeading, CodeRun bool
+	Row                             int
 }
 
 // Example is info extracted from an example file
@@ -189,6 +190,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 		seg.CodeEmpty = (seg.Code == "")
 		seg.CodeLeading = (i < (len(segs) - 1))
 		seg.CodeRun = strings.Contains(seg.Code, "package main")
+		seg.Row = i + 1
 	}
 	return segs, strings.Join(source, "\n")
 }

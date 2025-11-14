@@ -68,7 +68,11 @@ div.example {
   margin-right: auto;
   margin-bottom: 120px;
 }
-div.example table {
+div.example .seg-grid {
+  display: grid;
+  grid-template-columns: 420px 480px;
+  column-gap: 0px;
+  row-gap: 0px;
   margin-top: 15px;
   margin-bottom: 20px;
 }
@@ -92,24 +96,20 @@ div#intro p {
 div#intro ul {
   padding-top: 20px;
 }
-table td {
-  border: 0;
-  outline: 0;
-}
-td.docs {
+.seg-grid .docs {
   width: 420px;
   max-width: 420px;
   min-width: 420px;
   min-height: 5px;
-  vertical-align: top;
   text-align: left;
+  grid-column: 1;
 }
-td.docs p {
+.seg-grid .docs p {
   padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 15px;
 }
-td.code {
+.seg-grid .code {
   width: 480px;
   max-width: 480px;
   min-width: 480px;
@@ -117,9 +117,9 @@ td.code {
   padding-right: 5px;
   padding-left: 5px;
   padding-bottom: 5px;
-  vertical-align: top;
+  grid-column: 2;
 }
-td.code.leading {
+.seg-grid .code.leading {
   padding-bottom: 11px;
 }
 pre, code {
@@ -144,7 +144,7 @@ body {
   background-color: #ffffff;
   color: #252519;
 }
-td.code.empty {
+.seg-grid .code.empty {
   background: #ffffff;
 }
 a, a:visited {
@@ -156,15 +156,11 @@ p.footer {
 p.footer a, p.footer a:visited {
   color: #808080;
 }
-td.code {
+.seg-grid .code {
   background: #f0f0f0;
 }
 
 /* Syntax highlighting: light mode */
-body .nx { }                 /* Name.Other: package, variable, struct, param, generic type names, etc. */
-body .nf { }                 /* Name.Function: function names (def and call) */
-body .o  { }                 /* Operator: :=, &, *, +, &&, <, etc. */
-body .p  { }                 /* Plain: = , . : [ ( { etc. */
 body .k  { color: #954121 }  /* Keyword: if, for, range, return, defer, etc.  */
 body .kc { color: #954121 }  /* Keyword.Constant: nil, true, false */
 body .kd { color: #954121 }  /* Keyword.Declaration: func, var, type, struct, map, chan, etc. */
@@ -189,7 +185,7 @@ body .c1 { color: #808080 }  /* Comment.Single */
     background-color: #1f1f1f;
     color: #dadada;
   }
-  td.code.empty {
+  .seg-grid .code.empty {
     background: #1f1f1f;
   }
   a, a:visited {
@@ -201,16 +197,12 @@ body .c1 { color: #808080 }  /* Comment.Single */
   p.footer a, p.footer a:visited {
     color: #898e98;
   }
-  td.code {
+  .seg-grid .code {
     background: #282828;
   }
 
  
   /* Syntax highlighting: dark mode */
-  body .nx { }                 /* Name.Other */
-  body .nf { }                 /* Name.Function */
-  body .o  { }                 /* Operator */
-  body .p  { }                 /* Plain */
   body .k  { color: #af5a54 }  /* Keyword */
   body .kc { color: #af5a54 }  /* Keyword.Constant */
   body .kd { color: #af5a54 }  /* Keyword.Declaration */
