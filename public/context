@@ -12,7 +12,7 @@
           }
           
           if (e.key == "ArrowLeft") {
-              window.location.href = 'http-server';
+              window.location.href = 'tcp-server';
           }
           
           
