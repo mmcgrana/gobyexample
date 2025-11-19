@@ -35,7 +35,7 @@ accept them in a loop using the <code>net</code> package.</p>
 
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/HkVQ0r_7It3"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/cS6j9wG2mFi"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -106,8 +106,7 @@ when the application exits.</p>
         
         <tr>
           <td class="docs">
-            <p><code>listener.Accept()</code> blocks the loop until a client
-attempts to connect, returning a net.Conn.</p>
+            <p>Wait for a connection.</p>
 
           </td>
           <td class="code leading">
@@ -123,8 +122,8 @@ attempts to connect, returning a net.Conn.</p>
         <tr>
           <td class="docs">
             <p>We use a goroutine here to handle the connection
-so that the main loop can immediately return
-and accept the next connection.</p>
+so that the main loop can continue accepting more
+connections.</p>
 
           </td>
           <td class="code leading">
@@ -137,10 +136,9 @@ and accept the next connection.</p>
         
         <tr>
           <td class="docs">
-            <p><code>handleConnection</code> implements the core server logic.
-It is called for each client connection in its own
-goroutine, allowing the server to handle multiple
-clients concurrently.</p>
+            <p><code>handleConnection</code> handles a single client connection,
+reading a single line of text from the client and
+returning a response.</p>
 
           </td>
           <td class="code leading">
@@ -172,18 +170,8 @@ is encountered.</p>
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">reader</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">message</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">reader</span><span class="p">.</span><span class="nf">ReadString</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span></span></span></code></pre>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>Log errors like EOF if the client disconnects.</p>
-
-          </td>
-          <td class="code leading">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Read error: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Read error: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
@@ -249,7 +237,7 @@ demonstrating two-way communication.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"log\"\u000A    \"net\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    listener, err :\u003D net.Listen(\"tcp\", \":8090\")\u000A    if err !\u003D nil {\u000A        log.Fatal(\"Error listening:\", err)\u000A    }\u000A');codeLines.push('    defer listener.Close()\u000A');codeLines.push('    for {\u000A');codeLines.push('        conn, err :\u003D listener.Accept()\u000A        if err !\u003D nil {\u000A            log.Println(\"Error accepting conn:\", err)\u000A            continue\u000A        }\u000A');codeLines.push('        go handleConnection(conn)\u000A    }\u000A}\u000A');codeLines.push('func handleConnection(conn net.Conn) {\u000A');codeLines.push('    defer conn.Close()\u000A');codeLines.push('    reader :\u003D bufio.NewReader(conn)\u000A    message, err :\u003D reader.ReadString(\'\\n\')\u000A    if err !\u003D nil {\u000A');codeLines.push('        log.Printf(\"Read error: %v\", err)\u000A        return\u000A    }\u000A');codeLines.push('    ackMsg :\u003D strings.ToUpper(strings.TrimSpace(message))\u000A    response :\u003D fmt.Sprintf(\"ACK: %s\\n\", ackMsg)\u000A    _, err \u003D conn.Write([]byte(response))\u000A    if err !\u003D nil {\u000A        log.Printf(\"Server write error: %v\", err)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+      codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"bufio\"\u000A    \"fmt\"\u000A    \"log\"\u000A    \"net\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    listener, err :\u003D net.Listen(\"tcp\", \":8090\")\u000A    if err !\u003D nil {\u000A        log.Fatal(\"Error listening:\", err)\u000A    }\u000A');codeLines.push('    defer listener.Close()\u000A');codeLines.push('    for {\u000A');codeLines.push('        conn, err :\u003D listener.Accept()\u000A        if err !\u003D nil {\u000A            log.Println(\"Error accepting conn:\", err)\u000A            continue\u000A        }\u000A');codeLines.push('        go handleConnection(conn)\u000A    }\u000A}\u000A');codeLines.push('func handleConnection(conn net.Conn) {\u000A');codeLines.push('    defer conn.Close()\u000A');codeLines.push('    reader :\u003D bufio.NewReader(conn)\u000A    message, err :\u003D reader.ReadString(\'\\n\')\u000A    if err !\u003D nil {\u000A        log.Printf(\"Read error: %v\", err)\u000A        return\u000A    }\u000A');codeLines.push('    ackMsg :\u003D strings.ToUpper(strings.TrimSpace(message))\u000A    response :\u003D fmt.Sprintf(\"ACK: %s\\n\", ackMsg)\u000A    _, err \u003D conn.Write([]byte(response))\u000A    if err !\u003D nil {\u000A        log.Printf(\"Server write error: %v\", err)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

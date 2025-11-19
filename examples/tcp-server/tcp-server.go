@@ -24,8 +24,7 @@ func main() {
 
 	// Loop indefinitely to accept new client connections.
 	for {
-		// `listener.Accept()` blocks the loop until a client
-		// attempts to connect, returning a net.Conn.
+		// Wait for a connection.
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Println("Error accepting conn:", err)
@@ -33,16 +32,15 @@ func main() {
 		}
 
 		// We use a goroutine here to handle the connection
-		// so that the main loop can immediately return
-		// and accept the next connection.
+		// so that the main loop can continue accepting more
+		// connections.
 		go handleConnection(conn)
 	}
 }
 
-// `handleConnection` implements the core server logic.
-// It is called for each client connection in its own
-// goroutine, allowing the server to handle multiple
-// clients concurrently.
+// `handleConnection` handles a single client connection,
+// reading a single line of text from the client and
+// returning a response.
 func handleConnection(conn net.Conn) {
 	// Closing the connection releases resources when
 	// we are finished interacting with the client.
@@ -54,7 +52,6 @@ func handleConnection(conn net.Conn) {
 	reader := bufio.NewReader(conn)
 	message, err := reader.ReadString('\n')
 	if err != nil {
-		// Log errors like EOF if the client disconnects.
 		log.Printf("Read error: %v", err)
 		return
 	}
