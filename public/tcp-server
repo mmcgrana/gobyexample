@@ -30,12 +30,12 @@
         
         <tr>
           <td class="docs">
-            <p>Basic TCP servers listen for connections and
-accept them in a loop using the <code>net</code> package.</p>
+            <p>The <code>net</code> package provides the tools we need to easily build
+TCP socket servers.</p>
 
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/cS6j9wG2mFi"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/G0k2jHMA6ei"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -58,9 +58,7 @@ accept them in a loop using the <code>net</code> package.</p>
         
         <tr>
           <td class="docs">
-            <p><code>net.Listen</code> starts the server on the given network
-(tcp) and address (port 8090 on all interfaces).</p>
-
+            
           </td>
           <td class="code leading">
             
@@ -70,7 +68,9 @@ accept them in a loop using the <code>net</code> package.</p>
         
         <tr>
           <td class="docs">
-            
+            <p><code>net.Listen</code> starts the server on the given network
+(TCP) and address (port 8090 on all interfaces).</p>
+
           </td>
           <td class="code leading">
             
@@ -137,8 +137,7 @@ connections.</p>
         <tr>
           <td class="docs">
             <p><code>handleConnection</code> handles a single client connection,
-reading a single line of text from the client and
-returning a response.</p>
+reading one line of text from the client and returning a response.</p>
 
           </td>
           <td class="code leading">
@@ -161,9 +160,8 @@ we are finished interacting with the client.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>bufio.NewReader</code> to easily read data sent
-from the client until a newline character (&lsquo;\n&rsquo;)
-is encountered.</p>
+            <p>Use <code>bufio.NewReader</code> to read one line of data
+from the client (terminated by a newline).</p>
 
           </td>
           <td class="code leading">

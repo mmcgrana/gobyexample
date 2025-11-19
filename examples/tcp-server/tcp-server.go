@@ -1,5 +1,5 @@
-// Basic TCP servers listen for connections and
-// accept them in a loop using the `net` package.
+// The `net` package provides the tools we need to easily build
+// TCP socket servers.
 package main
 
 import (
@@ -11,8 +11,9 @@ import (
 )
 
 func main() {
+
 	// `net.Listen` starts the server on the given network
-	// (tcp) and address (port 8090 on all interfaces).
+	// (TCP) and address (port 8090 on all interfaces).
 	listener, err := net.Listen("tcp", ":8090")
 	if err != nil {
 		log.Fatal("Error listening:", err)
@@ -39,16 +40,14 @@ func main() {
 }
 
 // `handleConnection` handles a single client connection,
-// reading a single line of text from the client and
-// returning a response.
+// reading one line of text from the client and returning a response.
 func handleConnection(conn net.Conn) {
 	// Closing the connection releases resources when
 	// we are finished interacting with the client.
 	defer conn.Close()
 
-	// Use `bufio.NewReader` to easily read data sent
-	// from the client until a newline character ('\n')
-	// is encountered.
+	// Use `bufio.NewReader` to read one line of data
+	// from the client (terminated by a newline).
 	reader := bufio.NewReader(conn)
 	message, err := reader.ReadString('\n')
 	if err != nil {
