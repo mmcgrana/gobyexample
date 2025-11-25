@@ -71,6 +71,7 @@ Temporary Files and Directories
 Embed Directive
 Testing and Benchmarking
 Command-Line Arguments
+Input from Program
 Command-Line Flags
 Command-Line Subcommands
 Environment Variables
