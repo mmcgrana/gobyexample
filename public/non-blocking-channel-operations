@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Non-Blocking Channel Operations</title>
+    <title>Go на примерах: Non-Blocking Channel Operations</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -24,7 +24,7 @@
   </script>
   <body>
     <div class="example" id="non-blocking-channel-operations">
-      <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
+      <h2><a href="./">Go на примерах</a>: Non-Blocking Channel Operations</h2>
       
       <table>
         
@@ -161,7 +161,7 @@ on both <code>messages</code> and <code>signals</code>.</p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a>, <a href="https://eli.thegreenplace.net">Eli Bendersky</a> and <a href="https://github.com/kuduzow">kuduzow</a>  | <a href="https://github.com/intocode/gobyexample-ru">source</a> | <a href="https://github.com/intocode/gobyexample-ru">license</a>
     </p>
 
     </div>

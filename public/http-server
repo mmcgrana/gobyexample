@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: HTTP Server</title>
+    <title>Go на примерах: HTTP Server</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -24,7 +24,7 @@
   </script>
   <body>
     <div class="example" id="http-server">
-      <h2><a href="./">Go by Example</a>: HTTP Server</h2>
+      <h2><a href="./">Go на примерах</a>: HTTP Server</h2>
       
       <table>
         
@@ -187,7 +187,7 @@ router we&rsquo;ve just set up.</p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a>, <a href="https://eli.thegreenplace.net">Eli Bendersky</a> and <a href="https://github.com/kuduzow">kuduzow</a>  | <a href="https://github.com/intocode/gobyexample-ru">source</a> | <a href="https://github.com/intocode/gobyexample-ru">license</a>
     </p>
 
     </div>

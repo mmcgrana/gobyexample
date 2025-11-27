@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: JSON</title>
+    <title>Go на примерах: JSON</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -24,7 +24,7 @@
   </script>
   <body>
     <div class="example" id="json">
-      <h2><a href="./">Go by Example</a>: JSON</h2>
+      <h2><a href="./">Go на примерах</a>: JSON</h2>
       
       <table>
         
@@ -390,7 +390,7 @@ for more.</p>
       
 
     <p class="footer">
-      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+      by <a href="https://markmcgranaghan.com">Mark McGranaghan</a>, <a href="https://eli.thegreenplace.net">Eli Bendersky</a> and <a href="https://github.com/kuduzow">kuduzow</a>  | <a href="https://github.com/intocode/gobyexample-ru">source</a> | <a href="https://github.com/intocode/gobyexample-ru">license</a>
     </p>
 
     </div>
