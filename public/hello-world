@@ -26,12 +26,12 @@
         
         <tr>
           <td class="docs">
-            <p>Our first program will print the classic &ldquo;hello world&rdquo;
-message. Here&rsquo;s the full source code.</p>
+            <p>Наша первая программа выведет классическое сообщение &ldquo;hello world&rdquo;.
+Вот её полный код:</p>
 
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/NeviD0awXjt"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/nP6MZUO0qDu"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -64,8 +64,8 @@ message. Here&rsquo;s the full source code.</p>
         
         <tr>
           <td class="docs">
-            <p>To run the program, put the code in <code>hello-world.go</code> and
-use <code>go run</code>.</p>
+            <p>Чтобы запустить программу, скопируй код
+в файл <code>hello-world.go</code> и выполни команду <code>go run</code>.</p>
 
           </td>
           <td class="code leading">
@@ -77,8 +77,8 @@ use <code>go run</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to build our programs into
-binaries. We can do this using <code>go build</code>.</p>
+            <p>Иногда необходимо собрать программу в бинарный файл.
+Это можно сделать командой <code>go build</code>.</p>
 
           </td>
           <td class="code leading">
@@ -91,7 +91,7 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can then execute the built binary directly.</p>
+            <p>Теперь можно запустить полученный бинарник напрямую:</p>
 
           </td>
           <td class="code leading">
@@ -103,8 +103,8 @@ binaries. We can do this using <code>go build</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we can run and build basic Go programs, let&rsquo;s
-learn more about the language.</p>
+            <p>Теперь, когда мы умеем запускать и собирать простые
+Go-приложения, давай изучать язык дальше.</p>
 
           </td>
           <td class="code empty">
