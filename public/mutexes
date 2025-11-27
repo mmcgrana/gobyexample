@@ -245,7 +245,7 @@ management task using only goroutines and channels.</p>
       
       
       <p class="next">
-        Next example: <a href="stateful-goroutines" rel="next">Stateful Goroutines</a>.
+        Далее: <a href="stateful-goroutines" rel="next">Stateful Goroutines</a>.
       </p>
       
 
