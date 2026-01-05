@@ -57,7 +57,7 @@ func (lst *List[T]) All() iter.Seq[T] {
 // running as long as `yield` keeps returning `true`.
 func genFib() iter.Seq[int] {
 	return func(yield func(int) bool) {
-		a, b := 1, 1
+		a, b := 0, 1
 
 		for {
 			if !yield(a) {

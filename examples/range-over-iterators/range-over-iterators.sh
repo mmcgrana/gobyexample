@@ -3,6 +3,7 @@ $ go run range-over-iterators.go
 13
 23
 all: [10 13 23]
+0
 1
 1
 2
