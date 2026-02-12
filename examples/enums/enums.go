@@ -46,9 +46,10 @@ func (ss ServerState) String() string {
 func main() {
 	ns := transition(StateIdle)
 	fmt.Println(ns)
-	// If we have a value of type `int`, we cannot pass it to `transition` - the
-	// compiler will complain about type mismatch. This provides some degree of
-	// compile-time type safety for enums.
+	// Note that Go allows untyped constants to be converted to matching named types,
+	// so passing integer literals like 0, 1, 2 to transition() will work. However,
+	// variables of type int cannot be passed directly - they must be explicitly
+	// converted to ServerState to maintain type safety.
 
 	ns2 := transition(ns)
 	fmt.Println(ns2)
