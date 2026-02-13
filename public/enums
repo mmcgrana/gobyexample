@@ -49,7 +49,7 @@ are simple to implement using existing language idioms.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/prQMptP_p1s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/XStba6-sXBv"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -132,9 +132,10 @@ for a longer explanation.</p>
         
         <tr>
           <td class="docs">
-            <p>If we have a value of type <code>int</code>, we cannot pass it to <code>transition</code> - the
-compiler will complain about type mismatch. This provides some degree of
-compile-time type safety for enums.</p>
+            <p>Note that Go allows untyped constants to be converted to matching named types,
+so passing integer literals like 0, 1, 2 to transition() will work. However,
+variables of type int cannot be passed directly - they must be explicitly
+converted to ServerState to maintain type safety.</p>
 
           </td>
           <td class="code leading">
