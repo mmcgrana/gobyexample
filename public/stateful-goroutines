@@ -37,7 +37,7 @@ built-in synchronization features of  goroutines and
 channels to achieve the same result. This channel-based
 approach aligns with Go&rsquo;s ideas of sharing memory by
 communicating and having each piece of data owned
-by exactly 1 goroutine.</p>
+by exactly one goroutine.</p>
 
           </td>
           <td class="code empty leading">
