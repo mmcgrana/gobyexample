@@ -46,7 +46,7 @@ which lets us range over pretty much anything!</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/5_fyZQZSn3S"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/lHX3uDqdfUB"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -61,6 +61,7 @@ which lets us range over pretty much anything!</p>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;iter&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;slices&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -225,6 +226,21 @@ all its values into a slice.</p>
         
         <tr>
           <td class="docs">
+            <p>Standard library packages now expose iterator helpers
+too. For example, <code>strings.SplitSeq</code> iterates over parts
+of a byte slice without first building a result slice.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">part</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">SplitSeq</span><span class="p">(</span><span class="s">&#34;go-by-example&#34;</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;part: %s\n&#34;</span><span class="p">,</span> <span class="nx">part</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
             
           </td>
           <td class="code leading">
@@ -265,6 +281,9 @@ passed to the iterator will return <code>false</code>.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">13
 </span></span></span><span class="line"><span class="cl"><span class="go">23
 </span></span></span><span class="line"><span class="cl"><span class="go">all: [10 13 23]
+</span></span></span><span class="line"><span class="cl"><span class="go">part: go
+</span></span></span><span class="line"><span class="cl"><span class="go">part: by
+</span></span></span><span class="line"><span class="cl"><span class="go">part: example
 </span></span></span><span class="line"><span class="cl"><span class="go">0
 </span></span></span><span class="line"><span class="cl"><span class="go">1
 </span></span></span><span class="line"><span class="cl"><span class="go">1
@@ -290,7 +309,7 @@ passed to the iterator will return <code>false</code>.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"iter\"\u000A    \"slices\"\u000A)\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) All() iter.Seq[T] {\u000A    return func(yield func(T) bool) {\u000A');codeLines.push('        for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A            if !yield(e.val) {\u000A                return\u000A            }\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func genFib() iter.Seq[int] {\u000A    return func(yield func(int) bool) {\u000A        a, b :\u003D 0, 1\u000A');codeLines.push('        for {\u000A            if !yield(a) {\u000A                return\u000A            }\u000A            a, b \u003D b, a+b\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A');codeLines.push('    for e :\u003D range lst.All() {\u000A        fmt.Println(e)\u000A    }\u000A');codeLines.push('    all :\u003D slices.Collect(lst.All())\u000A    fmt.Println(\"all:\", all)\u000A');codeLines.push('    for n :\u003D range genFib() {\u000A');codeLines.push('        if n \u003E\u003D 10 {\u000A            break\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"iter\"\u000A    \"slices\"\u000A    \"strings\"\u000A)\u000A');codeLines.push('type List[T any] struct {\u000A    head, tail *element[T]\u000A}\u000A');codeLines.push('type element[T any] struct {\u000A    next *element[T]\u000A    val  T\u000A}\u000A');codeLines.push('func (lst *List[T]) Push(v T) {\u000A    if lst.tail \u003D\u003D nil {\u000A        lst.head \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.head\u000A    } else {\u000A        lst.tail.next \u003D \u0026element[T]{val: v}\u000A        lst.tail \u003D lst.tail.next\u000A    }\u000A}\u000A');codeLines.push('func (lst *List[T]) All() iter.Seq[T] {\u000A    return func(yield func(T) bool) {\u000A');codeLines.push('        for e :\u003D lst.head; e !\u003D nil; e \u003D e.next {\u000A            if !yield(e.val) {\u000A                return\u000A            }\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func genFib() iter.Seq[int] {\u000A    return func(yield func(int) bool) {\u000A        a, b :\u003D 0, 1\u000A');codeLines.push('        for {\u000A            if !yield(a) {\u000A                return\u000A            }\u000A            a, b \u003D b, a+b\u000A        }\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A    lst :\u003D List[int]{}\u000A    lst.Push(10)\u000A    lst.Push(13)\u000A    lst.Push(23)\u000A');codeLines.push('    for e :\u003D range lst.All() {\u000A        fmt.Println(e)\u000A    }\u000A');codeLines.push('    all :\u003D slices.Collect(lst.All())\u000A    fmt.Println(\"all:\", all)\u000A');codeLines.push('    for part :\u003D range strings.SplitSeq(\"go-by-example\", \"-\") {\u000A        fmt.Printf(\"part: %s\\n\", part)\u000A    }\u000A');codeLines.push('    for n :\u003D range genFib() {\u000A');codeLines.push('        if n \u003E\u003D 10 {\u000A            break\u000A        }\u000A        fmt.Println(n)\u000A    }\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

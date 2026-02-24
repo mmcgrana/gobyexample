@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"iter"
 	"slices"
+	"strings"
 )
 
 // Let's look at the `List` type from the
@@ -86,6 +87,13 @@ func main() {
 	// all its values into a slice.
 	all := slices.Collect(lst.All())
 	fmt.Println("all:", all)
+
+	// Standard library packages now expose iterator helpers
+	// too. For example, `strings.SplitSeq` iterates over parts
+	// of a byte slice without first building a result slice.
+	for part := range strings.SplitSeq("go-by-example", "-") {
+		fmt.Printf("part: %s\n", part)
+	}
 
 	for n := range genFib() {
 
