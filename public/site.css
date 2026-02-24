@@ -62,8 +62,7 @@ h2 a {
 }
 div.example {
   width: 995px;
-  min-width: 995px;
-  max-width: 995px;
+  max-width: calc(100% - 24px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 120px;
