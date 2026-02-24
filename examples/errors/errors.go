@@ -47,7 +47,7 @@ func makeTea(arg int) error {
 		// `%w` verb in `fmt.Errorf`. Wrapped errors
 		// create a logical chain (A wraps B, which wraps C, etc.)
 		// that can be queried with functions like `errors.Is`
-		// and `errors.As`.
+		// and `errors.AsType`.
 		return fmt.Errorf("making tea: %w", ErrPower)
 	}
 	return nil

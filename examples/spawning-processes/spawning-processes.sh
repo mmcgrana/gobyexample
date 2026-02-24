@@ -6,7 +6,7 @@ Thu 05 May 2022 10:10:12 PM PDT
 
 # date doesn't have a `-x` flag so it will exit with
 # an error message and non-zero return code.
-command exited with rc = 1
+command exit rc = 1
 > grep hello
 hello grep
 

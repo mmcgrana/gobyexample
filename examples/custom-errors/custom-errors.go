@@ -33,14 +33,13 @@ func f(arg int) (int, error) {
 
 func main() {
 
-	// `errors.As` is a more advanced version of `errors.Is`.
+	// `errors.AsType` is a more advanced version of `errors.Is`.
 	// It checks that a given error (or any error in its chain)
 	// matches a specific error type and converts to a value
-	// of that type, returning `true`. If there's no match, it
-	// returns `false`.
+	// of that type, also returning `true`. If there's no match, the
+	// second return value is `false`.
 	_, err := f(42)
-	var ae *argError
-	if errors.As(err, &ae) {
+	if ae, ok := errors.AsType[*argError](err); ok {
 		fmt.Println(ae.arg)
 		fmt.Println(ae.message)
 	} else {
