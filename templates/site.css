@@ -61,9 +61,9 @@ h2 a {
   text-decoration: none;
 }
 div.example {
-  width: 900px;
-  min-width: 900px;
-  max-width: 900px;
+  width: 950px;
+  min-width: 950px;
+  max-width: 950px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 120px;
@@ -110,9 +110,9 @@ td.docs p {
   padding-bottom: 15px;
 }
 td.code {
-  width: 480px;
-  max-width: 480px;
-  min-width: 480px;
+  width: 530px;
+  max-width: 530px;
+  min-width: 530px;
   padding-top: 5px;
   padding-right: 5px;
   padding-left: 5px;
