@@ -54,7 +54,7 @@ func main() {
 
 	// You can create and initialize multi-dimensional
 	// arrays at once too.
-	twoD = [2][3]int{
+	twoD := [2][3]int{
 		{1, 2, 3},
 		{1, 2, 3},
 	}
