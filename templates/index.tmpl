@@ -33,14 +33,12 @@
 
       <p style="font-size:14px; color:#888; margin-bottom:12px;">{{len .}} examples</p>
       <ul style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:4px;">
-      {{range .}}
-        <li>
-          <a href="{{.ID}}" style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; text-decoration:none; color:inherit;">
+        {{range .}}
+          <li style="display:flex; align-items:center; gap:10px; padding:8px 12px;">
             <span style="width:6px; height:6px; border-radius:50%; background:#1D9E75; flex-shrink:0; display:inline-block;"></span>
-            {{.Name}}
-          </a>
-        </li>
-      {{end}}
+            <a href="{{.ID}}" style="text-decoration:none; color:inherit;">{{.Name}}</a>
+          </li>
+        {{end}}
       </ul>
 {{ template "footer" }}
     </div>
