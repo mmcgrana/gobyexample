@@ -11,14 +11,15 @@ import (
 	"context"
 	"fmt"
 	"os/signal"
-	"syscall"
+
+	"golang.org/x/sys/unix"
 )
 
 func main() {
 	// `signal.NotifyContext` returns a context that's canceled
 	// when one of the listed signals arrives.
 	ctx, stop := signal.NotifyContext(
-		context.Background(), syscall.SIGINT, syscall.SIGTERM)
+		context.Background(), unix.SIGINT, unix.SIGTERM)
 	defer stop()
 
 	// The program will wait here until one of the
