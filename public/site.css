@@ -149,6 +149,9 @@ td.code.empty {
 a, a:visited {
   color: #261a3b;
 }
+a.visited-example, a.visited-example:visited {
+  color: #219161;
+}
 p.footer {
   color: #808080;
 }
@@ -193,6 +196,9 @@ body .c1 { color: #808080 }  /* Comment.Single */
   }
   a, a:visited {
     color: #e4e4e4;
+  }
+  a.visited-example, a.visited-example:visited {
+    color: #4ec07d;
   }
   p.footer {
     color: #898e98;
