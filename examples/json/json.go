@@ -110,7 +110,9 @@ func main() {
 	// data.
 	str := `{"page": 1, "fruits": ["apple", "peach"]}`
 	res := response2{}
-	json.Unmarshal([]byte(str), &res)
+	if err := json.Unmarshal([]byte(str), &res); err != nil {
+		panic(err)
+	}
 	fmt.Println(res)
 	fmt.Println(res.Fruits[0])
 
@@ -121,12 +123,16 @@ func main() {
 	// `os.Stdout` or even HTTP response bodies.
 	enc := json.NewEncoder(os.Stdout)
 	d := map[string]int{"apple": 5, "lettuce": 7}
-	enc.Encode(d)
+	if err := enc.Encode(d); err != nil {
+		panic(err)
+	}
 
 	// Streaming reads from `os.Reader`s like `os.Stdin`
 	// or HTTP request bodies is done with `json.Decoder`.
 	dec := json.NewDecoder(strings.NewReader(str))
 	res1 := response2{}
-	dec.Decode(&res1)
+	if err := dec.Decode(&res1); err != nil {
+		panic(err)
+	}
 	fmt.Println(res1)
 }
