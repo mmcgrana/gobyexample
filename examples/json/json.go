@@ -85,6 +85,8 @@ func main() {
 
 	// Here's the actual decoding, and a check for
 	// associated errors.
+	// For the sake of brevity we ignore the errors, but
+	// be aware the operations may fail.
 	if err := json.Unmarshal(byt, &dat); err != nil {
 		panic(err)
 	}
@@ -110,7 +112,7 @@ func main() {
 	// data.
 	str := `{"page": 1, "fruits": ["apple", "peach"]}`
 	res := response2{}
-	json.Unmarshal([]byte(str), &res)
+	_ = json.Unmarshal([]byte(str), &res)
 	fmt.Println(res)
 	fmt.Println(res.Fruits[0])
 
@@ -121,12 +123,12 @@ func main() {
 	// `os.Stdout` or even HTTP response bodies.
 	enc := json.NewEncoder(os.Stdout)
 	d := map[string]int{"apple": 5, "lettuce": 7}
-	enc.Encode(d)
+	_ = enc.Encode(d)
 
 	// Streaming reads from `os.Reader`s like `os.Stdin`
 	// or HTTP request bodies is done with `json.Decoder`.
 	dec := json.NewDecoder(strings.NewReader(str))
 	res1 := response2{}
-	dec.Decode(&res1)
+	_ = dec.Decode(&res1)
 	fmt.Println(res1)
 }
