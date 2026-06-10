@@ -85,8 +85,9 @@ func main() {
 
 	// Here's the actual decoding, and a check for
 	// associated errors.
-	// For the sake of brevity we ignore the errors, but
-	// be aware the operations may fail.
+	// For the sake of brevity we ignore the errors in
+	// these examples; in real code, you should always check
+	// for errors and act upon them.
 	if err := json.Unmarshal(byt, &dat); err != nil {
 		panic(err)
 	}
