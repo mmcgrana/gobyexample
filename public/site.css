@@ -227,3 +227,15 @@ body .c1 { color: #808080 }  /* Comment.Single */
   body .go { color: #868686 }  /* Generic.Output */
   body .c1 { color: #868686 }  /* Comment.Single */
 }
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  div#intro {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
