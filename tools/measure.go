@@ -26,7 +26,10 @@ func isDir(path string) bool {
 	return fileStat.IsDir()
 }
 
-var commentPat = regexp.MustCompile("\\s*\\/\\/")
+// Maximum allowed line length before reporting a formatting issue.
+const maxLineLength = 68
+
+var commentPattern = regexp.MustCompile("\\s*\\/\\/")
 
 func main() {
 	sourcePaths, err := filepath.Glob("./examples/*/*")
@@ -40,7 +43,7 @@ func main() {
 				// Convert tabs to spaces before measuring, so we get an accurate measure
 				// of how long the output will end up being.
 				line := strings.Replace(line, "\t", "    ", -1)
-				if !foundLongLine && !commentPat.MatchString(line) && (utf8.RuneCountInString(line) > 68) {
+				if !foundLongLine && !commentPattern.MatchString(line) && (utf8.RuneCountInString(line) > maxLineLength) {
 					fmt.Printf("measure: %s:%d (rune count = %d)\n", sourcePath, i+1, utf8.RuneCountInString(line))
 					foundLongLine = true
 					foundLongFile = true
