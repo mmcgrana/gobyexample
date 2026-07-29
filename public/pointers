@@ -176,7 +176,9 @@ the memory address for that variable.</p>
 </span></span><span class="line"><span class="cl"><span class="go">initial: 1
 </span></span></span><span class="line"><span class="cl"><span class="go">zeroval: 1
 </span></span></span><span class="line"><span class="cl"><span class="go">zeroptr: 0
-</span></span></span><span class="line"><span class="cl"><span class="go">pointer: 0x42131100</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="go">pointer: 0x42131100
+</span></span></span><span class="line"><span class="cl"><span class="go">value at *p: 42
+</span></span></span><span class="line"><span class="cl"><span class="go">value at *p: 0</span></span></span></code></pre>
           </td>
         </tr>
         
