@@ -26,6 +26,14 @@ To build the site you'll need Go installed. Run:
 $ tools/build
 ```
 
+To build the HTML files for the site with a `.html` file name suffix. Run:
+
+```console
+$ export EXAMPLE_FILE_SUFIX=".html"
+$ tools/build
+```
+The environment variable `EXAMPLE_FILE_SUFIX` is used in `tools/generate.go`
+
 To build continuously in a loop:
 
 ```console

@@ -16,11 +16,11 @@
         <a href="https://go.dev/doc/tutorial/getting-started">official documentation</a>
         to learn more.
       </p>
-
+        {{$first:= index . 0}}
       <p>
         <em>Go by Example</em> is a hands-on introduction
         to Go using annotated example programs. Check out
-        the <a href="hello-world">first example</a> or
+        the <a href="{{$first.ID}}{{$first.FileNameSufix}}">first example</a> or
         browse the full list below.
       </p>
 
@@ -33,7 +33,7 @@
 
       <ul>
       {{range .}}
-        <li><a href="{{.ID}}">{{.Name}}</a></li>
+        <li><a href="{{.ID}}{{.FileNameSufix}}">{{.Name}}</a></li>
       {{end}}
       </ul>
 {{ template "footer" }}

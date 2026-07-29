@@ -107,7 +107,7 @@ type Seg struct {
 
 // Example is info extracted from an example file
 type Example struct {
-	ID, Name                    string
+	ID, Name, FileNameSufix     string
 	GoCode, GoCodeHash, URLHash string
 	Segs                        [][]*Seg
 	PrevExample                 *Example
@@ -249,11 +249,12 @@ func parseExamples() []*Example {
 		}
 	}
 	examples := make([]*Example, 0)
+
 	for i, exampleName := range exampleNames {
 		if verbose() {
 			fmt.Printf("Processing %s [%d/%d]\n", exampleName, i+1, len(exampleNames))
 		}
-		example := Example{Name: exampleName}
+		example := Example{Name: exampleName, FileNameSufix: os.Getenv("EXAMPLE_FILE_SUFIX")}
 		exampleID := strings.ToLower(exampleName)
 		exampleID = strings.Replace(exampleID, " ", "-", -1)
 		exampleID = strings.Replace(exampleID, "/", "-", -1)
@@ -313,7 +314,7 @@ func renderExamples(examples []*Example) {
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/footer.tmpl")))
 	template.Must(exampleTmpl.Parse(mustReadFile("templates/example.tmpl")))
 	for _, example := range examples {
-		exampleF, err := os.Create(siteDir + "/" + example.ID)
+		exampleF, err := os.Create(siteDir + "/" + example.ID + example.FileNameSufix)
 		check(err)
 		defer exampleF.Close()
 		check(exampleTmpl.Execute(exampleF, example))
