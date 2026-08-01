@@ -49,7 +49,7 @@ Here&rsquo;s a modern way to handle signals using contexts.</p>
             
           </td>
           <td class="code leading">
-            <a href="https://go.dev/play/p/F3Wm7JT8wgn"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="https://go.dev/play/p/KyU6iGt3BmP"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
@@ -63,8 +63,17 @@ Here&rsquo;s a modern way to handle signals using contexts.</p>
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;context&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;os/signal&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;syscall&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os/signal&#34;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre class="chroma"><code><span class="line"><span class="cl">    <span class="s">&#34;golang.org/x/sys/unix&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
@@ -88,7 +97,7 @@ when one of the listed signals arrives.</p>
           <td class="code leading">
             
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ctx</span><span class="p">,</span> <span class="nx">stop</span> <span class="o">:=</span> <span class="nx">signal</span><span class="p">.</span><span class="nf">NotifyContext</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">unix</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">unix</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nf">stop</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
@@ -159,7 +168,7 @@ causing the program to print the cancellation cause and then exit.</p>
     </div>
     <script>
       var codeLines = [];
-      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"context\"\u000A    \"fmt\"\u000A    \"os/signal\"\u000A    \"syscall\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ctx, stop :\u003D signal.NotifyContext(\u000A        context.Background(), syscall.SIGINT, syscall.SIGTERM)\u000A    defer stop()\u000A');codeLines.push('    fmt.Println(\"awaiting signal\")\u000A    \u003C-ctx.Done()\u000A');codeLines.push('    fmt.Println()\u000A    fmt.Println(context.Cause(ctx))\u000A    fmt.Println(\"exiting\")\u000A}\u000A');codeLines.push('');
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"context\"\u000A    \"fmt\"\u000A    \"os/signal\"\u000A');codeLines.push('    \"golang.org/x/sys/unix\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    ctx, stop :\u003D signal.NotifyContext(\u000A        context.Background(), unix.SIGINT, unix.SIGTERM)\u000A    defer stop()\u000A');codeLines.push('    fmt.Println(\"awaiting signal\")\u000A    \u003C-ctx.Done()\u000A');codeLines.push('    fmt.Println()\u000A    fmt.Println(context.Cause(ctx))\u000A    fmt.Println(\"exiting\")\u000A}\u000A');codeLines.push('');
     </script>
     <script src="site.js" async></script>
   </body>

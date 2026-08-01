@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.19.1
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.97.3
 	github.com/russross/blackfriday/v2 v2.1.0
+	golang.org/x/sys v0.47.0
 )
 
 require (
