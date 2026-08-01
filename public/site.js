@@ -15,3 +15,61 @@ var clipboard = new Clipboard('.copy', {
         return codeLines.filter(function(cL) { return cL != '' }).join("\n").replace(/\n$/, '');
     }
 });
+
+function clearSelectionSide() {
+    document.body.classList.remove('selecting-code', 'selecting-docs');
+}
+
+var pointerIsDown = false;
+
+function clearSelectionSideIfEmpty() {
+    var selection = window.getSelection();
+
+    if (!selection || selection.isCollapsed) {
+        clearSelectionSide();
+    }
+}
+
+function applySelectionSide(side) {
+    if (side == 'code') {
+        document.body.classList.add('selecting-code');
+    } else if (side == 'docs') {
+        document.body.classList.add('selecting-docs');
+    }
+}
+
+document.addEventListener('pointerdown', function(e) {
+    var selection = window.getSelection();
+    var selectionSide = '';
+
+    pointerIsDown = true;
+
+    if (e.target.closest('td.code')) {
+        selectionSide = 'code';
+    } else if (e.target.closest('td.docs')) {
+        selectionSide = 'docs';
+    }
+
+    if (selection && !selection.isCollapsed) {
+        selection.removeAllRanges();
+    }
+
+    clearSelectionSide();
+    applySelectionSide(selectionSide);
+});
+
+document.addEventListener('selectionchange', function(e) {
+    if (!pointerIsDown) {
+        clearSelectionSideIfEmpty();
+    }
+});
+
+document.addEventListener('pointerup', function(e) {
+    pointerIsDown = false;
+    clearSelectionSideIfEmpty();
+});
+
+document.addEventListener('pointercancel', function(e) {
+    pointerIsDown = false;
+    clearSelectionSide();
+});

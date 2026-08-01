@@ -121,6 +121,12 @@ td.code {
 td.code.leading {
   padding-bottom: 11px;
 }
+body.selecting-code td.docs,
+body.selecting-docs td.code {
+  -webkit-user-select: none;
+  cursor: text;
+  user-select: none;
+}
 pre, code {
   font-size: 14px; line-height: 18px;
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
