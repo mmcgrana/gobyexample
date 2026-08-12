@@ -5,9 +5,9 @@
 package main
 
 import (
-	"encoding/json"
+	"bytes"
+	"encoding/json/v2"
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -120,16 +120,16 @@ func main() {
 	// In the examples above we always used bytes and
 	// strings as intermediates between the data and
 	// JSON representation on standard out. We can also
-	// stream JSON encodings directly to `os.Writer`s like
+	// stream JSON encodings directly to `io.Writer`s like
 	// `os.Stdout` or even HTTP response bodies.
-	enc := json.NewEncoder(os.Stdout)
 	d := map[string]int{"apple": 5, "lettuce": 7}
-	_ = enc.Encode(d)
+	var buf bytes.Buffer
+	_ = json.MarshalWrite(&buf, d)
+	fmt.Println(buf.String())
 
-	// Streaming reads from `os.Reader`s like `os.Stdin`
-	// or HTTP request bodies is done with `json.Decoder`.
-	dec := json.NewDecoder(strings.NewReader(str))
+	// Streaming reads from `io.Reader`s like `os.Stdin`
+	// or HTTP request bodies is done with `json.UnmarshalRead`.
 	res1 := response2{}
-	_ = dec.Decode(&res1)
+	_ = json.UnmarshalRead(strings.NewReader(str), &res1)
 	fmt.Println(res1)
 }
