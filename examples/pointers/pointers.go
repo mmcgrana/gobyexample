@@ -42,7 +42,8 @@ func main() {
 
 	// A new pointer to a value can be created with the
 	// builtin function `new`.
-	p := new(42)
+	p := new(int)
+	*p = 42
 	fmt.Println("value at *p:", *p)
 	zeroptr(p)
 	fmt.Println("value at *p:", *p)
