@@ -15,3 +15,44 @@ var clipboard = new Clipboard('.copy', {
         return codeLines.filter(function(cL) { return cL != '' }).join("\n").replace(/\n$/, '');
     }
 });
+
+/*
+* code for tracking visited examples and recoloring their home-page links
+*/
+
+(function() {
+    var KEY = 'gobyexample.visited';
+
+    function getVisited() {
+        try {
+            return JSON.parse(localStorage.getItem(KEY)) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function setVisited(visited) {
+        try {
+            localStorage.setItem(KEY, JSON.stringify(visited));
+        } catch (e) {}
+    }
+
+    // record the current example as visited (only on example pages)
+    var example = document.querySelector('div.example[id]');
+    if (example) {
+        var visited = getVisited();
+        if (!visited[example.id]) {
+            visited[example.id] = true;
+            setVisited(visited);
+        }
+    }
+
+    // recolor links to visited examples (only on the home page)
+    var visited = getVisited();
+    var links = document.querySelectorAll('#intro ul li a');
+    Array.prototype.forEach.call(links, function(a) {
+        if (visited[a.getAttribute('href')]) {
+            a.classList.add('visited-example');
+        }
+    });
+})();
