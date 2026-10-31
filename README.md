@@ -75,6 +75,7 @@ Contributor translations of the Go by Example site are available in:
 * [Arabic](https://0xKa.github.io/gobyexample-ar/) by [0xKa](https://github.com/0xKa/gobyexample-ar)
 * [Bulgarian](https://слово.бг/го-в-примери/index.html) by [kberov](https://github.com/kberov/gobyexample/tree/bg)
 * [Czech](https://martinkunc.github.io/gobyexample-cz) by [martinkunc](https://github.com/martinkunc/gobyexample-cz)
+* [Persian](https://samsampour.github.io/gobyexample-fa/) by [samsampour](https://github.com/samsampour/gobyexample-fa)
 
 ### Thanks
 
