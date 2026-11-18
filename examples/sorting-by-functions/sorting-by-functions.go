@@ -34,9 +34,9 @@ func main() {
 	}
 
 	people := []Person{
-		Person{name: "Jax", age: 37},
-		Person{name: "TJ", age: 25},
-		Person{name: "Alex", age: 72},
+		{name: "Jax", age: 37},
+		{name: "TJ", age: 25},
+		{name: "Alex", age: 72},
 	}
 
 	// Sort `people` by age using `slices.SortFunc`.
